@@ -4,161 +4,78 @@
     <compoundname>GSP_Err.cpp</compoundname>
     <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
     <incdepgraph>
-      <node id="21457">
-        <label>list</label>
-      </node>
-      <node id="21450">
-        <label>stdarg.h</label>
-      </node>
-      <node id="21465">
-        <label>wx/cmdline.h</label>
-      </node>
-      <node id="21453">
-        <label>wx/stdpaths.h</label>
-      </node>
-      <node id="21449">
-        <label>src/kernel/Defs.h</label>
-        <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="21450" relation="include">
-        </childnode>
-        <childnode refid="21451" relation="include">
-        </childnode>
-        <childnode refid="21470" relation="include">
-        </childnode>
-        <childnode refid="21471" relation="include">
-        </childnode>
-        <childnode refid="21464" relation="include">
-        </childnode>
-        <childnode refid="21472" relation="include">
-        </childnode>
-        <childnode refid="21473" relation="include">
-        </childnode>
-      </node>
-      <node id="21464">
+      <node id="20897">
         <label>stdint.h</label>
       </node>
-      <node id="21470">
-        <label>wx/wxchar.h</label>
+      <node id="20890">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="20889" relation="include">
+        </childnode>
       </node>
-      <node id="21459">
-        <label>wx/image.h</label>
+      <node id="20896">
+        <label>boost/format.hpp</label>
       </node>
-      <node id="21474">
+      <node id="20894">
         <label>string</label>
       </node>
-      <node id="21469">
-        <label>mutDebugFlags.h</label>
-        <link refid="d7/d49/mutDebugFlags_8h"/>
-      </node>
-      <node id="21452">
-        <label>wx/window.h</label>
-      </node>
-      <node id="21471">
-        <label>wx/intl.h</label>
-      </node>
-      <node id="21458">
-        <label>src/wxGUI/Mutabor.rh</label>
-        <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="21449" relation="include">
+      <node id="20889">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="20890" relation="include">
+        </childnode>
+        <childnode refid="20891" relation="include">
+        </childnode>
+        <childnode refid="20892" relation="include">
         </childnode>
       </node>
-      <node id="21454">
-        <label>wx/filename.h</label>
-      </node>
-      <node id="21456">
-        <label>typeinfo</label>
-      </node>
-      <node id="21467">
-        <label>wx/debug.h</label>
-      </node>
-      <node id="21462">
+      <node id="20895">
         <label>cstdio</label>
       </node>
-      <node id="21461">
-        <label>bitset</label>
-      </node>
-      <node id="21451">
-        <label>src/wxGUI/generic/mhDefs.h</label>
-        <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="21449" relation="include">
+      <node id="20892">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="20889" relation="include">
         </childnode>
-        <childnode refid="21452" relation="include">
+        <childnode refid="20893" relation="include">
         </childnode>
-        <childnode refid="21453" relation="include">
+        <childnode refid="20894" relation="include">
         </childnode>
-        <childnode refid="21454" relation="include">
+        <childnode refid="20895" relation="include">
         </childnode>
-        <childnode refid="21455" relation="include">
+        <childnode refid="20896" relation="include">
         </childnode>
-        <childnode refid="21456" relation="include">
+        <childnode refid="20897" relation="include">
         </childnode>
-        <childnode refid="21457" relation="include">
-        </childnode>
-        <childnode refid="21458" relation="include">
-        </childnode>
-        <childnode refid="21459" relation="include">
-        </childnode>
-        <childnode refid="21460" relation="include">
+        <childnode refid="20898" relation="include">
         </childnode>
       </node>
-      <node id="21463">
-        <label>vector</label>
-      </node>
-      <node id="21460">
-        <label>mutDebug.h</label>
-        <link refid="de/de1/mutDebug_8h"/>
-        <childnode refid="21461" relation="include">
-        </childnode>
-        <childnode refid="21455" relation="include">
-        </childnode>
-        <childnode refid="21462" relation="include">
-        </childnode>
-        <childnode refid="21463" relation="include">
-        </childnode>
-        <childnode refid="21464" relation="include">
-        </childnode>
-        <childnode refid="21465" relation="include">
-        </childnode>
-        <childnode refid="21466" relation="include">
-        </childnode>
-        <childnode refid="21467" relation="include">
-        </childnode>
-        <childnode refid="21468" relation="include">
-        </childnode>
-        <childnode refid="21469" relation="include">
-        </childnode>
-      </node>
-      <node id="21473">
+      <node id="20893">
         <label>src/wxintl/libintl.h</label>
         <link refid="d4/d64/libintl_8h"/>
-        <childnode refid="21449" relation="include">
+        <childnode refid="20889" relation="include">
         </childnode>
-        <childnode refid="21474" relation="include">
+        <childnode refid="20894" relation="include">
         </childnode>
       </node>
-      <node id="21466">
-        <label>wx/string.h</label>
+      <node id="20891">
+        <label>cstddef</label>
       </node>
-      <node id="21448">
+      <node id="20888">
         <label>src/kernel/routing/gmn/GSP_Err.cpp</label>
         <link refid="GSP_Err.cpp"/>
-        <childnode refid="21449" relation="include">
+        <childnode refid="20889" relation="include">
         </childnode>
       </node>
-      <node id="21455">
-        <label>iostream</label>
-      </node>
-      <node id="21468">
-        <label>wx/thread.h</label>
-      </node>
-      <node id="21472">
-        <label>wx/setup.h</label>
+      <node id="20898">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
       </node>
     </incdepgraph>
       <sectiondef kind="var">
-      <memberdef kind="variable" id="d5/dee/group__route_1ga4f0f62ff19812efd72a38e6acb062a9c" prot="public" static="no" mutable="no">
-        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga66f2a821381f322d5b779e5004013591" kindref="member">mutTranslationChar</ref> *</type>
-        <definition>const mutTranslationChar* GspErrorText[]</definition>
+      <memberdef kind="variable" id="d5/dee/group__route_1gab4431fd08644c9276f38800acf9dc4ee" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* GspErrorText[]</definition>
         <argsstring>[]</argsstring>
         <name>GspErrorText</name>
         <briefdescription>
@@ -167,10 +84,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP_Err.cpp" line="31" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP_Err.cpp" bodystart="31" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP_Err.cpp" line="31" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP_Err.cpp" bodystart="31" bodyend="-1"/>
         <referencedby refid="d3/d14/gmut_8cpp_1a6925268de67bc04207c5ebd990b88b0f" compoundref="d3/d14/gmut_8cpp" startline="54" endline="82">GetInFile</referencedby>
         <referencedby refid="d4/d21/gmn2midi_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="d4/d21/gmn2midi_8cpp" startline="23" endline="74">main</referencedby>
-        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" compoundref="db/d78/DevGIS_8cpp" startline="276" endline="313">mutabor::InputGis::Open</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a5f9cd24f25454fe7cbbc87918fe06ab3" compoundref="db/d78/DevGIS_8cpp" startline="281" endline="318">mutabor::InputGis::Open</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -191,60 +108,60 @@ Revision 1.5 2011/11/02 14:31:57 keinstein fix some errors crashing Mutabor on W
 <codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>##################################################################</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31" refid="d5/dee/group__route_1ga4f0f62ff19812efd72a38e6acb062a9c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga66f2a821381f322d5b779e5004013591" kindref="member">mutTranslationChar</ref><sp/>*<ref refid="d5/dee/group__route_1ga4f0f62ff19812efd72a38e6acb062a9c" kindref="member">GspErrorText</ref>[]<sp/>=</highlight></codeline>
+<codeline lineno="31" refid="d5/dee/group__route_1gab4431fd08644c9276f38800acf9dc4ee" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="d5/dee/group__route_1gab4431fd08644c9276f38800acf9dc4ee" kindref="member">GspErrorText</ref>[]<sp/>=</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0:<sp/>alles<sp/>ok</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;OK&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;OK&quot;</highlight><highlight class="normal">),</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1-9:<sp/>Klammerfehler</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>1<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;No<sp/>corresponding<sp/>opening<sp/>bracket.&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>2<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Wrong<sp/>closing<sp/>bracket.<sp/>&apos;}&apos;<sp/>expected.&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>3<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Wrong<sp/>closing<sp/>bracket.<sp/>&apos;]&apos;<sp/>expected.&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>4<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Wrong<sp/>closing<sp/>bracket.<sp/>&apos;)&apos;<sp/>expected.&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>5<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>6<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>7<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>8<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>9<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>1<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;No<sp/>corresponding<sp/>opening<sp/>bracket.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>2<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;Wrong<sp/>closing<sp/>bracket.<sp/>&apos;}&apos;<sp/>expected.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>3<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;Wrong<sp/>closing<sp/>bracket.<sp/>&apos;]&apos;<sp/>expected.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>4<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;Wrong<sp/>closing<sp/>bracket.<sp/>&apos;)&apos;<sp/>expected.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>5<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>6<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>7<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>8<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>9<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>10-19:<sp/>Parameterfehler</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>10<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Parameter<sp/>expected.&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>11<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;&apos;&gt;&apos;<sp/>or<sp/>&apos;,&apos;<sp/>expected.&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>12<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>13<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>14<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>15<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>16<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>17<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>18<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>19<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>10<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;Parameter<sp/>expected.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>11<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;&apos;&gt;&apos;<sp/>or<sp/>&apos;,&apos;<sp/>expected.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>12<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>13<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>14<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>15<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>16<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>17<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>18<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>19<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>20-29:<sp/>allgemeine<sp/>Fehler</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>20<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Note,<sp/>tag<sp/>or<sp/>opening<sp/>bracket<sp/>expected.&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>21<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Expected<sp/>enumerator<sp/>of<sp/>note<sp/>length.&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>22<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Expected<sp/>denominator<sp/>of<sp/>note<sp/>length.&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>23<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Dotted<sp/>note,<sp/>but<sp/>no<sp/>note<sp/>length<sp/>was<sp/>given.&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>24<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>comma.&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>25<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>26<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>27<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>28<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>29<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>20<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;Note,<sp/>tag<sp/>or<sp/>opening<sp/>bracket<sp/>expected.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>21<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;Expected<sp/>enumerator<sp/>of<sp/>note<sp/>length.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>22<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;Expected<sp/>denominator<sp/>of<sp/>note<sp/>length.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>23<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;Dotted<sp/>note,<sp/>but<sp/>no<sp/>note<sp/>length<sp/>was<sp/>given.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>24<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;Unexpected<sp/>comma.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>25<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>26<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>27<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>28<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>29<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>30-39:<sp/>Dateifehler</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>30<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Can&apos;t<sp/>open<sp/>file.&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>31<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Error<sp/>closing<sp/>the<sp/>file.&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>32<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Error<sp/>reading<sp/>the<sp/>file.&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>33<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>34<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>35<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>36<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>37<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>38<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>39<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1ga68462250845e52cf9f815afcd030453e" kindref="member">N_T</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>30<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;Can&apos;t<sp/>open<sp/>file.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>31<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;Error<sp/>closing<sp/>the<sp/>file.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>32<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;Error<sp/>reading<sp/>the<sp/>file.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>33<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>34<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>35<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>36<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>37<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>38<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>39<sp/>*/</highlight><highlight class="normal"><sp/>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>40-<sp/>49:<sp/>Strict-GMN-Fehler</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>40<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;The<sp/>file<sp/>must<sp/>begin<sp/>with<sp/>&apos;[&apos;<sp/>or<sp/>&apos;{&apos;.&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>41<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Range<sp/>without<sp/>preceeding<sp/>tag.&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>40<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;The<sp/>file<sp/>must<sp/>begin<sp/>with<sp/>&apos;[&apos;<sp/>or<sp/>&apos;{&apos;.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>41<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;Range<sp/>without<sp/>preceeding<sp/>tag.&quot;</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP_Err.cpp"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GSP_Err.cpp"/>
   </compounddef>
 </doxygen>

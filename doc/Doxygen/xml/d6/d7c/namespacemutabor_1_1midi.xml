@@ -5,6 +5,14 @@
       <sectiondef kind="enum">
       <memberdef kind="enum" id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40e" prot="public" static="no">
         <name>midi_command</name>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea8751601c603fd62c44c64d2db1560efe" prot="public">
+          <name>UNKNOWN_EVENT</name>
+          <initializer>= 0x00</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
         <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ead35b3866e37a78e1cc4295e63979ef6e" prot="public">
           <name>NOTE_OFF</name>
           <initializer>= 0x80</initializer>
@@ -109,6 +117,22 @@
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea76e4e53a91250c7b2e8cd2a624eaa692" prot="public">
+          <name>SYSTEM_UNDEFINED1</name>
+          <initializer>= 0xF4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eafb38762a11e373f2caec8df2f34fce23" prot="public">
+          <name>SYSTEM_UNDEFINED2</name>
+          <initializer>= 0xF5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
         <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea23cf0840cf227463d6d436b1375c465c" prot="public">
           <name>TUNE_REQUEST</name>
           <initializer>= 0xF6</initializer>
@@ -165,6 +189,14 @@
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaa332afce2a56c4b143617aa299f2eb2c" prot="public">
+          <name>REALTIME_UNDEFINED</name>
+          <initializer>= 0xFD</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
         <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaea5706f32a51b36323f3f0d9046eed71" prot="public">
           <name>ACTIVE_SENSE</name>
           <initializer>= 0xFE</initializer>
@@ -175,14 +207,6 @@
         </enumvalue>
         <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eae1211222a3284d995f61eacd0ea78d24" prot="public">
           <name>RESET</name>
-          <initializer>= 0xFF</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea597b963d24128a1986fd4baf63ffbdf1" prot="public">
-          <name>META</name>
           <initializer>= 0xFF</initializer>
           <briefdescription>
           </briefdescription>
@@ -213,13 +237,173 @@
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea597b963d24128a1986fd4baf63ffbdf1" prot="public">
+          <name>META</name>
+          <initializer>= 0xFF</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eac290c68416966cdcb145bca1fdf384f2" prot="public">
+          <name>FIRST_META</name>
+          <initializer>= 0x100</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea1151a85f7429bd133513b7f1369a46b6" prot="public">
+          <name>SEQUENCE_NUMBER</name>
+          <initializer>= 0x100</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea94672de9bdaab2761a05767b7d8b7d91" prot="public">
+          <name>EVENT_TEXT</name>
+          <initializer>= 0x101</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ead487e976e72600854ff588fa3045bf4a" prot="public">
+          <name>COPYRIGHT_NOTICE</name>
+          <initializer>= 0x102</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaf6c7b961dc0581d012694785fb49a26e" prot="public">
+          <name>SEQUENCE_NAME</name>
+          <initializer>= 0x103</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaccf9cb6904e8f317b75403dae989f9c5" prot="public">
+          <name>TRACK_NAME</name>
+          <initializer>= 0x103</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea51869e40701d6614d173d99e8f4b9cb2" prot="public">
+          <name>INSTRUMENT_NAME</name>
+          <initializer>= 0x104</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea694241f2af355c0a69dcc3591e68432a" prot="public">
+          <name>LYRIC</name>
+          <initializer>= 0x105</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eae429cd3926ee93d30e67998b1e84e2df" prot="public">
+          <name>MARKER</name>
+          <initializer>= 0x106</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea2491947b17cb2482d601fa5f657ca9fd" prot="public">
+          <name>CUE_POINT</name>
+          <initializer>= 0x107</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eade02d030fab78df2b655804b0ace879f" prot="public">
+          <name>CHANNEL_SELECT</name>
+          <initializer>= 0x120</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea8a583a3e2b3b309be7f3f5d48e7b0a04" prot="public">
+          <name>END_OF_TRACK</name>
+          <initializer>= 0x12F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eae97e6005f9fc8c669e1ad2cc02e115da" prot="public">
+          <name>SET_TEMPO</name>
+          <initializer>= 0x151</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaf41eb4efb751ded221d73686b02722c5" prot="public">
+          <name>SMPTE_OFFSET</name>
+          <initializer>= 0x154</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea9cafb5e74ed5db89fd33a51d9631c33c" prot="public">
+          <name>TIME_SIGNATURE</name>
+          <initializer>= 0x158</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea1dd86efc7660994df0e2a221b8989e05" prot="public">
+          <name>KEY_SIGNATURE</name>
+          <initializer>= 0x159</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea5bad60f8da43eeceeed7a809f2f4495a" prot="public">
+          <name>SEQUENCER_SPECIFIC</name>
+          <initializer>= 0x17F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ead2aef41d589e65753a2d8b0d84f15e4f" prot="public">
+          <name>UNKNOWN_META</name>
+          <initializer>= 0x200</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea50ef67b34a41498a50c4a36bbdac6625" prot="public">
+          <name>LAST_META</name>
+          <initializer>= 0x200</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="138" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="138" bodyend="169"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="127" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="127" bodyend="184"/>
       </memberdef>
       <memberdef kind="enum" id="d6/d7c/namespacemutabor_1_1midi_1ae35c5bb8fa2574ae4ef04eb7c21c2ffd" prot="public" static="no">
         <name>midi_meta_types</name>
@@ -357,7 +541,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="171" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="171" bodyend="188"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="186" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="186" bodyend="203"/>
       </memberdef>
       <memberdef kind="enum" id="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690" prot="public" static="no">
         <name>midi_controller_indices</name>
@@ -959,7 +1143,40 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="190" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="190" bodyend="298"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="205" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="205" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="enum" id="d6/d7c/namespacemutabor_1_1midi_1a13ff6f5b106d893da9a112a4e492af14" prot="public" static="no">
+        <name>non_midi_controllers</name>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a13ff6f5b106d893da9a112a4e492af14a1a2737ee5b582b604680bfe7d9c58a15" prot="public">
+          <name>FIRST_NON_MIDI_CONTROLLER</name>
+          <initializer>= 0x80</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a13ff6f5b106d893da9a112a4e492af14a0cb3cb0ed74ca366747893f0b427c9e4" prot="public">
+          <name>CHANNEL_PRESSURE_VAL</name>
+          <initializer>= 0x80</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/namespacemutabor_1_1midi_1a13ff6f5b106d893da9a112a4e492af14a036a56968d14bb7ed60fb2e928e4c495" prot="public">
+          <name>END_NON_MIDI_CONTROLLER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="315" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="315" bodyend="319"/>
       </memberdef>
       <memberdef kind="enum" id="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27" prot="public" static="no">
         <name>midi_controller_values</name>
@@ -1033,7 +1250,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="302" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="302" bodyend="311"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="323" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="323" bodyend="332"/>
       </memberdef>
       <memberdef kind="enum" id="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108" prot="public" static="no">
         <name>midi_registered_parameters</name>
@@ -1115,7 +1332,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="313" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="313" bodyend="324"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="334" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="334" bodyend="345"/>
       </memberdef>
       <memberdef kind="enum" id="d6/d7c/namespacemutabor_1_1midi_1a58a5f0327593d99e36a2f7e9e8118b74" prot="public" static="no">
         <name>midi_channel_constants</name>
@@ -1133,7 +1350,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="327" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="327" bodyend="329"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="349" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="349" bodyend="351"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -1152,8 +1369,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="331" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="331" bodyend="339"/>
-        <referencedby refid="dd/dbe/classmutabor_1_1Track_1ab27de7a5339ed4cd5583989586934b29" compoundref="d0/d6b/DevMidF_8cpp" startline="154" endline="190">mutabor::Track::ReadMessage</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="353" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="353" bodyend="361"/>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1ab27de7a5339ed4cd5583989586934b29" compoundref="d0/d6b/DevMidF_8cpp" startline="153" endline="193">mutabor::Track::ReadMessage</referencedby>
       </memberdef>
       <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1a18e79a30658f1a5ec4c44cd10bd31086" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -1170,9 +1387,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="341" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="341" bodyend="343"/>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea9b1eab461457cda726681eedea0a5505" compoundref="da/dfd/MidiKern_8h" startline="149">SYSEX_START</references>
-        <referencedby refid="d6/d7c/namespacemutabor_1_1midi_1ac13307c04d235af539b64d90e27866e8" compoundref="da/dfd/MidiKern_8h" startline="361" endline="363">reset_running_status</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="363" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="363" bodyend="365"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea9b1eab461457cda726681eedea0a5505" compoundref="da/dfd/MidiKern_8h" startline="139">SYSEX_START</references>
+        <referencedby refid="d6/d7c/namespacemutabor_1_1midi_1ac13307c04d235af539b64d90e27866e8" compoundref="da/dfd/MidiKern_8h" startline="383" endline="385">reset_running_status</referencedby>
       </memberdef>
       <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1a8579e0231a1b648371933a509200a27d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -1189,13 +1406,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="345" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="345" bodyend="351"/>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ead1fac92a547fa123ca5500c075908ca4" compoundref="da/dfd/MidiKern_8h" startline="150">QUARTER_FRAME</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea26a84b354a54afaf1c0929ca48337ea4" compoundref="da/dfd/MidiKern_8h" startline="151">SONG_POSITION</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eac05c2c255ba453932c6bd2385c67a2fd" compoundref="da/dfd/MidiKern_8h" startline="152">SONG_SELECT</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea0a53af595ed2e1a23a8c671e3e043a62" compoundref="da/dfd/MidiKern_8h" startline="154">SYSEX_END</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea23cf0840cf227463d6d436b1375c465c" compoundref="da/dfd/MidiKern_8h" startline="153">TUNE_REQUEST</references>
-        <referencedby refid="d6/d7c/namespacemutabor_1_1midi_1ac13307c04d235af539b64d90e27866e8" compoundref="da/dfd/MidiKern_8h" startline="361" endline="363">reset_running_status</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="367" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="367" bodyend="373"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ead1fac92a547fa123ca5500c075908ca4" compoundref="da/dfd/MidiKern_8h" startline="140">QUARTER_FRAME</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea26a84b354a54afaf1c0929ca48337ea4" compoundref="da/dfd/MidiKern_8h" startline="141">SONG_POSITION</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eac05c2c255ba453932c6bd2385c67a2fd" compoundref="da/dfd/MidiKern_8h" startline="142">SONG_SELECT</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea0a53af595ed2e1a23a8c671e3e043a62" compoundref="da/dfd/MidiKern_8h" startline="146">SYSEX_END</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea23cf0840cf227463d6d436b1375c465c" compoundref="da/dfd/MidiKern_8h" startline="145">TUNE_REQUEST</references>
+        <referencedby refid="d6/d7c/namespacemutabor_1_1midi_1ac13307c04d235af539b64d90e27866e8" compoundref="da/dfd/MidiKern_8h" startline="383" endline="385">reset_running_status</referencedby>
       </memberdef>
       <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1a31591b44b9aabcae8c3ba2b5a5850cb7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -1212,7 +1429,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="353" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="353" bodyend="355"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="375" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="375" bodyend="377"/>
       </memberdef>
       <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1a612325ff68e998e8d1efb158d11bf1e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -1229,8 +1446,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="357" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="357" bodyend="359"/>
-        <referencedby refid="d6/d7c/namespacemutabor_1_1midi_1af3985350b4eb0864f615c56b84f47a49" compoundref="da/dfd/MidiKern_8h" startline="365" endline="367">store_running_status</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="379" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="379" bodyend="381"/>
+        <referencedby refid="d6/d7c/namespacemutabor_1_1midi_1af3985350b4eb0864f615c56b84f47a49" compoundref="da/dfd/MidiKern_8h" startline="387" endline="389">store_running_status</referencedby>
       </memberdef>
       <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1ac13307c04d235af539b64d90e27866e8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -1247,10 +1464,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="361" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="361" bodyend="363"/>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a8579e0231a1b648371933a509200a27d" compoundref="da/dfd/MidiKern_8h" startline="345" endline="351">is_system_common</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a18e79a30658f1a5ec4c44cd10bd31086" compoundref="da/dfd/MidiKern_8h" startline="341" endline="343">is_system_exclusive</references>
-        <referencedby refid="dd/dbe/classmutabor_1_1Track_1ab27de7a5339ed4cd5583989586934b29" compoundref="d0/d6b/DevMidF_8cpp" startline="154" endline="190">mutabor::Track::ReadMessage</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="383" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="383" bodyend="385"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a8579e0231a1b648371933a509200a27d" compoundref="da/dfd/MidiKern_8h" startline="367" endline="373">is_system_common</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a18e79a30658f1a5ec4c44cd10bd31086" compoundref="da/dfd/MidiKern_8h" startline="363" endline="365">is_system_exclusive</references>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1ab27de7a5339ed4cd5583989586934b29" compoundref="d0/d6b/DevMidF_8cpp" startline="153" endline="193">mutabor::Track::ReadMessage</referencedby>
       </memberdef>
       <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1af3985350b4eb0864f615c56b84f47a49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -1267,9 +1484,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="365" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="365" bodyend="367"/>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a612325ff68e998e8d1efb158d11bf1e2" compoundref="da/dfd/MidiKern_8h" startline="357" endline="359">is_channel_message</references>
-        <referencedby refid="dd/dbe/classmutabor_1_1Track_1ab27de7a5339ed4cd5583989586934b29" compoundref="d0/d6b/DevMidF_8cpp" startline="154" endline="190">mutabor::Track::ReadMessage</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="387" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="387" bodyend="389"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a612325ff68e998e8d1efb158d11bf1e2" compoundref="da/dfd/MidiKern_8h" startline="379" endline="381">is_channel_message</references>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1ab27de7a5339ed4cd5583989586934b29" compoundref="d0/d6b/DevMidF_8cpp" startline="153" endline="193">mutabor::Track::ReadMessage</referencedby>
       </memberdef>
       <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1ab871bc03cfde745bd68c7a87fab7f367" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -1310,15 +1527,15 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="379" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="379" bodyend="389"/>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1daafb4ac99543293a3a23e6ca63d1ae" compoundref="da/dfd/MidiKern_8h" startline="242">HOLD_2_PEDAL_ON_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a5fdd60dfbded8880ad67ef1b3d9fafc5" compoundref="da/dfd/MidiKern_8h" startline="236">HOLD_PEDAL_ON_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a10e8cb47d9f82c5c4e45840da2f31c1a" compoundref="da/dfd/MidiKern_8h" startline="241">LEGATO_PEDAL_ON_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a01bfd85977a0ae1e40cc9cca8de365d8" compoundref="da/dfd/MidiKern_8h" startline="238">SOSTENUTO_ON_OFF</references>
-        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1afed80e409e1ea1e2b0977b9830d892f3" compoundref="d3/d0f/midicmn_8cpp" startline="534" endline="634">mutabor::CommonMidiOutput&lt; T, D &gt;::do_Controller</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="401" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="401" bodyend="411"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1daafb4ac99543293a3a23e6ca63d1ae" compoundref="da/dfd/MidiKern_8h" startline="257">HOLD_2_PEDAL_ON_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a5fdd60dfbded8880ad67ef1b3d9fafc5" compoundref="da/dfd/MidiKern_8h" startline="251">HOLD_PEDAL_ON_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a10e8cb47d9f82c5c4e45840da2f31c1a" compoundref="da/dfd/MidiKern_8h" startline="256">LEGATO_PEDAL_ON_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a01bfd85977a0ae1e40cc9cca8de365d8" compoundref="da/dfd/MidiKern_8h" startline="253">SOSTENUTO_ON_OFF</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1aa17b5269ed776e1d40abed48119dddd4" compoundref="d3/d0f/midicmn_8cpp" startline="526" endline="622">mutabor::CommonMidiOutput&lt; T, D &gt;::do_Controller</referencedby>
       </memberdef>
       <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1a1e5c287662836cd74f14a7ac10cb3af9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> int *</type>
+        <type>const int *</type>
         <definition>const int* mutabor::midi::get_holds</definition>
         <argsstring>()</argsstring>
         <name>get_holds</name>
@@ -1329,16 +1546,16 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="400" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="400" bodyend="410"/>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1daafb4ac99543293a3a23e6ca63d1ae" compoundref="da/dfd/MidiKern_8h" startline="242">HOLD_2_PEDAL_ON_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a5fdd60dfbded8880ad67ef1b3d9fafc5" compoundref="da/dfd/MidiKern_8h" startline="236">HOLD_PEDAL_ON_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a10e8cb47d9f82c5c4e45840da2f31c1a" compoundref="da/dfd/MidiKern_8h" startline="241">LEGATO_PEDAL_ON_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a01bfd85977a0ae1e40cc9cca8de365d8" compoundref="da/dfd/MidiKern_8h" startline="238">SOSTENUTO_ON_OFF</references>
-        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23dfccd2e97e799cd8b32dea22306e5c" compoundref="d3/d0f/midicmn_8cpp" startline="319" endline="403">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOn</referencedby>
-        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae068c3fe86a1c768f15c0249cdfb11ea" compoundref="d3/d0f/midicmn_8cpp" startline="464" endline="530">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateTones</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga149a7081186d9f03e6ad5a7f21fa9830" compoundref="d2/dc0/Device_8cpp" startline="362" endline="380">mutabor::InputDeviceClass::DoSilenceKeys</referencedby>
-        <referencedby refid="d5/dee/group__route_1gacb942a8c5cee15a375579b29208eddd4" compoundref="d2/dc0/Device_8cpp" startline="411" endline="440">mutabor::InputDeviceClass::Panic</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga85fbc49b0b301e47ff473ef609158582" compoundref="d2/dc0/Device_8cpp" startline="383" endline="408">mutabor::InputDeviceClass::ResumeKeys</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="422" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="422" bodyend="432"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1daafb4ac99543293a3a23e6ca63d1ae" compoundref="da/dfd/MidiKern_8h" startline="257">HOLD_2_PEDAL_ON_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a5fdd60dfbded8880ad67ef1b3d9fafc5" compoundref="da/dfd/MidiKern_8h" startline="251">HOLD_PEDAL_ON_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a10e8cb47d9f82c5c4e45840da2f31c1a" compoundref="da/dfd/MidiKern_8h" startline="256">LEGATO_PEDAL_ON_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a01bfd85977a0ae1e40cc9cca8de365d8" compoundref="da/dfd/MidiKern_8h" startline="253">SOSTENUTO_ON_OFF</references>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23dfccd2e97e799cd8b32dea22306e5c" compoundref="d3/d0f/midicmn_8cpp" startline="285" endline="370">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOn</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae068c3fe86a1c768f15c0249cdfb11ea" compoundref="d3/d0f/midicmn_8cpp" startline="431" endline="498">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateTones</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga149a7081186d9f03e6ad5a7f21fa9830" compoundref="d2/dc0/Device_8cpp" startline="353" endline="371">mutabor::InputDeviceClass::DoSilenceKeys</referencedby>
+        <referencedby refid="d5/dee/group__route_1gacb942a8c5cee15a375579b29208eddd4" compoundref="d2/dc0/Device_8cpp" startline="402" endline="431">mutabor::InputDeviceClass::Panic</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga85fbc49b0b301e47ff473ef609158582" compoundref="d2/dc0/Device_8cpp" startline="374" endline="399">mutabor::InputDeviceClass::ResumeKeys</referencedby>
       </memberdef>
       <memberdef kind="function" id="d6/d7c/namespacemutabor_1_1midi_1a498e3411dac0c5e648e22fd7c9a5007f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -1355,55 +1572,55 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="412" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="412" bodyend="471"/>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2a3431989dc0fddea1502205bfc0a586" compoundref="da/dfd/MidiKern_8h" startline="288">ALL_CONTROLLERS_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab041c3cb773862382dd34db3f6a8ca35" compoundref="da/dfd/MidiKern_8h" startline="290">ALL_NOTES_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690aff3ec02ce2ffe0bb1faa74c37349e9f5" compoundref="da/dfd/MidiKern_8h" startline="287">ALL_SOUND_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab8d53ffbe68d697db2ba67efdf7693fb" compoundref="da/dfd/MidiKern_8h" startline="200">BALANCE_COARSE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a72f4639ed6405c3bc9f0a1a418d144e1" compoundref="da/dfd/MidiKern_8h" startline="192">BANK_COARSE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2ae19744f2675efa5adbf496ff0d15af" compoundref="da/dfd/MidiKern_8h" startline="218">BANK_FINE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a7c92bed5ab7e12063e3422eaa32941b5" compoundref="da/dfd/MidiKern_8h" startline="273">CELESTE_LEVEL</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a54ca8460206d646f3fd8a168f83e8519" compoundref="da/dfd/MidiKern_8h" startline="272">CHORUS_LEVEL</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27adae27d72b22807637f8854846301a14f" compoundref="da/dfd/MidiKern_8h" startline="306">CONTROLLER_CENTRE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27a521f863b768cb2f85af8cc11c640c2aa" compoundref="da/dfd/MidiKern_8h" startline="303">CONTROLLER_MAX</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27a93c2ead469cc42fd30ae5ff9f7ee7316" compoundref="da/dfd/MidiKern_8h" startline="309">CONTROLLER_UNKNOWN</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27ae99e567f1768f734be6b5a47149eafa4" compoundref="da/dfd/MidiKern_8h" startline="310">CONTROLLER_UNKNOWN_NOSEND</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690abf4f3537c3ccdddad0b024f29d6e113a" compoundref="da/dfd/MidiKern_8h" startline="278">DATA_BUTTON_DECREMENT</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1757a57e5c3c68ee51a6959e2bb840f3" compoundref="da/dfd/MidiKern_8h" startline="277">DATA_BUTTON_INCREMENT</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a50f8001256967efcc2ce0bb2e12a7719" compoundref="da/dfd/MidiKern_8h" startline="198">DATA_ENTRY_COARSE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a22176ce40c18ca09338078a8597983cb" compoundref="da/dfd/MidiKern_8h" startline="224">DATA_ENTRY_FINE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1e421feb8b3b7080e035342e649c6d30" compoundref="da/dfd/MidiKern_8h" startline="270">EFFECTS_LEVEL</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a4b652cce4c21b0da2bc79a91f6eaea85" compoundref="da/dfd/MidiKern_8h" startline="203">EXPRESSION_COARSE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690adf5280adf17be2bd5275bc9234ff1aca" compoundref="da/dfd/MidiKern_8h" startline="229">EXPRESSION_FINE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108ad453d93c5af19a27c911fa5c8d0bbc99" compoundref="da/dfd/MidiKern_8h" startline="322">FIRST_NRPN</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108a0940eef2e74ab0138c40cc1d406aa53f" compoundref="da/dfd/MidiKern_8h" startline="315">FIRST_RPN</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108aef33c2409d9b15c4049de13e6536698a" compoundref="da/dfd/MidiKern_8h" startline="323">LAST_NRPN</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108ad4bff4680d647a9fec2e3280c161f481" compoundref="da/dfd/MidiKern_8h" startline="321">LAST_RPN</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a97fe532b2fcd5e16112a886fdda11dcb" compoundref="da/dfd/MidiKern_8h" startline="289">LOCAL_ON_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690af630a1b7087e0a28dd1cf7c77fd5b9f8" compoundref="da/dfd/MidiKern_8h" startline="193">MODULATION_WHEEL_COARSE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a91793b9a748d32045dde618a1cde3663" compoundref="da/dfd/MidiKern_8h" startline="219">MODULATION_WHEEL_FINE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2932f1c1103e325a6bfab3e7177c0f94" compoundref="da/dfd/MidiKern_8h" startline="294">MONO_ON</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690af9d82eaeef29ceca61119b1f65bf082b" compoundref="da/dfd/MidiKern_8h" startline="280">NON_REGISTERED_PARAMETER_COARSE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a771f0abdc9e5112ecd96987d3d02934a" compoundref="da/dfd/MidiKern_8h" startline="279">NON_REGISTERED_PARAMETER_FINE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab20fc26ad14179a9ba29270509f5c908" compoundref="da/dfd/MidiKern_8h" startline="291">OMNI_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1869ff44ef4942e884f36fcc707cf561" compoundref="da/dfd/MidiKern_8h" startline="292">OMNI_ON</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2ae69cfd358da115d0c12a886b4b7d63" compoundref="da/dfd/MidiKern_8h" startline="202">PAN_POSITION_COARSE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a886da9a90f840706cd825b3b09c64f6a" compoundref="da/dfd/MidiKern_8h" startline="274">PHASER_LEVEL</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690aa51ceb9f345863cafa21214dd0db92fa" compoundref="da/dfd/MidiKern_8h" startline="297">POLY_ON</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ae247831f44bd19de81de26eefa60f88a" compoundref="da/dfd/MidiKern_8h" startline="282">REGISTERED_PARAMETER_COARSE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a652b497ded1d78e4983655cb066ebaf7" compoundref="da/dfd/MidiKern_8h" startline="281">REGISTERED_PARAMETER_FINE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a52b0a6d3715d5431a05c1f83ef07a373" compoundref="da/dfd/MidiKern_8h" startline="259">SOUND_10</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ad6815b3b7d60ffc86add234d7b980546" compoundref="da/dfd/MidiKern_8h" startline="249">SOUND_ATTACK_TIME</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a11d713041ac748f455566a62f1f7a196" compoundref="da/dfd/MidiKern_8h" startline="250">SOUND_BRIGHTNESS</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab6d2d20036f301ecfe41ea154161839d" compoundref="da/dfd/MidiKern_8h" startline="252">SOUND_DECAY_TIME</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a01a3ff8faed2d1482c473891b3d22a74" compoundref="da/dfd/MidiKern_8h" startline="248">SOUND_RELEASE_TIME</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ac1254e969482276d569b199b6e7fcfc6" compoundref="da/dfd/MidiKern_8h" startline="247">SOUND_TIMBRE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab2c42d6638bdf236afea785485b958f9" compoundref="da/dfd/MidiKern_8h" startline="246">SOUND_VARIATION</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a972c1e03dc4553efae3ca4d98a0d9df6" compoundref="da/dfd/MidiKern_8h" startline="258">SOUND_VIBRATO_DELAY</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690af4770d4535fb1dbd166c2a9e41e7710e" compoundref="da/dfd/MidiKern_8h" startline="256">SOUND_VIBRATO_DEPTH</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a6dbfac5ea3e83fe91fcd45216e75a1f4" compoundref="da/dfd/MidiKern_8h" startline="254">SOUND_VIBRATO_RATE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a48bd4b330b9c7fa7386aa4e747302170" compoundref="da/dfd/MidiKern_8h" startline="271">TREMULO_LEVEL</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ac13558b51564d48325a17a30bd6ca60c" compoundref="da/dfd/MidiKern_8h" startline="199">VOLUME_COARSE</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="434" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" bodystart="434" bodyend="493"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2a3431989dc0fddea1502205bfc0a586" compoundref="da/dfd/MidiKern_8h" startline="303">ALL_CONTROLLERS_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab041c3cb773862382dd34db3f6a8ca35" compoundref="da/dfd/MidiKern_8h" startline="305">ALL_NOTES_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690aff3ec02ce2ffe0bb1faa74c37349e9f5" compoundref="da/dfd/MidiKern_8h" startline="302">ALL_SOUND_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab8d53ffbe68d697db2ba67efdf7693fb" compoundref="da/dfd/MidiKern_8h" startline="215">BALANCE_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a72f4639ed6405c3bc9f0a1a418d144e1" compoundref="da/dfd/MidiKern_8h" startline="207">BANK_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2ae19744f2675efa5adbf496ff0d15af" compoundref="da/dfd/MidiKern_8h" startline="233">BANK_FINE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a7c92bed5ab7e12063e3422eaa32941b5" compoundref="da/dfd/MidiKern_8h" startline="288">CELESTE_LEVEL</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a54ca8460206d646f3fd8a168f83e8519" compoundref="da/dfd/MidiKern_8h" startline="287">CHORUS_LEVEL</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27adae27d72b22807637f8854846301a14f" compoundref="da/dfd/MidiKern_8h" startline="327">CONTROLLER_CENTRE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27a521f863b768cb2f85af8cc11c640c2aa" compoundref="da/dfd/MidiKern_8h" startline="324">CONTROLLER_MAX</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27a93c2ead469cc42fd30ae5ff9f7ee7316" compoundref="da/dfd/MidiKern_8h" startline="330">CONTROLLER_UNKNOWN</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1aa62c0358aa2ce5b4bc20b2378de60a27ae99e567f1768f734be6b5a47149eafa4" compoundref="da/dfd/MidiKern_8h" startline="331">CONTROLLER_UNKNOWN_NOSEND</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690abf4f3537c3ccdddad0b024f29d6e113a" compoundref="da/dfd/MidiKern_8h" startline="293">DATA_BUTTON_DECREMENT</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1757a57e5c3c68ee51a6959e2bb840f3" compoundref="da/dfd/MidiKern_8h" startline="292">DATA_BUTTON_INCREMENT</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a50f8001256967efcc2ce0bb2e12a7719" compoundref="da/dfd/MidiKern_8h" startline="213">DATA_ENTRY_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a22176ce40c18ca09338078a8597983cb" compoundref="da/dfd/MidiKern_8h" startline="239">DATA_ENTRY_FINE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1e421feb8b3b7080e035342e649c6d30" compoundref="da/dfd/MidiKern_8h" startline="285">EFFECTS_LEVEL</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a4b652cce4c21b0da2bc79a91f6eaea85" compoundref="da/dfd/MidiKern_8h" startline="218">EXPRESSION_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690adf5280adf17be2bd5275bc9234ff1aca" compoundref="da/dfd/MidiKern_8h" startline="244">EXPRESSION_FINE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108ad453d93c5af19a27c911fa5c8d0bbc99" compoundref="da/dfd/MidiKern_8h" startline="343">FIRST_NRPN</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108a0940eef2e74ab0138c40cc1d406aa53f" compoundref="da/dfd/MidiKern_8h" startline="336">FIRST_RPN</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108aef33c2409d9b15c4049de13e6536698a" compoundref="da/dfd/MidiKern_8h" startline="344">LAST_NRPN</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1af675ff5e7abab26652db1b4227eb1108ad4bff4680d647a9fec2e3280c161f481" compoundref="da/dfd/MidiKern_8h" startline="342">LAST_RPN</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a97fe532b2fcd5e16112a886fdda11dcb" compoundref="da/dfd/MidiKern_8h" startline="304">LOCAL_ON_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690af630a1b7087e0a28dd1cf7c77fd5b9f8" compoundref="da/dfd/MidiKern_8h" startline="208">MODULATION_WHEEL_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a91793b9a748d32045dde618a1cde3663" compoundref="da/dfd/MidiKern_8h" startline="234">MODULATION_WHEEL_FINE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2932f1c1103e325a6bfab3e7177c0f94" compoundref="da/dfd/MidiKern_8h" startline="309">MONO_ON</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690af9d82eaeef29ceca61119b1f65bf082b" compoundref="da/dfd/MidiKern_8h" startline="295">NON_REGISTERED_PARAMETER_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a771f0abdc9e5112ecd96987d3d02934a" compoundref="da/dfd/MidiKern_8h" startline="294">NON_REGISTERED_PARAMETER_FINE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab20fc26ad14179a9ba29270509f5c908" compoundref="da/dfd/MidiKern_8h" startline="306">OMNI_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1869ff44ef4942e884f36fcc707cf561" compoundref="da/dfd/MidiKern_8h" startline="307">OMNI_ON</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2ae69cfd358da115d0c12a886b4b7d63" compoundref="da/dfd/MidiKern_8h" startline="217">PAN_POSITION_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a886da9a90f840706cd825b3b09c64f6a" compoundref="da/dfd/MidiKern_8h" startline="289">PHASER_LEVEL</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690aa51ceb9f345863cafa21214dd0db92fa" compoundref="da/dfd/MidiKern_8h" startline="312">POLY_ON</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ae247831f44bd19de81de26eefa60f88a" compoundref="da/dfd/MidiKern_8h" startline="297">REGISTERED_PARAMETER_COARSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a652b497ded1d78e4983655cb066ebaf7" compoundref="da/dfd/MidiKern_8h" startline="296">REGISTERED_PARAMETER_FINE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a52b0a6d3715d5431a05c1f83ef07a373" compoundref="da/dfd/MidiKern_8h" startline="274">SOUND_10</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ad6815b3b7d60ffc86add234d7b980546" compoundref="da/dfd/MidiKern_8h" startline="264">SOUND_ATTACK_TIME</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a11d713041ac748f455566a62f1f7a196" compoundref="da/dfd/MidiKern_8h" startline="265">SOUND_BRIGHTNESS</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab6d2d20036f301ecfe41ea154161839d" compoundref="da/dfd/MidiKern_8h" startline="267">SOUND_DECAY_TIME</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a01a3ff8faed2d1482c473891b3d22a74" compoundref="da/dfd/MidiKern_8h" startline="263">SOUND_RELEASE_TIME</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ac1254e969482276d569b199b6e7fcfc6" compoundref="da/dfd/MidiKern_8h" startline="262">SOUND_TIMBRE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab2c42d6638bdf236afea785485b958f9" compoundref="da/dfd/MidiKern_8h" startline="261">SOUND_VARIATION</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a972c1e03dc4553efae3ca4d98a0d9df6" compoundref="da/dfd/MidiKern_8h" startline="273">SOUND_VIBRATO_DELAY</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690af4770d4535fb1dbd166c2a9e41e7710e" compoundref="da/dfd/MidiKern_8h" startline="271">SOUND_VIBRATO_DEPTH</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a6dbfac5ea3e83fe91fcd45216e75a1f4" compoundref="da/dfd/MidiKern_8h" startline="269">SOUND_VIBRATO_RATE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a48bd4b330b9c7fa7386aa4e747302170" compoundref="da/dfd/MidiKern_8h" startline="286">TREMULO_LEVEL</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ac13558b51564d48325a17a30bd6ca60c" compoundref="da/dfd/MidiKern_8h" startline="214">VOLUME_COARSE</references>
         <referencedby refid="d5/dee/group__route_1gaad4a56a5ff453c2b257662436578c97c" compoundref="d2/dc0/Device_8cpp" startline="48" endline="81">mutabor::ChannelData::MidiReset</referencedby>
       </memberdef>
       </sectiondef>
@@ -1411,6 +1628,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="136" column="1"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/MidiKern.h" line="125" column="1"/>
   </compounddef>
 </doxygen>

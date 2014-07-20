@@ -51,7 +51,7 @@ Zusammengehörigkeiten von BoxTest:</div>
 <tr class="separator:aef37d923a3b839e1b4efd44e59b21428"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac11da4e66f02ec6a34247a0e67055e02"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d87/classBoxTest.html#ac11da4e66f02ec6a34247a0e67055e02">~BoxTest</a> ()</td></tr>
 <tr class="separator:ac11da4e66f02ec6a34247a0e67055e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ac4bc389458830b59aeb8a9137c0fe6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d87/classBoxTest.html#a9ac4bc389458830b59aeb8a9137c0fe6">countTestCases</a> () <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> </td></tr>
+<tr class="memitem:a9ac4bc389458830b59aeb8a9137c0fe6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d87/classBoxTest.html#a9ac4bc389458830b59aeb8a9137c0fe6">countTestCases</a> () const </td></tr>
 <tr class="separator:a9ac4bc389458830b59aeb8a9137c0fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6638ce29da23ee329423b7b7a5fcedf6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d7d/group__tests.html#ga6638ce29da23ee329423b7b7a5fcedf6">setUp</a> ()</td></tr>
 <tr class="separator:ga6638ce29da23ee329423b7b7a5fcedf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -306,7 +306,7 @@ Private Methoden</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../df/d01/BoxTest_8h_source.html#l00064">64</a> der Datei <a class="el" href="../../df/d01/BoxTest_8h_source.html">BoxTest.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../de/d0f/Box_8h_source.html#l00115">mutabor::Box0</a>, <a class="el" href="../../de/d0f/Box_8h_source.html#l00731">mutabor::BoxFactory::Create()</a> und <a class="el" href="../../de/d0f/Box_8h_source.html#l00210">mutabor::BoxClass::GetNextFreeBox()</a>.</p>
+<p>Benutzt <a class="el" href="../../de/d0f/Box_8h_source.html#l00118">mutabor::Box0</a>, <a class="el" href="../../de/d0f/Box_8h_source.html#l00899">mutabor::BoxFactory::Create()</a> und <a class="el" href="../../de/d0f/Box_8h_source.html#l00288">mutabor::BoxClass::GetNextFreeBox()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {         </div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <a class="code" href="../../da/dad/classmutabor_1_1ScopedBox.html">mutabor::ScopedBox</a> <a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">Box0</a> = <a class="code" href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a>(<a class="code" href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a>,<a class="code" href="../../d5/dee/group__route.html#ga654c8d02aae488f8ff6f6d0f62b08f7d">mutabor::BoxClass::GetNextFreeBox</a>());</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                CPPUNIT_ASSERT( Box0-&gt;get_routefile_id() == 0 );</div>
@@ -328,10 +328,10 @@ Private Methoden</h2></td></tr>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                CPPUNIT_ASSERT( Box4-&gt;get_routefile_id() == 5 );</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                CPPUNIT_ASSERT( <a class="code" href="../../d5/dee/group__route.html#ga654c8d02aae488f8ff6f6d0f62b08f7d">mutabor::BoxClass::GetNextFreeBox</a>() == 8);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
-<div class="ttc" id="classmutabor_1_1ScopedBox_html"><div class="ttname"><a href="../../da/dad/classmutabor_1_1ScopedBox.html">mutabor::ScopedBox</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00793">Box.h:793</a></div></div>
-<div class="ttc" id="group__route_html_gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9"><div class="ttname"><a href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00115">Box.h:115</a></div></div>
-<div class="ttc" id="group__route_html_ga654c8d02aae488f8ff6f6d0f62b08f7d"><div class="ttname"><a href="../../d5/dee/group__route.html#ga654c8d02aae488f8ff6f6d0f62b08f7d">mutabor::BoxClass::GetNextFreeBox</a></div><div class="ttdeci">static int GetNextFreeBox()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00210">Box.h:210</a></div></div>
-<div class="ttc" id="group__route_html_ga1b747523cf90d4b44b18f88512405445"><div class="ttname"><a href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a></div><div class="ttdeci">static Box Create(int type, int id=NewBox)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00731">Box.h:731</a></div></div>
+<div class="ttc" id="classmutabor_1_1ScopedBox_html"><div class="ttname"><a href="../../da/dad/classmutabor_1_1ScopedBox.html">mutabor::ScopedBox</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00962">Box.h:962</a></div></div>
+<div class="ttc" id="group__route_html_gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9"><div class="ttname"><a href="../../d5/dee/group__route.html#gga2d0d16a891b0f8895c418e112b6ad542a5d5142694b4a2879d5eab1fb86502fe9">mutabor::Box0</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00118">Box.h:118</a></div></div>
+<div class="ttc" id="group__route_html_ga654c8d02aae488f8ff6f6d0f62b08f7d"><div class="ttname"><a href="../../d5/dee/group__route.html#ga654c8d02aae488f8ff6f6d0f62b08f7d">mutabor::BoxClass::GetNextFreeBox</a></div><div class="ttdeci">static int GetNextFreeBox()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00288">Box.h:288</a></div></div>
+<div class="ttc" id="group__route_html_ga1b747523cf90d4b44b18f88512405445"><div class="ttname"><a href="../../d5/dee/group__route.html#ga1b747523cf90d4b44b18f88512405445">mutabor::BoxFactory::Create</a></div><div class="ttdeci">static Box Create(int type, int id=NewBox)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0f/Box_8h_source.html#l00899">Box.h:899</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -341,6 +341,6 @@ Private Methoden</h2></td></tr>
 </ul>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Son Feb 9 2014 18:39:24 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Apr 26 2014 12:58:29 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

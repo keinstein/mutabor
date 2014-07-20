@@ -5,15 +5,15 @@
     <basecompoundref refid="d2/db7/classGisToken" prot="public" virt="non-virtual">GisToken</basecompoundref>
     <includes refid="dd/d4d/GIS_8h" local="no">GIS.h</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="dd/d84/classGisComma_1a92fa69209eaa25ed37d854ee86bee483" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="dd/d84/classGisComma_1a5d4a5013168aea75e88f7dd8502773ff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GisComma::GisComma</definition>
-        <argsstring>(const mutString sep=mutEmptyString, GisToken *next=0)</argsstring>
+        <argsstring>(const std::string sep=&quot;&quot;, GisToken *next=0)</argsstring>
         <name>GisComma</name>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <type>const std::string</type>
           <declname>sep</declname>
-          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+          <defval>&quot;&quot;</defval>
         </param>
         <param>
           <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
@@ -26,7 +26,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="644" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="644" bodyend="646"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="604" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="604" bodyend="606"/>
       </memberdef>
       <memberdef kind="function" id="dd/d84/classGisComma_1a9f75b10a8fbf50c151eb777ca1144476" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="d5/dee/group__route_1gaef354ea2f89281ef17c6735860c89861" kindref="member">GisType</ref></type>
@@ -40,23 +40,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="648" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="648" bodyend="651"/>
-        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861ad84723e7289663adcb8df2293c6a813d" compoundref="dd/d4d/GIS_8h" startline="127">GTComma</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="608" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="608" bodyend="611"/>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861ad84723e7289663adcb8df2293c6a813d" compoundref="dd/d4d/GIS_8h" startline="111">GTComma</references>
       </memberdef>
-      <memberdef kind="function" id="dd/d84/classGisComma_1a5ec5a7bb6cde99f1e77035651b2366cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>wxString</type>
-        <definition>virtual wxString GisComma::ToString</definition>
-        <argsstring>()</argsstring>
+      <memberdef kind="function" id="dd/d84/classGisComma_1a14e334c8b3e61e17762954662a4b8a0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>virtual std::string GisComma::ToString</definition>
+        <argsstring>() const </argsstring>
         <name>ToString</name>
-        <reimplements refid="d2/db7/classGisToken_1a2f256cfca7c10770a90574980dfbd59f">ToString</reimplements>
+        <reimplements refid="d2/db7/classGisToken_1a281f55a69942c9730b96ca962b01018e">ToString</reimplements>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="663" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="663" bodyend="667"/>
-        <references refid="d2/db7/classGisToken_1a2f256cfca7c10770a90574980dfbd59f" compoundref="dd/d4d/GIS_8h" startline="182" endline="185">GisToken::ToString</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="622" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="622" bodyend="626"/>
+        <references refid="d2/db7/classGisToken_1a281f55a69942c9730b96ca962b01018e" compoundref="dd/d4d/GIS_8h" startline="164" endline="167">GisToken::ToString</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -64,41 +64,52 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2976">
+      <node id="3591">
         <label>GisComma</label>
         <link refid="dd/d84/classGisComma"/>
-        <childnode refid="2977" relation="public-inheritance">
+        <childnode refid="3592" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2977">
+      <node id="3592">
         <label>GisToken</label>
         <link refid="d2/db7/classGisToken"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2978">
+      <node id="3596">
+        <label>std::basic_string&lt; char &gt;</label>
+      </node>
+      <node id="3593">
         <label>GisComma</label>
         <link refid="dd/d84/classGisComma"/>
-        <childnode refid="2979" relation="public-inheritance">
+        <childnode refid="3594" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2979">
+      <node id="3594">
         <label>GisToken</label>
         <link refid="d2/db7/classGisToken"/>
-        <childnode refid="2979" relation="usage">
+        <childnode refid="3595" relation="usage">
+          <edgelabel>Sep</edgelabel>
+        </childnode>
+        <childnode refid="3594" relation="usage">
           <edgelabel>Next</edgelabel>
         </childnode>
       </node>
+      <node id="3595">
+        <label>std::string</label>
+        <childnode refid="3596" relation="public-inheritance">
+        </childnode>
+      </node>
     </collaborationgraph>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="640" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="639" bodyend="670"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="600" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="599" bodyend="628"/>
     <listofallmembers>
       <member refid="d2/db7/classGisToken_1a699f4bc89b801908bd6178f6f144d645" prot="public" virt="virtual"><scope>GisComma</scope><name>Copy</name></member>
-      <member refid="dd/d84/classGisComma_1a92fa69209eaa25ed37d854ee86bee483" prot="public" virt="non-virtual"><scope>GisComma</scope><name>GisComma</name></member>
-      <member refid="d2/db7/classGisToken_1aa7d3797aec95b6fe33acf8c255fc1268" prot="public" virt="non-virtual"><scope>GisComma</scope><name>GisToken</name></member>
+      <member refid="dd/d84/classGisComma_1a5d4a5013168aea75e88f7dd8502773ff" prot="public" virt="non-virtual"><scope>GisComma</scope><name>GisComma</name></member>
+      <member refid="d2/db7/classGisToken_1a64a74bcd95ddaee39e4f3e2a6766a90a" prot="public" virt="non-virtual"><scope>GisComma</scope><name>GisToken</name></member>
       <member refid="d2/db7/classGisToken_1a5ebe3590397490871cf0839a758e2449" prot="public" virt="non-virtual"><scope>GisComma</scope><name>Next</name></member>
-      <member refid="d2/db7/classGisToken_1add72c4892e22fd742bc3924d0903a5ad" prot="public" virt="non-virtual"><scope>GisComma</scope><name>operator wxString</name></member>
-      <member refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" prot="public" virt="non-virtual"><scope>GisComma</scope><name>Sep</name></member>
-      <member refid="dd/d84/classGisComma_1a5ec5a7bb6cde99f1e77035651b2366cc" prot="public" virt="virtual"><scope>GisComma</scope><name>ToString</name></member>
+      <member refid="d2/db7/classGisToken_1a3f5f79982326a3e306825da879cae10b" prot="public" virt="virtual"><scope>GisComma</scope><name>operator std::string</name></member>
+      <member refid="d2/db7/classGisToken_1a1de7ea6d14070e7cc8f01ad8e036a4ed" prot="public" virt="non-virtual"><scope>GisComma</scope><name>Sep</name></member>
+      <member refid="dd/d84/classGisComma_1a14e334c8b3e61e17762954662a4b8a0d" prot="public" virt="virtual"><scope>GisComma</scope><name>ToString</name></member>
       <member refid="dd/d84/classGisComma_1a9f75b10a8fbf50c151eb777ca1144476" prot="public" virt="virtual"><scope>GisComma</scope><name>Type</name></member>
       <member refid="d2/db7/classGisToken_1ab3ec071213876b13b7ce9f9900cfec69" prot="public" virt="virtual"><scope>GisComma</scope><name>~GisToken</name></member>
     </listofallmembers>

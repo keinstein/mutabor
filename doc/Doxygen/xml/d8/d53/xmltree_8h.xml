@@ -8,344 +8,431 @@
     <includes refid="db/dbe/treestorage_8h" local="yes">src/kernel/treestorage.h</includes>
     <includes local="no">stack</includes>
     <includes local="yes">wx/xml/xml.h</includes>
-    <includedby refid="dc/def/MutRouteWnd_8cpp" local="yes">src/wxGUI/MutRouteWnd.cpp</includedby>
+    <includes local="yes">boost/lexical_cast.hpp</includes>
     <includedby refid="de/d4f/xmltree_8cpp" local="yes">src/wxGUI/xmltree.cpp</includedby>
     <incdepgraph>
-      <node id="35454">
+      <node id="34003">
         <label>list</label>
       </node>
-      <node id="35481">
-        <label>src/kernel/routing/Box.h</label>
-        <link refid="de/d0f/Box_8h"/>
-        <childnode refid="35446" relation="include">
-        </childnode>
-        <childnode refid="35474" relation="include">
-        </childnode>
-        <childnode refid="35476" relation="include">
-        </childnode>
-        <childnode refid="35472" relation="include">
-        </childnode>
-        <childnode refid="35482" relation="include">
-        </childnode>
-        <childnode refid="35484" relation="include">
-        </childnode>
-        <childnode refid="35460" relation="include">
-        </childnode>
-        <childnode refid="35490" relation="include">
-        </childnode>
-        <childnode refid="35491" relation="include">
-        </childnode>
-        <childnode refid="35447" relation="include">
-        </childnode>
-        <childnode refid="35483" relation="include">
-        </childnode>
-      </node>
-      <node id="35447">
-        <label>stdarg.h</label>
-      </node>
-      <node id="35445">
-        <label>src/wxGUI/xmltree.h</label>
-        <link refid="xmltree.h"/>
-        <childnode refid="35446" relation="include">
-        </childnode>
-        <childnode refid="35472" relation="include">
-        </childnode>
-        <childnode refid="35481" relation="include">
-        </childnode>
-        <childnode refid="35474" relation="include">
-        </childnode>
-        <childnode refid="35492" relation="include">
-        </childnode>
-        <childnode refid="35493" relation="include">
-        </childnode>
-      </node>
-      <node id="35482">
-        <label>src/kernel/Execute.h</label>
-        <link refid="de/d11/Execute_8h"/>
-        <childnode refid="35446" relation="include">
-        </childnode>
-        <childnode refid="35483" relation="include">
-        </childnode>
-      </node>
-      <node id="35477">
-        <label>boost/intrusive_ptr.hpp</label>
-      </node>
-      <node id="35493">
-        <label>wx/xml/xml.h</label>
-      </node>
-      <node id="35462">
-        <label>wx/cmdline.h</label>
-      </node>
-      <node id="35450">
-        <label>wx/stdpaths.h</label>
-      </node>
-      <node id="35446">
-        <label>src/kernel/Defs.h</label>
-        <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="35447" relation="include">
-        </childnode>
-        <childnode refid="35448" relation="include">
-        </childnode>
-        <childnode refid="35467" relation="include">
-        </childnode>
-        <childnode refid="35468" relation="include">
-        </childnode>
-        <childnode refid="35461" relation="include">
-        </childnode>
-        <childnode refid="35469" relation="include">
-        </childnode>
-        <childnode refid="35470" relation="include">
-        </childnode>
-      </node>
-      <node id="35461">
-        <label>stdint.h</label>
-      </node>
-      <node id="35486">
-        <label>stdlib.h</label>
-      </node>
-      <node id="35467">
-        <label>wx/wxchar.h</label>
-      </node>
-      <node id="35456">
-        <label>wx/image.h</label>
-      </node>
-      <node id="35478">
-        <label>stdexcept</label>
-      </node>
-      <node id="35489">
-        <label>malloc.h</label>
-      </node>
-      <node id="35479">
-        <label>boost/throw_exception.hpp</label>
-      </node>
-      <node id="35471">
-        <label>string</label>
-      </node>
-      <node id="35466">
-        <label>mutDebugFlags.h</label>
-        <link refid="d7/d49/mutDebugFlags_8h"/>
-      </node>
-      <node id="35449">
-        <label>wx/window.h</label>
-      </node>
-      <node id="35488">
-        <label>Interpre.h</label>
-        <link refid="d2/dd8/Interpre_8h"/>
-        <childnode refid="35446" relation="include">
-        </childnode>
-        <childnode refid="35485" relation="include">
-        </childnode>
-      </node>
-      <node id="35484">
-        <label>src/kernel/box.h</label>
-        <link refid="dc/d19/box_8h"/>
-        <childnode refid="35446" relation="include">
-        </childnode>
-        <childnode refid="35485" relation="include">
-        </childnode>
-        <childnode refid="35488" relation="include">
-        </childnode>
-        <childnode refid="35482" relation="include">
-        </childnode>
-        <childnode refid="35489" relation="include">
-        </childnode>
-      </node>
-      <node id="35468">
-        <label>wx/intl.h</label>
-      </node>
-      <node id="35455">
-        <label>src/wxGUI/Mutabor.rh</label>
-        <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="35446" relation="include">
-        </childnode>
-      </node>
-      <node id="35451">
-        <label>wx/filename.h</label>
-      </node>
-      <node id="35473">
-        <label>src/kernel/MidiKern.h</label>
-        <link refid="da/dfd/MidiKern_8h"/>
-        <childnode refid="35446" relation="include">
-        </childnode>
-      </node>
-      <node id="35453">
-        <label>typeinfo</label>
-      </node>
-      <node id="35464">
-        <label>wx/debug.h</label>
-      </node>
-      <node id="35459">
-        <label>cstdio</label>
-      </node>
-      <node id="35458">
-        <label>bitset</label>
-      </node>
-      <node id="35448">
-        <label>src/wxGUI/generic/mhDefs.h</label>
-        <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="35446" relation="include">
-        </childnode>
-        <childnode refid="35449" relation="include">
-        </childnode>
-        <childnode refid="35450" relation="include">
-        </childnode>
-        <childnode refid="35451" relation="include">
-        </childnode>
-        <childnode refid="35452" relation="include">
-        </childnode>
-        <childnode refid="35453" relation="include">
-        </childnode>
-        <childnode refid="35454" relation="include">
-        </childnode>
-        <childnode refid="35455" relation="include">
-        </childnode>
-        <childnode refid="35456" relation="include">
-        </childnode>
-        <childnode refid="35457" relation="include">
-        </childnode>
-      </node>
-      <node id="35492">
-        <label>stack</label>
-      </node>
-      <node id="35460">
-        <label>vector</label>
-      </node>
-      <node id="35457">
-        <label>mutDebug.h</label>
-        <link refid="de/de1/mutDebug_8h"/>
-        <childnode refid="35458" relation="include">
-        </childnode>
-        <childnode refid="35452" relation="include">
-        </childnode>
-        <childnode refid="35459" relation="include">
-        </childnode>
-        <childnode refid="35460" relation="include">
-        </childnode>
-        <childnode refid="35461" relation="include">
-        </childnode>
-        <childnode refid="35462" relation="include">
-        </childnode>
-        <childnode refid="35463" relation="include">
-        </childnode>
-        <childnode refid="35464" relation="include">
-        </childnode>
-        <childnode refid="35465" relation="include">
-        </childnode>
-        <childnode refid="35466" relation="include">
-        </childnode>
-      </node>
-      <node id="35472">
+      <node id="33990">
         <label>src/kernel/routing/Route.h</label>
         <link refid="d1/d65/Route_8h"/>
-        <childnode refid="35446" relation="include">
+        <childnode refid="33980" relation="include">
         </childnode>
-        <childnode refid="35473" relation="include">
+        <childnode refid="33991" relation="include">
         </childnode>
-        <childnode refid="35474" relation="include">
+        <childnode refid="33993" relation="include">
         </childnode>
-        <childnode refid="35475" relation="include">
+        <childnode refid="33994" relation="include">
         </childnode>
-        <childnode refid="35454" relation="include">
+        <childnode refid="34003" relation="include">
         </childnode>
-        <childnode refid="35460" relation="include">
+        <childnode refid="34004" relation="include">
         </childnode>
-        <childnode refid="35478" relation="include">
+        <childnode refid="34005" relation="include">
         </childnode>
-        <childnode refid="35479" relation="include">
+        <childnode refid="34006" relation="include">
         </childnode>
-        <childnode refid="35480" relation="include">
+        <childnode refid="34007" relation="include">
         </childnode>
       </node>
-      <node id="35470">
+      <node id="34021">
+        <label>stdarg.h</label>
+      </node>
+      <node id="34015">
+        <label>limits</label>
+      </node>
+      <node id="34002">
+        <label>boost/intrusive_ptr.hpp</label>
+      </node>
+      <node id="34032">
+        <label>wx/xml/xml.h</label>
+      </node>
+      <node id="34008">
+        <label>src/kernel/routing/Device.h</label>
+        <link refid="de/d05/Device_8h"/>
+        <childnode refid="33980" relation="include">
+        </childnode>
+        <childnode refid="34009" relation="include">
+        </childnode>
+        <childnode refid="33990" relation="include">
+        </childnode>
+        <childnode refid="34014" relation="include">
+        </childnode>
+        <childnode refid="33991" relation="include">
+        </childnode>
+        <childnode refid="34004" relation="include">
+        </childnode>
+        <childnode refid="34003" relation="include">
+        </childnode>
+        <childnode refid="34018" relation="include">
+        </childnode>
+        <childnode refid="34019" relation="include">
+        </childnode>
+        <childnode refid="34020" relation="include">
+        </childnode>
+        <childnode refid="34021" relation="include">
+        </childnode>
+        <childnode refid="34001" relation="include">
+        </childnode>
+        <childnode refid="34017" relation="include">
+        </childnode>
+        <childnode refid="34022" relation="include">
+        </childnode>
+      </node>
+      <node id="34033">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="34027">
+        <label>src/kernel/box.h</label>
+        <link refid="dc/d19/box_8h"/>
+        <childnode refid="33980" relation="include">
+        </childnode>
+        <childnode refid="34028" relation="include">
+        </childnode>
+        <childnode refid="34029" relation="include">
+        </childnode>
+        <childnode refid="34025" relation="include">
+        </childnode>
+        <childnode refid="34030" relation="include">
+        </childnode>
+      </node>
+      <node id="33988">
+        <label>stdint.h</label>
+      </node>
+      <node id="34013">
+        <label>stdlib.h</label>
+      </node>
+      <node id="33981">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="33980" relation="include">
+        </childnode>
+      </node>
+      <node id="34023">
+        <label>src/kernel/routing/Box.h</label>
+        <link refid="de/d0f/Box_8h"/>
+        <childnode refid="33980" relation="include">
+        </childnode>
+        <childnode refid="33993" relation="include">
+        </childnode>
+        <childnode refid="34000" relation="include">
+        </childnode>
+        <childnode refid="33994" relation="include">
+        </childnode>
+        <childnode refid="34024" relation="include">
+        </childnode>
+        <childnode refid="33990" relation="include">
+        </childnode>
+        <childnode refid="34025" relation="include">
+        </childnode>
+        <childnode refid="34027" relation="include">
+        </childnode>
+        <childnode refid="34004" relation="include">
+        </childnode>
+        <childnode refid="34019" relation="include">
+        </childnode>
+        <childnode refid="34020" relation="include">
+        </childnode>
+        <childnode refid="34021" relation="include">
+        </childnode>
+        <childnode refid="34026" relation="include">
+        </childnode>
+        <childnode refid="33987" relation="include">
+        </childnode>
+      </node>
+      <node id="34024">
+        <label>src/kernel/routing/watchdog.h</label>
+        <link refid="d9/da3/watchdog_8h"/>
+        <childnode refid="33980" relation="include">
+        </childnode>
+        <childnode refid="34000" relation="include">
+        </childnode>
+        <childnode refid="34014" relation="include">
+        </childnode>
+      </node>
+      <node id="33987">
+        <label>boost/format.hpp</label>
+      </node>
+      <node id="34029">
+        <label>Interpre.h</label>
+        <link refid="d2/dd8/Interpre_8h"/>
+        <childnode refid="33980" relation="include">
+        </childnode>
+        <childnode refid="33991" relation="include">
+        </childnode>
+        <childnode refid="34028" relation="include">
+        </childnode>
+        <childnode refid="34018" relation="include">
+        </childnode>
+      </node>
+      <node id="34007">
+        <label>src/kernel/routing/event.h</label>
+        <link refid="dd/d20/event_8h"/>
+        <childnode refid="33980" relation="include">
+        </childnode>
+        <childnode refid="34008" relation="include">
+        </childnode>
+        <childnode refid="34015" relation="include">
+        </childnode>
+      </node>
+      <node id="34005">
+        <label>stdexcept</label>
+      </node>
+      <node id="33998">
         <label>src/wxintl/libintl.h</label>
-        <link refid="d4/d64/libintl_8h"/>
-        <childnode refid="35446" relation="include">
+      </node>
+      <node id="34030">
+        <label>malloc.h</label>
+      </node>
+      <node id="34006">
+        <label>boost/throw_exception.hpp</label>
+      </node>
+      <node id="33985">
+        <label>string</label>
+      </node>
+      <node id="33995">
+        <label>/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/interface_deps.h</label>
+      </node>
+      <node id="34014">
+        <label>src/kernel/routing/timing.h</label>
+        <link refid="db/d41/timing_8h"/>
+        <childnode refid="33980" relation="include">
         </childnode>
-        <childnode refid="35471" relation="include">
+        <childnode refid="33991" relation="include">
+        </childnode>
+        <childnode refid="34015" relation="include">
+        </childnode>
+        <childnode refid="34016" relation="include">
+        </childnode>
+        <childnode refid="34005" relation="include">
+        </childnode>
+        <childnode refid="34006" relation="include">
+        </childnode>
+        <childnode refid="34017" relation="include">
+        </childnode>
+        <childnode refid="34000" relation="include">
         </childnode>
       </node>
-      <node id="35491">
-        <label>sstream</label>
+      <node id="34016">
+        <label>exception</label>
       </node>
-      <node id="35463">
-        <label>wx/string.h</label>
-      </node>
-      <node id="35485">
-        <label>Global.h</label>
-        <link refid="dd/d40/Global_8h"/>
-        <childnode refid="35446" relation="include">
+      <node id="33979">
+        <label>src/wxGUI/xmltree.h</label>
+        <link refid="xmltree.h"/>
+        <childnode refid="33980" relation="include">
         </childnode>
-        <childnode refid="35483" relation="include">
+        <childnode refid="33990" relation="include">
         </childnode>
-        <childnode refid="35486" relation="include">
+        <childnode refid="34023" relation="include">
         </childnode>
-        <childnode refid="35447" relation="include">
+        <childnode refid="33993" relation="include">
         </childnode>
-        <childnode refid="35471" relation="include">
+        <childnode refid="34031" relation="include">
         </childnode>
-        <childnode refid="35487" relation="include">
+        <childnode refid="34032" relation="include">
+        </childnode>
+        <childnode refid="34033" relation="include">
         </childnode>
       </node>
-      <node id="35487">
-        <label>math.h</label>
+      <node id="34018">
+        <label>limits.h</label>
       </node>
-      <node id="35480">
-        <label>wx/config.h</label>
+      <node id="33991">
+        <label>src/kernel/MidiKern.h</label>
+        <link refid="da/dfd/MidiKern_8h"/>
+        <childnode refid="33980" relation="include">
+        </childnode>
+        <childnode refid="33992" relation="include">
+        </childnode>
       </node>
-      <node id="35452">
-        <label>iostream</label>
+      <node id="33980">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="33981" relation="include">
+        </childnode>
+        <childnode refid="33982" relation="include">
+        </childnode>
+        <childnode refid="33983" relation="include">
+        </childnode>
       </node>
-      <node id="35465">
-        <label>wx/thread.h</label>
+      <node id="34012">
+        <label>string.h</label>
       </node>
-      <node id="35476">
+      <node id="33996">
+        <label>src/kernel/Defs.h</label>
+      </node>
+      <node id="33986">
+        <label>cstdio</label>
+      </node>
+      <node id="33999">
+        <label>/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/debugFlags.h</label>
+      </node>
+      <node id="34031">
+        <label>stack</label>
+      </node>
+      <node id="34004">
+        <label>vector</label>
+      </node>
+      <node id="34000">
         <label>src/kernel/routing/thread.h</label>
         <link refid="db/dd5/thread_8h"/>
-        <childnode refid="35446" relation="include">
+        <childnode refid="33980" relation="include">
         </childnode>
-        <childnode refid="35465" relation="include">
+        <childnode refid="34001" relation="include">
         </childnode>
       </node>
-      <node id="35475">
+      <node id="33983">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="33980" relation="include">
+        </childnode>
+        <childnode refid="33984" relation="include">
+        </childnode>
+        <childnode refid="33985" relation="include">
+        </childnode>
+        <childnode refid="33986" relation="include">
+        </childnode>
+        <childnode refid="33987" relation="include">
+        </childnode>
+        <childnode refid="33988" relation="include">
+        </childnode>
+        <childnode refid="33989" relation="include">
+        </childnode>
+      </node>
+      <node id="34009">
+        <label>src/kernel/routing/gmn/GIS.h</label>
+        <link refid="dd/d4d/GIS_8h"/>
+        <childnode refid="33980" relation="include">
+        </childnode>
+        <childnode refid="34010" relation="include">
+        </childnode>
+        <childnode refid="34012" relation="include">
+        </childnode>
+        <childnode refid="34013" relation="include">
+        </childnode>
+      </node>
+      <node id="33984">
+        <label>src/wxintl/libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="33980" relation="include">
+        </childnode>
+        <childnode refid="33985" relation="include">
+        </childnode>
+      </node>
+      <node id="34022">
+        <label>boost/unordered_set.hpp</label>
+      </node>
+      <node id="34020">
+        <label>sstream</label>
+      </node>
+      <node id="33992">
+        <label>math.h</label>
+      </node>
+      <node id="33994">
         <label>src/kernel/boost-interface.h</label>
         <link refid="d1/da4/boost-interface_8h"/>
-        <childnode refid="35446" relation="include">
+        <childnode refid="33980" relation="include">
         </childnode>
-        <childnode refid="35476" relation="include">
+        <childnode refid="33995" relation="include">
         </childnode>
-        <childnode refid="35477" relation="include">
+        <childnode refid="33996" relation="include">
+        </childnode>
+        <childnode refid="33982" relation="include">
+        </childnode>
+        <childnode refid="33997" relation="include">
+        </childnode>
+        <childnode refid="33998" relation="include">
+        </childnode>
+        <childnode refid="33985" relation="include">
+        </childnode>
+        <childnode refid="33986" relation="include">
+        </childnode>
+        <childnode refid="33987" relation="include">
+        </childnode>
+        <childnode refid="33988" relation="include">
+        </childnode>
+        <childnode refid="33999" relation="include">
+        </childnode>
+        <childnode refid="34000" relation="include">
+        </childnode>
+        <childnode refid="34001" relation="include">
+        </childnode>
+        <childnode refid="34002" relation="include">
         </childnode>
       </node>
-      <node id="35469">
-        <label>wx/setup.h</label>
+      <node id="33997">
+        <label>src/kernel/debug.h</label>
       </node>
-      <node id="35490">
+      <node id="34025">
+        <label>src/kernel/Execute.h</label>
+        <link refid="de/d11/Execute_8h"/>
+        <childnode refid="33980" relation="include">
+        </childnode>
+        <childnode refid="34026" relation="include">
+        </childnode>
+      </node>
+      <node id="34011">
+        <label>iostream</label>
+      </node>
+      <node id="34010">
+        <label>src/kernel/Frac.h</label>
+        <link refid="df/d4f/Frac_8h"/>
+        <childnode refid="33980" relation="include">
+        </childnode>
+        <childnode refid="34011" relation="include">
+        </childnode>
+      </node>
+      <node id="33982">
+        <label>cstddef</label>
+      </node>
+      <node id="34028">
+        <label>Global.h</label>
+        <link refid="dd/d40/Global_8h"/>
+        <childnode refid="33980" relation="include">
+        </childnode>
+        <childnode refid="34026" relation="include">
+        </childnode>
+        <childnode refid="34013" relation="include">
+        </childnode>
+        <childnode refid="34021" relation="include">
+        </childnode>
+        <childnode refid="34012" relation="include">
+        </childnode>
+        <childnode refid="33992" relation="include">
+        </childnode>
+      </node>
+      <node id="34001">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="34017">
+        <label>wx/stopwatch.h</label>
+      </node>
+      <node id="34019">
         <label>algorithm</label>
       </node>
-      <node id="35483">
+      <node id="34026">
         <label>stdio.h</label>
       </node>
-      <node id="35474">
+      <node id="33993">
         <label>src/kernel/treestorage.h</label>
         <link refid="db/dbe/treestorage_8h"/>
-        <childnode refid="35446" relation="include">
+        <childnode refid="33980" relation="include">
         </childnode>
+      </node>
+      <node id="33989">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="35494">
+      <node id="34034">
         <label>src/wxGUI/xmltree.h</label>
         <link refid="xmltree.h"/>
-        <childnode refid="35495" relation="include">
-        </childnode>
-        <childnode refid="35496" relation="include">
+        <childnode refid="34035" relation="include">
         </childnode>
       </node>
-      <node id="35495">
-        <label>src/wxGUI/MutRouteWnd.cpp</label>
-        <link refid="dc/def/MutRouteWnd_8cpp"/>
-      </node>
-      <node id="35496">
+      <node id="34035">
         <label>src/wxGUI/xmltree.cpp</label>
         <link refid="de/d4f/xmltree_8cpp"/>
       </node>
@@ -362,7 +449,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" line="32" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" bodystart="32" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" line="32" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/d44/group__config_1gadfaf852105ed4262087ee4add0d977ab" prot="public" static="no">
         <name>MUWX_XMLTREE_H_PRECOMPILED</name>
@@ -372,7 +459,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" line="45" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" bodystart="45" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" line="45" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -401,115 +488,192 @@
 <codeline lineno="46"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stack&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/xml/xml.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutaborGUI<sp/>{</highlight></codeline>
-<codeline lineno="51" refid="dd/d18/classmutaborGUI_1_1xmltree" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="dd/d18/classmutaborGUI_1_1xmltree" kindref="compound">xmltree</ref>:</highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">mutabor::tree_storage</ref>,</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>wxXmlDocument</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="54" refid="dd/d18/classmutaborGUI_1_1xmltree_1aa933d64b433f892549b871ea75b9416c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>wxXmlNode<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa933d64b433f892549b871ea75b9416c" kindref="member">node_type</ref>;</highlight></codeline>
-<codeline lineno="55" refid="dd/d18/classmutaborGUI_1_1xmltree_1a2c4eb00c2eca45133b11a4e3261db3b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>wxXmlProperty<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a2c4eb00c2eca45133b11a4e3261db3b8" kindref="member">prop_type</ref>;</highlight></codeline>
-<codeline lineno="56" refid="dd/d18/classmutaborGUI_1_1xmltree_1a2d683734ce8a725a45c7e3e628190ecb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>wxXmlDocument<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a2d683734ce8a725a45c7e3e628190ecb" kindref="member">doc</ref>;</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>deleteconfig;<sp/>///&lt;<sp/>true<sp/>if<sp/>the<sp/>config<sp/>is<sp/>private<sp/>and<sp/>must<sp/>be<sp/>deleted<sp/>on<sp/>deletion</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61" refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state" kindref="compound">state</ref><sp/>{</highlight></codeline>
-<codeline lineno="62" refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a869465823cc04fd35bf1b1505ad4b184" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a869465823cc04fd35bf1b1505ad4b184" kindref="member">state</ref>(<ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa933d64b433f892549b871ea75b9416c" kindref="member">node_type</ref><sp/>*<sp/>n,<sp/>wxString<sp/>p):<sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1afd223f40d100e64c722330ed7448d03b" kindref="member">node</ref>(n),</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1ace84c20c5adfbf4dbdf865c760cf058b" kindref="member">path</ref>(p)</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{}</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66" refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1afd223f40d100e64c722330ed7448d03b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa933d64b433f892549b871ea75b9416c" kindref="member">node_type</ref><sp/>*<sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1afd223f40d100e64c722330ed7448d03b" kindref="member">node</ref>;</highlight></codeline>
-<codeline lineno="67" refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1ace84c20c5adfbf4dbdf865c760cf058b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1ace84c20c5adfbf4dbdf865c760cf058b" kindref="member">path</ref>;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69" refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a8e13a24d2f4097d01b0490a706f0faf5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a8e13a24d2f4097d01b0490a706f0faf5" kindref="member">operator == </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state" kindref="compound">state</ref><sp/>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="70"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>retval<sp/>=<sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1afd223f40d100e64c722330ed7448d03b" kindref="member">node</ref><sp/>==<sp/>s.<ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1afd223f40d100e64c722330ed7448d03b" kindref="member">node</ref>;</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" kindref="member">mutASSERT</ref>(retval<sp/>==<sp/>(<ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1ace84c20c5adfbf4dbdf865c760cf058b" kindref="member">path</ref><sp/>==<sp/>s.<ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1ace84c20c5adfbf4dbdf865c760cf058b" kindref="member">path</ref>));</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>retval;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="76" refid="dd/d18/classmutaborGUI_1_1xmltree_1ab01d940cb089234c0d77fd5bc079b1d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::stack&lt;state&gt;<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1ab01d940cb089234c0d77fd5bc079b1d0" kindref="member">states</ref>;</highlight></codeline>
-<codeline lineno="77" refid="dd/d18/classmutaborGUI_1_1xmltree_1aa5e8fb3a4679906d49af4a1aa3ea9b7a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa5e8fb3a4679906d49af4a1aa3ea9b7a" kindref="member">create_tree</ref>;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79" refid="dd/d18/classmutaborGUI_1_1xmltree_1a5a1656e6f4ec5ab893dc88016a3ffea2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa933d64b433f892549b871ea75b9416c" kindref="member">node_type</ref><sp/>*<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a5a1656e6f4ec5ab893dc88016a3ffea2" kindref="member">current_node</ref>;</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a614f224434d9960a1110e21300a1c175" kindref="member">xmltree</ref>(wxString<sp/>rootname,</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create=</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight></codeline>
-<codeline lineno="84" refid="dd/d18/classmutaborGUI_1_1xmltree_1a81d18fd35e516347f3f619091c0ce96f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a81d18fd35e516347f3f619091c0ce96f" kindref="member">~xmltree</ref>()</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a8ccbe80eefd6786576ed84a7963fef84" kindref="member">Load</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>filename,</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>encoding<sp/>=<sp/>wxT(</highlight><highlight class="stringliteral">&quot;UTF-8&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags<sp/>=<sp/>wxXMLDOC_NONE);</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a51c21e9e82375fb5dcb37b28c4031a28" kindref="member">Read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>key,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>defval);</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a51c21e9e82375fb5dcb37b28c4031a28" kindref="member">Read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>key,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>defval);</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a51c21e9e82375fb5dcb37b28c4031a28" kindref="member">Read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>key,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>defval);</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a51c21e9e82375fb5dcb37b28c4031a28" kindref="member">Read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>key,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>defval);</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a51c21e9e82375fb5dcb37b28c4031a28" kindref="member">Read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>defval);</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aabc588e740ff5a71290ddf75b6c3202d" kindref="member">Write</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>key,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aabc588e740ff5a71290ddf75b6c3202d" kindref="member">Write</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>key,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aabc588e740ff5a71290ddf75b6c3202d" kindref="member">Write</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>key,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aabc588e740ff5a71290ddf75b6c3202d" kindref="member">Write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>key,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aabc588e740ff5a71290ddf75b6c3202d" kindref="member">Write</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>value);</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104" refid="dd/d18/classmutaborGUI_1_1xmltree_1aea60b79638eb505b9169af1401c9a2c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aea60b79638eb505b9169af1401c9a2c2" kindref="member">HasGroup</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>subdir)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="105"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal"><ref refid="dd/d18/classmutaborGUI_1_1xmltree" kindref="compound">xmltree</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">)-&gt;<ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aea60b79638eb505b9169af1401c9a2c2" kindref="member">HasGroup</ref>(subdir);</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aea60b79638eb505b9169af1401c9a2c2" kindref="member">HasGroup</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>subdir);</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aeb5be86959fd571c18f9ce46c883f18b" kindref="member">toLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>subdir);</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aeb5be86959fd571c18f9ce46c883f18b" kindref="member">toLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>name,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="111" refid="dd/d18/classmutaborGUI_1_1xmltree_1a3660d23b2b28cf2817e6f201676d7101" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a3660d23b2b28cf2817e6f201676d7101" kindref="member">toFirstLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>name)</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref><sp/>id;</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a3660d23b2b28cf2817e6f201676d7101" kindref="member">toFirstLeaf</ref>(name,</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>==<sp/>wxNOT_FOUND)</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxNOT_FOUND;</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">.ToLong(&amp;i))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)i;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxNOT_FOUND;</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a3660d23b2b28cf2817e6f201676d7101" kindref="member">toFirstLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>name,<sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="121" refid="dd/d18/classmutaborGUI_1_1xmltree_1aa86d1eddc8c665c84c771c6e639da0e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa86d1eddc8c665c84c771c6e639da0e2" kindref="member">toNextLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>name)</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref><sp/>id;</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa86d1eddc8c665c84c771c6e639da0e2" kindref="member">toNextLeaf</ref>(name,</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>==<sp/>wxNOT_FOUND)</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxNOT_FOUND;</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">.ToLong(&amp;i))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)i;</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxNOT_FOUND;</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa86d1eddc8c665c84c771c6e639da0e2" kindref="member">toNextLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>name,<sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa160b14a043dbfad6237702fefdcc9b4" kindref="member">toParent</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>1);</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a4314d8efe7369077397884680dbb69ca" kindref="member">GetPath</ref>();</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a2b8f73848496bfececf56856897a66b9" kindref="member">SetPath</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>path);</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a95ae524b4dac35ba3dace2965cc7ef31" kindref="member">DeleteEntry</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>path);</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a17ec58581de45731153eaf7fbc7cbd63" kindref="member">DeleteGroup</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>path);</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxXmlProperty<sp/>*<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a0924d4bc0913bd78c30f6ac7c231bb1a" kindref="member">GetProperty</ref><sp/>(<ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref><sp/>name,</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create);</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxXmlProperty<sp/>*<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a28e970dcee840142a80d1fa7502d3c69" kindref="member">SetProperty</ref><sp/>(<ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref><sp/>name,</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>value);</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"></highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a8104d6a17e9253a84da3707d0497f285" kindref="member">NormalizeName</ref>(<ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref><sp/>name);</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"></highlight></codeline>
-<codeline lineno="159"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"></highlight></codeline>
-<codeline lineno="161"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//MUTABOR_XMLTREE_H_PRECOMPILED</highlight></codeline>
-<codeline lineno="162"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/>//MUTABOR_XMLTREE_H</highlight></codeline>
-<codeline lineno="163"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;boost/lexical_cast.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutaborGUI<sp/>{</highlight></codeline>
+<codeline lineno="52" refid="dd/d18/classmutaborGUI_1_1xmltree" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="dd/d18/classmutaborGUI_1_1xmltree" kindref="compound">xmltree</ref>:</highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="da/de5/classmutabor_1_1tree__storage" kindref="compound">mutabor::tree_storage</ref>,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>wxXmlDocument</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55" refid="dd/d18/classmutaborGUI_1_1xmltree_1aa933d64b433f892549b871ea75b9416c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>wxXmlNode<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa933d64b433f892549b871ea75b9416c" kindref="member">node_type</ref>;</highlight></codeline>
+<codeline lineno="56" refid="dd/d18/classmutaborGUI_1_1xmltree_1a2c4eb00c2eca45133b11a4e3261db3b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>wxXmlProperty<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a2c4eb00c2eca45133b11a4e3261db3b8" kindref="member">prop_type</ref>;</highlight></codeline>
+<codeline lineno="57" refid="dd/d18/classmutaborGUI_1_1xmltree_1a2d683734ce8a725a45c7e3e628190ecb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>wxXmlDocument<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a2d683734ce8a725a45c7e3e628190ecb" kindref="member">doc</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>deleteconfig;<sp/>///&lt;<sp/>true<sp/>if<sp/>the<sp/>config<sp/>is<sp/>private<sp/>and<sp/>must<sp/>be<sp/>deleted<sp/>on<sp/>deletion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state" kindref="compound">state</ref><sp/>{</highlight></codeline>
+<codeline lineno="63" refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a869465823cc04fd35bf1b1505ad4b184" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a869465823cc04fd35bf1b1505ad4b184" kindref="member">state</ref>(<ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa933d64b433f892549b871ea75b9416c" kindref="member">node_type</ref><sp/>*<sp/>n,<sp/>wxString<sp/>p):<sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1afd223f40d100e64c722330ed7448d03b" kindref="member">node</ref>(n),</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1ace84c20c5adfbf4dbdf865c760cf058b" kindref="member">path</ref>(p)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1afd223f40d100e64c722330ed7448d03b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa933d64b433f892549b871ea75b9416c" kindref="member">node_type</ref><sp/>*<sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1afd223f40d100e64c722330ed7448d03b" kindref="member">node</ref>;</highlight></codeline>
+<codeline lineno="68" refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1ace84c20c5adfbf4dbdf865c760cf058b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1ace84c20c5adfbf4dbdf865c760cf058b" kindref="member">path</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a8e13a24d2f4097d01b0490a706f0faf5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a8e13a24d2f4097d01b0490a706f0faf5" kindref="member">operator == </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state" kindref="compound">state</ref><sp/>&amp;<sp/>s)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="71"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>retval<sp/>=<sp/><ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1afd223f40d100e64c722330ed7448d03b" kindref="member">node</ref><sp/>==<sp/>s.<ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1afd223f40d100e64c722330ed7448d03b" kindref="member">node</ref>;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d3d/group__templates_1ga6a74fe1453277b5ee1d921a28a936a0f" kindref="member">mutASSERT</ref>(retval<sp/>==<sp/>(<ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1ace84c20c5adfbf4dbdf865c760cf058b" kindref="member">path</ref><sp/>==<sp/>s.<ref refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1ace84c20c5adfbf4dbdf865c760cf058b" kindref="member">path</ref>));</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>retval;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="77" refid="dd/d18/classmutaborGUI_1_1xmltree_1ab01d940cb089234c0d77fd5bc079b1d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::stack&lt;state&gt;<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1ab01d940cb089234c0d77fd5bc079b1d0" kindref="member">states</ref>;</highlight></codeline>
+<codeline lineno="78" refid="dd/d18/classmutaborGUI_1_1xmltree_1aa5e8fb3a4679906d49af4a1aa3ea9b7a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa5e8fb3a4679906d49af4a1aa3ea9b7a" kindref="member">create_tree</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="dd/d18/classmutaborGUI_1_1xmltree_1a5a1656e6f4ec5ab893dc88016a3ffea2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa933d64b433f892549b871ea75b9416c" kindref="member">node_type</ref><sp/>*<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a5a1656e6f4ec5ab893dc88016a3ffea2" kindref="member">current_node</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a614f224434d9960a1110e21300a1c175" kindref="member">xmltree</ref>(wxString<sp/>rootname,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create=</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="dd/d18/classmutaborGUI_1_1xmltree_1a81d18fd35e516347f3f619091c0ce96f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a81d18fd35e516347f3f619091c0ce96f" kindref="member">~xmltree</ref>()</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a8ccbe80eefd6786576ed84a7963fef84" kindref="member">Load</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>filename,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>encoding<sp/>=<sp/>wxT(</highlight><highlight class="stringliteral">&quot;UTF-8&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags<sp/>=<sp/>wxXMLDOC_NONE);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="dd/d18/classmutaborGUI_1_1xmltree_1ab2e676d2b5719f0882b04e9e88352c7e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1ab2e676d2b5719f0882b04e9e88352c7e" kindref="member">Read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>defval)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1ab2e676d2b5719f0882b04e9e88352c7e" kindref="member">Read</ref><sp/>(wxString::FromUTF8(key.c_str()),<sp/>defval);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96" refid="dd/d18/classmutaborGUI_1_1xmltree_1a5b7d7cfed8e1134c4d4264b7b8337517" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a5b7d7cfed8e1134c4d4264b7b8337517" kindref="member">Read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>defval)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1ab2e676d2b5719f0882b04e9e88352c7e" kindref="member">Read</ref><sp/>(wxString::FromUTF8(key.c_str()),<sp/>defval);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99" refid="dd/d18/classmutaborGUI_1_1xmltree_1a0652b0ca10a45e1292a9913b8a26ba69" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a0652b0ca10a45e1292a9913b8a26ba69" kindref="member">Read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>defval)<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1ab2e676d2b5719f0882b04e9e88352c7e" kindref="member">Read</ref><sp/>(wxString::FromUTF8(key.c_str()),<sp/>defval);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102" refid="dd/d18/classmutaborGUI_1_1xmltree_1a48c52978567b936095e33c06bf75a1f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a48c52978567b936095e33c06bf75a1f2" kindref="member">Read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>defval)<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1ab2e676d2b5719f0882b04e9e88352c7e" kindref="member">Read</ref><sp/>(wxString::FromUTF8(key.c_str()),<sp/>defval);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1ab2e676d2b5719f0882b04e9e88352c7e" kindref="member">Read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>defval);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1ab2e676d2b5719f0882b04e9e88352c7e" kindref="member">Read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>defval);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1ab2e676d2b5719f0882b04e9e88352c7e" kindref="member">Read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>defval);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1ab2e676d2b5719f0882b04e9e88352c7e" kindref="member">Read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>defval);</highlight></codeline>
+<codeline lineno="109" refid="dd/d18/classmutaborGUI_1_1xmltree_1a1ab4c4207667b1ecb866b6e62f5580a3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a1ab4c4207667b1ecb866b6e62f5580a3" kindref="member">Read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>defval)<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)<ref refid="dd/d18/classmutaborGUI_1_1xmltree_1ab2e676d2b5719f0882b04e9e88352c7e" kindref="member">Read</ref>(wxString::FromUTF8(key.c_str()),</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString::FromUTF8(defval.c_str())).ToUTF8();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>wxString<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1ab2e676d2b5719f0882b04e9e88352c7e" kindref="member">Read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>defval);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="dd/d18/classmutaborGUI_1_1xmltree_1a90b941ce694241dbae0fb137ab53f2e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a90b941ce694241dbae0fb137ab53f2e8" kindref="member">Write</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a90b941ce694241dbae0fb137ab53f2e8" kindref="member">Write</ref><sp/>(wxString::FromUTF8(key.c_str()),<sp/>value);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118" refid="dd/d18/classmutaborGUI_1_1xmltree_1a765eb8b49a8cd2c87b0f7320d97846e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a765eb8b49a8cd2c87b0f7320d97846e1" kindref="member">Write</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a90b941ce694241dbae0fb137ab53f2e8" kindref="member">Write</ref><sp/>(wxString::FromUTF8(key.c_str()),<sp/>value);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121" refid="dd/d18/classmutaborGUI_1_1xmltree_1ac1c89b3e32618b43baf4a3f41c91e71f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1ac1c89b3e32618b43baf4a3f41c91e71f" kindref="member">Write</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a90b941ce694241dbae0fb137ab53f2e8" kindref="member">Write</ref><sp/>(wxString::FromUTF8(key.c_str()),<sp/>value);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124" refid="dd/d18/classmutaborGUI_1_1xmltree_1ab88397c441add0eceee251b7ca92c701" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1ab88397c441add0eceee251b7ca92c701" kindref="member">Write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a90b941ce694241dbae0fb137ab53f2e8" kindref="member">Write</ref><sp/>(wxString::FromUTF8(key.c_str()),<sp/>value);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a90b941ce694241dbae0fb137ab53f2e8" kindref="member">Write</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a90b941ce694241dbae0fb137ab53f2e8" kindref="member">Write</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a90b941ce694241dbae0fb137ab53f2e8" kindref="member">Write</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a90b941ce694241dbae0fb137ab53f2e8" kindref="member">Write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="131" refid="dd/d18/classmutaborGUI_1_1xmltree_1aa2ede2b861d922514dc3fe59fb2a68a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa2ede2b861d922514dc3fe59fb2a68a9" kindref="member">Write</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a90b941ce694241dbae0fb137ab53f2e8" kindref="member">Write</ref><sp/>(wxString::FromUTF8(key.c_str()),</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString::FromUTF8(value.c_str()));</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a90b941ce694241dbae0fb137ab53f2e8" kindref="member">Write</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>value);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="dd/d18/classmutaborGUI_1_1xmltree_1addaa112284da973ac859ab91b5ceca1e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1addaa112284da973ac859ab91b5ceca1e" kindref="member">HasGroup</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>subdir)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="138"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1addaa112284da973ac859ab91b5ceca1e" kindref="member">HasGroup</ref>(wxString::FromUTF8(subdir.c_str()));</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141" refid="dd/d18/classmutaborGUI_1_1xmltree_1a6a71a6a9ae0c4cc7fb806609c4a43138" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a6a71a6a9ae0c4cc7fb806609c4a43138" kindref="member">HasGroup</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>subdir)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="142"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal"><ref refid="dd/d18/classmutaborGUI_1_1xmltree" kindref="compound">xmltree</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">)-&gt;<ref refid="dd/d18/classmutaborGUI_1_1xmltree_1addaa112284da973ac859ab91b5ceca1e" kindref="member">HasGroup</ref>(subdir);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145" refid="dd/d18/classmutaborGUI_1_1xmltree_1a343342a09f97294909f4d541385fdbae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a343342a09f97294909f4d541385fdbae" kindref="member">HasGroup</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>subdir)<sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1addaa112284da973ac859ab91b5ceca1e" kindref="member">HasGroup</ref>(wxString::FromUTF8(subdir.c_str()));</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1addaa112284da973ac859ab91b5ceca1e" kindref="member">HasGroup</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>subdir);</highlight></codeline>
+<codeline lineno="149" refid="dd/d18/classmutaborGUI_1_1xmltree_1a458d4a2454fe070d2e65e7380a448d84" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a458d4a2454fe070d2e65e7380a448d84" kindref="member">toLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>subdir)<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a458d4a2454fe070d2e65e7380a448d84" kindref="member">toLeaf</ref>(wxString::FromUTF8(subdir.c_str()));</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152" refid="dd/d18/classmutaborGUI_1_1xmltree_1a44f62ad617d7ab83482074ac1c1445d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a44f62ad617d7ab83482074ac1c1445d6" kindref="member">toLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a458d4a2454fe070d2e65e7380a448d84" kindref="member">toLeaf</ref>(wxString::FromUTF8(name.c_str()),</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a458d4a2454fe070d2e65e7380a448d84" kindref="member">toLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>subdir);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a458d4a2454fe070d2e65e7380a448d84" kindref="member">toLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>name,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="157" refid="dd/d18/classmutaborGUI_1_1xmltree_1a1c7d585bda642db3d81ddf843006675e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a1c7d585bda642db3d81ddf843006675e" kindref="member">toFirstLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a1c7d585bda642db3d81ddf843006675e" kindref="member">toFirstLeaf</ref>(wxString::FromUTF8(name.c_str()));</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160" refid="dd/d18/classmutaborGUI_1_1xmltree_1a83e34e5e093883f97276281347428d1d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a83e34e5e093883f97276281347428d1d" kindref="member">toFirstLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString<sp/>&amp;<sp/>name)<sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/>id;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a1c7d585bda642db3d81ddf843006675e" kindref="member">toFirstLeaf</ref>(name,</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>==<sp/>wxNOT_FOUND)</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxNOT_FOUND;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">.ToLong(&amp;i))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)i;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxNOT_FOUND;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168" refid="dd/d18/classmutaborGUI_1_1xmltree_1a7005913f0eaeb51e80523ebd9493cf39" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a7005913f0eaeb51e80523ebd9493cf39" kindref="member">toFirstLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name,<sp/>std::string&amp;<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/>id2<sp/>=<sp/>wxString::FromUTF8(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">.c_str());</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>retval<sp/>=<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a1c7d585bda642db3d81ddf843006675e" kindref="member">toFirstLeaf</ref>(wxString::FromUTF8(name.c_str()),</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>id2);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/>id2.ToUTF8();</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>retval;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a1c7d585bda642db3d81ddf843006675e" kindref="member">toFirstLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>name,<sp/>wxString&amp;<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="176" refid="dd/d18/classmutaborGUI_1_1xmltree_1a5ddab2981a96131da52ad4b3e95eaabe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a5ddab2981a96131da52ad4b3e95eaabe" kindref="member">toNextLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name)<sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a5ddab2981a96131da52ad4b3e95eaabe" kindref="member">toNextLeaf</ref>(wxString::FromUTF8(name.c_str()));</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="179" refid="dd/d18/classmutaborGUI_1_1xmltree_1a6cce68d9330c22e2cff1da684eb2b3fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a6cce68d9330c22e2cff1da684eb2b3fd" kindref="member">toNextLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>name)</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/>id;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a5ddab2981a96131da52ad4b3e95eaabe" kindref="member">toNextLeaf</ref>(name,</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>==<sp/>wxNOT_FOUND)</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxNOT_FOUND;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">.ToLong(&amp;i))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)i;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxNOT_FOUND;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188" refid="dd/d18/classmutaborGUI_1_1xmltree_1a9cb72ac358ccc4edf8802d703c213759" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a9cb72ac358ccc4edf8802d703c213759" kindref="member">toNextLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name,<sp/>std::string&amp;<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/>id2<sp/>=<sp/>wxString::FromUTF8(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">.c_str());</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>retval<sp/>=<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a5ddab2981a96131da52ad4b3e95eaabe" kindref="member">toNextLeaf</ref>(wxString::FromUTF8(name.c_str()),</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>id2);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/>id2.ToUTF8();</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>retval;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a5ddab2981a96131da52ad4b3e95eaabe" kindref="member">toNextLeaf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>name,<sp/>wxString&amp;<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aa160b14a043dbfad6237702fefdcc9b4" kindref="member">toParent</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>1);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="dd/d18/classmutaborGUI_1_1xmltree_1a24b0861b388c7da2965a51d41c023345" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a24b0861b388c7da2965a51d41c023345" kindref="member">GetPath</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)<ref refid="dd/d18/classmutaborGUI_1_1xmltree_1af276602e32293a0608ae3a6f9e993bc6" kindref="member">GetwxPath</ref>().ToUTF8();</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>wxString<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1af276602e32293a0608ae3a6f9e993bc6" kindref="member">GetwxPath</ref>();</highlight></codeline>
+<codeline lineno="202" refid="dd/d18/classmutaborGUI_1_1xmltree_1af111263d0a6ed719dfdc7452f8fa9f0e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1af111263d0a6ed719dfdc7452f8fa9f0e" kindref="member">SetPath</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>path)<sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1af111263d0a6ed719dfdc7452f8fa9f0e" kindref="member">SetPath</ref>(wxString::FromUTF8(path.c_str()));</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1af111263d0a6ed719dfdc7452f8fa9f0e" kindref="member">SetPath</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>path);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"></codeline>
+<codeline lineno="211" refid="dd/d18/classmutaborGUI_1_1xmltree_1a67adcbdffca9c5c893851d26a0be11d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a67adcbdffca9c5c893851d26a0be11d4" kindref="member">DeleteEntry</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>path)<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a67adcbdffca9c5c893851d26a0be11d4" kindref="member">DeleteEntry</ref>(wxString::FromUTF8(path.c_str()));</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a67adcbdffca9c5c893851d26a0be11d4" kindref="member">DeleteEntry</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>path);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="217"></codeline>
+<codeline lineno="220" refid="dd/d18/classmutaborGUI_1_1xmltree_1a1b4ad565306db475c9584a9fc24fbd66" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a1b4ad565306db475c9584a9fc24fbd66" kindref="member">DeleteGroup</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>path)<sp/>{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a1b4ad565306db475c9584a9fc24fbd66" kindref="member">DeleteGroup</ref>(wxString::FromUTF8(path.c_str()));</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a1b4ad565306db475c9584a9fc24fbd66" kindref="member">DeleteGroup</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>path);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxXmlProperty<sp/>*<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a22986e6cb745ca9b0cd59e1ccbcf4d2e" kindref="member">GetProperty</ref><sp/>(wxString<sp/>name,</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxXmlProperty<sp/>*<sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1a4955b074b5a8fced688c2af3a5303c45" kindref="member">SetProperty</ref><sp/>(wxString<sp/>name,</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>value);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/d18/classmutaborGUI_1_1xmltree_1aad7ec209dcdf5b091caab254d760c706" kindref="member">NormalizeName</ref>(wxString<sp/>&amp;<sp/>name);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//MUTABOR_XMLTREE_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="261"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/>//MUTABOR_XMLTREE_H</highlight></codeline>
+<codeline lineno="262"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h"/>
   </compounddef>
 </doxygen>

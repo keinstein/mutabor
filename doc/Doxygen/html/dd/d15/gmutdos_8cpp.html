@@ -87,7 +87,7 @@ Variablen</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../dd/d15/gmutdos_8cpp_source.html#l00033">33</a> der Datei <a class="el" href="../../dd/d15/gmutdos_8cpp_source.html">gmutdos.cpp</a>.</p>
 
-<p>Benutzt <a class="el" href="../../dd/d15/gmutdos_8cpp_source.html#l00029">Echo</a>, <a class="el" href="../../d1/de1/Mut__Tab_8cpp_source.html#l01821">init_yylex()</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00287">mutabor::hidden::loesche_syntax_speicher()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00614">mutabor::hidden::mutabor_programm_einlesen()</a> und <a class="el" href="../../dd/d15/gmutdos_8cpp_source.html#l00031">weiter_gehts_nach_compilerfehler</a>.</p>
+<p>Benutzt <a class="el" href="../../dd/d15/gmutdos_8cpp_source.html#l00029">Echo</a>, <a class="el" href="../../df/d33/mut_8cc_source.html#l03461">mutabor::hidden::init_yylex()</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00279">mutabor::hidden::loesche_syntax_speicher()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00607">mutabor::hidden::mutabor_programm_einlesen()</a> und <a class="el" href="../../dd/d15/gmutdos_8cpp_source.html#l00031">weiter_gehts_nach_compilerfehler</a>.</p>
 
 <p>Wird benutzt von <a class="el" href="../../dd/d15/gmutdos_8cpp_source.html#l00159">main()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
@@ -95,7 +95,7 @@ Variablen</h2></td></tr>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordflow">if</span> ( !setjmp(<a class="code" href="../../dc/d7e/group__runtime.html#ga1faa8705b3fd5029a295edfdcdf1a67f">weiter_gehts_nach_compilerfehler</a>) )</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;         <a class="code" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a89ba87b0e079700339d0135a2c1ce770">loesche_syntax_speicher</a>();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;         <a class="code" href="../../d1/de1/Mut__Tab_8cpp.html#a77980177a457976be153c83a9d266da5">init_yylex</a> ();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;         <a class="code" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a9b1a5a749130bd494ea1af7e0fabd3d5">init_yylex</a> ();</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;         *<a class="code" href="../../dd/d15/gmutdos_8cpp.html#a750e8eaef18de399448ac107643b7da5">Echo</a> &lt;&lt; <span class="stringliteral">&quot;Mutabor parsing file: &quot;</span> &lt;&lt; fileName &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
@@ -124,11 +124,11 @@ Variablen</h2></td></tr>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;         <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  }</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
-<div class="ttc" id="Mut__Tab_8cpp_html_a77980177a457976be153c83a9d266da5"><div class="ttname"><a href="../../d1/de1/Mut__Tab_8cpp.html#a77980177a457976be153c83a9d266da5">init_yylex</a></div><div class="ttdeci">void init_yylex(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de1/Mut__Tab_8cpp_source.html#l01821">Mut_Tab.cpp:1821</a></div></div>
-<div class="ttc" id="namespacemutabor_1_1hidden_html_a89ba87b0e079700339d0135a2c1ce770"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#a89ba87b0e079700339d0135a2c1ce770">mutabor::hidden::loesche_syntax_speicher</a></div><div class="ttdeci">int loesche_syntax_speicher(mutabor_box_type *box)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00287">Hilfs.cpp:287</a></div></div>
+<div class="ttc" id="namespacemutabor_1_1hidden_html_a89ba87b0e079700339d0135a2c1ce770"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#a89ba87b0e079700339d0135a2c1ce770">mutabor::hidden::loesche_syntax_speicher</a></div><div class="ttdeci">int loesche_syntax_speicher(mutabor_box_type *box)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00279">Hilfs.cpp:279</a></div></div>
 <div class="ttc" id="gmutdos_8cpp_html_a750e8eaef18de399448ac107643b7da5"><div class="ttname"><a href="../../dd/d15/gmutdos_8cpp.html#a750e8eaef18de399448ac107643b7da5">Echo</a></div><div class="ttdeci">std::ostream * Echo</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d15/gmutdos_8cpp_source.html#l00029">gmutdos.cpp:29</a></div></div>
 <div class="ttc" id="group__runtime_html_ga1faa8705b3fd5029a295edfdcdf1a67f"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#ga1faa8705b3fd5029a295edfdcdf1a67f">weiter_gehts_nach_compilerfehler</a></div><div class="ttdeci">jmp_buf weiter_gehts_nach_compilerfehler</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d15/gmutdos_8cpp_source.html#l00031">gmutdos.cpp:31</a></div></div>
-<div class="ttc" id="namespacemutabor_1_1hidden_html_a4f6812ce7bcbd0bc4048f7492ccbb0b4"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#a4f6812ce7bcbd0bc4048f7492ccbb0b4">mutabor::hidden::mutabor_programm_einlesen</a></div><div class="ttdeci">bool mutabor_programm_einlesen(mutabor_box_type *box, const char *logic)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/df5/Parser_8cpp_source.html#l00614">Parser.cpp:614</a></div></div>
+<div class="ttc" id="namespacemutabor_1_1hidden_html_a9b1a5a749130bd494ea1af7e0fabd3d5"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#a9b1a5a749130bd494ea1af7e0fabd3d5">mutabor::hidden::init_yylex</a></div><div class="ttdeci">void init_yylex()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/mut_8cc_source.html#l03461">mut.cc:3461</a></div></div>
+<div class="ttc" id="namespacemutabor_1_1hidden_html_a4f6812ce7bcbd0bc4048f7492ccbb0b4"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#a4f6812ce7bcbd0bc4048f7492ccbb0b4">mutabor::hidden::mutabor_programm_einlesen</a></div><div class="ttdeci">bool mutabor_programm_einlesen(mutabor_box_type *box, const char *logic)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/df5/Parser_8cpp_source.html#l00607">Parser.cpp:607</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -360,6 +360,6 @@ Variablen</h2></td></tr>
 </div>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Son Feb 9 2014 18:39:14 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Apr 26 2014 12:58:28 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

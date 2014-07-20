@@ -31,10 +31,10 @@
 </div><!--header-->
 <div class="contents">
 <a href="../../d1/da2/Errors_8cpp.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/d47/GrafKern_8h.html">GrafKern.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//#include &quot;GrafKern.h&quot;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d0e/Errors_8h.html">Errors.h</a>&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#if defined(WX)</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#if defined(WX)</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef N_</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define N_(s) s</span></div>
@@ -43,7 +43,7 @@
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#if defined(GERMAN) &amp;&amp; !defined(WX)</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code" href="../../d9/d7c/group__kernel.html#ga9728df5840723c08b5def4e7d1966476">Error_text</a>[] =</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> * Error_text[] =</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <span class="comment">/* 0 */</span> <span class="stringliteral">&quot;Undefinierter Fehler in %s   Zeile %d !&quot;</span>, <span class="comment">/* allgemeinster Fehler */</span></div>
@@ -146,7 +146,7 @@
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        };</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code" href="../../d9/d7c/group__kernel.html#gaf8efbc9f57f10f6c6e914c5e86122486">Warning_text</a>[] =</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> * Warning_text[] =</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        {</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                <span class="comment">/*  0 */</span> <span class="stringliteral">&quot;Undefinierte Compilerwarnung&quot;</span>,</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                <span class="stringliteral">&quot;MIDI-Auslöser in Logik %s beginnt nicht mit Kanal 0-Statusbyte. &quot;</span></div>
@@ -165,7 +165,7 @@
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="../../d9/d7c/group__kernel.html#ga9728df5840723c08b5def4e7d1966476">  150</a></span>&#160;<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga66f2a821381f322d5b779e5004013591">mutTranslationChar</a> * <a class="code" href="../../d9/d7c/group__kernel.html#ga9728df5840723c08b5def4e7d1966476">Error_text</a>[] =</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keyword">const</span> mutTranslationChar * Error_text[] =</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        {</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                <span class="comment">/* 0 */</span> <a class="code" href="../../de/db7/group__debug.html#gac8c4de4b8f99001765fd7091fc0b12fe">N_</a>(<span class="stringliteral">&quot;Unknown error in %s , line %d !&quot;</span>), <span class="comment">/* allgemeinster Fehler */</span></div>
@@ -267,7 +267,7 @@
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        };</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
-<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="../../d9/d7c/group__kernel.html#gaf8efbc9f57f10f6c6e914c5e86122486">  252</a></span>&#160;<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga66f2a821381f322d5b779e5004013591">mutTranslationChar</a> * <a class="code" href="../../d9/d7c/group__kernel.html#gaf8efbc9f57f10f6c6e914c5e86122486">Warning_text</a>[] =</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="keyword">const</span> mutTranslationChar * Warning_text[] =</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        {</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                <span class="comment">/*  0 */</span> <a class="code" href="../../de/db7/group__debug.html#gac8c4de4b8f99001765fd7091fc0b12fe">N_</a>(<span class="stringliteral">&quot;Undefined compiler warning&quot;</span>),</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                <a class="code" href="../../de/db7/group__debug.html#gac8c4de4b8f99001765fd7091fc0b12fe">N_</a>(<span class="stringliteral">&quot;MIDI event in logic %s does not start with channel 0 status byte. Value corrected.&quot;</span>),</div>
@@ -282,15 +282,11 @@
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        };</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="preprocessor"></span></div>
-<div class="ttc" id="Errors_8h_html"><div class="ttname"><a href="../../d2/d0e/Errors_8h.html">Errors.h</a></div><div class="ttdoc">Error descriptions for Mutabor. </div></div>
-<div class="ttc" id="group__kernel_html_ga66f2a821381f322d5b779e5004013591"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga66f2a821381f322d5b779e5004013591">mutTranslationChar</a></div><div class="ttdeci">#define mutTranslationChar</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00163">Defs.h:163</a></div></div>
-<div class="ttc" id="group__kernel_html_gaf8efbc9f57f10f6c6e914c5e86122486"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gaf8efbc9f57f10f6c6e914c5e86122486">Warning_text</a></div><div class="ttdeci">const mutTranslationChar * Warning_text[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da2/Errors_8cpp_source.html#l00252">Errors.cpp:252</a></div></div>
-<div class="ttc" id="GrafKern_8h_html"><div class="ttname"><a href="../../d4/d47/GrafKern_8h.html">GrafKern.h</a></div><div class="ttdoc">Output functions. </div></div>
-<div class="ttc" id="group__kernel_html_ga9728df5840723c08b5def4e7d1966476"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga9728df5840723c08b5def4e7d1966476">Error_text</a></div><div class="ttdeci">const mutTranslationChar * Error_text[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da2/Errors_8cpp_source.html#l00150">Errors.cpp:150</a></div></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="preprocessor"></span><div class="ttc" id="Errors_8h_html"><div class="ttname"><a href="../../d2/d0e/Errors_8h.html">Errors.h</a></div><div class="ttdoc">Error descriptions for Mutabor. </div></div>
 <div class="ttc" id="group__debug_html_gac8c4de4b8f99001765fd7091fc0b12fe"><div class="ttname"><a href="../../de/db7/group__debug.html#gac8c4de4b8f99001765fd7091fc0b12fe">N_</a></div><div class="ttdeci">N_(&quot;Debug Execute.cpp&quot;)) DEBUGFLAG(kernel_tabgen</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Son Feb 9 2014 18:39:13 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Apr 26 2014 12:58:26 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="d7/d6f/classmutabor_1_1watchdog" kind="class" prot="public">
+    <compoundname>mutabor::watchdog</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Thread</basecompoundref>
+    <includes refid="d9/da3/watchdog_8h" local="no">watchdog.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="d7/d6f/classmutabor_1_1watchdog_1ae4ae9572eef5ae57bfd523fabb4cf3be" prot="private" static="no">
+        <type>T</type>
+        <definition>typedef T mutabor::watchdog&lt; T &gt;::targettype</definition>
+        <argsstring></argsstring>
+        <name>targettype</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" line="59" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d7/d6f/classmutabor_1_1watchdog_1a9aa27f15e581efbb117387c9b84891c7" prot="protected" static="no" mutable="no">
+        <type><ref refid="d7/d6f/classmutabor_1_1watchdog_1ae4ae9572eef5ae57bfd523fabb4cf3be" kindref="member">targettype</ref></type>
+        <definition>volatile targettype mutabor::watchdog&lt; T &gt;::target</definition>
+        <argsstring></argsstring>
+        <name>target</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" line="97" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" bodystart="97" bodyend="-1"/>
+        <referencedby refid="d7/d6f/classmutabor_1_1watchdog_1a1f233a499ab303fd95646bc93b468c17" compoundref="d9/da3/watchdog_8h" startline="74" endline="82">mutabor::watchdog&lt; Box &gt;::Entry</referencedby>
+        <referencedby refid="d7/d6f/classmutabor_1_1watchdog_1a9c083d7f1c14ca18031b27fee8b9d0e6" compoundref="d9/da3/watchdog_8h" startline="84" endline="90">mutabor::watchdog&lt; Box &gt;::OnExit</referencedby>
+        <referencedby refid="d7/d6f/classmutabor_1_1watchdog_1acd3d99542b9bfeccff3f61a935444321" compoundref="d9/da3/watchdog_8h" startline="92" endline="95">mutabor::watchdog&lt; Box &gt;::request_exit</referencedby>
+        <referencedby refid="d7/d6f/classmutabor_1_1watchdog_1a0323cd5212c5a20dff49629ce780ec90" compoundref="d9/da3/watchdog_8h" startline="66" endline="72">mutabor::watchdog&lt; Box &gt;::~watchdog</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d7/d6f/classmutabor_1_1watchdog_1a9b1ff731bdb049042685552d5a487561" prot="protected" static="no" mutable="no">
+        <type><ref refid="d9/d7c/group__kernel_1ga1bb8df7bf7d8902a3b46416c023bbcd4" kindref="member">mutint64</ref></type>
+        <definition>mutint64 mutabor::watchdog&lt; T &gt;::timeout</definition>
+        <argsstring></argsstring>
+        <name>timeout</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" line="98" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" bodystart="98" bodyend="-1"/>
+        <referencedby refid="d7/d6f/classmutabor_1_1watchdog_1a1f233a499ab303fd95646bc93b468c17" compoundref="d9/da3/watchdog_8h" startline="74" endline="82">mutabor::watchdog&lt; Box &gt;::Entry</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d7/d6f/classmutabor_1_1watchdog_1a0fd0552d0f15afbb43df7a545e3ca499" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>volatile bool mutabor::watchdog&lt; T &gt;::exit</definition>
+        <argsstring></argsstring>
+        <name>exit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" line="99" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" bodystart="99" bodyend="-1"/>
+        <referencedby refid="d7/d6f/classmutabor_1_1watchdog_1a1f233a499ab303fd95646bc93b468c17" compoundref="d9/da3/watchdog_8h" startline="74" endline="82">mutabor::watchdog&lt; Box &gt;::Entry</referencedby>
+        <referencedby refid="d7/d6f/classmutabor_1_1watchdog_1acd3d99542b9bfeccff3f61a935444321" compoundref="d9/da3/watchdog_8h" startline="92" endline="95">mutabor::watchdog&lt; Box &gt;::request_exit</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d7/d6f/classmutabor_1_1watchdog_1a4230f942dd2d3e9d9900770378cc0f74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::watchdog&lt; T &gt;::watchdog</definition>
+        <argsstring>(T t, mutint64 timeout, ThreadKind kind=wxTHREAD_DETACHED)</argsstring>
+        <name>watchdog</name>
+        <param>
+          <type>T</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="d9/d7c/group__kernel_1ga1bb8df7bf7d8902a3b46416c023bbcd4" kindref="member">mutint64</ref></type>
+          <declname>timeout</declname>
+        </param>
+        <param>
+          <type><ref refid="d6/daa/namespacemutabor_1a10f22332ca46c3b46e40a41fe03f647d" kindref="member">ThreadKind</ref></type>
+          <declname>kind</declname>
+          <defval>wxTHREAD_DETACHED</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" line="61" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" bodystart="61" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d6f/classmutabor_1_1watchdog_1a0323cd5212c5a20dff49629ce780ec90" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual mutabor::watchdog&lt; T &gt;::~watchdog</definition>
+        <argsstring>()</argsstring>
+        <name>~watchdog</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" line="66" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" bodystart="66" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d6f/classmutabor_1_1watchdog_1a1f233a499ab303fd95646bc93b468c17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ExitCode</type>
+        <definition>ExitCode mutabor::watchdog&lt; T &gt;::Entry</definition>
+        <argsstring>()</argsstring>
+        <name>Entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" line="74" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" bodystart="74" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d6f/classmutabor_1_1watchdog_1a9c083d7f1c14ca18031b27fee8b9d0e6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::watchdog&lt; T &gt;::OnExit</definition>
+        <argsstring>()</argsstring>
+        <name>OnExit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" line="84" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" bodystart="84" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d6f/classmutabor_1_1watchdog_1acd3d99542b9bfeccff3f61a935444321" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor::watchdog&lt; T &gt;::request_exit</definition>
+        <argsstring>()</argsstring>
+        <name>request_exit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" line="92" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" bodystart="92" bodyend="95"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A watchdog timer class. </para>    </briefdescription>
+    <detaileddescription>
+<para>It will periodically check whether a certain object is still active. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="5610">
+        <label>mutabor::watchdog&lt; T &gt;</label>
+        <link refid="d7/d6f/classmutabor_1_1watchdog"/>
+        <childnode refid="5611" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5611">
+        <label>Thread</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5612">
+        <label>mutabor::watchdog&lt; T &gt;</label>
+        <link refid="d7/d6f/classmutabor_1_1watchdog"/>
+        <childnode refid="5613" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5613">
+        <label>Thread</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" line="58" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/watchdog.h" bodystart="58" bodyend="100"/>
+    <listofallmembers>
+      <member refid="d7/d6f/classmutabor_1_1watchdog_1a1f233a499ab303fd95646bc93b468c17" prot="public" virt="non-virtual"><scope>mutabor::watchdog</scope><name>Entry</name></member>
+      <member refid="d7/d6f/classmutabor_1_1watchdog_1a0fd0552d0f15afbb43df7a545e3ca499" prot="protected" virt="non-virtual"><scope>mutabor::watchdog</scope><name>exit</name></member>
+      <member refid="d7/d6f/classmutabor_1_1watchdog_1a9c083d7f1c14ca18031b27fee8b9d0e6" prot="public" virt="non-virtual"><scope>mutabor::watchdog</scope><name>OnExit</name></member>
+      <member refid="d7/d6f/classmutabor_1_1watchdog_1acd3d99542b9bfeccff3f61a935444321" prot="public" virt="non-virtual"><scope>mutabor::watchdog</scope><name>request_exit</name></member>
+      <member refid="d7/d6f/classmutabor_1_1watchdog_1a9aa27f15e581efbb117387c9b84891c7" prot="protected" virt="non-virtual"><scope>mutabor::watchdog</scope><name>target</name></member>
+      <member refid="d7/d6f/classmutabor_1_1watchdog_1ae4ae9572eef5ae57bfd523fabb4cf3be" prot="private" virt="non-virtual"><scope>mutabor::watchdog</scope><name>targettype</name></member>
+      <member refid="d7/d6f/classmutabor_1_1watchdog_1a9b1ff731bdb049042685552d5a487561" prot="protected" virt="non-virtual"><scope>mutabor::watchdog</scope><name>timeout</name></member>
+      <member refid="d7/d6f/classmutabor_1_1watchdog_1a4230f942dd2d3e9d9900770378cc0f74" prot="public" virt="non-virtual"><scope>mutabor::watchdog</scope><name>watchdog</name></member>
+      <member refid="d7/d6f/classmutabor_1_1watchdog_1a0323cd5212c5a20dff49629ce780ec90" prot="public" virt="virtual"><scope>mutabor::watchdog</scope><name>~watchdog</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

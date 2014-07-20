@@ -30,7 +30,7 @@ Zusammengehörigkeiten von Runtime functions:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="../../dc/d7e/group__runtime.png" border="0" alt="" usemap="#dc_2d7e_2group____runtime"/>
 <map name="dc_2d7e_2group____runtime" id="dc_2d7e_2group____runtime">
-<area shape="rect" id="node2" href="../../d9/d7c/group__kernel.html" title="This group contains the functions that deal with the core idea of Mutabor: Parse Mutabor source files..." alt="" coords="247,5,433,33"/><area shape="rect" id="node3" href="../../d5/dee/group__route.html" title="This group contains functions and classes that can be used to set up a generic event routing..." alt="" coords="268,55,412,99"/><area shape="rect" id="node4" href="../../d1/d44/group__config.html" title="Save and restore configuration of boxes and routes. " alt="" coords="261,122,419,150"/></map>
+<area shape="rect" id="node2" href="../../d9/d7c/group__kernel.html" title="This group contains the functions that deal with the core idea of Mutabor: Parse Mutabor source files..." alt="" coords="247,5,433,33"/><area shape="rect" id="node3" href="../../d5/dee/group__route.html" title="This group contains functions and classes that can be used to set up a generic event routing..." alt="" coords="268,55,412,99"/><area shape="rect" id="node4" href="../../d1/d44/group__config.html" title="Save and restore configuration of boxes and routes. " alt="" coords="261,122,419,150"/><area shape="rect" id="node5" href="../../de/db7/group__debug.html" title="This group contains the functions that are used to help debugging of Mutabor. " alt="" coords="264,173,416,201"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
@@ -46,14 +46,20 @@ Makrodefinitionen</h2></td></tr>
 <tr class="separator:gaa9b30f5c9861e98d8d2b8dc3e633d884"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaff9b0a9cf194ebefb486642aa03388ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/group__runtime.html#gaff9b0a9cf194ebefb486642aa03388ca">MU32_MIDIKERN_H_PRECOMPILED</a></td></tr>
 <tr class="separator:gaff9b0a9cf194ebefb486642aa03388ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad4cd3246197199ef9c3d5d299b2d9393"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/group__runtime.html#gad4cd3246197199ef9c3d5d299b2d9393">DRUMCHANNEL</a>&#160;&#160;&#160;9</td></tr>
+<tr class="memitem:ga9450fb7ede4f93c661072cf4c9518587"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/group__runtime.html#ga9450fb7ede4f93c661072cf4c9518587">MIDI_MIN_CHANNEL</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:ga9450fb7ede4f93c661072cf4c9518587"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad4cd3246197199ef9c3d5d299b2d9393"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/group__runtime.html#gad4cd3246197199ef9c3d5d299b2d9393">DRUMCHANNEL</a>&#160;&#160;&#160;9  /* drum channel in general MIDI (0 based 9, 10 else). */</td></tr>
 <tr class="separator:gad4cd3246197199ef9c3d5d299b2d9393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2be1fc632d38766b2230ae093e9aad2c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/group__runtime.html#ga2be1fc632d38766b2230ae093e9aad2c">MIDI_MAX_CHANNEL</a>&#160;&#160;&#160;15</td></tr>
+<tr class="separator:ga2be1fc632d38766b2230ae093e9aad2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7ff29b4704cd0f0bccdf35a538c0a469"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/group__runtime.html#ga7ff29b4704cd0f0bccdf35a538c0a469">MIDI_MIN_KEY</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:ga7ff29b4704cd0f0bccdf35a538c0a469"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga227dc7ee9fc2d32edbad6c406ac9abc5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/group__runtime.html#ga227dc7ee9fc2d32edbad6c406ac9abc5">MIDI_MAX_KEY</a>&#160;&#160;&#160;0x7f</td></tr>
+<tr class="separator:ga227dc7ee9fc2d32edbad6c406ac9abc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabd075f0556c9ce6f682b5a71c3191863"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/group__runtime.html#gabd075f0556c9ce6f682b5a71c3191863">MU32_RUNTIME_H</a></td></tr>
 <tr class="separator:gabd075f0556c9ce6f682b5a71c3191863"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga14f6f406ce592655a53e3b73ace7cddd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/group__runtime.html#ga14f6f406ce592655a53e3b73ace7cddd">MU32_RUNTIME_H_PRECOMPILED</a></td></tr>
 <tr class="separator:ga14f6f406ce592655a53e3b73ace7cddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga45c20c14d3d8790a22153d08ab2eb2ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/group__runtime.html#ga45c20c14d3d8790a22153d08ab2eb2ff">UINT</a>&#160;&#160;&#160;unsigned int</td></tr>
-<tr class="separator:ga45c20c14d3d8790a22153d08ab2eb2ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funktionen</h2></td></tr>
@@ -82,14 +88,78 @@ Variablen</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DRUMCHANNEL&#160;&#160;&#160;9</td>
+          <td class="memname">#define DRUMCHANNEL&#160;&#160;&#160;9  /* drum channel in general MIDI (0 based 9, 10 else). */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00054">54</a> der Datei <a class="el" href="../../da/dfd/MidiKern_8h_source.html">MidiKern.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00373">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOff()</a>, <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00146">mutabor::CommonMidiOutput&lt; T, D &gt;::EmergencyFindChannel()</a> und <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00129">mutabor::ChannelFilter::operator()()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga2be1fc632d38766b2230ae093e9aad2c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MIDI_MAX_CHANNEL&#160;&#160;&#160;15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00055">55</a> der Datei <a class="el" href="../../da/dfd/MidiKern_8h_source.html">MidiKern.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d1/d14/InputMidiDeviceShape_8cpp_source.html#l00063">mutaborGUI::MutInputMidiDeviceShape::GetFilterPanel()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga227dc7ee9fc2d32edbad6c406ac9abc5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MIDI_MAX_KEY&#160;&#160;&#160;0x7f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00057">57</a> der Datei <a class="el" href="../../da/dfd/MidiKern_8h_source.html">MidiKern.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d1/d14/InputMidiDeviceShape_8cpp_source.html#l00063">mutaborGUI::MutInputMidiDeviceShape::GetFilterPanel()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga9450fb7ede4f93c661072cf4c9518587"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MIDI_MIN_CHANNEL&#160;&#160;&#160;0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Definiert in Zeile <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00053">53</a> der Datei <a class="el" href="../../da/dfd/MidiKern_8h_source.html">MidiKern.h</a>.</p>
 
-<p>Wird benutzt von <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00406">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOff()</a>, <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00146">mutabor::CommonMidiOutput&lt; T, D &gt;::EmergencyFindChannel()</a> und <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00129">mutabor::ChannelFilter::operator()()</a>.</p>
+<p>Wird benutzt von <a class="el" href="../../d1/d14/InputMidiDeviceShape_8cpp_source.html#l00063">mutaborGUI::MutInputMidiDeviceShape::GetFilterPanel()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga7ff29b4704cd0f0bccdf35a538c0a469"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MIDI_MIN_KEY&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00056">56</a> der Datei <a class="el" href="../../da/dfd/MidiKern_8h_source.html">MidiKern.h</a>.</p>
+
+<p>Wird benutzt von <a class="el" href="../../d1/d14/InputMidiDeviceShape_8cpp_source.html#l00063">mutaborGUI::MutInputMidiDeviceShape::GetFilterPanel()</a>.</p>
 
 </div>
 </div>
@@ -145,21 +215,7 @@ Variablen</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definiert in Zeile <a class="el" href="../../d5/d84/Runtime_8h_source.html#l00051">51</a> der Datei <a class="el" href="../../d5/d84/Runtime_8h_source.html">Runtime.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga45c20c14d3d8790a22153d08ab2eb2ff"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define UINT&#160;&#160;&#160;unsigned int</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definiert in Zeile <a class="el" href="../../d5/d84/Runtime_8h_source.html#l00059">59</a> der Datei <a class="el" href="../../d5/d84/Runtime_8h_source.html">Runtime.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="../../d5/d84/Runtime_8h_source.html#l00049">49</a> der Datei <a class="el" href="../../d5/d84/Runtime_8h_source.html">Runtime.h</a>.</p>
 
 </div>
 </div>
@@ -196,12 +252,12 @@ Variablen</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Rückgabe</dt><dd>a double value that represents the interval. a semitone is represented as 1.00, and an octave as 12.00 </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00097">97</a> der Datei <a class="el" href="../../da/dfd/MidiKern_8h_source.html">MidiKern.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00086">86</a> der Datei <a class="el" href="../../da/dfd/MidiKern_8h_source.html">MidiKern.h</a>.</p>
 
-<p>Wird benutzt von <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00396">mutabor::hidden::expand_tonliste()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00464">mutabor::hidden::expandiere_tonsystem()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00673">mutabor::hidden::expandiere_umstimmung()</a> und <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00128">mutabor_convert_frequency_to_pitch()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;{</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">return</span> log(interval)/log(2.0l)*12.0l;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<p>Wird benutzt von <a class="el" href="../../d2/dd8/Interpre_8h_source.html#l00160">mutabor::hidden::mutabor_convert_factor_to_interval()</a> und <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00117">mutabor_convert_frequency_to_pitch()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">return</span> log(interval)/log(2.0l)*12.0l;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -237,15 +293,15 @@ Variablen</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Rückgabe</dt><dd>a double value that represents the pitch. a semitone is represented as 1.00, and an octave as 12.00 </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00128">128</a> der Datei <a class="el" href="../../da/dfd/MidiKern_8h_source.html">MidiKern.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00117">117</a> der Datei <a class="el" href="../../da/dfd/MidiKern_8h_source.html">MidiKern.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00097">mutabor_convert_factor_to_pitch()</a>.</p>
+<p>Benutzt <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00086">mutabor_convert_factor_to_pitch()</a>.</p>
 
-<p>Wird benutzt von <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00396">mutabor::hidden::expand_tonliste()</a> und <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00464">mutabor::hidden::expandiere_tonsystem()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;{</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">return</span> 69.00l + <a class="code" href="../../dc/d7e/group__runtime.html#ga61ca1dd93b657fbc223f241919ac2da2">mutabor_convert_factor_to_pitch</a>(tone/440.0l);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
-<div class="ttc" id="group__runtime_html_ga61ca1dd93b657fbc223f241919ac2da2"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#ga61ca1dd93b657fbc223f241919ac2da2">mutabor_convert_factor_to_pitch</a></div><div class="ttdeci">double mutabor_convert_factor_to_pitch(double interval)</div><div class="ttdoc">Convert an interval from factor representation to a pitch based double according to MIDI pitch number...</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dfd/MidiKern_8h_source.html#l00097">MidiKern.h:97</a></div></div>
+<p>Wird benutzt von <a class="el" href="../../d2/dd8/Interpre_8h_source.html#l00244">mutabor::hidden::mutabor_convert_frequency_to_tone()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;{</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">return</span> 69.00l + <a class="code" href="../../dc/d7e/group__runtime.html#ga61ca1dd93b657fbc223f241919ac2da2">mutabor_convert_factor_to_pitch</a>(tone/440.0l);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
+<div class="ttc" id="group__runtime_html_ga61ca1dd93b657fbc223f241919ac2da2"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#ga61ca1dd93b657fbc223f241919ac2da2">mutabor_convert_factor_to_pitch</a></div><div class="ttdeci">double mutabor_convert_factor_to_pitch(double interval)</div><div class="ttdoc">Convert an interval from factor representation to a pitch based double according to MIDI pitch number...</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dfd/MidiKern_8h_source.html#l00086">MidiKern.h:86</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -281,12 +337,12 @@ Variablen</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Rückgabe</dt><dd>frequency factor </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00082">82</a> der Datei <a class="el" href="../../da/dfd/MidiKern_8h_source.html">MidiKern.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00071">71</a> der Datei <a class="el" href="../../da/dfd/MidiKern_8h_source.html">MidiKern.h</a>.</p>
 
-<p>Wird benutzt von <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00113">mutabor_convert_pitch_to_frequency()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;{</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">return</span> exp(log(2.0l)*interval/12.0l);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<p>Wird benutzt von <a class="el" href="../../d2/dd8/Interpre_8h_source.html#l00136">mutabor::hidden::mutabor_convert_interval_to_factor()</a> und <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00102">mutabor_convert_pitch_to_frequency()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">return</span> exp(log(2.0l)*interval/12.0l);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -322,15 +378,15 @@ Variablen</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Rückgabe</dt><dd>frequency factor </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00113">113</a> der Datei <a class="el" href="../../da/dfd/MidiKern_8h_source.html">MidiKern.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00102">102</a> der Datei <a class="el" href="../../da/dfd/MidiKern_8h_source.html">MidiKern.h</a>.</p>
 
-<p>Benutzt <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00082">mutabor_convert_pitch_to_factor()</a>.</p>
+<p>Benutzt <a class="el" href="../../da/dfd/MidiKern_8h_source.html#l00071">mutabor_convert_pitch_to_factor()</a>.</p>
 
-<p>Wird benutzt von <a class="el" href="../../df/d3c/MutTextBox_8cpp_source.html#l00256">MutTextBox::GetKeys()</a> und <a class="el" href="../../df/d3c/MutTextBox_8cpp_source.html#l00301">MutTextBox::GetToneSystem()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;{</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">return</span> 440.0l * <a class="code" href="../../dc/d7e/group__runtime.html#ga0109fd489949911d8bbc77d028490657">mutabor_convert_pitch_to_factor</a>(tone - 69.00l);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
-<div class="ttc" id="group__runtime_html_ga0109fd489949911d8bbc77d028490657"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#ga0109fd489949911d8bbc77d028490657">mutabor_convert_pitch_to_factor</a></div><div class="ttdeci">double mutabor_convert_pitch_to_factor(double interval)</div><div class="ttdoc">Convert an interval represented as MIDI based double value to a frequency factor. ...</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dfd/MidiKern_8h_source.html#l00082">MidiKern.h:82</a></div></div>
+<p>Wird benutzt von <a class="el" href="../../df/d3c/MutTextBox_8cpp_source.html#l00254">MutTextBox::GetKeys()</a> und <a class="el" href="../../df/d3c/MutTextBox_8cpp_source.html#l00299">MutTextBox::GetToneSystem()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;{</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">return</span> 440.0l * <a class="code" href="../../dc/d7e/group__runtime.html#ga0109fd489949911d8bbc77d028490657">mutabor_convert_pitch_to_factor</a>(tone - 69.00l);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
+<div class="ttc" id="group__runtime_html_ga0109fd489949911d8bbc77d028490657"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#ga0109fd489949911d8bbc77d028490657">mutabor_convert_pitch_to_factor</a></div><div class="ttdeci">double mutabor_convert_pitch_to_factor(double interval)</div><div class="ttdoc">Convert an interval represented as MIDI based double value to a frequency factor. ...</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dfd/MidiKern_8h_source.html#l00071">MidiKern.h:71</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -347,12 +403,12 @@ Variablen</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d3/d14/gmut_8cpp_source.html#l00028">28</a> der Datei <a class="el" href="../../d3/d14/gmut_8cpp_source.html">gmut.cpp</a>.</p>
 
-<p>Wird benutzt von <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00659">mutabor::BoxClass::Compile()</a> und <a class="el" href="../../d3/d14/gmut_8cpp_source.html#l00153">GMutCompile()</a>.</p>
+<p>Wird benutzt von <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00691">mutabor::BoxClass::Compile()</a> und <a class="el" href="../../d3/d14/gmut_8cpp_source.html#l00153">GMutCompile()</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Son Feb 9 2014 18:39:23 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Apr 26 2014 12:58:29 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

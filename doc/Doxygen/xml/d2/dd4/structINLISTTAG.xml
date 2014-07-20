@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="32" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="32" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="32" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="32" bodyend="-1"/>
         <referencedby refid="d3/d14/gmut_8cpp_1a6925268de67bc04207c5ebd990b88b0f" compoundref="d3/d14/gmut_8cpp" startline="54" endline="82">GetInFile</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d2/dd4/structINLISTTAG_1a3b157259cb5738a3eace370f8cc115f4" prot="public" static="no" mutable="no">
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="33" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="33" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="33" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="33" bodyend="-1"/>
         <referencedby refid="d3/d14/gmut_8cpp_1a6925268de67bc04207c5ebd990b88b0f" compoundref="d3/d14/gmut_8cpp" startline="54" endline="82">GetInFile</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d2/dd4/structINLISTTAG_1a6804b2cd80eb1bc5accc787c58f57754" prot="public" static="no" mutable="no">
@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="34" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="34" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="34" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d2/dd4/structINLISTTAG_1a326f712c0d5f560fa0ecc7afdd4a7170" prot="public" static="no" mutable="no">
         <type>char *</type>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="35" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="35" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="35" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="35" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -63,25 +63,36 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3252">
+      <node id="3907">
         <label>INLISTTAG</label>
         <link refid="d2/dd4/structINLISTTAG"/>
-        <childnode refid="3252" relation="usage">
+        <childnode refid="3907" relation="usage">
           <edgelabel>Next</edgelabel>
         </childnode>
-        <childnode refid="3253" relation="usage">
+        <childnode refid="3908" relation="usage">
           <edgelabel>Data</edgelabel>
         </childnode>
       </node>
-      <node id="3253">
+      <node id="3910">
+        <label>std::basic_string&lt; char &gt;</label>
+      </node>
+      <node id="3908">
         <label>GisToken</label>
         <link refid="d2/db7/classGisToken"/>
-        <childnode refid="3253" relation="usage">
+        <childnode refid="3909" relation="usage">
+          <edgelabel>Sep</edgelabel>
+        </childnode>
+        <childnode refid="3908" relation="usage">
           <edgelabel>Next</edgelabel>
         </childnode>
       </node>
+      <node id="3909">
+        <label>std::string</label>
+        <childnode refid="3910" relation="public-inheritance">
+        </childnode>
+      </node>
     </collaborationgraph>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="31" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="30" bodyend="36"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" line="31" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/gmut/gmut.cpp" bodystart="30" bodyend="36"/>
     <listofallmembers>
       <member refid="d2/dd4/structINLISTTAG_1a3b157259cb5738a3eace370f8cc115f4" prot="public" virt="non-virtual"><scope>INLISTTAG</scope><name>Data</name></member>
       <member refid="d2/dd4/structINLISTTAG_1a6804b2cd80eb1bc5accc787c58f57754" prot="public" virt="non-virtual"><scope>INLISTTAG</scope><name>Device</name></member>

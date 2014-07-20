@@ -2,667 +2,582 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d1/dcd/muconvauto_8h" kind="file">
     <compoundname>muconvauto.h</compoundname>
-    <includes local="yes">wx/convauto.h</includes>
-    <includes local="yes">wx/strconv.h</includes>
     <includedby refid="d5/dfb/MutEditFile_8h" local="yes">src/wxGUI/MutEditFile.h</includedby>
     <includedby refid="d3/dd7/MutRouteWnd_8h" local="yes">src/wxGUI/MutRouteWnd.h</includedby>
-    <includedby refid="db/d0a/BoxTest_8cpp" local="yes">src/kernel/routing/tests/BoxTest.cpp</includedby>
-    <incdepgraph>
-      <node id="26386">
-        <label>src/wxGUI/generic/muconvauto.h</label>
-        <link refid="muconvauto.h"/>
-        <childnode refid="26387" relation="include">
-        </childnode>
-        <childnode refid="26388" relation="include">
-        </childnode>
-      </node>
-      <node id="26387">
-        <label>wx/convauto.h</label>
-      </node>
-      <node id="26388">
-        <label>wx/strconv.h</label>
-      </node>
-    </incdepgraph>
     <invincdepgraph>
-      <node id="26438">
-        <label>src/wxGUI/Routing/BoxDlg.h</label>
-        <link refid="d9/dd2/BoxDlg_8h"/>
-        <childnode refid="26408" relation="include">
-        </childnode>
-        <childnode refid="26409" relation="include">
-        </childnode>
-        <childnode refid="26410" relation="include">
-        </childnode>
-        <childnode refid="26411" relation="include">
-        </childnode>
-        <childnode refid="26412" relation="include">
-        </childnode>
-        <childnode refid="26414" relation="include">
-        </childnode>
-      </node>
-      <node id="26404">
+      <node id="25333">
         <label>src/wxGUI/Routing/tests/main.cpp</label>
         <link refid="da/dee/wxGUI_2Routing_2tests_2main_8cpp"/>
       </node>
-      <node id="26416">
-        <label>src/wxGUI/Routing/NewOutputDeviceShape.cpp</label>
-        <link refid="d1/d73/NewOutputDeviceShape_8cpp"/>
-      </node>
-      <node id="26440">
-        <label>src/wxGUI/Routing/NewOutputDeviceShape.h</label>
-        <link refid="df/d7b/NewOutputDeviceShape_8h"/>
-        <childnode refid="26408" relation="include">
-        </childnode>
-        <childnode refid="26416" relation="include">
-        </childnode>
-      </node>
-      <node id="26400">
-        <label>src/kernel/routing/tests/main.cpp</label>
-        <link refid="d1/de6/kernel_2routing_2tests_2main_8cpp"/>
-      </node>
-      <node id="26428">
-        <label>src/wxGUI/MutEditFile.cpp</label>
-        <link refid="d1/da4/MutEditFile_8cpp"/>
-      </node>
-      <node id="26405">
-        <label>src/wxGUI/tests/main.cpp</label>
-        <link refid="d9/d27/wxGUI_2tests_2main_8cpp"/>
-      </node>
-      <node id="26408">
-        <label>src/wxGUI/MutRouteWnd.cpp</label>
-        <link refid="dc/def/MutRouteWnd_8cpp"/>
-      </node>
-      <node id="26439">
-        <label>src/wxGUI/Routing/NewInputDeviceShape.h</label>
-        <link refid="d5/dba/NewInputDeviceShape_8h"/>
-        <childnode refid="26408" relation="include">
-        </childnode>
-        <childnode refid="26415" relation="include">
-        </childnode>
-      </node>
-      <node id="26410">
-        <label>src/wxGUI/Routing/BoxDlg.cpp</label>
-        <link refid="d3/d2a/BoxDlg_8cpp"/>
-      </node>
-      <node id="26389">
-        <label>src/wxGUI/generic/muconvauto.h</label>
-        <link refid="muconvauto.h"/>
-        <childnode refid="26390" relation="include">
-        </childnode>
-        <childnode refid="26406" relation="include">
-        </childnode>
-        <childnode refid="26455" relation="include">
-        </childnode>
-      </node>
-      <node id="26414">
-        <label>src/wxGUI/Routing/NewBoxShape.cpp</label>
-        <link refid="d8/dba/NewBoxShape_8cpp"/>
-      </node>
-      <node id="26435">
-        <label>src/wxGUI/MutLogicWnd.cpp</label>
-        <link refid="df/d11/MutLogicWnd_8cpp"/>
-      </node>
-      <node id="26418">
-        <label>src/wxGUI/Routing/OutputMidiDeviceShape.cpp</label>
-        <link refid="d6/d68/OutputMidiDeviceShape_8cpp"/>
-      </node>
-      <node id="26417">
-        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp</label>
-        <link refid="d3/d21/OutputGuidoFileDeviceShape_8cpp"/>
-      </node>
-      <node id="26436">
-        <label>src/wxGUI/MutTextBox.cpp</label>
-        <link refid="df/d3c/MutTextBox_8cpp"/>
-      </node>
-      <node id="26421">
-        <label>src/wxGUI/MutApp.h</label>
-        <link refid="db/dc1/MutApp_8h"/>
-        <childnode refid="26422" relation="include">
-        </childnode>
-        <childnode refid="26423" relation="include">
-        </childnode>
-        <childnode refid="26424" relation="include">
-        </childnode>
-        <childnode refid="26425" relation="include">
-        </childnode>
-        <childnode refid="26426" relation="include">
-        </childnode>
-        <childnode refid="26427" relation="include">
-        </childnode>
-        <childnode refid="26428" relation="include">
-        </childnode>
-        <childnode refid="26429" relation="include">
-        </childnode>
-        <childnode refid="26408" relation="include">
-        </childnode>
-        <childnode refid="26430" relation="include">
-        </childnode>
-        <childnode refid="26413" relation="include">
-        </childnode>
-        <childnode refid="26431" relation="include">
-        </childnode>
-      </node>
-      <node id="26394">
-        <label>src/wxGUI/Routing/DebugRoute.cpp</label>
-        <link refid="d9/d27/DebugRoute_8cpp"/>
-        <childnode refid="26395" relation="include">
-        </childnode>
-        <childnode refid="26396" relation="include">
-        </childnode>
-        <childnode refid="26397" relation="include">
-        </childnode>
-        <childnode refid="26398" relation="include">
-        </childnode>
-        <childnode refid="26399" relation="include">
-        </childnode>
-        <childnode refid="26400" relation="include">
-        </childnode>
-        <childnode refid="26401" relation="include">
-        </childnode>
-        <childnode refid="26402" relation="include">
-        </childnode>
-        <childnode refid="26403" relation="include">
-        </childnode>
-        <childnode refid="26404" relation="include">
-        </childnode>
-        <childnode refid="26405" relation="include">
-        </childnode>
-      </node>
-      <node id="26393">
-        <label>src/wxGUI/Routing/DeviceShape.h</label>
-        <link refid="d9/d4d/DeviceShape_8h"/>
-        <childnode refid="26394" relation="include">
-        </childnode>
-        <childnode refid="26406" relation="include">
-        </childnode>
-        <childnode refid="26407" relation="include">
-        </childnode>
-        <childnode refid="26438" relation="include">
-        </childnode>
-        <childnode refid="26439" relation="include">
-        </childnode>
-        <childnode refid="26440" relation="include">
-        </childnode>
-        <childnode refid="26409" relation="include">
-        </childnode>
-        <childnode refid="26410" relation="include">
-        </childnode>
-        <childnode refid="26411" relation="include">
-        </childnode>
-        <childnode refid="26412" relation="include">
-        </childnode>
-        <childnode refid="26413" relation="include">
-        </childnode>
-        <childnode refid="26441" relation="include">
-        </childnode>
-        <childnode refid="26442" relation="include">
-        </childnode>
-        <childnode refid="26443" relation="include">
-        </childnode>
-        <childnode refid="26444" relation="include">
-        </childnode>
-        <childnode refid="26448" relation="include">
-        </childnode>
-      </node>
-      <node id="26392">
-        <label>src/wxGUI/Routing/GUIRoute.h</label>
-        <link refid="d6/dfa/GUIRoute_8h"/>
-        <childnode refid="26393" relation="include">
-        </childnode>
-        <childnode refid="26450" relation="include">
-        </childnode>
-        <childnode refid="26453" relation="include">
-        </childnode>
-        <childnode refid="26407" relation="include">
-        </childnode>
-        <childnode refid="26424" relation="include">
-        </childnode>
-        <childnode refid="26412" relation="include">
-        </childnode>
-        <childnode refid="26413" relation="include">
-        </childnode>
-        <childnode refid="26444" relation="include">
-        </childnode>
-        <childnode refid="26404" relation="include">
-        </childnode>
-        <childnode refid="26405" relation="include">
-        </childnode>
-      </node>
-      <node id="26433">
-        <label>src/wxGUI/MutDocManager.cpp</label>
-        <link refid="dd/db0/MutDocManager_8cpp"/>
-      </node>
-      <node id="26434">
-        <label>src/wxGUI/MutChild.cpp</label>
-        <link refid="da/d72/MutChild_8cpp"/>
-      </node>
-      <node id="26424">
-        <label>src/wxGUI/MutApp.cpp</label>
-        <link refid="d5/d1c/MutApp_8cpp"/>
-      </node>
-      <node id="26441">
-        <label>src/wxGUI/Routing/OutputMidiDeviceShape.h</label>
-        <link refid="d8/dcb/OutputMidiDeviceShape_8h"/>
-        <childnode refid="26413" relation="include">
-        </childnode>
-        <childnode refid="26418" relation="include">
-        </childnode>
-      </node>
-      <node id="26443">
-        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.h</label>
-        <link refid="db/d77/OutputGuidoFileDeviceShape_8h"/>
-        <childnode refid="26413" relation="include">
-        </childnode>
-        <childnode refid="26417" relation="include">
-        </childnode>
-      </node>
-      <node id="26398">
-        <label>src/kernel/routing/midi/tests/midiopenfail1.cpp</label>
-        <link refid="da/ddb/midiopenfail1_8cpp"/>
-      </node>
-      <node id="26452">
-        <label>src/wxGUI/Routing/NewBoxShape.h</label>
-        <link refid="d4/dcc/NewBoxShape_8h"/>
-        <childnode refid="26423" relation="include">
-        </childnode>
-        <childnode refid="26408" relation="include">
-        </childnode>
-        <childnode refid="26413" relation="include">
-        </childnode>
-        <childnode refid="26414" relation="include">
-        </childnode>
-      </node>
-      <node id="26454">
-        <label>src/wxGUI/MutLogicWnd.h</label>
-        <link refid="d6/d81/MutLogicWnd_8h"/>
-        <childnode refid="26423" relation="include">
-        </childnode>
-        <childnode refid="26434" relation="include">
-        </childnode>
-        <childnode refid="26429" relation="include">
-        </childnode>
-        <childnode refid="26435" relation="include">
-        </childnode>
-      </node>
-      <node id="26427">
-        <label>src/wxGUI/MutDocument.cpp</label>
-        <link refid="d6/d3b/MutDocument_8cpp"/>
-      </node>
-      <node id="26406">
-        <label>src/wxGUI/MutRouteWnd.h</label>
-        <link refid="d3/dd7/MutRouteWnd_8h"/>
-        <childnode refid="26394" relation="include">
-        </childnode>
-        <childnode refid="26407" relation="include">
-        </childnode>
-        <childnode refid="26420" relation="include">
-        </childnode>
-        <childnode refid="26429" relation="include">
-        </childnode>
-        <childnode refid="26435" relation="include">
-        </childnode>
-        <childnode refid="26408" relation="include">
-        </childnode>
-        <childnode refid="26409" relation="include">
-        </childnode>
-        <childnode refid="26410" relation="include">
-        </childnode>
-        <childnode refid="26411" relation="include">
-        </childnode>
-        <childnode refid="26413" relation="include">
-        </childnode>
-        <childnode refid="26414" relation="include">
-        </childnode>
-        <childnode refid="26415" relation="include">
-        </childnode>
-        <childnode refid="26416" relation="include">
-        </childnode>
-        <childnode refid="26437" relation="include">
-        </childnode>
-      </node>
-      <node id="26390">
-        <label>src/wxGUI/MutEditFile.h</label>
-        <link refid="d5/dfb/MutEditFile_8h"/>
-        <childnode refid="26391" relation="include">
-        </childnode>
-        <childnode refid="26420" relation="include">
-        </childnode>
-        <childnode refid="26434" relation="include">
-        </childnode>
-        <childnode refid="26428" relation="include">
-        </childnode>
-      </node>
-      <node id="26425">
-        <label>src/wxGUI/MutConfDlg.h</label>
-        <link refid="d9/d8f/MutConfDlg_8h"/>
-        <childnode refid="26424" relation="include">
-        </childnode>
-      </node>
-      <node id="26403">
-        <label>src/tests/wxlinktest2.cpp</label>
-        <link refid="df/d13/wxlinktest2_8cpp"/>
-      </node>
-      <node id="26412">
-        <label>src/wxGUI/Routing/DeviceShape.cpp</label>
-        <link refid="d9/d94/DeviceShape_8cpp"/>
-      </node>
-      <node id="26395">
-        <label>src/kernel/routing/gmn/tests/gmnopenfail1.cpp</label>
-        <link refid="d0/dd6/gmnopenfail1_8cpp"/>
-      </node>
-      <node id="26430">
-        <label>src/wxGUI/MutView.cpp</label>
-        <link refid="d8/d33/MutView_8cpp"/>
-      </node>
-      <node id="26442">
-        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.h</label>
-        <link refid="d4/de8/OutputMidiFileDeviceShape_8h"/>
-        <childnode refid="26413" relation="include">
-        </childnode>
-        <childnode refid="26419" relation="include">
-        </childnode>
-      </node>
-      <node id="26447">
-        <label>src/wxGUI/Routing/InputMidiDeviceShape.cpp</label>
-        <link refid="d1/d14/InputMidiDeviceShape_8cpp"/>
-      </node>
-      <node id="26409">
-        <label>src/wxGUI/Routing/BoxChannelShape.cpp</label>
-        <link refid="d9/d24/BoxChannelShape_8cpp"/>
-      </node>
-      <node id="26429">
-        <label>src/wxGUI/MutFrame.cpp</label>
-        <link refid="dc/df3/MutFrame_8cpp"/>
-      </node>
-      <node id="26399">
-        <label>src/kernel/routing/midi/tests/playmidi1.cpp</label>
-        <link refid="d9/dfe/playmidi1_8cpp"/>
-      </node>
-      <node id="26449">
-        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.cpp</label>
-        <link refid="d3/de3/InputMidiFileDeviceShape_8cpp"/>
-      </node>
-      <node id="26402">
-        <label>src/kernel/tests/main.cpp</label>
-        <link refid="d5/dd0/kernel_2tests_2main_8cpp"/>
-      </node>
-      <node id="26431">
-        <label>src/wxGUI/Routing/RouteIcons.cpp</label>
-        <link refid="d1/d28/RouteIcons_8cpp"/>
-      </node>
-      <node id="26446">
-        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp</label>
-        <link refid="d8/da8/InputGuidoFileDeviceShape_8cpp"/>
-      </node>
-      <node id="26445">
-        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.h</label>
-        <link refid="d9/d0d/InputGuidoFileDeviceShape_8h"/>
-        <childnode refid="26413" relation="include">
-        </childnode>
-        <childnode refid="26446" relation="include">
-        </childnode>
-      </node>
-      <node id="26432">
-        <label>src/wxGUI/MutView.h</label>
-        <link refid="d0/d9e/MutView_8h"/>
-        <childnode refid="26424" relation="include">
-        </childnode>
-        <childnode refid="26433" relation="include">
-        </childnode>
-        <childnode refid="26427" relation="include">
-        </childnode>
-        <childnode refid="26428" relation="include">
-        </childnode>
-        <childnode refid="26429" relation="include">
-        </childnode>
-        <childnode refid="26430" relation="include">
-        </childnode>
-      </node>
-      <node id="26455">
-        <label>src/kernel/routing/tests/BoxTest.cpp</label>
-        <link refid="db/d0a/BoxTest_8cpp"/>
-      </node>
-      <node id="26426">
-        <label>src/wxGUI/MutBitmaps.cpp</label>
-        <link refid="d7/db6/MutBitmaps_8cpp"/>
-      </node>
-      <node id="26413">
-        <label>src/wxGUI/Routing/GUIRoute.cpp</label>
-        <link refid="d4/dee/GUIRoute_8cpp"/>
-      </node>
-      <node id="26391">
-        <label>src/wxGUI/GUIBoxData.h</label>
-        <link refid="d5/df7/GUIBoxData_8h"/>
-        <childnode refid="26392" relation="include">
-        </childnode>
-        <childnode refid="26450" relation="include">
-        </childnode>
-        <childnode refid="26451" relation="include">
-        </childnode>
-        <childnode refid="26423" relation="include">
-        </childnode>
-        <childnode refid="26454" relation="include">
-        </childnode>
-        <childnode refid="26429" relation="include">
-        </childnode>
-        <childnode refid="26436" relation="include">
-        </childnode>
-        <childnode refid="26411" relation="include">
-        </childnode>
-      </node>
-      <node id="26437">
-        <label>src/wxGUI/Routing/tests/GUIRouteTest.cpp</label>
-        <link refid="d9/d20/GUIRouteTest_8cpp"/>
-      </node>
-      <node id="26401">
-        <label>src/kernel/routing/tests/timer1.cpp</label>
-        <link refid="d9/d9a/timer1_8cpp"/>
-      </node>
-      <node id="26448">
-        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.h</label>
-        <link refid="d1/da8/InputMidiFileDeviceShape_8h"/>
-        <childnode refid="26413" relation="include">
-        </childnode>
-        <childnode refid="26449" relation="include">
-        </childnode>
-      </node>
-      <node id="26407">
-        <label>src/wxGUI/Routing/GUIRoute-inlines.h</label>
-        <link refid="d2/d73/GUIRoute-inlines_8h"/>
-        <childnode refid="26394" relation="include">
-        </childnode>
-        <childnode refid="26408" relation="include">
-        </childnode>
-        <childnode refid="26409" relation="include">
-        </childnode>
-        <childnode refid="26410" relation="include">
-        </childnode>
-        <childnode refid="26411" relation="include">
-        </childnode>
-        <childnode refid="26412" relation="include">
-        </childnode>
-        <childnode refid="26413" relation="include">
-        </childnode>
-        <childnode refid="26414" relation="include">
-        </childnode>
-        <childnode refid="26415" relation="include">
-        </childnode>
-        <childnode refid="26416" relation="include">
-        </childnode>
-        <childnode refid="26417" relation="include">
-        </childnode>
-        <childnode refid="26418" relation="include">
-        </childnode>
-        <childnode refid="26419" relation="include">
-        </childnode>
-      </node>
-      <node id="26420">
-        <label>src/wxGUI/MutFrame.h</label>
-        <link refid="dd/db5/MutFrame_8h"/>
-        <childnode refid="26421" relation="include">
-        </childnode>
-        <childnode refid="26423" relation="include">
-        </childnode>
-        <childnode refid="26424" relation="include">
-        </childnode>
-        <childnode refid="26432" relation="include">
-        </childnode>
-        <childnode refid="26425" relation="include">
-        </childnode>
-        <childnode refid="26434" relation="include">
-        </childnode>
-        <childnode refid="26428" relation="include">
-        </childnode>
-        <childnode refid="26429" relation="include">
-        </childnode>
-        <childnode refid="26435" relation="include">
-        </childnode>
-        <childnode refid="26408" relation="include">
-        </childnode>
-        <childnode refid="26436" relation="include">
-        </childnode>
-        <childnode refid="26430" relation="include">
-        </childnode>
-        <childnode refid="26412" relation="include">
-        </childnode>
-        <childnode refid="26413" relation="include">
-        </childnode>
-      </node>
-      <node id="26422">
-        <label>src/wxGUI/generic/mutDebug.cpp</label>
-        <link refid="d4/dc0/mutDebug_8cpp"/>
-      </node>
-      <node id="26451">
-        <label>src/wxGUI/GUIBoxData-inlines.h</label>
-        <link refid="d5/d12/GUIBoxData-inlines_8h"/>
-        <childnode refid="26394" relation="include">
-        </childnode>
-        <childnode refid="26423" relation="include">
-        </childnode>
-        <childnode refid="26408" relation="include">
-        </childnode>
-        <childnode refid="26409" relation="include">
-        </childnode>
-        <childnode refid="26411" relation="include">
-        </childnode>
-        <childnode refid="26413" relation="include">
-        </childnode>
-      </node>
-      <node id="26419">
-        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp</label>
-        <link refid="d5/d00/OutputMidiFileDeviceShape_8cpp"/>
-      </node>
-      <node id="26444">
-        <label>src/wxGUI/Routing/InputMidiDeviceShape.h</label>
-        <link refid="d3/d5e/InputMidiDeviceShape_8h"/>
-        <childnode refid="26413" relation="include">
-        </childnode>
-        <childnode refid="26445" relation="include">
-        </childnode>
-        <childnode refid="26447" relation="include">
-        </childnode>
-      </node>
-      <node id="26423">
-        <label>src/wxGUI/GUIBoxData.cpp</label>
-        <link refid="d2/dd3/GUIBoxData_8cpp"/>
-      </node>
-      <node id="26450">
-        <label>src/wxGUI/Routing/BoxShape.h</label>
-        <link refid="d9/d49/BoxShape_8h"/>
-        <childnode refid="26406" relation="include">
-        </childnode>
-        <childnode refid="26394" relation="include">
-        </childnode>
-        <childnode refid="26407" relation="include">
-        </childnode>
-        <childnode refid="26451" relation="include">
-        </childnode>
-        <childnode refid="26452" relation="include">
-        </childnode>
-        <childnode refid="26436" relation="include">
-        </childnode>
-        <childnode refid="26409" relation="include">
-        </childnode>
-        <childnode refid="26410" relation="include">
-        </childnode>
-        <childnode refid="26411" relation="include">
-        </childnode>
-        <childnode refid="26413" relation="include">
-        </childnode>
-        <childnode refid="26414" relation="include">
-        </childnode>
-        <childnode refid="26415" relation="include">
-        </childnode>
-        <childnode refid="26431" relation="include">
-        </childnode>
-      </node>
-      <node id="26453">
-        <label>src/wxGUI/Routing/BoxChannelShape.h</label>
-        <link refid="d6/d68/BoxChannelShape_8h"/>
-        <childnode refid="26450" relation="include">
-        </childnode>
-        <childnode refid="26394" relation="include">
-        </childnode>
-        <childnode refid="26409" relation="include">
-        </childnode>
-        <childnode refid="26411" relation="include">
-        </childnode>
-        <childnode refid="26412" relation="include">
-        </childnode>
-        <childnode refid="26413" relation="include">
-        </childnode>
-        <childnode refid="26414" relation="include">
-        </childnode>
-        <childnode refid="26415" relation="include">
-        </childnode>
-      </node>
-      <node id="26411">
-        <label>src/wxGUI/Routing/BoxShape.cpp</label>
-        <link refid="d8/db4/BoxShape_8cpp"/>
-      </node>
-      <node id="26396">
+      <node id="25325">
         <label>src/kernel/routing/gmn/tests/playgmn1.cpp</label>
         <link refid="d3/d06/playgmn1_8cpp"/>
       </node>
-      <node id="26397">
-        <label>src/kernel/routing/midi/tests/main.cpp</label>
-        <link refid="df/d72/kernel_2routing_2midi_2tests_2main_8cpp"/>
+      <node id="25323">
+        <label>src/wxGUI/Routing/BoxShape.cpp</label>
+        <link refid="d8/db4/BoxShape_8cpp"/>
       </node>
-      <node id="26415">
+      <node id="25347">
+        <label>src/wxGUI/MutBitmaps.cpp</label>
+        <link refid="d7/db6/MutBitmaps_8cpp"/>
+      </node>
+      <node id="25316">
+        <label>src/wxGUI/generic/muconvauto.h</label>
+        <link refid="muconvauto.h"/>
+        <childnode refid="25317" relation="include">
+        </childnode>
+        <childnode refid="25342" relation="include">
+        </childnode>
+      </node>
+      <node id="25365">
+        <label>src/wxGUI/Routing/NewBoxShape.h</label>
+        <link refid="d4/dcc/NewBoxShape_8h"/>
+        <childnode refid="25321" relation="include">
+        </childnode>
+        <childnode refid="25335" relation="include">
+        </childnode>
+        <childnode refid="25358" relation="include">
+        </childnode>
+      </node>
+      <node id="25366">
+        <label>src/wxGUI/Routing/GUIRoute.h</label>
+        <link refid="d6/dfa/GUIRoute_8h"/>
+        <childnode refid="25344" relation="include">
+        </childnode>
+        <childnode refid="25367" relation="include">
+        </childnode>
+        <childnode refid="25341" relation="include">
+        </childnode>
+        <childnode refid="25355" relation="include">
+        </childnode>
+        <childnode refid="25368" relation="include">
+        </childnode>
+        <childnode refid="25357" relation="include">
+        </childnode>
+        <childnode refid="25335" relation="include">
+        </childnode>
+        <childnode refid="25370" relation="include">
+        </childnode>
+        <childnode refid="25333" relation="include">
+        </childnode>
+        <childnode refid="25334" relation="include">
+        </childnode>
+      </node>
+      <node id="25332">
+        <label>src/tests/wxlinktest2.cpp</label>
+        <link refid="df/d13/wxlinktest2_8cpp"/>
+      </node>
+      <node id="25335">
+        <label>src/wxGUI/Routing/GUIRoute.cpp</label>
+        <link refid="d4/dee/GUIRoute_8cpp"/>
+      </node>
+      <node id="25371">
+        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.h</label>
+        <link refid="d9/d0d/InputGuidoFileDeviceShape_8h"/>
+        <childnode refid="25372" relation="include">
+        </childnode>
+      </node>
+      <node id="25322">
+        <label>src/wxGUI/Routing/BoxChannelShape.cpp</label>
+        <link refid="d9/d24/BoxChannelShape_8cpp"/>
+      </node>
+      <node id="25331">
+        <label>src/kernel/tests/main.cpp</label>
+        <link refid="d5/dd0/kernel_2tests_2main_8cpp"/>
+      </node>
+      <node id="25362">
+        <label>src/wxGUI/Routing/OutputMidiDeviceShape.cpp</label>
+        <link refid="d6/d68/OutputMidiDeviceShape_8cpp"/>
+      </node>
+      <node id="25319">
+        <label>src/wxGUI/GUIBoxData-inlines.h</label>
+        <link refid="d5/d12/GUIBoxData-inlines_8h"/>
+        <childnode refid="25320" relation="include">
+        </childnode>
+        <childnode refid="25321" relation="include">
+        </childnode>
+        <childnode refid="25322" relation="include">
+        </childnode>
+        <childnode refid="25323" relation="include">
+        </childnode>
+        <childnode refid="25324" relation="include">
+        </childnode>
+        <childnode refid="25335" relation="include">
+        </childnode>
+      </node>
+      <node id="25368">
+        <label>src/wxGUI/Routing/DeviceShape.h</label>
+        <link refid="d9/d4d/DeviceShape_8h"/>
+        <childnode refid="25342" relation="include">
+        </childnode>
+        <childnode refid="25322" relation="include">
+        </childnode>
+        <childnode refid="25356" relation="include">
+        </childnode>
+        <childnode refid="25369" relation="include">
+        </childnode>
+        <childnode refid="25323" relation="include">
+        </childnode>
+        <childnode refid="25324" relation="include">
+        </childnode>
+        <childnode refid="25355" relation="include">
+        </childnode>
+        <childnode refid="25357" relation="include">
+        </childnode>
+        <childnode refid="25335" relation="include">
+        </childnode>
+        <childnode refid="25370" relation="include">
+        </childnode>
+        <childnode refid="25374" relation="include">
+        </childnode>
+        <childnode refid="25376" relation="include">
+        </childnode>
+        <childnode refid="25377" relation="include">
+        </childnode>
+        <childnode refid="25378" relation="include">
+        </childnode>
+        <childnode refid="25379" relation="include">
+        </childnode>
+        <childnode refid="25380" relation="include">
+        </childnode>
+      </node>
+      <node id="25321">
+        <label>src/wxGUI/MutRouteWnd.cpp</label>
+        <link refid="dc/def/MutRouteWnd_8cpp"/>
+      </node>
+      <node id="25346">
+        <label>src/wxGUI/interface_deps_wxWidgets.cpp</label>
+        <link refid="df/dff/interface__deps__wxWidgets_8cpp"/>
+      </node>
+      <node id="25363">
+        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp</label>
+        <link refid="d5/d00/OutputMidiFileDeviceShape_8cpp"/>
+      </node>
+      <node id="25338">
+        <label>src/wxGUI/MutChild.cpp</label>
+        <link refid="da/d72/MutChild_8cpp"/>
+      </node>
+      <node id="25345">
+        <label>src/wxGUI/MutApp.h</label>
+        <link refid="db/dc1/MutApp_8h"/>
+        <childnode refid="25320" relation="include">
+        </childnode>
+        <childnode refid="25346" relation="include">
+        </childnode>
+        <childnode refid="25344" relation="include">
+        </childnode>
+        <childnode refid="25347" relation="include">
+        </childnode>
+        <childnode refid="25348" relation="include">
+        </childnode>
+        <childnode refid="25349" relation="include">
+        </childnode>
+        <childnode refid="25350" relation="include">
+        </childnode>
+        <childnode refid="25336" relation="include">
+        </childnode>
+        <childnode refid="25321" relation="include">
+        </childnode>
+        <childnode refid="25351" relation="include">
+        </childnode>
+        <childnode refid="25335" relation="include">
+        </childnode>
+        <childnode refid="25352" relation="include">
+        </childnode>
+      </node>
+      <node id="25329">
+        <label>src/kernel/routing/tests/main.cpp</label>
+        <link refid="d1/de6/kernel_2routing_2tests_2main_8cpp"/>
+      </node>
+      <node id="25334">
+        <label>src/wxGUI/tests/main.cpp</label>
+        <link refid="d9/d27/wxGUI_2tests_2main_8cpp"/>
+      </node>
+      <node id="25377">
+        <label>src/wxGUI/Routing/NewOutputDeviceShape.h</label>
+        <link refid="df/d7b/NewOutputDeviceShape_8h"/>
+        <childnode refid="25360" relation="include">
+        </childnode>
+      </node>
+      <node id="25327">
+        <label>src/kernel/routing/midi/tests/midiopenfail1.cpp</label>
+        <link refid="da/ddb/midiopenfail1_8cpp"/>
+      </node>
+      <node id="25317">
+        <label>src/wxGUI/MutEditFile.h</label>
+        <link refid="d5/dfb/MutEditFile_8h"/>
+        <childnode refid="25318" relation="include">
+        </childnode>
+        <childnode refid="25338" relation="include">
+        </childnode>
+        <childnode refid="25350" relation="include">
+        </childnode>
+        <childnode refid="25343" relation="include">
+        </childnode>
+      </node>
+      <node id="25376">
+        <label>src/wxGUI/Routing/NewInputDeviceShape.h</label>
+        <link refid="d5/dba/NewInputDeviceShape_8h"/>
+        <childnode refid="25359" relation="include">
+        </childnode>
+      </node>
+      <node id="25320">
+        <label>src/wxGUI/GUIBoxData.cpp</label>
+        <link refid="d2/dd3/GUIBoxData_8cpp"/>
+      </node>
+      <node id="25344">
+        <label>src/wxGUI/MutApp.cpp</label>
+        <link refid="d5/d1c/MutApp_8cpp"/>
+      </node>
+      <node id="25372">
+        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp</label>
+        <link refid="d8/da8/InputGuidoFileDeviceShape_8cpp"/>
+      </node>
+      <node id="25356">
+        <label>src/wxGUI/Routing/BoxDlg.cpp</label>
+        <link refid="d3/d2a/BoxDlg_8cpp"/>
+      </node>
+      <node id="25375">
+        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.cpp</label>
+        <link refid="d3/de3/InputMidiFileDeviceShape_8cpp"/>
+      </node>
+      <node id="25367">
+        <label>src/wxGUI/Routing/BoxChannelShape.h</label>
+        <link refid="d6/d68/BoxChannelShape_8h"/>
+        <childnode refid="25322" relation="include">
+        </childnode>
+        <childnode refid="25323" relation="include">
+        </childnode>
+        <childnode refid="25341" relation="include">
+        </childnode>
+        <childnode refid="25324" relation="include">
+        </childnode>
+        <childnode refid="25355" relation="include">
+        </childnode>
+        <childnode refid="25335" relation="include">
+        </childnode>
+        <childnode refid="25358" relation="include">
+        </childnode>
+        <childnode refid="25359" relation="include">
+        </childnode>
+      </node>
+      <node id="25340">
+        <label>src/wxGUI/MutTextBox.cpp</label>
+        <link refid="df/d3c/MutTextBox_8cpp"/>
+      </node>
+      <node id="25358">
+        <label>src/wxGUI/Routing/NewBoxShape.cpp</label>
+        <link refid="d8/dba/NewBoxShape_8cpp"/>
+      </node>
+      <node id="25337">
+        <label>src/wxGUI/MutLogicWnd.h</label>
+        <link refid="d6/d81/MutLogicWnd_8h"/>
+        <childnode refid="25338" relation="include">
+        </childnode>
+        <childnode refid="25336" relation="include">
+        </childnode>
+        <childnode refid="25339" relation="include">
+        </childnode>
+      </node>
+      <node id="25359">
         <label>src/wxGUI/Routing/NewInputDeviceShape.cpp</label>
         <link refid="df/d62/NewInputDeviceShape_8cpp"/>
       </node>
+      <node id="25326">
+        <label>src/kernel/routing/midi/tests/main.cpp</label>
+        <link refid="df/d72/kernel_2routing_2midi_2tests_2main_8cpp"/>
+      </node>
+      <node id="25369">
+        <label>src/wxGUI/Routing/BoxDlg.h</label>
+        <link refid="d9/dd2/BoxDlg_8h"/>
+        <childnode refid="25322" relation="include">
+        </childnode>
+        <childnode refid="25356" relation="include">
+        </childnode>
+        <childnode refid="25323" relation="include">
+        </childnode>
+        <childnode refid="25355" relation="include">
+        </childnode>
+        <childnode refid="25358" relation="include">
+        </childnode>
+      </node>
+      <node id="25348">
+        <label>src/wxGUI/MutConfDlg.h</label>
+        <link refid="d9/d8f/MutConfDlg_8h"/>
+      </node>
+      <node id="25343">
+        <label>src/wxGUI/MutFrame.h</label>
+        <link refid="dd/db5/MutFrame_8h"/>
+        <childnode refid="25320" relation="include">
+        </childnode>
+        <childnode refid="25344" relation="include">
+        </childnode>
+        <childnode refid="25345" relation="include">
+        </childnode>
+        <childnode refid="25338" relation="include">
+        </childnode>
+        <childnode refid="25348" relation="include">
+        </childnode>
+        <childnode refid="25350" relation="include">
+        </childnode>
+        <childnode refid="25336" relation="include">
+        </childnode>
+        <childnode refid="25339" relation="include">
+        </childnode>
+        <childnode refid="25321" relation="include">
+        </childnode>
+        <childnode refid="25340" relation="include">
+        </childnode>
+        <childnode refid="25351" relation="include">
+        </childnode>
+        <childnode refid="25353" relation="include">
+        </childnode>
+        <childnode refid="25355" relation="include">
+        </childnode>
+        <childnode refid="25335" relation="include">
+        </childnode>
+      </node>
+      <node id="25357">
+        <label>src/wxGUI/Routing/GUIRoute-inlines.h</label>
+        <link refid="d2/d73/GUIRoute-inlines_8h"/>
+        <childnode refid="25321" relation="include">
+        </childnode>
+        <childnode refid="25322" relation="include">
+        </childnode>
+        <childnode refid="25356" relation="include">
+        </childnode>
+        <childnode refid="25323" relation="include">
+        </childnode>
+        <childnode refid="25324" relation="include">
+        </childnode>
+        <childnode refid="25355" relation="include">
+        </childnode>
+        <childnode refid="25335" relation="include">
+        </childnode>
+        <childnode refid="25358" relation="include">
+        </childnode>
+        <childnode refid="25359" relation="include">
+        </childnode>
+        <childnode refid="25360" relation="include">
+        </childnode>
+        <childnode refid="25361" relation="include">
+        </childnode>
+        <childnode refid="25362" relation="include">
+        </childnode>
+        <childnode refid="25363" relation="include">
+        </childnode>
+      </node>
+      <node id="25336">
+        <label>src/wxGUI/MutFrame.cpp</label>
+        <link refid="dc/df3/MutFrame_8cpp"/>
+      </node>
+      <node id="25352">
+        <label>src/wxGUI/Routing/RouteIcons.cpp</label>
+        <link refid="d1/d28/RouteIcons_8cpp"/>
+      </node>
+      <node id="25351">
+        <label>src/wxGUI/MutView.cpp</label>
+        <link refid="d8/d33/MutView_8cpp"/>
+      </node>
+      <node id="25341">
+        <label>src/wxGUI/Routing/BoxShape.h</label>
+        <link refid="d9/d49/BoxShape_8h"/>
+        <childnode refid="25319" relation="include">
+        </childnode>
+        <childnode refid="25342" relation="include">
+        </childnode>
+        <childnode refid="25340" relation="include">
+        </childnode>
+        <childnode refid="25322" relation="include">
+        </childnode>
+        <childnode refid="25356" relation="include">
+        </childnode>
+        <childnode refid="25323" relation="include">
+        </childnode>
+        <childnode refid="25324" relation="include">
+        </childnode>
+        <childnode refid="25357" relation="include">
+        </childnode>
+        <childnode refid="25335" relation="include">
+        </childnode>
+        <childnode refid="25358" relation="include">
+        </childnode>
+        <childnode refid="25365" relation="include">
+        </childnode>
+        <childnode refid="25359" relation="include">
+        </childnode>
+        <childnode refid="25352" relation="include">
+        </childnode>
+      </node>
+      <node id="25374">
+        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.h</label>
+        <link refid="d1/da8/InputMidiFileDeviceShape_8h"/>
+        <childnode refid="25375" relation="include">
+        </childnode>
+      </node>
+      <node id="25370">
+        <label>src/wxGUI/Routing/InputMidiDeviceShape.h</label>
+        <link refid="d3/d5e/InputMidiDeviceShape_8h"/>
+        <childnode refid="25371" relation="include">
+        </childnode>
+        <childnode refid="25373" relation="include">
+        </childnode>
+      </node>
+      <node id="25339">
+        <label>src/wxGUI/MutLogicWnd.cpp</label>
+        <link refid="df/d11/MutLogicWnd_8cpp"/>
+      </node>
+      <node id="25373">
+        <label>src/wxGUI/Routing/InputMidiDeviceShape.cpp</label>
+        <link refid="d1/d14/InputMidiDeviceShape_8cpp"/>
+      </node>
+      <node id="25380">
+        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.h</label>
+        <link refid="d4/de8/OutputMidiFileDeviceShape_8h"/>
+        <childnode refid="25363" relation="include">
+        </childnode>
+      </node>
+      <node id="25354">
+        <label>src/wxGUI/MutDocManager.cpp</label>
+        <link refid="dd/db0/MutDocManager_8cpp"/>
+      </node>
+      <node id="25355">
+        <label>src/wxGUI/Routing/DeviceShape.cpp</label>
+        <link refid="d9/d94/DeviceShape_8cpp"/>
+      </node>
+      <node id="25364">
+        <label>src/wxGUI/Routing/tests/GUIRouteTest.cpp</label>
+        <link refid="d9/d20/GUIRouteTest_8cpp"/>
+      </node>
+      <node id="25324">
+        <label>src/wxGUI/Routing/DebugRoute.cpp</label>
+        <link refid="d9/d27/DebugRoute_8cpp"/>
+        <childnode refid="25325" relation="include">
+        </childnode>
+        <childnode refid="25326" relation="include">
+        </childnode>
+        <childnode refid="25327" relation="include">
+        </childnode>
+        <childnode refid="25328" relation="include">
+        </childnode>
+        <childnode refid="25329" relation="include">
+        </childnode>
+        <childnode refid="25330" relation="include">
+        </childnode>
+        <childnode refid="25331" relation="include">
+        </childnode>
+        <childnode refid="25332" relation="include">
+        </childnode>
+        <childnode refid="25333" relation="include">
+        </childnode>
+        <childnode refid="25334" relation="include">
+        </childnode>
+      </node>
+      <node id="25318">
+        <label>src/wxGUI/GUIBoxData.h</label>
+        <link refid="d5/df7/GUIBoxData_8h"/>
+        <childnode refid="25319" relation="include">
+        </childnode>
+        <childnode refid="25320" relation="include">
+        </childnode>
+        <childnode refid="25336" relation="include">
+        </childnode>
+        <childnode refid="25337" relation="include">
+        </childnode>
+        <childnode refid="25340" relation="include">
+        </childnode>
+        <childnode refid="25323" relation="include">
+        </childnode>
+        <childnode refid="25341" relation="include">
+        </childnode>
+        <childnode refid="25366" relation="include">
+        </childnode>
+      </node>
+      <node id="25360">
+        <label>src/wxGUI/Routing/NewOutputDeviceShape.cpp</label>
+        <link refid="d1/d73/NewOutputDeviceShape_8cpp"/>
+      </node>
+      <node id="25350">
+        <label>src/wxGUI/MutEditFile.cpp</label>
+        <link refid="d1/da4/MutEditFile_8cpp"/>
+      </node>
+      <node id="25361">
+        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp</label>
+        <link refid="d3/d21/OutputGuidoFileDeviceShape_8cpp"/>
+      </node>
+      <node id="25330">
+        <label>src/kernel/routing/tests/timer1.cpp</label>
+        <link refid="d9/d9a/timer1_8cpp"/>
+      </node>
+      <node id="25328">
+        <label>src/kernel/routing/midi/tests/playmidi1.cpp</label>
+        <link refid="d9/dfe/playmidi1_8cpp"/>
+      </node>
+      <node id="25353">
+        <label>src/wxGUI/MutView.h</label>
+        <link refid="d0/d9e/MutView_8h"/>
+        <childnode refid="25354" relation="include">
+        </childnode>
+        <childnode refid="25349" relation="include">
+        </childnode>
+        <childnode refid="25350" relation="include">
+        </childnode>
+        <childnode refid="25336" relation="include">
+        </childnode>
+        <childnode refid="25351" relation="include">
+        </childnode>
+      </node>
+      <node id="25349">
+        <label>src/wxGUI/MutDocument.cpp</label>
+        <link refid="d6/d3b/MutDocument_8cpp"/>
+      </node>
+      <node id="25342">
+        <label>src/wxGUI/MutRouteWnd.h</label>
+        <link refid="d3/dd7/MutRouteWnd_8h"/>
+        <childnode refid="25336" relation="include">
+        </childnode>
+        <childnode refid="25343" relation="include">
+        </childnode>
+        <childnode refid="25339" relation="include">
+        </childnode>
+        <childnode refid="25321" relation="include">
+        </childnode>
+        <childnode refid="25322" relation="include">
+        </childnode>
+        <childnode refid="25356" relation="include">
+        </childnode>
+        <childnode refid="25323" relation="include">
+        </childnode>
+        <childnode refid="25324" relation="include">
+        </childnode>
+        <childnode refid="25357" relation="include">
+        </childnode>
+        <childnode refid="25335" relation="include">
+        </childnode>
+        <childnode refid="25358" relation="include">
+        </childnode>
+        <childnode refid="25359" relation="include">
+        </childnode>
+        <childnode refid="25360" relation="include">
+        </childnode>
+        <childnode refid="25364" relation="include">
+        </childnode>
+      </node>
+      <node id="25379">
+        <label>src/wxGUI/Routing/OutputMidiDeviceShape.h</label>
+        <link refid="d8/dcb/OutputMidiDeviceShape_8h"/>
+        <childnode refid="25335" relation="include">
+        </childnode>
+        <childnode refid="25362" relation="include">
+        </childnode>
+      </node>
+      <node id="25378">
+        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.h</label>
+        <link refid="db/d77/OutputGuidoFileDeviceShape_8h"/>
+        <childnode refid="25361" relation="include">
+        </childnode>
+      </node>
     </invincdepgraph>
-      <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="df/dd1/group__GUI_1ga2f9056ab092c15f0a40251ebd9ea1f67" prot="public" static="no">
-        <type>wxMBConv</type>
-        <definition>typedef wxMBConv muConvAuto</definition>
-        <argsstring></argsstring>
-        <name>muConvAuto</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.h" line="183" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.h" bodystart="183" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="df/dd1/group__GUI_1gad050a8f1bc1f4750890cbb62991a213a" prot="public" static="no" mutable="no">
-        <type>wxMBConv *</type>
-        <definition>wxMBConv* muConvAutoFallback</definition>
-        <argsstring></argsstring>
-        <name>muConvAutoFallback</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.h" line="46" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.cpp" bodystart="245" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Automatic Character set detection and conversion. </para>    </briefdescription>
     <detaileddescription>
@@ -681,157 +596,159 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_MYWX_CONVAUTO_H_</highlight></codeline>
 <codeline lineno="41"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_MYWX_CONVAUTO_H_</highlight></codeline>
 <codeline lineno="42"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/convauto.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/strconv.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>wxMBConv<sp/>*<sp/><ref refid="df/dd1/group__GUI_1gad050a8f1bc1f4750890cbb62991a213a" kindref="member">muConvAutoFallback</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/convauto.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/strconv.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>wxUSE_WCHAR_T</highlight></codeline>
-<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>wxConvAuto:<sp/>uses<sp/>BOM<sp/>to<sp/>automatically<sp/>detect<sp/>input<sp/>encoding</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>wxMBConv<sp/>*<sp/>muConvAutoFallback;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>wxUSE_WCHAR_T</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="df/dd1/group__GUI_1ga2f9056ab092c15f0a40251ebd9ea1f67" kindref="member">muConvAuto</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>wxMBConv</highlight></codeline>
-<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>default<sp/>ctor,<sp/>the<sp/>real<sp/>conversion<sp/>will<sp/>be<sp/>created<sp/>on<sp/>demand</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga2f9056ab092c15f0a40251ebd9ea1f67" kindref="member">muConvAuto</ref>()<sp/>:<sp/>wxMBConv(),</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_conv(NULL),</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_ownsConv(false),</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_fallback(<ref refid="df/dd1/group__GUI_1gad050a8f1bc1f4750890cbb62991a213a" kindref="member">muConvAutoFallback</ref>),</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_ownsFallback(false),</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_bomType(BOM_None),</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_consumedBOM(false)</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_conv<sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_fallback<sp/>=<sp/><ref refid="df/dd1/group__GUI_1gad050a8f1bc1f4750890cbb62991a213a" kindref="member">muConvAutoFallback</ref>;</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_ownsFallback<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>the<sp/>rest<sp/>will<sp/>be<sp/>initialized<sp/>later<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>copy<sp/>ctor<sp/>doesn&apos;t<sp/>initialize<sp/>anything<sp/>neither<sp/>as<sp/>conversion<sp/>can<sp/>only<sp/>be</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>deduced<sp/>on<sp/>first<sp/>use</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga2f9056ab092c15f0a40251ebd9ea1f67" kindref="member">muConvAuto</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga2f9056ab092c15f0a40251ebd9ea1f67" kindref="member">muConvAuto</ref>&amp;<sp/>other)<sp/>:<sp/>wxMBConv(),</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_conv(NULL),</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_ownsConv(false),</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_fallback(other.m_fallback-&gt;Clone()),</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_ownsFallback(true),</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_bomType(BOM_None),</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_consumedBOM(false)</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~<ref refid="df/dd1/group__GUI_1ga2f9056ab092c15f0a40251ebd9ea1f67" kindref="member">muConvAuto</ref>()</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>wxConvAuto:<sp/>uses<sp/>BOM<sp/>to<sp/>automatically<sp/>detect<sp/>input<sp/>encoding</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">muConvAuto<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>wxMBConv</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>default<sp/>ctor,<sp/>the<sp/>real<sp/>conversion<sp/>will<sp/>be<sp/>created<sp/>on<sp/>demand</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>muConvAuto()<sp/>:<sp/>wxMBConv(),</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_conv(NULL),</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_ownsConv(false),</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_fallback(muConvAutoFallback),</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_ownsFallback(false),</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_bomType(BOM_None),</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_consumedBOM(false)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_conv<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_fallback<sp/>=<sp/>muConvAutoFallback;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_ownsFallback<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>the<sp/>rest<sp/>will<sp/>be<sp/>initialized<sp/>later<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>copy<sp/>ctor<sp/>doesn&apos;t<sp/>initialize<sp/>anything<sp/>neither<sp/>as<sp/>conversion<sp/>can<sp/>only<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>deduced<sp/>on<sp/>first<sp/>use</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>muConvAuto(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>muConvAuto&amp;<sp/>other)<sp/>:<sp/>wxMBConv(),</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_conv(NULL),</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_ownsConv(false),</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_fallback(other.m_fallback-&gt;Clone()),</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_ownsFallback(true),</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_bomType(BOM_None),</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_consumedBOM(false)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>m_conv<sp/>&amp;&amp;<sp/>m_ownsConv<sp/>)<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>m_conv;</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>m_fallback<sp/>&amp;&amp;<sp/>m_ownsFallback<sp/>)<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>m_fallback;</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>override<sp/>the<sp/>base<sp/>class<sp/>virtual<sp/>function(s)<sp/>to<sp/>use<sp/>our<sp/>m_conv</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>ToWChar(</highlight><highlight class="keywordtype">wchar_t</highlight><highlight class="normal"><sp/>*dst,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>dstLen,</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*src,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>srcLen<sp/>=<sp/>wxNO_LEN)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>FromWChar(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*dst,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>dstLen,</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">wchar_t</highlight><highlight class="normal"><sp/>*src,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>srcLen<sp/>=<sp/>wxNO_LEN)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>GetMBNulLen()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="104"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_conv-&gt;GetMBNulLen();</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>wxMBConv<sp/>*Clone()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="110"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="df/dd1/group__GUI_1ga2f9056ab092c15f0a40251ebd9ea1f67" kindref="member">muConvAuto</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~muConvAuto()</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>m_conv<sp/>&amp;&amp;<sp/>m_ownsConv<sp/>)<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>m_conv;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>m_fallback<sp/>&amp;&amp;<sp/>m_ownsFallback<sp/>)<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>m_fallback;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>override<sp/>the<sp/>base<sp/>class<sp/>virtual<sp/>function(s)<sp/>to<sp/>use<sp/>our<sp/>m_conv</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>ToWChar(</highlight><highlight class="keywordtype">wchar_t</highlight><highlight class="normal"><sp/>*dst,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>dstLen,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*src,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>srcLen<sp/>=<sp/>wxNO_LEN)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>FromWChar(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*dst,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>dstLen,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">wchar_t</highlight><highlight class="normal"><sp/>*src,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>srcLen<sp/>=<sp/>wxNO_LEN)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>GetMBNulLen()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="106"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_conv-&gt;GetMBNulLen();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>wxMBConv<sp/>*Clone()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="112"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>muConvAuto(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>all<sp/>currently<sp/>recognized<sp/>BOM<sp/>values</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>BOMType</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOM_None,</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOM_UTF32BE,</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOM_UTF32LE,</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOM_UTF16BE,</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOM_UTF16LE,</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOM_UTF8</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>the<sp/>BOM<sp/>type<sp/>of<sp/>this<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>all<sp/>currently<sp/>recognized<sp/>BOM<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>BOMType</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOM_None,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOM_UTF32BE,</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOM_UTF32LE,</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOM_UTF16BE,</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOM_UTF16LE,</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOM_UTF8</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>BOMType<sp/>DetectBOM(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*src,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>srcLen);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>the<sp/>BOM<sp/>type<sp/>of<sp/>this<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="131"><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>m_conv<sp/>with<sp/>the<sp/>conversion<sp/>to<sp/>use<sp/>by<sp/>default<sp/>(UTF-8)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>InitWithDefault()</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_conv<sp/>=<sp/>&amp;wxConvUTF8;</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_ownsConv<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>the<sp/>correct<sp/>conversion<sp/>object<sp/>for<sp/>the<sp/>given<sp/>BOM<sp/>type</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>InitFromBOM(BOMType<sp/>bomType);</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>the<sp/>correct<sp/>conversion<sp/>object<sp/>for<sp/>the<sp/>BOM<sp/>present<sp/>in<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>beginning<sp/>of<sp/>the<sp/>buffer;<sp/>adjust<sp/>the<sp/>buffer<sp/>to<sp/>skip<sp/>the<sp/>BOM<sp/>if<sp/>found</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>InitFromInput(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**src,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*len);</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"></highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>adjust<sp/>src<sp/>and<sp/>len<sp/>to<sp/>skip<sp/>over<sp/>the<sp/>BOM<sp/>(identified<sp/>by<sp/>m_bomType)<sp/>at<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>start<sp/>of<sp/>the<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SkipBOM(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**src,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*len)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"></highlight></codeline>
-<codeline lineno="151"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>conversion<sp/>object<sp/>which<sp/>we<sp/>really<sp/>use,<sp/>NULL<sp/>until<sp/>the<sp/>first<sp/>call<sp/>to</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>either<sp/>ToWChar()<sp/>or<sp/>FromWChar()</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxMBConv<sp/>*m_conv;</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>true<sp/>if<sp/>we<sp/>allocated<sp/>m_conv<sp/>ourselves,<sp/>false<sp/>if<sp/>we<sp/>just<sp/>use<sp/>an<sp/>existing</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>global<sp/>conversion</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>m_ownsConv;</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fallback<sp/>conversion<sp/>object</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxMBConv<sp/>*m_fallback;</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>true<sp/>if<sp/>we<sp/>allocated<sp/>m_conv<sp/>ourselves,<sp/>false<sp/>if<sp/>we<sp/>just<sp/>use<sp/>an<sp/>existing</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>global<sp/>conversion</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>m_ownsFallback;</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>our<sp/>BOM<sp/>type</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOMType<sp/>m_bomType;</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>true<sp/>if<sp/>we<sp/>already<sp/>skipped<sp/>BOM<sp/>when<sp/>converting<sp/>(and<sp/>not<sp/>just<sp/>calculating</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>size)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>m_consumedBOM;</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DECLARE_NO_ASSIGN_CLASS(<ref refid="df/dd1/group__GUI_1ga2f9056ab092c15f0a40251ebd9ea1f67" kindref="member">muConvAuto</ref>)</highlight></codeline>
-<codeline lineno="176"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/>//<sp/>!wxUSE_WCHAR_T</highlight></codeline>
-<codeline lineno="179"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="180"><highlight class="normal"></highlight><highlight class="comment">//<sp/>it<sp/>doesn&apos;t<sp/>matter<sp/>how<sp/>we<sp/>define<sp/>it<sp/>in<sp/>this<sp/>case<sp/>as<sp/>it&apos;s<sp/>unused<sp/>anyhow,<sp/>but</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="normal"></highlight><highlight class="comment">//<sp/>do<sp/>define<sp/>it<sp/>to<sp/>allow<sp/>the<sp/>code<sp/>using<sp/>wxConvAuto()<sp/>as<sp/>default<sp/>argument<sp/>(this</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="182"><highlight class="normal"></highlight><highlight class="comment">//<sp/>is<sp/>done<sp/>in<sp/>many<sp/>places)<sp/>to<sp/>compile</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="183" refid="df/dd1/group__GUI_1ga2f9056ab092c15f0a40251ebd9ea1f67" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>wxMBConv<sp/><ref refid="df/dd1/group__GUI_1ga2f9056ab092c15f0a40251ebd9ea1f67" kindref="member">muConvAuto</ref>;</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"></highlight></codeline>
-<codeline lineno="185"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>wxUSE_WCHAR_T/!wxUSE_WCHAR_T</highlight></codeline>
-<codeline lineno="186"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal"></highlight></codeline>
-<codeline lineno="188"><highlight class="normal"></highlight></codeline>
-<codeline lineno="189"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>_MYWX_CONVAUTO_H_</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>BOMType<sp/>DetectBOM(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*src,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>srcLen);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>m_conv<sp/>with<sp/>the<sp/>conversion<sp/>to<sp/>use<sp/>by<sp/>default<sp/>(UTF-8)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>InitWithDefault()</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_conv<sp/>=<sp/>&amp;wxConvUTF8;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_ownsConv<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>the<sp/>correct<sp/>conversion<sp/>object<sp/>for<sp/>the<sp/>given<sp/>BOM<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>InitFromBOM(BOMType<sp/>bomType);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>the<sp/>correct<sp/>conversion<sp/>object<sp/>for<sp/>the<sp/>BOM<sp/>present<sp/>in<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>beginning<sp/>of<sp/>the<sp/>buffer;<sp/>adjust<sp/>the<sp/>buffer<sp/>to<sp/>skip<sp/>the<sp/>BOM<sp/>if<sp/>found</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>InitFromInput(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**src,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*len);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>adjust<sp/>src<sp/>and<sp/>len<sp/>to<sp/>skip<sp/>over<sp/>the<sp/>BOM<sp/>(identified<sp/>by<sp/>m_bomType)<sp/>at<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>start<sp/>of<sp/>the<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SkipBOM(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**src,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*len)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>conversion<sp/>object<sp/>which<sp/>we<sp/>really<sp/>use,<sp/>NULL<sp/>until<sp/>the<sp/>first<sp/>call<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>either<sp/>ToWChar()<sp/>or<sp/>FromWChar()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxMBConv<sp/>*m_conv;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>true<sp/>if<sp/>we<sp/>allocated<sp/>m_conv<sp/>ourselves,<sp/>false<sp/>if<sp/>we<sp/>just<sp/>use<sp/>an<sp/>existing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>global<sp/>conversion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>m_ownsConv;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fallback<sp/>conversion<sp/>object</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxMBConv<sp/>*m_fallback;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>true<sp/>if<sp/>we<sp/>allocated<sp/>m_conv<sp/>ourselves,<sp/>false<sp/>if<sp/>we<sp/>just<sp/>use<sp/>an<sp/>existing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>global<sp/>conversion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>m_ownsFallback;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>our<sp/>BOM<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOMType<sp/>m_bomType;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>true<sp/>if<sp/>we<sp/>already<sp/>skipped<sp/>BOM<sp/>when<sp/>converting<sp/>(and<sp/>not<sp/>just<sp/>calculating</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>size)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>m_consumedBOM;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DECLARE_NO_ASSIGN_CLASS(muConvAuto)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/>//<sp/>!wxUSE_WCHAR_T</highlight></codeline>
+<codeline lineno="181"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="comment">//<sp/>it<sp/>doesn&apos;t<sp/>matter<sp/>how<sp/>we<sp/>define<sp/>it<sp/>in<sp/>this<sp/>case<sp/>as<sp/>it&apos;s<sp/>unused<sp/>anyhow,<sp/>but</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="comment">//<sp/>do<sp/>define<sp/>it<sp/>to<sp/>allow<sp/>the<sp/>code<sp/>using<sp/>wxConvAuto()<sp/>as<sp/>default<sp/>argument<sp/>(this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="comment">//<sp/>is<sp/>done<sp/>in<sp/>many<sp/>places)<sp/>to<sp/>compile</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>wxMBConv<sp/>muConvAuto;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>wxUSE_WCHAR_T/!wxUSE_WCHAR_T</highlight></codeline>
+<codeline lineno="188"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>0</highlight></codeline>
 <codeline lineno="190"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="191"><highlight class="normal"></highlight></codeline>
-<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>_MYWX_CONVAUTO_H_</highlight></codeline>
+<codeline lineno="192"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.h"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.h"/>
   </compounddef>
 </doxygen>

@@ -31,10 +31,10 @@
 </div><!--header-->
 <div class="contents">
 <a href="../../d5/d84/Runtime_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// ------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// Mutabor 2.win, 1997, R.Krauﬂe</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// Laufzeitfunktionen der DLL</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// ------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/* ------------------------------------------------------------------ */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/* Mutabor 2.win, 1997, R.Krauﬂe */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/* Laufzeitfunktionen der DLL */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/* ------------------------------------------------------------------ */</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/* we guard a little bit complicated to ensure the references are set right</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> */</span></div>
@@ -45,78 +45,46 @@
 <div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../dc/d7e/group__runtime.html#gabd075f0556c9ce6f682b5a71c3191863">   39</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MU32_RUNTIME_H</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">// headers</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/* --------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/* headers */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/* --------------------------------------------------------------------------- */</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">src/kernel/Defs.h</a>&quot;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/d7c/CompDlg_8h.html">src/wxGUI/CompDlg.h</a>&quot;</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d05/Device_8h.html">src/kernel/routing/Device.h</a>&quot;</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#ifndef MU32_RUNTIME_H_PRECOMPILED</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="../../dc/d7e/group__runtime.html#ga14f6f406ce592655a53e3b73ace7cddd">   51</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MU32_RUNTIME_H_PRECOMPILED</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">// system headers which do seldom change</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#ifndef MU32_RUNTIME_H_PRECOMPILED</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../dc/d7e/group__runtime.html#ga14f6f406ce592655a53e3b73ace7cddd">   49</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MU32_RUNTIME_H_PRECOMPILED</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/* system headers which do seldom change */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#include &lt;setjmp.h&gt;</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#include &quot;wx/wxchar.h&quot;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#if !defined(__WXMSW__)</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef UINT</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../dc/d7e/group__runtime.html#ga45c20c14d3d8790a22153d08ab2eb2ff">   59</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define UINT unsigned int</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;setjmp.h&gt;</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">extern</span> jmp_buf <a class="code" href="../../dc/d7e/group__runtime.html#ga1faa8705b3fd5029a295edfdcdf1a67f">weiter_gehts_nach_compilerfehler</a>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">//  void  InDeviceActionAll(char action);</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">//void  InDeviceAction(int inDevNr, enum mutabor::MutaborModeType action);</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor"></span><span class="keywordtype">char</span>  IsLogicKey(<a class="code" href="../../d6/dbb/namespacemutabor_1_1hidden.html#abcb81b5b4ff6213bb18cb9eea3ae374e">mutabor_box_type</a> * box, <span class="keywordtype">char</span> key);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">// box = -1 ... weiterlesen in angefangener Liste</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">char</span>  GetMutTag(<span class="keywordtype">char</span> &amp;isLogic, <span class="keywordtype">char</span> **text, <span class="keywordtype">char</span> *einsttext, <span class="keywordtype">char</span> &amp;key, <a class="code" href="../../d6/dbb/namespacemutabor_1_1hidden.html#abcb81b5b4ff6213bb18cb9eea3ae374e">mutabor_box_type</a> * box);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">bool</span>  KeyChanged(<span class="keywordtype">int</span> box);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">bool</span>  <a class="code" href="../../d6/dbb/namespacemutabor_1_1hidden.html#aaf6d895058141aad272d705e2373d6bc">TSChanged</a>(<span class="keywordtype">int</span> box);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">bool</span>  InDevicesChanged();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">void</span>  <a class="code" href="../../d6/dbb/namespacemutabor_1_1hidden.html#aded32e236c65caa32f80277d36d825f6">GetInDevicesMode</a>(<span class="keyword">enum</span> <a class="code" href="../../d5/dee/group__route.html#gaa3d7d1e712c727d12c3b60c8dc04b484">mutabor::MutaborModeType</a> *mode);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">void</span>  GetDrivers(<span class="keywordtype">int</span> *driver);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span>  SetDrivers(<span class="keywordtype">int</span> *driver);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">char</span>  <a class="code" href="../../d6/dbb/namespacemutabor_1_1hidden.html#ad3315e3cb4efce81719452b2e1493373">GetChannels</a>(<span class="keywordtype">char</span> start, <span class="keywordtype">int</span> &amp;base, <span class="keywordtype">int</span> &amp;from, <span class="keywordtype">int</span> &amp;to, <span class="keywordtype">int</span> &amp;thru);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">void</span>  <a class="code" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a43a87a4bc69cdfe430d789bd84c96f7c">SetChannels</a>(<span class="keywordtype">int</span> base, <span class="keywordtype">int</span> from, <span class="keywordtype">int</span> to, <span class="keywordtype">int</span> thru);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">void</span>  SetAktuellesKeyboardInstrument(<span class="keywordtype">int</span> instr);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<a class="code" href="../../d6/dbb/namespacemutabor_1_1hidden.html#abcb81b5b4ff6213bb18cb9eea3ae374e">mutabor_box_type</a> *  GetAktuellesKeyboardInstrument();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#ifndef WX</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor"></span><span class="keywordtype">void</span>  ScanDevices(<span class="keywordtype">char</span> *config);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<a class="code" href="../../d5/dee/group__route.html#gaa9af06d2b801f5fbf129acc683bb764d">mutabor::OutputDevice</a> <a class="code" href="../../dd/d72/namespacecompat30.html#a64f4f24016ab43fa9813995dcc1a77ae">GetOut</a>(<span class="keywordtype">int</span> nr);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keywordtype">void</span>  GetTimerData(<a class="code" href="../../dc/d7e/group__runtime.html#ga45c20c14d3d8790a22153d08ab2eb2ff">UINT</a> &amp;min, <a class="code" href="../../dc/d7e/group__runtime.html#ga45c20c14d3d8790a22153d08ab2eb2ff">UINT</a> &amp;max);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif </span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* precompiled */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="ttc" id="CompDlg_8h_html"><div class="ttname"><a href="../../d4/d7c/CompDlg_8h.html">CompDlg.h</a></div><div class="ttdoc">Compilation dialog box. </div></div>
-<div class="ttc" id="namespacemutabor_1_1hidden_html_aded32e236c65caa32f80277d36d825f6"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#aded32e236c65caa32f80277d36d825f6">mutabor::hidden::GetInDevicesMode</a></div><div class="ttdeci">void GetInDevicesMode(enum MutaborModeType *mode)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d80/Runtime_8cpp_source.html#l00224">Runtime.cpp:224</a></div></div>
-<div class="ttc" id="group__route_html_gaa3d7d1e712c727d12c3b60c8dc04b484"><div class="ttname"><a href="../../d5/dee/group__route.html#gaa3d7d1e712c727d12c3b60c8dc04b484">mutabor::MutaborModeType</a></div><div class="ttdeci">MutaborModeType</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00075">Device.h:75</a></div></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">extern</span> jmp_buf <a class="code" href="../../dc/d7e/group__runtime.html#ga1faa8705b3fd5029a295edfdcdf1a67f">weiter_gehts_nach_compilerfehler</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/*  void  InDeviceActionAll(char action); */</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">/*void  InDeviceAction(int inDevNr, enum mutabor::MutaborModeType action); */</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;wx/wxchar.h&quot;</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#if !defined(__WXMSW__)</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef UINT</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define UINT unsigned int</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* precompiled */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
 <div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
-<div class="ttc" id="namespacemutabor_1_1hidden_html_a43a87a4bc69cdfe430d789bd84c96f7c"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#a43a87a4bc69cdfe430d789bd84c96f7c">mutabor::hidden::SetChannels</a></div><div class="ttdeci">void SetChannels(mutabor_box_type *box, int base, int from, int to, int thru)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d80/Runtime_8cpp_source.html#l00254">Runtime.cpp:254</a></div></div>
-<div class="ttc" id="group__route_html_gaa9af06d2b801f5fbf129acc683bb764d"><div class="ttname"><a href="../../d5/dee/group__route.html#gaa9af06d2b801f5fbf129acc683bb764d">mutabor::OutputDevice</a></div><div class="ttdeci">CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;::DevicePtr OutputDevice</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d05/Device_8h_source.html#l00809">Device.h:809</a></div></div>
 <div class="ttc" id="group__runtime_html_ga1faa8705b3fd5029a295edfdcdf1a67f"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#ga1faa8705b3fd5029a295edfdcdf1a67f">weiter_gehts_nach_compilerfehler</a></div><div class="ttdeci">jmp_buf weiter_gehts_nach_compilerfehler</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d14/gmut_8cpp_source.html#l00028">gmut.cpp:28</a></div></div>
-<div class="ttc" id="namespacemutabor_1_1hidden_html_aaf6d895058141aad272d705e2373d6bc"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#aaf6d895058141aad272d705e2373d6bc">mutabor::hidden::TSChanged</a></div><div class="ttdeci">bool TSChanged(mutabor_box_type *box)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d80/Runtime_8cpp_source.html#l00206">Runtime.cpp:206</a></div></div>
-<div class="ttc" id="namespacemutabor_1_1hidden_html_abcb81b5b4ff6213bb18cb9eea3ae374e"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#abcb81b5b4ff6213bb18cb9eea3ae374e">mutabor::hidden::mutabor_box_type</a></div><div class="ttdeci">struct mutabor_box_type mutabor_box_type</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d19/box_8h_source.html#l00193">box.h:193</a></div></div>
-<div class="ttc" id="Device_8h_html"><div class="ttname"><a href="../../de/d05/Device_8h.html">Device.h</a></div><div class="ttdoc">Routing. </div></div>
-<div class="ttc" id="namespacemutabor_1_1hidden_html_ad3315e3cb4efce81719452b2e1493373"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#ad3315e3cb4efce81719452b2e1493373">mutabor::hidden::GetChannels</a></div><div class="ttdeci">char GetChannels(mutabor_box_type *box, char start, int &amp;base, int &amp;from, int &amp;to, int &amp;thru)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d80/Runtime_8cpp_source.html#l00235">Runtime.cpp:235</a></div></div>
-<div class="ttc" id="group__runtime_html_ga45c20c14d3d8790a22153d08ab2eb2ff"><div class="ttname"><a href="../../dc/d7e/group__runtime.html#ga45c20c14d3d8790a22153d08ab2eb2ff">UINT</a></div><div class="ttdeci">#define UINT</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d84/Runtime_8h_source.html#l00059">Runtime.h:59</a></div></div>
-<div class="ttc" id="namespacecompat30_html_a64f4f24016ab43fa9813995dcc1a77ae"><div class="ttname"><a href="../../dd/d72/namespacecompat30.html#a64f4f24016ab43fa9813995dcc1a77ae">compat30::GetOut</a></div><div class="ttdeci">static OutputDevice GetOut(int nr)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db8/RouteCompat_8cpp_source.html#l00048">RouteCompat.cpp:48</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Son Feb 9 2014 18:39:13 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Apr 26 2014 12:58:27 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

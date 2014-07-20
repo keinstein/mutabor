@@ -2,213 +2,82 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="d1/da2/Errors_8cpp" kind="file">
     <compoundname>Errors.cpp</compoundname>
-    <includes refid="d4/d47/GrafKern_8h" local="yes">GrafKern.h</includes>
     <includes refid="d2/d0e/Errors_8h" local="yes">Errors.h</includes>
     <incdepgraph>
-      <node id="18541">
-        <label>list</label>
-      </node>
-      <node id="18534">
-        <label>stdarg.h</label>
-      </node>
-      <node id="18549">
-        <label>wx/cmdline.h</label>
-      </node>
-      <node id="18537">
-        <label>wx/stdpaths.h</label>
-      </node>
-      <node id="18533">
-        <label>Defs.h</label>
-        <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="18534" relation="include">
-        </childnode>
-        <childnode refid="18535" relation="include">
-        </childnode>
-        <childnode refid="18554" relation="include">
-        </childnode>
-        <childnode refid="18555" relation="include">
-        </childnode>
-        <childnode refid="18548" relation="include">
-        </childnode>
-        <childnode refid="18556" relation="include">
-        </childnode>
-        <childnode refid="18557" relation="include">
-        </childnode>
-      </node>
-      <node id="18548">
+      <node id="18136">
         <label>stdint.h</label>
       </node>
-      <node id="18554">
-        <label>wx/wxchar.h</label>
+      <node id="18129">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="18128" relation="include">
+        </childnode>
       </node>
-      <node id="18543">
-        <label>wx/image.h</label>
+      <node id="18135">
+        <label>boost/format.hpp</label>
       </node>
-      <node id="18531">
-        <label>GrafKern.h</label>
-        <link refid="d4/d47/GrafKern_8h"/>
-      </node>
-      <node id="18558">
+      <node id="18133">
         <label>string</label>
       </node>
-      <node id="18553">
-        <label>mutDebugFlags.h</label>
-        <link refid="d7/d49/mutDebugFlags_8h"/>
-      </node>
-      <node id="18536">
-        <label>wx/window.h</label>
-      </node>
-      <node id="18555">
-        <label>wx/intl.h</label>
-      </node>
-      <node id="18542">
-        <label>src/wxGUI/Mutabor.rh</label>
-        <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="18533" relation="include">
+      <node id="18128">
+        <label>Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="18129" relation="include">
+        </childnode>
+        <childnode refid="18130" relation="include">
+        </childnode>
+        <childnode refid="18131" relation="include">
         </childnode>
       </node>
-      <node id="18538">
-        <label>wx/filename.h</label>
-      </node>
-      <node id="18530">
-        <label>src/kernel/Errors.cpp</label>
-        <link refid="Errors.cpp"/>
-        <childnode refid="18531" relation="include">
-        </childnode>
-        <childnode refid="18532" relation="include">
-        </childnode>
-      </node>
-      <node id="18540">
-        <label>typeinfo</label>
-      </node>
-      <node id="18551">
-        <label>wx/debug.h</label>
-      </node>
-      <node id="18546">
+      <node id="18134">
         <label>cstdio</label>
       </node>
-      <node id="18545">
-        <label>bitset</label>
-      </node>
-      <node id="18535">
-        <label>src/wxGUI/generic/mhDefs.h</label>
-        <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="18533" relation="include">
+      <node id="18131">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="18128" relation="include">
         </childnode>
-        <childnode refid="18536" relation="include">
+        <childnode refid="18132" relation="include">
         </childnode>
-        <childnode refid="18537" relation="include">
+        <childnode refid="18133" relation="include">
         </childnode>
-        <childnode refid="18538" relation="include">
+        <childnode refid="18134" relation="include">
         </childnode>
-        <childnode refid="18539" relation="include">
+        <childnode refid="18135" relation="include">
         </childnode>
-        <childnode refid="18540" relation="include">
+        <childnode refid="18136" relation="include">
         </childnode>
-        <childnode refid="18541" relation="include">
-        </childnode>
-        <childnode refid="18542" relation="include">
-        </childnode>
-        <childnode refid="18543" relation="include">
-        </childnode>
-        <childnode refid="18544" relation="include">
+        <childnode refid="18137" relation="include">
         </childnode>
       </node>
-      <node id="18547">
-        <label>vector</label>
-      </node>
-      <node id="18544">
-        <label>mutDebug.h</label>
-        <link refid="de/de1/mutDebug_8h"/>
-        <childnode refid="18545" relation="include">
-        </childnode>
-        <childnode refid="18539" relation="include">
-        </childnode>
-        <childnode refid="18546" relation="include">
-        </childnode>
-        <childnode refid="18547" relation="include">
-        </childnode>
-        <childnode refid="18548" relation="include">
-        </childnode>
-        <childnode refid="18549" relation="include">
-        </childnode>
-        <childnode refid="18550" relation="include">
-        </childnode>
-        <childnode refid="18551" relation="include">
-        </childnode>
-        <childnode refid="18552" relation="include">
-        </childnode>
-        <childnode refid="18553" relation="include">
-        </childnode>
-      </node>
-      <node id="18557">
+      <node id="18132">
         <label>src/wxintl/libintl.h</label>
         <link refid="d4/d64/libintl_8h"/>
-        <childnode refid="18533" relation="include">
+        <childnode refid="18128" relation="include">
         </childnode>
-        <childnode refid="18558" relation="include">
+        <childnode refid="18133" relation="include">
         </childnode>
       </node>
-      <node id="18550">
-        <label>wx/string.h</label>
-      </node>
-      <node id="18539">
-        <label>iostream</label>
-      </node>
-      <node id="18532">
+      <node id="18127">
         <label>Errors.h</label>
         <link refid="d2/d0e/Errors_8h"/>
-        <childnode refid="18533" relation="include">
+        <childnode refid="18128" relation="include">
         </childnode>
       </node>
-      <node id="18552">
-        <label>wx/thread.h</label>
+      <node id="18130">
+        <label>cstddef</label>
       </node>
-      <node id="18556">
-        <label>wx/setup.h</label>
+      <node id="18126">
+        <label>src/kernel/Errors.cpp</label>
+        <link refid="Errors.cpp"/>
+        <childnode refid="18127" relation="include">
+        </childnode>
+      </node>
+      <node id="18137">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
       </node>
     </incdepgraph>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="d9/d7c/group__kernel_1ga9728df5840723c08b5def4e7d1966476" prot="public" static="no" mutable="no">
-        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga66f2a821381f322d5b779e5004013591" kindref="member">mutTranslationChar</ref> *</type>
-        <definition>const mutTranslationChar* Error_text[]</definition>
-        <argsstring>[]</argsstring>
-        <name>Error_text</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Errors.cpp" line="150" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Errors.cpp" bodystart="150" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="d9/d7c/group__kernel_1gaf8efbc9f57f10f6c6e914c5e86122486" prot="public" static="no" mutable="no">
-        <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga66f2a821381f322d5b779e5004013591" kindref="member">mutTranslationChar</ref> *</type>
-        <definition>const mutTranslationChar* Warning_text[]</definition>
-        <argsstring>[]</argsstring>
-        <name>Warning_text</name>
-        <initializer>=
-        {
-                 <ref refid="de/db7/group__debug_1ga63719beeefaec831a72724b660b44f59" kindref="member">N_</ref>(&quot;Undefined compiler warning&quot;),
-                N_(&quot;MIDI event in logic %s does not start with channel 0 status byte. Value corrected.&quot;),
-                N_(&quot;Non existent harmony event in logic %s&quot;),
-                N_(&quot;Non well defined event %s in logic %s&quot;),
-                N_(&quot;Event ELSE is last in %s&quot;),
-                 N_(&quot;MIDI channels wasted in channel assotiation&quot;),
-                N_(&quot;No file given, trying test.mut&quot;),
-                N_(&quot;Invalid configuration file&quot;),
-                N_(&quot;Intersection of MIDI channels %d und %d&quot;),
-                N_(&quot;Error in GMN-<ref refid="d5/dee/group__route_1gaaf8254358716886caba45ee8b969f9db" kindref="member">File</ref> %s position(%d, %d): %s&quot;)
-        }</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Errors.cpp" line="252" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Errors.cpp" bodystart="252" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Error descriptions for Mutabor. </para>    </briefdescription>
     <detaileddescription>
@@ -220,10 +89,10 @@
 GPL </para>    </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
-<codeline lineno="16"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/d47/GrafKern_8h" kindref="compound">GrafKern.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="comment">//#include<sp/>&quot;GrafKern.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d0e/Errors_8h" kindref="compound">Errors.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(WX)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
+<codeline lineno="19"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#if<sp/>defined(WX)</highlight></codeline>
 <codeline lineno="20"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#else</highlight></codeline>
 <codeline lineno="21"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifndef<sp/>N_</highlight></codeline>
 <codeline lineno="22"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>N_(s)<sp/>s</highlight></codeline>
@@ -232,7 +101,7 @@ GPL </para>    </detaileddescription>
 <codeline lineno="25"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(GERMAN)<sp/>&amp;&amp;<sp/>!defined(WX)</highlight></codeline>
 <codeline lineno="27"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1ga9728df5840723c08b5def4e7d1966476" kindref="member">Error_text</ref>[]<sp/>=</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>Error_text[]<sp/>=</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>0<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Undefinierter<sp/>Fehler<sp/>in<sp/>%s<sp/><sp/><sp/>Zeile<sp/>%d<sp/>!&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="comment">/*<sp/>allgemeinster<sp/>Fehler<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -335,7 +204,7 @@ GPL </para>    </detaileddescription>
 <codeline lineno="128"><highlight class="normal"></highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1gaf8efbc9f57f10f6c6e914c5e86122486" kindref="member">Warning_text</ref>[]<sp/>=</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>Warning_text[]<sp/>=</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>0<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Undefinierte<sp/>Compilerwarnung&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;MIDI-Auslöser<sp/>in<sp/>Logik<sp/>%s<sp/>beginnt<sp/>nicht<sp/>mit<sp/>Kanal<sp/>0-Statusbyte.<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -354,7 +223,7 @@ GPL </para>    </detaileddescription>
 <codeline lineno="147"><highlight class="normal"></highlight></codeline>
 <codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
 <codeline lineno="149"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="150" refid="d9/d7c/group__kernel_1ga9728df5840723c08b5def4e7d1966476" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga66f2a821381f322d5b779e5004013591" kindref="member">mutTranslationChar</ref><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1ga9728df5840723c08b5def4e7d1966476" kindref="member">Error_text</ref>[]<sp/>=</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mutTranslationChar<sp/>*<sp/>Error_text[]<sp/>=</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="152"><highlight class="normal"></highlight></codeline>
 <codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>0<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Unknown<sp/>error<sp/>in<sp/>%s<sp/>,<sp/>line<sp/>%d<sp/>!&quot;</highlight><highlight class="normal">),<sp/></highlight><highlight class="comment">/*<sp/>allgemeinster<sp/>Fehler<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -456,7 +325,7 @@ GPL </para>    </detaileddescription>
 <codeline lineno="249"><highlight class="normal"></highlight></codeline>
 <codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="251"><highlight class="normal"></highlight></codeline>
-<codeline lineno="252" refid="d9/d7c/group__kernel_1gaf8efbc9f57f10f6c6e914c5e86122486" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga66f2a821381f322d5b779e5004013591" kindref="member">mutTranslationChar</ref><sp/>*<sp/><ref refid="d9/d7c/group__kernel_1gaf8efbc9f57f10f6c6e914c5e86122486" kindref="member">Warning_text</ref>[]<sp/>=</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>mutTranslationChar<sp/>*<sp/>Warning_text[]<sp/>=</highlight></codeline>
 <codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>0<sp/>*/</highlight><highlight class="normal"><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;Undefined<sp/>compiler<sp/>warning&quot;</highlight><highlight class="normal">),</highlight></codeline>
 <codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1gac8c4de4b8f99001765fd7091fc0b12fe" kindref="member">N_</ref>(</highlight><highlight class="stringliteral">&quot;MIDI<sp/>event<sp/>in<sp/>logic<sp/>%s<sp/>does<sp/>not<sp/>start<sp/>with<sp/>channel<sp/>0<sp/>status<sp/>byte.<sp/>Value<sp/>corrected.&quot;</highlight><highlight class="normal">),</highlight></codeline>
@@ -471,8 +340,9 @@ GPL </para>    </detaileddescription>
 <codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="265"><highlight class="normal"></highlight></codeline>
 <codeline lineno="266"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="267"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="267"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="268"><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Errors.cpp"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Errors.cpp"/>
   </compounddef>
 </doxygen>

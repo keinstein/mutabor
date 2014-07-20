@@ -6,7 +6,6 @@
     <includes refid="dd/d40/Global_8h" local="yes">src/kernel/Global.h</includes>
     <includes refid="d6/d0c/Parser_8h" local="yes">src/kernel/Parser.h</includes>
     <includes refid="d2/d32/Hilfs_8h" local="yes">src/kernel/Hilfs.h</includes>
-    <includes refid="d4/d47/GrafKern_8h" local="yes">src/kernel/GrafKern.h</includes>
     <includes refid="d5/d84/Runtime_8h" local="yes">src/kernel/Runtime.h</includes>
     <includes refid="de/d11/Execute_8h" local="yes">src/kernel/Execute.h</includes>
     <includes local="no">setjmp.h</includes>
@@ -15,689 +14,560 @@
     <includes refid="da/d81/DevGIS_8h" local="yes">src/kernel/routing/gmn/DevGIS.h</includes>
     <includes refid="d4/da2/DevMidi_8h" local="yes">src/kernel/routing/midi/DevMidi.h</includes>
     <includes refid="da/d3c/DevMidF_8h" local="yes">src/kernel/routing/midi/DevMidF.h</includes>
-    <includes local="yes">wx/msgdlg.h</includes>
-    <includedby refid="d8/d59/midicmnTest_8cpp" local="yes">src/kernel/routing/midi/tests/midicmnTest.cpp</includedby>
     <incdepgraph>
-      <node id="25216">
-        <label>src/xrc/wxresource.h</label>
-        <link refid="d2/dc0/wxresource_8h"/>
-      </node>
-      <node id="25159">
+      <node id="24322">
         <label>list</label>
       </node>
-      <node id="25231">
-        <label>src/kernel/routing/gmn/GIS_Head.h</label>
-        <link refid="d1/db5/GIS__Head_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25191" relation="include">
-        </childnode>
-        <childnode refid="25219" relation="include">
-        </childnode>
-        <childnode refid="25166" relation="include">
-        </childnode>
-      </node>
-      <node id="25191">
-        <label>src/kernel/routing/Box.h</label>
-        <link refid="de/d0f/Box_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25192" relation="include">
-        </childnode>
-        <childnode refid="25193" relation="include">
-        </childnode>
-        <childnode refid="25194" relation="include">
-        </childnode>
-        <childnode refid="25184" relation="include">
-        </childnode>
-        <childnode refid="25182" relation="include">
-        </childnode>
-        <childnode refid="25165" relation="include">
-        </childnode>
-        <childnode refid="25201" relation="include">
-        </childnode>
-        <childnode refid="25202" relation="include">
-        </childnode>
-        <childnode refid="25152" relation="include">
-        </childnode>
-        <childnode refid="25178" relation="include">
-        </childnode>
-      </node>
-      <node id="25152">
-        <label>stdarg.h</label>
-      </node>
-      <node id="25209">
-        <label>wx/html/htmlwin.h</label>
-      </node>
-      <node id="25222">
-        <label>src/kernel/routing/timing.h</label>
-        <link refid="db/d41/timing_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25195" relation="include">
-        </childnode>
-        <childnode refid="25223" relation="include">
-        </childnode>
-        <childnode refid="25224" relation="include">
-        </childnode>
-        <childnode refid="25198" relation="include">
-        </childnode>
-        <childnode refid="25199" relation="include">
-        </childnode>
-        <childnode refid="25225" relation="include">
-        </childnode>
-        <childnode refid="25193" relation="include">
-        </childnode>
-      </node>
-      <node id="25223">
-        <label>limits</label>
-      </node>
-      <node id="25210">
-        <label>wx/radiobox.h</label>
-      </node>
-      <node id="25184">
-        <label>Execute.h</label>
-        <link refid="de/d11/Execute_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25178" relation="include">
-        </childnode>
-      </node>
-      <node id="25197">
-        <label>boost/intrusive_ptr.hpp</label>
-      </node>
-      <node id="25167">
-        <label>wx/cmdline.h</label>
-      </node>
-      <node id="25155">
-        <label>wx/stdpaths.h</label>
-      </node>
-      <node id="25234">
-        <label>src/kernel/routing/midi/midicmn.h</label>
-        <link refid="de/d21/midicmn_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25218" relation="include">
-        </childnode>
-        <childnode refid="25165" relation="include">
-        </childnode>
-      </node>
-      <node id="25151">
-        <label>src/kernel/Defs.h</label>
-        <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="25152" relation="include">
-        </childnode>
-        <childnode refid="25153" relation="include">
-        </childnode>
-        <childnode refid="25172" relation="include">
-        </childnode>
-        <childnode refid="25173" relation="include">
-        </childnode>
-        <childnode refid="25166" relation="include">
-        </childnode>
-        <childnode refid="25174" relation="include">
-        </childnode>
-        <childnode refid="25175" relation="include">
-        </childnode>
-      </node>
-      <node id="25166">
-        <label>stdint.h</label>
-      </node>
-      <node id="25179">
-        <label>stdlib.h</label>
-      </node>
-      <node id="25172">
-        <label>wx/wxchar.h</label>
-      </node>
-      <node id="25161">
-        <label>wx/image.h</label>
-      </node>
-      <node id="25227">
-        <label>setjmp.h</label>
-      </node>
-      <node id="25189">
-        <label>src/kernel/Runtime.h</label>
-        <link refid="d5/d84/Runtime_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25190" relation="include">
-        </childnode>
-        <childnode refid="25218" relation="include">
-        </childnode>
-        <childnode refid="25172" relation="include">
-        </childnode>
-        <childnode refid="25227" relation="include">
-        </childnode>
-      </node>
-      <node id="25208">
-        <label>wx/filepicker.h</label>
-      </node>
-      <node id="25230">
-        <label>src/kernel/routing/CommonFileDevice.h</label>
-        <link refid="d9/d17/CommonFileDevice_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25218" relation="include">
-        </childnode>
-        <childnode refid="25193" relation="include">
-        </childnode>
-        <childnode refid="25223" relation="include">
-        </childnode>
-        <childnode refid="25164" relation="include">
-        </childnode>
-        <childnode refid="25170" relation="include">
-        </childnode>
-      </node>
-      <node id="25235">
-        <label>cassert</label>
-      </node>
-      <node id="25198">
-        <label>stdexcept</label>
-      </node>
-      <node id="25185">
-        <label>malloc.h</label>
-      </node>
-      <node id="25206">
-        <label>wx/choicebk.h</label>
-      </node>
-      <node id="25188">
-        <label>src/kernel/GrafKern.h</label>
-        <link refid="d4/d47/GrafKern_8h"/>
-      </node>
-      <node id="25232">
-        <label>wx/timer.h</label>
-      </node>
-      <node id="25199">
-        <label>boost/throw_exception.hpp</label>
-      </node>
-      <node id="25176">
-        <label>string</label>
-      </node>
-      <node id="25237">
-        <label>src/kernel/routing/midi/DevMidF.h</label>
-        <link refid="da/d3c/DevMidF_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25230" relation="include">
-        </childnode>
-        <childnode refid="25234" relation="include">
-        </childnode>
-        <childnode refid="25238" relation="include">
-        </childnode>
-        <childnode refid="25232" relation="include">
-        </childnode>
-      </node>
-      <node id="25213">
-        <label>wx/stattext.h</label>
-      </node>
-      <node id="25224">
-        <label>exception</label>
-      </node>
-      <node id="25238">
-        <label>fstream</label>
-      </node>
-      <node id="25205">
-        <label>wx/checkbox.h</label>
-      </node>
-      <node id="25171">
-        <label>mutDebugFlags.h</label>
-        <link refid="d7/d49/mutDebugFlags_8h"/>
-      </node>
-      <node id="25181">
-        <label>src/kernel/Parser.h</label>
-        <link refid="d6/d0c/Parser_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25182" relation="include">
-        </childnode>
-        <childnode refid="25177" relation="include">
-        </childnode>
-        <childnode refid="25186" relation="include">
-        </childnode>
-      </node>
-      <node id="25211">
-        <label>wx/radiobut.h</label>
-      </node>
-      <node id="25154">
-        <label>wx/window.h</label>
-      </node>
-      <node id="25186">
-        <label>limits.h</label>
-      </node>
-      <node id="25183">
-        <label>Interpre.h</label>
-        <link refid="d2/dd8/Interpre_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25177" relation="include">
-        </childnode>
-      </node>
-      <node id="25182">
-        <label>src/kernel/box.h</label>
-        <link refid="dc/d19/box_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25177" relation="include">
-        </childnode>
-        <childnode refid="25183" relation="include">
-        </childnode>
-        <childnode refid="25184" relation="include">
-        </childnode>
-        <childnode refid="25185" relation="include">
-        </childnode>
-      </node>
-      <node id="25173">
-        <label>wx/intl.h</label>
-      </node>
-      <node id="25207">
-        <label>wx/dialog.h</label>
-      </node>
-      <node id="25150">
-        <label>src/kernel/Runtime.cpp</label>
-        <link refid="Runtime.cpp"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25177" relation="include">
-        </childnode>
-        <childnode refid="25181" relation="include">
-        </childnode>
-        <childnode refid="25187" relation="include">
-        </childnode>
-        <childnode refid="25188" relation="include">
-        </childnode>
-        <childnode refid="25189" relation="include">
-        </childnode>
-        <childnode refid="25184" relation="include">
-        </childnode>
-        <childnode refid="25227" relation="include">
-        </childnode>
-        <childnode refid="25218" relation="include">
-        </childnode>
-        <childnode refid="25228" relation="include">
-        </childnode>
-        <childnode refid="25229" relation="include">
-        </childnode>
-        <childnode refid="25233" relation="include">
-        </childnode>
-        <childnode refid="25237" relation="include">
-        </childnode>
-        <childnode refid="25239" relation="include">
-        </childnode>
-      </node>
-      <node id="25160">
-        <label>src/wxGUI/Mutabor.rh</label>
-        <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-      </node>
-      <node id="25156">
-        <label>wx/filename.h</label>
-      </node>
-      <node id="25195">
-        <label>src/kernel/MidiKern.h</label>
-        <link refid="da/dfd/MidiKern_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-      </node>
-      <node id="25221">
-        <label>string.h</label>
-      </node>
-      <node id="25158">
-        <label>typeinfo</label>
-      </node>
-      <node id="25169">
-        <label>wx/debug.h</label>
-      </node>
-      <node id="25164">
-        <label>cstdio</label>
-      </node>
-      <node id="25163">
-        <label>bitset</label>
-      </node>
-      <node id="25215">
-        <label>wx/xrc/xmlres.h</label>
-      </node>
-      <node id="25153">
-        <label>src/wxGUI/generic/mhDefs.h</label>
-        <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25154" relation="include">
-        </childnode>
-        <childnode refid="25155" relation="include">
-        </childnode>
-        <childnode refid="25156" relation="include">
-        </childnode>
-        <childnode refid="25157" relation="include">
-        </childnode>
-        <childnode refid="25158" relation="include">
-        </childnode>
-        <childnode refid="25159" relation="include">
-        </childnode>
-        <childnode refid="25160" relation="include">
-        </childnode>
-        <childnode refid="25161" relation="include">
-        </childnode>
-        <childnode refid="25162" relation="include">
-        </childnode>
-      </node>
-      <node id="25187">
-        <label>src/kernel/Hilfs.h</label>
-        <link refid="d2/d32/Hilfs_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25182" relation="include">
-        </childnode>
-        <childnode refid="25178" relation="include">
-        </childnode>
-      </node>
-      <node id="25165">
-        <label>vector</label>
-      </node>
-      <node id="25162">
-        <label>mutDebug.h</label>
-        <link refid="de/de1/mutDebug_8h"/>
-        <childnode refid="25163" relation="include">
-        </childnode>
-        <childnode refid="25157" relation="include">
-        </childnode>
-        <childnode refid="25164" relation="include">
-        </childnode>
-        <childnode refid="25165" relation="include">
-        </childnode>
-        <childnode refid="25166" relation="include">
-        </childnode>
-        <childnode refid="25167" relation="include">
-        </childnode>
-        <childnode refid="25168" relation="include">
-        </childnode>
-        <childnode refid="25169" relation="include">
-        </childnode>
-        <childnode refid="25170" relation="include">
-        </childnode>
-        <childnode refid="25171" relation="include">
-        </childnode>
-      </node>
-      <node id="25194">
+      <node id="24311">
         <label>src/kernel/routing/Route.h</label>
         <link refid="d1/d65/Route_8h"/>
-        <childnode refid="25151" relation="include">
+        <childnode refid="24281" relation="include">
         </childnode>
-        <childnode refid="25195" relation="include">
+        <childnode refid="24300" relation="include">
         </childnode>
-        <childnode refid="25192" relation="include">
+        <childnode refid="24312" relation="include">
         </childnode>
-        <childnode refid="25196" relation="include">
+        <childnode refid="24313" relation="include">
         </childnode>
-        <childnode refid="25159" relation="include">
+        <childnode refid="24322" relation="include">
         </childnode>
-        <childnode refid="25165" relation="include">
+        <childnode refid="24323" relation="include">
         </childnode>
-        <childnode refid="25198" relation="include">
+        <childnode refid="24324" relation="include">
         </childnode>
-        <childnode refid="25199" relation="include">
+        <childnode refid="24325" relation="include">
         </childnode>
-        <childnode refid="25200" relation="include">
-        </childnode>
-      </node>
-      <node id="25226">
-        <label>boost/unordered_set.hpp</label>
-      </node>
-      <node id="25175">
-        <label>src/wxintl/libintl.h</label>
-        <link refid="d4/d64/libintl_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25176" relation="include">
+        <childnode refid="24326" relation="include">
         </childnode>
       </node>
-      <node id="25202">
-        <label>sstream</label>
+      <node id="24294">
+        <label>stdarg.h</label>
       </node>
-      <node id="25229">
+      <node id="24339">
+        <label>src/kernel/routing/gmn/GIS_Head.h</label>
+        <link refid="d1/db5/GIS__Head_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24309" relation="include">
+        </childnode>
+        <childnode refid="24335" relation="include">
+        </childnode>
+        <childnode refid="24308" relation="include">
+        </childnode>
+        <childnode refid="24289" relation="include">
+        </childnode>
+      </node>
+      <node id="24337">
         <label>src/kernel/routing/gmn/DevGIS.h</label>
         <link refid="da/d81/DevGIS_8h"/>
-        <childnode refid="25151" relation="include">
+        <childnode refid="24281" relation="include">
         </childnode>
-        <childnode refid="25230" relation="include">
+        <childnode refid="24309" relation="include">
         </childnode>
-        <childnode refid="25231" relation="include">
+        <childnode refid="24338" relation="include">
         </childnode>
-        <childnode refid="25232" relation="include">
-        </childnode>
-      </node>
-      <node id="25168">
-        <label>wx/string.h</label>
-      </node>
-      <node id="25219">
-        <label>src/kernel/routing/gmn/GIS.h</label>
-        <link refid="dd/d4d/GIS_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25220" relation="include">
-        </childnode>
-        <childnode refid="25221" relation="include">
-        </childnode>
-        <childnode refid="25179" relation="include">
+        <childnode refid="24339" relation="include">
         </childnode>
       </node>
-      <node id="25233">
-        <label>src/kernel/routing/midi/DevMidi.h</label>
-        <link refid="d4/da2/DevMidi_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25234" relation="include">
-        </childnode>
-        <childnode refid="25218" relation="include">
-        </childnode>
-        <childnode refid="25188" relation="include">
-        </childnode>
-        <childnode refid="25235" relation="include">
-        </childnode>
-        <childnode refid="25236" relation="include">
-        </childnode>
+      <node id="24327">
+        <label>limits</label>
       </node>
-      <node id="25177">
-        <label>src/kernel/Global.h</label>
-        <link refid="dd/d40/Global_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25178" relation="include">
-        </childnode>
-        <childnode refid="25179" relation="include">
-        </childnode>
-        <childnode refid="25152" relation="include">
-        </childnode>
-        <childnode refid="25176" relation="include">
-        </childnode>
-        <childnode refid="25180" relation="include">
-        </childnode>
+      <node id="24321">
+        <label>boost/intrusive_ptr.hpp</label>
       </node>
-      <node id="25239">
-        <label>wx/msgdlg.h</label>
-      </node>
-      <node id="25228">
-        <label>src/kernel/routing/Route-inlines.h</label>
-        <link refid="d2/d2c/Route-inlines_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25194" relation="include">
-        </childnode>
-        <childnode refid="25218" relation="include">
-        </childnode>
-        <childnode refid="25191" relation="include">
-        </childnode>
-      </node>
-      <node id="25180">
-        <label>math.h</label>
-      </node>
-      <node id="25200">
-        <label>wx/config.h</label>
-      </node>
-      <node id="25157">
-        <label>iostream</label>
-      </node>
-      <node id="25220">
-        <label>src/kernel/Frac.h</label>
-        <link refid="df/d4f/Frac_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25168" relation="include">
-        </childnode>
-        <childnode refid="25157" relation="include">
-        </childnode>
-      </node>
-      <node id="25236">
-        <label>mmsystem.h</label>
-      </node>
-      <node id="25203">
-        <label>src/wxGUI/resourceload.h</label>
-        <link refid="d3/daf/resourceload_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25204" relation="include">
-        </childnode>
-        <childnode refid="25205" relation="include">
-        </childnode>
-        <childnode refid="25206" relation="include">
-        </childnode>
-        <childnode refid="25207" relation="include">
-        </childnode>
-        <childnode refid="25208" relation="include">
-        </childnode>
-        <childnode refid="25209" relation="include">
-        </childnode>
-        <childnode refid="25210" relation="include">
-        </childnode>
-        <childnode refid="25211" relation="include">
-        </childnode>
-        <childnode refid="25212" relation="include">
-        </childnode>
-        <childnode refid="25213" relation="include">
-        </childnode>
-        <childnode refid="25214" relation="include">
-        </childnode>
-        <childnode refid="25154" relation="include">
-        </childnode>
-        <childnode refid="25215" relation="include">
-        </childnode>
-        <childnode refid="25216" relation="include">
-        </childnode>
-      </node>
-      <node id="25170">
-        <label>wx/thread.h</label>
-      </node>
-      <node id="25193">
-        <label>src/kernel/routing/thread.h</label>
-        <link refid="db/dd5/thread_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25170" relation="include">
-        </childnode>
-      </node>
-      <node id="25204">
-        <label>wx/button.h</label>
-      </node>
-      <node id="25212">
-        <label>wx/spinctrl.h</label>
-      </node>
-      <node id="25196">
-        <label>src/kernel/boost-interface.h</label>
-        <link refid="d1/da4/boost-interface_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25193" relation="include">
-        </childnode>
-        <childnode refid="25197" relation="include">
-        </childnode>
-      </node>
-      <node id="25174">
-        <label>wx/setup.h</label>
-      </node>
-      <node id="25225">
-        <label>wx/stopwatch.h</label>
-      </node>
-      <node id="25190">
-        <label>src/wxGUI/CompDlg.h</label>
-        <link refid="d4/d7c/CompDlg_8h"/>
-        <childnode refid="25151" relation="include">
-        </childnode>
-        <childnode refid="25191" relation="include">
-        </childnode>
-        <childnode refid="25203" relation="include">
-        </childnode>
-        <childnode refid="25217" relation="include">
-        </childnode>
-        <childnode refid="25208" relation="include">
-        </childnode>
-        <childnode refid="25215" relation="include">
-        </childnode>
-        <childnode refid="25209" relation="include">
-        </childnode>
-      </node>
-      <node id="25201">
-        <label>algorithm</label>
-      </node>
-      <node id="25218">
+      <node id="24307">
         <label>src/kernel/routing/Device.h</label>
         <link refid="de/d05/Device_8h"/>
-        <childnode refid="25151" relation="include">
+        <childnode refid="24281" relation="include">
         </childnode>
-        <childnode refid="25219" relation="include">
+        <childnode refid="24308" relation="include">
         </childnode>
-        <childnode refid="25194" relation="include">
+        <childnode refid="24311" relation="include">
         </childnode>
-        <childnode refid="25222" relation="include">
+        <childnode refid="24328" relation="include">
         </childnode>
-        <childnode refid="25195" relation="include">
+        <childnode refid="24300" relation="include">
         </childnode>
-        <childnode refid="25165" relation="include">
+        <childnode refid="24323" relation="include">
         </childnode>
-        <childnode refid="25159" relation="include">
+        <childnode refid="24322" relation="include">
         </childnode>
-        <childnode refid="25186" relation="include">
+        <childnode refid="24301" relation="include">
         </childnode>
-        <childnode refid="25201" relation="include">
+        <childnode refid="24331" relation="include">
         </childnode>
-        <childnode refid="25202" relation="include">
+        <childnode refid="24332" relation="include">
         </childnode>
-        <childnode refid="25152" relation="include">
+        <childnode refid="24294" relation="include">
         </childnode>
-        <childnode refid="25170" relation="include">
+        <childnode refid="24320" relation="include">
         </childnode>
-        <childnode refid="25225" relation="include">
+        <childnode refid="24330" relation="include">
         </childnode>
-        <childnode refid="25226" relation="include">
-        </childnode>
-      </node>
-      <node id="25217">
-        <label>wx/statline.h</label>
-      </node>
-      <node id="25178">
-        <label>stdio.h</label>
-      </node>
-      <node id="25214">
-        <label>wx/textctrl.h</label>
-      </node>
-      <node id="25192">
-        <label>src/kernel/treestorage.h</label>
-        <link refid="db/dbe/treestorage_8h"/>
-        <childnode refid="25151" relation="include">
+        <childnode refid="24333" relation="include">
         </childnode>
       </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="25241">
-        <label>src/kernel/routing/midi/tests/midicmnTest.cpp</label>
-        <link refid="d8/d59/midicmnTest_8cpp"/>
+      <node id="24304">
+        <label>src/kernel/Hilfs.h</label>
+        <link refid="d2/d32/Hilfs_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24298" relation="include">
+        </childnode>
+        <childnode refid="24292" relation="include">
+        </childnode>
       </node>
-      <node id="25240">
+      <node id="24298">
+        <label>src/kernel/box.h</label>
+        <link refid="dc/d19/box_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24291" relation="include">
+        </childnode>
+        <childnode refid="24299" relation="include">
+        </childnode>
+        <childnode refid="24302" relation="include">
+        </childnode>
+        <childnode refid="24303" relation="include">
+        </childnode>
+      </node>
+      <node id="24289">
+        <label>stdint.h</label>
+      </node>
+      <node id="24293">
+        <label>stdlib.h</label>
+      </node>
+      <node id="24282">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+      </node>
+      <node id="24335">
+        <label>src/kernel/routing/Box.h</label>
+        <link refid="de/d0f/Box_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24312" relation="include">
+        </childnode>
+        <childnode refid="24319" relation="include">
+        </childnode>
+        <childnode refid="24313" relation="include">
+        </childnode>
+        <childnode refid="24336" relation="include">
+        </childnode>
+        <childnode refid="24311" relation="include">
+        </childnode>
+        <childnode refid="24302" relation="include">
+        </childnode>
+        <childnode refid="24298" relation="include">
+        </childnode>
+        <childnode refid="24323" relation="include">
+        </childnode>
+        <childnode refid="24331" relation="include">
+        </childnode>
+        <childnode refid="24332" relation="include">
+        </childnode>
+        <childnode refid="24294" relation="include">
+        </childnode>
+        <childnode refid="24292" relation="include">
+        </childnode>
+        <childnode refid="24288" relation="include">
+        </childnode>
+      </node>
+      <node id="24306">
+        <label>setjmp.h</label>
+      </node>
+      <node id="24336">
+        <label>src/kernel/routing/watchdog.h</label>
+        <link refid="d9/da3/watchdog_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24319" relation="include">
+        </childnode>
+        <childnode refid="24328" relation="include">
+        </childnode>
+      </node>
+      <node id="24288">
+        <label>boost/format.hpp</label>
+      </node>
+      <node id="24299">
+        <label>Interpre.h</label>
+        <link refid="d2/dd8/Interpre_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24300" relation="include">
+        </childnode>
+        <childnode refid="24291" relation="include">
+        </childnode>
+        <childnode refid="24301" relation="include">
+        </childnode>
+      </node>
+      <node id="24344">
+        <label>src/kernel/routing/midi/DevMidF.h</label>
+        <link refid="da/d3c/DevMidF_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24338" relation="include">
+        </childnode>
+        <childnode refid="24341" relation="include">
+        </childnode>
+        <childnode refid="24345" relation="include">
+        </childnode>
+      </node>
+      <node id="24342">
+        <label>cassert</label>
+      </node>
+      <node id="24326">
+        <label>src/kernel/routing/event.h</label>
+        <link refid="dd/d20/event_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24307" relation="include">
+        </childnode>
+        <childnode refid="24327" relation="include">
+        </childnode>
+      </node>
+      <node id="24324">
+        <label>stdexcept</label>
+      </node>
+      <node id="24334">
+        <label>src/kernel/routing/Route-inlines.h</label>
+        <link refid="d2/d2c/Route-inlines_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24311" relation="include">
+        </childnode>
+        <childnode refid="24307" relation="include">
+        </childnode>
+        <childnode refid="24335" relation="include">
+        </childnode>
+        <childnode refid="24326" relation="include">
+        </childnode>
+      </node>
+      <node id="24317">
+        <label>src/wxintl/libintl.h</label>
+      </node>
+      <node id="24303">
+        <label>malloc.h</label>
+      </node>
+      <node id="24325">
+        <label>boost/throw_exception.hpp</label>
+      </node>
+      <node id="24286">
+        <label>string</label>
+      </node>
+      <node id="24314">
+        <label>/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/interface_deps.h</label>
+      </node>
+      <node id="24328">
+        <label>src/kernel/routing/timing.h</label>
+        <link refid="db/d41/timing_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24300" relation="include">
+        </childnode>
+        <childnode refid="24327" relation="include">
+        </childnode>
+        <childnode refid="24329" relation="include">
+        </childnode>
+        <childnode refid="24324" relation="include">
+        </childnode>
+        <childnode refid="24325" relation="include">
+        </childnode>
+        <childnode refid="24330" relation="include">
+        </childnode>
+        <childnode refid="24319" relation="include">
+        </childnode>
+      </node>
+      <node id="24329">
+        <label>exception</label>
+      </node>
+      <node id="24345">
+        <label>fstream</label>
+      </node>
+      <node id="24301">
+        <label>limits.h</label>
+      </node>
+      <node id="24300">
+        <label>MidiKern.h</label>
+        <link refid="da/dfd/MidiKern_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24296" relation="include">
+        </childnode>
+      </node>
+      <node id="24281">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="24282" relation="include">
+        </childnode>
+        <childnode refid="24283" relation="include">
+        </childnode>
+        <childnode refid="24284" relation="include">
+        </childnode>
+      </node>
+      <node id="24315">
+        <label>src/kernel/Defs.h</label>
+      </node>
+      <node id="24295">
+        <label>string.h</label>
+      </node>
+      <node id="24287">
+        <label>cstdio</label>
+      </node>
+      <node id="24318">
+        <label>/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/debugFlags.h</label>
+      </node>
+      <node id="24297">
+        <label>src/kernel/Parser.h</label>
+        <link refid="d6/d0c/Parser_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24298" relation="include">
+        </childnode>
+        <childnode refid="24291" relation="include">
+        </childnode>
+        <childnode refid="24301" relation="include">
+        </childnode>
+      </node>
+      <node id="24340">
+        <label>src/kernel/routing/midi/DevMidi.h</label>
+        <link refid="d4/da2/DevMidi_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24341" relation="include">
+        </childnode>
+        <childnode refid="24307" relation="include">
+        </childnode>
+        <childnode refid="24342" relation="include">
+        </childnode>
+        <childnode refid="24288" relation="include">
+        </childnode>
+        <childnode refid="24343" relation="include">
+        </childnode>
+      </node>
+      <node id="24305">
+        <label>src/kernel/Runtime.h</label>
+        <link refid="d5/d84/Runtime_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24306" relation="include">
+        </childnode>
+      </node>
+      <node id="24323">
+        <label>vector</label>
+      </node>
+      <node id="24319">
+        <label>src/kernel/routing/thread.h</label>
+        <link refid="db/dd5/thread_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24320" relation="include">
+        </childnode>
+      </node>
+      <node id="24284">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24285" relation="include">
+        </childnode>
+        <childnode refid="24286" relation="include">
+        </childnode>
+        <childnode refid="24287" relation="include">
+        </childnode>
+        <childnode refid="24288" relation="include">
+        </childnode>
+        <childnode refid="24289" relation="include">
+        </childnode>
+        <childnode refid="24290" relation="include">
+        </childnode>
+      </node>
+      <node id="24308">
+        <label>src/kernel/routing/gmn/GIS.h</label>
+        <link refid="dd/d4d/GIS_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24309" relation="include">
+        </childnode>
+        <childnode refid="24295" relation="include">
+        </childnode>
+        <childnode refid="24293" relation="include">
+        </childnode>
+      </node>
+      <node id="24285">
+        <label>src/wxintl/libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24286" relation="include">
+        </childnode>
+      </node>
+      <node id="24333">
+        <label>boost/unordered_set.hpp</label>
+      </node>
+      <node id="24341">
+        <label>src/kernel/routing/midi/midicmn.h</label>
+        <link refid="de/d21/midicmn_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24307" relation="include">
+        </childnode>
+        <childnode refid="24335" relation="include">
+        </childnode>
+        <childnode refid="24323" relation="include">
+        </childnode>
+      </node>
+      <node id="24332">
+        <label>sstream</label>
+      </node>
+      <node id="24280">
         <label>src/kernel/Runtime.cpp</label>
         <link refid="Runtime.cpp"/>
-        <childnode refid="25241" relation="include">
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24291" relation="include">
+        </childnode>
+        <childnode refid="24297" relation="include">
+        </childnode>
+        <childnode refid="24304" relation="include">
+        </childnode>
+        <childnode refid="24305" relation="include">
+        </childnode>
+        <childnode refid="24302" relation="include">
+        </childnode>
+        <childnode refid="24306" relation="include">
+        </childnode>
+        <childnode refid="24307" relation="include">
+        </childnode>
+        <childnode refid="24334" relation="include">
+        </childnode>
+        <childnode refid="24337" relation="include">
+        </childnode>
+        <childnode refid="24340" relation="include">
+        </childnode>
+        <childnode refid="24344" relation="include">
         </childnode>
       </node>
-    </invincdepgraph>
+      <node id="24296">
+        <label>math.h</label>
+      </node>
+      <node id="24313">
+        <label>src/kernel/boost-interface.h</label>
+        <link refid="d1/da4/boost-interface_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24314" relation="include">
+        </childnode>
+        <childnode refid="24315" relation="include">
+        </childnode>
+        <childnode refid="24283" relation="include">
+        </childnode>
+        <childnode refid="24316" relation="include">
+        </childnode>
+        <childnode refid="24317" relation="include">
+        </childnode>
+        <childnode refid="24286" relation="include">
+        </childnode>
+        <childnode refid="24287" relation="include">
+        </childnode>
+        <childnode refid="24288" relation="include">
+        </childnode>
+        <childnode refid="24289" relation="include">
+        </childnode>
+        <childnode refid="24318" relation="include">
+        </childnode>
+        <childnode refid="24319" relation="include">
+        </childnode>
+        <childnode refid="24320" relation="include">
+        </childnode>
+        <childnode refid="24321" relation="include">
+        </childnode>
+      </node>
+      <node id="24316">
+        <label>src/kernel/debug.h</label>
+      </node>
+      <node id="24302">
+        <label>Execute.h</label>
+        <link refid="de/d11/Execute_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24292" relation="include">
+        </childnode>
+      </node>
+      <node id="24310">
+        <label>iostream</label>
+      </node>
+      <node id="24309">
+        <label>src/kernel/Frac.h</label>
+        <link refid="df/d4f/Frac_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24310" relation="include">
+        </childnode>
+      </node>
+      <node id="24283">
+        <label>cstddef</label>
+      </node>
+      <node id="24343">
+        <label>mmsystem.h</label>
+      </node>
+      <node id="24291">
+        <label>src/kernel/Global.h</label>
+        <link refid="dd/d40/Global_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24292" relation="include">
+        </childnode>
+        <childnode refid="24293" relation="include">
+        </childnode>
+        <childnode refid="24294" relation="include">
+        </childnode>
+        <childnode refid="24295" relation="include">
+        </childnode>
+        <childnode refid="24296" relation="include">
+        </childnode>
+      </node>
+      <node id="24320">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="24330">
+        <label>wx/stopwatch.h</label>
+      </node>
+      <node id="24331">
+        <label>algorithm</label>
+      </node>
+      <node id="24338">
+        <label>src/kernel/routing/CommonFileDevice.h</label>
+        <link refid="d9/d17/CommonFileDevice_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+        <childnode refid="24307" relation="include">
+        </childnode>
+        <childnode refid="24319" relation="include">
+        </childnode>
+        <childnode refid="24327" relation="include">
+        </childnode>
+        <childnode refid="24287" relation="include">
+        </childnode>
+        <childnode refid="24320" relation="include">
+        </childnode>
+      </node>
+      <node id="24312">
+        <label>src/kernel/treestorage.h</label>
+        <link refid="db/dbe/treestorage_8h"/>
+        <childnode refid="24281" relation="include">
+        </childnode>
+      </node>
+      <node id="24292">
+        <label>stdio.h</label>
+      </node>
+      <node id="24290">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
+      </node>
+    </incdepgraph>
     <innernamespace refid="d6/daa/namespacemutabor">mutabor</innernamespace>
     <innernamespace refid="d6/dbb/namespacemutabor_1_1hidden">mutabor::hidden</innernamespace>
       <sectiondef kind="define">
@@ -711,7 +581,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" line="292" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" bodystart="292" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" line="139" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp" bodystart="139" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -726,7 +596,7 @@
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d6/d0c/Parser_8h" kindref="compound">src/kernel/Parser.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d32/Hilfs_8h" kindref="compound">src/kernel/Hilfs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/d47/GrafKern_8h" kindref="compound">src/kernel/GrafKern.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//#include<sp/>&quot;src/kernel/GrafKern.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d5/d84/Runtime_8h" kindref="compound">src/kernel/Runtime.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d11/Execute_8h" kindref="compound">src/kernel/Execute.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -738,301 +608,149 @@
 <codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="da/d81/DevGIS_8h" kindref="compound">src/kernel/routing/gmn/DevGIS.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/da2/DevMidi_8h" kindref="compound">src/kernel/routing/midi/DevMidi.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="da/d3c/DevMidF_8h" kindref="compound">src/kernel/routing/midi/DevMidF.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/msgdlg.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
-<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">hidden<sp/>{</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55" refid="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" refkind="member"><highlight class="normal">jmp_buf<sp/><ref refid="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" kindref="member">weiter_gehts_nach_compilerfehler</ref>;</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
-<codeline lineno="58"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/>NoRealTime<sp/>-<sp/>Aktionen</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>NRT_Play()<sp/>{</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>warning<sp/>&quot;NRT_Play()<sp/>must<sp/>be<sp/>revised&quot;</highlight></codeline>
-<codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>start<sp/>all<sp/>devices</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ga02733c08ce3d21e93299856a09a43d77" kindref="member">mutabor::InputDeviceList</ref><sp/>&amp;<sp/>list<sp/>=<sp/></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" kindref="member">mutabor::InputDeviceClass::GetDeviceList</ref>();</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(mutabor::InputDeviceList::const_iterator<sp/>In<sp/>=<sp/>list.begin();</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>!=<sp/>list.end();<sp/>In++)</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::const_pointer_cast&lt;InputDeviceClass&gt;(*In)-&gt;Play();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mutabor<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">hidden<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" refkind="member"><highlight class="normal">jmp_buf<sp/><ref refid="dc/d7e/group__runtime_1ga1faa8705b3fd5029a295edfdcdf1a67f" kindref="member">weiter_gehts_nach_compilerfehler</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0<sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis" kindref="compound">keyboard_ereignis</ref><sp/>*last;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="d6/dbb/namespacemutabor_1_1hidden_1aaf6d895058141aad272d705e2373d6bc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aaf6d895058141aad272d705e2373d6bc" kindref="member">TSChanged</ref>(<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/>box)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flag<sp/>=<sp/>memcmp(&amp;(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a01fcb7c751ff70922a812a7e5dc93888" kindref="member">last_tonesystem</ref>),</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a2f59f88dd5c77b3e92691b64936d8e2d" kindref="member">tonesystem</ref>,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(2*</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/>+<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)<sp/>+</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a2f59f88dd5c77b3e92691b64936d8e2d" kindref="member">tonesystem</ref>-&gt;<ref refid="d4/dc1/structmutabor_1_1hidden_1_1TSYS_1a226ad54b5acaccddf293cee6ccd910f7" kindref="member">breite</ref>*</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal">))<sp/>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a01fcb7c751ff70922a812a7e5dc93888" kindref="member">last_tonesystem</ref><sp/>=<sp/>*(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a2f59f88dd5c77b3e92691b64936d8e2d" kindref="member">tonesystem</ref>);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>flag;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>time<sp/>slices</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>Working<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71" refid="d6/dbb/namespacemutabor_1_1hidden_1aded32e236c65caa32f80277d36d825f6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aded32e236c65caa32f80277d36d825f6" kindref="member">GetInDevicesMode</ref>(</highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gaa3d7d1e712c727d12c3b60c8dc04b484" kindref="member">MutaborModeType</ref><sp/>*mode)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nr<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/>Working<sp/>)<sp/>{</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Working<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(mutabor::InputDeviceList::const_iterator<sp/>In<sp/>=<sp/><sp/>list.begin();</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>!=<sp/>list.end();<sp/>In++)</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>(*In)-&gt;GetMode()<sp/>==<sp/>1<sp/></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>(*In)-&gt;GetType()<sp/>==<sp/><ref refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" kindref="member">DTMidiFile</ref><sp/>)<sp/>{</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga06c750cbc293593a85009553cf6cfcc5" kindref="member">STUB</ref>;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::const_pointer_cast&lt;InputDeviceClass&gt;(*In)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;IncDelta();</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Working<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ga02733c08ce3d21e93299856a09a43d77" kindref="member">InputDeviceList</ref><sp/>&amp;<sp/>list<sp/>=<sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" kindref="member">InputDeviceClass::GetDeviceList</ref>();<sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(InputDeviceList::const_iterator<sp/>In<sp/>=<sp/>list.begin();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>!=<sp/>list.end();<sp/>In++)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mode[nr]<sp/>=<sp/>(*In)-&gt;GetMode();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="d6/dbb/namespacemutabor_1_1hidden_1ad3315e3cb4efce81719452b2e1493373" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ad3315e3cb4efce81719452b2e1493373" kindref="member">GetChannels</ref>(<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>start,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;base,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;from,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;to,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;thru)<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>start<sp/>)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>=<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac417fd2bdbc440684d1fbde60c703322" kindref="member">list_of_config_instrumente</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>=<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>-&gt;<sp/>next;</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/daa/namespacemutabor_1ab2acff956460e39a59c206fc02dc4c99" kindref="member">CurrentTime</ref>.Notify();</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(mutabor::InputDeviceList::const_iterator<sp/>In<sp/>=<sp/><sp/>list.begin();</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>!=<sp/>list.end();<sp/>In++)</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::const_pointer_cast&lt;InputDeviceClass&gt;(*In)-&gt;<ref refid="d7/dda/classmutabor_1_1CurrentTimer_1ac786e3b69adfb260915c39886e4673de" kindref="member">Stop</ref>();</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>InDevChanged<sp/>=<sp/>1;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>base<sp/>=<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>-&gt;<sp/>midi_in;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>from<sp/>=<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>-&gt;<sp/>midi_von;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>to<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>-&gt;<sp/>midi_bis;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thru<sp/>=<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>-&gt;<sp/>midi_umleit;</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/>InDeviceAction(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>inDevNr,<sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gaa3d7d1e712c727d12c3b60c8dc04b484" kindref="member">MutaborModeType</ref><sp/>action)<sp/>{</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>return;<sp/>entkoppeln<sp/>(zum<sp/>debuggen)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!RealTime<sp/>)<sp/>{</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NRT_Play();</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101" refid="d6/dbb/namespacemutabor_1_1hidden_1a43a87a4bc69cdfe430d789bd84c96f7c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a43a87a4bc69cdfe430d789bd84c96f7c" kindref="member">SetChannels</ref>(<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>base,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>from,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>to,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>thru)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ae5e154b88f72a1cffaa0ac401435db18" kindref="member">get_instrument_dekl</ref><sp/>(box,<sp/>base,<sp/>from,<sp/>to,<sp/>thru,<sp/>&amp;box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac417fd2bdbc440684d1fbde60c703322" kindref="member">list_of_config_instrumente</ref>);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ga02733c08ce3d21e93299856a09a43d77" kindref="member">InputDeviceList</ref><sp/>&amp;<sp/>list<sp/>=<sp/></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" kindref="member">InputDeviceClass::GetDeviceList</ref>();</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>InputDeviceList::const_iterator<sp/>In<sp/>=<sp/></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>list.begin();</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/>In<sp/>!=<sp/>list.end()<sp/>&amp;&amp;<sp/>inDevNr--<sp/>)<sp/>In++;</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>In<sp/>==<sp/>list.end()<sp/></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>(*In)-&gt;GetMode()<sp/>==<sp/><ref refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8" kindref="member">DeviceCompileError</ref><sp/>)<sp/></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//<sp/>scan-Hilfsfunktionen<sp/>---------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a4d5bd5952b03b94b435d4303e338271e" kindref="member">GetELine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>p,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">&amp;<sp/>i,<sp/>std::string<sp/>&amp;s);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><ref refid="d5/dee/group__route_1ga84f84d78781fc500cd66ee58b0efc83a" kindref="member">DevType</ref><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a73335de09dd338a9eaf32ef15e139bc3" kindref="member">Str2DT</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>type);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">//<sp/>aus<sp/>p<sp/>eine<sp/>Zeile<sp/>in<sp/>s<sp/>lesen,<sp/>p<sp/>wird<sp/>verschoben</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="d6/dbb/namespacemutabor_1_1hidden_1aa0c80d82f8b4a066e9a027a4845a3d0c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aa0c80d82f8b4a066e9a027a4845a3d0c" kindref="member">GetLine</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**p,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s)<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!p<sp/>||<sp/>!(*p)[0]<sp/>)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>FALSE;</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<sp/>action<sp/>)<sp/>{</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a1930d64553de6f24b26cee3155a93649" kindref="member">DeviceStop</ref>:</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::const_pointer_cast&lt;InputDeviceClass&gt;(*In)-&gt;Stop();</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a23c834648e5e43c6efacf37b4158e5b8" kindref="member">DevicePlay</ref>:</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::const_pointer_cast&lt;InputDeviceClass&gt;(*In)-&gt;Play();</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a86530be4e7e984649e049f17857b8e5e" kindref="member">DevicePause</ref>:</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::const_pointer_cast&lt;InputDeviceClass&gt;(*In)-&gt;Pause();</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/>(*p)[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal"><sp/>||<sp/>(*p)[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>||<sp/>(*p)[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;\r&apos;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*p<sp/>=<sp/>&amp;(*p)[1];</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!(*p)[0]<sp/>)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>FALSE;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*p1<sp/>=<sp/>*p;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*p<sp/>=<sp/>strchr(p1,<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!p<sp/>)</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*p<sp/>=<sp/>&amp;p1[strlen(p1)];</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a4fd9ce6cf94e3605cc2122e7aecd4dea" kindref="member">DeviceUnregistered</ref>:</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Device<sp/>is<sp/>unregistered.<sp/>Aborting.&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>abort();</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>(*p)-p1;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strncpy(s,<sp/>p1,<sp/>i);</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484abf7959e8f08b5c3693221815065e73e8" kindref="member">DeviceCompileError</ref>:</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unhandled<sp/>compile<sp/>error.<sp/>Aborting.&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>abort();</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ggaa3d7d1e712c727d12c3b60c8dc04b484a04f0b919edf40d45442ee6153b4e512e" kindref="member">DeviceTimingError</ref>:</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unhandled<sp/>timing<sp/>error.<sp/>Aborting.&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>abort();</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s[i]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>TRUE;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="db/d80/Runtime_8cpp_1aaa9c8dc328349cf18c6a068a6cdfcd85" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GETLINE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="140"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(<sp/>!GetELine(config,<sp/>i,<sp/>s)<sp/>)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="141"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return</highlight></codeline>
+<codeline lineno="142"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="143"><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/>CheckNeedsRealTime()<sp/>{</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ga0d3410de3b825f475daa3575bb3816a6" kindref="member">NeedsRealTime</ref>();</highlight></codeline>
-<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="148"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="149" refid="d6/dbb/namespacemutabor_1_1hidden_1aaf797fd29e6544b9f2eb2080c0f370fa" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis" kindref="compound">keyboard_ereignis</ref><sp/>*<ref refid="d6/dbb/namespacemutabor_1_1hidden_1aaf797fd29e6544b9f2eb2080c0f370fa" kindref="member">last</ref>;</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"></highlight></codeline>
-<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0<sp/></highlight></codeline>
-<codeline lineno="152"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#warning<sp/>Use<sp/>dynamic<sp/>string<sp/>management<sp/>for<sp/>GetMutTag</highlight></codeline>
-<codeline lineno="153"><highlight class="preprocessor"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/>GetMutTag(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>&amp;isLogic,<sp/></highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**text,<sp/></highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*einsttext,<sp/></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>&amp;key,<sp/></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/>box)<sp/>{</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!box<sp/>||<sp/>box<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>last<sp/>)<sp/>last<sp/>=<sp/>last-&gt;<ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis_1a05ebe658707a80be3d119d4f109fc5d1" kindref="member">next</ref>;</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last<sp/>=<sp/>box-&gt;first_keyboard;</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!last<sp/>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>key<sp/>=<sp/>last-&gt;<ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis_1aa54542ebbb5e4c3964713ca0789ca91c" kindref="member">taste</ref>;</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"></highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*text<sp/>=<sp/>mutabor_do_aktion_to_string(last-&gt;<ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis_1af60133a8754487f7d489f13bc3986aae" kindref="member">aktion</ref>,</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>isLogic<sp/>=<sp/>(<sp/>last-&gt;<ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis_1ab55d4080b153acf6a3c3c6b73541f712" kindref="member">the_logik_to_expand</ref><sp/>!=<sp/>NULL<sp/>);</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>isLogic<sp/>&amp;&amp;<sp/>last-&gt;<ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis_1ab55d4080b153acf6a3c3c6b73541f712" kindref="member">the_logik_to_expand</ref>-&gt;<ref refid="df/dc6/structmutabor_1_1hidden_1_1logik_1a380b17bf73dabbf7239f77df03015730" kindref="member">einstimmungs_name</ref><sp/>)<sp/>{</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strncpy(einsttext,<sp/>last-&gt;<ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis_1ab55d4080b153acf6a3c3c6b73541f712" kindref="member">the_logik_to_expand</ref>-&gt;<ref refid="df/dc6/structmutabor_1_1hidden_1_1logik_1a380b17bf73dabbf7239f77df03015730" kindref="member">einstimmungs_name</ref>,<sp/>199);</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>einsttext[199]=0;</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>einsttext[0]<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
-<codeline lineno="179"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="145"><highlight class="comment">//<sp/>das<sp/>nr-ste<sp/>Output<sp/>Device</highlight></codeline>
+<codeline lineno="146"><highlight class="comment">//<sp/>TODO<sp/>Nr<sp/>from<sp/>0<sp/>or<sp/>1?</highlight></codeline>
+<codeline lineno="147"><highlight class="comment">OutputDevice<sp/>*GetOut(int<sp/>nr)<sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEBUGLOG2(other,_T(&quot;Nr.:<sp/>%d&quot;),nr);</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"></highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(<sp/>nr<sp/>&lt;<sp/>0<sp/>)</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>0;</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"></highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OutDevice<sp/>*Out<sp/>=<sp/>OutDevice::GetDeviceList();</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"></highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>while<sp/>(<sp/>Out<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(Out-&gt;GetDevId()<sp/>==<sp/>nr)<sp/>break;</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"></highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Out<sp/>=<sp/>Out-&gt;GetNext();</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"></highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEBUGLOG2(other,_T(&quot;Nr.:<sp/>%d,<sp/>Out:<sp/>%x&quot;),nr,<sp/>Out);</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"></highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>Out;</highlight></codeline>
+<codeline lineno="164"><highlight class="comment">}</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"></highlight></codeline>
+<codeline lineno="166"><highlight class="comment">//<sp/>Timerdaten</highlight></codeline>
+<codeline lineno="167"><highlight class="comment">void<sp/><sp/>GetTimerData(UINT<sp/>&amp;min,<sp/>UINT<sp/>&amp;max)<sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="comment">#if<sp/>!defined(WX)<sp/>||<sp/>defined(__WXMSW__)</highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TIMECAPS<sp/>TimeCaps;</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>timeGetDevCaps(&amp;TimeCaps,<sp/>sizeof(TIMECAPS));</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>min<sp/>=<sp/>TimeCaps.wPeriodMin;</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>max<sp/>=<sp/>TimeCaps.wPeriodMax;</highlight></codeline>
+<codeline lineno="173"><highlight class="comment">#else</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//TODO</highlight></codeline>
+<codeline lineno="175"><highlight class="comment">#endif</highlight></codeline>
+<codeline lineno="176"><highlight class="comment">}</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"></highlight></codeline>
+<codeline lineno="178"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
 <codeline lineno="180"><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>IsLogicKey(<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>key)<sp/>{</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"></highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis" kindref="compound">keyboard_ereignis</ref><sp/>*last<sp/>=<sp/>box-&gt;first_keyboard;</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"></highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/>last<sp/>)<sp/>{</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>key<sp/>==<sp/>last-&gt;<ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis_1aa54542ebbb5e4c3964713ca0789ca91c" kindref="member">taste</ref><sp/>)</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>last-&gt;<ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis_1ab55d4080b153acf6a3c3c6b73541f712" kindref="member">the_logik_to_expand</ref><sp/>!=<sp/>NULL;</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"></highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last<sp/>=<sp/>last-&gt;<ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis_1a05ebe658707a80be3d119d4f109fc5d1" kindref="member">next</ref>;</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"></highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="193"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="195"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="196"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
-<codeline lineno="197"><highlight class="preprocessor"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>KeyChanged(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box)<sp/>{</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flag<sp/>=<sp/>box-&gt;keys_changed;</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;keys_changed<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>flag;</highlight></codeline>
-<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="203"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="204"><highlight class="normal"></highlight><highlight class="comment">//tone_system<sp/>last_tonsystem[MAX_BOX];<sp/>moved<sp/>to<sp/>box</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="205"><highlight class="normal"></highlight></codeline>
-<codeline lineno="206" refid="d6/dbb/namespacemutabor_1_1hidden_1aaf6d895058141aad272d705e2373d6bc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aaf6d895058141aad272d705e2373d6bc" kindref="member">TSChanged</ref>(<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/>box)<sp/>{</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flag<sp/>=<sp/>memcmp(&amp;(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a01fcb7c751ff70922a812a7e5dc93888" kindref="member">last_tonesystem</ref>),</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a2f59f88dd5c77b3e92691b64936d8e2d" kindref="member">tonesystem</ref>,</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(2*</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/>+<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)<sp/>+</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a2f59f88dd5c77b3e92691b64936d8e2d" kindref="member">tonesystem</ref>-&gt;<ref refid="d4/dc1/structmutabor_1_1hidden_1_1TSYS_1a226ad54b5acaccddf293cee6ccd910f7" kindref="member">breite</ref>*</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal">))<sp/>);</highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a01fcb7c751ff70922a812a7e5dc93888" kindref="member">last_tonesystem</ref><sp/>=<sp/>*(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a2f59f88dd5c77b3e92691b64936d8e2d" kindref="member">tonesystem</ref>);</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>flag;</highlight></codeline>
-<codeline lineno="214"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"></highlight></codeline>
-<codeline lineno="216"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
-<codeline lineno="217"><highlight class="preprocessor"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/>InDevicesChanged()<sp/>{</highlight></codeline>
-<codeline lineno="218"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>char<sp/>flag<sp/>=<sp/>InDevChanged;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1ga74d244d6867e380692618601581d5e4d" kindref="member">InDevChanged</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>flag;</highlight></codeline>
-<codeline lineno="221"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="223"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="224" refid="d6/dbb/namespacemutabor_1_1hidden_1aded32e236c65caa32f80277d36d825f6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aded32e236c65caa32f80277d36d825f6" kindref="member">GetInDevicesMode</ref>(</highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gaa3d7d1e712c727d12c3b60c8dc04b484" kindref="member">MutaborModeType</ref><sp/>*mode)<sp/>{</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nr<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"></highlight></codeline>
-<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ga02733c08ce3d21e93299856a09a43d77" kindref="member">InputDeviceList</ref><sp/>&amp;<sp/>list<sp/>=<sp/></highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" kindref="member">InputDeviceClass::GetDeviceList</ref>();<sp/></highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(InputDeviceList::const_iterator<sp/>In<sp/>=<sp/>list.begin();</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>!=<sp/>list.end();<sp/>In++)</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mode[nr]<sp/>=<sp/>(*In)-&gt;GetMode();</highlight></codeline>
-<codeline lineno="232"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"></highlight></codeline>
-<codeline lineno="234"><highlight class="normal"></highlight></codeline>
-<codeline lineno="235" refid="d6/dbb/namespacemutabor_1_1hidden_1ad3315e3cb4efce81719452b2e1493373" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ad3315e3cb4efce81719452b2e1493373" kindref="member">GetChannels</ref>(<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>start,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;base,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;from,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;to,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;thru)<sp/>{</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>start<sp/>)</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>=<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac417fd2bdbc440684d1fbde60c703322" kindref="member">list_of_config_instrumente</ref>;</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>)</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>=<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>-&gt;<sp/>next;</highlight></codeline>
-<codeline lineno="240"><highlight class="normal"></highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"></highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>base<sp/>=<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>-&gt;<sp/>midi_in;</highlight></codeline>
-<codeline lineno="244"><highlight class="normal"></highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>from<sp/>=<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>-&gt;<sp/>midi_von;</highlight></codeline>
-<codeline lineno="246"><highlight class="normal"></highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>to<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>-&gt;<sp/>midi_bis;</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"></highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thru<sp/>=<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref><sp/>-&gt;<sp/>midi_umleit;</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"></highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
-<codeline lineno="252"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"></highlight></codeline>
-<codeline lineno="254" refid="d6/dbb/namespacemutabor_1_1hidden_1a43a87a4bc69cdfe430d789bd84c96f7c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a43a87a4bc69cdfe430d789bd84c96f7c" kindref="member">SetChannels</ref>(<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>base,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>from,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>to,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>thru)<sp/>{</highlight></codeline>
-<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ae5e154b88f72a1cffaa0ac401435db18" kindref="member">get_instrument_dekl</ref><sp/>(box,<sp/>base,<sp/>from,<sp/>to,<sp/>thru,<sp/>&amp;box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac417fd2bdbc440684d1fbde60c703322" kindref="member">list_of_config_instrumente</ref>);</highlight></codeline>
-<codeline lineno="256"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"></highlight></codeline>
-<codeline lineno="258"><highlight class="normal"></highlight></codeline>
-<codeline lineno="259"><highlight class="normal"></highlight><highlight class="comment">//<sp/>scan-Hilfsfunktionen<sp/>---------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="260"><highlight class="normal"></highlight></codeline>
-<codeline lineno="261"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a63e72f9f806a1d00416ce683f06aedae" kindref="member">GetELine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>p,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">&amp;<sp/>i,<sp/>wxString<sp/>&amp;s);</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"></highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><ref refid="d5/dee/group__route_1ga84f84d78781fc500cd66ee58b0efc83a" kindref="member">DevType</ref><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a2b7c6255a09fa6ba1008fd3d7e0129c7" kindref="member">Str2DT</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>type);</highlight></codeline>
-<codeline lineno="264"><highlight class="normal"></highlight></codeline>
-<codeline lineno="265"><highlight class="normal"></highlight><highlight class="comment">//<sp/>aus<sp/>p<sp/>eine<sp/>Zeile<sp/>in<sp/>s<sp/>lesen,<sp/>p<sp/>wird<sp/>verschoben</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="266" refid="d6/dbb/namespacemutabor_1_1hidden_1aa0c80d82f8b4a066e9a027a4845a3d0c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aa0c80d82f8b4a066e9a027a4845a3d0c" kindref="member">GetLine</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**p,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s)<sp/>{</highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!p<sp/>||<sp/>!(*p)[0]<sp/>)</highlight></codeline>
-<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>FALSE;</highlight></codeline>
-<codeline lineno="269"><highlight class="normal"></highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/>(*p)[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal"><sp/>||<sp/>(*p)[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>||<sp/>(*p)[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;\r&apos;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*p<sp/>=<sp/>&amp;(*p)[1];</highlight></codeline>
-<codeline lineno="272"><highlight class="normal"></highlight></codeline>
-<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!(*p)[0]<sp/>)</highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>FALSE;</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"></highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*p1<sp/>=<sp/>*p;</highlight></codeline>
-<codeline lineno="277"><highlight class="normal"></highlight></codeline>
-<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*p<sp/>=<sp/>strchr(p1,<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="279"><highlight class="normal"></highlight></codeline>
-<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!p<sp/>)</highlight></codeline>
-<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*p<sp/>=<sp/>&amp;p1[strlen(p1)];</highlight></codeline>
-<codeline lineno="282"><highlight class="normal"></highlight></codeline>
-<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>(*p)-p1;</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"></highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strncpy(s,<sp/>p1,<sp/>i);</highlight></codeline>
-<codeline lineno="286"><highlight class="normal"></highlight></codeline>
-<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s[i]<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="288"><highlight class="normal"></highlight></codeline>
-<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>TRUE;</highlight></codeline>
-<codeline lineno="290"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="291"><highlight class="normal"></highlight></codeline>
-<codeline lineno="292" refid="db/d80/Runtime_8cpp_1aaa9c8dc328349cf18c6a068a6cdfcd85" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GETLINE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="293"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(<sp/>!GetELine(config,<sp/>i,<sp/>s)<sp/>)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="294"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return</highlight></codeline>
-<codeline lineno="295"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="296"><highlight class="normal"></highlight></codeline>
-<codeline lineno="297"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="298"><highlight class="comment">//<sp/>das<sp/>nr-ste<sp/>Output<sp/>Device</highlight></codeline>
-<codeline lineno="299"><highlight class="comment">//<sp/>TODO<sp/>Nr<sp/>from<sp/>0<sp/>or<sp/>1?</highlight></codeline>
-<codeline lineno="300"><highlight class="comment">OutputDevice<sp/>*GetOut(int<sp/>nr)<sp/>{</highlight></codeline>
-<codeline lineno="301"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEBUGLOG2(other,_T(&quot;Nr.:<sp/>%d&quot;),nr);</highlight></codeline>
-<codeline lineno="302"><highlight class="comment"></highlight></codeline>
-<codeline lineno="303"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(<sp/>nr<sp/>&lt;<sp/>0<sp/>)</highlight></codeline>
-<codeline lineno="304"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>0;</highlight></codeline>
-<codeline lineno="305"><highlight class="comment"></highlight></codeline>
-<codeline lineno="306"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OutDevice<sp/>*Out<sp/>=<sp/>OutDevice::GetDeviceList();</highlight></codeline>
-<codeline lineno="307"><highlight class="comment"></highlight></codeline>
-<codeline lineno="308"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>while<sp/>(<sp/>Out<sp/>)<sp/>{</highlight></codeline>
-<codeline lineno="309"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(Out-&gt;GetDevId()<sp/>==<sp/>nr)<sp/>break;</highlight></codeline>
-<codeline lineno="310"><highlight class="comment"></highlight></codeline>
-<codeline lineno="311"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Out<sp/>=<sp/>Out-&gt;GetNext();</highlight></codeline>
-<codeline lineno="312"><highlight class="comment"></highlight></codeline>
-<codeline lineno="313"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEBUGLOG2(other,_T(&quot;Nr.:<sp/>%d,<sp/>Out:<sp/>%x&quot;),nr,<sp/>Out);</highlight></codeline>
-<codeline lineno="314"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="315"><highlight class="comment"></highlight></codeline>
-<codeline lineno="316"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>Out;</highlight></codeline>
-<codeline lineno="317"><highlight class="comment">}</highlight></codeline>
-<codeline lineno="318"><highlight class="comment"></highlight></codeline>
-<codeline lineno="319"><highlight class="comment">//<sp/>Timerdaten</highlight></codeline>
-<codeline lineno="320"><highlight class="comment">void<sp/><sp/>GetTimerData(UINT<sp/>&amp;min,<sp/>UINT<sp/>&amp;max)<sp/>{</highlight></codeline>
-<codeline lineno="321"><highlight class="comment">#if<sp/>!defined(WX)<sp/>||<sp/>defined(__WXMSW__)</highlight></codeline>
-<codeline lineno="322"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TIMECAPS<sp/>TimeCaps;</highlight></codeline>
-<codeline lineno="323"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>timeGetDevCaps(&amp;TimeCaps,<sp/>sizeof(TIMECAPS));</highlight></codeline>
-<codeline lineno="324"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>min<sp/>=<sp/>TimeCaps.wPeriodMin;</highlight></codeline>
-<codeline lineno="325"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>max<sp/>=<sp/>TimeCaps.wPeriodMax;</highlight></codeline>
-<codeline lineno="326"><highlight class="comment">#else</highlight></codeline>
-<codeline lineno="327"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//TODO</highlight></codeline>
-<codeline lineno="328"><highlight class="comment">#endif</highlight></codeline>
-<codeline lineno="329"><highlight class="comment">}</highlight></codeline>
-<codeline lineno="330"><highlight class="comment"></highlight></codeline>
-<codeline lineno="331"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="332"><highlight class="normal"></highlight></codeline>
-<codeline lineno="333"><highlight class="normal"></highlight></codeline>
-<codeline lineno="334"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
-<codeline lineno="335"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="337"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="338"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="339"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="340"><highlight class="normal"></highlight></codeline>
-<codeline lineno="341"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>\}<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="182"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="186"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>\}<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Runtime.cpp"/>
   </compounddef>
 </doxygen>

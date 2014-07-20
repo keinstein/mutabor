@@ -36,6 +36,11 @@
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="../../d1/da4/boost-interface_8h_source.html">boost-interface.h</a>&gt;</code></p>
+<div class="dynheader">
+Zusammengehörigkeiten von intrusive_ptr_refcount_type&lt; locking &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../df/dc6/classintrusive__ptr__refcount__type__coll__graph.png" border="0" usemap="#intrusive__ptr__refcount__type_3_01locking_01_4_coll__map" alt="Collaboration graph"/></div>
+<center><span class="legend">[<a href="../../graph_legend.html">Legende</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Öffentliche Typen</h2></td></tr>
@@ -60,7 +65,7 @@
 <tr class="separator:ae7facb45784893d078ff7ee70357e691"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a952be47af27f4a3a323b071b771a19d6"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d91/classintrusive__ptr__refcount__type.html#a952be47af27f4a3a323b071b771a19d6">operator--</a> (int)</td></tr>
 <tr class="separator:a952be47af27f4a3a323b071b771a19d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf31134ff120a5e6518181b7530edcc4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d91/classintrusive__ptr__refcount__type.html#aaf31134ff120a5e6518181b7530edcc4">operator size_t</a> () <a class="el" href="../../d1/de1/Mut__Tab_8cpp.html#a2c212835823e3c54a8ab6d95c652660e">const</a> </td></tr>
+<tr class="memitem:aaf31134ff120a5e6518181b7530edcc4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d91/classintrusive__ptr__refcount__type.html#aaf31134ff120a5e6518181b7530edcc4">operator size_t</a> () const </td></tr>
 <tr class="separator:aaf31134ff120a5e6518181b7530edcc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -424,11 +429,11 @@ template&lt;class intrusive_ptr_T &gt; </div>
 <div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">if</span> (!obj) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        ++(obj-&gt;intrusive_ptr_refcount);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a>(smartptr,*obj,_T(<span class="stringliteral">&quot;Incrementing %p to %d&quot;</span>),</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a>(smartptr,*obj,(<span class="stringliteral">&quot;Incrementing %p to %d&quot;</span>),</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                     (<span class="keywordtype">void</span> *)obj,(<span class="keywordtype">int</span>)<a class="code" href="../../d9/d91/classintrusive__ptr__refcount__type.html#a929b9e3b3d2ed10ebd92110d49320603">intrusive_ptr_get_refcount</a>(obj));</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="comment">// print_stacktrace(isDebugFlag(smartptr));</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
-<div class="ttc" id="group__debug_html_ga9de22df51e7efa23154a04eab9e66cad"><div class="ttname"><a href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a></div><div class="ttdeci">#define DEBUGLOGTYPE(level, type,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00148">mutDebug.h:148</a></div></div>
+<div class="ttc" id="group__debug_html_ga9de22df51e7efa23154a04eab9e66cad"><div class="ttname"><a href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a></div><div class="ttdeci">#define DEBUGLOGTYPE(level, type,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/debug_8h_source.html#l00242">debug.h:242</a></div></div>
 <div class="ttc" id="classintrusive__ptr__refcount__type_html_a929b9e3b3d2ed10ebd92110d49320603"><div class="ttname"><a href="../../d9/d91/classintrusive__ptr__refcount__type.html#a929b9e3b3d2ed10ebd92110d49320603">intrusive_ptr_refcount_type::intrusive_ptr_get_refcount</a></div><div class="ttdeci">friend size_t intrusive_ptr_get_refcount(intrusive_ptr_T *obj)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da4/boost-interface_8h_source.html#l00108">boost-interface.h:108</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -496,12 +501,12 @@ template&lt;class intrusive_ptr_T &gt; </div>
 <p>Definiert in Zeile <a class="el" href="../../d1/da4/boost-interface_8h_source.html#l00125">125</a> der Datei <a class="el" href="../../d1/da4/boost-interface_8h_source.html">boost-interface.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;{</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">if</span> (!obj) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a>(smartptr,*obj,_T(<span class="stringliteral">&quot;Decrementing %p from %d&quot;</span>),</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a>(smartptr,*obj,(<span class="stringliteral">&quot;Decrementing %p from %d&quot;</span>),</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                     (<span class="keywordtype">void</span> *)obj,(<span class="keywordtype">int</span>)<a class="code" href="../../d9/d91/classintrusive__ptr__refcount__type.html#a929b9e3b3d2ed10ebd92110d49320603">intrusive_ptr_get_refcount</a>(obj));</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="comment">//      print_stacktrace(isDebugFlag(smartptr));</span></div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">if</span> (!(--(obj-&gt;intrusive_ptr_refcount))) <span class="keyword">delete</span> obj;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
-<div class="ttc" id="group__debug_html_ga9de22df51e7efa23154a04eab9e66cad"><div class="ttname"><a href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a></div><div class="ttdeci">#define DEBUGLOGTYPE(level, type,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00148">mutDebug.h:148</a></div></div>
+<div class="ttc" id="group__debug_html_ga9de22df51e7efa23154a04eab9e66cad"><div class="ttname"><a href="../../de/db7/group__debug.html#ga9de22df51e7efa23154a04eab9e66cad">DEBUGLOGTYPE</a></div><div class="ttdeci">#define DEBUGLOGTYPE(level, type,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/debug_8h_source.html#l00242">debug.h:242</a></div></div>
 <div class="ttc" id="classintrusive__ptr__refcount__type_html_a929b9e3b3d2ed10ebd92110d49320603"><div class="ttname"><a href="../../d9/d91/classintrusive__ptr__refcount__type.html#a929b9e3b3d2ed10ebd92110d49320603">intrusive_ptr_refcount_type::intrusive_ptr_get_refcount</a></div><div class="ttdeci">friend size_t intrusive_ptr_get_refcount(intrusive_ptr_T *obj)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/da4/boost-interface_8h_source.html#l00108">boost-interface.h:108</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -564,6 +569,6 @@ template&lt;bool locking = 1&gt; </div>
 </ul>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Son Feb 9 2014 18:39:26 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Apr 26 2014 12:58:29 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="d8/da3/structmutabor_1_1BoxClass_1_1scoped__watchdog" kind="struct" prot="protected">
+    <compoundname>mutabor::BoxClass::scoped_watchdog</compoundname>
+    <basecompoundref refid="d4/d26/structmutabor_1_1BoxClass_1_1BoxLock" prot="public" virt="non-virtual">mutabor::BoxClass::BoxLock</basecompoundref>
+    <includes refid="de/d0f/Box_8h" local="no">Box.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/dee/group__route_1ga68409e450fe7665932d82f0414b5fcf5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::BoxClass::scoped_watchdog::scoped_watchdog</definition>
+        <argsstring>(BoxClass *b)</argsstring>
+        <name>scoped_watchdog</name>
+        <param>
+          <type><ref refid="d3/d4e/structmutabor_1_1BoxClass" kindref="compound">BoxClass</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="796" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="796" bodyend="799"/>
+        <references refid="d5/dee/group__route_1ga61507c70f05e03741ddf68875f68310f" compoundref="de/d0f/Box_8h" startline="782">mutabor::BoxClass::BoxLock::box</references>
+      </memberdef>
+      <memberdef kind="function" id="d5/dee/group__route_1gaa2d22c86e11e26c6f59f6181c8f1dd68" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::BoxClass::scoped_watchdog::~scoped_watchdog</definition>
+        <argsstring>()</argsstring>
+        <name>~scoped_watchdog</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="800" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="800" bodyend="803"/>
+        <references refid="d5/dee/group__route_1ga61507c70f05e03741ddf68875f68310f" compoundref="de/d0f/Box_8h" startline="782">mutabor::BoxClass::BoxLock::box</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5292">
+        <label>mutabor::BoxClass::BoxLock</label>
+        <link refid="d4/d26/structmutabor_1_1BoxClass_1_1BoxLock"/>
+        <childnode refid="5293" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5291">
+        <label>mutabor::BoxClass::scoped_watchdog</label>
+        <link refid="d8/da3/structmutabor_1_1BoxClass_1_1scoped__watchdog"/>
+        <childnode refid="5292" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5293">
+        <label>ScopedLock</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5295">
+        <label>mutabor::BoxClass::BoxLock</label>
+        <link refid="d4/d26/structmutabor_1_1BoxClass_1_1BoxLock"/>
+        <childnode refid="5296" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5294">
+        <label>mutabor::BoxClass::scoped_watchdog</label>
+        <link refid="d8/da3/structmutabor_1_1BoxClass_1_1scoped__watchdog"/>
+        <childnode refid="5295" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5296">
+        <label>ScopedLock</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" line="795" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box.h" bodystart="795" bodyend="804"/>
+    <listofallmembers>
+      <member refid="d5/dee/group__route_1ga61507c70f05e03741ddf68875f68310f" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::scoped_watchdog</scope><name>box</name></member>
+      <member refid="d5/dee/group__route_1ga1262d6fe5e3397a65d68bf4d78b66567" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::scoped_watchdog</scope><name>BoxLock</name></member>
+      <member refid="d5/dee/group__route_1ga68409e450fe7665932d82f0414b5fcf5" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::scoped_watchdog</scope><name>scoped_watchdog</name></member>
+      <member refid="d5/dee/group__route_1ga1d234bc4c5e71dce487dbe1d3191bfad" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::scoped_watchdog</scope><name>~BoxLock</name></member>
+      <member refid="d5/dee/group__route_1gaa2d22c86e11e26c6f59f6181c8f1dd68" prot="public" virt="non-virtual"><scope>mutabor::BoxClass::scoped_watchdog</scope><name>~scoped_watchdog</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

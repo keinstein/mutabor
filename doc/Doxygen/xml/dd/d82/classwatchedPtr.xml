@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="dd/d82/classwatchedPtr" kind="class" prot="public">
     <compoundname>watchedPtr</compoundname>
-    <includes refid="de/de1/mutDebug_8h" local="no">mutDebug.h</includes>
+    <includes refid="db/d16/debug_8h" local="no">debug.h</includes>
     <templateparamlist>
       <param>
         <type>class T</type>
@@ -15,7 +15,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="dd/d82/classwatchedPtr_1af43497953f9b0a73e549a1eda239a5ca" prot="private" static="no">
+      <memberdef kind="typedef" id="de/db7/group__debug_1gaf43497953f9b0a73e549a1eda239a5ca" prot="private" static="no">
         <type>T</type>
         <definition>typedef T watchedPtr&lt; T, flag, P &gt;::datatype</definition>
         <argsstring></argsstring>
@@ -26,9 +26,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="157" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="157" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" line="275" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" bodystart="275" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="dd/d82/classwatchedPtr_1a7d0706fb729ba70ab6f3f9ca2db02beb" prot="private" static="no">
+      <memberdef kind="typedef" id="de/db7/group__debug_1ga7d0706fb729ba70ab6f3f9ca2db02beb" prot="private" static="no">
         <type>T *</type>
         <definition>typedef T* watchedPtr&lt; T, flag, P &gt;::dataptr</definition>
         <argsstring></argsstring>
@@ -39,9 +39,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="158" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="158" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" line="276" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" bodystart="276" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="dd/d82/classwatchedPtr_1a21d14ee51821efaf5997151a349f347f" prot="private" static="no">
+      <memberdef kind="typedef" id="de/db7/group__debug_1ga21d14ee51821efaf5997151a349f347f" prot="private" static="no">
         <type>P</type>
         <definition>typedef P watchedPtr&lt; T, flag, P &gt;::parenttype</definition>
         <argsstring></argsstring>
@@ -52,12 +52,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="159" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="159" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" line="277" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" bodystart="277" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="dd/d82/classwatchedPtr_1ae924b0925299689dfa2658af190a01f2" prot="private" static="no" mutable="no">
-        <type><ref refid="dd/d82/classwatchedPtr_1af43497953f9b0a73e549a1eda239a5ca" kindref="member">datatype</ref> *</type>
+      <memberdef kind="variable" id="de/db7/group__debug_1gae924b0925299689dfa2658af190a01f2" prot="private" static="no" mutable="no">
+        <type><ref refid="de/db7/group__debug_1gaf43497953f9b0a73e549a1eda239a5ca" kindref="member">datatype</ref> *</type>
         <definition>datatype* watchedPtr&lt; T, flag, P &gt;::data</definition>
         <argsstring></argsstring>
         <name>data</name>
@@ -67,12 +67,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="160" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="160" bodyend="-1"/>
-        <referencedby refid="dd/d82/classwatchedPtr_1a77c595ba7f91c3b065478daa9d389374" compoundref="de/de1/mutDebug_8h" startline="186" endline="189">watchedPtr&lt; T, flag, P &gt;::operator dataptr</referencedby>
-        <referencedby refid="dd/d82/classwatchedPtr_1a65e123b1ae76d3233f7f2164b60762f7" compoundref="de/de1/mutDebug_8h" startline="176" endline="183">watchedPtr&lt; T, flag, P &gt;::operator=</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" line="278" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" bodystart="278" bodyend="-1"/>
+        <referencedby refid="de/db7/group__debug_1ga77c595ba7f91c3b065478daa9d389374" compoundref="db/d16/debug_8h" startline="305" endline="308">watchedPtr&lt; T, flag, P &gt;::operator dataptr</referencedby>
+        <referencedby refid="de/db7/group__debug_1ga65e123b1ae76d3233f7f2164b60762f7" compoundref="db/d16/debug_8h" startline="295" endline="302">watchedPtr&lt; T, flag, P &gt;::operator=</referencedby>
       </memberdef>
-      <memberdef kind="variable" id="dd/d82/classwatchedPtr_1ad1e12bb6a7942a39de4f793c28317246" prot="private" static="no" mutable="no">
-        <type><ref refid="dd/d82/classwatchedPtr_1a21d14ee51821efaf5997151a349f347f" kindref="member">parenttype</ref> *</type>
+      <memberdef kind="variable" id="de/db7/group__debug_1gad1e12bb6a7942a39de4f793c28317246" prot="private" static="no" mutable="no">
+        <type><ref refid="de/db7/group__debug_1ga21d14ee51821efaf5997151a349f347f" kindref="member">parenttype</ref> *</type>
         <definition>parenttype* watchedPtr&lt; T, flag, P &gt;::parent</definition>
         <argsstring></argsstring>
         <name>parent</name>
@@ -82,13 +82,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="163" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="163" bodyend="-1"/>
-        <referencedby refid="dd/d82/classwatchedPtr_1a65e123b1ae76d3233f7f2164b60762f7" compoundref="de/de1/mutDebug_8h" startline="176" endline="183">watchedPtr&lt; T, flag, P &gt;::operator=</referencedby>
-        <referencedby refid="dd/d82/classwatchedPtr_1a0fb3331bfe2601e7a0de36d6fabb0a93" compoundref="de/de1/mutDebug_8h" startline="167" endline="174">watchedPtr&lt; T, flag, P &gt;::watchedPtr</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" line="281" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" bodystart="281" bodyend="-1"/>
+        <referencedby refid="de/db7/group__debug_1ga65e123b1ae76d3233f7f2164b60762f7" compoundref="db/d16/debug_8h" startline="295" endline="302">watchedPtr&lt; T, flag, P &gt;::operator=</referencedby>
+        <referencedby refid="de/db7/group__debug_1gaee316ef3b1032383049f56e94963cc5c" compoundref="db/d16/debug_8h" startline="285" endline="293">watchedPtr&lt; T, flag, P &gt;::watchedPtr</referencedby>
       </memberdef>
-      <memberdef kind="variable" id="dd/d82/classwatchedPtr_1a89ff0d8b467768fb19ef22c9457ca0e0" prot="private" static="no" mutable="no">
-        <type>wxString</type>
-        <definition>wxString watchedPtr&lt; T, flag, P &gt;::name</definition>
+      <memberdef kind="variable" id="de/db7/group__debug_1ga6507b13ff966de4fe6a46783ccd4e1e7" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string watchedPtr&lt; T, flag, P &gt;::name</definition>
         <argsstring></argsstring>
         <name>name</name>
         <briefdescription>
@@ -97,28 +97,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="164" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="164" bodyend="-1"/>
-        <referencedby refid="dd/d82/classwatchedPtr_1a65e123b1ae76d3233f7f2164b60762f7" compoundref="de/de1/mutDebug_8h" startline="176" endline="183">watchedPtr&lt; T, flag, P &gt;::operator=</referencedby>
-        <referencedby refid="dd/d82/classwatchedPtr_1a0fb3331bfe2601e7a0de36d6fabb0a93" compoundref="de/de1/mutDebug_8h" startline="167" endline="174">watchedPtr&lt; T, flag, P &gt;::watchedPtr</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" line="282" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" bodystart="282" bodyend="-1"/>
+        <referencedby refid="de/db7/group__debug_1ga65e123b1ae76d3233f7f2164b60762f7" compoundref="db/d16/debug_8h" startline="295" endline="302">watchedPtr&lt; T, flag, P &gt;::operator=</referencedby>
+        <referencedby refid="de/db7/group__debug_1gaee316ef3b1032383049f56e94963cc5c" compoundref="db/d16/debug_8h" startline="285" endline="293">watchedPtr&lt; T, flag, P &gt;::watchedPtr</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="dd/d82/classwatchedPtr_1a0fb3331bfe2601e7a0de36d6fabb0a93" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="de/db7/group__debug_1gaee316ef3b1032383049f56e94963cc5c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>watchedPtr&lt; T, flag, P &gt;::watchedPtr</definition>
-        <argsstring>(parenttype *p, const wxString &amp;varname=_T(&quot;watchedPtr&quot;), datatype *d=NULL)</argsstring>
+        <argsstring>(parenttype *p, const std::string &amp;varname=&quot;watchedPtr&quot;, datatype *d=NULL)</argsstring>
         <name>watchedPtr</name>
         <param>
-          <type><ref refid="dd/d82/classwatchedPtr_1a21d14ee51821efaf5997151a349f347f" kindref="member">parenttype</ref> *</type>
+          <type><ref refid="de/db7/group__debug_1ga21d14ee51821efaf5997151a349f347f" kindref="member">parenttype</ref> *</type>
           <declname>p</declname>
         </param>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxString &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>varname</declname>
-          <defval>_T(&quot;watchedPtr&quot;)</defval>
+          <defval>&quot;watchedPtr&quot;</defval>
         </param>
         <param>
-          <type><ref refid="dd/d82/classwatchedPtr_1af43497953f9b0a73e549a1eda239a5ca" kindref="member">datatype</ref> *</type>
+          <type><ref refid="de/db7/group__debug_1gaf43497953f9b0a73e549a1eda239a5ca" kindref="member">datatype</ref> *</type>
           <declname>d</declname>
           <defval>NULL</defval>
         </param>
@@ -128,17 +128,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="167" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="167" bodyend="174"/>
-        <references refid="dd/d82/classwatchedPtr_1a89ff0d8b467768fb19ef22c9457ca0e0" compoundref="de/de1/mutDebug_8h" startline="164">watchedPtr&lt; T, flag, P &gt;::name</references>
-        <references refid="dd/d82/classwatchedPtr_1ad1e12bb6a7942a39de4f793c28317246" compoundref="de/de1/mutDebug_8h" startline="163">watchedPtr&lt; T, flag, P &gt;::parent</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" line="285" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" bodystart="285" bodyend="293"/>
+        <references refid="de/db7/group__debug_1ga9f7c0ab5b0db6d8abc460bd962667633" compoundref="db/d16/debug_8h" startline="243">DEBUGLOGTYPEINT</references>
+        <references refid="de/db7/group__debug_1ga6507b13ff966de4fe6a46783ccd4e1e7" compoundref="db/d16/debug_8h" startline="282">watchedPtr&lt; T, flag, P &gt;::name</references>
+        <references refid="de/db7/group__debug_1gad1e12bb6a7942a39de4f793c28317246" compoundref="db/d16/debug_8h" startline="281">watchedPtr&lt; T, flag, P &gt;::parent</references>
       </memberdef>
-      <memberdef kind="function" id="dd/d82/classwatchedPtr_1a65e123b1ae76d3233f7f2164b60762f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="de/db7/group__debug_1ga65e123b1ae76d3233f7f2164b60762f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="dd/d82/classwatchedPtr" kindref="compound">watchedPtr</ref>&lt; T, flag, P &gt; &amp;</type>
         <definition>watchedPtr&lt;T,flag,P&gt;&amp; watchedPtr&lt; T, flag, P &gt;::operator=</definition>
         <argsstring>(datatype *d)</argsstring>
         <name>operator=</name>
         <param>
-          <type><ref refid="dd/d82/classwatchedPtr_1af43497953f9b0a73e549a1eda239a5ca" kindref="member">datatype</ref> *</type>
+          <type><ref refid="de/db7/group__debug_1gaf43497953f9b0a73e549a1eda239a5ca" kindref="member">datatype</ref> *</type>
           <declname>d</declname>
         </param>
         <briefdescription>
@@ -147,13 +148,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="176" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="176" bodyend="183"/>
-        <references refid="dd/d82/classwatchedPtr_1ae924b0925299689dfa2658af190a01f2" compoundref="de/de1/mutDebug_8h" startline="160">watchedPtr&lt; T, flag, P &gt;::data</references>
-        <references refid="de/db7/group__debug_1ga9f7c0ab5b0db6d8abc460bd962667633" compoundref="de/de1/mutDebug_8h" startline="149">DEBUGLOGTYPEINT</references>
-        <references refid="dd/d82/classwatchedPtr_1a89ff0d8b467768fb19ef22c9457ca0e0" compoundref="de/de1/mutDebug_8h" startline="164">watchedPtr&lt; T, flag, P &gt;::name</references>
-        <references refid="dd/d82/classwatchedPtr_1ad1e12bb6a7942a39de4f793c28317246" compoundref="de/de1/mutDebug_8h" startline="163">watchedPtr&lt; T, flag, P &gt;::parent</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" line="295" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" bodystart="295" bodyend="302"/>
+        <references refid="de/db7/group__debug_1gae924b0925299689dfa2658af190a01f2" compoundref="db/d16/debug_8h" startline="278">watchedPtr&lt; T, flag, P &gt;::data</references>
+        <references refid="de/db7/group__debug_1ga9f7c0ab5b0db6d8abc460bd962667633" compoundref="db/d16/debug_8h" startline="243">DEBUGLOGTYPEINT</references>
+        <references refid="de/db7/group__debug_1ga6507b13ff966de4fe6a46783ccd4e1e7" compoundref="db/d16/debug_8h" startline="282">watchedPtr&lt; T, flag, P &gt;::name</references>
+        <references refid="de/db7/group__debug_1gad1e12bb6a7942a39de4f793c28317246" compoundref="db/d16/debug_8h" startline="281">watchedPtr&lt; T, flag, P &gt;::parent</references>
       </memberdef>
-      <memberdef kind="function" id="dd/d82/classwatchedPtr_1a77c595ba7f91c3b065478daa9d389374" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="de/db7/group__debug_1ga77c595ba7f91c3b065478daa9d389374" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>watchedPtr&lt; T, flag, P &gt;::operator dataptr</definition>
         <argsstring>() const </argsstring>
@@ -164,25 +165,42 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="186" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="186" bodyend="189"/>
-        <references refid="dd/d82/classwatchedPtr_1ae924b0925299689dfa2658af190a01f2" compoundref="de/de1/mutDebug_8h" startline="160">watchedPtr&lt; T, flag, P &gt;::data</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" line="305" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" bodystart="305" bodyend="308"/>
+        <references refid="de/db7/group__debug_1gae924b0925299689dfa2658af190a01f2" compoundref="db/d16/debug_8h" startline="278">watchedPtr&lt; T, flag, P &gt;::data</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" line="155" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mutDebug.h" bodystart="155" bodyend="202"/>
+    <collaborationgraph>
+      <node id="5617">
+        <label>std::basic_string&lt; char &gt;</label>
+      </node>
+      <node id="5615">
+        <label>watchedPtr&lt; T, flag, P &gt;</label>
+        <link refid="dd/d82/classwatchedPtr"/>
+        <childnode refid="5616" relation="usage">
+          <edgelabel>name</edgelabel>
+        </childnode>
+      </node>
+      <node id="5616">
+        <label>std::string</label>
+        <childnode refid="5617" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" line="273" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/debug.h" bodystart="273" bodyend="321"/>
     <listofallmembers>
-      <member refid="dd/d82/classwatchedPtr_1ae924b0925299689dfa2658af190a01f2" prot="private" virt="non-virtual"><scope>watchedPtr</scope><name>data</name></member>
-      <member refid="dd/d82/classwatchedPtr_1a7d0706fb729ba70ab6f3f9ca2db02beb" prot="private" virt="non-virtual"><scope>watchedPtr</scope><name>dataptr</name></member>
-      <member refid="dd/d82/classwatchedPtr_1af43497953f9b0a73e549a1eda239a5ca" prot="private" virt="non-virtual"><scope>watchedPtr</scope><name>datatype</name></member>
-      <member refid="dd/d82/classwatchedPtr_1a89ff0d8b467768fb19ef22c9457ca0e0" prot="private" virt="non-virtual"><scope>watchedPtr</scope><name>name</name></member>
-      <member refid="dd/d82/classwatchedPtr_1a77c595ba7f91c3b065478daa9d389374" prot="public" virt="non-virtual"><scope>watchedPtr</scope><name>operator dataptr</name></member>
-      <member refid="dd/d82/classwatchedPtr_1a65e123b1ae76d3233f7f2164b60762f7" prot="public" virt="non-virtual"><scope>watchedPtr</scope><name>operator=</name></member>
-      <member refid="dd/d82/classwatchedPtr_1ad1e12bb6a7942a39de4f793c28317246" prot="private" virt="non-virtual"><scope>watchedPtr</scope><name>parent</name></member>
-      <member refid="dd/d82/classwatchedPtr_1a21d14ee51821efaf5997151a349f347f" prot="private" virt="non-virtual"><scope>watchedPtr</scope><name>parenttype</name></member>
-      <member refid="dd/d82/classwatchedPtr_1a0fb3331bfe2601e7a0de36d6fabb0a93" prot="public" virt="non-virtual"><scope>watchedPtr</scope><name>watchedPtr</name></member>
+      <member refid="de/db7/group__debug_1gae924b0925299689dfa2658af190a01f2" prot="private" virt="non-virtual"><scope>watchedPtr</scope><name>data</name></member>
+      <member refid="de/db7/group__debug_1ga7d0706fb729ba70ab6f3f9ca2db02beb" prot="private" virt="non-virtual"><scope>watchedPtr</scope><name>dataptr</name></member>
+      <member refid="de/db7/group__debug_1gaf43497953f9b0a73e549a1eda239a5ca" prot="private" virt="non-virtual"><scope>watchedPtr</scope><name>datatype</name></member>
+      <member refid="de/db7/group__debug_1ga6507b13ff966de4fe6a46783ccd4e1e7" prot="private" virt="non-virtual"><scope>watchedPtr</scope><name>name</name></member>
+      <member refid="de/db7/group__debug_1ga77c595ba7f91c3b065478daa9d389374" prot="public" virt="non-virtual"><scope>watchedPtr</scope><name>operator dataptr</name></member>
+      <member refid="de/db7/group__debug_1ga65e123b1ae76d3233f7f2164b60762f7" prot="public" virt="non-virtual"><scope>watchedPtr</scope><name>operator=</name></member>
+      <member refid="de/db7/group__debug_1gad1e12bb6a7942a39de4f793c28317246" prot="private" virt="non-virtual"><scope>watchedPtr</scope><name>parent</name></member>
+      <member refid="de/db7/group__debug_1ga21d14ee51821efaf5997151a349f347f" prot="private" virt="non-virtual"><scope>watchedPtr</scope><name>parenttype</name></member>
+      <member refid="de/db7/group__debug_1gaee316ef3b1032383049f56e94963cc5c" prot="public" virt="non-virtual"><scope>watchedPtr</scope><name>watchedPtr</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

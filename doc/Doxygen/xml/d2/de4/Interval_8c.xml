@@ -1,0 +1,950 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="d2/de4/Interval_8c" kind="file">
+    <compoundname>Interval.c</compoundname>
+    <includes refid="dc/d19/box_8h" local="yes">box.h</includes>
+    <includes refid="dd/d40/Global_8h" local="yes">Global.h</includes>
+    <includes refid="d5/d84/Runtime_8h" local="yes">Runtime.h</includes>
+    <includes refid="de/d11/Execute_8h" local="yes">Execute.h</includes>
+    <includes refid="d1/d55/Interval_8h" local="yes">Interval.h</includes>
+    <includes refid="d6/d0c/Parser_8h" local="yes">Parser.h</includes>
+    <includes refid="d2/d32/Hilfs_8h" local="yes">Hilfs.h</includes>
+    <incdepgraph>
+      <node id="19082">
+        <label>stdarg.h</label>
+      </node>
+      <node id="19094">
+        <label>Hilfs.h</label>
+        <link refid="d2/d32/Hilfs_8h"/>
+        <childnode refid="19069" relation="include">
+        </childnode>
+        <childnode refid="19068" relation="include">
+        </childnode>
+        <childnode refid="19080" relation="include">
+        </childnode>
+      </node>
+      <node id="19068">
+        <label>box.h</label>
+        <link refid="dc/d19/box_8h"/>
+        <childnode refid="19069" relation="include">
+        </childnode>
+        <childnode refid="19079" relation="include">
+        </childnode>
+        <childnode refid="19085" relation="include">
+        </childnode>
+        <childnode refid="19088" relation="include">
+        </childnode>
+        <childnode refid="19089" relation="include">
+        </childnode>
+      </node>
+      <node id="19077">
+        <label>stdint.h</label>
+      </node>
+      <node id="19081">
+        <label>stdlib.h</label>
+      </node>
+      <node id="19070">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="19069" relation="include">
+        </childnode>
+      </node>
+      <node id="19091">
+        <label>setjmp.h</label>
+      </node>
+      <node id="19076">
+        <label>boost/format.hpp</label>
+      </node>
+      <node id="19085">
+        <label>Interpre.h</label>
+        <link refid="d2/dd8/Interpre_8h"/>
+        <childnode refid="19069" relation="include">
+        </childnode>
+        <childnode refid="19086" relation="include">
+        </childnode>
+        <childnode refid="19079" relation="include">
+        </childnode>
+        <childnode refid="19087" relation="include">
+        </childnode>
+      </node>
+      <node id="19089">
+        <label>malloc.h</label>
+      </node>
+      <node id="19074">
+        <label>string</label>
+      </node>
+      <node id="19087">
+        <label>limits.h</label>
+      </node>
+      <node id="19086">
+        <label>MidiKern.h</label>
+        <link refid="da/dfd/MidiKern_8h"/>
+        <childnode refid="19069" relation="include">
+        </childnode>
+        <childnode refid="19084" relation="include">
+        </childnode>
+      </node>
+      <node id="19069">
+        <label>Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="19070" relation="include">
+        </childnode>
+        <childnode refid="19071" relation="include">
+        </childnode>
+        <childnode refid="19072" relation="include">
+        </childnode>
+      </node>
+      <node id="19083">
+        <label>string.h</label>
+      </node>
+      <node id="19075">
+        <label>cstdio</label>
+      </node>
+      <node id="19093">
+        <label>Parser.h</label>
+        <link refid="d6/d0c/Parser_8h"/>
+        <childnode refid="19069" relation="include">
+        </childnode>
+        <childnode refid="19068" relation="include">
+        </childnode>
+        <childnode refid="19079" relation="include">
+        </childnode>
+        <childnode refid="19087" relation="include">
+        </childnode>
+      </node>
+      <node id="19090">
+        <label>Runtime.h</label>
+        <link refid="d5/d84/Runtime_8h"/>
+        <childnode refid="19069" relation="include">
+        </childnode>
+        <childnode refid="19091" relation="include">
+        </childnode>
+      </node>
+      <node id="19072">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="19069" relation="include">
+        </childnode>
+        <childnode refid="19073" relation="include">
+        </childnode>
+        <childnode refid="19074" relation="include">
+        </childnode>
+        <childnode refid="19075" relation="include">
+        </childnode>
+        <childnode refid="19076" relation="include">
+        </childnode>
+        <childnode refid="19077" relation="include">
+        </childnode>
+        <childnode refid="19078" relation="include">
+        </childnode>
+      </node>
+      <node id="19073">
+        <label>src/wxintl/libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="19069" relation="include">
+        </childnode>
+        <childnode refid="19074" relation="include">
+        </childnode>
+      </node>
+      <node id="19084">
+        <label>math.h</label>
+      </node>
+      <node id="19088">
+        <label>Execute.h</label>
+        <link refid="de/d11/Execute_8h"/>
+        <childnode refid="19069" relation="include">
+        </childnode>
+        <childnode refid="19080" relation="include">
+        </childnode>
+      </node>
+      <node id="19071">
+        <label>cstddef</label>
+      </node>
+      <node id="19079">
+        <label>Global.h</label>
+        <link refid="dd/d40/Global_8h"/>
+        <childnode refid="19069" relation="include">
+        </childnode>
+        <childnode refid="19080" relation="include">
+        </childnode>
+        <childnode refid="19081" relation="include">
+        </childnode>
+        <childnode refid="19082" relation="include">
+        </childnode>
+        <childnode refid="19083" relation="include">
+        </childnode>
+        <childnode refid="19084" relation="include">
+        </childnode>
+      </node>
+      <node id="19067">
+        <label>src/kernel/Interval.c</label>
+        <link refid="Interval.c"/>
+        <childnode refid="19068" relation="include">
+        </childnode>
+        <childnode refid="19079" relation="include">
+        </childnode>
+        <childnode refid="19090" relation="include">
+        </childnode>
+        <childnode refid="19088" relation="include">
+        </childnode>
+        <childnode refid="19092" relation="include">
+        </childnode>
+        <childnode refid="19093" relation="include">
+        </childnode>
+        <childnode refid="19094" relation="include">
+        </childnode>
+      </node>
+      <node id="19092">
+        <label>Interval.h</label>
+        <link refid="d1/d55/Interval_8h"/>
+        <childnode refid="19069" relation="include">
+        </childnode>
+      </node>
+      <node id="19080">
+        <label>stdio.h</label>
+      </node>
+      <node id="19078">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" prot="public" static="no">
+        <name>_</name>
+        <initializer><ref refid="d9/d7c/group__kernel_1gad94e0fa22a0f815bb713f9d2fb77655b" kindref="member">_mut</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" line="41" column="10" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" bodystart="41" bodyend="-1"/>
+        <referencedby refid="d0/d6e/classmutaborGUI_1_1RoutePanel_1a2ea5a500df7c1cd872fa8da2c5f4aab0" compoundref="d3/d2a/BoxDlg_8cpp" startline="191" endline="215">mutaborGUI::RoutePanel::AddBox</referencedby>
+        <referencedby refid="da/d79/group__docview_1ga113841024d2d545e8a68c7c7de47f144" compoundref="d6/d3b/MutDocument_8cpp" startline="55" endline="388">BEGIN_EVENT_TABLE</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gae91e1ff5ac7d0866e88220faba0a463b" compoundref="da/d72/MutChild_8cpp" startline="77" endline="151">mutaborGUI::BEGIN_EVENT_TABLE</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga4145fc3b258a3ca6c307355c0e972a20" compoundref="d2/de4/Interval_8c" startline="189" endline="225">berechne_intervall_endgueltig</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga2ea71bbe5f870f057780e2a023da84ab" compoundref="d2/de4/Interval_8c" startline="227" endline="338">mutabor::hidden::berechne_intervalle_absolut</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga5cf90005ef0109ad0e7f39c16a37d916" compoundref="d8/db4/BoxShape_8cpp" startline="134" endline="158">mutaborGUI::MutBoxShape::BoxChanged</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gabbf07bf091187a2d34c508eb6c9b9eaf" compoundref="df/d3c/MutTextBox_8cpp" startline="205" endline="241">MutTextBox::BoxChangedAction</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga308dccbb03ecf89669b0baeff27bbb03" compoundref="d2/de4/Interval_8c" startline="342" endline="370">mutabor::hidden::check_komplex_intervall</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaae33bcd97b3eca3c5aace22276ae7cbe" compoundref="dc/df3/MutFrame_8cpp" startline="711" endline="854">mutaborGUI::MutFrame::CmDoActivate</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga0bd91229d7dd30901944246960f0ac8f" compoundref="dc/df3/MutFrame_8cpp" startline="579" endline="626">mutaborGUI::MutFrame::CmFileOpen</referencedby>
+        <referencedby refid="d4/d4a/classmutaborGUI_1_1MutConfigDialog_1a6a141e13a3a3a924b24367bb1fdc513b" compoundref="d9/d8f/MutConfDlg_8h" startline="71" endline="75">mutaborGUI::MutConfigDialog::CmHelp</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga5a4513e94b9462c378e6cd73d87e2d1a" compoundref="dc/df3/MutFrame_8cpp" startline="1602" endline="1637">mutaborGUI::MutFrame::CmInDevPlay</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga24bfe10e24a2431758a4ee4e8153291e" compoundref="dc/def/MutRouteWnd_8cpp" startline="411" endline="511">mutaborGUI::MutRouteWnd::CmRouteLoad</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaf462ef9b546ada58aab30393ba563ec8" compoundref="dc/df3/MutFrame_8cpp" startline="1011" endline="1044">mutaborGUI::MutFrame::CmRoutes</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga72bc8daeb27461bd51dda0a80baddae6" compoundref="dc/def/MutRouteWnd_8cpp" startline="513" endline="588">mutaborGUI::MutRouteWnd::CmRouteSave</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga6e292c98b7e68b4b9f846d186786e11d" compoundref="dc/def/MutRouteWnd_8cpp" startline="590" endline="622">mutaborGUI::MutRouteWnd::CmRouteSaveAs</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gac7e3db117f7d92938827e3383cdb279b" compoundref="dc/df3/MutFrame_8cpp" startline="1743" endline="1746">mutaborGUI::MutFrame::CmSetTitle</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gad8d275b990dbe699c497559a918b5a13" compoundref="d1/da4/MutEditFile_8cpp" startline="242" endline="337">mutaborGUI::MutEditFile::Compile</referencedby>
+        <referencedby refid="d3/dd6/classmutaborGUI_1_1NewMutBoxShape_1a27fd24e19a7c3ea878f5ca84b6a87d43" compoundref="d4/dcc/NewBoxShape_8h" startline="72" endline="78">mutaborGUI::NewMutBoxShape::Create</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gab4c1c14826d933ab4b09e8ab137caa96" compoundref="d5/dba/NewInputDeviceShape_8h" startline="73" endline="76">mutaborGUI::MutNewInputDeviceShape::Create</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga85c54a9cfcb57658f4c0626ef6f3063b" compoundref="df/d7b/NewOutputDeviceShape_8h" startline="75" endline="81">mutaborGUI::MutNewOutputDeviceShape::Create</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga8e30373643393e8af375299ba1171372" compoundref="da/d72/MutChild_8cpp" startline="184" endline="241">mutaborGUI::MutChild::deleteFromWinAttrs</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga1461d752177136a6afde4b08fbebfc16" compoundref="d1/da4/MutEditFile_8cpp" startline="791" endline="845">mutaborGUI::MutEditFile::DoFind</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga9cff412769db7e55f0dafac64012bf34" compoundref="d8/db4/BoxShape_8cpp" startline="381" endline="464">mutaborGUI::MutBoxShape::DoLeftDblClick</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaa607052d5a13ae7f51384e9b251d6a76" compoundref="d1/da4/MutEditFile_8cpp" startline="339" endline="369">mutaborGUI::MutEditFile::DoLoadFile</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga50d4c338ce3a0c239468bd27be0b51e1" compoundref="da/d72/MutChild_8cpp" startline="340" endline="375">mutaborGUI::DontWant</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gade223aa7d8da62c8b90f49c0f48312e8" compoundref="d1/da4/MutEditFile_8cpp" startline="371" endline="395">mutaborGUI::MutEditFile::DoSaveFile</referencedby>
+        <referencedby refid="d4/dcc/classmutaborGUI_1_1RouteRemoveButton_1a564ac6a515b56418de4de8bb15ac85a4" compoundref="d3/d2a/BoxDlg_8cpp" startline="252" endline="257">mutaborGUI::RouteRemoveButton::EnableRoute</referencedby>
+        <referencedby refid="dd/db0/MutDocManager_8cpp_1a9e7a087c5c550acffcd802f4b40bd609" compoundref="dd/db0/MutDocManager_8cpp" startline="50" endline="339">END_EVENT_TABLE</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga50a1671b6a959187e5d860c279f25aee" compoundref="df/d3c/MutTextBox_8cpp" startline="70" endline="100">EVT_CLOSE</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaa4cd1dc8d3c14b92b0ed908f9dcb0b61" compoundref="d2/d2f/mxDefs_8cpp" startline="42" endline="148">FileNameDialog</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga32d069bf3b61bb44351df1b9953ef001" compoundref="d2/de4/Interval_8c" startline="50" endline="87">get_intervall_wert</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaac1298ef1b8e7f926c71546bc260849b" compoundref="d2/de4/Interval_8c" startline="90" endline="111">mutabor::hidden::get_wert_komplex_intervall</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaf4c49c1e3274833700ecb454d72c2b96" compoundref="df/d3c/MutTextBox_8cpp" startline="254" endline="297">MutTextBox::GetKeys</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga4b4fe68712431b7ed40d699cd1b9155f" compoundref="df/d3c/MutTextBox_8cpp" startline="299" endline="365">MutTextBox::GetToneSystem</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="87" endline="1537">IMPLEMENT_APP</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gadd6935330e214d67e01f11774a11fe40" compoundref="da/dd8/OutputDevDlg_8cpp" startline="46" endline="204">IMPLEMENT_DYNAMIC_CLASS</referencedby>
+        <referencedby refid="df/d7d/classmutaborGUI_1_1BoxDlg_1a97c4e784eaf63a716a03bbee0d3bc5ca" compoundref="d3/d2a/BoxDlg_8cpp" startline="281" endline="301">mutaborGUI::BoxDlg::InitializeBoxTypes</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga9d64270fb543fc0bf3a19aeeba441cff" compoundref="d8/dba/NewBoxShape_8cpp" startline="58" endline="65">mutaborGUI::NewMutBoxShape::InitializeDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga9001ac287a871d24d14a6193261882de" compoundref="d9/d24/BoxChannelShape_8cpp" startline="293" endline="350">mutaborGUI::MutBoxChannelShape::InitializeInputFilter</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga190e24cde75e2eac5bd925b1cca9c40f" compoundref="d9/d24/BoxChannelShape_8cpp" startline="396" endline="443">mutaborGUI::MutBoxChannelShape::InitializeOutputFilter</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1a5bf6cf4c43a5fcb71967e45acf691ee8" compoundref="d7/db6/MutBitmaps_8cpp" startline="60" endline="73">mutaborGUI::initMutBitmap</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gaf304266fd9a16b7d05583fa18ae18934" compoundref="d2/de4/Interval_8c" startline="151" endline="163">intervall_nummer</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga7ad6b2305e866ae3936c307f5f9f4c04" compoundref="da/d72/MutChild_8cpp" startline="265" endline="301">mutaborGUI::IsOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaa27217b7463db6fd1afec3c485c9428d" compoundref="da/d72/MutChild_8cpp" startline="303" endline="338">mutaborGUI::IsWanted</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gab33eb3253f68355c6778c0fcd6fee21a" compoundref="dc/df3/MutFrame_8cpp" startline="1048" endline="1073">mutaborGUI::MutFrame::LogicWinOpen</referencedby>
+        <referencedby refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1a7f6c8d2cac18ff33e0aeaff64b7db0bf" compoundref="df/d11/MutLogicWnd_8cpp" startline="265" endline="269">mutaborGUI::MutLogicWnd::MakeTitle</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga7b96d8dc59c81190829d8361f00cdc66" compoundref="df/d3c/MutTextBox_8cpp" startline="449" endline="457">MutTextBox::MakeTitle</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaf1a2ce3ab46ff790ca712c98ac1fa578" compoundref="d1/da4/MutEditFile_8cpp" startline="1266" endline="1366">mutaborGUI::MutEditProperties::MutEditProperties</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga3fed5adaa39f791dcc143e5583e6bfec" compoundref="dc/df3/MutFrame_8cpp" startline="306" endline="354">mutaborGUI::MutFrame::MutFrame</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga34944c40a018673cfd06db1da64867f3" compoundref="df/d3c/MutTextBox_8cpp" startline="103" endline="146">MutTextBox::OnClose</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga16f77278113ab7dc6cb0118a1b087824" compoundref="d1/da4/MutEditFile_8cpp" startline="672" endline="789">mutaborGUI::MutEditFile::OnFindDialog</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga77797ea209aa8ff7606e1f31bbb0e387" compoundref="d1/da4/MutEditFile_8cpp" startline="881" endline="891">mutaborGUI::MutEditFile::OnGoto</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga5f93d6d12658f3457841aef52e29d946" compoundref="dc/df3/MutFrame_8cpp" startline="634" endline="657">mutaborGUI::MutFrame::OpenFile</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gab31517fc0dac74f5e5302deaadf17d86" compoundref="d9/d49/BoxShape_8h" startline="264" endline="269">mutaborGUI::MutBoxShape::SetBox</referencedby>
+        <referencedby refid="dc/d00/classmutaborGUI_1_1StatusBar_1a5119fa30743a5a9179a56debfd723356" compoundref="d9/d6e/StatusBar_8h" startline="93" endline="103">mutaborGUI::StatusBar::SetInsert</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga86742603e7db7ad3c62122e6c9d5d6ca" compoundref="d2/de4/Interval_8c" startline="165" endline="187">test_zyklen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gad5b0693526e79475688bcb1ea0a679d5" compoundref="dc/df3/MutFrame_8cpp" startline="1183" endline="1263">mutaborGUI::MutFrame::TextBoxOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1075" endline="1134">mutaborGUI::MutFrame::ToggleTextBox</referencedby>
+        <referencedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a0b997f435049a4960de262b5a2f64341" compoundref="de/d4f/xmltree_8cpp" startline="191" endline="211">mutaborGUI::xmltree::toLeaf</referencedby>
+        <referencedby refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1a3bf84995a51856f957a56fed9c9bc63f" compoundref="df/d11/MutLogicWnd_8cpp" startline="411" endline="484">mutaborGUI::MutLogicWnd::UpDate</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1894" endline="2012">mutaborGUI::MutFrame::UpdateBoxMenu</referencedby>
+        <referencedby refid="d2/dcc/classmutaborGUI_1_1InputDevDlg_1a5c90c0dd6ebe468f541301700c0c0e72" compoundref="d4/d8f/InputDevDlg_8cpp" startline="131" endline="169">mutaborGUI::InputDevDlg::UpdateLayout</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaa790c0385070ba353d78f1b5e4f680a2" compoundref="df/d3c/MutTextBox_8cpp" startline="150" endline="189">MutTextBox::UpdateUI</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="d9/d7c/group__kernel_1ga6b2c203b35ff24f99c4da8726329d027" prot="public" static="no">
+        <name>adjacent</name>
+        <param><defname>file</defname></param>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>file-&gt;interval_matrix [ (a) * file-&gt;interval_count * sizeof (char) \
+                             + (b) * sizeof (char)]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" line="129" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" bodystart="129" bodyend="-1"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga2ea71bbe5f870f057780e2a023da84ab" compoundref="d2/de4/Interval_8c" startline="227" endline="338">mutabor::hidden::berechne_intervalle_absolut</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga86742603e7db7ad3c62122e6c9d5d6ca" compoundref="d2/de4/Interval_8c" startline="165" endline="187">test_zyklen</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga32d069bf3b61bb44351df1b9953ef001" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>static double get_intervall_wert</definition>
+        <argsstring>(mutabor_box_type *box, const char *name)</argsstring>
+        <name>get_intervall_wert</name>
+        <param>
+          <type><ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" line="50" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" bodystart="50" bodyend="87"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="d2/de4/Interval_8c" startline="41">_</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac01f336e7c4725ccf0ccefb2b4bfd352" compoundref="de/d11/Execute_8h" startline="79">mutabor::hidden::compiler_error</references>
+        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="db/d16/debug_8h" startline="241">DEBUGLOG2</references>
+        <references refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" compoundref="dc/d19/box_8h" startline="155">mutabor::hidden::mutabor_box_type::file</references>
+        <references refid="d9/d7c/group__kernel_1gaac1298ef1b8e7f926c71546bc260849b" compoundref="d2/de4/Interval_8c" startline="90" endline="111">mutabor::hidden::get_wert_komplex_intervall</references>
+        <references refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603aca2536002df27c5649277d188f8ec19c" compoundref="dd/d40/Global_8h" startline="151">mutabor::hidden::intervall_absolut</references>
+        <references refid="d9/d7c/group__kernel_1ga9e2ff0725a3f5ad649d90e605af09426">mutabor::hidden::intervall::intervall_absolut</references>
+        <references refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603a084b5b61e17112ff83826bf3a9e26521" compoundref="dd/d40/Global_8h" startline="151">mutabor::hidden::intervall_komplex</references>
+        <references refid="d9/d7c/group__kernel_1gaa08c3fb30b180f7178c215c95774dca4">mutabor::hidden::intervall::intervall_komplex</references>
+        <references refid="d9/d7c/group__kernel_1gac92cead574a39a7f8d0297f10f23b7ec" compoundref="dd/d40/Global_8h" startline="156">mutabor::hidden::intervall::intervall_typ</references>
+        <references refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1adb4511f897874f6268aa7c1081f3dd07" compoundref="d6/d0c/Parser_8h" startline="103">mutabor::hidden::mutabor_logic_parsed::list_of_intervalle</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" compoundref="de/d11/Execute_8h" startline="143" endline="159">mutabor::hidden::mutabor_error_message</references>
+        <references refid="dc/d3d/group__templates_1ga6a74fe1453277b5ee1d921a28a936a0f" compoundref="de/ddd/interface__deps_8h" startline="51">mutASSERT</references>
+        <references refid="d9/d7c/group__kernel_1ga236d89efbc54e6820b61d68444141f9f" compoundref="dd/d40/Global_8h" startline="155">mutabor::hidden::intervall::name</references>
+        <references refid="d9/d7c/group__kernel_1ga071af2dc0511576b0a9aa5b638fd2629">mutabor::hidden::intervall::u</references>
+        <referencedby refid="d9/d7c/group__kernel_1gaac1298ef1b8e7f926c71546bc260849b" compoundref="d2/de4/Interval_8c" startline="90" endline="111">mutabor::hidden::get_wert_komplex_intervall</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1gaac1298ef1b8e7f926c71546bc260849b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double get_wert_komplex_intervall</definition>
+        <argsstring>(mutabor_box_type *box, struct komplex_intervall *intervall)</argsstring>
+        <name>get_wert_komplex_intervall</name>
+        <param>
+          <type><ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="da/dd2/structmutabor_1_1hidden_1_1komplex__intervall" kindref="compound">komplex_intervall</ref> *</type>
+          <declname>intervall</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" line="90" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" bodystart="90" bodyend="111"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="d2/de4/Interval_8c" startline="41">_</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac01f336e7c4725ccf0ccefb2b4bfd352" compoundref="de/d11/Execute_8h" startline="79">mutabor::hidden::compiler_error</references>
+        <references refid="d9/d7c/group__kernel_1ga32d069bf3b61bb44351df1b9953ef001" compoundref="d2/de4/Interval_8c" startline="50" endline="87">get_intervall_wert</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" compoundref="de/d11/Execute_8h" startline="143" endline="159">mutabor::hidden::mutabor_error_message</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga4145fc3b258a3ca6c307355c0e972a20" compoundref="d2/de4/Interval_8c" startline="189" endline="225">berechne_intervall_endgueltig</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a36e7aaf02fe2796b0ba696de3cb36ce4" compoundref="dc/df5/Parser_8cpp" startline="2397" endline="2432">mutabor::hidden::berechne_ton_endgueltig</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a0142a41964e335f5ef5d0aaf5889e8f6" compoundref="d3/da0/TabGen_8cpp" startline="459" endline="506">mutabor::hidden::expandiere_tonsystem</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa000ed5832b858ea653a5427b1a975ab" compoundref="d3/da0/TabGen_8cpp" startline="674" endline="831">mutabor::hidden::expandiere_umstimmung</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga32d069bf3b61bb44351df1b9953ef001" compoundref="d2/de4/Interval_8c" startline="50" endline="87">get_intervall_wert</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga546f912a52c53482f4d3e5d9dcc44427" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int intervall_list_laenge</definition>
+        <argsstring>(struct intervall *list)</argsstring>
+        <name>intervall_list_laenge</name>
+        <param>
+          <type>struct <ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref> *</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" line="132" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" bodystart="132" bodyend="137"/>
+        <referencedby refid="d9/d7c/group__kernel_1ga2ea71bbe5f870f057780e2a023da84ab" compoundref="d2/de4/Interval_8c" startline="227" endline="338">mutabor::hidden::berechne_intervalle_absolut</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaad4a0b212e3112a1d228fd0ed8cadc80" compoundref="dd/dc6/Box_8cpp" startline="691" endline="732">mutabor::BoxClass::Compile</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga1ff75934fc2ba2974206347d09b17a1a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void belege_intervalle</definition>
+        <argsstring>(struct intervall **intervalle, struct intervall *liste)</argsstring>
+        <name>belege_intervalle</name>
+        <param>
+          <type>struct <ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref> **</type>
+          <declname>intervalle</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref> *</type>
+          <declname>liste</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" line="141" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" bodystart="141" bodyend="149"/>
+        <references refid="d9/d7c/group__kernel_1gaa082d4aff279065f461eda6de487c39a" compoundref="dd/d40/Global_8h" startline="168">mutabor::hidden::intervall::next</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga2ea71bbe5f870f057780e2a023da84ab" compoundref="d2/de4/Interval_8c" startline="227" endline="338">mutabor::hidden::berechne_intervalle_absolut</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1gaf304266fd9a16b7d05583fa18ae18934" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int intervall_nummer</definition>
+        <argsstring>(mutabor_box_type *box, const char *name)</argsstring>
+        <name>intervall_nummer</name>
+        <param>
+          <type><ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" line="151" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" bodystart="151" bodyend="163"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="d2/de4/Interval_8c" startline="41">_</references>
+        <references refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" compoundref="d6/d0c/Parser_8h" startline="164">mutabor::hidden::mutabor_logic_parsed::check_intervals</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac01f336e7c4725ccf0ccefb2b4bfd352" compoundref="de/d11/Execute_8h" startline="79">mutabor::hidden::compiler_error</references>
+        <references refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" compoundref="dc/d19/box_8h" startline="155">mutabor::hidden::mutabor_box_type::file</references>
+        <references refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" compoundref="d6/d0c/Parser_8h" startline="163">mutabor::hidden::mutabor_logic_parsed::interval_count</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" compoundref="de/d11/Execute_8h" startline="143" endline="159">mutabor::hidden::mutabor_error_message</references>
+        <references refid="d9/d7c/group__kernel_1ga236d89efbc54e6820b61d68444141f9f" compoundref="dd/d40/Global_8h" startline="155">mutabor::hidden::intervall::name</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga4145fc3b258a3ca6c307355c0e972a20" compoundref="d2/de4/Interval_8c" startline="189" endline="225">berechne_intervall_endgueltig</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga2ea71bbe5f870f057780e2a023da84ab" compoundref="d2/de4/Interval_8c" startline="227" endline="338">mutabor::hidden::berechne_intervalle_absolut</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga86742603e7db7ad3c62122e6c9d5d6ca" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void test_zyklen</definition>
+        <argsstring>(mutabor_box_type *box, int startknoten)</argsstring>
+        <name>test_zyklen</name>
+        <param>
+          <type><ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>startknoten</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" line="165" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" bodystart="165" bodyend="187"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="d2/de4/Interval_8c" startline="41">_</references>
+        <references refid="d9/d7c/group__kernel_1ga6b2c203b35ff24f99c4da8726329d027" compoundref="d2/de4/Interval_8c" startline="129">adjacent</references>
+        <references refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" compoundref="d6/d0c/Parser_8h" startline="164">mutabor::hidden::mutabor_logic_parsed::check_intervals</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac01f336e7c4725ccf0ccefb2b4bfd352" compoundref="de/d11/Execute_8h" startline="79">mutabor::hidden::compiler_error</references>
+        <references refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" compoundref="dc/d19/box_8h" startline="155">mutabor::hidden::mutabor_box_type::file</references>
+        <references refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" compoundref="d6/d0c/Parser_8h" startline="163">mutabor::hidden::mutabor_logic_parsed::interval_count</references>
+        <references refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603aca2536002df27c5649277d188f8ec19c" compoundref="dd/d40/Global_8h" startline="151">mutabor::hidden::intervall_absolut</references>
+        <references refid="d9/d7c/group__kernel_1ga9e2ff0725a3f5ad649d90e605af09426">mutabor::hidden::intervall::intervall_absolut</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" compoundref="de/d11/Execute_8h" startline="143" endline="159">mutabor::hidden::mutabor_error_message</references>
+        <references refid="d9/d7c/group__kernel_1ga236d89efbc54e6820b61d68444141f9f" compoundref="dd/d40/Global_8h" startline="155">mutabor::hidden::intervall::name</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1adfdc087a9ae7b7da685895af8b949294" compoundref="dc/df5/Parser_8cpp" startline="2371" endline="2395">mutabor::hidden::test_zyklen</references>
+        <references refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af5aa1fc4e25da87352287a4facb0b462" compoundref="d6/d0c/Parser_8h" startline="165">mutabor::hidden::mutabor_logic_parsed::visited_intervals</references>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga4145fc3b258a3ca6c307355c0e972a20" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void berechne_intervall_endgueltig</definition>
+        <argsstring>(mutabor_box_type *box, int k)</argsstring>
+        <name>berechne_intervall_endgueltig</name>
+        <param>
+          <type><ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" line="189" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" bodystart="189" bodyend="225"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="d2/de4/Interval_8c" startline="41">_</references>
+        <references refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" compoundref="d6/d0c/Parser_8h" startline="164">mutabor::hidden::mutabor_logic_parsed::check_intervals</references>
+        <references refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" compoundref="dc/d19/box_8h" startline="155">mutabor::hidden::mutabor_box_type::file</references>
+        <references refid="d9/d7c/group__kernel_1gaac1298ef1b8e7f926c71546bc260849b" compoundref="d2/de4/Interval_8c" startline="90" endline="111">mutabor::hidden::get_wert_komplex_intervall</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac3921757db602b00c472fe4e3bc5e809" compoundref="de/d11/Execute_8h" startline="78">mutabor::hidden::internal_error</references>
+        <references refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603aca2536002df27c5649277d188f8ec19c" compoundref="dd/d40/Global_8h" startline="151">mutabor::hidden::intervall_absolut</references>
+        <references refid="d9/d7c/group__kernel_1ga9e2ff0725a3f5ad649d90e605af09426">mutabor::hidden::intervall::intervall_absolut</references>
+        <references refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603a084b5b61e17112ff83826bf3a9e26521" compoundref="dd/d40/Global_8h" startline="151">mutabor::hidden::intervall_komplex</references>
+        <references refid="d9/d7c/group__kernel_1gaa08c3fb30b180f7178c215c95774dca4">mutabor::hidden::intervall::intervall_komplex</references>
+        <references refid="d9/d7c/group__kernel_1gaf304266fd9a16b7d05583fa18ae18934" compoundref="d2/de4/Interval_8c" startline="151" endline="163">intervall_nummer</references>
+        <references refid="d9/d7c/group__kernel_1gac92cead574a39a7f8d0297f10f23b7ec" compoundref="dd/d40/Global_8h" startline="156">mutabor::hidden::intervall::intervall_typ</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" compoundref="de/d11/Execute_8h" startline="143" endline="159">mutabor::hidden::mutabor_error_message</references>
+        <references refid="d9/d7c/group__kernel_1ga071af2dc0511576b0a9aa5b638fd2629">mutabor::hidden::intervall::u</references>
+        <referencedby refid="d9/d7c/group__kernel_1ga2ea71bbe5f870f057780e2a023da84ab" compoundref="d2/de4/Interval_8c" startline="227" endline="338">mutabor::hidden::berechne_intervalle_absolut</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga2ea71bbe5f870f057780e2a023da84ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void berechne_intervalle_absolut</definition>
+        <argsstring>(mutabor_box_type *box, struct intervall *list_of_intervalle)</argsstring>
+        <name>berechne_intervalle_absolut</name>
+        <param>
+          <type><ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref> *</type>
+          <declname>list_of_intervalle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="dd/da0/todo_1_todo000002"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>we should use Dykstra to reduce complexity </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" line="227" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" bodystart="227" bodyend="338"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="d2/de4/Interval_8c" startline="41">_</references>
+        <references refid="d9/d7c/group__kernel_1ga6b2c203b35ff24f99c4da8726329d027" compoundref="d2/de4/Interval_8c" startline="129">adjacent</references>
+        <references refid="d9/d7c/group__kernel_1ga1ff75934fc2ba2974206347d09b17a1a" compoundref="d2/de4/Interval_8c" startline="141" endline="149">belege_intervalle</references>
+        <references refid="d9/d7c/group__kernel_1ga4145fc3b258a3ca6c307355c0e972a20" compoundref="d2/de4/Interval_8c" startline="189" endline="225">berechne_intervall_endgueltig</references>
+        <references refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" compoundref="d6/d0c/Parser_8h" startline="164">mutabor::hidden::mutabor_logic_parsed::check_intervals</references>
+        <references refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" compoundref="dc/d19/box_8h" startline="155">mutabor::hidden::mutabor_box_type::file</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac3921757db602b00c472fe4e3bc5e809" compoundref="de/d11/Execute_8h" startline="78">mutabor::hidden::internal_error</references>
+        <references refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" compoundref="d6/d0c/Parser_8h" startline="163">mutabor::hidden::mutabor_logic_parsed::interval_count</references>
+        <references refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aaf20cb55dae854019a714c28eae0cb10" compoundref="d6/d0c/Parser_8h" startline="166">mutabor::hidden::mutabor_logic_parsed::interval_matrix</references>
+        <references refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603aca2536002df27c5649277d188f8ec19c" compoundref="dd/d40/Global_8h" startline="151">mutabor::hidden::intervall_absolut</references>
+        <references refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603a084b5b61e17112ff83826bf3a9e26521" compoundref="dd/d40/Global_8h" startline="151">mutabor::hidden::intervall_komplex</references>
+        <references refid="d9/d7c/group__kernel_1gaa08c3fb30b180f7178c215c95774dca4">mutabor::hidden::intervall::intervall_komplex</references>
+        <references refid="d9/d7c/group__kernel_1ga546f912a52c53482f4d3e5d9dcc44427" compoundref="d2/de4/Interval_8c" startline="132" endline="137">mutabor::hidden::intervall_list_laenge</references>
+        <references refid="d9/d7c/group__kernel_1gaf304266fd9a16b7d05583fa18ae18934" compoundref="d2/de4/Interval_8c" startline="151" endline="163">intervall_nummer</references>
+        <references refid="d9/d7c/group__kernel_1gac92cead574a39a7f8d0297f10f23b7ec" compoundref="dd/d40/Global_8h" startline="156">mutabor::hidden::intervall::intervall_typ</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" compoundref="de/d11/Execute_8h" startline="143" endline="159">mutabor::hidden::mutabor_error_message</references>
+        <references refid="d9/d7c/group__kernel_1ga236d89efbc54e6820b61d68444141f9f" compoundref="dd/d40/Global_8h" startline="155">mutabor::hidden::intervall::name</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1adfdc087a9ae7b7da685895af8b949294" compoundref="dc/df5/Parser_8cpp" startline="2371" endline="2395">mutabor::hidden::test_zyklen</references>
+        <references refid="d9/d7c/group__kernel_1ga071af2dc0511576b0a9aa5b638fd2629">mutabor::hidden::intervall::u</references>
+        <references refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af5aa1fc4e25da87352287a4facb0b462" compoundref="d6/d0c/Parser_8h" startline="165">mutabor::hidden::mutabor_logic_parsed::visited_intervals</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1ac489eaad950d3b19b0b1e4f218a304c5" compoundref="da/d02/Hilfs_8cpp" startline="86" endline="104">mutabor::hidden::xalloca</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1ad4554a723729d37d1ae7b9f383cfed24" compoundref="da/d02/Hilfs_8cpp" startline="106" endline="114">mutabor::hidden::xde_alloca</references>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" compoundref="dc/df5/Parser_8cpp" startline="607" endline="925">mutabor::hidden::mutabor_programm_einlesen</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="d9/d7c/group__kernel_1ga308dccbb03ecf89669b0baeff27bbb03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void check_komplex_intervall</definition>
+        <argsstring>(mutabor_box_type *box, struct komplex_intervall *liste, const char *konstrukt_name)</argsstring>
+        <name>check_komplex_intervall</name>
+        <param>
+          <type><ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref> *</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="da/dd2/structmutabor_1_1hidden_1_1komplex__intervall" kindref="compound">komplex_intervall</ref> *</type>
+          <declname>liste</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>konstrukt_name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" line="342" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c" bodystart="342" bodyend="370"/>
+        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="d2/de4/Interval_8c" startline="41">_</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac01f336e7c4725ccf0ccefb2b4bfd352" compoundref="de/d11/Execute_8h" startline="79">mutabor::hidden::compiler_error</references>
+        <references refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" compoundref="dc/d19/box_8h" startline="155">mutabor::hidden::mutabor_box_type::file</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1a0f7f70c4e2a58c11fc80284fee21cd93" compoundref="dc/df5/Parser_8cpp" startline="168" endline="175">mutabor::hidden::get_intervall</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac3921757db602b00c472fe4e3bc5e809" compoundref="de/d11/Execute_8h" startline="78">mutabor::hidden::internal_error</references>
+        <references refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603aca2536002df27c5649277d188f8ec19c" compoundref="dd/d40/Global_8h" startline="151">mutabor::hidden::intervall_absolut</references>
+        <references refid="d9/d7c/group__kernel_1gac92cead574a39a7f8d0297f10f23b7ec" compoundref="dd/d40/Global_8h" startline="156">mutabor::hidden::intervall::intervall_typ</references>
+        <references refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1adb4511f897874f6268aa7c1081f3dd07" compoundref="d6/d0c/Parser_8h" startline="103">mutabor::hidden::mutabor_logic_parsed::list_of_intervalle</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" compoundref="de/d11/Execute_8h" startline="143" endline="159">mutabor::hidden::mutabor_error_message</references>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a2d099a673ba52487288bd99458e10ee5" compoundref="dc/df5/Parser_8cpp" startline="3013" endline="3628">mutabor::hidden::check_konsistenz</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Interval calculations. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright: (c) 2008 TU Dresden changes after 2011 (c) Tobias Schlemmer <simplesect kind="author"><para>Tobias Schlemmer <ulink url="mailto:keinstein@users.berlios.de">keinstein@users.berlios.de</ulink>  GPL</para></simplesect>
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</para><para>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</para><para>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dc/d19/box_8h" kindref="compound">box.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dd/d40/Global_8h" kindref="compound">Global.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d5/d84/Runtime_8h" kindref="compound">Runtime.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d11/Execute_8h" kindref="compound">Execute.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d55/Interval_8h" kindref="compound">Interval.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d6/d0c/Parser_8h" kindref="compound">Parser.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d32/Hilfs_8h" kindref="compound">Hilfs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>_</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#undef<sp/>_</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="41" refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_<sp/>_mut</highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">mutabor;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">mutabor::hidden;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="d9/d7c/group__kernel_1ga32d069bf3b61bb44351df1b9953ef001" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga32d069bf3b61bb44351df1b9953ef001" kindref="member">get_intervall_wert</ref><sp/>(<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref><sp/>*lauf;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d3d/group__templates_1ga6a74fe1453277b5ee1d921a28a936a0f" kindref="member">mutASSERT</ref>(box);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" kindref="member">DEBUGLOG2</ref>(kernel_tabgen,</highlight><highlight class="stringliteral">&quot;name<sp/>=<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>name);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(lauf<sp/>=<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1adb4511f897874f6268aa7c1081f3dd07" kindref="member">list_of_intervalle</ref>;<sp/>lauf;<sp/>lauf<sp/>=<sp/>lauf<sp/>-&gt;<sp/>next)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<sp/>strcasecmp<sp/>(name,<sp/>lauf-&gt;<ref refid="d9/d7c/group__kernel_1ga236d89efbc54e6820b61d68444141f9f" kindref="member">name</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(lauf<sp/>-&gt;<sp/><ref refid="d9/d7c/group__kernel_1ga4a62e1700237023a1889529cd3d6c603" kindref="member">intervall_typ</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603a084b5b61e17112ff83826bf3a9e26521" kindref="member">intervall_komplex</ref>:</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gaac1298ef1b8e7f926c71546bc260849b" kindref="member">get_wert_komplex_intervall</ref>(box,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf-&gt;<ref refid="d9/d7c/group__kernel_1ga071af2dc0511576b0a9aa5b638fd2629" kindref="member">u</ref>.<ref refid="d9/d7c/group__kernel_1gaa08c3fb30b180f7178c215c95774dca4" kindref="member">intervall_komplex</ref>.komplex_liste);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603aca2536002df27c5649277d188f8ec19c" kindref="member">intervall_absolut</ref>:</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lauf-&gt;<ref refid="d9/d7c/group__kernel_1ga071af2dc0511576b0a9aa5b638fd2629" kindref="member">u</ref>.<ref refid="d9/d7c/group__kernel_1ga9e2ff0725a3f5ad649d90e605af09426" kindref="member">intervall_absolut</ref>.intervall_wert<sp/>;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" kindref="member">mutabor_error_message</ref>(box,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac01f336e7c4725ccf0ccefb2b4bfd352" kindref="member">compiler_error</ref>,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Undefined<sp/>interval<sp/>type<sp/>%d<sp/>for<sp/>interval<sp/>%s.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf-&gt;<ref refid="d9/d7c/group__kernel_1gac92cead574a39a7f8d0297f10f23b7ec" kindref="member">intervall_typ</ref>,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(name));</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.0;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" kindref="member">mutabor_error_message</ref>(box,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac01f336e7c4725ccf0ccefb2b4bfd352" kindref="member">compiler_error</ref>,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Undefined<sp/>interval:<sp/>%s&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(name));</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.0;<sp/></highlight><highlight class="comment">/*<sp/>to<sp/>prevent<sp/>warnings<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="d9/d7c/group__kernel_1gaac1298ef1b8e7f926c71546bc260849b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gaac1298ef1b8e7f926c71546bc260849b" kindref="member">get_wert_komplex_intervall</ref><sp/>(<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="da/dd2/structmutabor_1_1hidden_1_1komplex__intervall" kindref="compound">komplex_intervall</ref><sp/>*<sp/><ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref>)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/>;<sp/>intervall<sp/>;<sp/>intervall<sp/>=<sp/>intervall<sp/>-&gt;<sp/>next<sp/>)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>help<sp/>=<sp/><ref refid="d9/d7c/group__kernel_1ga32d069bf3b61bb44351df1b9953ef001" kindref="member">get_intervall_wert</ref><sp/>(box,<sp/>intervall<sp/>-&gt;<sp/>name);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(help<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>*=<sp/>pow<sp/>(help,<sp/>intervall<sp/>-&gt;<sp/>faktor);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" kindref="member">mutabor_error_message</ref>(box,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac01f336e7c4725ccf0ccefb2b4bfd352" kindref="member">compiler_error</ref>,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Bad<sp/>interval<sp/>value<sp/>in<sp/>%s&quot;</highlight><highlight class="normal">),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(intervall<sp/>-&gt;<sp/>name));</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment">/**************************************************************</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"></highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Hier<sp/>werden<sp/>die<sp/>Intervalle<sp/>aufgelöst.</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Nach<sp/>dem<sp/>Parsing<sp/>ist<sp/>nur<sp/>die<sp/>Syntax-Struktur</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vorhanden,<sp/>aber<sp/>keine<sp/>fertig<sp/>ausgerechneten<sp/>Intervalle.</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"></highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Es<sp/>wird<sp/>ein<sp/>azyklischer<sp/>Graph<sp/>der<sp/>Intervalle<sp/>und<sp/>ihrer</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UnterIntervalle<sp/>gebildet,<sp/>der<sp/>dann<sp/>nach<sp/>den</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>depth-first-search<sp/>traversiert<sp/>wird.</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Dabei<sp/>bekommt<sp/>jedes<sp/>Intervall<sp/>seinen<sp/>AbsolutFaktor<sp/>berechnet.</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"></highlight></codeline>
+<codeline lineno="126"><highlight class="comment">****************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="d9/d7c/group__kernel_1ga6b2c203b35ff24f99c4da8726329d027" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>adjacent(file,a,b)<sp/>file-&gt;interval_matrix<sp/>[<sp/>(a)<sp/>*<sp/>file-&gt;interval_count<sp/>*<sp/>sizeof<sp/>(char)<sp/>\</highlight></codeline>
+<codeline lineno="130"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(b)<sp/>*<sp/>sizeof<sp/>(char)]</highlight></codeline>
+<codeline lineno="131"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="d9/d7c/group__kernel_1ga546f912a52c53482f4d3e5d9dcc44427" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga546f912a52c53482f4d3e5d9dcc44427" kindref="member">intervall_list_laenge</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref><sp/>*list)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(list)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1<sp/>+<sp/><ref refid="d9/d7c/group__kernel_1ga546f912a52c53482f4d3e5d9dcc44427" kindref="member">intervall_list_laenge</ref><sp/>(list<sp/>-&gt;<sp/>next);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="d9/d7c/group__kernel_1ga1ff75934fc2ba2974206347d09b17a1a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga1ff75934fc2ba2974206347d09b17a1a" kindref="member">belege_intervalle</ref><sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref><sp/>**intervalle,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref><sp/>*<sp/>liste)</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(liste)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*intervalle<sp/>=<sp/>liste;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>intervalle++;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>liste<sp/>=<sp/>liste-&gt;<ref refid="d9/d7c/group__kernel_1gaa082d4aff279065f461eda6de487c39a" kindref="member">next</ref>;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="d9/d7c/group__kernel_1gaf304266fd9a16b7d05583fa18ae18934" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gaf304266fd9a16b7d05583fa18ae18934" kindref="member">intervall_nummer</ref><sp/>(<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name)</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<sp/>strcasecmp<sp/>(name,<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>[i]-&gt;<ref refid="d9/d7c/group__kernel_1ga236d89efbc54e6820b61d68444141f9f" kindref="member">name</ref>))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" kindref="member">mutabor_error_message</ref>(box,</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac01f336e7c4725ccf0ccefb2b4bfd352" kindref="member">compiler_error</ref>,</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Undefined<sp/>interval:<sp/>%s&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(name));<sp/></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/></highlight><highlight class="comment">/*<sp/>to<sp/>prevent<sp/>warnings<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165" refid="d9/d7c/group__kernel_1ga86742603e7db7ad3c62122e6c9d5d6ca" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1adfdc087a9ae7b7da685895af8b949294" kindref="member">test_zyklen</ref><sp/>(<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>startknoten)</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d9/d7c/group__kernel_1ga6b2c203b35ff24f99c4da8726329d027" kindref="member">adjacent</ref><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>,<sp/>startknoten,<sp/>i))<sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af5aa1fc4e25da87352287a4facb0b462" kindref="member">visited_intervals</ref><sp/>[i])<sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" kindref="member">mutabor_error_message</ref>(box,</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac01f336e7c4725ccf0ccefb2b4bfd352" kindref="member">compiler_error</ref>,</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Intervals<sp/>%s<sp/>and<sp/>%s<sp/>depend<sp/>on<sp/>each<sp/>other&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref><sp/>[startknoten]-&gt;<ref refid="d9/d7c/group__kernel_1ga236d89efbc54e6820b61d68444141f9f" kindref="member">name</ref>),</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref><sp/>[i]-&gt;<ref refid="d9/d7c/group__kernel_1ga236d89efbc54e6820b61d68444141f9f" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref><sp/>[startknoten]<sp/>-&gt;<sp/><ref refid="d9/d7c/group__kernel_1ga4a62e1700237023a1889529cd3d6c603" kindref="member">intervall_typ</ref><sp/>=<sp/><ref refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603aca2536002df27c5649277d188f8ec19c" kindref="member">intervall_absolut</ref>;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref><sp/>[startknoten]<sp/>-&gt;<sp/>u.<ref refid="d9/d7c/group__kernel_1ga9e2ff0725a3f5ad649d90e605af09426" kindref="member">intervall_absolut</ref>.intervall_wert<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af5aa1fc4e25da87352287a4facb0b462" kindref="member">visited_intervals</ref><sp/>[i]<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1adfdc087a9ae7b7da685895af8b949294" kindref="member">test_zyklen</ref><sp/>(box,<sp/>i);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af5aa1fc4e25da87352287a4facb0b462" kindref="member">visited_intervals</ref><sp/>[i]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189" refid="d9/d7c/group__kernel_1ga4145fc3b258a3ca6c307355c0e972a20" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga4145fc3b258a3ca6c307355c0e972a20" kindref="member">berechne_intervall_endgueltig</ref><sp/>(<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k)</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>help;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>[k]-&gt;<ref refid="d9/d7c/group__kernel_1gac92cead574a39a7f8d0297f10f23b7ec" kindref="member">intervall_typ</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603aca2536002df27c5649277d188f8ec19c" kindref="member">intervall_absolut</ref>:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>hier<sp/>nichts<sp/>zu<sp/>tun<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603a084b5b61e17112ff83826bf3a9e26521" kindref="member">intervall_komplex</ref>:<sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="da/dd2/structmutabor_1_1hidden_1_1komplex__intervall" kindref="compound">komplex_intervall</ref><sp/>*<sp/>lauf;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(lauf<sp/>=<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>[k]-&gt;<ref refid="d9/d7c/group__kernel_1ga071af2dc0511576b0a9aa5b638fd2629" kindref="member">u</ref>.<ref refid="d9/d7c/group__kernel_1gaa08c3fb30b180f7178c215c95774dca4" kindref="member">intervall_komplex</ref>.komplex_liste;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf<sp/>=<sp/>lauf<sp/>-&gt;<sp/>next)<sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/>=<sp/><ref refid="d9/d7c/group__kernel_1gaf304266fd9a16b7d05583fa18ae18934" kindref="member">intervall_nummer</ref><sp/>(box,<sp/>lauf<sp/>-&gt;<sp/>name);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga4145fc3b258a3ca6c307355c0e972a20" kindref="member">berechne_intervall_endgueltig</ref><sp/>(box,<sp/>b);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>help<sp/>=<sp/><ref refid="d9/d7c/group__kernel_1gaac1298ef1b8e7f926c71546bc260849b" kindref="member">get_wert_komplex_intervall</ref><sp/>(box,</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>[k]-&gt;<ref refid="d9/d7c/group__kernel_1ga071af2dc0511576b0a9aa5b638fd2629" kindref="member">u</ref>.<ref refid="d9/d7c/group__kernel_1gaa08c3fb30b180f7178c215c95774dca4" kindref="member">intervall_komplex</ref>.komplex_liste);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>[k]-&gt;<ref refid="d9/d7c/group__kernel_1gac92cead574a39a7f8d0297f10f23b7ec" kindref="member">intervall_typ</ref><sp/>=<sp/><ref refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603aca2536002df27c5649277d188f8ec19c" kindref="member">intervall_absolut</ref>;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>[k]-&gt;<ref refid="d9/d7c/group__kernel_1ga071af2dc0511576b0a9aa5b638fd2629" kindref="member">u</ref>.<ref refid="d9/d7c/group__kernel_1ga9e2ff0725a3f5ad649d90e605af09426" kindref="member">intervall_absolut</ref>.intervall_wert<sp/>=<sp/>help;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" kindref="member">mutabor_error_message</ref>(box,<sp/></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac3921757db602b00c472fe4e3bc5e809" kindref="member">internal_error</ref>,</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Unknown<sp/>error<sp/>in<sp/>%s<sp/>,<sp/>line<sp/>%d.&quot;</highlight><highlight class="normal">),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;loop&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-1);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="225"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227" refid="d9/d7c/group__kernel_1ga2ea71bbe5f870f057780e2a023da84ab" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga2ea71bbe5f870f057780e2a023da84ab" kindref="member">berechne_intervalle_absolut</ref><sp/>(<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref><sp/>*<sp/>list_of_intervalle)</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i,j;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref><sp/>=<sp/><ref refid="d9/d7c/group__kernel_1ga546f912a52c53482f4d3e5d9dcc44427" kindref="member">intervall_list_laenge</ref><sp/>(list_of_intervalle);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref><sp/>=<sp/>(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref>*<sp/>*)<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac489eaad950d3b19b0b1e4f218a304c5" kindref="member">xalloca</ref><sp/>(box,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref><sp/>*)<sp/>*<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af5aa1fc4e25da87352287a4facb0b462" kindref="member">visited_intervals</ref><sp/>=<sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac489eaad950d3b19b0b1e4f218a304c5" kindref="member">xalloca</ref><sp/>(box,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">)<sp/>*<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aaf20cb55dae854019a714c28eae0cb10" kindref="member">interval_matrix</ref><sp/>=<sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac489eaad950d3b19b0b1e4f218a304c5" kindref="member">xalloca</ref><sp/>(box,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">)<sp/>*<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref><sp/>*<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Feld<sp/>mit<sp/>intervallen<sp/>initialisieren<sp/>(zum<sp/>schnelleren<sp/>Zugriff)<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga1ff75934fc2ba2974206347d09b17a1a" kindref="member">belege_intervalle</ref><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>,<sp/>list_of_intervalle);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Adjazenzmatrix<sp/>initialisieren<sp/>(Kein<sp/>Intervall<sp/>hängt<sp/>vom<sp/>anderen<sp/>ab)<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0;<sp/>j&lt;box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga6b2c203b35ff24f99c4da8726329d027" kindref="member">adjacent</ref><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>,<sp/>i,j)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Adjazenzmatrix<sp/>initialisieren<sp/>(Abhängigkeiten<sp/>eintragen)<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>[i]-&gt;<ref refid="d9/d7c/group__kernel_1gac92cead574a39a7f8d0297f10f23b7ec" kindref="member">intervall_typ</ref><sp/>==<sp/><ref refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603aca2536002df27c5649277d188f8ec19c" kindref="member">intervall_absolut</ref>)<sp/><sp/></highlight><highlight class="comment">/*<sp/>alles<sp/>ok<sp/>*/</highlight><highlight class="normal"><sp/>;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>[i]-&gt;<ref refid="d9/d7c/group__kernel_1gac92cead574a39a7f8d0297f10f23b7ec" kindref="member">intervall_typ</ref><sp/>==<sp/><ref refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603a084b5b61e17112ff83826bf3a9e26521" kindref="member">intervall_komplex</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="da/dd2/structmutabor_1_1hidden_1_1komplex__intervall" kindref="compound">komplex_intervall</ref><sp/>*<sp/>lauf;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(lauf<sp/>=<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>[i]-&gt;<ref refid="d9/d7c/group__kernel_1ga071af2dc0511576b0a9aa5b638fd2629" kindref="member">u</ref>.<ref refid="d9/d7c/group__kernel_1gaa08c3fb30b180f7178c215c95774dca4" kindref="member">intervall_komplex</ref>.komplex_liste;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lauf<sp/>=<sp/>lauf<sp/>-&gt;<sp/>next)<sp/>{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga6b2c203b35ff24f99c4da8726329d027" kindref="member">adjacent</ref><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>,<sp/>i,<sp/><ref refid="d9/d7c/group__kernel_1gaf304266fd9a16b7d05583fa18ae18934" kindref="member">intervall_nummer</ref><sp/>(box,<sp/>lauf<sp/>-&gt;<sp/>name))<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" kindref="member">mutabor_error_message</ref>(box,</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac3921757db602b00c472fe4e3bc5e809" kindref="member">internal_error</ref>,</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Undefined<sp/>interval<sp/>type<sp/>%d<sp/>for<sp/>interval<sp/>%s.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>[i]-&gt;<ref refid="d9/d7c/group__kernel_1gac92cead574a39a7f8d0297f10f23b7ec" kindref="member">intervall_typ</ref>,</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>[i]-&gt;<ref refid="d9/d7c/group__kernel_1ga236d89efbc54e6820b61d68444141f9f" kindref="member">name</ref>));</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>DEBUG_ANZEIGE_3</highlight></codeline>
+<codeline lineno="276"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Adjazenzmatrix<sp/>anzeigen<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf<sp/>(</highlight><highlight class="stringliteral">&quot;Matrix:\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf<sp/>(</highlight><highlight class="stringliteral">&quot;%s<sp/>-&gt;<sp/>&quot;</highlight><highlight class="normal">,<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>[i]-&gt;<ref refid="d9/d7c/group__kernel_1ga236d89efbc54e6820b61d68444141f9f" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0;<sp/>j&lt;box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d9/d7c/group__kernel_1ga6b2c203b35ff24f99c4da8726329d027" kindref="member">adjacent</ref><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>,<sp/>i,j))</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf<sp/>(</highlight><highlight class="stringliteral">&quot;%s<sp/><sp/>&quot;</highlight><highlight class="normal">,<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>[j]-&gt;<ref refid="d9/d7c/group__kernel_1ga236d89efbc54e6820b61d68444141f9f" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf<sp/>(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf<sp/>(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="295"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Test<sp/>for<sp/>cycles<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af5aa1fc4e25da87352287a4facb0b462" kindref="member">visited_intervals</ref><sp/>[i]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(i=0;<sp/>i&lt;box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af5aa1fc4e25da87352287a4facb0b462" kindref="member">visited_intervals</ref><sp/>[i]<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1adfdc087a9ae7b7da685895af8b949294" kindref="member">test_zyklen</ref><sp/>(box,<sp/>i);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af5aa1fc4e25da87352287a4facb0b462" kindref="member">visited_intervals</ref><sp/>[i]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Toene<sp/>endgueltig<sp/>berechnen<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1ga4145fc3b258a3ca6c307355c0e972a20" kindref="member">berechne_intervall_endgueltig</ref><sp/>(box,<sp/>i);</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>DEBUG_ANZEIGE_3</highlight></codeline>
+<codeline lineno="314"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Adjazenzmatrix<sp/>anzeigen<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf<sp/>(</highlight><highlight class="stringliteral">&quot;Matrix:\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf<sp/>(</highlight><highlight class="stringliteral">&quot;%s<sp/>-&gt;<sp/>&quot;</highlight><highlight class="normal">,<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>[i]-&gt;<ref refid="d9/d7c/group__kernel_1ga236d89efbc54e6820b61d68444141f9f" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0;<sp/>j&lt;box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d9/d7c/group__kernel_1ga6b2c203b35ff24f99c4da8726329d027" kindref="member">adjacent</ref><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>,<sp/>i,j))</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf<sp/>(</highlight><highlight class="stringliteral">&quot;%s<sp/><sp/>&quot;</highlight><highlight class="normal">,<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>[j]-&gt;<ref refid="d9/d7c/group__kernel_1ga236d89efbc54e6820b61d68444141f9f" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf<sp/>(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf<sp/>(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="333"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ad4554a723729d37d1ae7b9f383cfed24" kindref="member">xde_alloca</ref><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>);</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ad4554a723729d37d1ae7b9f383cfed24" kindref="member">xde_alloca</ref><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af5aa1fc4e25da87352287a4facb0b462" kindref="member">visited_intervals</ref>);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ad4554a723729d37d1ae7b9f383cfed24" kindref="member">xde_alloca</ref><sp/>(box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aaf20cb55dae854019a714c28eae0cb10" kindref="member">interval_matrix</ref>);</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight><highlight class="comment">/*****************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342" refid="d9/d7c/group__kernel_1ga308dccbb03ecf89669b0baeff27bbb03" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga308dccbb03ecf89669b0baeff27bbb03" kindref="member">check_komplex_intervall</ref><sp/>(<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type" kindref="compound">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="da/dd2/structmutabor_1_1hidden_1_1komplex__intervall" kindref="compound">komplex_intervall</ref><sp/>*<sp/>liste,</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>konstrukt_name)</highlight></codeline>
+<codeline lineno="345"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/>;<sp/>liste<sp/>;<sp/>liste<sp/>=<sp/>liste<sp/>-&gt;<sp/>next<sp/>)</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref><sp/>*<sp/>help<sp/>=<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a0f7f70c4e2a58c11fc80284fee21cd93" kindref="member">get_intervall</ref><sp/>(liste<sp/>-&gt;<sp/>name,<sp/>box-&gt;<ref refid="d9/dc9/structmutabor_1_1hidden_1_1mutabor__box__type_1a3999fc00fc8ae3857486456f7e712f0c" kindref="member">file</ref>-&gt;<ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1adb4511f897874f6268aa7c1081f3dd07" kindref="member">list_of_intervalle</ref>);</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(help<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" kindref="member">mutabor_error_message</ref>(box,</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac01f336e7c4725ccf0ccefb2b4bfd352" kindref="member">compiler_error</ref>,</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Undefined<sp/>interval:<sp/>%s<sp/>(in<sp/>%s)&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(liste<sp/>-&gt;<sp/>name),<sp/></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(konstrukt_name));</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(help<sp/>-&gt;<sp/><ref refid="d9/d7c/group__kernel_1ga4a62e1700237023a1889529cd3d6c603" kindref="member">intervall_typ</ref><sp/>!=<sp/><ref refid="d9/d7c/group__kernel_1gga4a62e1700237023a1889529cd3d6c603aca2536002df27c5649277d188f8ec19c" kindref="member">intervall_absolut</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aa9f93237ede6b37f4adb938e3d290877" kindref="member">mutabor_error_message</ref>(box,</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdac3921757db602b00c472fe4e3bc5e809" kindref="member">internal_error</ref>,</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Undefined<sp/>interval<sp/>type<sp/>%d<sp/>for<sp/>interval<sp/>%s<sp/>(%s:%d).&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>help-&gt;<ref refid="d9/d7c/group__kernel_1gac92cead574a39a7f8d0297f10f23b7ec" kindref="member">intervall_typ</ref>,</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(__FILE__),<sp/></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__LINE__);</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="370"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="374"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="376"><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Interval.c"/>
+  </compounddef>
+</doxygen>

@@ -4,777 +4,664 @@
     <compoundname>stclanguage.h</compoundname>
     <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
     <includes local="yes">wx/stc/stc.h</includes>
-    <includedby refid="d5/dfb/MutEditFile_8h" local="yes">src/wxGUI/MutEditFile.h</includedby>
     <includedby refid="d5/d1c/MutApp_8cpp" local="yes">src/wxGUI/MutApp.cpp</includedby>
     <includedby refid="d1/da4/MutEditFile_8cpp" local="yes">src/wxGUI/MutEditFile.cpp</includedby>
+    <includedby refid="d5/dfb/MutEditFile_8h" local="yes">src/wxGUI/MutEditFile.h</includedby>
     <includedby refid="dc/d0c/stclanguage_8cpp" local="yes">src/wxGUI/stclanguage.cpp</includedby>
     <incdepgraph>
-      <node id="35267">
-        <label>list</label>
-      </node>
-      <node id="35260">
-        <label>stdarg.h</label>
-      </node>
-      <node id="35275">
-        <label>wx/cmdline.h</label>
-      </node>
-      <node id="35263">
-        <label>wx/stdpaths.h</label>
-      </node>
-      <node id="35259">
-        <label>src/kernel/Defs.h</label>
-        <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="35260" relation="include">
-        </childnode>
-        <childnode refid="35261" relation="include">
-        </childnode>
-        <childnode refid="35280" relation="include">
-        </childnode>
-        <childnode refid="35281" relation="include">
-        </childnode>
-        <childnode refid="35274" relation="include">
-        </childnode>
-        <childnode refid="35282" relation="include">
-        </childnode>
-        <childnode refid="35283" relation="include">
-        </childnode>
-      </node>
-      <node id="35274">
+      <node id="33804">
         <label>stdint.h</label>
       </node>
-      <node id="35280">
-        <label>wx/wxchar.h</label>
+      <node id="33797">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="33796" relation="include">
+        </childnode>
       </node>
-      <node id="35269">
-        <label>wx/image.h</label>
+      <node id="33803">
+        <label>boost/format.hpp</label>
       </node>
-      <node id="35284">
+      <node id="33801">
         <label>string</label>
       </node>
-      <node id="35279">
-        <label>mutDebugFlags.h</label>
-        <link refid="d7/d49/mutDebugFlags_8h"/>
-      </node>
-      <node id="35262">
-        <label>wx/window.h</label>
-      </node>
-      <node id="35281">
-        <label>wx/intl.h</label>
-      </node>
-      <node id="35285">
+      <node id="33806">
         <label>wx/stc/stc.h</label>
       </node>
-      <node id="35268">
-        <label>src/wxGUI/Mutabor.rh</label>
-        <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="35259" relation="include">
+      <node id="33796">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="33797" relation="include">
+        </childnode>
+        <childnode refid="33798" relation="include">
+        </childnode>
+        <childnode refid="33799" relation="include">
         </childnode>
       </node>
-      <node id="35264">
-        <label>wx/filename.h</label>
-      </node>
-      <node id="35266">
-        <label>typeinfo</label>
-      </node>
-      <node id="35277">
-        <label>wx/debug.h</label>
-      </node>
-      <node id="35272">
+      <node id="33802">
         <label>cstdio</label>
       </node>
-      <node id="35271">
-        <label>bitset</label>
-      </node>
-      <node id="35261">
-        <label>src/wxGUI/generic/mhDefs.h</label>
-        <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="35259" relation="include">
+      <node id="33799">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="33796" relation="include">
         </childnode>
-        <childnode refid="35262" relation="include">
+        <childnode refid="33800" relation="include">
         </childnode>
-        <childnode refid="35263" relation="include">
+        <childnode refid="33801" relation="include">
         </childnode>
-        <childnode refid="35264" relation="include">
+        <childnode refid="33802" relation="include">
         </childnode>
-        <childnode refid="35265" relation="include">
+        <childnode refid="33803" relation="include">
         </childnode>
-        <childnode refid="35266" relation="include">
+        <childnode refid="33804" relation="include">
         </childnode>
-        <childnode refid="35267" relation="include">
-        </childnode>
-        <childnode refid="35268" relation="include">
-        </childnode>
-        <childnode refid="35269" relation="include">
-        </childnode>
-        <childnode refid="35270" relation="include">
+        <childnode refid="33805" relation="include">
         </childnode>
       </node>
-      <node id="35273">
-        <label>vector</label>
-      </node>
-      <node id="35270">
-        <label>mutDebug.h</label>
-        <link refid="de/de1/mutDebug_8h"/>
-        <childnode refid="35271" relation="include">
-        </childnode>
-        <childnode refid="35265" relation="include">
-        </childnode>
-        <childnode refid="35272" relation="include">
-        </childnode>
-        <childnode refid="35273" relation="include">
-        </childnode>
-        <childnode refid="35274" relation="include">
-        </childnode>
-        <childnode refid="35275" relation="include">
-        </childnode>
-        <childnode refid="35276" relation="include">
-        </childnode>
-        <childnode refid="35277" relation="include">
-        </childnode>
-        <childnode refid="35278" relation="include">
-        </childnode>
-        <childnode refid="35279" relation="include">
-        </childnode>
-      </node>
-      <node id="35283">
+      <node id="33800">
         <label>src/wxintl/libintl.h</label>
         <link refid="d4/d64/libintl_8h"/>
-        <childnode refid="35259" relation="include">
+        <childnode refid="33796" relation="include">
         </childnode>
-        <childnode refid="35284" relation="include">
+        <childnode refid="33801" relation="include">
         </childnode>
       </node>
-      <node id="35276">
-        <label>wx/string.h</label>
+      <node id="33798">
+        <label>cstddef</label>
       </node>
-      <node id="35265">
-        <label>iostream</label>
-      </node>
-      <node id="35278">
-        <label>wx/thread.h</label>
-      </node>
-      <node id="35282">
-        <label>wx/setup.h</label>
-      </node>
-      <node id="35258">
+      <node id="33795">
         <label>src/wxGUI/stclanguage.h</label>
         <link refid="stclanguage.h"/>
-        <childnode refid="35259" relation="include">
+        <childnode refid="33796" relation="include">
         </childnode>
-        <childnode refid="35285" relation="include">
+        <childnode refid="33806" relation="include">
         </childnode>
+      </node>
+      <node id="33805">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="35335">
-        <label>src/wxGUI/Routing/BoxDlg.h</label>
-        <link refid="d9/dd2/BoxDlg_8h"/>
-        <childnode refid="35305" relation="include">
-        </childnode>
-        <childnode refid="35306" relation="include">
-        </childnode>
-        <childnode refid="35307" relation="include">
-        </childnode>
-        <childnode refid="35308" relation="include">
-        </childnode>
-        <childnode refid="35309" relation="include">
-        </childnode>
-        <childnode refid="35311" relation="include">
-        </childnode>
-      </node>
-      <node id="35301">
+      <node id="33826">
         <label>src/wxGUI/Routing/tests/main.cpp</label>
         <link refid="da/dee/wxGUI_2Routing_2tests_2main_8cpp"/>
       </node>
-      <node id="35313">
-        <label>src/wxGUI/Routing/NewOutputDeviceShape.cpp</label>
-        <link refid="d1/d73/NewOutputDeviceShape_8cpp"/>
-      </node>
-      <node id="35337">
-        <label>src/wxGUI/Routing/NewOutputDeviceShape.h</label>
-        <link refid="df/d7b/NewOutputDeviceShape_8h"/>
-        <childnode refid="35305" relation="include">
-        </childnode>
-        <childnode refid="35313" relation="include">
-        </childnode>
-      </node>
-      <node id="35297">
-        <label>src/kernel/routing/tests/main.cpp</label>
-        <link refid="d1/de6/kernel_2routing_2tests_2main_8cpp"/>
-      </node>
-      <node id="35325">
-        <label>src/wxGUI/MutEditFile.cpp</label>
-        <link refid="d1/da4/MutEditFile_8cpp"/>
-      </node>
-      <node id="35302">
-        <label>src/wxGUI/tests/main.cpp</label>
-        <link refid="d9/d27/wxGUI_2tests_2main_8cpp"/>
-      </node>
-      <node id="35305">
-        <label>src/wxGUI/MutRouteWnd.cpp</label>
-        <link refid="dc/def/MutRouteWnd_8cpp"/>
-      </node>
-      <node id="35336">
-        <label>src/wxGUI/Routing/NewInputDeviceShape.h</label>
-        <link refid="d5/dba/NewInputDeviceShape_8h"/>
-        <childnode refid="35305" relation="include">
-        </childnode>
-        <childnode refid="35312" relation="include">
-        </childnode>
-      </node>
-      <node id="35307">
-        <label>src/wxGUI/Routing/BoxDlg.cpp</label>
-        <link refid="d3/d2a/BoxDlg_8cpp"/>
-      </node>
-      <node id="35311">
-        <label>src/wxGUI/Routing/NewBoxShape.cpp</label>
-        <link refid="d8/dba/NewBoxShape_8cpp"/>
-      </node>
-      <node id="35332">
-        <label>src/wxGUI/MutLogicWnd.cpp</label>
-        <link refid="df/d11/MutLogicWnd_8cpp"/>
-      </node>
-      <node id="35315">
-        <label>src/wxGUI/Routing/OutputMidiDeviceShape.cpp</label>
-        <link refid="d6/d68/OutputMidiDeviceShape_8cpp"/>
-      </node>
-      <node id="35314">
-        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp</label>
-        <link refid="d3/d21/OutputGuidoFileDeviceShape_8cpp"/>
-      </node>
-      <node id="35333">
-        <label>src/wxGUI/MutTextBox.cpp</label>
-        <link refid="df/d3c/MutTextBox_8cpp"/>
-      </node>
-      <node id="35318">
-        <label>src/wxGUI/MutApp.h</label>
-        <link refid="db/dc1/MutApp_8h"/>
-        <childnode refid="35319" relation="include">
-        </childnode>
-        <childnode refid="35320" relation="include">
-        </childnode>
-        <childnode refid="35321" relation="include">
-        </childnode>
-        <childnode refid="35322" relation="include">
-        </childnode>
-        <childnode refid="35323" relation="include">
-        </childnode>
-        <childnode refid="35324" relation="include">
-        </childnode>
-        <childnode refid="35325" relation="include">
-        </childnode>
-        <childnode refid="35326" relation="include">
-        </childnode>
-        <childnode refid="35305" relation="include">
-        </childnode>
-        <childnode refid="35327" relation="include">
-        </childnode>
-        <childnode refid="35310" relation="include">
-        </childnode>
-        <childnode refid="35328" relation="include">
-        </childnode>
-      </node>
-      <node id="35291">
-        <label>src/wxGUI/Routing/DebugRoute.cpp</label>
-        <link refid="d9/d27/DebugRoute_8cpp"/>
-        <childnode refid="35292" relation="include">
-        </childnode>
-        <childnode refid="35293" relation="include">
-        </childnode>
-        <childnode refid="35294" relation="include">
-        </childnode>
-        <childnode refid="35295" relation="include">
-        </childnode>
-        <childnode refid="35296" relation="include">
-        </childnode>
-        <childnode refid="35297" relation="include">
-        </childnode>
-        <childnode refid="35298" relation="include">
-        </childnode>
-        <childnode refid="35299" relation="include">
-        </childnode>
-        <childnode refid="35300" relation="include">
-        </childnode>
-        <childnode refid="35301" relation="include">
-        </childnode>
-        <childnode refid="35302" relation="include">
-        </childnode>
-      </node>
-      <node id="35290">
-        <label>src/wxGUI/Routing/DeviceShape.h</label>
-        <link refid="d9/d4d/DeviceShape_8h"/>
-        <childnode refid="35291" relation="include">
-        </childnode>
-        <childnode refid="35303" relation="include">
-        </childnode>
-        <childnode refid="35304" relation="include">
-        </childnode>
-        <childnode refid="35335" relation="include">
-        </childnode>
-        <childnode refid="35336" relation="include">
-        </childnode>
-        <childnode refid="35337" relation="include">
-        </childnode>
-        <childnode refid="35306" relation="include">
-        </childnode>
-        <childnode refid="35307" relation="include">
-        </childnode>
-        <childnode refid="35308" relation="include">
-        </childnode>
-        <childnode refid="35309" relation="include">
-        </childnode>
-        <childnode refid="35310" relation="include">
-        </childnode>
-        <childnode refid="35338" relation="include">
-        </childnode>
-        <childnode refid="35339" relation="include">
-        </childnode>
-        <childnode refid="35340" relation="include">
-        </childnode>
-        <childnode refid="35341" relation="include">
-        </childnode>
-        <childnode refid="35345" relation="include">
-        </childnode>
-      </node>
-      <node id="35289">
-        <label>src/wxGUI/Routing/GUIRoute.h</label>
-        <link refid="d6/dfa/GUIRoute_8h"/>
-        <childnode refid="35290" relation="include">
-        </childnode>
-        <childnode refid="35347" relation="include">
-        </childnode>
-        <childnode refid="35350" relation="include">
-        </childnode>
-        <childnode refid="35304" relation="include">
-        </childnode>
-        <childnode refid="35321" relation="include">
-        </childnode>
-        <childnode refid="35309" relation="include">
-        </childnode>
-        <childnode refid="35310" relation="include">
-        </childnode>
-        <childnode refid="35341" relation="include">
-        </childnode>
-        <childnode refid="35301" relation="include">
-        </childnode>
-        <childnode refid="35302" relation="include">
-        </childnode>
-      </node>
-      <node id="35330">
-        <label>src/wxGUI/MutDocManager.cpp</label>
-        <link refid="dd/db0/MutDocManager_8cpp"/>
-      </node>
-      <node id="35331">
-        <label>src/wxGUI/MutChild.cpp</label>
-        <link refid="da/d72/MutChild_8cpp"/>
-      </node>
-      <node id="35321">
-        <label>src/wxGUI/MutApp.cpp</label>
-        <link refid="d5/d1c/MutApp_8cpp"/>
-      </node>
-      <node id="35338">
-        <label>src/wxGUI/Routing/OutputMidiDeviceShape.h</label>
-        <link refid="d8/dcb/OutputMidiDeviceShape_8h"/>
-        <childnode refid="35310" relation="include">
-        </childnode>
-        <childnode refid="35315" relation="include">
-        </childnode>
-      </node>
-      <node id="35340">
-        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.h</label>
-        <link refid="db/d77/OutputGuidoFileDeviceShape_8h"/>
-        <childnode refid="35310" relation="include">
-        </childnode>
-        <childnode refid="35314" relation="include">
-        </childnode>
-      </node>
-      <node id="35295">
-        <label>src/kernel/routing/midi/tests/midiopenfail1.cpp</label>
-        <link refid="da/ddb/midiopenfail1_8cpp"/>
-      </node>
-      <node id="35349">
-        <label>src/wxGUI/Routing/NewBoxShape.h</label>
-        <link refid="d4/dcc/NewBoxShape_8h"/>
-        <childnode refid="35320" relation="include">
-        </childnode>
-        <childnode refid="35305" relation="include">
-        </childnode>
-        <childnode refid="35310" relation="include">
-        </childnode>
-        <childnode refid="35311" relation="include">
-        </childnode>
-      </node>
-      <node id="35351">
-        <label>src/wxGUI/MutLogicWnd.h</label>
-        <link refid="d6/d81/MutLogicWnd_8h"/>
-        <childnode refid="35320" relation="include">
-        </childnode>
-        <childnode refid="35331" relation="include">
-        </childnode>
-        <childnode refid="35326" relation="include">
-        </childnode>
-        <childnode refid="35332" relation="include">
-        </childnode>
-      </node>
-      <node id="35324">
-        <label>src/wxGUI/MutDocument.cpp</label>
-        <link refid="d6/d3b/MutDocument_8cpp"/>
-      </node>
-      <node id="35303">
-        <label>src/wxGUI/MutRouteWnd.h</label>
-        <link refid="d3/dd7/MutRouteWnd_8h"/>
-        <childnode refid="35291" relation="include">
-        </childnode>
-        <childnode refid="35304" relation="include">
-        </childnode>
-        <childnode refid="35317" relation="include">
-        </childnode>
-        <childnode refid="35326" relation="include">
-        </childnode>
-        <childnode refid="35332" relation="include">
-        </childnode>
-        <childnode refid="35305" relation="include">
-        </childnode>
-        <childnode refid="35306" relation="include">
-        </childnode>
-        <childnode refid="35307" relation="include">
-        </childnode>
-        <childnode refid="35308" relation="include">
-        </childnode>
-        <childnode refid="35310" relation="include">
-        </childnode>
-        <childnode refid="35311" relation="include">
-        </childnode>
-        <childnode refid="35312" relation="include">
-        </childnode>
-        <childnode refid="35313" relation="include">
-        </childnode>
-        <childnode refid="35334" relation="include">
-        </childnode>
-      </node>
-      <node id="35287">
-        <label>src/wxGUI/MutEditFile.h</label>
-        <link refid="d5/dfb/MutEditFile_8h"/>
-        <childnode refid="35288" relation="include">
-        </childnode>
-        <childnode refid="35317" relation="include">
-        </childnode>
-        <childnode refid="35331" relation="include">
-        </childnode>
-        <childnode refid="35325" relation="include">
-        </childnode>
-      </node>
-      <node id="35322">
-        <label>src/wxGUI/MutConfDlg.h</label>
-        <link refid="d9/d8f/MutConfDlg_8h"/>
-        <childnode refid="35321" relation="include">
-        </childnode>
-      </node>
-      <node id="35300">
-        <label>src/tests/wxlinktest2.cpp</label>
-        <link refid="df/d13/wxlinktest2_8cpp"/>
-      </node>
-      <node id="35309">
-        <label>src/wxGUI/Routing/DeviceShape.cpp</label>
-        <link refid="d9/d94/DeviceShape_8cpp"/>
-      </node>
-      <node id="35292">
-        <label>src/kernel/routing/gmn/tests/gmnopenfail1.cpp</label>
-        <link refid="d0/dd6/gmnopenfail1_8cpp"/>
-      </node>
-      <node id="35327">
-        <label>src/wxGUI/MutView.cpp</label>
-        <link refid="d8/d33/MutView_8cpp"/>
-      </node>
-      <node id="35339">
-        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.h</label>
-        <link refid="d4/de8/OutputMidiFileDeviceShape_8h"/>
-        <childnode refid="35310" relation="include">
-        </childnode>
-        <childnode refid="35316" relation="include">
-        </childnode>
-      </node>
-      <node id="35352">
+      <node id="33872">
         <label>src/wxGUI/stclanguage.cpp</label>
         <link refid="dc/d0c/stclanguage_8cpp"/>
       </node>
-      <node id="35344">
-        <label>src/wxGUI/Routing/InputMidiDeviceShape.cpp</label>
-        <link refid="d1/d14/InputMidiDeviceShape_8cpp"/>
-      </node>
-      <node id="35306">
-        <label>src/wxGUI/Routing/BoxChannelShape.cpp</label>
-        <link refid="d9/d24/BoxChannelShape_8cpp"/>
-      </node>
-      <node id="35326">
-        <label>src/wxGUI/MutFrame.cpp</label>
-        <link refid="dc/df3/MutFrame_8cpp"/>
-      </node>
-      <node id="35296">
-        <label>src/kernel/routing/midi/tests/playmidi1.cpp</label>
-        <link refid="d9/dfe/playmidi1_8cpp"/>
-      </node>
-      <node id="35346">
-        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.cpp</label>
-        <link refid="d3/de3/InputMidiFileDeviceShape_8cpp"/>
-      </node>
-      <node id="35299">
-        <label>src/kernel/tests/main.cpp</label>
-        <link refid="d5/dd0/kernel_2tests_2main_8cpp"/>
-      </node>
-      <node id="35328">
-        <label>src/wxGUI/Routing/RouteIcons.cpp</label>
-        <link refid="d1/d28/RouteIcons_8cpp"/>
-      </node>
-      <node id="35343">
-        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp</label>
-        <link refid="d8/da8/InputGuidoFileDeviceShape_8cpp"/>
-      </node>
-      <node id="35342">
-        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.h</label>
-        <link refid="d9/d0d/InputGuidoFileDeviceShape_8h"/>
-        <childnode refid="35310" relation="include">
-        </childnode>
-        <childnode refid="35343" relation="include">
-        </childnode>
-      </node>
-      <node id="35329">
-        <label>src/wxGUI/MutView.h</label>
-        <link refid="d0/d9e/MutView_8h"/>
-        <childnode refid="35321" relation="include">
-        </childnode>
-        <childnode refid="35330" relation="include">
-        </childnode>
-        <childnode refid="35324" relation="include">
-        </childnode>
-        <childnode refid="35325" relation="include">
-        </childnode>
-        <childnode refid="35326" relation="include">
-        </childnode>
-        <childnode refid="35327" relation="include">
-        </childnode>
-      </node>
-      <node id="35323">
-        <label>src/wxGUI/MutBitmaps.cpp</label>
-        <link refid="d7/db6/MutBitmaps_8cpp"/>
-      </node>
-      <node id="35310">
-        <label>src/wxGUI/Routing/GUIRoute.cpp</label>
-        <link refid="d4/dee/GUIRoute_8cpp"/>
-      </node>
-      <node id="35288">
-        <label>src/wxGUI/GUIBoxData.h</label>
-        <link refid="d5/df7/GUIBoxData_8h"/>
-        <childnode refid="35289" relation="include">
-        </childnode>
-        <childnode refid="35347" relation="include">
-        </childnode>
-        <childnode refid="35348" relation="include">
-        </childnode>
-        <childnode refid="35320" relation="include">
-        </childnode>
-        <childnode refid="35351" relation="include">
-        </childnode>
-        <childnode refid="35326" relation="include">
-        </childnode>
-        <childnode refid="35333" relation="include">
-        </childnode>
-        <childnode refid="35308" relation="include">
-        </childnode>
-      </node>
-      <node id="35334">
-        <label>src/wxGUI/Routing/tests/GUIRouteTest.cpp</label>
-        <link refid="d9/d20/GUIRouteTest_8cpp"/>
-      </node>
-      <node id="35298">
-        <label>src/kernel/routing/tests/timer1.cpp</label>
-        <link refid="d9/d9a/timer1_8cpp"/>
-      </node>
-      <node id="35345">
-        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.h</label>
-        <link refid="d1/da8/InputMidiFileDeviceShape_8h"/>
-        <childnode refid="35310" relation="include">
-        </childnode>
-        <childnode refid="35346" relation="include">
-        </childnode>
-      </node>
-      <node id="35304">
-        <label>src/wxGUI/Routing/GUIRoute-inlines.h</label>
-        <link refid="d2/d73/GUIRoute-inlines_8h"/>
-        <childnode refid="35291" relation="include">
-        </childnode>
-        <childnode refid="35305" relation="include">
-        </childnode>
-        <childnode refid="35306" relation="include">
-        </childnode>
-        <childnode refid="35307" relation="include">
-        </childnode>
-        <childnode refid="35308" relation="include">
-        </childnode>
-        <childnode refid="35309" relation="include">
-        </childnode>
-        <childnode refid="35310" relation="include">
-        </childnode>
-        <childnode refid="35311" relation="include">
-        </childnode>
-        <childnode refid="35312" relation="include">
-        </childnode>
-        <childnode refid="35313" relation="include">
-        </childnode>
-        <childnode refid="35314" relation="include">
-        </childnode>
-        <childnode refid="35315" relation="include">
-        </childnode>
-        <childnode refid="35316" relation="include">
-        </childnode>
-      </node>
-      <node id="35317">
-        <label>src/wxGUI/MutFrame.h</label>
-        <link refid="dd/db5/MutFrame_8h"/>
-        <childnode refid="35318" relation="include">
-        </childnode>
-        <childnode refid="35320" relation="include">
-        </childnode>
-        <childnode refid="35321" relation="include">
-        </childnode>
-        <childnode refid="35329" relation="include">
-        </childnode>
-        <childnode refid="35322" relation="include">
-        </childnode>
-        <childnode refid="35331" relation="include">
-        </childnode>
-        <childnode refid="35325" relation="include">
-        </childnode>
-        <childnode refid="35326" relation="include">
-        </childnode>
-        <childnode refid="35332" relation="include">
-        </childnode>
-        <childnode refid="35305" relation="include">
-        </childnode>
-        <childnode refid="35333" relation="include">
-        </childnode>
-        <childnode refid="35327" relation="include">
-        </childnode>
-        <childnode refid="35309" relation="include">
-        </childnode>
-        <childnode refid="35310" relation="include">
-        </childnode>
-      </node>
-      <node id="35319">
-        <label>src/wxGUI/generic/mutDebug.cpp</label>
-        <link refid="d4/dc0/mutDebug_8cpp"/>
-      </node>
-      <node id="35348">
-        <label>src/wxGUI/GUIBoxData-inlines.h</label>
-        <link refid="d5/d12/GUIBoxData-inlines_8h"/>
-        <childnode refid="35291" relation="include">
-        </childnode>
-        <childnode refid="35320" relation="include">
-        </childnode>
-        <childnode refid="35305" relation="include">
-        </childnode>
-        <childnode refid="35306" relation="include">
-        </childnode>
-        <childnode refid="35308" relation="include">
-        </childnode>
-        <childnode refid="35310" relation="include">
-        </childnode>
-      </node>
-      <node id="35316">
-        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp</label>
-        <link refid="d5/d00/OutputMidiFileDeviceShape_8cpp"/>
-      </node>
-      <node id="35341">
-        <label>src/wxGUI/Routing/InputMidiDeviceShape.h</label>
-        <link refid="d3/d5e/InputMidiDeviceShape_8h"/>
-        <childnode refid="35310" relation="include">
-        </childnode>
-        <childnode refid="35342" relation="include">
-        </childnode>
-        <childnode refid="35344" relation="include">
-        </childnode>
-      </node>
-      <node id="35320">
-        <label>src/wxGUI/GUIBoxData.cpp</label>
-        <link refid="d2/dd3/GUIBoxData_8cpp"/>
-      </node>
-      <node id="35286">
-        <label>src/wxGUI/stclanguage.h</label>
-        <link refid="stclanguage.h"/>
-        <childnode refid="35287" relation="include">
-        </childnode>
-        <childnode refid="35321" relation="include">
-        </childnode>
-        <childnode refid="35325" relation="include">
-        </childnode>
-        <childnode refid="35352" relation="include">
-        </childnode>
-      </node>
-      <node id="35347">
-        <label>src/wxGUI/Routing/BoxShape.h</label>
-        <link refid="d9/d49/BoxShape_8h"/>
-        <childnode refid="35303" relation="include">
-        </childnode>
-        <childnode refid="35291" relation="include">
-        </childnode>
-        <childnode refid="35304" relation="include">
-        </childnode>
-        <childnode refid="35348" relation="include">
-        </childnode>
-        <childnode refid="35349" relation="include">
-        </childnode>
-        <childnode refid="35333" relation="include">
-        </childnode>
-        <childnode refid="35306" relation="include">
-        </childnode>
-        <childnode refid="35307" relation="include">
-        </childnode>
-        <childnode refid="35308" relation="include">
-        </childnode>
-        <childnode refid="35310" relation="include">
-        </childnode>
-        <childnode refid="35311" relation="include">
-        </childnode>
-        <childnode refid="35312" relation="include">
-        </childnode>
-        <childnode refid="35328" relation="include">
-        </childnode>
-      </node>
-      <node id="35350">
-        <label>src/wxGUI/Routing/BoxChannelShape.h</label>
-        <link refid="d6/d68/BoxChannelShape_8h"/>
-        <childnode refid="35347" relation="include">
-        </childnode>
-        <childnode refid="35291" relation="include">
-        </childnode>
-        <childnode refid="35306" relation="include">
-        </childnode>
-        <childnode refid="35308" relation="include">
-        </childnode>
-        <childnode refid="35309" relation="include">
-        </childnode>
-        <childnode refid="35310" relation="include">
-        </childnode>
-        <childnode refid="35311" relation="include">
-        </childnode>
-        <childnode refid="35312" relation="include">
-        </childnode>
-      </node>
-      <node id="35308">
-        <label>src/wxGUI/Routing/BoxShape.cpp</label>
-        <link refid="d8/db4/BoxShape_8cpp"/>
-      </node>
-      <node id="35293">
+      <node id="33818">
         <label>src/kernel/routing/gmn/tests/playgmn1.cpp</label>
         <link refid="d3/d06/playgmn1_8cpp"/>
       </node>
-      <node id="35294">
+      <node id="33816">
+        <label>src/wxGUI/Routing/BoxShape.cpp</label>
+        <link refid="d8/db4/BoxShape_8cpp"/>
+      </node>
+      <node id="33839">
+        <label>src/wxGUI/MutBitmaps.cpp</label>
+        <link refid="d7/db6/MutBitmaps_8cpp"/>
+      </node>
+      <node id="33856">
+        <label>src/wxGUI/Routing/NewBoxShape.h</label>
+        <link refid="d4/dcc/NewBoxShape_8h"/>
+        <childnode refid="33814" relation="include">
+        </childnode>
+        <childnode refid="33828" relation="include">
+        </childnode>
+        <childnode refid="33849" relation="include">
+        </childnode>
+      </node>
+      <node id="33857">
+        <label>src/wxGUI/Routing/GUIRoute.h</label>
+        <link refid="d6/dfa/GUIRoute_8h"/>
+        <childnode refid="33808" relation="include">
+        </childnode>
+        <childnode refid="33858" relation="include">
+        </childnode>
+        <childnode refid="33834" relation="include">
+        </childnode>
+        <childnode refid="33846" relation="include">
+        </childnode>
+        <childnode refid="33859" relation="include">
+        </childnode>
+        <childnode refid="33848" relation="include">
+        </childnode>
+        <childnode refid="33828" relation="include">
+        </childnode>
+        <childnode refid="33861" relation="include">
+        </childnode>
+        <childnode refid="33826" relation="include">
+        </childnode>
+        <childnode refid="33827" relation="include">
+        </childnode>
+      </node>
+      <node id="33825">
+        <label>src/tests/wxlinktest2.cpp</label>
+        <link refid="df/d13/wxlinktest2_8cpp"/>
+      </node>
+      <node id="33828">
+        <label>src/wxGUI/Routing/GUIRoute.cpp</label>
+        <link refid="d4/dee/GUIRoute_8cpp"/>
+      </node>
+      <node id="33862">
+        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.h</label>
+        <link refid="d9/d0d/InputGuidoFileDeviceShape_8h"/>
+        <childnode refid="33863" relation="include">
+        </childnode>
+      </node>
+      <node id="33815">
+        <label>src/wxGUI/Routing/BoxChannelShape.cpp</label>
+        <link refid="d9/d24/BoxChannelShape_8cpp"/>
+      </node>
+      <node id="33824">
+        <label>src/kernel/tests/main.cpp</label>
+        <link refid="d5/dd0/kernel_2tests_2main_8cpp"/>
+      </node>
+      <node id="33853">
+        <label>src/wxGUI/Routing/OutputMidiDeviceShape.cpp</label>
+        <link refid="d6/d68/OutputMidiDeviceShape_8cpp"/>
+      </node>
+      <node id="33812">
+        <label>src/wxGUI/GUIBoxData-inlines.h</label>
+        <link refid="d5/d12/GUIBoxData-inlines_8h"/>
+        <childnode refid="33813" relation="include">
+        </childnode>
+        <childnode refid="33814" relation="include">
+        </childnode>
+        <childnode refid="33815" relation="include">
+        </childnode>
+        <childnode refid="33816" relation="include">
+        </childnode>
+        <childnode refid="33817" relation="include">
+        </childnode>
+        <childnode refid="33828" relation="include">
+        </childnode>
+      </node>
+      <node id="33859">
+        <label>src/wxGUI/Routing/DeviceShape.h</label>
+        <link refid="d9/d4d/DeviceShape_8h"/>
+        <childnode refid="33835" relation="include">
+        </childnode>
+        <childnode refid="33815" relation="include">
+        </childnode>
+        <childnode refid="33847" relation="include">
+        </childnode>
+        <childnode refid="33860" relation="include">
+        </childnode>
+        <childnode refid="33816" relation="include">
+        </childnode>
+        <childnode refid="33817" relation="include">
+        </childnode>
+        <childnode refid="33846" relation="include">
+        </childnode>
+        <childnode refid="33848" relation="include">
+        </childnode>
+        <childnode refid="33828" relation="include">
+        </childnode>
+        <childnode refid="33861" relation="include">
+        </childnode>
+        <childnode refid="33865" relation="include">
+        </childnode>
+        <childnode refid="33867" relation="include">
+        </childnode>
+        <childnode refid="33868" relation="include">
+        </childnode>
+        <childnode refid="33869" relation="include">
+        </childnode>
+        <childnode refid="33870" relation="include">
+        </childnode>
+        <childnode refid="33871" relation="include">
+        </childnode>
+      </node>
+      <node id="33814">
+        <label>src/wxGUI/MutRouteWnd.cpp</label>
+        <link refid="dc/def/MutRouteWnd_8cpp"/>
+      </node>
+      <node id="33838">
+        <label>src/wxGUI/interface_deps_wxWidgets.cpp</label>
+        <link refid="df/dff/interface__deps__wxWidgets_8cpp"/>
+      </node>
+      <node id="33854">
+        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp</label>
+        <link refid="d5/d00/OutputMidiFileDeviceShape_8cpp"/>
+      </node>
+      <node id="33831">
+        <label>src/wxGUI/MutChild.cpp</label>
+        <link refid="da/d72/MutChild_8cpp"/>
+      </node>
+      <node id="33837">
+        <label>src/wxGUI/MutApp.h</label>
+        <link refid="db/dc1/MutApp_8h"/>
+        <childnode refid="33813" relation="include">
+        </childnode>
+        <childnode refid="33838" relation="include">
+        </childnode>
+        <childnode refid="33808" relation="include">
+        </childnode>
+        <childnode refid="33839" relation="include">
+        </childnode>
+        <childnode refid="33840" relation="include">
+        </childnode>
+        <childnode refid="33841" relation="include">
+        </childnode>
+        <childnode refid="33809" relation="include">
+        </childnode>
+        <childnode refid="33829" relation="include">
+        </childnode>
+        <childnode refid="33814" relation="include">
+        </childnode>
+        <childnode refid="33842" relation="include">
+        </childnode>
+        <childnode refid="33828" relation="include">
+        </childnode>
+        <childnode refid="33843" relation="include">
+        </childnode>
+      </node>
+      <node id="33822">
+        <label>src/kernel/routing/tests/main.cpp</label>
+        <link refid="d1/de6/kernel_2routing_2tests_2main_8cpp"/>
+      </node>
+      <node id="33827">
+        <label>src/wxGUI/tests/main.cpp</label>
+        <link refid="d9/d27/wxGUI_2tests_2main_8cpp"/>
+      </node>
+      <node id="33868">
+        <label>src/wxGUI/Routing/NewOutputDeviceShape.h</label>
+        <link refid="df/d7b/NewOutputDeviceShape_8h"/>
+        <childnode refid="33851" relation="include">
+        </childnode>
+      </node>
+      <node id="33820">
+        <label>src/kernel/routing/midi/tests/midiopenfail1.cpp</label>
+        <link refid="da/ddb/midiopenfail1_8cpp"/>
+      </node>
+      <node id="33810">
+        <label>src/wxGUI/MutEditFile.h</label>
+        <link refid="d5/dfb/MutEditFile_8h"/>
+        <childnode refid="33811" relation="include">
+        </childnode>
+        <childnode refid="33831" relation="include">
+        </childnode>
+        <childnode refid="33809" relation="include">
+        </childnode>
+        <childnode refid="33836" relation="include">
+        </childnode>
+      </node>
+      <node id="33867">
+        <label>src/wxGUI/Routing/NewInputDeviceShape.h</label>
+        <link refid="d5/dba/NewInputDeviceShape_8h"/>
+        <childnode refid="33850" relation="include">
+        </childnode>
+      </node>
+      <node id="33813">
+        <label>src/wxGUI/GUIBoxData.cpp</label>
+        <link refid="d2/dd3/GUIBoxData_8cpp"/>
+      </node>
+      <node id="33808">
+        <label>src/wxGUI/MutApp.cpp</label>
+        <link refid="d5/d1c/MutApp_8cpp"/>
+      </node>
+      <node id="33863">
+        <label>src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp</label>
+        <link refid="d8/da8/InputGuidoFileDeviceShape_8cpp"/>
+      </node>
+      <node id="33847">
+        <label>src/wxGUI/Routing/BoxDlg.cpp</label>
+        <link refid="d3/d2a/BoxDlg_8cpp"/>
+      </node>
+      <node id="33866">
+        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.cpp</label>
+        <link refid="d3/de3/InputMidiFileDeviceShape_8cpp"/>
+      </node>
+      <node id="33858">
+        <label>src/wxGUI/Routing/BoxChannelShape.h</label>
+        <link refid="d6/d68/BoxChannelShape_8h"/>
+        <childnode refid="33815" relation="include">
+        </childnode>
+        <childnode refid="33816" relation="include">
+        </childnode>
+        <childnode refid="33834" relation="include">
+        </childnode>
+        <childnode refid="33817" relation="include">
+        </childnode>
+        <childnode refid="33846" relation="include">
+        </childnode>
+        <childnode refid="33828" relation="include">
+        </childnode>
+        <childnode refid="33849" relation="include">
+        </childnode>
+        <childnode refid="33850" relation="include">
+        </childnode>
+      </node>
+      <node id="33833">
+        <label>src/wxGUI/MutTextBox.cpp</label>
+        <link refid="df/d3c/MutTextBox_8cpp"/>
+      </node>
+      <node id="33849">
+        <label>src/wxGUI/Routing/NewBoxShape.cpp</label>
+        <link refid="d8/dba/NewBoxShape_8cpp"/>
+      </node>
+      <node id="33830">
+        <label>src/wxGUI/MutLogicWnd.h</label>
+        <link refid="d6/d81/MutLogicWnd_8h"/>
+        <childnode refid="33831" relation="include">
+        </childnode>
+        <childnode refid="33829" relation="include">
+        </childnode>
+        <childnode refid="33832" relation="include">
+        </childnode>
+      </node>
+      <node id="33850">
+        <label>src/wxGUI/Routing/NewInputDeviceShape.cpp</label>
+        <link refid="df/d62/NewInputDeviceShape_8cpp"/>
+      </node>
+      <node id="33819">
         <label>src/kernel/routing/midi/tests/main.cpp</label>
         <link refid="df/d72/kernel_2routing_2midi_2tests_2main_8cpp"/>
       </node>
-      <node id="35312">
-        <label>src/wxGUI/Routing/NewInputDeviceShape.cpp</label>
-        <link refid="df/d62/NewInputDeviceShape_8cpp"/>
+      <node id="33860">
+        <label>src/wxGUI/Routing/BoxDlg.h</label>
+        <link refid="d9/dd2/BoxDlg_8h"/>
+        <childnode refid="33815" relation="include">
+        </childnode>
+        <childnode refid="33847" relation="include">
+        </childnode>
+        <childnode refid="33816" relation="include">
+        </childnode>
+        <childnode refid="33846" relation="include">
+        </childnode>
+        <childnode refid="33849" relation="include">
+        </childnode>
+      </node>
+      <node id="33840">
+        <label>src/wxGUI/MutConfDlg.h</label>
+        <link refid="d9/d8f/MutConfDlg_8h"/>
+      </node>
+      <node id="33836">
+        <label>src/wxGUI/MutFrame.h</label>
+        <link refid="dd/db5/MutFrame_8h"/>
+        <childnode refid="33813" relation="include">
+        </childnode>
+        <childnode refid="33808" relation="include">
+        </childnode>
+        <childnode refid="33837" relation="include">
+        </childnode>
+        <childnode refid="33831" relation="include">
+        </childnode>
+        <childnode refid="33840" relation="include">
+        </childnode>
+        <childnode refid="33809" relation="include">
+        </childnode>
+        <childnode refid="33829" relation="include">
+        </childnode>
+        <childnode refid="33832" relation="include">
+        </childnode>
+        <childnode refid="33814" relation="include">
+        </childnode>
+        <childnode refid="33833" relation="include">
+        </childnode>
+        <childnode refid="33842" relation="include">
+        </childnode>
+        <childnode refid="33844" relation="include">
+        </childnode>
+        <childnode refid="33846" relation="include">
+        </childnode>
+        <childnode refid="33828" relation="include">
+        </childnode>
+      </node>
+      <node id="33848">
+        <label>src/wxGUI/Routing/GUIRoute-inlines.h</label>
+        <link refid="d2/d73/GUIRoute-inlines_8h"/>
+        <childnode refid="33814" relation="include">
+        </childnode>
+        <childnode refid="33815" relation="include">
+        </childnode>
+        <childnode refid="33847" relation="include">
+        </childnode>
+        <childnode refid="33816" relation="include">
+        </childnode>
+        <childnode refid="33817" relation="include">
+        </childnode>
+        <childnode refid="33846" relation="include">
+        </childnode>
+        <childnode refid="33828" relation="include">
+        </childnode>
+        <childnode refid="33849" relation="include">
+        </childnode>
+        <childnode refid="33850" relation="include">
+        </childnode>
+        <childnode refid="33851" relation="include">
+        </childnode>
+        <childnode refid="33852" relation="include">
+        </childnode>
+        <childnode refid="33853" relation="include">
+        </childnode>
+        <childnode refid="33854" relation="include">
+        </childnode>
+      </node>
+      <node id="33829">
+        <label>src/wxGUI/MutFrame.cpp</label>
+        <link refid="dc/df3/MutFrame_8cpp"/>
+      </node>
+      <node id="33843">
+        <label>src/wxGUI/Routing/RouteIcons.cpp</label>
+        <link refid="d1/d28/RouteIcons_8cpp"/>
+      </node>
+      <node id="33842">
+        <label>src/wxGUI/MutView.cpp</label>
+        <link refid="d8/d33/MutView_8cpp"/>
+      </node>
+      <node id="33834">
+        <label>src/wxGUI/Routing/BoxShape.h</label>
+        <link refid="d9/d49/BoxShape_8h"/>
+        <childnode refid="33812" relation="include">
+        </childnode>
+        <childnode refid="33835" relation="include">
+        </childnode>
+        <childnode refid="33833" relation="include">
+        </childnode>
+        <childnode refid="33815" relation="include">
+        </childnode>
+        <childnode refid="33847" relation="include">
+        </childnode>
+        <childnode refid="33816" relation="include">
+        </childnode>
+        <childnode refid="33817" relation="include">
+        </childnode>
+        <childnode refid="33848" relation="include">
+        </childnode>
+        <childnode refid="33828" relation="include">
+        </childnode>
+        <childnode refid="33849" relation="include">
+        </childnode>
+        <childnode refid="33856" relation="include">
+        </childnode>
+        <childnode refid="33850" relation="include">
+        </childnode>
+        <childnode refid="33843" relation="include">
+        </childnode>
+      </node>
+      <node id="33865">
+        <label>src/wxGUI/Routing/InputMidiFileDeviceShape.h</label>
+        <link refid="d1/da8/InputMidiFileDeviceShape_8h"/>
+        <childnode refid="33866" relation="include">
+        </childnode>
+      </node>
+      <node id="33861">
+        <label>src/wxGUI/Routing/InputMidiDeviceShape.h</label>
+        <link refid="d3/d5e/InputMidiDeviceShape_8h"/>
+        <childnode refid="33862" relation="include">
+        </childnode>
+        <childnode refid="33864" relation="include">
+        </childnode>
+      </node>
+      <node id="33832">
+        <label>src/wxGUI/MutLogicWnd.cpp</label>
+        <link refid="df/d11/MutLogicWnd_8cpp"/>
+      </node>
+      <node id="33864">
+        <label>src/wxGUI/Routing/InputMidiDeviceShape.cpp</label>
+        <link refid="d1/d14/InputMidiDeviceShape_8cpp"/>
+      </node>
+      <node id="33871">
+        <label>src/wxGUI/Routing/OutputMidiFileDeviceShape.h</label>
+        <link refid="d4/de8/OutputMidiFileDeviceShape_8h"/>
+        <childnode refid="33854" relation="include">
+        </childnode>
+      </node>
+      <node id="33845">
+        <label>src/wxGUI/MutDocManager.cpp</label>
+        <link refid="dd/db0/MutDocManager_8cpp"/>
+      </node>
+      <node id="33846">
+        <label>src/wxGUI/Routing/DeviceShape.cpp</label>
+        <link refid="d9/d94/DeviceShape_8cpp"/>
+      </node>
+      <node id="33855">
+        <label>src/wxGUI/Routing/tests/GUIRouteTest.cpp</label>
+        <link refid="d9/d20/GUIRouteTest_8cpp"/>
+      </node>
+      <node id="33817">
+        <label>src/wxGUI/Routing/DebugRoute.cpp</label>
+        <link refid="d9/d27/DebugRoute_8cpp"/>
+        <childnode refid="33818" relation="include">
+        </childnode>
+        <childnode refid="33819" relation="include">
+        </childnode>
+        <childnode refid="33820" relation="include">
+        </childnode>
+        <childnode refid="33821" relation="include">
+        </childnode>
+        <childnode refid="33822" relation="include">
+        </childnode>
+        <childnode refid="33823" relation="include">
+        </childnode>
+        <childnode refid="33824" relation="include">
+        </childnode>
+        <childnode refid="33825" relation="include">
+        </childnode>
+        <childnode refid="33826" relation="include">
+        </childnode>
+        <childnode refid="33827" relation="include">
+        </childnode>
+      </node>
+      <node id="33811">
+        <label>src/wxGUI/GUIBoxData.h</label>
+        <link refid="d5/df7/GUIBoxData_8h"/>
+        <childnode refid="33812" relation="include">
+        </childnode>
+        <childnode refid="33813" relation="include">
+        </childnode>
+        <childnode refid="33829" relation="include">
+        </childnode>
+        <childnode refid="33830" relation="include">
+        </childnode>
+        <childnode refid="33833" relation="include">
+        </childnode>
+        <childnode refid="33816" relation="include">
+        </childnode>
+        <childnode refid="33834" relation="include">
+        </childnode>
+        <childnode refid="33857" relation="include">
+        </childnode>
+      </node>
+      <node id="33851">
+        <label>src/wxGUI/Routing/NewOutputDeviceShape.cpp</label>
+        <link refid="d1/d73/NewOutputDeviceShape_8cpp"/>
+      </node>
+      <node id="33809">
+        <label>src/wxGUI/MutEditFile.cpp</label>
+        <link refid="d1/da4/MutEditFile_8cpp"/>
+      </node>
+      <node id="33852">
+        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp</label>
+        <link refid="d3/d21/OutputGuidoFileDeviceShape_8cpp"/>
+      </node>
+      <node id="33823">
+        <label>src/kernel/routing/tests/timer1.cpp</label>
+        <link refid="d9/d9a/timer1_8cpp"/>
+      </node>
+      <node id="33821">
+        <label>src/kernel/routing/midi/tests/playmidi1.cpp</label>
+        <link refid="d9/dfe/playmidi1_8cpp"/>
+      </node>
+      <node id="33844">
+        <label>src/wxGUI/MutView.h</label>
+        <link refid="d0/d9e/MutView_8h"/>
+        <childnode refid="33845" relation="include">
+        </childnode>
+        <childnode refid="33841" relation="include">
+        </childnode>
+        <childnode refid="33809" relation="include">
+        </childnode>
+        <childnode refid="33829" relation="include">
+        </childnode>
+        <childnode refid="33842" relation="include">
+        </childnode>
+      </node>
+      <node id="33807">
+        <label>src/wxGUI/stclanguage.h</label>
+        <link refid="stclanguage.h"/>
+        <childnode refid="33808" relation="include">
+        </childnode>
+        <childnode refid="33809" relation="include">
+        </childnode>
+        <childnode refid="33810" relation="include">
+        </childnode>
+        <childnode refid="33872" relation="include">
+        </childnode>
+      </node>
+      <node id="33841">
+        <label>src/wxGUI/MutDocument.cpp</label>
+        <link refid="d6/d3b/MutDocument_8cpp"/>
+      </node>
+      <node id="33835">
+        <label>src/wxGUI/MutRouteWnd.h</label>
+        <link refid="d3/dd7/MutRouteWnd_8h"/>
+        <childnode refid="33829" relation="include">
+        </childnode>
+        <childnode refid="33836" relation="include">
+        </childnode>
+        <childnode refid="33832" relation="include">
+        </childnode>
+        <childnode refid="33814" relation="include">
+        </childnode>
+        <childnode refid="33815" relation="include">
+        </childnode>
+        <childnode refid="33847" relation="include">
+        </childnode>
+        <childnode refid="33816" relation="include">
+        </childnode>
+        <childnode refid="33817" relation="include">
+        </childnode>
+        <childnode refid="33848" relation="include">
+        </childnode>
+        <childnode refid="33828" relation="include">
+        </childnode>
+        <childnode refid="33849" relation="include">
+        </childnode>
+        <childnode refid="33850" relation="include">
+        </childnode>
+        <childnode refid="33851" relation="include">
+        </childnode>
+        <childnode refid="33855" relation="include">
+        </childnode>
+      </node>
+      <node id="33870">
+        <label>src/wxGUI/Routing/OutputMidiDeviceShape.h</label>
+        <link refid="d8/dcb/OutputMidiDeviceShape_8h"/>
+        <childnode refid="33828" relation="include">
+        </childnode>
+        <childnode refid="33853" relation="include">
+        </childnode>
+      </node>
+      <node id="33869">
+        <label>src/wxGUI/Routing/OutputGuidoFileDeviceShape.h</label>
+        <link refid="db/d77/OutputGuidoFileDeviceShape_8h"/>
+        <childnode refid="33852" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="d7/d8e/structmutaborGUI_1_1CommonInfo" prot="public">mutaborGUI::CommonInfo</innerclass>
@@ -791,7 +678,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="33" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="33" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="33" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="df/dd1/group__GUI_1ga3a6ace345304f6c52fabb5739a7b3d2b" prot="public" static="no">
         <name>MUWX_STCLANGUAGE_H_PRECOMPILED</name>
@@ -801,7 +688,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="43" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="43" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="43" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a2a112ca1c7c7dc54fe43375469738dc4" prot="public" static="no">
         <name>DEFAULT_LANGUAGE</name>
@@ -812,8 +699,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="69" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="69" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1gac75a3b4b31efb3651b5562f0d5e448c1" compoundref="d1/da4/MutEditFile_8cpp" startline="488" endline="557">mutaborGUI::MutEditFile::Init</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="69" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="69" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gac75a3b4b31efb3651b5562f0d5e448c1" compoundref="d1/da4/MutEditFile_8cpp" startline="506" endline="575">mutaborGUI::MutEditFile::Init</referencedby>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a2616855475cc8add4a71b86603d053b2" prot="public" static="no">
         <name>PAGE_COMMON</name>
@@ -824,7 +711,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="71" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="71" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="71" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1ab33619ffd355354fb3e7530a0442f9c6" prot="public" static="no">
         <name>PAGE_LANGUAGES</name>
@@ -835,7 +722,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="72" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="72" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="72" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a98c94231dc81a99bc2abce5b6b5c9bba" prot="public" static="no">
         <name>PAGE_STYLE_TYPES</name>
@@ -846,7 +733,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="73" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="73" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="73" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a2bf008bdf5440d2ea4ab17900c22a851" prot="public" static="no">
         <name>STYLE_TYPES_COUNT</name>
@@ -857,8 +744,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="75" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="75" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="75" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="75" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1059" endline="1182">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1adacb27d0943451b492e1b93c5ca5d319" prot="public" static="no">
         <name>MutSTC_TYPE_DEFAULT</name>
@@ -869,7 +756,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="78" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="78" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="78" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a52faf218647bf7e501c096f4b5da8d0d" prot="public" static="no">
         <name>MutSTC_TYPE_WORD1</name>
@@ -880,7 +767,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="80" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="80" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="80" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1aea65a2770deafd84826eef6a57d1ec95" prot="public" static="no">
         <name>MutSTC_TYPE_WORD2</name>
@@ -891,7 +778,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="81" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="81" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="81" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a6188a393289c27a1b5ee5fb42f7d9968" prot="public" static="no">
         <name>MutSTC_TYPE_WORD3</name>
@@ -902,7 +789,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="82" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="82" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="82" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1ae90e9848721c448eafa5bdba90db6307" prot="public" static="no">
         <name>MutSTC_TYPE_WORD4</name>
@@ -913,7 +800,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="83" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="83" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="83" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a86ce9f57b93fe174238fa549aac23244" prot="public" static="no">
         <name>MutSTC_TYPE_WORD5</name>
@@ -924,7 +811,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="84" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="84" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="84" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1aeb7dd8183011ce9a0a5cb2a795346ad2" prot="public" static="no">
         <name>MutSTC_TYPE_WORD6</name>
@@ -935,7 +822,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="85" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="85" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="85" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a6c37ac2419fb0e9ea39ad28f61802f28" prot="public" static="no">
         <name>MutSTC_TYPE_COMMENT</name>
@@ -946,7 +833,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="87" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="87" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="87" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a3f3bca9faf23401abfc849a02b42de74" prot="public" static="no">
         <name>MutSTC_TYPE_COMMENT_DOC</name>
@@ -957,7 +844,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="88" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="88" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="88" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1ad0dd2edbd1222bef7616e5e8640ed952" prot="public" static="no">
         <name>MutSTC_TYPE_COMMENT_LINE</name>
@@ -968,7 +855,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="89" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="89" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="89" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a13bb07c3b1c0a3fa01a8bc4fdeb5c927" prot="public" static="no">
         <name>MutSTC_TYPE_COMMENT_SPECIAL</name>
@@ -979,7 +866,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="90" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="90" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="90" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1af098d8d8d72d189b8b65732284dd55ef" prot="public" static="no">
         <name>MutSTC_TYPE_CHARACTER</name>
@@ -990,7 +877,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="92" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="92" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="92" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a14ec95af63d63d293e91d5811d449ea0" prot="public" static="no">
         <name>MutSTC_TYPE_CHARACTER_EOL</name>
@@ -1001,7 +888,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="93" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="93" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="93" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a3c761484ac6daa3e9721f944db9e08c1" prot="public" static="no">
         <name>MutSTC_TYPE_STRING</name>
@@ -1012,7 +899,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="94" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="94" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="94" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a0e682be22f9801158c651b04bbb99fe9" prot="public" static="no">
         <name>MutSTC_TYPE_STRING_EOL</name>
@@ -1023,7 +910,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="95" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="95" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="95" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a32a436fcc1419164a83620d4e4ca8500" prot="public" static="no">
         <name>MutSTC_TYPE_DELIMITER</name>
@@ -1034,7 +921,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="97" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="97" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="97" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a985599567775fdbeb1986c6a05a93cf9" prot="public" static="no">
         <name>MutSTC_TYPE_PUNCTUATION</name>
@@ -1045,7 +932,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="99" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="99" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="99" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a1d6a0ed4235a5ec0ff4397d1061236e3" prot="public" static="no">
         <name>MutSTC_TYPE_OPERATOR</name>
@@ -1056,7 +943,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="101" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="101" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="101" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a27f97c7055cf1b3b293f53629ce97ecb" prot="public" static="no">
         <name>MutSTC_TYPE_BRACE</name>
@@ -1067,7 +954,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="103" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="103" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="103" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1aa60c988a5db2e3223183402423286b65" prot="public" static="no">
         <name>MutSTC_TYPE_COMMAND</name>
@@ -1078,7 +965,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="105" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="105" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="105" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a7dfc10fe3ed3d55b2a9fa0c615a3d207" prot="public" static="no">
         <name>MutSTC_TYPE_IDENTIFIER</name>
@@ -1089,7 +976,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="106" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="106" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="106" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="106" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a694eec54a7aa59d23d72c4c44d31918c" prot="public" static="no">
         <name>MutSTC_TYPE_LABEL</name>
@@ -1100,7 +987,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="107" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="107" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="107" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="107" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a90d26a0bcbab05770759ebf42494b4b2" prot="public" static="no">
         <name>MutSTC_TYPE_NUMBER</name>
@@ -1111,7 +998,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="108" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="108" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="108" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="108" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a527f8d264be0ad9b95927ebb086b6dd1" prot="public" static="no">
         <name>MutSTC_TYPE_PARAMETER</name>
@@ -1122,7 +1009,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="109" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="109" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="109" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a5fe5556ea4bdf9d6b0671e2817856229" prot="public" static="no">
         <name>MutSTC_TYPE_REGEX</name>
@@ -1133,7 +1020,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="110" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="110" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="110" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1abf16662121303093bbc96e264674f968" prot="public" static="no">
         <name>MutSTC_TYPE_UUID</name>
@@ -1144,7 +1031,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="111" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="111" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="111" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a8d0806e8f5cc0c172b5ea9e75a6b2585" prot="public" static="no">
         <name>MutSTC_TYPE_VALUE</name>
@@ -1155,7 +1042,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="112" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="112" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="112" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1adfa35d949c1f9dd88426e79d8e8246ed" prot="public" static="no">
         <name>MutSTC_TYPE_PREPROCESSOR</name>
@@ -1166,7 +1053,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="114" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="114" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="114" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a5008360023e6e75c90404545a82e2e04" prot="public" static="no">
         <name>MutSTC_TYPE_SCRIPT</name>
@@ -1177,7 +1064,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="115" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="115" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="115" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a1f5624b666575cfe5ea69973e40bb535" prot="public" static="no">
         <name>MutSTC_TYPE_ERROR</name>
@@ -1188,7 +1075,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="117" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="117" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="117" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1aa776515a46236d1a2b00e2cccf47688f" prot="public" static="no">
         <name>MutSTC_STYLE_BOLD</name>
@@ -1199,8 +1086,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="121" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="121" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="121" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="121" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1059" endline="1182">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a827d51f2d2a71d081414b7ddaddd064e" prot="public" static="no">
         <name>MutSTC_STYLE_ITALIC</name>
@@ -1211,8 +1098,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="122" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="122" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="122" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="122" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1059" endline="1182">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a85c17daba160a44929ea7a7112ba50d4" prot="public" static="no">
         <name>MutSTC_STYLE_UNDERL</name>
@@ -1223,8 +1110,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="123" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="123" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="123" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="123" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1059" endline="1182">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a66d81c5b062a413fae4295ce13802ddc" prot="public" static="no">
         <name>MutSTC_STYLE_HIDDEN</name>
@@ -1235,8 +1122,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="124" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="124" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="124" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="124" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1059" endline="1182">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1ab1f6d959de6e18c69e2b505bb8765ee0" prot="public" static="no">
         <name>MutSTC_FOLD_COMMENT</name>
@@ -1247,8 +1134,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="128" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="128" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="128" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="128" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1059" endline="1182">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a6ee9d4cf40639a5170ca24298b986594" prot="public" static="no">
         <name>MutSTC_FOLD_COMPACT</name>
@@ -1259,8 +1146,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="129" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="129" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="129" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="129" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1059" endline="1182">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a9fb5ce68dcb20b5703c9c2d4936e2075" prot="public" static="no">
         <name>MutSTC_FOLD_PREPROC</name>
@@ -1271,8 +1158,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="130" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="130" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="130" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="130" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1059" endline="1182">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a0988868831ebce985af4b55509cb647e" prot="public" static="no">
         <name>MutSTC_FOLD_HTML</name>
@@ -1283,8 +1170,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="132" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="132" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="132" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="132" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1059" endline="1182">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a2425fedf3f184fa0b7e6061d03e88136" prot="public" static="no">
         <name>MutSTC_FOLD_HTMLPREP</name>
@@ -1295,8 +1182,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="133" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="133" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="133" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="133" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1059" endline="1182">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a295b9ef24e20405d28690d3578c7497d" prot="public" static="no">
         <name>MutSTC_FOLD_COMMENTPY</name>
@@ -1307,8 +1194,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="135" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="135" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="135" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="135" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1059" endline="1182">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1abdf9d9c42bba0b75f065f58d34710255" prot="public" static="no">
         <name>MutSTC_FOLD_QUOTESPY</name>
@@ -1319,8 +1206,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="136" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="136" bodyend="-1"/>
-        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1041" endline="1164">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="136" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="136" bodyend="-1"/>
+        <referencedby refid="df/dd1/group__GUI_1gab1b709558e280663b5c6a1630dd54792" compoundref="d1/da4/MutEditFile_8cpp" startline="1059" endline="1182">mutaborGUI::MutEditFile::InitializePrefs</referencedby>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a7adc7af41b7a6f8bf0992e0bb4ee895d" prot="public" static="no">
         <name>MutSTC_FLAG_WRAPMODE</name>
@@ -1331,7 +1218,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="140" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="140" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="140" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1af0e0fe8c8743ad6e08b498e2df3cf5a8" prot="public" static="no">
         <name>MutSTC_LEX_MUTABOR</name>
@@ -1342,7 +1229,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="144" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="144" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="144" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1abf8c3e3f44daaf3936f3c099b675a6d6" prot="public" static="no">
         <name>MutSTC_MUTABOR_DEFAULT</name>
@@ -1353,7 +1240,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="148" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="148" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="148" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="148" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1af940d3023666b6be167dcb49cf542000" prot="public" static="no">
         <name>MutSTC_MUTABOR_SECTION</name>
@@ -1364,7 +1251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="149" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="149" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="149" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a998dc55020bd742c2623d022af5cb2c4" prot="public" static="no">
         <name>MutSTC_MUTABOR_PARAMETER</name>
@@ -1375,7 +1262,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="150" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="150" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="150" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="150" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a564faa64604fce33d277f038f187f350" prot="public" static="no">
         <name>MutSTC_MUTABOR_COMMENT</name>
@@ -1386,7 +1273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="151" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="151" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="151" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="151" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1adec63360014253e2ec7532e0c895833e" prot="public" static="no">
         <name>MutSTC_MUTABOR_IDENTIFIER</name>
@@ -1397,7 +1284,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="152" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="152" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="152" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="152" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1aae65bcc5d7c546503537b8ab2c0abc9a" prot="public" static="no">
         <name>MutSTC_MUTABOR_DEFNAME</name>
@@ -1408,7 +1295,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="153" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="153" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="153" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="153" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a17838d6497ad7e3d2fe0c6f5ec59189d" prot="public" static="no">
         <name>MutSTC_MUTABOR_OPERATOR</name>
@@ -1419,7 +1306,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="154" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="154" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="154" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1afff008a3eb434f187fa162b6b5f8107d" prot="public" static="no">
         <name>MutSTC_MUTABOR_PAREN</name>
@@ -1430,7 +1317,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="155" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="155" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="155" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="155" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1af744a0be894b8c01c212dbf2bb6f64c2" prot="public" static="no">
         <name>MutSTC_MUTABOR_BRACKET</name>
@@ -1441,7 +1328,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="156" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="156" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="156" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="156" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a7aefc527f8d9dbde91c0b133f709679c" prot="public" static="no">
         <name>MutSTC_MUTABOR_BRACE</name>
@@ -1452,7 +1339,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="157" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="157" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="157" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="157" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/de5/stclanguage_8h_1a9ad2fc7d10a0e4c8197ffde9c09ec65d" prot="public" static="no">
         <name>MutSTC_MUTABOR_NUMBER</name>
@@ -1463,7 +1350,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="158" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="158" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" line="158" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h" bodystart="158" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1627,7 +1514,7 @@
 <codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="189" refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1abb3f036e862303eddb5e648525c1cde8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1abb3f036e862303eddb5e648525c1cde8" kindref="member">type</ref>;</highlight></codeline>
 <codeline lineno="190" refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1aae20207f3ad8f26c56d76313aece4586" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxChar<sp/>*<ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1aae20207f3ad8f26c56d76313aece4586" kindref="member">words</ref>;</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1a32c1f38b5249fe73281727e7748e4975" kindref="member">styles</ref><sp/>[<ref refid="d1/de5/stclanguage_8h_1a2bf008bdf5440d2ea4ab17900c22a851" kindref="member">STYLE_TYPES_COUNT</ref>];</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1a42cada40546806420c97223323514dc1" kindref="member">styles</ref><sp/>[<ref refid="d1/de5/stclanguage_8h_1a2bf008bdf5440d2ea4ab17900c22a851" kindref="member">STYLE_TYPES_COUNT</ref>];</highlight></codeline>
 <codeline lineno="192" refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1aa9eab4b69b65ebf29a475e877c60eba7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d4/d4a/structmutaborGUI_1_1LanguageInfo_1aa9eab4b69b65ebf29a475e877c60eba7" kindref="member">folds</ref>;</highlight></codeline>
 <codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="194"><highlight class="normal"></highlight></codeline>
@@ -1667,7 +1554,7 @@
 <codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="229"><highlight class="normal"></highlight></codeline>
 <codeline lineno="230" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1aa0fa0411034be6c5334787c7f56b12ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1aa0fa0411034be6c5334787c7f56b12ae" kindref="member">MutSTCLexer</ref>(wxStyledTextCtrl<sp/>*<sp/>e):<ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a4213eaf54322dafc8fc44af0e6b80ea5" kindref="member">editor</ref>(e)<sp/>{}</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a30e777b67eb50a9c08427266b9bd08c9" kindref="member">OnStyleNeeded</ref><sp/>(wxStyledTextEvent<sp/>&amp;<sp/>event);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a30e777b67eb50a9c08427266b9bd08c9" kindref="member">OnStyleNeeded</ref><sp/>(wxStyledTextEvent<sp/>&amp;<sp/><ref refid="d5/dee/group__route_1ga3761b2ff72e19d32966fa4e647dd5eba" kindref="member">event</ref>);</highlight></codeline>
 <codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="233" refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a4213eaf54322dafc8fc44af0e6b80ea5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxStyledTextCtrl<sp/>*<sp/><ref refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1a4213eaf54322dafc8fc44af0e6b80ea5" kindref="member">editor</ref>;</highlight></codeline>
 <codeline lineno="234"><highlight class="normal"></highlight></codeline>
@@ -1680,6 +1567,6 @@
 <codeline lineno="241"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>full<sp/>header<sp/>inclusion</highlight></codeline>
 <codeline lineno="242"><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/stclanguage.h"/>
   </compounddef>
 </doxygen>

@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" line="775" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" bodystart="775" bodyend="776"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" line="770" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" bodystart="770" bodyend="771"/>
       </memberdef>
       <memberdef kind="function" id="d8/d5a/classmutabor_1_1MidiFileFactory_1a87de75db09411bf560c9c97a61f4bc27" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" line="777" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.cpp" bodystart="901" bodyend="901"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" line="772" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.cpp" bodystart="892" bodyend="892"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -50,17 +50,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" line="780" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" bodystart="780" bodyend="783"/>
-        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="91">mutabor::DTMidiFile</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" line="775" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" bodystart="775" bodyend="778"/>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="93">mutabor::DTMidiFile</references>
       </memberdef>
-      <memberdef kind="function" id="d8/d5a/classmutabor_1_1MidiFileFactory_1a31f7346a7716bff41200d3e80e6d6bdc" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d8/d5a/classmutabor_1_1MidiFileFactory_1a9630d7194326bfbd47aea13d6f08e245" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="d2/d2f/classmutabor_1_1OutputDeviceClass" kindref="compound">mutabor::OutputDeviceClass</ref> *</type>
         <definition>OutputDeviceClass * mutabor::MidiFileFactory::DoCreateOutput</definition>
-        <argsstring>(const mutStringRef name, int id=-1) const </argsstring>
+        <argsstring>(const std::string &amp;name, int id=-1) const </argsstring>
         <name>DoCreateOutput</name>
-        <reimplements refid="d5/dee/group__route_1ga61576f6d9de13465e22e95d8812e4dbb">DoCreateOutput</reimplements>
+        <reimplements refid="d5/dee/group__route_1ga5c72f3d83e17ea6448211e76a73bd476">DoCreateOutput</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
         <param>
@@ -74,16 +74,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" line="786" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.cpp" bodystart="903" bodyend="907"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" line="781" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.cpp" bodystart="894" bodyend="898"/>
       </memberdef>
-      <memberdef kind="function" id="d8/d5a/classmutabor_1_1MidiFileFactory_1a370f91501bf6a0a3b71d65da08e16294" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d8/d5a/classmutabor_1_1MidiFileFactory_1a7a1dbfdda50af93302def04bfb98da1e" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="d4/d18/classmutabor_1_1InputDeviceClass" kindref="compound">mutabor::InputDeviceClass</ref> *</type>
         <definition>InputDeviceClass * mutabor::MidiFileFactory::DoCreateInput</definition>
-        <argsstring>(const mutStringRef name, mutabor::MutaborModeType mode, int id=-1) const </argsstring>
+        <argsstring>(const std::string &amp;name, mutabor::MutaborModeType mode, int id=-1) const </argsstring>
         <name>DoCreateInput</name>
-        <reimplements refid="d5/dee/group__route_1ga0e03803358cbd110a42c878f73e1eeed">DoCreateInput</reimplements>
+        <reimplements refid="d5/dee/group__route_1ga8febdd4b01b9be8f95eb38b967743a52">DoCreateInput</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
         <param>
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" line="789" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.cpp" bodystart="909" bodyend="914"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" line="784" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.cpp" bodystart="900" bodyend="905"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -109,52 +109,52 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3589">
+      <node id="4304">
         <label>mutabor::MidiFileFactory</label>
         <link refid="d8/d5a/classmutabor_1_1MidiFileFactory"/>
-        <childnode refid="3590" relation="public-inheritance">
+        <childnode refid="4305" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3590">
+      <node id="4305">
         <label>mutabor::DeviceFactory</label>
         <link refid="d7/d57/classmutabor_1_1DeviceFactory"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3594">
+      <node id="4309">
         <label>T</label>
       </node>
-      <node id="3593">
+      <node id="4308">
         <label>std::vector&lt; T &gt;</label>
-        <childnode refid="3594" relation="usage">
+        <childnode refid="4309" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="3591">
+      <node id="4306">
         <label>mutabor::MidiFileFactory</label>
         <link refid="d8/d5a/classmutabor_1_1MidiFileFactory"/>
-        <childnode refid="3592" relation="public-inheritance">
+        <childnode refid="4307" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3592">
+      <node id="4307">
         <label>mutabor::DeviceFactory</label>
         <link refid="d7/d57/classmutabor_1_1DeviceFactory"/>
-        <childnode refid="3593" relation="usage">
+        <childnode refid="4308" relation="usage">
           <edgelabel>factories</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" line="773" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" bodystart="773" bodyend="792"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" line="768" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/DevMidF.h" bodystart="768" bodyend="787"/>
     <listofallmembers>
-      <member refid="d5/dee/group__route_1ga793ed58c40cc42bfff473f9597376708" prot="public" virt="non-virtual"><scope>mutabor::MidiFileFactory</scope><name>Create</name></member>
-      <member refid="d5/dee/group__route_1ga2e95b010dd0736aa4d315f81ec86b59f" prot="public" virt="non-virtual"><scope>mutabor::MidiFileFactory</scope><name>Create</name></member>
-      <member refid="d7/d57/classmutabor_1_1DeviceFactory_1ga2e95b010dd0736aa4d315f81ec86b59f" prot="public" virt="non-virtual"><scope>mutabor::MidiFileFactory</scope><name>Create</name></member>
-      <member refid="d5/dee/group__route_1gae7f6e33308f9b52a914b383280a54068" prot="public" virt="non-virtual"><scope>mutabor::MidiFileFactory</scope><name>CreateInput</name></member>
-      <member refid="d5/dee/group__route_1ga7d3885474af8ef38f69056fdff322654" prot="public" virt="non-virtual"><scope>mutabor::MidiFileFactory</scope><name>CreateOutput</name></member>
+      <member refid="d5/dee/group__route_1ga898e539fab23eb4cf101c6e8384a80b3" prot="public" virt="non-virtual"><scope>mutabor::MidiFileFactory</scope><name>Create</name></member>
+      <member refid="d5/dee/group__route_1ga9f9960627b36e61455806af9b6f6e95d" prot="public" virt="non-virtual"><scope>mutabor::MidiFileFactory</scope><name>Create</name></member>
+      <member refid="d7/d57/classmutabor_1_1DeviceFactory_1ga9f9960627b36e61455806af9b6f6e95d" prot="public" virt="non-virtual"><scope>mutabor::MidiFileFactory</scope><name>Create</name></member>
+      <member refid="d5/dee/group__route_1ga47b3119edf0ff6ae698d323f08a92797" prot="public" virt="non-virtual"><scope>mutabor::MidiFileFactory</scope><name>CreateInput</name></member>
+      <member refid="d5/dee/group__route_1ga8ba8f76e8e60d1d4d3592e3ac081d8f8" prot="public" virt="non-virtual"><scope>mutabor::MidiFileFactory</scope><name>CreateOutput</name></member>
       <member refid="d5/dee/group__route_1ga49be0ce7bff38d1a9aca119284f4ae08" prot="public" virt="non-virtual"><scope>mutabor::MidiFileFactory</scope><name>Destroy</name></member>
       <member refid="d5/dee/group__route_1gae02584b86238612dd6b2dc12ece6666c" prot="public" virt="non-virtual"><scope>mutabor::MidiFileFactory</scope><name>DeviceFactory</name></member>
-      <member refid="d8/d5a/classmutabor_1_1MidiFileFactory_1a370f91501bf6a0a3b71d65da08e16294" prot="protected" virt="virtual"><scope>mutabor::MidiFileFactory</scope><name>DoCreateInput</name></member>
-      <member refid="d8/d5a/classmutabor_1_1MidiFileFactory_1a31f7346a7716bff41200d3e80e6d6bdc" prot="protected" virt="virtual"><scope>mutabor::MidiFileFactory</scope><name>DoCreateOutput</name></member>
+      <member refid="d8/d5a/classmutabor_1_1MidiFileFactory_1a7a1dbfdda50af93302def04bfb98da1e" prot="protected" virt="virtual"><scope>mutabor::MidiFileFactory</scope><name>DoCreateInput</name></member>
+      <member refid="d8/d5a/classmutabor_1_1MidiFileFactory_1a9630d7194326bfbd47aea13d6f08e245" prot="protected" virt="virtual"><scope>mutabor::MidiFileFactory</scope><name>DoCreateOutput</name></member>
       <member refid="d5/dee/group__route_1ga04a22340c6dd6d54467411a1a57738fd" prot="protected" virt="virtual"><scope>mutabor::MidiFileFactory</scope><name>DoLoadInputDevices</name></member>
       <member refid="d5/dee/group__route_1ga692dcac5350d964de28723c82fd64c09" prot="protected" virt="virtual"><scope>mutabor::MidiFileFactory</scope><name>DoLoadOutputDevices</name></member>
       <member refid="d5/dee/group__route_1ga7e6111b88230c1c41c8b0e1a5a157382" prot="protected" virt="virtual"><scope>mutabor::MidiFileFactory</scope><name>DoSaveInputDevices</name></member>

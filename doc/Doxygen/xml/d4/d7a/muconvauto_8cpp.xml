@@ -4,173 +4,74 @@
     <compoundname>muconvauto.cpp</compoundname>
     <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
     <incdepgraph>
-      <node id="26367">
-        <label>list</label>
-      </node>
-      <node id="26360">
-        <label>stdarg.h</label>
-      </node>
-      <node id="26375">
-        <label>wx/cmdline.h</label>
-      </node>
-      <node id="26363">
-        <label>wx/stdpaths.h</label>
-      </node>
-      <node id="26359">
-        <label>src/kernel/Defs.h</label>
-        <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="26360" relation="include">
-        </childnode>
-        <childnode refid="26361" relation="include">
-        </childnode>
-        <childnode refid="26380" relation="include">
-        </childnode>
-        <childnode refid="26381" relation="include">
-        </childnode>
-        <childnode refid="26374" relation="include">
-        </childnode>
-        <childnode refid="26382" relation="include">
-        </childnode>
-        <childnode refid="26383" relation="include">
-        </childnode>
-      </node>
-      <node id="26374">
+      <node id="25312">
         <label>stdint.h</label>
       </node>
-      <node id="26380">
-        <label>wx/wxchar.h</label>
+      <node id="25305">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="25304" relation="include">
+        </childnode>
       </node>
-      <node id="26369">
-        <label>wx/image.h</label>
+      <node id="25311">
+        <label>boost/format.hpp</label>
       </node>
-      <node id="26384">
+      <node id="25309">
         <label>string</label>
       </node>
-      <node id="26358">
-        <label>src/wxGUI/generic/muconvauto.cpp</label>
-        <link refid="muconvauto.cpp"/>
-        <childnode refid="26359" relation="include">
+      <node id="25304">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="25305" relation="include">
+        </childnode>
+        <childnode refid="25306" relation="include">
+        </childnode>
+        <childnode refid="25307" relation="include">
         </childnode>
       </node>
-      <node id="26379">
-        <label>mutDebugFlags.h</label>
-        <link refid="d7/d49/mutDebugFlags_8h"/>
-      </node>
-      <node id="26362">
-        <label>wx/window.h</label>
-      </node>
-      <node id="26381">
-        <label>wx/intl.h</label>
-      </node>
-      <node id="26368">
-        <label>src/wxGUI/Mutabor.rh</label>
-        <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="26359" relation="include">
-        </childnode>
-      </node>
-      <node id="26364">
-        <label>wx/filename.h</label>
-      </node>
-      <node id="26366">
-        <label>typeinfo</label>
-      </node>
-      <node id="26377">
-        <label>wx/debug.h</label>
-      </node>
-      <node id="26372">
+      <node id="25310">
         <label>cstdio</label>
       </node>
-      <node id="26371">
-        <label>bitset</label>
-      </node>
-      <node id="26361">
-        <label>src/wxGUI/generic/mhDefs.h</label>
-        <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="26359" relation="include">
+      <node id="25307">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="25304" relation="include">
         </childnode>
-        <childnode refid="26362" relation="include">
+        <childnode refid="25308" relation="include">
         </childnode>
-        <childnode refid="26363" relation="include">
+        <childnode refid="25309" relation="include">
         </childnode>
-        <childnode refid="26364" relation="include">
+        <childnode refid="25310" relation="include">
         </childnode>
-        <childnode refid="26365" relation="include">
+        <childnode refid="25311" relation="include">
         </childnode>
-        <childnode refid="26366" relation="include">
+        <childnode refid="25312" relation="include">
         </childnode>
-        <childnode refid="26367" relation="include">
-        </childnode>
-        <childnode refid="26368" relation="include">
-        </childnode>
-        <childnode refid="26369" relation="include">
-        </childnode>
-        <childnode refid="26370" relation="include">
+        <childnode refid="25313" relation="include">
         </childnode>
       </node>
-      <node id="26373">
-        <label>vector</label>
-      </node>
-      <node id="26370">
-        <label>mutDebug.h</label>
-        <link refid="de/de1/mutDebug_8h"/>
-        <childnode refid="26371" relation="include">
-        </childnode>
-        <childnode refid="26365" relation="include">
-        </childnode>
-        <childnode refid="26372" relation="include">
-        </childnode>
-        <childnode refid="26373" relation="include">
-        </childnode>
-        <childnode refid="26374" relation="include">
-        </childnode>
-        <childnode refid="26375" relation="include">
-        </childnode>
-        <childnode refid="26376" relation="include">
-        </childnode>
-        <childnode refid="26377" relation="include">
-        </childnode>
-        <childnode refid="26378" relation="include">
-        </childnode>
-        <childnode refid="26379" relation="include">
-        </childnode>
-      </node>
-      <node id="26383">
+      <node id="25308">
         <label>src/wxintl/libintl.h</label>
         <link refid="d4/d64/libintl_8h"/>
-        <childnode refid="26359" relation="include">
+        <childnode refid="25304" relation="include">
         </childnode>
-        <childnode refid="26384" relation="include">
+        <childnode refid="25309" relation="include">
         </childnode>
       </node>
-      <node id="26376">
-        <label>wx/string.h</label>
+      <node id="25306">
+        <label>cstddef</label>
       </node>
-      <node id="26365">
-        <label>iostream</label>
+      <node id="25303">
+        <label>src/wxGUI/generic/muconvauto.cpp</label>
+        <link refid="muconvauto.cpp"/>
+        <childnode refid="25304" relation="include">
+        </childnode>
       </node>
-      <node id="26378">
-        <label>wx/thread.h</label>
-      </node>
-      <node id="26382">
-        <label>wx/setup.h</label>
+      <node id="25313">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
       </node>
     </incdepgraph>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="df/dd1/group__GUI_1gad050a8f1bc1f4750890cbb62991a213a" prot="public" static="no" mutable="no">
-        <type>wxMBConv *</type>
-        <definition>wxMBConv* muConvAutoFallback</definition>
-        <argsstring></argsstring>
-        <name>muConvAutoFallback</name>
-        <initializer>= &amp;wxConvISO8859_1</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.cpp" line="245" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.cpp" bodystart="245" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Automatic Character set detection and conversion. </para>    </briefdescription>
     <detaileddescription>
@@ -196,13 +97,13 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>wxUSE_WCHAR_T</highlight></codeline>
-<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>WX_PRECOMP</highlight></codeline>
-<codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/>//WX_PRECOMP</highlight></codeline>
-<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/dcd/muconvauto_8h" kindref="compound">muconvauto.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#if<sp/>wxUSE_WCHAR_T</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>WX_PRECOMP</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/>//WX_PRECOMP</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/dcd/muconvauto_8h" kindref="compound">muconvauto.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__BORLANDC__</highlight></codeline>
 <codeline lineno="58"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#pragma<sp/>hdrstop</highlight></codeline>
 <codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
@@ -215,7 +116,7 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal">muConvAuto::BOMType<sp/>muConvAuto::DetectBOM(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*src,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>srcLen)</highlight></codeline>
 <codeline lineno="68"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga9de22df51e7efa23154a04eab9e66cad" kindref="member">DEBUGLOGTYPE</ref>(other,<ref refid="df/dd1/group__GUI_1ga2f9056ab092c15f0a40251ebd9ea1f67" kindref="member">muConvAuto</ref>,_T(</highlight><highlight class="stringliteral">&quot;Detecting<sp/>BOM<sp/>at<sp/>length<sp/>%d&quot;</highlight><highlight class="normal">),(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)srcLen);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga9de22df51e7efa23154a04eab9e66cad" kindref="member">DEBUGLOGTYPE</ref>(other,muConvAuto,_T(</highlight><highlight class="stringliteral">&quot;Detecting<sp/>BOM<sp/>at<sp/>length<sp/>%d&quot;</highlight><highlight class="normal">),(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)srcLen);</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(srcLen<sp/>==<sp/>wxNO_LEN)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>zero<sp/>terminated<sp/>string</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(srcLen<sp/>=<sp/>0;<sp/>src[srcLen]<sp/>&amp;&amp;<sp/>srcLen<sp/>&lt;=<sp/>4;<sp/>srcLen++);<sp/></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -358,7 +259,7 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>during<sp/>this<sp/>initial<sp/>call<sp/>but<sp/>also<sp/>during<sp/>the<sp/>first<sp/>call<sp/>with<sp/>non-NULL</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>dst<sp/>as<sp/>typically<sp/>we&apos;re<sp/>first<sp/>called<sp/>with<sp/>NULL<sp/>dst<sp/>to<sp/>calculate<sp/>the</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>needed<sp/>buffer<sp/>size</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/dd1/group__GUI_1ga2f9056ab092c15f0a40251ebd9ea1f67" kindref="member">muConvAuto</ref><sp/>*</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>=<sp/>wx_const_cast(<ref refid="df/dd1/group__GUI_1ga2f9056ab092c15f0a40251ebd9ea1f67" kindref="member">muConvAuto</ref><sp/>*,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>muConvAuto<sp/>*</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>=<sp/>wx_const_cast(muConvAuto<sp/>*,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!m_conv<sp/>)<sp/>{</highlight></codeline>
 <codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;InitFromInput(&amp;src,<sp/>&amp;srcLen);</highlight></codeline>
 <codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>dst<sp/>)</highlight></codeline>
@@ -384,16 +285,18 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86acd9c1c30c8cb1831b46da11b1ec62" kindref="member">TRACEC</ref>;</highlight></codeline>
 <codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!m_conv<sp/>)<sp/>{</highlight></codeline>
 <codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>default<sp/>to<sp/>UTF-8<sp/>for<sp/>the<sp/>multibyte<sp/>output</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wx_const_cast(<ref refid="df/dd1/group__GUI_1ga2f9056ab092c15f0a40251ebd9ea1f67" kindref="member">muConvAuto</ref><sp/>*,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">)-&gt;InitWithDefault();</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wx_const_cast(muConvAuto<sp/>*,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">)-&gt;InitWithDefault();</highlight></codeline>
 <codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_conv-&gt;FromWChar(dst,<sp/>dstLen,<sp/>src,<sp/>srcLen);</highlight></codeline>
 <codeline lineno="241"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="242"><highlight class="normal"></highlight></codeline>
 <codeline lineno="243"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>wxUSE_WCHAR_T</highlight></codeline>
 <codeline lineno="244"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="245" refid="df/dd1/group__GUI_1gad050a8f1bc1f4750890cbb62991a213a" refkind="member"><highlight class="normal">wxMBConv<sp/>*<sp/><ref refid="df/dd1/group__GUI_1gad050a8f1bc1f4750890cbb62991a213a" kindref="member">muConvAutoFallback</ref><sp/>=<sp/>&amp;wxConvISO8859_1;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">wxMBConv<sp/>*<sp/>muConvAutoFallback<sp/>=<sp/>&amp;wxConvISO8859_1;</highlight></codeline>
 <codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="248"><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.cpp"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.cpp"/>
   </compounddef>
 </doxygen>

@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="64" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" bodystart="64" bodyend="64"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="64" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a27f2d1623e56f38ddfa4bd75ad8e7cf5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
@@ -30,17 +30,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="67" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" bodystart="67" bodyend="67"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="67" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" bodystart="67" bodyend="67"/>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a80f4ed4e4d6294644d70885e186f6156" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1aab2b2939a0c886921cb0e9708bfa156d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>long</type>
         <definition>virtual long mutabor::tree_storage::Read</definition>
-        <argsstring>(const mutStringRef key, long defval)=0</argsstring>
+        <argsstring>(const std::string &amp;key, long defval)=0</argsstring>
         <name>Read</name>
-        <reimplementedby refid="d1/d44/group__config_1ga1cc13e816941bfda9d932bbbc01adc30">Read</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a51c21e9e82375fb5dcb37b28c4031a28">Read</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1gade24afb74a0a794fad93306fc154b8a3">Read</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1ab2e676d2b5719f0882b04e9e88352c7e">Read</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -50,7 +50,7 @@
         <briefdescription>
 <para>Reads a long integer value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  defval (long) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  defval (long) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -61,31 +61,31 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="75" column="1"/>
-        <referencedby refid="d5/d27/classmutabor_1_1CommonFileOutputDevice_1a9119337e1ce1171453937dad0436204f" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="71" endline="80">mutabor::CommonFileOutputDevice::Load</referencedby>
-        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1a7482ffe26bfb44849c73ff441988cbdf" compoundref="db/d78/DevGIS_8cpp" startline="206" endline="213">mutabor::OutputGis::Load</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="75" column="1"/>
+        <referencedby refid="d5/d27/classmutabor_1_1CommonFileOutputDevice_1a9119337e1ce1171453937dad0436204f" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="72" endline="81">mutabor::CommonFileOutputDevice::Load</referencedby>
+        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1a7482ffe26bfb44849c73ff441988cbdf" compoundref="db/d78/DevGIS_8cpp" startline="211" endline="218">mutabor::OutputGis::Load</referencedby>
         <referencedby refid="d5/dee/group__route_1gaa1eefe81dfc1036f5f7dd578dfb2aff8" compoundref="d8/dfb/Route_8cpp" startline="88" endline="100">mutabor::TRouteClass&lt; I, O, B &gt;::Load</referencedby>
-        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a1f853e58525a5ff67937c48a208b7670" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="130" endline="139">mutabor::CommonFileInputDevice::Load</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a1f853e58525a5ff67937c48a208b7670" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="129" endline="138">mutabor::CommonFileInputDevice::Load</referencedby>
         <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1a952a6448ed833fabf227d2dea6d809cb" compoundref="d2/dd3/GUIBoxData_8cpp" startline="270" endline="280">mutaborGUI::BoxData::Load</referencedby>
-        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1af99fc0245eac479b47629ce1a6cb07f3" compoundref="df/d8f/DevMidi_8cpp" startline="111" endline="121">mutabor::OutputMidiPort::Load</referencedby>
-        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1a89584d87c83b2877a96fea2b46e7e7a3" compoundref="df/d8f/DevMidi_8cpp" startline="286" endline="297">mutabor::InputMidiPort::Load</referencedby>
-        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a85e0f75c86bb35421a7b780877427744" compoundref="d0/d6b/DevMidF_8cpp" startline="283" endline="291">mutabor::OutputMidiFile::Load</referencedby>
-        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a79fc7f29bcff21db0af9043bf00f8797" compoundref="d0/d6b/DevMidF_8cpp" startline="429" endline="499">mutabor::InputMidiFile::Load</referencedby>
-        <referencedby refid="d5/dee/group__route_1gadb66e7b7d79f26402ffb5ae5c82e9bc8" compoundref="dd/dc6/Box_8cpp" startline="913" endline="933">mutabor::BoxFactory::LoadBoxes</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga258cd4bc238074cb6834c10248c0f3fa" compoundref="d2/dc0/Device_8cpp" startline="595" endline="626">mutabor::DeviceFactory::LoadInputDevices</referencedby>
-        <referencedby refid="d5/dee/group__route_1gabd6e84a77a79c3ca0960442ed17f6b51" compoundref="d2/dc0/Device_8cpp" startline="542" endline="570">mutabor::DeviceFactory::LoadOutputDevices</referencedby>
+        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1af99fc0245eac479b47629ce1a6cb07f3" compoundref="df/d8f/DevMidi_8cpp" startline="94" endline="106">mutabor::OutputMidiPort::Load</referencedby>
+        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1a89584d87c83b2877a96fea2b46e7e7a3" compoundref="df/d8f/DevMidi_8cpp" startline="268" endline="281">mutabor::InputMidiPort::Load</referencedby>
+        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a85e0f75c86bb35421a7b780877427744" compoundref="d0/d6b/DevMidF_8cpp" startline="287" endline="295">mutabor::OutputMidiFile::Load</referencedby>
+        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a79fc7f29bcff21db0af9043bf00f8797" compoundref="d0/d6b/DevMidF_8cpp" startline="438" endline="516">mutabor::InputMidiFile::Load</referencedby>
+        <referencedby refid="d5/dee/group__route_1gadb66e7b7d79f26402ffb5ae5c82e9bc8" compoundref="dd/dc6/Box_8cpp" startline="965" endline="985">mutabor::BoxFactory::LoadBoxes</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga258cd4bc238074cb6834c10248c0f3fa" compoundref="d2/dc0/Device_8cpp" startline="587" endline="618">mutabor::DeviceFactory::LoadInputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1gabd6e84a77a79c3ca0960442ed17f6b51" compoundref="d2/dc0/Device_8cpp" startline="534" endline="562">mutabor::DeviceFactory::LoadOutputDevices</referencedby>
         <referencedby refid="d5/dee/group__route_1ga87ced6bf8715054517f72a0dcb433d8c" compoundref="d8/dfb/Route_8cpp" startline="247" endline="278">mutabor::TRouteClass&lt; I, O, B &gt;::LoadRoutes</referencedby>
-        <referencedby refid="da/de5/classmutabor_1_1tree__storage_1af125093a03dab4837cd4c48d2ad3c03d" compoundref="db/dbe/treestorage_8h" startline="108" endline="111">Read</referencedby>
+        <referencedby refid="da/de5/classmutabor_1_1tree__storage_1afbd9481afd5350c33f211c1db801d30a" compoundref="db/dbe/treestorage_8h" startline="108" endline="111">Read</referencedby>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a86194d95a676f8ab4d28c2144b4c9f56" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1ad1a8dfe20676083943e78efa945cfc5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>double</type>
         <definition>virtual double mutabor::tree_storage::Read</definition>
-        <argsstring>(const mutStringRef key, double defval)=0</argsstring>
+        <argsstring>(const std::string &amp;key, double defval)=0</argsstring>
         <name>Read</name>
-        <reimplementedby refid="d1/d44/group__config_1ga935e8aa63f4252de5c16c0ff63f2d37c">Read</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1ab13bec7c45cf52acb92b080c766a688b">Read</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1gad96aa9797f889a9d6ecbec1eb4233f4a">Read</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a5b7d7cfed8e1134c4d4264b7b8337517">Read</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -95,7 +95,7 @@
         <briefdescription>
 <para>Reads a double value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  defval (double) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  defval (double) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -106,17 +106,17 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="83" column="1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="83" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a3aade5c12052f23a9cb399113ff5688d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1abba4caa9044e3eb42090bd7f6c6ac2a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
         <definition>virtual int mutabor::tree_storage::Read</definition>
-        <argsstring>(const mutStringRef key, int defval)=0</argsstring>
+        <argsstring>(const std::string &amp;key, int defval)=0</argsstring>
         <name>Read</name>
-        <reimplementedby refid="d1/d44/group__config_1ga4c7137265c70120b4b8de9259c0a6075">Read</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a0d5dac483194ffc064919bf7c1a769f4">Read</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1ga529e68ab3f636c7d173f6e950c6f3d06">Read</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a0652b0ca10a45e1292a9913b8a26ba69">Read</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -126,7 +126,7 @@
         <briefdescription>
 <para>Reads an integer value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  defval (int) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  defval (int) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -137,17 +137,17 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="91" column="1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="91" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a916a514313463df3e2ae061d38eaf2db" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a9dc6fc8b2c07dcb47b703ef620ac50a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
         <definition>virtual bool mutabor::tree_storage::Read</definition>
-        <argsstring>(const mutStringRef key, bool defval)=0</argsstring>
+        <argsstring>(const std::string &amp;key, bool defval)=0</argsstring>
         <name>Read</name>
-        <reimplementedby refid="d1/d44/group__config_1ga4aa518e1fc0169924cba8d8d61188dbb">Read</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1acd8db466be9f0574c41b10a9a3c15719">Read</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1ga6354805b32c631e30bcca58bb670d2e2">Read</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a48c52978567b936095e33c06bf75a1f2">Read</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -157,7 +157,7 @@
         <briefdescription>
 <para>Reads a boolean value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  defval (bool) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  defval (bool) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -168,27 +168,27 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="99" column="1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="99" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a506792c4fd7183c1966c68c72a0de6a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
-        <definition>virtual mutString mutabor::tree_storage::Read</definition>
-        <argsstring>(const mutStringRef key, const mutStringRef defval)=0</argsstring>
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1ab8f12d8a67c07a1f55e4661d8c865980" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string mutabor::tree_storage::Read</definition>
+        <argsstring>(const std::string &amp;key, const std::string &amp;defval)=0</argsstring>
         <name>Read</name>
-        <reimplementedby refid="d1/d44/group__config_1ga165f331a7e479d4adada9af026780eb8">Read</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1ad009dd38b5d3842c356b25ac7da67931">Read</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1gae369f7f5f1d2e2289d9e684ebf4c8bb8">Read</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a1ab4c4207667b1ecb866b6e62f5580a3">Read</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>defval</declname>
         </param>
         <briefdescription>
 <para>Reads a string value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  defval (mutStringRef) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  defval (std::string&amp;) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -199,19 +199,19 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="107" column="1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="107" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1af125093a03dab4837cd4c48d2ad3c03d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
-        <definition>mutString mutabor::tree_storage::Read</definition>
-        <argsstring>(const mutStringRef key, const mutChar *defval)</argsstring>
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1afbd9481afd5350c33f211c1db801d30a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string mutabor::tree_storage::Read</definition>
+        <argsstring>(const std::string &amp;key, const char *defval)</argsstring>
         <name>Read</name>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga13c03a937e32254ea17154104db5208a" kindref="member">mutChar</ref> *</type>
+          <type>const char *</type>
           <declname>defval</declname>
         </param>
         <briefdescription>
@@ -220,42 +220,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="108" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" bodystart="108" bodyend="111"/>
-        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="84">mutString</references>
-        <references refid="da/de5/classmutabor_1_1tree__storage_1a80f4ed4e4d6294644d70885e186f6156">Read</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="108" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" bodystart="108" bodyend="111"/>
+        <references refid="da/de5/classmutabor_1_1tree__storage_1aab2b2939a0c886921cb0e9708bfa156d">Read</references>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a592c1d000f1dedeb186191ac5605212f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
-        <definition>mutString mutabor::tree_storage::Read</definition>
-        <argsstring>(const mutStringRef key, mutChar *defval)</argsstring>
-        <name>Read</name>
-        <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
-          <declname>key</declname>
-        </param>
-        <param>
-          <type><ref refid="d9/d7c/group__kernel_1ga13c03a937e32254ea17154104db5208a" kindref="member">mutChar</ref> *</type>
-          <declname>defval</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="113" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" bodystart="113" bodyend="116"/>
-        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="84">mutString</references>
-        <references refid="da/de5/classmutabor_1_1tree__storage_1a80f4ed4e4d6294644d70885e186f6156">Read</references>
-      </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1aa1883b11f7457404ba7036104924e42a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a331885e032f43ebe53a492268bab377a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void mutabor::tree_storage::Write</definition>
-        <argsstring>(const mutStringRef key, long value)=0</argsstring>
+        <argsstring>(const std::string &amp;key, long value)=0</argsstring>
         <name>Write</name>
-        <reimplementedby refid="d1/d44/group__config_1ga48752da6c47ece70fa8a03add381812e">Write</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1aabc588e740ff5a71290ddf75b6c3202d">Write</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1ga9c56d324b26d0ca9ba9a3a31aa1dd2bd">Write</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a90b941ce694241dbae0fb137ab53f2e8">Write</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -265,32 +241,32 @@
         <briefdescription>
 <para>Writes a long integer value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  value (long) value, to be written </para>        </detaileddescription>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  value (long) value, to be written </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="123" column="1"/>
-        <referencedby refid="d5/d27/classmutabor_1_1CommonFileOutputDevice_1a572270a4299a15982d3bf858666ddba0" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="55" endline="64">mutabor::CommonFileOutputDevice::Save</referencedby>
-        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1a5238013279f1d14d5ffab06444e5952c" compoundref="db/d78/DevGIS_8cpp" startline="175" endline="182">mutabor::OutputGis::Save</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="118" column="1"/>
+        <referencedby refid="d5/d27/classmutabor_1_1CommonFileOutputDevice_1a572270a4299a15982d3bf858666ddba0" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="56" endline="65">mutabor::CommonFileOutputDevice::Save</referencedby>
+        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1a5238013279f1d14d5ffab06444e5952c" compoundref="db/d78/DevGIS_8cpp" startline="180" endline="187">mutabor::OutputGis::Save</referencedby>
         <referencedby refid="d5/dee/group__route_1gae3b27d9f1b4c9652482e8c8a49c2c570" compoundref="d8/dfb/Route_8cpp" startline="71" endline="85">mutabor::TRouteClass&lt; I, O, B &gt;::Save</referencedby>
-        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aebd2d366f92f7fcb3fda5c3ffd7fa2a3" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="114" endline="123">mutabor::CommonFileInputDevice::Save</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aebd2d366f92f7fcb3fda5c3ffd7fa2a3" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="113" endline="122">mutabor::CommonFileInputDevice::Save</referencedby>
         <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1a89d8f42074f02083df8327976c6d2700" compoundref="d2/dd3/GUIBoxData_8cpp" startline="260" endline="268">mutaborGUI::BoxData::Save</referencedby>
-        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a1d648b4bb4ca5d09e987d242ab721c70" compoundref="df/d8f/DevMidi_8cpp" startline="79" endline="84">mutabor::OutputMidiPort::Save</referencedby>
-        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1aaa4af14652364420cff3b3f045dff0c8" compoundref="df/d8f/DevMidi_8cpp" startline="242" endline="250">mutabor::InputMidiPort::Save</referencedby>
-        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a6edbcd23203804c50bf66e0c50cb357f" compoundref="d0/d6b/DevMidF_8cpp" startline="249" endline="257">mutabor::OutputMidiFile::Save</referencedby>
-        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a6146930f86cbd9c73933d50c1543fcc7" compoundref="d0/d6b/DevMidF_8cpp" startline="397" endline="419">mutabor::InputMidiFile::Save</referencedby>
-        <referencedby refid="d5/dee/group__route_1gac12082bf0a070d44b66f36e28cfa11bd" compoundref="dd/dc6/Box_8cpp" startline="935" endline="956">mutabor::BoxFactory::SaveBoxes</referencedby>
-        <referencedby refid="d5/dee/group__route_1gae8161f3d5d3a0cbb02c724b6d8515e53" compoundref="d2/dc0/Device_8cpp" startline="628" endline="650">mutabor::DeviceFactory::SaveInputDevices</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga4e80ba5e5d5fb69eba97cd43d9ffbd95" compoundref="d2/dc0/Device_8cpp" startline="572" endline="593">mutabor::DeviceFactory::SaveOutputDevices</referencedby>
+        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a1d648b4bb4ca5d09e987d242ab721c70" compoundref="df/d8f/DevMidi_8cpp" startline="63" endline="68">mutabor::OutputMidiPort::Save</referencedby>
+        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1aaa4af14652364420cff3b3f045dff0c8" compoundref="df/d8f/DevMidi_8cpp" startline="224" endline="232">mutabor::InputMidiPort::Save</referencedby>
+        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a6edbcd23203804c50bf66e0c50cb357f" compoundref="d0/d6b/DevMidF_8cpp" startline="253" endline="261">mutabor::OutputMidiFile::Save</referencedby>
+        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a6146930f86cbd9c73933d50c1543fcc7" compoundref="d0/d6b/DevMidF_8cpp" startline="406" endline="428">mutabor::InputMidiFile::Save</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac12082bf0a070d44b66f36e28cfa11bd" compoundref="dd/dc6/Box_8cpp" startline="987" endline="1008">mutabor::BoxFactory::SaveBoxes</referencedby>
+        <referencedby refid="d5/dee/group__route_1gae8161f3d5d3a0cbb02c724b6d8515e53" compoundref="d2/dc0/Device_8cpp" startline="620" endline="642">mutabor::DeviceFactory::SaveInputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4e80ba5e5d5fb69eba97cd43d9ffbd95" compoundref="d2/dc0/Device_8cpp" startline="564" endline="585">mutabor::DeviceFactory::SaveOutputDevices</referencedby>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a07276f0ffc5df576f6174059a4b98541" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1ae97b8f43989a47d65f8cafe7d744e615" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void mutabor::tree_storage::Write</definition>
-        <argsstring>(const mutStringRef key, double value)=0</argsstring>
+        <argsstring>(const std::string &amp;key, double value)=0</argsstring>
         <name>Write</name>
-        <reimplementedby refid="d1/d44/group__config_1gafce96db16bbb49e65455fa30b0989468">Write</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1aabd61e79a54fe3bef7ec6dce682c4462">Write</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1gab1da141764ae067c213836568dea99c0">Write</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a765eb8b49a8cd2c87b0f7320d97846e1">Write</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -300,20 +276,20 @@
         <briefdescription>
 <para>Writes a double value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  value (double) value, to be written </para>        </detaileddescription>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  value (double) value, to be written </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="130" column="1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="125" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1aff91e4eb2aa361d3b73027a3cccb79d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a4911dd7c9b659cf9a08402401fa239d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void mutabor::tree_storage::Write</definition>
-        <argsstring>(const mutStringRef key, int value)=0</argsstring>
+        <argsstring>(const std::string &amp;key, int value)=0</argsstring>
         <name>Write</name>
-        <reimplementedby refid="d1/d44/group__config_1gaf5a59c78ddf27af841da3f20af7fa8a1">Write</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a9836fbd6b4e52658d664cb1650b43409">Write</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1ga1fab03e10498d3cf22d24fecbbe9c499">Write</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1ac1c89b3e32618b43baf4a3f41c91e71f">Write</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -323,20 +299,20 @@
         <briefdescription>
 <para>Writes an integer value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  value (int) value, to be written </para>        </detaileddescription>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  value (int) value, to be written </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="137" column="1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="132" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a4f950f71ce477de8ac59738ef8c14542" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1abd598e75bd3238b94d2c58e3bd04aafc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void mutabor::tree_storage::Write</definition>
-        <argsstring>(const mutStringRef key, bool value)=0</argsstring>
+        <argsstring>(const std::string &amp;key, bool value)=0</argsstring>
         <name>Write</name>
-        <reimplementedby refid="d1/d44/group__config_1gabb1fa56dd4cbf5e361539fc000a3a36d">Write</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1ae8c0fb4af111d049271c23a22b1ffb60">Write</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1ga2db5cf35978f2f44d6ac827141367334">Write</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1ab88397c441add0eceee251b7ca92c701">Write</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -346,103 +322,103 @@
         <briefdescription>
 <para>Writes a boolean value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  value (bool) value, to be written </para>        </detaileddescription>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  value (bool) value, to be written </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="144" column="1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="139" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1acda2cd434a6bc0c89a35cc3f9a1465b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a1485fda2de1bad0b29c649c00dae55f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void mutabor::tree_storage::Write</definition>
-        <argsstring>(const mutStringRef key, const mutStringRef value)=0</argsstring>
+        <argsstring>(const std::string &amp;key, const std::string &amp;value)=0</argsstring>
         <name>Write</name>
-        <reimplementedby refid="d1/d44/group__config_1gae0741e9bd02b45bd86283d929d87bb4d">Write</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a6885e97ae23f2d6586d758a35506127e">Write</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1ga3821940989d496fb3812adf251761539">Write</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1aa2ede2b861d922514dc3fe59fb2a68a9">Write</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>value</declname>
         </param>
         <briefdescription>
 <para>Writes a string value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  value (mutStringRef) value, to be written </para>        </detaileddescription>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  value (std::string&amp;) value, to be written </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="151" column="1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="146" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a9d514c48c8f88641a054dfa6e79488d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1ab94d21edc9dc97e0e1b4b11701314fe2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
         <definition>virtual bool mutabor::tree_storage::HasGroup</definition>
-        <argsstring>(const mutStringRef) const =0</argsstring>
+        <argsstring>(const std::string &amp;) const =0</argsstring>
         <name>HasGroup</name>
-        <reimplementedby refid="d1/d44/group__config_1gad472d647e3e7436a961ba9d3dc557229">HasGroup</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1aea60b79638eb505b9169af1401c9a2c2">HasGroup</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1gaaf915bc053977a3dfa65de95db183edd">HasGroup</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1addaa112284da973ac859ab91b5ceca1e">HasGroup</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
         </param>
         <briefdescription>
 <para>Checks if the tree has a branch with the given name. </para>        </briefdescription>
         <detaileddescription>
-<para>subdir (mutStringRef) subdirectory to check for. <simplesect kind="return"><para>true if the current node has a leaf with the given name which is a node itself. </para></simplesect>
+<para>subdir (std::string&amp;) subdirectory to check for. <simplesect kind="return"><para>true if the current node has a leaf with the given name which is a node itself. </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="158" column="1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="153" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1afb9a095fbd779e53fde69e0a0df4a7b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1aff36a4266f985cc8c5c5c4f356a63d75" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void mutabor::tree_storage::toLeaf</definition>
-        <argsstring>(const mutStringRef subdir)=0</argsstring>
+        <argsstring>(const std::string &amp;subdir)=0</argsstring>
         <name>toLeaf</name>
-        <reimplementedby refid="d1/d44/group__config_1ga2c54863d019f420bff002cb76a4b519f">toLeaf</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1aeb5be86959fd571c18f9ce46c883f18b">toLeaf</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1ga76418ee6b83d800ae26170b6374f0347">toLeaf</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a458d4a2454fe070d2e65e7380a448d84">toLeaf</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>subdir</declname>
         </param>
         <briefdescription>
 <para>Changes the current node downwards. </para>        </briefdescription>
         <detaileddescription>
-<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered like a subdirectory in a file system.  subdir (mutStringRef) subdirectory to be written to. </para>        </detaileddescription>
+<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered like a subdirectory in a file system.  subdir (std::string&amp;) subdirectory to be written to. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="165" column="1"/>
-        <referencedby refid="d5/dee/group__route_1gae7d8b2c6ad14d3d94718377969abcd8c" compoundref="d8/dfb/Route_8cpp" startline="559" endline="573">mutabor::RouteFactory::DoLoadRoutes</referencedby>
-        <referencedby refid="d5/dee/group__route_1gaf17cf4768d8fb8cc93dc827b40153605" compoundref="d8/dfb/Route_8cpp" startline="575" endline="598">mutabor::RouteFactory::DoSaveRoutes</referencedby>
-        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1af5a4bcf7fc9f5efc60db5db8a5dbebaf" compoundref="db/d78/DevGIS_8cpp" startline="221" endline="231">mutabor::OutputGis::Load</referencedby>
-        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ac67841f0c9bae7577c4260994e0135fc" compoundref="db/d78/DevGIS_8cpp" startline="264" endline="273">mutabor::InputGis::Load</referencedby>
-        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a64108f9c014fde8f01bfbcb7ae97313f" compoundref="df/d8f/DevMidi_8cpp" startline="129" endline="163">mutabor::OutputMidiPort::Load</referencedby>
-        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1a99976206c63a46dc0874925920a33ddb" compoundref="df/d8f/DevMidi_8cpp" startline="305" endline="376">mutabor::InputMidiPort::Load</referencedby>
-        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a292e5e82cd90d703c12a081ca7b3ec0e" compoundref="d0/d6b/DevMidF_8cpp" startline="299" endline="333">mutabor::OutputMidiFile::Load</referencedby>
-        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a79fc7f29bcff21db0af9043bf00f8797" compoundref="d0/d6b/DevMidF_8cpp" startline="429" endline="499">mutabor::InputMidiFile::Load</referencedby>
-        <referencedby refid="d5/dee/group__route_1gadb66e7b7d79f26402ffb5ae5c82e9bc8" compoundref="dd/dc6/Box_8cpp" startline="913" endline="933">mutabor::BoxFactory::LoadBoxes</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga258cd4bc238074cb6834c10248c0f3fa" compoundref="d2/dc0/Device_8cpp" startline="595" endline="626">mutabor::DeviceFactory::LoadInputDevices</referencedby>
-        <referencedby refid="d5/dee/group__route_1gabd6e84a77a79c3ca0960442ed17f6b51" compoundref="d2/dc0/Device_8cpp" startline="542" endline="570">mutabor::DeviceFactory::LoadOutputDevices</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="160" column="1"/>
+        <referencedby refid="d5/dee/group__route_1gae7d8b2c6ad14d3d94718377969abcd8c" compoundref="d8/dfb/Route_8cpp" startline="573" endline="587">mutabor::RouteFactory::DoLoadRoutes</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaf17cf4768d8fb8cc93dc827b40153605" compoundref="d8/dfb/Route_8cpp" startline="589" endline="612">mutabor::RouteFactory::DoSaveRoutes</referencedby>
+        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1af5a4bcf7fc9f5efc60db5db8a5dbebaf" compoundref="db/d78/DevGIS_8cpp" startline="226" endline="236">mutabor::OutputGis::Load</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ac67841f0c9bae7577c4260994e0135fc" compoundref="db/d78/DevGIS_8cpp" startline="269" endline="278">mutabor::InputGis::Load</referencedby>
+        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a64108f9c014fde8f01bfbcb7ae97313f" compoundref="df/d8f/DevMidi_8cpp" startline="114" endline="149">mutabor::OutputMidiPort::Load</referencedby>
+        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1a99976206c63a46dc0874925920a33ddb" compoundref="df/d8f/DevMidi_8cpp" startline="289" endline="365">mutabor::InputMidiPort::Load</referencedby>
+        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a292e5e82cd90d703c12a081ca7b3ec0e" compoundref="d0/d6b/DevMidF_8cpp" startline="303" endline="337">mutabor::OutputMidiFile::Load</referencedby>
+        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a79fc7f29bcff21db0af9043bf00f8797" compoundref="d0/d6b/DevMidF_8cpp" startline="438" endline="516">mutabor::InputMidiFile::Load</referencedby>
+        <referencedby refid="d5/dee/group__route_1gadb66e7b7d79f26402ffb5ae5c82e9bc8" compoundref="dd/dc6/Box_8cpp" startline="965" endline="985">mutabor::BoxFactory::LoadBoxes</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga258cd4bc238074cb6834c10248c0f3fa" compoundref="d2/dc0/Device_8cpp" startline="587" endline="618">mutabor::DeviceFactory::LoadInputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1gabd6e84a77a79c3ca0960442ed17f6b51" compoundref="d2/dc0/Device_8cpp" startline="534" endline="562">mutabor::DeviceFactory::LoadOutputDevices</referencedby>
         <referencedby refid="d5/dee/group__route_1ga87ced6bf8715054517f72a0dcb433d8c" compoundref="d8/dfb/Route_8cpp" startline="247" endline="278">mutabor::TRouteClass&lt; I, O, B &gt;::LoadRoutes</referencedby>
-        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1ad7b49c55c64964b95fccd580f2b27771" compoundref="db/d78/DevGIS_8cpp" startline="190" endline="200">mutabor::OutputGis::Save</referencedby>
-        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ac8990a1c448400d582db2fc4b9262169" compoundref="db/d78/DevGIS_8cpp" startline="247" endline="256">mutabor::InputGis::Save</referencedby>
-        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a34c460bc0275c3a6708dd837e50e3bbe" compoundref="df/d8f/DevMidi_8cpp" startline="92" endline="105">mutabor::OutputMidiPort::Save</referencedby>
-        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1aa1052c5c84b7b2d1119b719a971fc7ef" compoundref="df/d8f/DevMidi_8cpp" startline="258" endline="280">mutabor::InputMidiPort::Save</referencedby>
-        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1ae0aa8de74b9cbe7c5906b0a2d433cdce" compoundref="d0/d6b/DevMidF_8cpp" startline="265" endline="277">mutabor::OutputMidiFile::Save</referencedby>
-        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a6146930f86cbd9c73933d50c1543fcc7" compoundref="d0/d6b/DevMidF_8cpp" startline="397" endline="419">mutabor::InputMidiFile::Save</referencedby>
-        <referencedby refid="d5/dee/group__route_1gac12082bf0a070d44b66f36e28cfa11bd" compoundref="dd/dc6/Box_8cpp" startline="935" endline="956">mutabor::BoxFactory::SaveBoxes</referencedby>
-        <referencedby refid="d5/dee/group__route_1gae8161f3d5d3a0cbb02c724b6d8515e53" compoundref="d2/dc0/Device_8cpp" startline="628" endline="650">mutabor::DeviceFactory::SaveInputDevices</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga4e80ba5e5d5fb69eba97cd43d9ffbd95" compoundref="d2/dc0/Device_8cpp" startline="572" endline="593">mutabor::DeviceFactory::SaveOutputDevices</referencedby>
+        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1ad7b49c55c64964b95fccd580f2b27771" compoundref="db/d78/DevGIS_8cpp" startline="195" endline="205">mutabor::OutputGis::Save</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ac8990a1c448400d582db2fc4b9262169" compoundref="db/d78/DevGIS_8cpp" startline="252" endline="261">mutabor::InputGis::Save</referencedby>
+        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a34c460bc0275c3a6708dd837e50e3bbe" compoundref="df/d8f/DevMidi_8cpp" startline="76" endline="89">mutabor::OutputMidiPort::Save</referencedby>
+        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1aa1052c5c84b7b2d1119b719a971fc7ef" compoundref="df/d8f/DevMidi_8cpp" startline="240" endline="262">mutabor::InputMidiPort::Save</referencedby>
+        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1ae0aa8de74b9cbe7c5906b0a2d433cdce" compoundref="d0/d6b/DevMidF_8cpp" startline="269" endline="281">mutabor::OutputMidiFile::Save</referencedby>
+        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a6146930f86cbd9c73933d50c1543fcc7" compoundref="d0/d6b/DevMidF_8cpp" startline="406" endline="428">mutabor::InputMidiFile::Save</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac12082bf0a070d44b66f36e28cfa11bd" compoundref="dd/dc6/Box_8cpp" startline="987" endline="1008">mutabor::BoxFactory::SaveBoxes</referencedby>
+        <referencedby refid="d5/dee/group__route_1gae8161f3d5d3a0cbb02c724b6d8515e53" compoundref="d2/dc0/Device_8cpp" startline="620" endline="642">mutabor::DeviceFactory::SaveInputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4e80ba5e5d5fb69eba97cd43d9ffbd95" compoundref="d2/dc0/Device_8cpp" startline="564" endline="585">mutabor::DeviceFactory::SaveOutputDevices</referencedby>
         <referencedby refid="d5/dee/group__route_1gad17e61b049b311b1878679297b324cc9" compoundref="d8/dfb/Route_8cpp" startline="227" endline="244">mutabor::TRouteClass&lt; I, O, B &gt;::SaveRoutes</referencedby>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1ad80873e9facf7bfa53f83971b2f042b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a3470bb3b8124602d7a2cff0c67a94f2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void mutabor::tree_storage::toLeaf</definition>
-        <argsstring>(const mutStringRef name, int id)=0</argsstring>
+        <argsstring>(const std::string &amp;name, int id)=0</argsstring>
         <name>toLeaf</name>
-        <reimplementedby refid="d1/d44/group__config_1gae2420401c115e8b7cae22a73b1d3b776">toLeaf</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a93b1986bb1d7b55fb3835e2dfa87c4c7">toLeaf</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1gaa68386bab67e062b52b999f7a7552784">toLeaf</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a44f62ad617d7ab83482074ac1c1445d6">toLeaf</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
         <param>
@@ -452,110 +428,110 @@
         <briefdescription>
 <para>Changes the current node downwards. </para>        </briefdescription>
         <detaileddescription>
-<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id. if the id is negative, it will create a new item.  subdir (mutStringRef) name of the entity to be written to.  id (int) id of the current object </para>        </detaileddescription>
+<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id. if the id is negative, it will create a new item.  subdir (std::string&amp;) name of the entity to be written to.  id (int) id of the current object </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="174" column="1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="169" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a8e344b622e3346a7d571c4659f57bab8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1adc379dccd19791db7b2cae798ecd840d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
         <definition>virtual int mutabor::tree_storage::toFirstLeaf</definition>
-        <argsstring>(const mutStringRef name)=0</argsstring>
+        <argsstring>(const std::string &amp;name)=0</argsstring>
         <name>toFirstLeaf</name>
-        <reimplementedby refid="d8/d7f/classconfigtree_1aac1483e877ede2a10d57cd06081c7917">toFirstLeaf</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a3660d23b2b28cf2817e6f201676d7101">toFirstLeaf</reimplementedby>
+        <reimplementedby refid="d8/d7f/classconfigtree_1aa57465d8f332a55581b8af26b4de2aef">toFirstLeaf</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a1c7d585bda642db3d81ddf843006675e">toFirstLeaf</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
         <briefdescription>
 <para>Changes the current node downdwards to the first leaf of given type. </para>        </briefdescription>
         <detaileddescription>
-<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id.  subdir (mutStringRef) name of the entity to be read from. <simplesect kind="return"><para>(int) id of the selected item </para></simplesect>
-<simplesect kind="see"><para><ref refid="da/de5/classmutabor_1_1tree__storage_1a82dea391674d6aa7c9330b53541bdda7" kindref="member">toNextLeaf</ref> </para></simplesect>
+<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id.  subdir (std::string&amp;) name of the entity to be read from. <simplesect kind="return"><para>(int) id of the selected item </para></simplesect>
+<simplesect kind="see"><para><ref refid="da/de5/classmutabor_1_1tree__storage_1a4922f87e05292983971256720d705e19" kindref="member">toNextLeaf</ref> </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="183" column="1"/>
-        <referencedby refid="d5/dee/group__route_1gadb66e7b7d79f26402ffb5ae5c82e9bc8" compoundref="dd/dc6/Box_8cpp" startline="913" endline="933">mutabor::BoxFactory::LoadBoxes</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga258cd4bc238074cb6834c10248c0f3fa" compoundref="d2/dc0/Device_8cpp" startline="595" endline="626">mutabor::DeviceFactory::LoadInputDevices</referencedby>
-        <referencedby refid="d5/dee/group__route_1gabd6e84a77a79c3ca0960442ed17f6b51" compoundref="d2/dc0/Device_8cpp" startline="542" endline="570">mutabor::DeviceFactory::LoadOutputDevices</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="178" column="1"/>
+        <referencedby refid="d5/dee/group__route_1gadb66e7b7d79f26402ffb5ae5c82e9bc8" compoundref="dd/dc6/Box_8cpp" startline="965" endline="985">mutabor::BoxFactory::LoadBoxes</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga258cd4bc238074cb6834c10248c0f3fa" compoundref="d2/dc0/Device_8cpp" startline="587" endline="618">mutabor::DeviceFactory::LoadInputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1gabd6e84a77a79c3ca0960442ed17f6b51" compoundref="d2/dc0/Device_8cpp" startline="534" endline="562">mutabor::DeviceFactory::LoadOutputDevices</referencedby>
         <referencedby refid="d5/dee/group__route_1ga87ced6bf8715054517f72a0dcb433d8c" compoundref="d8/dfb/Route_8cpp" startline="247" endline="278">mutabor::TRouteClass&lt; I, O, B &gt;::LoadRoutes</referencedby>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1ab42d62373ba090a907d651a334353462" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1ac8c3315996067e54399dab28477c43f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
         <definition>virtual int mutabor::tree_storage::toFirstLeaf</definition>
-        <argsstring>(const mutStringRef name, mutStringRef id)=0</argsstring>
+        <argsstring>(const std::string &amp;name, std::string &amp;id)=0</argsstring>
         <name>toFirstLeaf</name>
-        <reimplementedby refid="d1/d44/group__config_1ga5c8f0b5d5fbcd05fb1664d23112b15b8">toFirstLeaf</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a107d6d4e832a4904bbf159393e480913">toFirstLeaf</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1ga9e81e9f5d9925568aa9f092133487e99">toFirstLeaf</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a7005913f0eaeb51e80523ebd9493cf39">toFirstLeaf</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
         <param>
-          <type><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>std::string &amp;</type>
           <declname>id</declname>
         </param>
         <briefdescription>
 <para>Changes the current node downdwards to the first leaf of given type. </para>        </briefdescription>
         <detaileddescription>
-<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id.  subdir (mutStringRef) name of the entity to be read from.  id (mutStringRef) reference to a String where the id of the leaf will be stored <simplesect kind="return"><para>(int) id of the selected item </para></simplesect>
-<simplesect kind="see"><para><ref refid="da/de5/classmutabor_1_1tree__storage_1a82dea391674d6aa7c9330b53541bdda7" kindref="member">toNextLeaf</ref> </para></simplesect>
+<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id.  subdir (std::string&amp;) name of the entity to be read from.  id (std::string&amp;) reference to a String where the id of the leaf will be stored <simplesect kind="return"><para>(int) id of the selected item </para></simplesect>
+<simplesect kind="see"><para><ref refid="da/de5/classmutabor_1_1tree__storage_1a4922f87e05292983971256720d705e19" kindref="member">toNextLeaf</ref> </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="194" column="1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="189" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a82dea391674d6aa7c9330b53541bdda7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a4922f87e05292983971256720d705e19" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
         <definition>virtual int mutabor::tree_storage::toNextLeaf</definition>
-        <argsstring>(const mutStringRef name)=0</argsstring>
+        <argsstring>(const std::string &amp;name)=0</argsstring>
         <name>toNextLeaf</name>
-        <reimplementedby refid="d8/d7f/classconfigtree_1a1b07378117c869830b265998da5935e3">toNextLeaf</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1aa86d1eddc8c665c84c771c6e639da0e2">toNextLeaf</reimplementedby>
+        <reimplementedby refid="d8/d7f/classconfigtree_1ac9c99afb8cda8e8cde3d7cf5b85e03bd">toNextLeaf</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a5ddab2981a96131da52ad4b3e95eaabe">toNextLeaf</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
         <briefdescription>
 <para>Changes the current node downdwards to the next leaf of given type. </para>        </briefdescription>
         <detaileddescription>
-<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id.  subdir (mutStringRef) name of the entity to be read from. <simplesect kind="return"><para>(int) id of the selected item </para></simplesect>
-<simplesect kind="see"><para><ref refid="da/de5/classmutabor_1_1tree__storage_1a8e344b622e3346a7d571c4659f57bab8" kindref="member">toFirstLeaf</ref> </para></simplesect>
+<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id.  subdir (std::string&amp;) name of the entity to be read from. <simplesect kind="return"><para>(int) id of the selected item </para></simplesect>
+<simplesect kind="see"><para><ref refid="da/de5/classmutabor_1_1tree__storage_1adc379dccd19791db7b2cae798ecd840d" kindref="member">toFirstLeaf</ref> </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="203" column="1"/>
-        <referencedby refid="d5/dee/group__route_1gadb66e7b7d79f26402ffb5ae5c82e9bc8" compoundref="dd/dc6/Box_8cpp" startline="913" endline="933">mutabor::BoxFactory::LoadBoxes</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga258cd4bc238074cb6834c10248c0f3fa" compoundref="d2/dc0/Device_8cpp" startline="595" endline="626">mutabor::DeviceFactory::LoadInputDevices</referencedby>
-        <referencedby refid="d5/dee/group__route_1gabd6e84a77a79c3ca0960442ed17f6b51" compoundref="d2/dc0/Device_8cpp" startline="542" endline="570">mutabor::DeviceFactory::LoadOutputDevices</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="198" column="1"/>
+        <referencedby refid="d5/dee/group__route_1gadb66e7b7d79f26402ffb5ae5c82e9bc8" compoundref="dd/dc6/Box_8cpp" startline="965" endline="985">mutabor::BoxFactory::LoadBoxes</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga258cd4bc238074cb6834c10248c0f3fa" compoundref="d2/dc0/Device_8cpp" startline="587" endline="618">mutabor::DeviceFactory::LoadInputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1gabd6e84a77a79c3ca0960442ed17f6b51" compoundref="d2/dc0/Device_8cpp" startline="534" endline="562">mutabor::DeviceFactory::LoadOutputDevices</referencedby>
         <referencedby refid="d5/dee/group__route_1ga87ced6bf8715054517f72a0dcb433d8c" compoundref="d8/dfb/Route_8cpp" startline="247" endline="278">mutabor::TRouteClass&lt; I, O, B &gt;::LoadRoutes</referencedby>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a0e37ed52c00069e6063418ea13d35aa4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1aab94221d2c1f5039dfd3d1da4d5cbd02" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
         <definition>virtual int mutabor::tree_storage::toNextLeaf</definition>
-        <argsstring>(const mutStringRef name, mutStringRef id)=0</argsstring>
+        <argsstring>(const std::string &amp;name, std::string &amp;id)=0</argsstring>
         <name>toNextLeaf</name>
-        <reimplementedby refid="d1/d44/group__config_1gaba4af6230f51279af880fd0644ef37a2">toNextLeaf</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1adb85dde37cf2aa275491c6b4752064fb">toNextLeaf</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1ga7ecd104f2b17acda6c1300fc08a44b80">toNextLeaf</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a9cb72ac358ccc4edf8802d703c213759">toNextLeaf</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
         <param>
-          <type><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>std::string &amp;</type>
           <declname>id</declname>
         </param>
         <briefdescription>
 <para>Changes the current node downdwards to the next leaf of given type. </para>        </briefdescription>
         <detaileddescription>
-<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id.  subdir (mutStringRef) name of the entity to be read from.  id (mutStringRef) reference to a String where the id of the leaf will be stored <simplesect kind="return"><para>(int) id of the selected item </para></simplesect>
-<simplesect kind="see"><para><ref refid="da/de5/classmutabor_1_1tree__storage_1a8e344b622e3346a7d571c4659f57bab8" kindref="member">toFirstLeaf</ref> </para></simplesect>
+<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id.  subdir (std::string&amp;) name of the entity to be read from.  id (std::string&amp;) reference to a String where the id of the leaf will be stored <simplesect kind="return"><para>(int) id of the selected item </para></simplesect>
+<simplesect kind="see"><para><ref refid="da/de5/classmutabor_1_1tree__storage_1adc379dccd19791db7b2cae798ecd840d" kindref="member">toFirstLeaf</ref> </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="214" column="1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="209" column="1"/>
       </memberdef>
       <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1ac745edc6daafaae2b2fee856bfd4ecdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -575,43 +551,43 @@
 <para>count (int) number of nodes to go upward. Default: 1. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="219" column="1"/>
-        <referencedby refid="d5/dee/group__route_1gae7d8b2c6ad14d3d94718377969abcd8c" compoundref="d8/dfb/Route_8cpp" startline="559" endline="573">mutabor::RouteFactory::DoLoadRoutes</referencedby>
-        <referencedby refid="d5/dee/group__route_1gaf17cf4768d8fb8cc93dc827b40153605" compoundref="d8/dfb/Route_8cpp" startline="575" endline="598">mutabor::RouteFactory::DoSaveRoutes</referencedby>
-        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1af5a4bcf7fc9f5efc60db5db8a5dbebaf" compoundref="db/d78/DevGIS_8cpp" startline="221" endline="231">mutabor::OutputGis::Load</referencedby>
-        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ac67841f0c9bae7577c4260994e0135fc" compoundref="db/d78/DevGIS_8cpp" startline="264" endline="273">mutabor::InputGis::Load</referencedby>
-        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a64108f9c014fde8f01bfbcb7ae97313f" compoundref="df/d8f/DevMidi_8cpp" startline="129" endline="163">mutabor::OutputMidiPort::Load</referencedby>
-        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1a99976206c63a46dc0874925920a33ddb" compoundref="df/d8f/DevMidi_8cpp" startline="305" endline="376">mutabor::InputMidiPort::Load</referencedby>
-        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a292e5e82cd90d703c12a081ca7b3ec0e" compoundref="d0/d6b/DevMidF_8cpp" startline="299" endline="333">mutabor::OutputMidiFile::Load</referencedby>
-        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a79fc7f29bcff21db0af9043bf00f8797" compoundref="d0/d6b/DevMidF_8cpp" startline="429" endline="499">mutabor::InputMidiFile::Load</referencedby>
-        <referencedby refid="d5/dee/group__route_1gadb66e7b7d79f26402ffb5ae5c82e9bc8" compoundref="dd/dc6/Box_8cpp" startline="913" endline="933">mutabor::BoxFactory::LoadBoxes</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga258cd4bc238074cb6834c10248c0f3fa" compoundref="d2/dc0/Device_8cpp" startline="595" endline="626">mutabor::DeviceFactory::LoadInputDevices</referencedby>
-        <referencedby refid="d5/dee/group__route_1gabd6e84a77a79c3ca0960442ed17f6b51" compoundref="d2/dc0/Device_8cpp" startline="542" endline="570">mutabor::DeviceFactory::LoadOutputDevices</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="214" column="1"/>
+        <referencedby refid="d5/dee/group__route_1gae7d8b2c6ad14d3d94718377969abcd8c" compoundref="d8/dfb/Route_8cpp" startline="573" endline="587">mutabor::RouteFactory::DoLoadRoutes</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaf17cf4768d8fb8cc93dc827b40153605" compoundref="d8/dfb/Route_8cpp" startline="589" endline="612">mutabor::RouteFactory::DoSaveRoutes</referencedby>
+        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1af5a4bcf7fc9f5efc60db5db8a5dbebaf" compoundref="db/d78/DevGIS_8cpp" startline="226" endline="236">mutabor::OutputGis::Load</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ac67841f0c9bae7577c4260994e0135fc" compoundref="db/d78/DevGIS_8cpp" startline="269" endline="278">mutabor::InputGis::Load</referencedby>
+        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a64108f9c014fde8f01bfbcb7ae97313f" compoundref="df/d8f/DevMidi_8cpp" startline="114" endline="149">mutabor::OutputMidiPort::Load</referencedby>
+        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1a99976206c63a46dc0874925920a33ddb" compoundref="df/d8f/DevMidi_8cpp" startline="289" endline="365">mutabor::InputMidiPort::Load</referencedby>
+        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a292e5e82cd90d703c12a081ca7b3ec0e" compoundref="d0/d6b/DevMidF_8cpp" startline="303" endline="337">mutabor::OutputMidiFile::Load</referencedby>
+        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a79fc7f29bcff21db0af9043bf00f8797" compoundref="d0/d6b/DevMidF_8cpp" startline="438" endline="516">mutabor::InputMidiFile::Load</referencedby>
+        <referencedby refid="d5/dee/group__route_1gadb66e7b7d79f26402ffb5ae5c82e9bc8" compoundref="dd/dc6/Box_8cpp" startline="965" endline="985">mutabor::BoxFactory::LoadBoxes</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga258cd4bc238074cb6834c10248c0f3fa" compoundref="d2/dc0/Device_8cpp" startline="587" endline="618">mutabor::DeviceFactory::LoadInputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1gabd6e84a77a79c3ca0960442ed17f6b51" compoundref="d2/dc0/Device_8cpp" startline="534" endline="562">mutabor::DeviceFactory::LoadOutputDevices</referencedby>
         <referencedby refid="d5/dee/group__route_1ga87ced6bf8715054517f72a0dcb433d8c" compoundref="d8/dfb/Route_8cpp" startline="247" endline="278">mutabor::TRouteClass&lt; I, O, B &gt;::LoadRoutes</referencedby>
-        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1ad7b49c55c64964b95fccd580f2b27771" compoundref="db/d78/DevGIS_8cpp" startline="190" endline="200">mutabor::OutputGis::Save</referencedby>
-        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ac8990a1c448400d582db2fc4b9262169" compoundref="db/d78/DevGIS_8cpp" startline="247" endline="256">mutabor::InputGis::Save</referencedby>
-        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a34c460bc0275c3a6708dd837e50e3bbe" compoundref="df/d8f/DevMidi_8cpp" startline="92" endline="105">mutabor::OutputMidiPort::Save</referencedby>
-        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1aa1052c5c84b7b2d1119b719a971fc7ef" compoundref="df/d8f/DevMidi_8cpp" startline="258" endline="280">mutabor::InputMidiPort::Save</referencedby>
-        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1ae0aa8de74b9cbe7c5906b0a2d433cdce" compoundref="d0/d6b/DevMidF_8cpp" startline="265" endline="277">mutabor::OutputMidiFile::Save</referencedby>
-        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a6146930f86cbd9c73933d50c1543fcc7" compoundref="d0/d6b/DevMidF_8cpp" startline="397" endline="419">mutabor::InputMidiFile::Save</referencedby>
-        <referencedby refid="d5/dee/group__route_1gac12082bf0a070d44b66f36e28cfa11bd" compoundref="dd/dc6/Box_8cpp" startline="935" endline="956">mutabor::BoxFactory::SaveBoxes</referencedby>
-        <referencedby refid="d5/dee/group__route_1gae8161f3d5d3a0cbb02c724b6d8515e53" compoundref="d2/dc0/Device_8cpp" startline="628" endline="650">mutabor::DeviceFactory::SaveInputDevices</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga4e80ba5e5d5fb69eba97cd43d9ffbd95" compoundref="d2/dc0/Device_8cpp" startline="572" endline="593">mutabor::DeviceFactory::SaveOutputDevices</referencedby>
+        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1ad7b49c55c64964b95fccd580f2b27771" compoundref="db/d78/DevGIS_8cpp" startline="195" endline="205">mutabor::OutputGis::Save</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ac8990a1c448400d582db2fc4b9262169" compoundref="db/d78/DevGIS_8cpp" startline="252" endline="261">mutabor::InputGis::Save</referencedby>
+        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a34c460bc0275c3a6708dd837e50e3bbe" compoundref="df/d8f/DevMidi_8cpp" startline="76" endline="89">mutabor::OutputMidiPort::Save</referencedby>
+        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1aa1052c5c84b7b2d1119b719a971fc7ef" compoundref="df/d8f/DevMidi_8cpp" startline="240" endline="262">mutabor::InputMidiPort::Save</referencedby>
+        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1ae0aa8de74b9cbe7c5906b0a2d433cdce" compoundref="d0/d6b/DevMidF_8cpp" startline="269" endline="281">mutabor::OutputMidiFile::Save</referencedby>
+        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a6146930f86cbd9c73933d50c1543fcc7" compoundref="d0/d6b/DevMidF_8cpp" startline="406" endline="428">mutabor::InputMidiFile::Save</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac12082bf0a070d44b66f36e28cfa11bd" compoundref="dd/dc6/Box_8cpp" startline="987" endline="1008">mutabor::BoxFactory::SaveBoxes</referencedby>
+        <referencedby refid="d5/dee/group__route_1gae8161f3d5d3a0cbb02c724b6d8515e53" compoundref="d2/dc0/Device_8cpp" startline="620" endline="642">mutabor::DeviceFactory::SaveInputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4e80ba5e5d5fb69eba97cd43d9ffbd95" compoundref="d2/dc0/Device_8cpp" startline="564" endline="585">mutabor::DeviceFactory::SaveOutputDevices</referencedby>
         <referencedby refid="d5/dee/group__route_1gad17e61b049b311b1878679297b324cc9" compoundref="d8/dfb/Route_8cpp" startline="227" endline="244">mutabor::TRouteClass&lt; I, O, B &gt;::SaveRoutes</referencedby>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a56fd0890515d0b39ae35acb7c0682339" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
-        <definition>virtual mutString mutabor::tree_storage::GetPath</definition>
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a66b9a5fff9a5927df560a680d2f60b4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string mutabor::tree_storage::GetPath</definition>
         <argsstring>()=0</argsstring>
         <name>GetPath</name>
-        <reimplementedby refid="d1/d44/group__config_1gab636a7b132498318e2e5c295f4278842">GetPath</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a4314d8efe7369077397884680dbb69ca">GetPath</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1gaa769c24e9ae0d93a64ea142afd6c0814">GetPath</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a24b0861b388c7da2965a51d41c023345">GetPath</reimplementedby>
         <briefdescription>
 <para>Return a string representation of the position in the current tree. </para>        </briefdescription>
         <detaileddescription>
 <para>This function can be used to store the current position in the tree. <parameterlist kind="retval"><parameteritem>
 <parameternamelist>
-<parametername>mutString</parametername>
+<parametername>std::string</parametername>
 </parameternamelist>
 <parameterdescription>
 <para>String representation of the current path. The concrete representation is implementation dependent and can vary for different tree types. </para></parameterdescription>
@@ -620,64 +596,64 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="227" column="1"/>
-        <referencedby refid="d5/dee/group__route_1gae7d8b2c6ad14d3d94718377969abcd8c" compoundref="d8/dfb/Route_8cpp" startline="559" endline="573">mutabor::RouteFactory::DoLoadRoutes</referencedby>
-        <referencedby refid="d5/dee/group__route_1gaf17cf4768d8fb8cc93dc827b40153605" compoundref="d8/dfb/Route_8cpp" startline="575" endline="598">mutabor::RouteFactory::DoSaveRoutes</referencedby>
-        <referencedby refid="d5/d27/classmutabor_1_1CommonFileOutputDevice_1a9119337e1ce1171453937dad0436204f" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="71" endline="80">mutabor::CommonFileOutputDevice::Load</referencedby>
-        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1a7482ffe26bfb44849c73ff441988cbdf" compoundref="db/d78/DevGIS_8cpp" startline="206" endline="213">mutabor::OutputGis::Load</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="222" column="1"/>
+        <referencedby refid="d5/dee/group__route_1gae7d8b2c6ad14d3d94718377969abcd8c" compoundref="d8/dfb/Route_8cpp" startline="573" endline="587">mutabor::RouteFactory::DoLoadRoutes</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaf17cf4768d8fb8cc93dc827b40153605" compoundref="d8/dfb/Route_8cpp" startline="589" endline="612">mutabor::RouteFactory::DoSaveRoutes</referencedby>
+        <referencedby refid="d5/d27/classmutabor_1_1CommonFileOutputDevice_1a9119337e1ce1171453937dad0436204f" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="72" endline="81">mutabor::CommonFileOutputDevice::Load</referencedby>
+        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1a7482ffe26bfb44849c73ff441988cbdf" compoundref="db/d78/DevGIS_8cpp" startline="211" endline="218">mutabor::OutputGis::Load</referencedby>
         <referencedby refid="d5/dee/group__route_1gaa1eefe81dfc1036f5f7dd578dfb2aff8" compoundref="d8/dfb/Route_8cpp" startline="88" endline="100">mutabor::TRouteClass&lt; I, O, B &gt;::Load</referencedby>
-        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a1f853e58525a5ff67937c48a208b7670" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="130" endline="139">mutabor::CommonFileInputDevice::Load</referencedby>
-        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ac67841f0c9bae7577c4260994e0135fc" compoundref="db/d78/DevGIS_8cpp" startline="264" endline="273">mutabor::InputGis::Load</referencedby>
-        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1af99fc0245eac479b47629ce1a6cb07f3" compoundref="df/d8f/DevMidi_8cpp" startline="111" endline="121">mutabor::OutputMidiPort::Load</referencedby>
-        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1a89584d87c83b2877a96fea2b46e7e7a3" compoundref="df/d8f/DevMidi_8cpp" startline="286" endline="297">mutabor::InputMidiPort::Load</referencedby>
-        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a85e0f75c86bb35421a7b780877427744" compoundref="d0/d6b/DevMidF_8cpp" startline="283" endline="291">mutabor::OutputMidiFile::Load</referencedby>
-        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a79fc7f29bcff21db0af9043bf00f8797" compoundref="d0/d6b/DevMidF_8cpp" startline="429" endline="499">mutabor::InputMidiFile::Load</referencedby>
-        <referencedby refid="d5/dee/group__route_1gadb66e7b7d79f26402ffb5ae5c82e9bc8" compoundref="dd/dc6/Box_8cpp" startline="913" endline="933">mutabor::BoxFactory::LoadBoxes</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga258cd4bc238074cb6834c10248c0f3fa" compoundref="d2/dc0/Device_8cpp" startline="595" endline="626">mutabor::DeviceFactory::LoadInputDevices</referencedby>
-        <referencedby refid="d5/dee/group__route_1gabd6e84a77a79c3ca0960442ed17f6b51" compoundref="d2/dc0/Device_8cpp" startline="542" endline="570">mutabor::DeviceFactory::LoadOutputDevices</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a1f853e58525a5ff67937c48a208b7670" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="129" endline="138">mutabor::CommonFileInputDevice::Load</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ac67841f0c9bae7577c4260994e0135fc" compoundref="db/d78/DevGIS_8cpp" startline="269" endline="278">mutabor::InputGis::Load</referencedby>
+        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1af99fc0245eac479b47629ce1a6cb07f3" compoundref="df/d8f/DevMidi_8cpp" startline="94" endline="106">mutabor::OutputMidiPort::Load</referencedby>
+        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1a89584d87c83b2877a96fea2b46e7e7a3" compoundref="df/d8f/DevMidi_8cpp" startline="268" endline="281">mutabor::InputMidiPort::Load</referencedby>
+        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a85e0f75c86bb35421a7b780877427744" compoundref="d0/d6b/DevMidF_8cpp" startline="287" endline="295">mutabor::OutputMidiFile::Load</referencedby>
+        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a79fc7f29bcff21db0af9043bf00f8797" compoundref="d0/d6b/DevMidF_8cpp" startline="438" endline="516">mutabor::InputMidiFile::Load</referencedby>
+        <referencedby refid="d5/dee/group__route_1gadb66e7b7d79f26402ffb5ae5c82e9bc8" compoundref="dd/dc6/Box_8cpp" startline="965" endline="985">mutabor::BoxFactory::LoadBoxes</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga258cd4bc238074cb6834c10248c0f3fa" compoundref="d2/dc0/Device_8cpp" startline="587" endline="618">mutabor::DeviceFactory::LoadInputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1gabd6e84a77a79c3ca0960442ed17f6b51" compoundref="d2/dc0/Device_8cpp" startline="534" endline="562">mutabor::DeviceFactory::LoadOutputDevices</referencedby>
         <referencedby refid="d5/dee/group__route_1ga87ced6bf8715054517f72a0dcb433d8c" compoundref="d8/dfb/Route_8cpp" startline="247" endline="278">mutabor::TRouteClass&lt; I, O, B &gt;::LoadRoutes</referencedby>
-        <referencedby refid="d5/d27/classmutabor_1_1CommonFileOutputDevice_1a572270a4299a15982d3bf858666ddba0" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="55" endline="64">mutabor::CommonFileOutputDevice::Save</referencedby>
-        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1a5238013279f1d14d5ffab06444e5952c" compoundref="db/d78/DevGIS_8cpp" startline="175" endline="182">mutabor::OutputGis::Save</referencedby>
+        <referencedby refid="d5/d27/classmutabor_1_1CommonFileOutputDevice_1a572270a4299a15982d3bf858666ddba0" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="56" endline="65">mutabor::CommonFileOutputDevice::Save</referencedby>
+        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1a5238013279f1d14d5ffab06444e5952c" compoundref="db/d78/DevGIS_8cpp" startline="180" endline="187">mutabor::OutputGis::Save</referencedby>
         <referencedby refid="d5/dee/group__route_1gae3b27d9f1b4c9652482e8c8a49c2c570" compoundref="d8/dfb/Route_8cpp" startline="71" endline="85">mutabor::TRouteClass&lt; I, O, B &gt;::Save</referencedby>
-        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aebd2d366f92f7fcb3fda5c3ffd7fa2a3" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="114" endline="123">mutabor::CommonFileInputDevice::Save</referencedby>
-        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ac8990a1c448400d582db2fc4b9262169" compoundref="db/d78/DevGIS_8cpp" startline="247" endline="256">mutabor::InputGis::Save</referencedby>
-        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a34c460bc0275c3a6708dd837e50e3bbe" compoundref="df/d8f/DevMidi_8cpp" startline="92" endline="105">mutabor::OutputMidiPort::Save</referencedby>
-        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1aaa4af14652364420cff3b3f045dff0c8" compoundref="df/d8f/DevMidi_8cpp" startline="242" endline="250">mutabor::InputMidiPort::Save</referencedby>
-        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a6edbcd23203804c50bf66e0c50cb357f" compoundref="d0/d6b/DevMidF_8cpp" startline="249" endline="257">mutabor::OutputMidiFile::Save</referencedby>
-        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a6146930f86cbd9c73933d50c1543fcc7" compoundref="d0/d6b/DevMidF_8cpp" startline="397" endline="419">mutabor::InputMidiFile::Save</referencedby>
-        <referencedby refid="d5/dee/group__route_1gac12082bf0a070d44b66f36e28cfa11bd" compoundref="dd/dc6/Box_8cpp" startline="935" endline="956">mutabor::BoxFactory::SaveBoxes</referencedby>
-        <referencedby refid="d5/dee/group__route_1gae8161f3d5d3a0cbb02c724b6d8515e53" compoundref="d2/dc0/Device_8cpp" startline="628" endline="650">mutabor::DeviceFactory::SaveInputDevices</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga4e80ba5e5d5fb69eba97cd43d9ffbd95" compoundref="d2/dc0/Device_8cpp" startline="572" endline="593">mutabor::DeviceFactory::SaveOutputDevices</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aebd2d366f92f7fcb3fda5c3ffd7fa2a3" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="113" endline="122">mutabor::CommonFileInputDevice::Save</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ac8990a1c448400d582db2fc4b9262169" compoundref="db/d78/DevGIS_8cpp" startline="252" endline="261">mutabor::InputGis::Save</referencedby>
+        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a34c460bc0275c3a6708dd837e50e3bbe" compoundref="df/d8f/DevMidi_8cpp" startline="76" endline="89">mutabor::OutputMidiPort::Save</referencedby>
+        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1aaa4af14652364420cff3b3f045dff0c8" compoundref="df/d8f/DevMidi_8cpp" startline="224" endline="232">mutabor::InputMidiPort::Save</referencedby>
+        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a6edbcd23203804c50bf66e0c50cb357f" compoundref="d0/d6b/DevMidF_8cpp" startline="253" endline="261">mutabor::OutputMidiFile::Save</referencedby>
+        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a6146930f86cbd9c73933d50c1543fcc7" compoundref="d0/d6b/DevMidF_8cpp" startline="406" endline="428">mutabor::InputMidiFile::Save</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac12082bf0a070d44b66f36e28cfa11bd" compoundref="dd/dc6/Box_8cpp" startline="987" endline="1008">mutabor::BoxFactory::SaveBoxes</referencedby>
+        <referencedby refid="d5/dee/group__route_1gae8161f3d5d3a0cbb02c724b6d8515e53" compoundref="d2/dc0/Device_8cpp" startline="620" endline="642">mutabor::DeviceFactory::SaveInputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4e80ba5e5d5fb69eba97cd43d9ffbd95" compoundref="d2/dc0/Device_8cpp" startline="564" endline="585">mutabor::DeviceFactory::SaveOutputDevices</referencedby>
         <referencedby refid="d5/dee/group__route_1gad17e61b049b311b1878679297b324cc9" compoundref="d8/dfb/Route_8cpp" startline="227" endline="244">mutabor::TRouteClass&lt; I, O, B &gt;::SaveRoutes</referencedby>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a1af0bde57236a6b74e18ec68ea8fa5b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1ae388ba2d4260632fa89f2ba608ce4bac" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void mutabor::tree_storage::SetPath</definition>
-        <argsstring>(const mutStringRef path)=0</argsstring>
+        <argsstring>(const std::string &amp;path)=0</argsstring>
         <name>SetPath</name>
-        <reimplementedby refid="d1/d44/group__config_1ga515d665453d65bd383a6d36f106cb0f2">SetPath</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a2b8f73848496bfececf56856897a66b9">SetPath</reimplementedby>
+        <reimplementedby refid="d1/d44/group__config_1gaadb289d2c08c2f6be58368430c7405f1">SetPath</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1af111263d0a6ed719dfdc7452f8fa9f0e">SetPath</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>path</declname>
         </param>
         <briefdescription>
 <para>Set the current pointer in the tree. </para>        </briefdescription>
         <detaileddescription>
-<para>This function can be used to store the current position in the tree.  path (mutString) String representation of the new path as returned by <ref refid="da/de5/classmutabor_1_1tree__storage_1a56fd0890515d0b39ae35acb7c0682339" kindref="member">GetPath()</ref>. The concrete representation is implementation dependent and can vary for different tree types. </para>        </detaileddescription>
+<para>This function can be used to store the current position in the tree.  path (std::string) String representation of the new path as returned by <ref refid="da/de5/classmutabor_1_1tree__storage_1a66b9a5fff9a5927df560a680d2f60b4c" kindref="member">GetPath()</ref>. The concrete representation is implementation dependent and can vary for different tree types. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="235" column="1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="230" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a423344fdbea00a276df40de75509d1ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a6ad845d20d99cec78dab150926cc1c7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void mutabor::tree_storage::DeleteEntry</definition>
-        <argsstring>(const mutStringRef path)=0</argsstring>
+        <argsstring>(const std::string &amp;path)=0</argsstring>
         <name>DeleteEntry</name>
-        <reimplementedby refid="d8/d7f/classconfigtree_1a6fd4696360e892649606ab7ae6fc256c">DeleteEntry</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a95ae524b4dac35ba3dace2965cc7ef31">DeleteEntry</reimplementedby>
+        <reimplementedby refid="d8/d7f/classconfigtree_1a438091cff1f3fab4faebf188a836fe5e">DeleteEntry</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a67adcbdffca9c5c893851d26a0be11d4">DeleteEntry</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>path</declname>
         </param>
         <briefdescription>
@@ -686,17 +662,17 @@
 <para>entry path to the entry that shall be deleted </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="241" column="1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="236" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a997ea0542c1124b834e6812bcf3ed795" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="da/de5/classmutabor_1_1tree__storage_1a98ad7ace799f9148fce1b7a7d7996a17" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void mutabor::tree_storage::DeleteGroup</definition>
-        <argsstring>(const mutStringRef path)=0</argsstring>
+        <argsstring>(const std::string &amp;path)=0</argsstring>
         <name>DeleteGroup</name>
-        <reimplementedby refid="d8/d7f/classconfigtree_1ab62ca4ffff51b66430752b73bdd4aa3e">DeleteGroup</reimplementedby>
-        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a17ec58581de45731153eaf7fbc7cbd63">DeleteGroup</reimplementedby>
+        <reimplementedby refid="d8/d7f/classconfigtree_1a9e0be92b21bcd08e00882201e55a4708">DeleteGroup</reimplementedby>
+        <reimplementedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a1b4ad565306db475c9584a9fc24fbd66">DeleteGroup</reimplementedby>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>path</declname>
         </param>
         <briefdescription>
@@ -705,8 +681,8 @@
 <para>group path to the entry that shall be deleted </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="247" column="1"/>
-        <referencedby refid="d5/dee/group__route_1gaf17cf4768d8fb8cc93dc827b40153605" compoundref="d8/dfb/Route_8cpp" startline="575" endline="598">mutabor::RouteFactory::DoSaveRoutes</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="242" column="1"/>
+        <referencedby refid="d5/dee/group__route_1gaf17cf4768d8fb8cc93dc827b40153605" compoundref="d8/dfb/Route_8cpp" startline="589" endline="612">mutabor::RouteFactory::DoSaveRoutes</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -714,50 +690,49 @@
     <detaileddescription>
 <para>This class is an abstract class. subclass it to provide some storage technology, which can be used for routing and other options. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="4600">
+      <node id="5543">
         <label>configtree</label>
         <link refid="d8/d7f/classconfigtree"/>
-        <childnode refid="4599" relation="public-inheritance">
+        <childnode refid="5542" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4601">
+      <node id="5544">
         <label>mutaborGUI::xmltree</label>
         <link refid="dd/d18/classmutaborGUI_1_1xmltree"/>
-        <childnode refid="4599" relation="public-inheritance">
+        <childnode refid="5542" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4599">
+      <node id="5542">
         <label>mutabor::tree_storage</label>
         <link refid="da/de5/classmutabor_1_1tree__storage"/>
       </node>
     </inheritancegraph>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="61" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" bodystart="60" bodyend="248"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="61" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" bodystart="60" bodyend="243"/>
     <listofallmembers>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a423344fdbea00a276df40de75509d1ef" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>DeleteEntry</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a997ea0542c1124b834e6812bcf3ed795" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>DeleteGroup</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a56fd0890515d0b39ae35acb7c0682339" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>GetPath</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a9d514c48c8f88641a054dfa6e79488d0" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>HasGroup</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a80f4ed4e4d6294644d70885e186f6156" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Read</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a86194d95a676f8ab4d28c2144b4c9f56" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Read</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a3aade5c12052f23a9cb399113ff5688d" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Read</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a916a514313463df3e2ae061d38eaf2db" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Read</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a506792c4fd7183c1966c68c72a0de6a0" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Read</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1af125093a03dab4837cd4c48d2ad3c03d" prot="public" virt="non-virtual"><scope>mutabor::tree_storage</scope><name>Read</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a592c1d000f1dedeb186191ac5605212f" prot="public" virt="non-virtual"><scope>mutabor::tree_storage</scope><name>Read</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a1af0bde57236a6b74e18ec68ea8fa5b5" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>SetPath</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a8e344b622e3346a7d571c4659f57bab8" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>toFirstLeaf</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1ab42d62373ba090a907d651a334353462" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>toFirstLeaf</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1afb9a095fbd779e53fde69e0a0df4a7b3" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>toLeaf</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1ad80873e9facf7bfa53f83971b2f042b3" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>toLeaf</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a82dea391674d6aa7c9330b53541bdda7" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>toNextLeaf</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a0e37ed52c00069e6063418ea13d35aa4" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>toNextLeaf</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1a6ad845d20d99cec78dab150926cc1c7d" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>DeleteEntry</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1a98ad7ace799f9148fce1b7a7d7996a17" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>DeleteGroup</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1a66b9a5fff9a5927df560a680d2f60b4c" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>GetPath</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1ab94d21edc9dc97e0e1b4b11701314fe2" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>HasGroup</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1aab2b2939a0c886921cb0e9708bfa156d" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Read</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1ad1a8dfe20676083943e78efa945cfc5a" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Read</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1abba4caa9044e3eb42090bd7f6c6ac2a9" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Read</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1a9dc6fc8b2c07dcb47b703ef620ac50a8" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Read</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1ab8f12d8a67c07a1f55e4661d8c865980" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Read</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1afbd9481afd5350c33f211c1db801d30a" prot="public" virt="non-virtual"><scope>mutabor::tree_storage</scope><name>Read</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1ae388ba2d4260632fa89f2ba608ce4bac" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>SetPath</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1adc379dccd19791db7b2cae798ecd840d" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>toFirstLeaf</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1ac8c3315996067e54399dab28477c43f7" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>toFirstLeaf</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1aff36a4266f985cc8c5c5c4f356a63d75" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>toLeaf</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1a3470bb3b8124602d7a2cff0c67a94f2d" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>toLeaf</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1a4922f87e05292983971256720d705e19" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>toNextLeaf</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1aab94221d2c1f5039dfd3d1da4d5cbd02" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>toNextLeaf</name></member>
       <member refid="da/de5/classmutabor_1_1tree__storage_1ac745edc6daafaae2b2fee856bfd4ecdb" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>toParent</name></member>
       <member refid="da/de5/classmutabor_1_1tree__storage_1a32c5f4c75c72fc85748e4a4648ca0bff" prot="public" virt="non-virtual"><scope>mutabor::tree_storage</scope><name>tree_storage</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1aa1883b11f7457404ba7036104924e42a" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Write</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a07276f0ffc5df576f6174059a4b98541" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Write</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1aff91e4eb2aa361d3b73027a3cccb79d6" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Write</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1a4f950f71ce477de8ac59738ef8c14542" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Write</name></member>
-      <member refid="da/de5/classmutabor_1_1tree__storage_1acda2cd434a6bc0c89a35cc3f9a1465b3" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Write</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1a331885e032f43ebe53a492268bab377a" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Write</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1ae97b8f43989a47d65f8cafe7d744e615" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Write</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1a4911dd7c9b659cf9a08402401fa239d0" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Write</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1abd598e75bd3238b94d2c58e3bd04aafc" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Write</name></member>
+      <member refid="da/de5/classmutabor_1_1tree__storage_1a1485fda2de1bad0b29c649c00dae55f7" prot="public" virt="pure-virtual"><scope>mutabor::tree_storage</scope><name>Write</name></member>
       <member refid="da/de5/classmutabor_1_1tree__storage_1a27f2d1623e56f38ddfa4bd75ad8e7cf5" prot="public" virt="virtual"><scope>mutabor::tree_storage</scope><name>~tree_storage</name></member>
     </listofallmembers>
   </compounddef>

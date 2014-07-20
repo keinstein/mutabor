@@ -46,39 +46,38 @@
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">src/kernel/Defs.h</a>&quot;</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../db/dbe/treestorage_8h.html">src/kernel/treestorage.h</a>&quot;</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#ifndef MU32_ROUTING_ROUTECOMPAT_H_PRECOMPILED</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d5/dee/group__route.html#ga20e302428e14cabee83806f16835190d">   53</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MU32_ROUTING_ROUTECOMPAT_H_PRECOMPILED</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#ifdef WX</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;wx/config.h&quot;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">namespace </span>compat30 {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d5/dee/group__route.html#ga83268772461a3fb8219d0c9ce088f1cb">LoadRoutes</a>(<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga0357d6ebe41b7958687f47fd0d2d288e">mutStringRef</a>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#ifndef MU32_ROUTING_ROUTECOMPAT_H_PRECOMPILED</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="../../d5/dee/group__route.html#ga20e302428e14cabee83806f16835190d">   52</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MU32_ROUTING_ROUTECOMPAT_H_PRECOMPILED</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">namespace </span>compat30 {</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../dc/dad/classcompat30_1_1RouteIOError.html">   55</a></span>&#160;        <span class="keyword">class </span><a class="code" href="../../dc/dad/classcompat30_1_1RouteIOError.html">RouteIOError</a>:<span class="keyword">public</span> std::range_error {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../d5/dee/group__route.html#gab43933a86e912feb21d9e3d470ce693d">   57</a></span>&#160;                <span class="keyword">explicit</span> <a class="code" href="../../d5/dee/group__route.html#gab43933a86e912feb21d9e3d470ce693d">RouteIOError</a> (<span class="keyword">const</span> std::string&amp; what_arg):</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                        range_error(what_arg) {}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        };</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d5/dee/group__route.html#ga768980ac2520700cfd5a8c2dd4854dee">LoadRoutes</a>(<span class="keyword">const</span> std::string &amp;);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d5/dee/group__route.html#ga5c58701727fcbf758c71f89daac276f0">SaveRoutes</a>(<a class="code" href="../../d9/d7c/group__kernel.html#ga0357d6ebe41b7958687f47fd0d2d288e">mutStringRef</a>);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* PRECOMPILED */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"> * \}</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d5/dee/group__route.html#gad29c28957f7f43e3751d76e5750a8e99">SaveRoutes</a>(std::string &amp;);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* PRECOMPILED */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment"> * \}</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="ttc" id="group__route_html_gab43933a86e912feb21d9e3d470ce693d"><div class="ttname"><a href="../../d5/dee/group__route.html#gab43933a86e912feb21d9e3d470ce693d">compat30::RouteIOError::RouteIOError</a></div><div class="ttdeci">RouteIOError(const std::string &amp;what_arg)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d8c/RouteCompat_8h_source.html#l00057">RouteCompat.h:57</a></div></div>
+<div class="ttc" id="group__route_html_ga768980ac2520700cfd5a8c2dd4854dee"><div class="ttname"><a href="../../d5/dee/group__route.html#ga768980ac2520700cfd5a8c2dd4854dee">compat30::LoadRoutes</a></div><div class="ttdeci">void LoadRoutes(const std::string &amp;config)</div><div class="ttdoc">load the routes from a text string </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db8/RouteCompat_8cpp_source.html#l00126">RouteCompat.cpp:126</a></div></div>
 <div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
-<div class="ttc" id="group__route_html_ga83268772461a3fb8219d0c9ce088f1cb"><div class="ttname"><a href="../../d5/dee/group__route.html#ga83268772461a3fb8219d0c9ce088f1cb">compat30::LoadRoutes</a></div><div class="ttdeci">void LoadRoutes(const mutStringRef config)</div><div class="ttdoc">load the routes from a text string </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db8/RouteCompat_8cpp_source.html#l00124">RouteCompat.cpp:124</a></div></div>
-<div class="ttc" id="treestorage_8h_html"><div class="ttname"><a href="../../db/dbe/treestorage_8h.html">treestorage.h</a></div><div class="ttdoc">abstract class for tree like storage </div></div>
-<div class="ttc" id="group__route_html_ga5c58701727fcbf758c71f89daac276f0"><div class="ttname"><a href="../../d5/dee/group__route.html#ga5c58701727fcbf758c71f89daac276f0">compat30::SaveRoutes</a></div><div class="ttdeci">void SaveRoutes(mutStringRef config)</div><div class="ttdoc">write the routes to the given string </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db8/RouteCompat_8cpp_source.html#l00335">RouteCompat.cpp:335</a></div></div>
-<div class="ttc" id="group__kernel_html_ga0357d6ebe41b7958687f47fd0d2d288e"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga0357d6ebe41b7958687f47fd0d2d288e">mutStringRef</a></div><div class="ttdeci">#define mutStringRef</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00085">Defs.h:85</a></div></div>
+<div class="ttc" id="classcompat30_1_1RouteIOError_html"><div class="ttname"><a href="../../dc/dad/classcompat30_1_1RouteIOError.html">compat30::RouteIOError</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d8c/RouteCompat_8h_source.html#l00055">RouteCompat.h:55</a></div></div>
+<div class="ttc" id="group__route_html_gad29c28957f7f43e3751d76e5750a8e99"><div class="ttname"><a href="../../d5/dee/group__route.html#gad29c28957f7f43e3751d76e5750a8e99">compat30::SaveRoutes</a></div><div class="ttdeci">void SaveRoutes(std::string &amp;config)</div><div class="ttdoc">write the routes to the given string </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db8/RouteCompat_8cpp_source.html#l00338">RouteCompat.cpp:338</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Son Feb 9 2014 18:39:13 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Apr 26 2014 12:58:27 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

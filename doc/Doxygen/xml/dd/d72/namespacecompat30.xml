@@ -2,7 +2,25 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="dd/d72/namespacecompat30" kind="namespace">
     <compoundname>compat30</compoundname>
+    <innerclass refid="dc/dad/classcompat30_1_1RouteIOError" prot="public">compat30::RouteIOError</innerclass>
       <sectiondef kind="func">
+      <memberdef kind="function" id="dd/d72/namespacecompat30_1ae599bf71e8994b8a0fb060b6d5c8ee02" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::locale</type>
+        <definition>static std::locale compat30::nolocale</definition>
+        <argsstring>(&quot;C&quot;)</argsstring>
+        <name>nolocale</name>
+        <param>
+          <type>&quot;C&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="48" column="1"/>
+        <referencedby refid="dd/d72/namespacecompat30_1aa0539d643789128ef0b2d020b26e7b53" compoundref="dd/db8/RouteCompat_8cpp" startline="98" endline="123">GetLine</referencedby>
+      </memberdef>
       <memberdef kind="function" id="dd/d72/namespacecompat30_1a64f4f24016ab43fa9813995dcc1a77ae" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="d5/dee/group__route_1gaa9af06d2b801f5fbf129acc683bb764d" kindref="member">OutputDevice</ref></type>
         <definition>static OutputDevice compat30::GetOut</definition>
@@ -18,18 +36,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="48" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" bodystart="48" bodyend="54"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="50" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" bodystart="50" bodyend="56"/>
         <references refid="d5/dee/group__route_1ga0003618beb50da006e94e57baf9f7afa">mutabor::CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;::GetDevice</references>
-        <references refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3aa5dc2f5a43d36c391b773a6adc16e948" compoundref="de/d05/Device_8h" startline="477">mutabor::Device::IDTypeFile</references>
-        <referencedby refid="d5/dee/group__route_1ga83268772461a3fb8219d0c9ce088f1cb" compoundref="dd/db8/RouteCompat_8cpp" startline="124" endline="323">LoadRoutes</referencedby>
+        <references refid="d5/dee/group__route_1gga1274fa7f3bc0cd8f6d2a44aac8e42bb3aa5dc2f5a43d36c391b773a6adc16e948" compoundref="de/d05/Device_8h" startline="508">mutabor::Device::IDTypeFile</references>
+        <referencedby refid="d5/dee/group__route_1ga768980ac2520700cfd5a8c2dd4854dee" compoundref="dd/db8/RouteCompat_8cpp" startline="126" endline="326">LoadRoutes</referencedby>
       </memberdef>
-      <memberdef kind="function" id="dd/d72/namespacecompat30_1a602256dc1b2b1358da0835dd84fd82e9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="dd/d72/namespacecompat30_1a7a20d42603e873ec86365178581c9651" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="d5/dee/group__route_1ga40717007e1ff5cfd3b0255fa4db7f45e" kindref="member">RouteType</ref></type>
         <definition>static RouteType compat30::Str2RT</definition>
-        <argsstring>(mutChar *type)</argsstring>
+        <argsstring>(char *type)</argsstring>
         <name>Str2RT</name>
         <param>
-          <type><ref refid="d9/d7c/group__kernel_1ga13c03a937e32254ea17154104db5208a" kindref="member">mutChar</ref> *</type>
+          <type>char *</type>
           <declname>type</declname>
         </param>
         <briefdescription>
@@ -40,24 +58,24 @@
 <parametername>type</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>String (array of <computeroutput>mutChar</computeroutput>) </para></parameterdescription>
+<para>String (array of <computeroutput>char</computeroutput>) </para></parameterdescription>
 </parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>numeric id of the route type </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="62" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" bodystart="62" bodyend="76"/>
-        <references refid="d5/dee/group__route_1ga8d43e4a77d5dae69f317be216d9b021a" compoundref="d8/dfb/Route_8cpp" startline="49">mutabor::RTName</references>
-        <referencedby refid="d5/dee/group__route_1ga83268772461a3fb8219d0c9ce088f1cb" compoundref="dd/db8/RouteCompat_8cpp" startline="124" endline="323">LoadRoutes</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="64" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" bodystart="64" bodyend="73"/>
+        <references refid="d5/dee/group__route_1gaaa9afdda6b592c8a47a229f1ccd9c8a0" compoundref="d8/dfb/Route_8cpp" startline="49">mutabor::RTName</references>
+        <referencedby refid="d5/dee/group__route_1ga768980ac2520700cfd5a8c2dd4854dee" compoundref="dd/db8/RouteCompat_8cpp" startline="126" endline="326">LoadRoutes</referencedby>
       </memberdef>
-      <memberdef kind="function" id="dd/d72/namespacecompat30_1a55ab39b4d1ef265b48b04baf9605c3b5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="dd/d72/namespacecompat30_1a52982662c8223cf3948e08dc9c6143d8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="d5/dee/group__route_1ga84f84d78781fc500cd66ee58b0efc83a" kindref="member">DevType</ref></type>
         <definition>static DevType compat30::Str2DT</definition>
-        <argsstring>(const mutStringRef type)</argsstring>
+        <argsstring>(const std::string type)</argsstring>
         <name>Str2DT</name>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string</type>
           <declname>type</declname>
         </param>
         <briefdescription>
@@ -66,17 +84,39 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="79" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" bodystart="79" bodyend="93"/>
-        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="147">DEBUGLOG2</references>
-        <referencedby refid="d5/dee/group__route_1ga83268772461a3fb8219d0c9ce088f1cb" compoundref="dd/db8/RouteCompat_8cpp" startline="124" endline="323">LoadRoutes</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="76" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" bodystart="76" bodyend="90"/>
+        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="db/d16/debug_8h" startline="241">DEBUGLOG2</references>
+        <referencedby refid="d5/dee/group__route_1ga768980ac2520700cfd5a8c2dd4854dee" compoundref="dd/db8/RouteCompat_8cpp" startline="126" endline="326">LoadRoutes</referencedby>
       </memberdef>
-      <memberdef kind="function" id="dd/d72/namespacecompat30_1a3d8d8a992c7e9864ac58317570813b60" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="dd/d72/namespacecompat30_1a205cd061a23e575323a0a572b247bde4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool compat30::find_in_string</definition>
+        <argsstring>(const std::string &amp;haystack, char needle)</argsstring>
+        <name>find_in_string</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>haystack</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>needle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="94" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" bodystart="94" bodyend="96"/>
+        <referencedby refid="dd/d72/namespacecompat30_1aa0539d643789128ef0b2d020b26e7b53" compoundref="dd/db8/RouteCompat_8cpp" startline="98" endline="123">GetLine</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="dd/d72/namespacecompat30_1aa0539d643789128ef0b2d020b26e7b53" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>static bool compat30::GetLine</definition>
-        <argsstring>(const mutStringRef p, size_t &amp;i, mutStringRef s)</argsstring>
+        <argsstring>(const std::string &amp;p, size_t &amp;i, std::string &amp;s)</argsstring>
         <name>GetLine</name>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>p</declname>
         </param>
         <param>
@@ -84,7 +124,7 @@
           <declname>i</declname>
         </param>
         <param>
-          <type><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>std::string &amp;</type>
           <declname>s</declname>
         </param>
         <briefdescription>
@@ -93,15 +133,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="96" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" bodystart="96" bodyend="121"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="98" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" bodystart="98" bodyend="123"/>
+        <references refid="dd/d72/namespacecompat30_1a205cd061a23e575323a0a572b247bde4" compoundref="dd/db8/RouteCompat_8cpp" startline="94" endline="96">find_in_string</references>
+        <references refid="dd/d72/namespacecompat30_1ae599bf71e8994b8a0fb060b6d5c8ee02">nolocale</references>
       </memberdef>
-      <memberdef kind="function" id="d5/dee/group__route_1ga83268772461a3fb8219d0c9ce088f1cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="d5/dee/group__route_1ga768980ac2520700cfd5a8c2dd4854dee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void compat30::LoadRoutes</definition>
-        <argsstring>(const mutStringRef)</argsstring>
+        <argsstring>(const std::string &amp;)</argsstring>
         <name>LoadRoutes</name>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <defname>config</defname>
         </param>
         <briefdescription>
@@ -115,45 +157,44 @@
 <para>string to be read from </para></parameterdescription>
 </parameteritem>
 </parameterlist>
+<simplesect kind="return"><para>the error message in case of an error. </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="124" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" bodystart="124" bodyend="323"/>
-        <references refid="d5/dee/group__route_1gaf902f52cc92b92c56c800871fb2a4593" compoundref="de/d0f/Box_8h" startline="296" endline="307">mutabor::BoxClass::ClearBoxList</references>
-        <references refid="d5/dee/group__route_1ga6a549b9131f3f5f7322b89bfa941de4a" compoundref="de/d05/Device_8h" startline="771" endline="782">mutabor::CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;::ClearDeviceList</references>
-        <references refid="d5/dee/group__route_1ga6a549b9131f3f5f7322b89bfa941de4a" compoundref="de/d05/Device_8h" startline="771" endline="782">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::ClearDeviceList</references>
-        <references refid="d5/dee/group__route_1ga73740bb3f86dc6fb25ee199b311145ac" compoundref="d1/d65/Route_8h" startline="439" endline="454">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::ClearRouteList</references>
-        <references refid="d5/dee/group__route_1gaf8817ebce7a0d0d9fecacf9bdeff028c" compoundref="d1/d65/Route_8h" startline="592" endline="598">mutabor::RouteFactory::Create</references>
-        <references refid="d5/dee/group__route_1gae7f6e33308f9b52a914b383280a54068" compoundref="de/d05/Device_8h" startline="1296" endline="1309">mutabor::DeviceFactory::CreateInput</references>
-        <references refid="d5/dee/group__route_1ga7d3885474af8ef38f69056fdff322654" compoundref="de/d05/Device_8h" startline="1279" endline="1293">mutabor::DeviceFactory::CreateOutput</references>
-        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="147">DEBUGLOG2</references>
-        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984" compoundref="de/d05/Device_8h" startline="91">mutabor::DTGis</references>
-        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="91">mutabor::DTMidiFile</references>
-        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa6fc00580b26fa48d6ac5d51fe78129e0" compoundref="de/d05/Device_8h" startline="91">mutabor::DTMidiPort</references>
-        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae" compoundref="de/d05/Device_8h" startline="91">mutabor::DTNotSet</references>
-        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa896ab52de20803c767b4941638b0ce5c" compoundref="de/d05/Device_8h" startline="91">mutabor::DTUnknown</references>
-        <references refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdaafc406698afb7ff8be5c847b414a288f" compoundref="de/d11/Execute_8h" startline="78">mutabor::hidden::error</references>
-        <references refid="dd/db8/RouteCompat_8cpp_1aaa9c8dc328349cf18c6a068a6cdfcd85" compoundref="dd/db8/RouteCompat_8cpp" startline="46">GETLINE</references>
-        <references refid="d5/dee/group__route_1ga9e68bd379bba25f75661d7cf4d3c38be" compoundref="de/d0f/Box_8h" startline="814" endline="820">mutabor::BoxClass::GetOrCreateBox</references>
-        <references refid="dd/d72/namespacecompat30_1a64f4f24016ab43fa9813995dcc1a77ae" compoundref="dd/db8/RouteCompat_8cpp" startline="48" endline="54">GetOut</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="126" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" bodystart="126" bodyend="326"/>
+        <references refid="d5/dee/group__route_1gaf902f52cc92b92c56c800871fb2a4593" compoundref="de/d0f/Box_8h" startline="374" endline="385">mutabor::BoxClass::ClearBoxList</references>
+        <references refid="d5/dee/group__route_1ga6a549b9131f3f5f7322b89bfa941de4a" compoundref="de/d05/Device_8h" startline="797" endline="808">mutabor::CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;::ClearDeviceList</references>
+        <references refid="d5/dee/group__route_1ga6a549b9131f3f5f7322b89bfa941de4a" compoundref="de/d05/Device_8h" startline="797" endline="808">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::ClearDeviceList</references>
+        <references refid="d5/dee/group__route_1ga73740bb3f86dc6fb25ee199b311145ac" compoundref="d1/d65/Route_8h" startline="443" endline="458">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::ClearRouteList</references>
+        <references refid="d5/dee/group__route_1gaf8817ebce7a0d0d9fecacf9bdeff028c" compoundref="d1/d65/Route_8h" startline="595" endline="601">mutabor::RouteFactory::Create</references>
+        <references refid="d5/dee/group__route_1ga47b3119edf0ff6ae698d323f08a92797" compoundref="de/d05/Device_8h" startline="1381" endline="1394">mutabor::DeviceFactory::CreateInput</references>
+        <references refid="d5/dee/group__route_1ga8ba8f76e8e60d1d4d3592e3ac081d8f8" compoundref="de/d05/Device_8h" startline="1364" endline="1378">mutabor::DeviceFactory::CreateOutput</references>
+        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="db/d16/debug_8h" startline="241">DEBUGLOG2</references>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984" compoundref="de/d05/Device_8h" startline="93">mutabor::DTGis</references>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="93">mutabor::DTMidiFile</references>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa6fc00580b26fa48d6ac5d51fe78129e0" compoundref="de/d05/Device_8h" startline="93">mutabor::DTMidiPort</references>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae" compoundref="de/d05/Device_8h" startline="93">mutabor::DTNotSet</references>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa896ab52de20803c767b4941638b0ce5c" compoundref="de/d05/Device_8h" startline="93">mutabor::DTUnknown</references>
+        <references refid="d6/dbb/namespacemutabor_1_1hidden_1abe559f59025d3ee3e626c4c3cbd9cacdaafc406698afb7ff8be5c847b414a288f" compoundref="de/d11/Execute_8h" startline="77">mutabor::hidden::error</references>
+        <references refid="dd/db8/RouteCompat_8cpp_1aaa9c8dc328349cf18c6a068a6cdfcd85" compoundref="dd/db8/RouteCompat_8cpp" startline="47">GETLINE</references>
+        <references refid="d5/dee/group__route_1ga9e68bd379bba25f75661d7cf4d3c38be" compoundref="de/d0f/Box_8h" startline="983" endline="989">mutabor::BoxClass::GetOrCreateBox</references>
+        <references refid="dd/d72/namespacecompat30_1a64f4f24016ab43fa9813995dcc1a77ae" compoundref="dd/db8/RouteCompat_8cpp" startline="50" endline="56">GetOut</references>
         <references refid="d5/dee/group__route_1ga0129007d64b3aaf687dc34665d14b399">mutabor::CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;::InitializeIds</references>
-        <references refid="d9/d7c/group__kernel_1ga13c03a937e32254ea17154104db5208a" compoundref="d1/d73/Defs_8h" startline="83">mutChar</references>
-        <references refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" compoundref="d1/d73/Defs_8h" startline="84">mutString</references>
         <references refid="df/dd1/group__GUI_1ga26322ca1613f09e983e5b67fbeeec6ea" compoundref="d0/d68/mhDefs_8h" startline="62">SSCANF</references>
-        <references refid="dd/d72/namespacecompat30_1a55ab39b4d1ef265b48b04baf9605c3b5" compoundref="dd/db8/RouteCompat_8cpp" startline="79" endline="93">Str2DT</references>
-        <references refid="dd/d72/namespacecompat30_1a602256dc1b2b1358da0835dd84fd82e9" compoundref="dd/db8/RouteCompat_8cpp" startline="62" endline="76">Str2RT</references>
-        <references refid="df/dd1/group__GUI_1ga06c750cbc293593a85009553cf6cfcc5" compoundref="d0/d68/mhDefs_8h" startline="140">STUB</references>
-        <references refid="de/db7/group__debug_1gaad9cc64d45a76ba0d37c00f8cd9caa37" compoundref="de/de1/mutDebug_8h" startline="150">TRACE</references>
-        <references refid="df/dd1/group__GUI_1ga3af99897b60119951af8961dbd52dd3f" compoundref="d0/d68/mhDefs_8h" startline="146">UNREACHABLE</references>
-        <referencedby refid="dc/df2/group__GUIroute_1ga24bfe10e24a2431758a4ee4e8153291e" compoundref="dc/def/MutRouteWnd_8cpp" startline="422" endline="522">mutaborGUI::MutRouteWnd::CmRouteLoad</referencedby>
+        <references refid="dd/d72/namespacecompat30_1a52982662c8223cf3948e08dc9c6143d8" compoundref="dd/db8/RouteCompat_8cpp" startline="76" endline="90">Str2DT</references>
+        <references refid="dd/d72/namespacecompat30_1a7a20d42603e873ec86365178581c9651" compoundref="dd/db8/RouteCompat_8cpp" startline="64" endline="73">Str2RT</references>
+        <references refid="de/db7/group__debug_1ga06c750cbc293593a85009553cf6cfcc5" compoundref="db/d16/debug_8h" startline="250">STUB</references>
+        <references refid="de/db7/group__debug_1gaad9cc64d45a76ba0d37c00f8cd9caa37" compoundref="db/d16/debug_8h" startline="245">TRACE</references>
+        <references refid="de/db7/group__debug_1ga3af99897b60119951af8961dbd52dd3f" compoundref="db/d16/debug_8h" startline="254">UNREACHABLE</references>
+        <referencedby refid="dc/df2/group__GUIroute_1ga24bfe10e24a2431758a4ee4e8153291e" compoundref="dc/def/MutRouteWnd_8cpp" startline="411" endline="511">mutaborGUI::MutRouteWnd::CmRouteLoad</referencedby>
       </memberdef>
-      <memberdef kind="function" id="d5/dee/group__route_1ga5c58701727fcbf758c71f89daac276f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="d5/dee/group__route_1gad29c28957f7f43e3751d76e5750a8e99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void compat30::SaveRoutes</definition>
-        <argsstring>(mutStringRef)</argsstring>
+        <argsstring>(std::string &amp;)</argsstring>
         <name>SaveRoutes</name>
         <param>
-          <type><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>std::string &amp;</type>
           <defname>config</defname>
         </param>
         <briefdescription>
@@ -167,33 +208,34 @@
 <para>string to be written to </para></parameterdescription>
 </parameteritem>
 </parameterlist>
+<simplesect kind="return"><para>the error message in case of an error. </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
 <para>reimplement WriteRoutes </para>        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="335" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" bodystart="335" bodyend="474"/>
-        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
-        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="147">DEBUGLOG2</references>
-        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984" compoundref="de/d05/Device_8h" startline="91">mutabor::DTGis</references>
-        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="91">mutabor::DTMidiFile</references>
-        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa6fc00580b26fa48d6ac5d51fe78129e0" compoundref="de/d05/Device_8h" startline="91">mutabor::DTMidiPort</references>
-        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae" compoundref="de/d05/Device_8h" startline="91">mutabor::DTNotSet</references>
-        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa896ab52de20803c767b4941638b0ce5c" compoundref="de/d05/Device_8h" startline="91">mutabor::DTUnknown</references>
-        <references refid="d5/dee/group__route_1ga6d853cde85216e56f3d74d20ff9556b2" compoundref="de/d05/Device_8h" startline="585" endline="587">mutabor::Device::get_routefile_id</references>
-        <references refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab2f6cee54c89bc6c52c1ee5746cb6613" compoundref="de/d21/midicmn_8h" startline="559" endline="559">mutabor::CommonMidiOutput&lt; T, D &gt;::GetBendingRange</references>
-        <references refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" compoundref="de/d05/Device_8h" startline="726" endline="728">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::GetDeviceList</references>
-        <references refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" compoundref="de/d05/Device_8h" startline="726" endline="728">mutabor::CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;::GetDeviceList</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="338" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" bodystart="338" bodyend="477"/>
+        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="db/d16/debug_8h" startline="241">DEBUGLOG2</references>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa2b2fa6564c9620ec4de6c1440688c984" compoundref="de/d05/Device_8h" startline="93">mutabor::DTGis</references>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aac2de36afd6b7e88ff700b1055d365011" compoundref="de/d05/Device_8h" startline="93">mutabor::DTMidiFile</references>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa6fc00580b26fa48d6ac5d51fe78129e0" compoundref="de/d05/Device_8h" startline="93">mutabor::DTMidiPort</references>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa8a1a28093f24252200e7771c41880dae" compoundref="de/d05/Device_8h" startline="93">mutabor::DTNotSet</references>
+        <references refid="d5/dee/group__route_1gga84f84d78781fc500cd66ee58b0efc83aa896ab52de20803c767b4941638b0ce5c" compoundref="de/d05/Device_8h" startline="93">mutabor::DTUnknown</references>
+        <references refid="d5/dee/group__route_1ga6d853cde85216e56f3d74d20ff9556b2" compoundref="de/d05/Device_8h" startline="610" endline="612">mutabor::Device::get_routefile_id</references>
+        <references refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab2f6cee54c89bc6c52c1ee5746cb6613" compoundref="de/d21/midicmn_8h" startline="561" endline="561">mutabor::CommonMidiOutput&lt; T, D &gt;::GetBendingRange</references>
+        <references refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" compoundref="de/d05/Device_8h" startline="752" endline="754">mutabor::CommonTypedDeviceAPI&lt; OutputDeviceClass &gt;::GetDeviceList</references>
+        <references refid="d5/dee/group__route_1gace9fecda6356ed76c33f9fd7858275b7" compoundref="de/d05/Device_8h" startline="752" endline="754">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::GetDeviceList</references>
         <references refid="d5/dee/group__route_1ga515a0c5a4a5ea6a001feed50127364d7">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::InitializeIds</references>
-        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542aeb2ddcbaa727016dcb5229fc6dacc23f" compoundref="de/d0f/Box_8h" startline="113">mutabor::NoBox</references>
-        <references refid="d5/dee/group__route_1ga8d43e4a77d5dae69f317be216d9b021a" compoundref="d8/dfb/Route_8cpp" startline="49">mutabor::RTName</references>
-        <references refid="df/dd1/group__GUI_1ga06c750cbc293593a85009553cf6cfcc5" compoundref="d0/d68/mhDefs_8h" startline="140">STUB</references>
-        <references refid="df/dd1/group__GUI_1ga3af99897b60119951af8961dbd52dd3f" compoundref="d0/d68/mhDefs_8h" startline="146">UNREACHABLE</references>
-        <referencedby refid="dc/df2/group__GUIroute_1ga72bc8daeb27461bd51dda0a80baddae6" compoundref="dc/def/MutRouteWnd_8cpp" startline="524" endline="599">mutaborGUI::MutRouteWnd::CmRouteSave</referencedby>
+        <references refid="d5/dee/group__route_1gga2d0d16a891b0f8895c418e112b6ad542aeb2ddcbaa727016dcb5229fc6dacc23f" compoundref="de/d0f/Box_8h" startline="116">mutabor::NoBox</references>
+        <references refid="d5/dee/group__route_1gaaa9afdda6b592c8a47a229f1ccd9c8a0" compoundref="d8/dfb/Route_8cpp" startline="49">mutabor::RTName</references>
+        <references refid="d6/daa/namespacemutabor_1abae2a6ffddc4e68d7e52f67803cb091f" compoundref="d1/d73/Defs_8h" startline="110" endline="110">mutabor::str</references>
+        <references refid="de/db7/group__debug_1ga06c750cbc293593a85009553cf6cfcc5" compoundref="db/d16/debug_8h" startline="250">STUB</references>
+        <references refid="de/db7/group__debug_1ga3af99897b60119951af8961dbd52dd3f" compoundref="db/d16/debug_8h" startline="254">UNREACHABLE</references>
+        <referencedby refid="dc/df2/group__GUIroute_1ga72bc8daeb27461bd51dda0a80baddae6" compoundref="dc/def/MutRouteWnd_8cpp" startline="513" endline="588">mutaborGUI::MutRouteWnd::CmRouteSave</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="41" column="1"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.cpp" line="42" column="1"/>
   </compounddef>
 </doxygen>

@@ -3,6 +3,7 @@
   <compounddef id="d3/d0e/structMyCompileCallback" kind="struct" prot="public">
     <compoundname>MyCompileCallback</compoundname>
     <basecompoundref refid="d2/def/structmutabor_1_1BoxClass_1_1CompileCallback" prot="public" virt="non-virtual">mutabor::BoxClass::CompileCallback</basecompoundref>
+    <basecompoundref refid="d2/def/structmutabor_1_1BoxClass_1_1CompileCallback" prot="public" virt="non-virtual">mutabor::BoxClass::CompileCallback</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="d3/d0e/structMyCompileCallback_1af05e9248accaba1a6be8fc59bf46cbdb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -16,16 +17,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" line="73" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" bodystart="73" bodyend="73"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/DevMidFTest.cpp" line="48" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/DevMidFTest.cpp" bodystart="48" bodyend="48"/>
       </memberdef>
-      <memberdef kind="function" id="d3/d0e/structMyCompileCallback_1a685ebe81e20ad74477e77902b9878956" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="d3/d0e/structMyCompileCallback_1aea230535b454153347d25de8f6101835" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void MyCompileCallback::SetStatus</definition>
-        <argsstring>(mutString status)</argsstring>
+        <argsstring>(std::string status)</argsstring>
         <name>SetStatus</name>
-        <reimplements refid="d5/dee/group__route_1gaa8eac0fc32217334c0a62f70453429a1">SetStatus</reimplements>
+        <reimplements refid="d5/dee/group__route_1gac810cf0445a1b0580730f6f6c124f216">SetStatus</reimplements>
         <param>
-          <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <type>std::string</type>
           <declname>status</declname>
         </param>
         <briefdescription>
@@ -34,17 +35,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" line="74" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" bodystart="74" bodyend="76"/>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/DevMidFTest.cpp" line="49" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/DevMidFTest.cpp" bodystart="49" bodyend="51"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="db/d16/debug_8h" startline="240">DEBUGLOG</references>
       </memberdef>
-      <memberdef kind="function" id="d3/d0e/structMyCompileCallback_1a275bb20ef0875ef3c42e9d5ffd7228c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="d3/d0e/structMyCompileCallback_1a70a8d18ff339a7a9e5cea641fd5aa745" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void MyCompileCallback::SetMessage</definition>
-        <argsstring>(mutString status)</argsstring>
+        <argsstring>(std::string status)</argsstring>
         <name>SetMessage</name>
-        <reimplements refid="d5/dee/group__route_1gad008c418037d5072939e7863da9f66b9">SetMessage</reimplements>
+        <reimplements refid="d5/dee/group__route_1ga3e3cd8aa7cee49442d9fbad02f7fecd8">SetMessage</reimplements>
         <param>
-          <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <type>std::string</type>
           <declname>status</declname>
         </param>
         <briefdescription>
@@ -53,8 +54,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" line="77" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" bodystart="77" bodyend="79"/>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/DevMidFTest.cpp" line="52" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/DevMidFTest.cpp" bodystart="52" bodyend="54"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="db/d16/debug_8h" startline="240">DEBUGLOG</references>
       </memberdef>
       <memberdef kind="function" id="d3/d0e/structMyCompileCallback_1a1849590fb1d749c7f4f707db0cb146c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -92,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" line="80" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" bodystart="80" bodyend="85"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/DevMidFTest.cpp" line="55" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/DevMidFTest.cpp" bodystart="55" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="d3/d0e/structMyCompileCallback_1ad6b97257a079eb07c440b0f2bbd2fe35" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -110,7 +111,115 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" line="86" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" bodystart="86" bodyend="86"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/DevMidFTest.cpp" line="61" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/DevMidFTest.cpp" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d0e/structMyCompileCallback_1af05e9248accaba1a6be8fc59bf46cbdb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void MyCompileCallback::Refresh</definition>
+        <argsstring>()</argsstring>
+        <name>Refresh</name>
+        <reimplements refid="d5/dee/group__route_1ga4331ac23a6fc11b3a70bd95645b85e95">Refresh</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" line="66" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d0e/structMyCompileCallback_1aea230535b454153347d25de8f6101835" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void MyCompileCallback::SetStatus</definition>
+        <argsstring>(std::string status)</argsstring>
+        <name>SetStatus</name>
+        <reimplements refid="d5/dee/group__route_1gac810cf0445a1b0580730f6f6c124f216">SetStatus</reimplements>
+        <param>
+          <type>std::string</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" line="67" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" bodystart="67" bodyend="69"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="db/d16/debug_8h" startline="240">DEBUGLOG</references>
+      </memberdef>
+      <memberdef kind="function" id="d3/d0e/structMyCompileCallback_1a70a8d18ff339a7a9e5cea641fd5aa745" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void MyCompileCallback::SetMessage</definition>
+        <argsstring>(std::string status)</argsstring>
+        <name>SetMessage</name>
+        <reimplements refid="d5/dee/group__route_1ga3e3cd8aa7cee49442d9fbad02f7fecd8">SetMessage</reimplements>
+        <param>
+          <type>std::string</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" line="70" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" bodystart="70" bodyend="72"/>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="db/d16/debug_8h" startline="240">DEBUGLOG</references>
+      </memberdef>
+      <memberdef kind="function" id="d3/d0e/structMyCompileCallback_1a1849590fb1d749c7f4f707db0cb146c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void MyCompileCallback::SetStatus</definition>
+        <argsstring>(int logics, int tones, int tunings, int tone_systems, int intervals, int characters)</argsstring>
+        <name>SetStatus</name>
+        <reimplements refid="d5/dee/group__route_1gab9b18dda2fe135c6bf9e5bf810eac12a">SetStatus</reimplements>
+        <param>
+          <type>int</type>
+          <declname>logics</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tones</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tunings</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tone_systems</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>intervals</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>characters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" line="73" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" bodystart="73" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d0e/structMyCompileCallback_1ad6b97257a079eb07c440b0f2bbd2fe35" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void MyCompileCallback::SetLine</definition>
+        <argsstring>(int number)</argsstring>
+        <name>SetLine</name>
+        <reimplements refid="d5/dee/group__route_1gac20524bf504a3831df1dead1d4ae3c1c">SetLine</reimplements>
+        <param>
+          <type>int</type>
+          <declname>number</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" line="79" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" bodystart="79" bodyend="79"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -118,35 +227,44 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4123">
+      <node id="4931">
         <label>MyCompileCallback</label>
         <link refid="d3/d0e/structMyCompileCallback"/>
-        <childnode refid="4124" relation="public-inheritance">
+        <childnode refid="4932" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4932" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4124">
+      <node id="4932">
         <label>mutabor::BoxClass::CompileCallback</label>
         <link refid="d2/def/structmutabor_1_1BoxClass_1_1CompileCallback"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4125">
+      <node id="4933">
         <label>MyCompileCallback</label>
         <link refid="d3/d0e/structMyCompileCallback"/>
-        <childnode refid="4126" relation="public-inheritance">
+        <childnode refid="4934" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4934" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4126">
+      <node id="4934">
         <label>mutabor::BoxClass::CompileCallback</label>
         <link refid="d2/def/structmutabor_1_1BoxClass_1_1CompileCallback"/>
       </node>
     </collaborationgraph>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" line="72" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/BoxTest.cpp" bodystart="72" bodyend="87"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/DevMidFTest.cpp" line="47" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/tests/DevMidFTest.cpp" bodystart="47" bodyend="62"/>
     <listofallmembers>
       <member refid="d3/d0e/structMyCompileCallback_1af05e9248accaba1a6be8fc59bf46cbdb" prot="public" virt="virtual"><scope>MyCompileCallback</scope><name>Refresh</name></member>
+      <member refid="d3/d0e/structMyCompileCallback_1af05e9248accaba1a6be8fc59bf46cbdb" prot="public" virt="virtual"><scope>MyCompileCallback</scope><name>Refresh</name></member>
       <member refid="d3/d0e/structMyCompileCallback_1ad6b97257a079eb07c440b0f2bbd2fe35" prot="public" virt="virtual"><scope>MyCompileCallback</scope><name>SetLine</name></member>
-      <member refid="d3/d0e/structMyCompileCallback_1a275bb20ef0875ef3c42e9d5ffd7228c2" prot="public" virt="virtual"><scope>MyCompileCallback</scope><name>SetMessage</name></member>
-      <member refid="d3/d0e/structMyCompileCallback_1a685ebe81e20ad74477e77902b9878956" prot="public" virt="virtual"><scope>MyCompileCallback</scope><name>SetStatus</name></member>
+      <member refid="d3/d0e/structMyCompileCallback_1ad6b97257a079eb07c440b0f2bbd2fe35" prot="public" virt="virtual"><scope>MyCompileCallback</scope><name>SetLine</name></member>
+      <member refid="d3/d0e/structMyCompileCallback_1a70a8d18ff339a7a9e5cea641fd5aa745" prot="public" virt="virtual"><scope>MyCompileCallback</scope><name>SetMessage</name></member>
+      <member refid="d3/d0e/structMyCompileCallback_1a70a8d18ff339a7a9e5cea641fd5aa745" prot="public" virt="virtual"><scope>MyCompileCallback</scope><name>SetMessage</name></member>
+      <member refid="d3/d0e/structMyCompileCallback_1aea230535b454153347d25de8f6101835" prot="public" virt="virtual"><scope>MyCompileCallback</scope><name>SetStatus</name></member>
+      <member refid="d3/d0e/structMyCompileCallback_1a1849590fb1d749c7f4f707db0cb146c6" prot="public" virt="virtual"><scope>MyCompileCallback</scope><name>SetStatus</name></member>
+      <member refid="d3/d0e/structMyCompileCallback_1aea230535b454153347d25de8f6101835" prot="public" virt="virtual"><scope>MyCompileCallback</scope><name>SetStatus</name></member>
       <member refid="d3/d0e/structMyCompileCallback_1a1849590fb1d749c7f4f707db0cb146c6" prot="public" virt="virtual"><scope>MyCompileCallback</scope><name>SetStatus</name></member>
     </listofallmembers>
   </compounddef>

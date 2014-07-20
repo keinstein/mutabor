@@ -26,6 +26,12 @@
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Klassen</a> &#124;
+<a href="#namespaces">Namensbereiche</a> &#124;
+<a href="#define-members">Makrodefinitionen</a> &#124;
+<a href="#enum-members">Aufzählungen</a> &#124;
+<a href="#func-members">Funktionen</a>  </div>
   <div class="headertitle">
 <div class="title">boxTest.cpp-Dateireferenz</div>  </div>
 </div><!--header-->
@@ -33,6 +39,8 @@
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d1/d73/Defs_8h_source.html">src/kernel/Defs.h</a>&quot;</code><br/>
 <code>#include &lt;cppunit/extensions/HelperMacros.h&gt;</code><br/>
 <code>#include &lt;cppunit/portability/Stream.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="../../dc/d19/box_8h_source.html">src/kernel/box.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d6/d4e/mut_8hh_source.html">src/kernel/mut.hh</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../dc/d2f/boxTest_8h_source.html">src/kernel/tests/boxTest.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d1/d65/Route_8h_source.html">src/kernel/routing/Route.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d2/d2c/Route-inlines_8h_source.html">src/kernel/routing/Route-inlines.h</a>&quot;</code><br/>
@@ -41,19 +49,189 @@
 <code>#include &quot;<a class="el" href="../../d6/d68/TabGen_8h_source.html">src/kernel/TabGen.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d6/d0c/Parser_8h_source.html">src/kernel/Parser.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d2/d32/Hilfs_8h_source.html">src/kernel/Hilfs.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../dc/d19/box_8h_source.html">src/kernel/box.h</a>&quot;</code><br/>
-<code>#include &lt;iostream&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include-Abhängigkeitsdiagramm für boxTest.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../df/dc5/boxTest_8cpp__incl.png" border="0" usemap="#src_2kernel_2tests_2boxTest_8cpp" alt=""/></div>
 <map name="src_2kernel_2tests_2boxTest_8cpp" id="src_2kernel_2tests_2boxTest_8cpp">
-<area shape="rect" id="node3" href="../../d1/d73/Defs_8h.html" title="Common definitions. " alt="" coords="1669,705,1797,733"/><area shape="rect" id="node50" href="../../dc/d2f/boxTest_8h.html" title="src/kernel/tests/boxTest.h" alt="" coords="2165,83,2349,111"/><area shape="rect" id="node55" href="../../d1/d65/Route_8h.html" title="Routing. " alt="" coords="1383,441,1516,485"/><area shape="rect" id="node80" href="../../d2/d2c/Route-inlines_8h.html" title="src/kernel/routing\l/Route&#45;inlines.h" alt="" coords="1560,254,1693,298"/><area shape="rect" id="node110" href="../../de/d11/Execute_8h.html" title="Execute tuning changes. " alt="" coords="2584,534,2733,562"/><area shape="rect" id="node115" href="../../dc/d19/box_8h.html" title="Description: Collect all properties, which are used by boxes. " alt="" coords="2277,449,2400,477"/><area shape="rect" id="node134" href="../../d5/d84/Runtime_8h.html" title="Runtime functions of the (mainly C) old kernel of Mutabor. " alt="" coords="963,169,1115,197"/><area shape="rect" id="node152" href="../../d6/d68/TabGen_8h.html" title="Table generators for the Mutabor engine. " alt="" coords="5,83,152,111"/><area shape="rect" id="node155" href="../../d6/d0c/Parser_8h.html" title="src/kernel/Parser.h" alt="" coords="2016,355,2155,383"/><area shape="rect" id="node161" href="../../d2/d32/Hilfs_8h.html" title="Description. " alt="" coords="2608,355,2733,383"/><area shape="rect" id="node7" href="../../d0/d68/mhDefs_8h.html" title="src/wxGUI/generic/mhDefs.h" alt="" coords="1456,782,1656,810"/><area shape="rect" id="node41" href="../../d4/d64/libintl_8h.html" title="src/wxintl/libintl.h" alt="" coords="1917,782,2045,810"/><area shape="rect" id="node22" href="../../d9/d64/Mutabor_8rh.html" title="src/wxGUI/Mutabor.rh" alt="" coords="1821,859,1979,887"/><area shape="rect" id="node27" href="../../de/de1/mutDebug_8h.html" title="Main debugging functions. " alt="" coords="1595,859,1696,887"/><area shape="rect" id="node58" href="../../da/dfd/MidiKern_8h.html" title="src/kernel/MidiKern.h" alt="" coords="683,534,835,562"/><area shape="rect" id="node61" href="../../db/dbe/treestorage_8h.html" title="abstract class for tree like storage " alt="" coords="1877,534,2051,562"/><area shape="rect" id="node64" href="../../d1/da4/boost-interface_8h.html" title="Interface to the boost library. " alt="" coords="1339,534,1536,562"/><area shape="rect" id="node67" href="../../db/dd5/thread_8h.html" title="src/kernel/routing\l/thread.h" alt="" coords="1612,611,1745,655"/><area shape="rect" id="node84" href="../../de/d05/Device_8h.html" title="Routing. " alt="" coords="531,347,664,391"/><area shape="rect" id="node104" href="../../de/d0f/Box_8h.html" title="Mutabor Box for C++. " alt="" coords="1780,347,1913,391"/><area shape="rect" id="node87" href="../../dd/d4d/GIS_8h.html" title="Description. " alt="" coords="784,611,917,655"/><area shape="rect" id="node91" href="../../db/d41/timing_8h.html" title="src/kernel/routing\l/timing.h" alt="" coords="740,441,873,485"/><area shape="rect" id="node118" href="../../dd/d40/Global_8h.html" title="Global definitions (formerly in mutabor DLL) " alt="" coords="2404,619,2479,647"/><area shape="rect" id="node124" href="../../d2/dd8/Interpre_8h.html" title="Interpreter for the logic at runtime. " alt="" coords="2328,534,2411,562"/><area shape="rect" id="node137" href="../../d4/d7c/CompDlg_8h.html" title="Compilation dialog box. " alt="" coords="1768,262,1925,290"/></map>
+<area shape="rect" id="node3" href="../../d1/d73/Defs_8h.html" title="Common definitions. " alt="" coords="1251,721,1379,749"/><area shape="rect" id="node31" href="../../dc/d19/box_8h.html" title="Description: Collect all properties, which are used by boxes. " alt="" coords="797,371,920,399"/><area shape="rect" id="node57" href="../../de/d11/Execute_8h.html" title="Execute tuning changes. " alt="" coords="628,465,713,493"/><area shape="rect" id="node63" href="../../d6/d4e/mut_8hh.html" title="src/kernel/mut.hh" alt="" coords="433,91,567,119"/><area shape="rect" id="node65" href="../../dc/d2f/boxTest_8h.html" title="src/kernel/tests/boxTest.h" alt="" coords="692,91,876,119"/><area shape="rect" id="node70" href="../../d1/d65/Route_8h.html" title="Routing. " alt="" coords="1743,363,1876,407"/><area shape="rect" id="node107" href="../../d2/d2c/Route-inlines_8h.html" title="src/kernel/routing\l/Route&#45;inlines.h" alt="" coords="1408,177,1541,221"/><area shape="rect" id="node125" href="../../d5/d84/Runtime_8h.html" title="Runtime functions of the (mainly C) old kernel of Mutabor. " alt="" coords="520,185,672,213"/><area shape="rect" id="node150" href="../../d6/d68/TabGen_8h.html" title="Table generators for the Mutabor engine. " alt="" coords="64,371,211,399"/><area shape="rect" id="node153" href="../../d6/d0c/Parser_8h.html" title="src/kernel/Parser.h" alt="" coords="1048,278,1187,306"/><area shape="rect" id="node159" href="../../d2/d32/Hilfs_8h.html" title="Description. " alt="" coords="177,278,303,306"/><area shape="rect" id="node5" href="../../de/ddd/interface__deps_8h.html" title="interface_deps.h" alt="" coords="1251,798,1379,826"/><area shape="rect" id="node10" href="../../db/d16/debug_8h.html" title="src/kernel/debug.h" alt="" coords="1829,798,1968,826"/><area shape="rect" id="node13" href="../../d4/d64/libintl_8h.html" title="src/wxintl/libintl.h" alt="" coords="1732,875,1860,903"/><area shape="rect" id="node25" href="../../d4/dab/debugFlags_8h.html" title="Debug flags for mutabor debug mode. " alt="" coords="1935,875,2041,903"/><area shape="rect" id="node34" href="../../dd/d40/Global_8h.html" title="Global definitions (formerly in mutabor DLL) " alt="" coords="820,558,895,586"/><area shape="rect" id="node47" href="../../d2/dd8/Interpre_8h.html" title="Interpreter for the logic at runtime. " alt="" coords="995,465,1077,493"/><area shape="rect" id="node50" href="../../da/dfd/MidiKern_8h.html" title="MidiKern.h" alt="" coords="1232,643,1317,671"/><area shape="rect" id="node74" href="../../db/dbe/treestorage_8h.html" title="abstract class for tree like storage " alt="" coords="2195,465,2368,493"/><area shape="rect" id="node77" href="../../d1/da4/boost-interface_8h.html" title="Interface to the boost library. " alt="" coords="2229,643,2427,671"/><area shape="rect" id="node95" href="../../dd/d20/event_8h.html" title="src/kernel/routing\l/event.h" alt="" coords="1304,457,1437,501"/><area shape="rect" id="node98" href="../../de/d05/Device_8h.html" title="Routing. " alt="" coords="1392,550,1525,594"/><area shape="rect" id="node112" href="../../de/d0f/Box_8h.html" title="Mutabor Box for C++. " alt="" coords="2091,270,2224,314"/></map>
 </div>
 </div>
 <p><a href="../../d1/da7/boxTest_8cpp_source.html">gehe zum Quellcode dieser Datei</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Klassen</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d6c/unionmutabor_1_1hidden_1_1YYSTYPE.html">mutabor::hidden::YYSTYPE</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d4e/structmutabor_1_1hidden_1_1YYLTYPE.html">mutabor::hidden::YYLTYPE</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namensbereiche</h2></td></tr>
+<tr class="memitem:d6/daa/namespacemutabor"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html">mutabor</a></td></tr>
+<tr class="memdesc:d6/daa/namespacemutabor"><td class="mdescLeft">&#160;</td><td class="mdescRight">not for headers <br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:d6/dbb/namespacemutabor_1_1hidden"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html">mutabor::hidden</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Makrodefinitionen</h2></td></tr>
+<tr class="memitem:ga853b3bfad6d2b2ff693dce81182e0c2e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d7c/group__kernel.html#ga853b3bfad6d2b2ff693dce81182e0c2e">YYDEBUG</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ga853b3bfad6d2b2ff693dce81182e0c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Aufzählungen</h2></td></tr>
+<tr class="memitem:a25155c4f13625a44b75b562bff7b5a14"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14">mutabor::hidden::yytokentype</a> { <br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ac17af30512b077f19af42fe600733b85">mutabor::hidden::MUTABOR_TOKEN_IDENTIFIER</a> = 258, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a0feda9d42560389ed49546f1c7b7ca79">mutabor::hidden::MUTABOR_TOKEN_F_NUMBER</a> = 259, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a1089867a1dcad44d0942674490be8365">mutabor::hidden::MUTABOR_TOKEN_INTEGER</a> = 260, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a342fe9b599ffaf8bdd5faa077e087b3a">mutabor::hidden::MUTABOR_TOKEN_INTERVAL</a> = 261, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14aa7b8b5be9ab4edf3dbda32476f68208c">mutabor::hidden::MUTABOR_TOKEN_TONE</a> = 262, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ac3ffd48e045e375c34ce67277670eaf9">mutabor::hidden::MUTABOR_TOKEN_TONESYSTEM</a> = 263, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a47e5321980916b9892791e3df69a5ef1">mutabor::hidden::MUTABOR_TOKEN_RETUNING</a> = 264, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a09b3cea56c78a7f708e53936fad14e4f">mutabor::hidden::MUTABOR_TOKEN_HARMONY</a> = 265, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a8828a6d852bc63a9647803d8a22c6203">mutabor::hidden::MUTABOR_TOKEN_LOGIC</a> = 266, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ad1add606abaedf23f98d8a5412219715">mutabor::hidden::MUTABOR_TOKEN_MIDICHANNEL</a> = 267, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a985abb1d412cb7e844d8f6a0c51b200a">mutabor::hidden::MUTABOR_TOKEN_KEY</a> = 268, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a3d571b9a16636927e565e78c442f8f8a">mutabor::hidden::MUTABOR_TOKEN_FORM</a> = 269, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ae4acbc65b7b07ec1f6e8b9354b8cbdbc">mutabor::hidden::MUTABOR_TOKEN_ROOT</a> = 270, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14aec2c477a3d1d66ba83a9e5adedaaf6c1">mutabor::hidden::MUTABOR_TOKEN_MIDI_IN</a> = 271, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a89c0a76ea1ed4919db26ab8753167aa6">mutabor::hidden::MUTABOR_TOKEN_MIDI_OUT</a> = 272, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a946aa09502a61d88a3315f9b738dcfb5">mutabor::hidden::MUTABOR_TOKEN_HARMONY_ANALYSIS</a> = 273, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ae15b836224d7072d9f038f577fa95a17">mutabor::hidden::MUTABOR_TOKEN_CALLS</a> = 274, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a03081eca7a141b3487601ad735754a2f">mutabor::hidden::MUTABOR_TOKEN_ELSE</a> = 275, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a7630c19b1e5e7e47bb880080b5f4b333">mutabor::hidden::MUTABOR_TOKEN_PARAMETER</a> = 276, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a6cde6bcfa7cb0fe84a6c96541a5a4959">mutabor::hidden::MUTABOR_TOKEN_ANCHOR</a> = 277, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a73f895940981dc0ec2e74ab9f5af7bc4">mutabor::hidden::MUTABOR_TOKEN_DISTANCE</a> = 278, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a2ca5fa47e0ef64012f14ae0ef09b67cd">mutabor::hidden::MUTABOR_TOKEN_ENDOFFILE</a> = 279, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ae78a7199ddac8b99f1b63ccdc0126b44">mutabor::hidden::MUTABOR_TOKEN_ERROR</a> = 280, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14abf5200497f107cec99e6025473056418">mutabor::hidden::MUTABOR_TOKEN_SPACES</a> = 281, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a0862059912254019636138fa1eeeaff7">mutabor::hidden::MUTABOR_TOKEN_COMMENT</a> = 282, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a560a776b6f0a8709b4660a01fea0acca">mutabor::hidden::MUTABOR_TOKEN_COMMENT_START</a> = 283, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a2803d79c04ea253a191cf6042d208110">mutabor::hidden::MUTABOR_TOKEN_COMMENT_END</a> = 284, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a5f9d354c5897c3a9323b3f3f555f0ede">mutabor::hidden::MUTABOR_TOKEN_OTHER</a> = 285, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ac17af30512b077f19af42fe600733b85">mutabor::hidden::MUTABOR_TOKEN_IDENTIFIER</a> = 258, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a0feda9d42560389ed49546f1c7b7ca79">mutabor::hidden::MUTABOR_TOKEN_F_NUMBER</a> = 259, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a1089867a1dcad44d0942674490be8365">mutabor::hidden::MUTABOR_TOKEN_INTEGER</a> = 260, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a342fe9b599ffaf8bdd5faa077e087b3a">mutabor::hidden::MUTABOR_TOKEN_INTERVAL</a> = 261, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14aa7b8b5be9ab4edf3dbda32476f68208c">mutabor::hidden::MUTABOR_TOKEN_TONE</a> = 262, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ac3ffd48e045e375c34ce67277670eaf9">mutabor::hidden::MUTABOR_TOKEN_TONESYSTEM</a> = 263, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a47e5321980916b9892791e3df69a5ef1">mutabor::hidden::MUTABOR_TOKEN_RETUNING</a> = 264, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a09b3cea56c78a7f708e53936fad14e4f">mutabor::hidden::MUTABOR_TOKEN_HARMONY</a> = 265, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a8828a6d852bc63a9647803d8a22c6203">mutabor::hidden::MUTABOR_TOKEN_LOGIC</a> = 266, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ad1add606abaedf23f98d8a5412219715">mutabor::hidden::MUTABOR_TOKEN_MIDICHANNEL</a> = 267, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a985abb1d412cb7e844d8f6a0c51b200a">mutabor::hidden::MUTABOR_TOKEN_KEY</a> = 268, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a3d571b9a16636927e565e78c442f8f8a">mutabor::hidden::MUTABOR_TOKEN_FORM</a> = 269, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ae4acbc65b7b07ec1f6e8b9354b8cbdbc">mutabor::hidden::MUTABOR_TOKEN_ROOT</a> = 270, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14aec2c477a3d1d66ba83a9e5adedaaf6c1">mutabor::hidden::MUTABOR_TOKEN_MIDI_IN</a> = 271, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a89c0a76ea1ed4919db26ab8753167aa6">mutabor::hidden::MUTABOR_TOKEN_MIDI_OUT</a> = 272, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a946aa09502a61d88a3315f9b738dcfb5">mutabor::hidden::MUTABOR_TOKEN_HARMONY_ANALYSIS</a> = 273, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ae15b836224d7072d9f038f577fa95a17">mutabor::hidden::MUTABOR_TOKEN_CALLS</a> = 274, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a03081eca7a141b3487601ad735754a2f">mutabor::hidden::MUTABOR_TOKEN_ELSE</a> = 275, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a7630c19b1e5e7e47bb880080b5f4b333">mutabor::hidden::MUTABOR_TOKEN_PARAMETER</a> = 276, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a6cde6bcfa7cb0fe84a6c96541a5a4959">mutabor::hidden::MUTABOR_TOKEN_ANCHOR</a> = 277, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a73f895940981dc0ec2e74ab9f5af7bc4">mutabor::hidden::MUTABOR_TOKEN_DISTANCE</a> = 278, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a2ca5fa47e0ef64012f14ae0ef09b67cd">mutabor::hidden::MUTABOR_TOKEN_ENDOFFILE</a> = 279, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ae78a7199ddac8b99f1b63ccdc0126b44">mutabor::hidden::MUTABOR_TOKEN_ERROR</a> = 280, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14abf5200497f107cec99e6025473056418">mutabor::hidden::MUTABOR_TOKEN_SPACES</a> = 281, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a0862059912254019636138fa1eeeaff7">mutabor::hidden::MUTABOR_TOKEN_COMMENT</a> = 282, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a560a776b6f0a8709b4660a01fea0acca">mutabor::hidden::MUTABOR_TOKEN_COMMENT_START</a> = 283, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a2803d79c04ea253a191cf6042d208110">mutabor::hidden::MUTABOR_TOKEN_COMMENT_END</a> = 284, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a5f9d354c5897c3a9323b3f3f555f0ede">mutabor::hidden::MUTABOR_TOKEN_OTHER</a> = 285, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ac17af30512b077f19af42fe600733b85">mutabor::hidden::MUTABOR_TOKEN_IDENTIFIER</a> = 258, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a0feda9d42560389ed49546f1c7b7ca79">mutabor::hidden::MUTABOR_TOKEN_F_NUMBER</a> = 259, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a1089867a1dcad44d0942674490be8365">mutabor::hidden::MUTABOR_TOKEN_INTEGER</a> = 260, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a342fe9b599ffaf8bdd5faa077e087b3a">mutabor::hidden::MUTABOR_TOKEN_INTERVAL</a> = 261, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14aa7b8b5be9ab4edf3dbda32476f68208c">mutabor::hidden::MUTABOR_TOKEN_TONE</a> = 262, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ac3ffd48e045e375c34ce67277670eaf9">mutabor::hidden::MUTABOR_TOKEN_TONESYSTEM</a> = 263, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a47e5321980916b9892791e3df69a5ef1">mutabor::hidden::MUTABOR_TOKEN_RETUNING</a> = 264, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a09b3cea56c78a7f708e53936fad14e4f">mutabor::hidden::MUTABOR_TOKEN_HARMONY</a> = 265, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a8828a6d852bc63a9647803d8a22c6203">mutabor::hidden::MUTABOR_TOKEN_LOGIC</a> = 266, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ad1add606abaedf23f98d8a5412219715">mutabor::hidden::MUTABOR_TOKEN_MIDICHANNEL</a> = 267, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a985abb1d412cb7e844d8f6a0c51b200a">mutabor::hidden::MUTABOR_TOKEN_KEY</a> = 268, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a3d571b9a16636927e565e78c442f8f8a">mutabor::hidden::MUTABOR_TOKEN_FORM</a> = 269, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ae4acbc65b7b07ec1f6e8b9354b8cbdbc">mutabor::hidden::MUTABOR_TOKEN_ROOT</a> = 270, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14aec2c477a3d1d66ba83a9e5adedaaf6c1">mutabor::hidden::MUTABOR_TOKEN_MIDI_IN</a> = 271, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a89c0a76ea1ed4919db26ab8753167aa6">mutabor::hidden::MUTABOR_TOKEN_MIDI_OUT</a> = 272, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a946aa09502a61d88a3315f9b738dcfb5">mutabor::hidden::MUTABOR_TOKEN_HARMONY_ANALYSIS</a> = 273, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ae15b836224d7072d9f038f577fa95a17">mutabor::hidden::MUTABOR_TOKEN_CALLS</a> = 274, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a03081eca7a141b3487601ad735754a2f">mutabor::hidden::MUTABOR_TOKEN_ELSE</a> = 275, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a7630c19b1e5e7e47bb880080b5f4b333">mutabor::hidden::MUTABOR_TOKEN_PARAMETER</a> = 276, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a6cde6bcfa7cb0fe84a6c96541a5a4959">mutabor::hidden::MUTABOR_TOKEN_ANCHOR</a> = 277, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a73f895940981dc0ec2e74ab9f5af7bc4">mutabor::hidden::MUTABOR_TOKEN_DISTANCE</a> = 278, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a2ca5fa47e0ef64012f14ae0ef09b67cd">mutabor::hidden::MUTABOR_TOKEN_ENDOFFILE</a> = 279, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ae78a7199ddac8b99f1b63ccdc0126b44">mutabor::hidden::MUTABOR_TOKEN_ERROR</a> = 280, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14abf5200497f107cec99e6025473056418">mutabor::hidden::MUTABOR_TOKEN_SPACES</a> = 281, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a0862059912254019636138fa1eeeaff7">mutabor::hidden::MUTABOR_TOKEN_COMMENT</a> = 282, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a560a776b6f0a8709b4660a01fea0acca">mutabor::hidden::MUTABOR_TOKEN_COMMENT_START</a> = 283, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a2803d79c04ea253a191cf6042d208110">mutabor::hidden::MUTABOR_TOKEN_COMMENT_END</a> = 284, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a5f9d354c5897c3a9323b3f3f555f0ede">mutabor::hidden::MUTABOR_TOKEN_OTHER</a> = 285, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ac17af30512b077f19af42fe600733b85">mutabor::hidden::MUTABOR_TOKEN_IDENTIFIER</a> = 258, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a0feda9d42560389ed49546f1c7b7ca79">mutabor::hidden::MUTABOR_TOKEN_F_NUMBER</a> = 259, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a1089867a1dcad44d0942674490be8365">mutabor::hidden::MUTABOR_TOKEN_INTEGER</a> = 260, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a342fe9b599ffaf8bdd5faa077e087b3a">mutabor::hidden::MUTABOR_TOKEN_INTERVAL</a> = 261, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14aa7b8b5be9ab4edf3dbda32476f68208c">mutabor::hidden::MUTABOR_TOKEN_TONE</a> = 262, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ac3ffd48e045e375c34ce67277670eaf9">mutabor::hidden::MUTABOR_TOKEN_TONESYSTEM</a> = 263, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a47e5321980916b9892791e3df69a5ef1">mutabor::hidden::MUTABOR_TOKEN_RETUNING</a> = 264, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a09b3cea56c78a7f708e53936fad14e4f">mutabor::hidden::MUTABOR_TOKEN_HARMONY</a> = 265, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a8828a6d852bc63a9647803d8a22c6203">mutabor::hidden::MUTABOR_TOKEN_LOGIC</a> = 266, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ad1add606abaedf23f98d8a5412219715">mutabor::hidden::MUTABOR_TOKEN_MIDICHANNEL</a> = 267, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a985abb1d412cb7e844d8f6a0c51b200a">mutabor::hidden::MUTABOR_TOKEN_KEY</a> = 268, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a3d571b9a16636927e565e78c442f8f8a">mutabor::hidden::MUTABOR_TOKEN_FORM</a> = 269, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ae4acbc65b7b07ec1f6e8b9354b8cbdbc">mutabor::hidden::MUTABOR_TOKEN_ROOT</a> = 270, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14aec2c477a3d1d66ba83a9e5adedaaf6c1">mutabor::hidden::MUTABOR_TOKEN_MIDI_IN</a> = 271, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a89c0a76ea1ed4919db26ab8753167aa6">mutabor::hidden::MUTABOR_TOKEN_MIDI_OUT</a> = 272, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a946aa09502a61d88a3315f9b738dcfb5">mutabor::hidden::MUTABOR_TOKEN_HARMONY_ANALYSIS</a> = 273, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ae15b836224d7072d9f038f577fa95a17">mutabor::hidden::MUTABOR_TOKEN_CALLS</a> = 274, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a03081eca7a141b3487601ad735754a2f">mutabor::hidden::MUTABOR_TOKEN_ELSE</a> = 275, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a7630c19b1e5e7e47bb880080b5f4b333">mutabor::hidden::MUTABOR_TOKEN_PARAMETER</a> = 276, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a6cde6bcfa7cb0fe84a6c96541a5a4959">mutabor::hidden::MUTABOR_TOKEN_ANCHOR</a> = 277, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a73f895940981dc0ec2e74ab9f5af7bc4">mutabor::hidden::MUTABOR_TOKEN_DISTANCE</a> = 278, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a2ca5fa47e0ef64012f14ae0ef09b67cd">mutabor::hidden::MUTABOR_TOKEN_ENDOFFILE</a> = 279, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14ae78a7199ddac8b99f1b63ccdc0126b44">mutabor::hidden::MUTABOR_TOKEN_ERROR</a> = 280, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14abf5200497f107cec99e6025473056418">mutabor::hidden::MUTABOR_TOKEN_SPACES</a> = 281, 
+<br/>
+&#160;&#160;<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a0862059912254019636138fa1eeeaff7">mutabor::hidden::MUTABOR_TOKEN_COMMENT</a> = 282, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a560a776b6f0a8709b4660a01fea0acca">mutabor::hidden::MUTABOR_TOKEN_COMMENT_START</a> = 283, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a2803d79c04ea253a191cf6042d208110">mutabor::hidden::MUTABOR_TOKEN_COMMENT_END</a> = 284, 
+<a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a25155c4f13625a44b75b562bff7b5a14a5f9d354c5897c3a9323b3f3f555f0ede">mutabor::hidden::MUTABOR_TOKEN_OTHER</a> = 285
+<br/>
+ }</td></tr>
+<tr class="separator:a25155c4f13625a44b75b562bff7b5a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:adba78ecb3b78bc8ca619f97f0e9eedb2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dbb/namespacemutabor_1_1hidden.html#adba78ecb3b78bc8ca619f97f0e9eedb2">mutabor::hidden::yyparse</a> (mutabor_box_type *box)</td></tr>
+<tr class="separator:adba78ecb3b78bc8ca619f97f0e9eedb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Son Feb 9 2014 18:39:18 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Apr 26 2014 12:58:28 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

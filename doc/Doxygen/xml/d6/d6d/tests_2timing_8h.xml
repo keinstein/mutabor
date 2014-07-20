@@ -5,227 +5,139 @@
     <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
     <includes refid="db/d41/timing_8h" local="yes">src/kernel/routing/timing.h</includes>
     <includes local="no">cstdlib</includes>
-    <includedby refid="d1/de6/kernel_2routing_2tests_2main_8cpp" local="yes">src/kernel/routing/tests/main.cpp</includedby>
     <incdepgraph>
-      <node id="24794">
-        <label>list</label>
-      </node>
-      <node id="24787">
-        <label>stdarg.h</label>
-      </node>
-      <node id="24812">
-        <label>src/kernel/routing/timing.h</label>
-        <link refid="db/d41/timing_8h"/>
-        <childnode refid="24786" relation="include">
-        </childnode>
-        <childnode refid="24813" relation="include">
-        </childnode>
-        <childnode refid="24814" relation="include">
-        </childnode>
-        <childnode refid="24815" relation="include">
-        </childnode>
-        <childnode refid="24816" relation="include">
-        </childnode>
-        <childnode refid="24817" relation="include">
-        </childnode>
-        <childnode refid="24818" relation="include">
-        </childnode>
-        <childnode refid="24819" relation="include">
-        </childnode>
-      </node>
-      <node id="24814">
+      <node id="23853">
         <label>limits</label>
       </node>
-      <node id="24802">
-        <label>wx/cmdline.h</label>
-      </node>
-      <node id="24790">
-        <label>wx/stdpaths.h</label>
-      </node>
-      <node id="24786">
-        <label>src/kernel/Defs.h</label>
-        <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="24787" relation="include">
-        </childnode>
-        <childnode refid="24788" relation="include">
-        </childnode>
-        <childnode refid="24807" relation="include">
-        </childnode>
-        <childnode refid="24808" relation="include">
-        </childnode>
-        <childnode refid="24801" relation="include">
-        </childnode>
-        <childnode refid="24809" relation="include">
-        </childnode>
-        <childnode refid="24810" relation="include">
-        </childnode>
-      </node>
-      <node id="24801">
+      <node id="23848">
         <label>stdint.h</label>
       </node>
-      <node id="24807">
-        <label>wx/wxchar.h</label>
-      </node>
-      <node id="24796">
-        <label>wx/image.h</label>
-      </node>
-      <node id="24785">
-        <label>src/kernel/routing/tests/timing.h</label>
-        <link refid="tests/timing.h"/>
-        <childnode refid="24786" relation="include">
-        </childnode>
-        <childnode refid="24812" relation="include">
-        </childnode>
-        <childnode refid="24820" relation="include">
+      <node id="23841">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="23840" relation="include">
         </childnode>
       </node>
-      <node id="24816">
+      <node id="23847">
+        <label>boost/format.hpp</label>
+      </node>
+      <node id="23855">
         <label>stdexcept</label>
       </node>
-      <node id="24817">
+      <node id="23856">
         <label>boost/throw_exception.hpp</label>
       </node>
-      <node id="24811">
+      <node id="23845">
         <label>string</label>
       </node>
-      <node id="24815">
+      <node id="23850">
+        <label>src/kernel/routing/timing.h</label>
+        <link refid="db/d41/timing_8h"/>
+        <childnode refid="23840" relation="include">
+        </childnode>
+        <childnode refid="23851" relation="include">
+        </childnode>
+        <childnode refid="23853" relation="include">
+        </childnode>
+        <childnode refid="23854" relation="include">
+        </childnode>
+        <childnode refid="23855" relation="include">
+        </childnode>
+        <childnode refid="23856" relation="include">
+        </childnode>
+        <childnode refid="23857" relation="include">
+        </childnode>
+        <childnode refid="23858" relation="include">
+        </childnode>
+      </node>
+      <node id="23854">
         <label>exception</label>
       </node>
-      <node id="24806">
-        <label>mutDebugFlags.h</label>
-        <link refid="d7/d49/mutDebugFlags_8h"/>
-      </node>
-      <node id="24789">
-        <label>wx/window.h</label>
-      </node>
-      <node id="24808">
-        <label>wx/intl.h</label>
-      </node>
-      <node id="24795">
-        <label>src/wxGUI/Mutabor.rh</label>
-        <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="24786" relation="include">
-        </childnode>
-      </node>
-      <node id="24791">
-        <label>wx/filename.h</label>
-      </node>
-      <node id="24813">
+      <node id="23851">
         <label>src/kernel/MidiKern.h</label>
         <link refid="da/dfd/MidiKern_8h"/>
-        <childnode refid="24786" relation="include">
+        <childnode refid="23840" relation="include">
+        </childnode>
+        <childnode refid="23852" relation="include">
         </childnode>
       </node>
-      <node id="24793">
-        <label>typeinfo</label>
-      </node>
-      <node id="24804">
-        <label>wx/debug.h</label>
-      </node>
-      <node id="24799">
-        <label>cstdio</label>
-      </node>
-      <node id="24798">
-        <label>bitset</label>
-      </node>
-      <node id="24788">
-        <label>src/wxGUI/generic/mhDefs.h</label>
-        <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="24786" relation="include">
-        </childnode>
-        <childnode refid="24789" relation="include">
-        </childnode>
-        <childnode refid="24790" relation="include">
-        </childnode>
-        <childnode refid="24791" relation="include">
-        </childnode>
-        <childnode refid="24792" relation="include">
-        </childnode>
-        <childnode refid="24793" relation="include">
-        </childnode>
-        <childnode refid="24794" relation="include">
-        </childnode>
-        <childnode refid="24795" relation="include">
-        </childnode>
-        <childnode refid="24796" relation="include">
-        </childnode>
-        <childnode refid="24797" relation="include">
-        </childnode>
-      </node>
-      <node id="24800">
-        <label>vector</label>
-      </node>
-      <node id="24797">
-        <label>mutDebug.h</label>
-        <link refid="de/de1/mutDebug_8h"/>
-        <childnode refid="24798" relation="include">
-        </childnode>
-        <childnode refid="24792" relation="include">
-        </childnode>
-        <childnode refid="24799" relation="include">
-        </childnode>
-        <childnode refid="24800" relation="include">
-        </childnode>
-        <childnode refid="24801" relation="include">
-        </childnode>
-        <childnode refid="24802" relation="include">
-        </childnode>
-        <childnode refid="24803" relation="include">
-        </childnode>
-        <childnode refid="24804" relation="include">
-        </childnode>
-        <childnode refid="24805" relation="include">
-        </childnode>
-        <childnode refid="24806" relation="include">
-        </childnode>
-      </node>
-      <node id="24810">
-        <label>src/wxintl/libintl.h</label>
-        <link refid="d4/d64/libintl_8h"/>
-        <childnode refid="24786" relation="include">
-        </childnode>
-        <childnode refid="24811" relation="include">
-        </childnode>
-      </node>
-      <node id="24803">
-        <label>wx/string.h</label>
-      </node>
-      <node id="24820">
-        <label>cstdlib</label>
-      </node>
-      <node id="24792">
-        <label>iostream</label>
-      </node>
-      <node id="24805">
-        <label>wx/thread.h</label>
-      </node>
-      <node id="24819">
-        <label>thread.h</label>
-        <link refid="db/dd5/thread_8h"/>
-        <childnode refid="24786" relation="include">
-        </childnode>
-        <childnode refid="24805" relation="include">
-        </childnode>
-      </node>
-      <node id="24809">
-        <label>wx/setup.h</label>
-      </node>
-      <node id="24818">
-        <label>wx/stopwatch.h</label>
-      </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="24822">
-        <label>src/kernel/routing/tests/main.cpp</label>
-        <link refid="d1/de6/kernel_2routing_2tests_2main_8cpp"/>
-      </node>
-      <node id="24821">
+      <node id="23839">
         <label>src/kernel/routing/tests/timing.h</label>
         <link refid="tests/timing.h"/>
-        <childnode refid="24822" relation="include">
+        <childnode refid="23840" relation="include">
+        </childnode>
+        <childnode refid="23850" relation="include">
+        </childnode>
+        <childnode refid="23860" relation="include">
         </childnode>
       </node>
-    </invincdepgraph>
+      <node id="23840">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="23841" relation="include">
+        </childnode>
+        <childnode refid="23842" relation="include">
+        </childnode>
+        <childnode refid="23843" relation="include">
+        </childnode>
+      </node>
+      <node id="23846">
+        <label>cstdio</label>
+      </node>
+      <node id="23858">
+        <label>thread.h</label>
+        <link refid="db/dd5/thread_8h"/>
+        <childnode refid="23840" relation="include">
+        </childnode>
+        <childnode refid="23859" relation="include">
+        </childnode>
+      </node>
+      <node id="23843">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="23840" relation="include">
+        </childnode>
+        <childnode refid="23844" relation="include">
+        </childnode>
+        <childnode refid="23845" relation="include">
+        </childnode>
+        <childnode refid="23846" relation="include">
+        </childnode>
+        <childnode refid="23847" relation="include">
+        </childnode>
+        <childnode refid="23848" relation="include">
+        </childnode>
+        <childnode refid="23849" relation="include">
+        </childnode>
+      </node>
+      <node id="23844">
+        <label>src/wxintl/libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="23840" relation="include">
+        </childnode>
+        <childnode refid="23845" relation="include">
+        </childnode>
+      </node>
+      <node id="23852">
+        <label>math.h</label>
+      </node>
+      <node id="23860">
+        <label>cstdlib</label>
+      </node>
+      <node id="23842">
+        <label>cstddef</label>
+      </node>
+      <node id="23859">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="23857">
+        <label>wx/stopwatch.h</label>
+      </node>
+      <node id="23849">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
+      </node>
+    </incdepgraph>
     <innerclass refid="db/d40/classTimingParamsTest" prot="public">TimingParamsTest</innerclass>
     <briefdescription>
     </briefdescription>
@@ -429,6 +341,6 @@
 <codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="229"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/timing.h"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/tests/timing.h"/>
   </compounddef>
 </doxygen>

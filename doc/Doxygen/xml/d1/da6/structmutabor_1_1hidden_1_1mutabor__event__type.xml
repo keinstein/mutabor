@@ -1,0 +1,792 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type" kind="struct" prot="public">
+    <compoundname>mutabor::hidden::mutabor_event_type</compoundname>
+    <derivedcompoundref refid="d7/d83/classmutabor_1_1event__class" prot="protected" virt="non-virtual">mutabor::event_class</derivedcompoundref>
+    <includes refid="dd/d20/event_8h" local="no">event.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a18bfa1517c4ed28420828266fd7a730f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="56" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="56" bodyend="-1"/>
+        <referencedby refid="d2/d17/classmutabor_1_1channel__select__event_1afb7c412b22cb930fcaf1c71e60a56b62" compoundref="dd/d20/event_8h" startline="346" endline="352">mutabor::channel_select_event::channel_select_event</referencedby>
+        <referencedby refid="de/d04/classmutabor_1_1controller__event_1a385fe9e5ffc5ef3c2b09967b6c48e88a" compoundref="dd/d20/event_8h" startline="166" endline="176">mutabor::controller_event::controller_event</referencedby>
+        <referencedby refid="d7/d83/classmutabor_1_1event__class_1a15deb48f970d0ae2d41ae045104146bb" compoundref="dd/d20/event_8h" startline="121" endline="121">mutabor::event_class::event_class</referencedby>
+        <referencedby refid="d5/dd0/classmutabor_1_1generic__text__event_1a80fb97a4b53fd0c69fa7f87b83ee377c" compoundref="dd/d20/event_8h" startline="315" endline="328">mutabor::generic_text_event&lt; t &gt;::generic_text_event</referencedby>
+        <referencedby refid="d7/d83/classmutabor_1_1event__class_1a1bdebd61d2e6a9b6c0bd4f982639b335" compoundref="dd/d20/event_8h" startline="123" endline="123">mutabor::event_class::get_type</referencedby>
+        <referencedby refid="d9/d3a/classmutabor_1_1key__pressure__event_1a244dfb85367ae45fcf10bca90e5bc927" compoundref="dd/d20/event_8h" startline="147" endline="157">mutabor::key_pressure_event::key_pressure_event</referencedby>
+        <referencedby refid="d8/d56/classmutabor_1_1key__signature__event_1a07b0f87fd63e7543b1bbb89cf625c8d7" compoundref="dd/d20/event_8h" startline="419" endline="428">mutabor::key_signature_event::key_signature_event</referencedby>
+        <referencedby refid="da/d41/classmutabor_1_1meta__event_1a1a075ae35c22529f327e868fb145dd33" compoundref="dd/d20/event_8h" startline="282" endline="289">mutabor::meta_event::meta_event</referencedby>
+        <referencedby refid="d5/d7c/classmutabor_1_1quarter__frame__event_1a4c3d53846e62bce27ba2efa135d7db34" compoundref="dd/d20/event_8h" startline="185" endline="194">mutabor::quarter_frame_event::quarter_frame_event</referencedby>
+        <referencedby refid="d5/dec/classmutabor_1_1sequence__number__event_1a7a82c71eea8a1987dfcbb83dd4600544" compoundref="dd/d20/event_8h" startline="302" endline="308">mutabor::sequence_number_event::sequence_number_event</referencedby>
+        <referencedby refid="d6/d24/classmutabor_1_1sequencer__specific__meta__event_1aba602165fb01e23ce08db9a308aba1df" compoundref="dd/d20/event_8h" startline="435" endline="442">mutabor::sequencer_specific_meta_event::sequencer_specific_meta_event</referencedby>
+        <referencedby refid="db/d87/classmutabor_1_1set__tempo__event_1aa93ff53e949fb3143d373ccf23fc11fc" compoundref="dd/d20/event_8h" startline="359" endline="365">mutabor::set_tempo_event::set_tempo_event</referencedby>
+        <referencedby refid="db/db8/classmutabor_1_1smpte__event_1a60f509d649aaad93f105bad410365248" compoundref="dd/d20/event_8h" startline="372" endline="387">mutabor::smpte_event::smpte_event</referencedby>
+        <referencedby refid="d5/de3/classmutabor_1_1song__position__event_1a35c6a1583287e86f4b1562dd87d622e2" compoundref="dd/d20/event_8h" startline="203" endline="210">mutabor::song_position_event::song_position_event</referencedby>
+        <referencedby refid="d9/d79/classmutabor_1_1song__select__event_1a215a6cba28ea2b13f20244c1078e89a2" compoundref="dd/d20/event_8h" startline="216" endline="223">mutabor::song_select_event::song_select_event</referencedby>
+        <referencedby refid="d5/dab/classmutabor_1_1sysex__event_1a8f87b2da05222f781d73b129637206dd" compoundref="dd/d20/event_8h" startline="255" endline="260">mutabor::sysex_event::sysex_event</referencedby>
+        <referencedby refid="d1/db9/classmutabor_1_1system__byte__event_1a4d73b57d64160e1e0c7c52ac2242a349" compoundref="dd/d20/event_8h" startline="231" endline="236">mutabor::system_byte_event&lt; t &gt;::system_byte_event</referencedby>
+        <referencedby refid="de/de4/classmutabor_1_1time__signature__event_1a3643300f16e5998590ddff15c359fa01" compoundref="dd/d20/event_8h" startline="397" endline="410">mutabor::time_signature_event::time_signature_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a54256bb9d86e721fabaabe780c55aeab" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t mutabor::hidden::mutabor_event_type::route_channel</definition>
+        <argsstring></argsstring>
+        <name>route_channel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="57" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="57" bodyend="-1"/>
+        <referencedby refid="d2/d17/classmutabor_1_1channel__select__event_1afb7c412b22cb930fcaf1c71e60a56b62" compoundref="dd/d20/event_8h" startline="346" endline="352">mutabor::channel_select_event::channel_select_event</referencedby>
+        <referencedby refid="de/d04/classmutabor_1_1controller__event_1a385fe9e5ffc5ef3c2b09967b6c48e88a" compoundref="dd/d20/event_8h" startline="166" endline="176">mutabor::controller_event::controller_event</referencedby>
+        <referencedby refid="d5/dd0/classmutabor_1_1generic__text__event_1a80fb97a4b53fd0c69fa7f87b83ee377c" compoundref="dd/d20/event_8h" startline="315" endline="328">mutabor::generic_text_event&lt; t &gt;::generic_text_event</referencedby>
+        <referencedby refid="d7/d83/classmutabor_1_1event__class_1a0f39edffa6062eefb56b35bfde4bebca" compoundref="dd/d20/event_8h" startline="137" endline="139">mutabor::event_class::get_route_channel</referencedby>
+        <referencedby refid="d9/d3a/classmutabor_1_1key__pressure__event_1a244dfb85367ae45fcf10bca90e5bc927" compoundref="dd/d20/event_8h" startline="147" endline="157">mutabor::key_pressure_event::key_pressure_event</referencedby>
+        <referencedby refid="d8/d56/classmutabor_1_1key__signature__event_1a07b0f87fd63e7543b1bbb89cf625c8d7" compoundref="dd/d20/event_8h" startline="419" endline="428">mutabor::key_signature_event::key_signature_event</referencedby>
+        <referencedby refid="da/d41/classmutabor_1_1meta__event_1a1a075ae35c22529f327e868fb145dd33" compoundref="dd/d20/event_8h" startline="282" endline="289">mutabor::meta_event::meta_event</referencedby>
+        <referencedby refid="d5/d7c/classmutabor_1_1quarter__frame__event_1a4c3d53846e62bce27ba2efa135d7db34" compoundref="dd/d20/event_8h" startline="185" endline="194">mutabor::quarter_frame_event::quarter_frame_event</referencedby>
+        <referencedby refid="d5/dec/classmutabor_1_1sequence__number__event_1a7a82c71eea8a1987dfcbb83dd4600544" compoundref="dd/d20/event_8h" startline="302" endline="308">mutabor::sequence_number_event::sequence_number_event</referencedby>
+        <referencedby refid="d6/d24/classmutabor_1_1sequencer__specific__meta__event_1aba602165fb01e23ce08db9a308aba1df" compoundref="dd/d20/event_8h" startline="435" endline="442">mutabor::sequencer_specific_meta_event::sequencer_specific_meta_event</referencedby>
+        <referencedby refid="d7/d83/classmutabor_1_1event__class_1a08fca57054a54ce8bf774fb6f5a40fb9" compoundref="dd/d20/event_8h" startline="129" endline="131">mutabor::event_class::set_route</referencedby>
+        <referencedby refid="db/d87/classmutabor_1_1set__tempo__event_1aa93ff53e949fb3143d373ccf23fc11fc" compoundref="dd/d20/event_8h" startline="359" endline="365">mutabor::set_tempo_event::set_tempo_event</referencedby>
+        <referencedby refid="db/db8/classmutabor_1_1smpte__event_1a60f509d649aaad93f105bad410365248" compoundref="dd/d20/event_8h" startline="372" endline="387">mutabor::smpte_event::smpte_event</referencedby>
+        <referencedby refid="d5/de3/classmutabor_1_1song__position__event_1a35c6a1583287e86f4b1562dd87d622e2" compoundref="dd/d20/event_8h" startline="203" endline="210">mutabor::song_position_event::song_position_event</referencedby>
+        <referencedby refid="d9/d79/classmutabor_1_1song__select__event_1a215a6cba28ea2b13f20244c1078e89a2" compoundref="dd/d20/event_8h" startline="216" endline="223">mutabor::song_select_event::song_select_event</referencedby>
+        <referencedby refid="d5/dab/classmutabor_1_1sysex__event_1a8f87b2da05222f781d73b129637206dd" compoundref="dd/d20/event_8h" startline="255" endline="260">mutabor::sysex_event::sysex_event</referencedby>
+        <referencedby refid="d1/db9/classmutabor_1_1system__byte__event_1a4d73b57d64160e1e0c7c52ac2242a349" compoundref="dd/d20/event_8h" startline="231" endline="236">mutabor::system_byte_event&lt; t &gt;::system_byte_event</referencedby>
+        <referencedby refid="de/de4/classmutabor_1_1time__signature__event_1a3643300f16e5998590ddff15c359fa01" compoundref="dd/d20/event_8h" startline="397" endline="410">mutabor::time_signature_event::time_signature_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ac1daf05e883c2e4042a9868a1a8957fe" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::input_channel</definition>
+        <argsstring></argsstring>
+        <name>input_channel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="58" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="58" bodyend="-1"/>
+        <referencedby refid="d2/d17/classmutabor_1_1channel__select__event_1afb7c412b22cb930fcaf1c71e60a56b62" compoundref="dd/d20/event_8h" startline="346" endline="352">mutabor::channel_select_event::channel_select_event</referencedby>
+        <referencedby refid="de/d04/classmutabor_1_1controller__event_1a385fe9e5ffc5ef3c2b09967b6c48e88a" compoundref="dd/d20/event_8h" startline="166" endline="176">mutabor::controller_event::controller_event</referencedby>
+        <referencedby refid="d5/dd0/classmutabor_1_1generic__text__event_1a80fb97a4b53fd0c69fa7f87b83ee377c" compoundref="dd/d20/event_8h" startline="315" endline="328">mutabor::generic_text_event&lt; t &gt;::generic_text_event</referencedby>
+        <referencedby refid="d9/d3a/classmutabor_1_1key__pressure__event_1a244dfb85367ae45fcf10bca90e5bc927" compoundref="dd/d20/event_8h" startline="147" endline="157">mutabor::key_pressure_event::key_pressure_event</referencedby>
+        <referencedby refid="d8/d56/classmutabor_1_1key__signature__event_1a07b0f87fd63e7543b1bbb89cf625c8d7" compoundref="dd/d20/event_8h" startline="419" endline="428">mutabor::key_signature_event::key_signature_event</referencedby>
+        <referencedby refid="da/d41/classmutabor_1_1meta__event_1a1a075ae35c22529f327e868fb145dd33" compoundref="dd/d20/event_8h" startline="282" endline="289">mutabor::meta_event::meta_event</referencedby>
+        <referencedby refid="d5/d7c/classmutabor_1_1quarter__frame__event_1a4c3d53846e62bce27ba2efa135d7db34" compoundref="dd/d20/event_8h" startline="185" endline="194">mutabor::quarter_frame_event::quarter_frame_event</referencedby>
+        <referencedby refid="d5/dec/classmutabor_1_1sequence__number__event_1a7a82c71eea8a1987dfcbb83dd4600544" compoundref="dd/d20/event_8h" startline="302" endline="308">mutabor::sequence_number_event::sequence_number_event</referencedby>
+        <referencedby refid="d6/d24/classmutabor_1_1sequencer__specific__meta__event_1aba602165fb01e23ce08db9a308aba1df" compoundref="dd/d20/event_8h" startline="435" endline="442">mutabor::sequencer_specific_meta_event::sequencer_specific_meta_event</referencedby>
+        <referencedby refid="db/d87/classmutabor_1_1set__tempo__event_1aa93ff53e949fb3143d373ccf23fc11fc" compoundref="dd/d20/event_8h" startline="359" endline="365">mutabor::set_tempo_event::set_tempo_event</referencedby>
+        <referencedby refid="db/db8/classmutabor_1_1smpte__event_1a60f509d649aaad93f105bad410365248" compoundref="dd/d20/event_8h" startline="372" endline="387">mutabor::smpte_event::smpte_event</referencedby>
+        <referencedby refid="d5/de3/classmutabor_1_1song__position__event_1a35c6a1583287e86f4b1562dd87d622e2" compoundref="dd/d20/event_8h" startline="203" endline="210">mutabor::song_position_event::song_position_event</referencedby>
+        <referencedby refid="d9/d79/classmutabor_1_1song__select__event_1a215a6cba28ea2b13f20244c1078e89a2" compoundref="dd/d20/event_8h" startline="216" endline="223">mutabor::song_select_event::song_select_event</referencedby>
+        <referencedby refid="d5/dab/classmutabor_1_1sysex__event_1a8f87b2da05222f781d73b129637206dd" compoundref="dd/d20/event_8h" startline="255" endline="260">mutabor::sysex_event::sysex_event</referencedby>
+        <referencedby refid="d1/db9/classmutabor_1_1system__byte__event_1a4d73b57d64160e1e0c7c52ac2242a349" compoundref="dd/d20/event_8h" startline="231" endline="236">mutabor::system_byte_event&lt; t &gt;::system_byte_event</referencedby>
+        <referencedby refid="de/de4/classmutabor_1_1time__signature__event_1a3643300f16e5998590ddff15c359fa01" compoundref="dd/d20/event_8h" startline="397" endline="410">mutabor::time_signature_event::time_signature_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ae5e7bb920757b22f1c30a8ec6d44534c" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t mutabor::hidden::mutabor_event_type::unique_id</definition>
+        <argsstring></argsstring>
+        <name>unique_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="59" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="59" bodyend="-1"/>
+        <referencedby refid="d2/d17/classmutabor_1_1channel__select__event_1afb7c412b22cb930fcaf1c71e60a56b62" compoundref="dd/d20/event_8h" startline="346" endline="352">mutabor::channel_select_event::channel_select_event</referencedby>
+        <referencedby refid="de/d04/classmutabor_1_1controller__event_1a385fe9e5ffc5ef3c2b09967b6c48e88a" compoundref="dd/d20/event_8h" startline="166" endline="176">mutabor::controller_event::controller_event</referencedby>
+        <referencedby refid="d5/dd0/classmutabor_1_1generic__text__event_1a80fb97a4b53fd0c69fa7f87b83ee377c" compoundref="dd/d20/event_8h" startline="315" endline="328">mutabor::generic_text_event&lt; t &gt;::generic_text_event</referencedby>
+        <referencedby refid="d7/d83/classmutabor_1_1event__class_1ad6fd04fc86d31a349555df403904386a" compoundref="dd/d20/event_8h" startline="133" endline="135">mutabor::event_class::get_unique_id</referencedby>
+        <referencedby refid="d9/d3a/classmutabor_1_1key__pressure__event_1a244dfb85367ae45fcf10bca90e5bc927" compoundref="dd/d20/event_8h" startline="147" endline="157">mutabor::key_pressure_event::key_pressure_event</referencedby>
+        <referencedby refid="d8/d56/classmutabor_1_1key__signature__event_1a07b0f87fd63e7543b1bbb89cf625c8d7" compoundref="dd/d20/event_8h" startline="419" endline="428">mutabor::key_signature_event::key_signature_event</referencedby>
+        <referencedby refid="da/d41/classmutabor_1_1meta__event_1a1a075ae35c22529f327e868fb145dd33" compoundref="dd/d20/event_8h" startline="282" endline="289">mutabor::meta_event::meta_event</referencedby>
+        <referencedby refid="d5/d7c/classmutabor_1_1quarter__frame__event_1a4c3d53846e62bce27ba2efa135d7db34" compoundref="dd/d20/event_8h" startline="185" endline="194">mutabor::quarter_frame_event::quarter_frame_event</referencedby>
+        <referencedby refid="d5/dec/classmutabor_1_1sequence__number__event_1a7a82c71eea8a1987dfcbb83dd4600544" compoundref="dd/d20/event_8h" startline="302" endline="308">mutabor::sequence_number_event::sequence_number_event</referencedby>
+        <referencedby refid="d6/d24/classmutabor_1_1sequencer__specific__meta__event_1aba602165fb01e23ce08db9a308aba1df" compoundref="dd/d20/event_8h" startline="435" endline="442">mutabor::sequencer_specific_meta_event::sequencer_specific_meta_event</referencedby>
+        <referencedby refid="db/d87/classmutabor_1_1set__tempo__event_1aa93ff53e949fb3143d373ccf23fc11fc" compoundref="dd/d20/event_8h" startline="359" endline="365">mutabor::set_tempo_event::set_tempo_event</referencedby>
+        <referencedby refid="db/db8/classmutabor_1_1smpte__event_1a60f509d649aaad93f105bad410365248" compoundref="dd/d20/event_8h" startline="372" endline="387">mutabor::smpte_event::smpte_event</referencedby>
+        <referencedby refid="d5/de3/classmutabor_1_1song__position__event_1a35c6a1583287e86f4b1562dd87d622e2" compoundref="dd/d20/event_8h" startline="203" endline="210">mutabor::song_position_event::song_position_event</referencedby>
+        <referencedby refid="d9/d79/classmutabor_1_1song__select__event_1a215a6cba28ea2b13f20244c1078e89a2" compoundref="dd/d20/event_8h" startline="216" endline="223">mutabor::song_select_event::song_select_event</referencedby>
+        <referencedby refid="d5/dab/classmutabor_1_1sysex__event_1a8f87b2da05222f781d73b129637206dd" compoundref="dd/d20/event_8h" startline="255" endline="260">mutabor::sysex_event::sysex_event</referencedby>
+        <referencedby refid="d1/db9/classmutabor_1_1system__byte__event_1a4d73b57d64160e1e0c7c52ac2242a349" compoundref="dd/d20/event_8h" startline="231" endline="236">mutabor::system_byte_event&lt; t &gt;::system_byte_event</referencedby>
+        <referencedby refid="de/de4/classmutabor_1_1time__signature__event_1a3643300f16e5998590ddff15c359fa01" compoundref="dd/d20/event_8h" startline="397" endline="410">mutabor::time_signature_event::time_signature_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1aaf58da1033a628eb070a775308431cb4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::note</definition>
+        <argsstring></argsstring>
+        <name>note</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="62" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ad6e2e8f1d438767d1dbcb8f74a9268c9" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::pressure</definition>
+        <argsstring></argsstring>
+        <name>pressure</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="63" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1abfce74f8461072e11d6a707dfdb8a492" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::mutabor_event_type::@43::@45</type>
+        <definition>struct mutabor::hidden::mutabor_event_type::@43::@45  mutabor::hidden::mutabor_event_type::aftertouch</definition>
+        <argsstring></argsstring>
+        <name>aftertouch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="64" column="1"/>
+        <referencedby refid="d9/d3a/classmutabor_1_1key__pressure__event_1a41733e6e22f6e8655fba22812fb5facc" compoundref="dd/d20/event_8h" startline="159" endline="159">mutabor::key_pressure_event::get_note</referencedby>
+        <referencedby refid="d9/d3a/classmutabor_1_1key__pressure__event_1a555f2eac5df2d723fcecf3d80955019b" compoundref="dd/d20/event_8h" startline="160" endline="160">mutabor::key_pressure_event::get_pressure</referencedby>
+        <referencedby refid="d9/d3a/classmutabor_1_1key__pressure__event_1a244dfb85367ae45fcf10bca90e5bc927" compoundref="dd/d20/event_8h" startline="147" endline="157">mutabor::key_pressure_event::key_pressure_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a699850c4083f7a6a00360bcf6a02c1d9" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::number</definition>
+        <argsstring></argsstring>
+        <name>number</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="66" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="66" bodyend="-1"/>
+        <referencedby refid="d2/d17/classmutabor_1_1channel__select__event_1afb7c412b22cb930fcaf1c71e60a56b62" compoundref="dd/d20/event_8h" startline="346" endline="352">mutabor::channel_select_event::channel_select_event</referencedby>
+        <referencedby refid="d5/dec/classmutabor_1_1sequence__number__event_1a7a82c71eea8a1987dfcbb83dd4600544" compoundref="dd/d20/event_8h" startline="302" endline="308">mutabor::sequence_number_event::sequence_number_event</referencedby>
+        <referencedby refid="db/d87/classmutabor_1_1set__tempo__event_1aa93ff53e949fb3143d373ccf23fc11fc" compoundref="dd/d20/event_8h" startline="359" endline="365">mutabor::set_tempo_event::set_tempo_event</referencedby>
+        <referencedby refid="d9/d79/classmutabor_1_1song__select__event_1a215a6cba28ea2b13f20244c1078e89a2" compoundref="dd/d20/event_8h" startline="216" endline="223">mutabor::song_select_event::song_select_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a672973e25ae7266ebf33da41ce374a35" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="67" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ad81baa49804e5e8cf3955beed4f8181d" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::mutabor_event_type::@43::@46</type>
+        <definition>struct mutabor::hidden::mutabor_event_type::@43::@46  mutabor::hidden::mutabor_event_type::controller</definition>
+        <argsstring></argsstring>
+        <name>controller</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="68" column="1"/>
+        <referencedby refid="de/d04/classmutabor_1_1controller__event_1a385fe9e5ffc5ef3c2b09967b6c48e88a" compoundref="dd/d20/event_8h" startline="166" endline="176">mutabor::controller_event::controller_event</referencedby>
+        <referencedby refid="de/d04/classmutabor_1_1controller__event_1ac8dbc6070481eceb81fb6c73a0a40479" compoundref="dd/d20/event_8h" startline="178" endline="178">mutabor::controller_event::get_controller</referencedby>
+        <referencedby refid="de/d04/classmutabor_1_1controller__event_1a909034e850c2a3ee504b43e10d2b535a" compoundref="dd/d20/event_8h" startline="179" endline="179">mutabor::controller_event::get_value</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1adac63a8c51cf3a3697ab5f17c924f46b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::values</definition>
+        <argsstring></argsstring>
+        <name>values</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="71" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="71" bodyend="-1"/>
+        <referencedby refid="d5/d7c/classmutabor_1_1quarter__frame__event_1a4c3d53846e62bce27ba2efa135d7db34" compoundref="dd/d20/event_8h" startline="185" endline="194">mutabor::quarter_frame_event::quarter_frame_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a921639dc447104ffd5d3e3db85d39ad3" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::mutabor_event_type::@43::@47</type>
+        <definition>struct mutabor::hidden::mutabor_event_type::@43::@47  mutabor::hidden::mutabor_event_type::quarter_frame</definition>
+        <argsstring></argsstring>
+        <name>quarter_frame</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="72" column="1"/>
+        <referencedby refid="d5/d7c/classmutabor_1_1quarter__frame__event_1ade7ce629f427aa474eb957b9f6a4a345" compoundref="dd/d20/event_8h" startline="196" endline="196">mutabor::quarter_frame_event::get_quarter_type</referencedby>
+        <referencedby refid="d5/d7c/classmutabor_1_1quarter__frame__event_1a32bcec1dcc58d3922d7f4b694e5486a8" compoundref="dd/d20/event_8h" startline="197" endline="197">mutabor::quarter_frame_event::get_quarter_values</referencedby>
+        <referencedby refid="d5/d7c/classmutabor_1_1quarter__frame__event_1a4c3d53846e62bce27ba2efa135d7db34" compoundref="dd/d20/event_8h" startline="185" endline="194">mutabor::quarter_frame_event::quarter_frame_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a8a4997525b7c2230d8ec3a1030fdb5d2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::position</definition>
+        <argsstring></argsstring>
+        <name>position</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="74" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="74" bodyend="-1"/>
+        <referencedby refid="d5/de3/classmutabor_1_1song__position__event_1a35c6a1583287e86f4b1562dd87d622e2" compoundref="dd/d20/event_8h" startline="203" endline="210">mutabor::song_position_event::song_position_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a9b1eb4c08237a77a187b5ab77e528a3a" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::mutabor_event_type::@43::@48</type>
+        <definition>struct mutabor::hidden::mutabor_event_type::@43::@48  mutabor::hidden::mutabor_event_type::song_position</definition>
+        <argsstring></argsstring>
+        <name>song_position</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="75" column="1"/>
+        <referencedby refid="d5/de3/classmutabor_1_1song__position__event_1a27cb602531fd8457c581c5f7c5643187" compoundref="dd/d20/event_8h" startline="212" endline="212">mutabor::song_position_event::get_position</referencedby>
+        <referencedby refid="d5/de3/classmutabor_1_1song__position__event_1a35c6a1583287e86f4b1562dd87d622e2" compoundref="dd/d20/event_8h" startline="203" endline="210">mutabor::song_position_event::song_position_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a34ae8ede20696d4965891c255f77d27a" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::mutabor_event_type::@43::@49</type>
+        <definition>struct mutabor::hidden::mutabor_event_type::@43::@49  mutabor::hidden::mutabor_event_type::song_select</definition>
+        <argsstring></argsstring>
+        <name>song_select</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="78" column="1"/>
+        <referencedby refid="d9/d79/classmutabor_1_1song__select__event_1af7cb19a796ef6dedfd4cc5b557ea1a25" compoundref="dd/d20/event_8h" startline="225" endline="225">mutabor::song_select_event::get_song</referencedby>
+        <referencedby refid="d9/d79/classmutabor_1_1song__select__event_1a215a6cba28ea2b13f20244c1078e89a2" compoundref="dd/d20/event_8h" startline="216" endline="223">mutabor::song_select_event::song_select_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ace47d7565600d4106115b723a70daecc" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::mutabor_event_type::@43::@50</type>
+        <definition>struct mutabor::hidden::mutabor_event_type::@43::@50  mutabor::hidden::mutabor_event_type::sequence</definition>
+        <argsstring></argsstring>
+        <name>sequence</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="81" column="1"/>
+        <referencedby refid="d5/dec/classmutabor_1_1sequence__number__event_1a7a82c71eea8a1987dfcbb83dd4600544" compoundref="dd/d20/event_8h" startline="302" endline="308">mutabor::sequence_number_event::sequence_number_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ae89be5ffbffd93dc2f627762160c8c93" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::mutabor_event_type::@43::@51</type>
+        <definition>struct mutabor::hidden::mutabor_event_type::@43::@51  mutabor::hidden::mutabor_event_type::channel</definition>
+        <argsstring></argsstring>
+        <name>channel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="84" column="1"/>
+        <referencedby refid="d2/d17/classmutabor_1_1channel__select__event_1afb7c412b22cb930fcaf1c71e60a56b62" compoundref="dd/d20/event_8h" startline="346" endline="352">mutabor::channel_select_event::channel_select_event</referencedby>
+        <referencedby refid="de/d04/classmutabor_1_1controller__event_1a385fe9e5ffc5ef3c2b09967b6c48e88a" compoundref="dd/d20/event_8h" startline="166" endline="176">mutabor::controller_event::controller_event</referencedby>
+        <referencedby refid="d9/d3a/classmutabor_1_1key__pressure__event_1a244dfb85367ae45fcf10bca90e5bc927" compoundref="dd/d20/event_8h" startline="147" endline="157">mutabor::key_pressure_event::key_pressure_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a713791ffa4b8dae8ec897397602a6987" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::ms_per_s</definition>
+        <argsstring></argsstring>
+        <name>ms_per_s</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="86" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a61ef40ea094d7b68d27cac41ef0668dc" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::mutabor_event_type::@43::@52</type>
+        <definition>struct mutabor::hidden::mutabor_event_type::@43::@52  mutabor::hidden::mutabor_event_type::tempo</definition>
+        <argsstring></argsstring>
+        <name>tempo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="87" column="1"/>
+        <referencedby refid="db/d87/classmutabor_1_1set__tempo__event_1aefb755f531b4c349bff0be08aeda681e" compoundref="dd/d20/event_8h" startline="366" endline="366">mutabor::set_tempo_event::get_tempo</referencedby>
+        <referencedby refid="db/d87/classmutabor_1_1set__tempo__event_1aa93ff53e949fb3143d373ccf23fc11fc" compoundref="dd/d20/event_8h" startline="359" endline="365">mutabor::set_tempo_event::set_tempo_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a9efb7253660fcb347becdd5ee9ab455c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::hour</definition>
+        <argsstring></argsstring>
+        <name>hour</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="89" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="89" bodyend="-1"/>
+        <referencedby refid="db/db8/classmutabor_1_1smpte__event_1a60f509d649aaad93f105bad410365248" compoundref="dd/d20/event_8h" startline="372" endline="387">mutabor::smpte_event::smpte_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a1f36e7c376b8d7dfd909f76550fd3401" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::minute</definition>
+        <argsstring></argsstring>
+        <name>minute</name>
+        <bitfield>8</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="90" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="90" bodyend="-1"/>
+        <referencedby refid="db/db8/classmutabor_1_1smpte__event_1a60f509d649aaad93f105bad410365248" compoundref="dd/d20/event_8h" startline="372" endline="387">mutabor::smpte_event::smpte_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ad2670b081e851cb60c9c77eb61d6a2a4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::secound</definition>
+        <argsstring></argsstring>
+        <name>secound</name>
+        <bitfield>8</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="91" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="91" bodyend="-1"/>
+        <referencedby refid="db/db8/classmutabor_1_1smpte__event_1a60f509d649aaad93f105bad410365248" compoundref="dd/d20/event_8h" startline="372" endline="387">mutabor::smpte_event::smpte_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1acffadbf8ff44e96e993d36b120f04dd9" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::frame_100ths</definition>
+        <argsstring></argsstring>
+        <name>frame_100ths</name>
+        <bitfield>16</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="92" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a5560ba708d80d4a7fcc2e581995f7fe3" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::mutabor_event_type::@43::@53</type>
+        <definition>struct mutabor::hidden::mutabor_event_type::@43::@53  mutabor::hidden::mutabor_event_type::smpte</definition>
+        <argsstring></argsstring>
+        <name>smpte</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="93" column="1"/>
+        <referencedby refid="db/db8/classmutabor_1_1smpte__event_1abcd1d61a6260a4f10ca4ca2c7496afcb" compoundref="dd/d20/event_8h" startline="391" endline="391">mutabor::smpte_event::get_frame_100ths</referencedby>
+        <referencedby refid="db/db8/classmutabor_1_1smpte__event_1a9e6c4af732f49bc72db391434e1fd608" compoundref="dd/d20/event_8h" startline="388" endline="388">mutabor::smpte_event::get_hour</referencedby>
+        <referencedby refid="db/db8/classmutabor_1_1smpte__event_1a95b881f0c247adcc908fd284e71e0bc5" compoundref="dd/d20/event_8h" startline="389" endline="389">mutabor::smpte_event::get_minute</referencedby>
+        <referencedby refid="db/db8/classmutabor_1_1smpte__event_1a7467813ae4747a0e8bd613b37d9b6efd" compoundref="dd/d20/event_8h" startline="390" endline="390">mutabor::smpte_event::get_secound</referencedby>
+        <referencedby refid="db/db8/classmutabor_1_1smpte__event_1a60f509d649aaad93f105bad410365248" compoundref="dd/d20/event_8h" startline="372" endline="387">mutabor::smpte_event::smpte_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a6c9676fa9946c3e8bcbaa8ac91784e03" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::numerator</definition>
+        <argsstring></argsstring>
+        <name>numerator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="95" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="95" bodyend="-1"/>
+        <referencedby refid="de/de4/classmutabor_1_1time__signature__event_1a3643300f16e5998590ddff15c359fa01" compoundref="dd/d20/event_8h" startline="397" endline="410">mutabor::time_signature_event::time_signature_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ac5ca2a2d5628a1df0c7f9c49b9536cda" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::denominator</definition>
+        <argsstring></argsstring>
+        <name>denominator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="96" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="96" bodyend="-1"/>
+        <referencedby refid="de/de4/classmutabor_1_1time__signature__event_1a3643300f16e5998590ddff15c359fa01" compoundref="dd/d20/event_8h" startline="397" endline="410">mutabor::time_signature_event::time_signature_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a59eac710d9bc8ec8dd0b84af799edcd6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::clocksperclick</definition>
+        <argsstring></argsstring>
+        <name>clocksperclick</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="97" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="97" bodyend="-1"/>
+        <referencedby refid="de/de4/classmutabor_1_1time__signature__event_1a3643300f16e5998590ddff15c359fa01" compoundref="dd/d20/event_8h" startline="397" endline="410">mutabor::time_signature_event::time_signature_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a15aef15fdc29e59f821fe55d4656b001" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::quarter_in32ths</definition>
+        <argsstring></argsstring>
+        <name>quarter_in32ths</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="98" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="98" bodyend="-1"/>
+        <referencedby refid="de/de4/classmutabor_1_1time__signature__event_1a3643300f16e5998590ddff15c359fa01" compoundref="dd/d20/event_8h" startline="397" endline="410">mutabor::time_signature_event::time_signature_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a1ccffefbe57d43d6792e328d390ab340" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::mutabor_event_type::@43::@54</type>
+        <definition>struct mutabor::hidden::mutabor_event_type::@43::@54  mutabor::hidden::mutabor_event_type::time_signature</definition>
+        <argsstring></argsstring>
+        <name>time_signature</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="99" column="1"/>
+        <referencedby refid="de/de4/classmutabor_1_1time__signature__event_1a04f9baf8b1d186f54869e33200e79a11" compoundref="dd/d20/event_8h" startline="413" endline="413">mutabor::time_signature_event::get_clocks_per_click</referencedby>
+        <referencedby refid="de/de4/classmutabor_1_1time__signature__event_1a30d8d3d7760cb1d90f88c9d9adf09e96" compoundref="dd/d20/event_8h" startline="412" endline="412">mutabor::time_signature_event::get_denominator</referencedby>
+        <referencedby refid="de/de4/classmutabor_1_1time__signature__event_1a0c6b0c06e8da07ac563e5bda947e5f64" compoundref="dd/d20/event_8h" startline="411" endline="411">mutabor::time_signature_event::get_numerator</referencedby>
+        <referencedby refid="de/de4/classmutabor_1_1time__signature__event_1a7bd80945dd843105740cc028cfdd2aeb" compoundref="dd/d20/event_8h" startline="414" endline="414">mutabor::time_signature_event::get_quarter_in_32ths</referencedby>
+        <referencedby refid="de/de4/classmutabor_1_1time__signature__event_1a3643300f16e5998590ddff15c359fa01" compoundref="dd/d20/event_8h" startline="397" endline="410">mutabor::time_signature_event::time_signature_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a36f50f71960ec4fe3d304b669d5e1af3" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mutabor::hidden::mutabor_event_type::sharps</definition>
+        <argsstring></argsstring>
+        <name>sharps</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="101" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="101" bodyend="-1"/>
+        <referencedby refid="d8/d56/classmutabor_1_1key__signature__event_1a07b0f87fd63e7543b1bbb89cf625c8d7" compoundref="dd/d20/event_8h" startline="419" endline="428">mutabor::key_signature_event::key_signature_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1af51b85ea4c583cf12e36da14fd09e3e8" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool mutabor::hidden::mutabor_event_type::ismajor</definition>
+        <argsstring></argsstring>
+        <name>ismajor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="102" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="102" bodyend="-1"/>
+        <referencedby refid="d8/d56/classmutabor_1_1key__signature__event_1a07b0f87fd63e7543b1bbb89cf625c8d7" compoundref="dd/d20/event_8h" startline="419" endline="428">mutabor::key_signature_event::key_signature_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a61cc658b7fcb4f106d468cc663b10505" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::mutabor_event_type::@43::@55</type>
+        <definition>struct mutabor::hidden::mutabor_event_type::@43::@55  mutabor::hidden::mutabor_event_type::key_signature</definition>
+        <argsstring></argsstring>
+        <name>key_signature</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="103" column="1"/>
+        <referencedby refid="d8/d56/classmutabor_1_1key__signature__event_1ac586eea866ec9fa1ddd5d5ab323dd386" compoundref="dd/d20/event_8h" startline="430" endline="430">mutabor::key_signature_event::get_ismajor</referencedby>
+        <referencedby refid="d8/d56/classmutabor_1_1key__signature__event_1af0a01345ae9781ba93b2e97f75a5443c" compoundref="dd/d20/event_8h" startline="429" endline="429">mutabor::key_signature_event::get_sharps</referencedby>
+        <referencedby refid="d8/d56/classmutabor_1_1key__signature__event_1a07b0f87fd63e7543b1bbb89cf625c8d7" compoundref="dd/d20/event_8h" startline="419" endline="428">mutabor::key_signature_event::key_signature_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a914573020b3c2369f0ce126d60166f9c" prot="public" static="no" mutable="no">
+        <type>const unsigned char *</type>
+        <definition>const unsigned char* mutabor::hidden::mutabor_event_type::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="105" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ac3fa99922ff75a4dad2a6d3892e34a9b" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::mutabor_event_type::@43::@56</type>
+        <definition>struct mutabor::hidden::mutabor_event_type::@43::@56  mutabor::hidden::mutabor_event_type::sysex</definition>
+        <argsstring></argsstring>
+        <name>sysex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="106" column="1"/>
+        <referencedby refid="d5/dab/classmutabor_1_1sysex__event_1a2b1a2f50800e75173ac5c7cfdc2ffbca" compoundref="dd/d20/event_8h" startline="262" endline="271">mutabor::sysex_event::sysex_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a5fcf0a8e79a0a634aad1ca25d3e42c84" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::mutabor_event_type::@43::@57</type>
+        <definition>struct mutabor::hidden::mutabor_event_type::@43::@57  mutabor::hidden::mutabor_event_type::meta</definition>
+        <argsstring></argsstring>
+        <name>meta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="109" column="1"/>
+        <referencedby refid="da/d41/classmutabor_1_1meta__event_1a1a075ae35c22529f327e868fb145dd33" compoundref="dd/d20/event_8h" startline="282" endline="289">mutabor::meta_event::meta_event</referencedby>
+        <referencedby refid="d6/d24/classmutabor_1_1sequencer__specific__meta__event_1aba602165fb01e23ce08db9a308aba1df" compoundref="dd/d20/event_8h" startline="435" endline="442">mutabor::sequencer_specific_meta_event::sequencer_specific_meta_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a137409051c8ff7ea060f333dd85d1566" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* mutabor::hidden::mutabor_event_type::text</definition>
+        <argsstring></argsstring>
+        <name>text</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="111" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="111" bodyend="-1"/>
+        <referencedby refid="d5/dd0/classmutabor_1_1generic__text__event_1a80fb97a4b53fd0c69fa7f87b83ee377c" compoundref="dd/d20/event_8h" startline="315" endline="328">mutabor::generic_text_event&lt; t &gt;::generic_text_event</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a04736ba055541af65888d2a3687c08f0" prot="public" static="no" mutable="no">
+        <type>struct mutabor::hidden::mutabor_event_type::@43::@58</type>
+        <definition>struct mutabor::hidden::mutabor_event_type::@43::@58  mutabor::hidden::mutabor_event_type::text</definition>
+        <argsstring></argsstring>
+        <name>text</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="112" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a067c5914e32a6670da879d5cf0d817d5" prot="public" static="no" mutable="no">
+        <type>union mutabor::hidden::mutabor_event_type::@43</type>
+        <definition>union mutabor::hidden::mutabor_event_type::@43 mutabor::hidden::mutabor_event_type::@44</definition>
+        <argsstring></argsstring>
+        <name>@44</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="113" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4518">
+        <label>mutabor::generic_text_event&lt; t &gt;</label>
+        <link refid="d5/dd0/classmutabor_1_1generic__text__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4524">
+        <label>mutabor::sequencer_specific_meta_event</label>
+        <link refid="d6/d24/classmutabor_1_1sequencer__specific__meta__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4522">
+        <label>mutabor::quarter_frame_event</label>
+        <link refid="d5/d7c/classmutabor_1_1quarter__frame__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4516">
+        <label>mutabor::channel_select_event</label>
+        <link refid="d2/d17/classmutabor_1_1channel__select__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4521">
+        <label>mutabor::meta_event</label>
+        <link refid="da/d41/classmutabor_1_1meta__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4531">
+        <label>mutabor::time_signature_event</label>
+        <link refid="de/de4/classmutabor_1_1time__signature__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4530">
+        <label>mutabor::system_byte_event&lt; t &gt;</label>
+        <link refid="d1/db9/classmutabor_1_1system__byte__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4515">
+        <label>mutabor::event_class</label>
+        <link refid="d7/d83/classmutabor_1_1event__class"/>
+        <childnode refid="4514" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="4527">
+        <label>mutabor::song_position_event</label>
+        <link refid="d5/de3/classmutabor_1_1song__position__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4525">
+        <label>mutabor::set_tempo_event</label>
+        <link refid="db/d87/classmutabor_1_1set__tempo__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4529">
+        <label>mutabor::sysex_event</label>
+        <link refid="d5/dab/classmutabor_1_1sysex__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4519">
+        <label>mutabor::key_pressure_event</label>
+        <link refid="d9/d3a/classmutabor_1_1key__pressure__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4514">
+        <label>mutabor::hidden::mutabor_event_type</label>
+        <link refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type"/>
+      </node>
+      <node id="4520">
+        <label>mutabor::key_signature_event</label>
+        <link refid="d8/d56/classmutabor_1_1key__signature__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4528">
+        <label>mutabor::song_select_event</label>
+        <link refid="d9/d79/classmutabor_1_1song__select__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4526">
+        <label>mutabor::smpte_event</label>
+        <link refid="db/db8/classmutabor_1_1smpte__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4517">
+        <label>mutabor::controller_event</label>
+        <link refid="de/d04/classmutabor_1_1controller__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4523">
+        <label>mutabor::sequence_number_event</label>
+        <link refid="d5/dec/classmutabor_1_1sequence__number__event"/>
+        <childnode refid="4515" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4533">
+        <label>size_t</label>
+      </node>
+      <node id="4532">
+        <label>mutabor::hidden::mutabor_event_type</label>
+        <link refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type"/>
+        <childnode refid="4533" relation="usage">
+          <edgelabel>route_channel</edgelabel>
+          <edgelabel>unique_id</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="55" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="55" bodyend="114"/>
+    <listofallmembers>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1abfce74f8461072e11d6a707dfdb8a492" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>aftertouch</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ae89be5ffbffd93dc2f627762160c8c93" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>channel</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a59eac710d9bc8ec8dd0b84af799edcd6" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>clocksperclick</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ad81baa49804e5e8cf3955beed4f8181d" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>controller</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a914573020b3c2369f0ce126d60166f9c" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>data</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ac5ca2a2d5628a1df0c7f9c49b9536cda" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>denominator</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1acffadbf8ff44e96e993d36b120f04dd9" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>frame_100ths</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a9efb7253660fcb347becdd5ee9ab455c" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>hour</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ac1daf05e883c2e4042a9868a1a8957fe" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>input_channel</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1af51b85ea4c583cf12e36da14fd09e3e8" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>ismajor</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a61cc658b7fcb4f106d468cc663b10505" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>key_signature</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a5fcf0a8e79a0a634aad1ca25d3e42c84" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>meta</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a1f36e7c376b8d7dfd909f76550fd3401" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>minute</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a713791ffa4b8dae8ec897397602a6987" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>ms_per_s</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1aaf58da1033a628eb070a775308431cb4" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>note</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a699850c4083f7a6a00360bcf6a02c1d9" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>number</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a6c9676fa9946c3e8bcbaa8ac91784e03" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>numerator</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a8a4997525b7c2230d8ec3a1030fdb5d2" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>position</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ad6e2e8f1d438767d1dbcb8f74a9268c9" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>pressure</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a921639dc447104ffd5d3e3db85d39ad3" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>quarter_frame</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a15aef15fdc29e59f821fe55d4656b001" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>quarter_in32ths</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a54256bb9d86e721fabaabe780c55aeab" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>route_channel</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ad2670b081e851cb60c9c77eb61d6a2a4" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>secound</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ace47d7565600d4106115b723a70daecc" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>sequence</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a36f50f71960ec4fe3d304b669d5e1af3" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>sharps</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a5560ba708d80d4a7fcc2e581995f7fe3" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>smpte</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a9b1eb4c08237a77a187b5ab77e528a3a" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>song_position</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a34ae8ede20696d4965891c255f77d27a" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>song_select</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ac3fa99922ff75a4dad2a6d3892e34a9b" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>sysex</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a61ef40ea094d7b68d27cac41ef0668dc" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>tempo</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a137409051c8ff7ea060f333dd85d1566" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>text</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a04736ba055541af65888d2a3687c08f0" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>text</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a1ccffefbe57d43d6792e328d390ab340" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>time_signature</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a18bfa1517c4ed28420828266fd7a730f" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>type</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ae5e7bb920757b22f1c30a8ec6d44534c" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>unique_id</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a672973e25ae7266ebf33da41ce374a35" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>value</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1adac63a8c51cf3a3697ab5f17c924f46b" prot="public" virt="non-virtual"><scope>mutabor::hidden::mutabor_event_type</scope><name>values</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

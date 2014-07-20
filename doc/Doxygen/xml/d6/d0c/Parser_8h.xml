@@ -7,9 +7,8 @@
     <includes refid="dd/d40/Global_8h" local="yes">src/kernel/Global.h</includes>
     <includes local="no">limits.h</includes>
     <includedby refid="d1/dce/box_8cpp" local="yes">src/kernel/box.cpp</includedby>
-    <includedby refid="df/d23/Execute_8cpp" local="yes">src/kernel/Execute.cpp</includedby>
     <includedby refid="da/d02/Hilfs_8cpp" local="yes">src/kernel/Hilfs.cpp</includedby>
-    <includedby refid="d3/dca/Interval_8cpp" local="yes">src/kernel/Interval.cpp</includedby>
+    <includedby refid="d2/de4/Interval_8c" local="yes">src/kernel/Interval.c</includedby>
     <includedby refid="df/d33/mut_8cc" local="yes">src/kernel/mut.cc</includedby>
     <includedby refid="dc/df5/Parser_8cpp" local="yes">src/kernel/Parser.cpp</includedby>
     <includedby refid="dd/dc6/Box_8cpp" local="yes">src/kernel/routing/Box.cpp</includedby>
@@ -17,294 +16,217 @@
     <includedby refid="d3/da0/TabGen_8cpp" local="yes">src/kernel/TabGen.cpp</includedby>
     <includedby refid="d1/da7/boxTest_8cpp" local="yes">src/kernel/tests/boxTest.cpp</includedby>
     <incdepgraph>
-      <node id="19929">
-        <label>list</label>
-      </node>
-      <node id="19922">
+      <node id="19376">
         <label>stdarg.h</label>
       </node>
-      <node id="19953">
-        <label>Execute.h</label>
-        <link refid="de/d11/Execute_8h"/>
-        <childnode refid="19921" relation="include">
-        </childnode>
-        <childnode refid="19949" relation="include">
-        </childnode>
-      </node>
-      <node id="19937">
-        <label>wx/cmdline.h</label>
-      </node>
-      <node id="19925">
-        <label>wx/stdpaths.h</label>
-      </node>
-      <node id="19921">
-        <label>src/kernel/Defs.h</label>
-        <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="19922" relation="include">
-        </childnode>
-        <childnode refid="19923" relation="include">
-        </childnode>
-        <childnode refid="19942" relation="include">
-        </childnode>
-        <childnode refid="19943" relation="include">
-        </childnode>
-        <childnode refid="19936" relation="include">
-        </childnode>
-        <childnode refid="19944" relation="include">
-        </childnode>
-        <childnode refid="19945" relation="include">
-        </childnode>
-      </node>
-      <node id="19936">
-        <label>stdint.h</label>
-      </node>
-      <node id="19950">
-        <label>stdlib.h</label>
-      </node>
-      <node id="19942">
-        <label>wx/wxchar.h</label>
-      </node>
-      <node id="19931">
-        <label>wx/image.h</label>
-      </node>
-      <node id="19954">
-        <label>malloc.h</label>
-      </node>
-      <node id="19946">
-        <label>string</label>
-      </node>
-      <node id="19941">
-        <label>mutDebugFlags.h</label>
-        <link refid="d7/d49/mutDebugFlags_8h"/>
-      </node>
-      <node id="19920">
-        <label>src/kernel/Parser.h</label>
-        <link refid="Parser.h"/>
-        <childnode refid="19921" relation="include">
-        </childnode>
-        <childnode refid="19947" relation="include">
-        </childnode>
-        <childnode refid="19948" relation="include">
-        </childnode>
-        <childnode refid="19955" relation="include">
-        </childnode>
-      </node>
-      <node id="19924">
-        <label>wx/window.h</label>
-      </node>
-      <node id="19955">
-        <label>limits.h</label>
-      </node>
-      <node id="19952">
-        <label>Interpre.h</label>
-        <link refid="d2/dd8/Interpre_8h"/>
-        <childnode refid="19921" relation="include">
-        </childnode>
-        <childnode refid="19948" relation="include">
-        </childnode>
-      </node>
-      <node id="19947">
+      <node id="19372">
         <label>src/kernel/box.h</label>
         <link refid="dc/d19/box_8h"/>
-        <childnode refid="19921" relation="include">
+        <childnode refid="19362" relation="include">
         </childnode>
-        <childnode refid="19948" relation="include">
+        <childnode refid="19373" relation="include">
         </childnode>
-        <childnode refid="19952" relation="include">
+        <childnode refid="19379" relation="include">
         </childnode>
-        <childnode refid="19953" relation="include">
+        <childnode refid="19382" relation="include">
         </childnode>
-        <childnode refid="19954" relation="include">
-        </childnode>
-      </node>
-      <node id="19943">
-        <label>wx/intl.h</label>
-      </node>
-      <node id="19930">
-        <label>src/wxGUI/Mutabor.rh</label>
-        <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="19921" relation="include">
+        <childnode refid="19383" relation="include">
         </childnode>
       </node>
-      <node id="19926">
-        <label>wx/filename.h</label>
+      <node id="19370">
+        <label>stdint.h</label>
       </node>
-      <node id="19928">
-        <label>typeinfo</label>
+      <node id="19375">
+        <label>stdlib.h</label>
       </node>
-      <node id="19939">
-        <label>wx/debug.h</label>
+      <node id="19363">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="19362" relation="include">
+        </childnode>
       </node>
-      <node id="19934">
+      <node id="19369">
+        <label>boost/format.hpp</label>
+      </node>
+      <node id="19379">
+        <label>Interpre.h</label>
+        <link refid="d2/dd8/Interpre_8h"/>
+        <childnode refid="19362" relation="include">
+        </childnode>
+        <childnode refid="19380" relation="include">
+        </childnode>
+        <childnode refid="19373" relation="include">
+        </childnode>
+        <childnode refid="19381" relation="include">
+        </childnode>
+      </node>
+      <node id="19383">
+        <label>malloc.h</label>
+      </node>
+      <node id="19367">
+        <label>string</label>
+      </node>
+      <node id="19381">
+        <label>limits.h</label>
+      </node>
+      <node id="19380">
+        <label>MidiKern.h</label>
+        <link refid="da/dfd/MidiKern_8h"/>
+        <childnode refid="19362" relation="include">
+        </childnode>
+        <childnode refid="19378" relation="include">
+        </childnode>
+      </node>
+      <node id="19362">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="19363" relation="include">
+        </childnode>
+        <childnode refid="19364" relation="include">
+        </childnode>
+        <childnode refid="19365" relation="include">
+        </childnode>
+      </node>
+      <node id="19377">
+        <label>string.h</label>
+      </node>
+      <node id="19368">
         <label>cstdio</label>
       </node>
-      <node id="19933">
-        <label>bitset</label>
-      </node>
-      <node id="19923">
-        <label>src/wxGUI/generic/mhDefs.h</label>
-        <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="19921" relation="include">
+      <node id="19361">
+        <label>src/kernel/Parser.h</label>
+        <link refid="Parser.h"/>
+        <childnode refid="19362" relation="include">
         </childnode>
-        <childnode refid="19924" relation="include">
+        <childnode refid="19372" relation="include">
         </childnode>
-        <childnode refid="19925" relation="include">
+        <childnode refid="19373" relation="include">
         </childnode>
-        <childnode refid="19926" relation="include">
-        </childnode>
-        <childnode refid="19927" relation="include">
-        </childnode>
-        <childnode refid="19928" relation="include">
-        </childnode>
-        <childnode refid="19929" relation="include">
-        </childnode>
-        <childnode refid="19930" relation="include">
-        </childnode>
-        <childnode refid="19931" relation="include">
-        </childnode>
-        <childnode refid="19932" relation="include">
+        <childnode refid="19381" relation="include">
         </childnode>
       </node>
-      <node id="19935">
-        <label>vector</label>
-      </node>
-      <node id="19932">
-        <label>mutDebug.h</label>
-        <link refid="de/de1/mutDebug_8h"/>
-        <childnode refid="19933" relation="include">
+      <node id="19365">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="19362" relation="include">
         </childnode>
-        <childnode refid="19927" relation="include">
+        <childnode refid="19366" relation="include">
         </childnode>
-        <childnode refid="19934" relation="include">
+        <childnode refid="19367" relation="include">
         </childnode>
-        <childnode refid="19935" relation="include">
+        <childnode refid="19368" relation="include">
         </childnode>
-        <childnode refid="19936" relation="include">
+        <childnode refid="19369" relation="include">
         </childnode>
-        <childnode refid="19937" relation="include">
+        <childnode refid="19370" relation="include">
         </childnode>
-        <childnode refid="19938" relation="include">
-        </childnode>
-        <childnode refid="19939" relation="include">
-        </childnode>
-        <childnode refid="19940" relation="include">
-        </childnode>
-        <childnode refid="19941" relation="include">
+        <childnode refid="19371" relation="include">
         </childnode>
       </node>
-      <node id="19945">
+      <node id="19366">
         <label>src/wxintl/libintl.h</label>
         <link refid="d4/d64/libintl_8h"/>
-        <childnode refid="19921" relation="include">
+        <childnode refid="19362" relation="include">
         </childnode>
-        <childnode refid="19946" relation="include">
-        </childnode>
-      </node>
-      <node id="19938">
-        <label>wx/string.h</label>
-      </node>
-      <node id="19948">
-        <label>Global.h</label>
-        <link refid="dd/d40/Global_8h"/>
-        <childnode refid="19921" relation="include">
-        </childnode>
-        <childnode refid="19949" relation="include">
-        </childnode>
-        <childnode refid="19950" relation="include">
-        </childnode>
-        <childnode refid="19922" relation="include">
-        </childnode>
-        <childnode refid="19946" relation="include">
-        </childnode>
-        <childnode refid="19951" relation="include">
+        <childnode refid="19367" relation="include">
         </childnode>
       </node>
-      <node id="19951">
+      <node id="19378">
         <label>math.h</label>
       </node>
-      <node id="19927">
-        <label>iostream</label>
+      <node id="19382">
+        <label>Execute.h</label>
+        <link refid="de/d11/Execute_8h"/>
+        <childnode refid="19362" relation="include">
+        </childnode>
+        <childnode refid="19374" relation="include">
+        </childnode>
       </node>
-      <node id="19940">
-        <label>wx/thread.h</label>
+      <node id="19364">
+        <label>cstddef</label>
       </node>
-      <node id="19944">
-        <label>wx/setup.h</label>
+      <node id="19373">
+        <label>Global.h</label>
+        <link refid="dd/d40/Global_8h"/>
+        <childnode refid="19362" relation="include">
+        </childnode>
+        <childnode refid="19374" relation="include">
+        </childnode>
+        <childnode refid="19375" relation="include">
+        </childnode>
+        <childnode refid="19376" relation="include">
+        </childnode>
+        <childnode refid="19377" relation="include">
+        </childnode>
+        <childnode refid="19378" relation="include">
+        </childnode>
       </node>
-      <node id="19949">
+      <node id="19374">
         <label>stdio.h</label>
+      </node>
+      <node id="19371">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="19966">
-        <label>src/kernel/TabGen.cpp</label>
-        <link refid="d3/da0/TabGen_8cpp"/>
-      </node>
-      <node id="19965">
-        <label>src/kernel/routing/midi/tests/midicmnTest.cpp</label>
-        <link refid="d8/d59/midicmnTest_8cpp"/>
-      </node>
-      <node id="19967">
-        <label>src/kernel/tests/boxTest.cpp</label>
-        <link refid="d1/da7/boxTest_8cpp"/>
-      </node>
-      <node id="19960">
-        <label>src/kernel/Interval.cpp</label>
-        <link refid="d3/dca/Interval_8cpp"/>
-      </node>
-      <node id="19956">
-        <label>src/kernel/Parser.h</label>
-        <link refid="Parser.h"/>
-        <childnode refid="19957" relation="include">
-        </childnode>
-        <childnode refid="19958" relation="include">
-        </childnode>
-        <childnode refid="19959" relation="include">
-        </childnode>
-        <childnode refid="19960" relation="include">
-        </childnode>
-        <childnode refid="19961" relation="include">
-        </childnode>
-        <childnode refid="19962" relation="include">
-        </childnode>
-        <childnode refid="19963" relation="include">
-        </childnode>
-        <childnode refid="19964" relation="include">
-        </childnode>
-        <childnode refid="19966" relation="include">
-        </childnode>
-        <childnode refid="19967" relation="include">
-        </childnode>
-      </node>
-      <node id="19964">
-        <label>src/kernel/Runtime.cpp</label>
-        <link refid="db/d80/Runtime_8cpp"/>
-        <childnode refid="19965" relation="include">
-        </childnode>
-      </node>
-      <node id="19959">
-        <label>src/kernel/Hilfs.cpp</label>
-        <link refid="da/d02/Hilfs_8cpp"/>
-      </node>
-      <node id="19962">
-        <label>src/kernel/Parser.cpp</label>
-        <link refid="dc/df5/Parser_8cpp"/>
-      </node>
-      <node id="19957">
+      <node id="19385">
         <label>src/kernel/box.cpp</label>
         <link refid="d1/dce/box_8cpp"/>
       </node>
-      <node id="19961">
-        <label>src/kernel/mut.cc</label>
-        <link refid="df/d33/mut_8cc"/>
+      <node id="19393">
+        <label>src/kernel/tests/boxTest.cpp</label>
+        <link refid="d1/da7/boxTest_8cpp"/>
       </node>
-      <node id="19958">
-        <label>src/kernel/Execute.cpp</label>
-        <link refid="df/d23/Execute_8cpp"/>
+      <node id="19386">
+        <label>src/kernel/Hilfs.cpp</label>
+        <link refid="da/d02/Hilfs_8cpp"/>
       </node>
-      <node id="19963">
+      <node id="19390">
         <label>src/kernel/routing/Box.cpp</label>
         <link refid="dd/dc6/Box_8cpp"/>
+      </node>
+      <node id="19389">
+        <label>src/kernel/Parser.cpp</label>
+        <link refid="dc/df5/Parser_8cpp"/>
+      </node>
+      <node id="19384">
+        <label>src/kernel/Parser.h</label>
+        <link refid="Parser.h"/>
+        <childnode refid="19385" relation="include">
+        </childnode>
+        <childnode refid="19386" relation="include">
+        </childnode>
+        <childnode refid="19387" relation="include">
+        </childnode>
+        <childnode refid="19388" relation="include">
+        </childnode>
+        <childnode refid="19389" relation="include">
+        </childnode>
+        <childnode refid="19390" relation="include">
+        </childnode>
+        <childnode refid="19391" relation="include">
+        </childnode>
+        <childnode refid="19392" relation="include">
+        </childnode>
+        <childnode refid="19393" relation="include">
+        </childnode>
+      </node>
+      <node id="19391">
+        <label>src/kernel/Runtime.cpp</label>
+        <link refid="db/d80/Runtime_8cpp"/>
+      </node>
+      <node id="19387">
+        <label>src/kernel/Interval.c</label>
+        <link refid="d2/de4/Interval_8c"/>
+      </node>
+      <node id="19392">
+        <label>src/kernel/TabGen.cpp</label>
+        <link refid="d3/da0/TabGen_8cpp"/>
+      </node>
+      <node id="19388">
+        <label>src/kernel/mut.cc</label>
+        <link refid="df/d33/mut_8cc"/>
       </node>
     </invincdepgraph>
     <innerclass refid="d9/d0b/structmutabor_1_1hidden_1_1mutabor__scanner__data" prot="public">mutabor::hidden::mutabor_scanner_data</innerclass>
@@ -323,7 +245,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="36" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="36" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="36" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d9/d7c/group__kernel_1gae513d1f53d62f05347a55d7a919dd56b" prot="public" static="no">
         <name>SRC_KERNEL_PARSER_H_PRECOMPILED</name>
@@ -333,7 +255,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="48" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="48" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="48" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d9/d7c/group__kernel_1gaf03a727e3192e3a6fef3579138023910" prot="public" static="no">
         <name>MUTABOR_NO_CASE_LABEL</name>
@@ -344,15 +266,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="51" column="10" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="51" bodyend="-1"/>
-        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a3f97b5d2d0c4017b623a3249938e8a18" compoundref="dc/df5/Parser_8cpp" startline="1814" endline="1831">mutabor::hidden::get_umstimmungs_case_default_element</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="51" column="10" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="51" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a3f97b5d2d0c4017b623a3249938e8a18" compoundref="dc/df5/Parser_8cpp" startline="1835" endline="1852">mutabor::hidden::get_umstimmungs_case_default_element</referencedby>
       </memberdef>
       <memberdef kind="define" id="d6/d0c/Parser_8h_1a7a133099015d4596bd67d584c5838da6" prot="public" static="no">
         <name>mutabor_adjacent</name>
         <param><defname>matrix</defname></param>
         <param><defname>a</defname></param>
         <param><defname>b</defname></param>
-        <initializer><ref refid="d9/d7c/group__kernel_1gaffecc17206fd5a2778b175ad231246d9" kindref="member">matrix</ref> [ (a) * box-&gt;file-&gt;anzahl_toene * sizeof (char) \
+        <initializer>matrix [ (a) * box-&gt;file-&gt;anzahl_toene * sizeof (char) \
 			       + (b) * sizeof (char)]</initializer>
         <briefdescription>
         </briefdescription>
@@ -360,9 +282,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="180" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="180" bodyend="-1"/>
-        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ab9d42437ab872d1731782bd34f84c796" compoundref="dc/df5/Parser_8cpp" startline="2398" endline="2509">mutabor::hidden::berechne_toene_absolut</referencedby>
-        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1adfdc087a9ae7b7da685895af8b949294" compoundref="dc/df5/Parser_8cpp" startline="2338" endline="2359">mutabor::hidden::test_zyklen</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="189" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="189" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ab9d42437ab872d1731782bd34f84c796" compoundref="dc/df5/Parser_8cpp" startline="2434" endline="2545">mutabor::hidden::berechne_toene_absolut</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1adfdc087a9ae7b7da685895af8b949294" compoundref="dc/df5/Parser_8cpp" startline="2371" endline="2395">mutabor::hidden::test_zyklen</referencedby>
       </memberdef>
       <memberdef kind="define" id="d6/d0c/Parser_8h_1afd69cea7827ee09e5504e2d63b78ea97" prot="public" static="no">
         <name>mutabor_u_adjacent</name>
@@ -377,9 +299,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="182" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="182" bodyend="-1"/>
-        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a2d099a673ba52487288bd99458e10ee5" compoundref="dc/df5/Parser_8cpp" startline="2953" endline="3546">mutabor::hidden::check_konsistenz</referencedby>
-        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1adfe05aaa84fab3b2afa96f23800bc748" compoundref="dc/df5/Parser_8cpp" startline="2922" endline="2947">mutabor::hidden::u_test_zyklen</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" line="191" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h" bodystart="191" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a2d099a673ba52487288bd99458e10ee5" compoundref="dc/df5/Parser_8cpp" startline="3013" endline="3628">mutabor::hidden::check_konsistenz</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1adfe05aaa84fab3b2afa96f23800bc748" compoundref="dc/df5/Parser_8cpp" startline="2967" endline="3007">mutabor::hidden::u_test_zyklen</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -388,7 +310,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
-<codeline lineno="28"><highlight class="comment">//<sp/>availlable<sp/>groups:<sp/>GUI,<sp/>route,<sp/>kernel,<sp/>muwx,<sp/>debug,<sp/>docview,<sp/>config,<sp/>docview</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="comment">/*<sp/>availlable<sp/>groups:<sp/>GUI,<sp/>route,<sp/>kernel,<sp/>muwx,<sp/>debug,<sp/>docview,<sp/>config,<sp/>docview<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>we<sp/>guard<sp/>a<sp/>little<sp/>bit<sp/>complicated<sp/>to<sp/>ensure<sp/>the<sp/>references<sp/>are<sp/>set<sp/>right</highlight></codeline>
 <codeline lineno="31"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -399,9 +321,9 @@
 <codeline lineno="36" refid="d9/d7c/group__kernel_1gaf4b8a3de58456b03df0692438bf37cd0" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SRC_KERNEL_PARSER_H</highlight></codeline>
 <codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>---------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>headers<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>---------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dc/d19/box_8h" kindref="compound">src/kernel/box.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -417,7 +339,7 @@
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">hidden<sp/>{</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="comment">//<sp/>system<sp/>headers<sp/>which<sp/>do<sp/>seldom<sp/>change</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="comment">/*<sp/>system<sp/>headers<sp/>which<sp/>do<sp/>seldom<sp/>change<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
 <codeline lineno="59" refid="d9/d0b/structmutabor_1_1hidden_1_1mutabor__scanner__data" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d9/d0b/structmutabor_1_1hidden_1_1mutabor__scanner__data" kindref="compound">mutabor_scanner_data</ref><sp/>{</highlight></codeline>
 <codeline lineno="60" refid="d9/d0b/structmutabor_1_1hidden_1_1mutabor__scanner__data_1a8db7da60a847be28eba468f5875a659c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d9/d0b/structmutabor_1_1hidden_1_1mutabor__scanner__data_1a8db7da60a847be28eba468f5875a659c" kindref="member">data</ref>;</highlight></codeline>
@@ -438,7 +360,7 @@
 <codeline lineno="75" refid="d8/d82/structmutabor_1_1hidden_1_1umst__oder__logik_1a8eba73c895d000e7ec1e0b9e6313d637" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d91/structmutabor_1_1hidden_1_1umstimmung" kindref="compound">umstimmung</ref><sp/>*<sp/><ref refid="d8/d82/structmutabor_1_1hidden_1_1umst__oder__logik_1a8eba73c895d000e7ec1e0b9e6313d637" kindref="member">umstimmung</ref>;</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
 <codeline lineno="77" refid="d8/d82/structmutabor_1_1hidden_1_1umst__oder__logik_1a0ee7fd382fab08282f89e73b8654d87c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/dc6/structmutabor_1_1hidden_1_1logik" kindref="compound">logik</ref><sp/>*<sp/><ref refid="d8/d82/structmutabor_1_1hidden_1_1umst__oder__logik_1a0ee7fd382fab08282f89e73b8654d87c" kindref="member">logik</ref>;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d8/d82/structmutabor_1_1hidden_1_1umst__oder__logik_1a7fcf7c498d8bbcfce8f83084baf8a896" kindref="member">u</ref>;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><ref refid="d8/d82/structmutabor_1_1hidden_1_1umst__oder__logik_1a5d61640bb2b93a2ec594347fcdd7122c" kindref="member">u</ref>;</highlight></codeline>
 <codeline lineno="79"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/d37/structmutabor_1_1hidden_1_1heap__element" kindref="compound">heap_element</ref>;</highlight></codeline>
@@ -455,202 +377,212 @@
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
 <codeline lineno="100" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed" kindref="compound">mutabor_logic_parsed</ref><sp/>{</highlight></codeline>
 <codeline lineno="101" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac3d0f4d5c0c5138d8b6a71c6e22e5a3f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac3d0f4d5c0c5138d8b6a71c6e22e5a3f" kindref="member">refcount</ref>;</highlight></codeline>
-<codeline lineno="102" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1adb4511f897874f6268aa7c1081f3dd07" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1adb4511f897874f6268aa7c1081f3dd07" kindref="member">list_of_intervalle</ref>;</highlight></codeline>
-<codeline lineno="103" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac9fe6aecab8d96ffe3c4ef5f60a63a65" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d6/dea/structmutabor_1_1hidden_1_1ton" kindref="compound">ton</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac9fe6aecab8d96ffe3c4ef5f60a63a65" kindref="member">list_of_toene</ref>;</highlight></codeline>
-<codeline lineno="104" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aab9097503c7f7fc14fbde2f3b4e9b812" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="da/d01/structmutabor_1_1hidden_1_1tonsystem" kindref="compound">tonsystem</ref><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aab9097503c7f7fc14fbde2f3b4e9b812" kindref="member">list_of_tonsysteme</ref>;</highlight></codeline>
-<codeline lineno="105" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ab88c371aef925696f7e8553c290ebe5b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d91/structmutabor_1_1hidden_1_1umstimmung" kindref="compound">umstimmung</ref><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ab88c371aef925696f7e8553c290ebe5b" kindref="member">list_of_umstimmungen</ref>;</highlight></codeline>
-<codeline lineno="106" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af4ab6aa5e6bdbef0811a65f4fba4a0d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/d47/structmutabor_1_1hidden_1_1harmonie" kindref="compound">harmonie</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af4ab6aa5e6bdbef0811a65f4fba4a0d9" kindref="member">list_of_harmonien</ref>;</highlight></codeline>
-<codeline lineno="107" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a40fd46a37eaf5053447ae20018271338" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/dc6/structmutabor_1_1hidden_1_1logik" kindref="compound">logik</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a40fd46a37eaf5053447ae20018271338" kindref="member">list_of_logiken</ref>;</highlight></codeline>
-<codeline lineno="108" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1afcc7c46bc21cd7e44107566026aaec2a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d5d/structmutabor_1_1hidden_1_1instrument" kindref="compound">instrument</ref><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1afcc7c46bc21cd7e44107566026aaec2a" kindref="member">list_of_instrumente</ref>;</highlight></codeline>
-<codeline lineno="109" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac417fd2bdbc440684d1fbde60c703322" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d5d/structmutabor_1_1hidden_1_1instrument" kindref="compound">instrument</ref><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac417fd2bdbc440684d1fbde60c703322" kindref="member">list_of_config_instrumente</ref>;</highlight></codeline>
-<codeline lineno="110" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a4d703ca0cb55c86e4c7c00a5c99bf499" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d6/dea/structmutabor_1_1hidden_1_1ton" kindref="compound">ton</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a4d703ca0cb55c86e4c7c00a5c99bf499" kindref="member">ton_ohne_namen</ref>;<sp/></highlight><highlight class="comment">/*<sp/>Frequenz=0<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="111" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ad7027982a10a204eeeba70d7e4adb78f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/db6/structmutabor_1_1hidden_1_1constant__memory" kindref="compound">constant_memory</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ad7027982a10a204eeeba70d7e4adb78f" kindref="member">list_of_constants</ref>;</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>temporary<sp/>data<sp/>*/</highlight></codeline>
-<codeline lineno="118" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a892b06e5363d0513dcadb966f804b1f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d6/dea/structmutabor_1_1hidden_1_1ton" kindref="compound">ton</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a892b06e5363d0513dcadb966f804b1f1" kindref="member">ton_liste</ref>;</highlight></codeline>
-<codeline lineno="119" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a61dc6f083130e98d1af7df87f70716b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a61dc6f083130e98d1af7df87f70716b5" kindref="member">tmp_vor_taste</ref>;</highlight></codeline>
-<codeline lineno="120" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a5d0f31e5ee565162c318db04682f4354" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a5d0f31e5ee565162c318db04682f4354" kindref="member">tmp_name</ref>;</highlight></codeline>
-<codeline lineno="121" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ad47213b1ad4a3a688de6a97f8bdf6f32" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ad47213b1ad4a3a688de6a97f8bdf6f32" kindref="member">tmp_nach_taste</ref>;</highlight></codeline>
-<codeline lineno="122" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a1f0a59b8565035f2a7750aacb78480a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/d4f/structmutabor_1_1hidden_1_1ausloeser" kindref="compound">ausloeser</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a1f0a59b8565035f2a7750aacb78480a5" kindref="member">tmp_ausloeser</ref>;</highlight></codeline>
-<codeline lineno="123" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a051199e11be05396f41786c6a35e380d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/d55/structmutabor_1_1hidden_1_1anweisung" kindref="compound">anweisung</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a051199e11be05396f41786c6a35e380d" kindref="member">tmp_anweisungsliste</ref>;</highlight></codeline>
-<codeline lineno="124" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a4d007fe9fc59e343f819f5fc86a6b4f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d91/structmutabor_1_1hidden_1_1umstimmung" kindref="compound">umstimmung</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a4d007fe9fc59e343f819f5fc86a6b4f5" kindref="member">tmp_umstimmung</ref>;</highlight></codeline>
-<codeline lineno="125" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a8189a252e4db850c2f7c224a53c4e6a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d6/dea/structmutabor_1_1hidden_1_1ton" kindref="compound">ton</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a8189a252e4db850c2f7c224a53c4e6a1" kindref="member">tmp_tonliste</ref>;</highlight></codeline>
-<codeline lineno="126" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a417f1330312f024a7ea14216352e1291" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/d0b/structmutabor_1_1hidden_1_1case__liste" kindref="compound">case_liste</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a417f1330312f024a7ea14216352e1291" kindref="member">tmp_umstimmungs_case_liste</ref>;</highlight></codeline>
-<codeline lineno="127" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ace3ce0930160e2ec7ce3efd56ef3161f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d5/d35/structmutabor_1_1hidden_1_1midiliste" kindref="compound">midiliste</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ace3ce0930160e2ec7ce3efd56ef3161f" kindref="member">list_of_integers</ref>;</highlight></codeline>
-<codeline lineno="128" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ab3117bb6cff8856dcfd0bf35772e322d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d4/d9f/structmutabor_1_1hidden_1_1parameter__list" kindref="compound">parameter_list</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ab3117bb6cff8856dcfd0bf35772e322d" kindref="member">list_of_names</ref>;</highlight></codeline>
-<codeline lineno="129" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a036b0b81f0b1a184db6c5d67f9e432c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/ddb/structmutabor_1_1hidden_1_1argument__list" kindref="compound">argument_list</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a036b0b81f0b1a184db6c5d67f9e432c5" kindref="member">list_of_argumente</ref>;</highlight></codeline>
-<codeline lineno="130" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae2e3624de813657f343215178845edff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/d96/structmutabor_1_1hidden_1_1aktions__liste" kindref="compound">aktions_liste</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae2e3624de813657f343215178845edff" kindref="member">list_of_aktionen</ref>;</highlight></codeline>
-<codeline lineno="131" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a9e4dadfc6e35afd6cb799f07e7bbd5f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="da/dd2/structmutabor_1_1hidden_1_1komplex__intervall" kindref="compound">komplex_intervall</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a9e4dadfc6e35afd6cb799f07e7bbd5f8" kindref="member">the_komplex_liste</ref>;</highlight></codeline>
-<codeline lineno="132" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aeda97d66b507e220620fe09e8fe7cecc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/d45/structmutabor_1_1hidden_1_1taste" kindref="compound">taste</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aeda97d66b507e220620fe09e8fe7cecc" kindref="member">tmp_tastenliste</ref>;</highlight></codeline>
-<codeline lineno="133" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d5d/structmutabor_1_1hidden_1_1instrument" kindref="compound">instrument</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref>;</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a6f4784a5297be93910361c3bb0736b12" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/d53/structmutabor_1_1hidden_1_1interpreter__parameter__list" kindref="compound">interpreter_parameter_list</ref><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a6f4784a5297be93910361c3bb0736b12" kindref="member">start_parameters</ref>;</highlight></codeline>
-<codeline lineno="136" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae8bd3d7f7a492ae7316d2a23e0fdb353" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae8bd3d7f7a492ae7316d2a23e0fdb353" kindref="member">constant_count</ref>;</highlight></codeline>
-<codeline lineno="137" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af528f998c156cd72787678c5e154ee4a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af528f998c156cd72787678c5e154ee4a" kindref="member">parameter_count</ref>;</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>some<sp/>triggers<sp/>that<sp/>are<sp/>always<sp/>active<sp/>if<sp/>the<sp/>logic<sp/>is<sp/>active.<sp/>E.g.,<sp/>the<sp/>main<sp/>triggers<sp/>of<sp/>logics<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="140" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a6d17f7a8fa346bf5d4d50fd26a77aa7d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d1/da9/structmutabor_1_1hidden_1_1harmonie__ereignis" kindref="compound">harmonie_ereignis</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a6d17f7a8fa346bf5d4d50fd26a77aa7d" kindref="member">global_harmonies</ref>;<sp/></highlight><highlight class="comment">/*&lt;<sp/>harmony<sp/>triggers<sp/>that<sp/>are<sp/>always<sp/>active<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="141" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a5f7f967bfaae99670031311890034ebc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis" kindref="compound">keyboard_ereignis</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a5f7f967bfaae99670031311890034ebc" kindref="member">global_keystrokes</ref>;<sp/></highlight><highlight class="comment">/*&lt;<sp/>keyboard<sp/>triggers<sp/>that<sp/>are<sp/>always<sp/>active<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="142" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a599eefae116273429b56c2b95283365b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/ddd/structmutabor_1_1hidden_1_1midi__ereignis" kindref="compound">midi_ereignis</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a599eefae116273429b56c2b95283365b" kindref="member">global_midi_inputs</ref>;<sp/></highlight><highlight class="comment">/*&lt;<sp/>MIDI<sp/>in<sp/>triggers<sp/>that<sp/>are<sp/>always<sp/>active<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"></highlight></codeline>
-<codeline lineno="144" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a93708455dd552303dd55096dd0879fbc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d71/structmutabor_1_1hidden_1_1mutabor__syntax__heap" kindref="compound">mutabor_syntax_heap</ref><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a93708455dd552303dd55096dd0879fbc" kindref="member">heap</ref>;</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"></highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/**************************************************************</highlight></codeline>
-<codeline lineno="147"><highlight class="comment"></highlight></codeline>
-<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Hier<sp/>werden<sp/>die<sp/>Toene<sp/>aufgelîst.</highlight></codeline>
-<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Nach<sp/>dem<sp/>Parsing<sp/>ist<sp/>nur<sp/>die<sp/>Syntax-Struktur</highlight></codeline>
-<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vorhanden,<sp/>aber<sp/>keine<sp/>fertig<sp/>ausgerechneten<sp/>Toene.</highlight></codeline>
-<codeline lineno="151"><highlight class="comment"></highlight></codeline>
-<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Es<sp/>wird<sp/>ein<sp/>azyklischer<sp/>Graph<sp/>der<sp/>Toene<sp/>und<sp/>ihrer</highlight></codeline>
-<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Untertoene<sp/>gebildet,<sp/>der<sp/>dann<sp/>nach<sp/>den</highlight></codeline>
-<codeline lineno="154"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>depth-first-search<sp/>traversiert<sp/>wird.</highlight></codeline>
-<codeline lineno="155"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Dabei<sp/>bekommt<sp/>jeder<sp/>Ton<sp/>seine<sp/>Absolutfrequenz<sp/>berechnet.</highlight></codeline>
-<codeline lineno="156"><highlight class="comment"></highlight></codeline>
-<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>****************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"></highlight></codeline>
-<codeline lineno="159" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a742cd5038e8faef86ff2eea81286520a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a742cd5038e8faef86ff2eea81286520a" kindref="member">anzahl_toene</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*&lt;<sp/>Number<sp/>of<sp/>read<sp/>tones<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="160" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac555bb683ec90abdb69598e108497c8a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d6/dea/structmutabor_1_1hidden_1_1ton" kindref="compound">ton</ref><sp/>**<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac555bb683ec90abdb69598e108497c8a" kindref="member">toene</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*&lt;<sp/>faster<sp/>access<sp/>than<sp/>using<sp/>lists<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="161" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a7b5fb2bff3bff995f1d6eeca11534820" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a7b5fb2bff3bff995f1d6eeca11534820" kindref="member">visited</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>marker<sp/>for<sp/>traversing<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="162" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a3cd864cd46c80f8ad48d8ed37a35d703" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a3cd864cd46c80f8ad48d8ed37a35d703" kindref="member">matrix</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Adjacency<sp/>matrix<sp/>access<sp/>only<sp/>using<sp/>the<sp/>macro<sp/>mutabor_adjacent<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/**************************************************************</highlight></codeline>
-<codeline lineno="165"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Es<sp/>wird<sp/>ein<sp/>azyklischer<sp/>Graph<sp/>der<sp/>Umstimmungen</highlight></codeline>
-<codeline lineno="166"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gebildet,<sp/>der<sp/>dann<sp/>nach<sp/>den</highlight></codeline>
-<codeline lineno="167"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>depth-first-search<sp/>traversiert<sp/>wird.</highlight></codeline>
-<codeline lineno="168"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Dabei<sp/>wird<sp/>ein<sp/>beliebiger<sp/>Zyklus<sp/>festgestellt.</highlight></codeline>
-<codeline lineno="169"><highlight class="comment"></highlight></codeline>
-<codeline lineno="170"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>****************************************************************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="171" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a672e976350e96b79be3fec5437d0f7ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a672e976350e96b79be3fec5437d0f7ce" kindref="member">anzahl_umstimmungen_und_logiken</ref>;<sp/><sp/></highlight><highlight class="comment">/*<sp/>so<sp/>viele<sp/>Umstimmungen<sp/>wurden<sp/>gelesen<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="172" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a9944bd0dd6f338dc98725647721acc50" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d8/d82/structmutabor_1_1hidden_1_1umst__oder__logik" kindref="compound">umst_oder_logik</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a9944bd0dd6f338dc98725647721acc50" kindref="member">zyklen_feld</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Feld<sp/>von<sp/>Umstimmungen</highlight></codeline>
-<codeline lineno="173"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>zum<sp/>schnelleren<sp/>Zugriff<sp/>als<sp/>ueber<sp/>Listen<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="174" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a50c1b7860c56d674fe733e6e91e1bc9e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a50c1b7860c56d674fe733e6e91e1bc9e" kindref="member">u_visited</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Traversierungsmerker<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="175" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae87fff6f12d55d3689e9844fec582274" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae87fff6f12d55d3689e9844fec582274" kindref="member">u_matrix</ref>;<sp/></highlight><highlight class="comment">/*<sp/>Adjazenzmatrix<sp/>(auf<sp/>sie<sp/>darf<sp/>nur<sp/>ueber</highlight></codeline>
-<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>das<sp/>folgende<sp/>Makro<sp/>zugegriffen<sp/>werden<sp/>!*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"></highlight></codeline>
-<codeline lineno="180" refid="d6/d0c/Parser_8h_1a7a133099015d4596bd67d584c5838da6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>mutabor_adjacent(matrix,a,b)<sp/>matrix<sp/>[<sp/>(a)<sp/>*<sp/>box-&gt;file-&gt;anzahl_toene<sp/>*<sp/>sizeof<sp/>(char)<sp/>\</highlight></codeline>
-<codeline lineno="181"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(b)<sp/>*<sp/>sizeof<sp/>(char)]</highlight></codeline>
-<codeline lineno="182" refid="d6/d0c/Parser_8h_1afd69cea7827ee09e5504e2d63b78ea97" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>mutabor_u_adjacent(u_matrix,a,b)<sp/>u_matrix<sp/>[<sp/>(a)<sp/>*<sp/>box-&gt;file-&gt;anzahl_umstimmungen_und_logiken<sp/>\</highlight></codeline>
-<codeline lineno="183"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>sizeof<sp/>(char)<sp/>+<sp/>(b)<sp/>*<sp/>sizeof<sp/>(char)]</highlight></codeline>
-<codeline lineno="184"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="185"><highlight class="normal"></highlight></codeline>
-<codeline lineno="186"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1acc4c9b84ab796b238c3486f5f2835a48" kindref="member">ton_list_laenge</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>ton<sp/>*list);</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac3c7118f2ab2a55cfe24907c9a94148b" kindref="member">tonsystem_list_laenge</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>tonsystem<sp/>*list);</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a7a916c9ff884f4b54cb14b5984ac95de" kindref="member">umstimmungs_list_laenge</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>umstimmung<sp/>*list);</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a693e061782917267888ee9038317a3c8" kindref="member">logik_list_laenge</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>logik<sp/>*list);</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a36853cc2dcc8d688320ff260fa72fecb" kindref="member">midi_list_laenge</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>midiliste<sp/>*list);</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a777154b4c34808a075df2c5c39df8313" kindref="member">get_logik_nummer</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>logik<sp/>*<sp/>liste);</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"></highlight></codeline>
-<codeline lineno="193"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">ton<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a90646451f6a5e07cbc30d3667d75daea" kindref="member">get_ton</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>ton<sp/>*<sp/>liste);</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">intervall<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a0f7f70c4e2a58c11fc80284fee21cd93" kindref="member">get_intervall</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>intervall<sp/>*<sp/>liste);</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">tonsystem<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a94ebadf3292eae7813c1218a2337b264" kindref="member">parser_get_tonsystem</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>tonsystem<sp/>*<sp/>liste);</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">umstimmung<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1af7fbfc30dc250437bddfa7ea1e6a12a5" kindref="member">get_umstimmung</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>umstimmung<sp/>*<sp/>liste);</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">harmonie<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a47d9c14928e4449d97b119243491aecf" kindref="member">get_harmonie</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>harmonie<sp/>*<sp/>liste);</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">logik<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a7b9335dd1c1acd2d32db8444889df874" kindref="member">get_logik</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>logik<sp/>*<sp/>liste);</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"></highlight></codeline>
-<codeline lineno="201"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac99f9ea4f65c8ce4f2788824ec1eb66c" kindref="member">init_integersequenz</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5c98a110a50b9faadddee7cfafc308ab" kindref="member">get_new_integer_in_integersequenz</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>wert);</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//void<sp/>init_parameter_liste<sp/>(mutabor_box_type<sp/>*<sp/>box);</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="204"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">parameter_list<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ab6821429cbbf99ccb2cf3f1f5a7e98e2" kindref="member">get_new_name_in_parameterlist</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name);</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a237f866755e35778c4d93c5df821e797" kindref="member">enumerate_parameters</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>parameter_list<sp/>*<sp/>parameters);</highlight></codeline>
-<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//void<sp/>init_argument_liste<sp/>(mutabor_box_type<sp/>*<sp/>box);</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="207"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">argument_list<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ad1bac4b8da0108ea86621cc8bd62593d" kindref="member">get_new_number_in_argument_list</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>number);</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">argument_list<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ae58e9ab3342ef3e981b24670ff25b0a7" kindref="member">get_new_name_in_argument_list</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>parameter);</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">argument_list<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a9bf9e8e15f7d1d79f7938a1012be023a" kindref="member">get_new_distance_in_argument_list</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">argument_list<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aec7d0a86febb5c7d8e77800c2b8a7153" kindref="member">get_new_anchor_in_argument_list</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="212"><highlight class="normal"></highlight></codeline>
-<codeline lineno="213"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac003da3df825071250037e2cab99256a" kindref="member">init_aktions_liste</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a2b01f471a436715efe5832346e79e607" kindref="member">get_new_aktion_aufruf_element</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>argument_list<sp/>*<sp/>arguments);</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="218"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a7fcc5582dc41e104355644719d3a266e" kindref="member">get_new_aktion_midi_out_element</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="219"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac377a0babb3e6870eb5446bbf765131b" kindref="member">get_new_aktion_harmony_analysis</ref>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="220"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a29411f595d065fef7caaad95f81820d6" kindref="member">init_komplex_ton_list</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a1eb5aa585224ec5898edbb84d528f6ef" kindref="member">get_new_faktor_anteil</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name);</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"></highlight></codeline>
-<codeline lineno="223"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" kindref="member">mutabor_programm_einlesen</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>logic);</highlight></codeline>
-<codeline lineno="224"><highlight class="normal"></highlight></codeline>
-<codeline lineno="225"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a41e35ca2ae8353b95a2d639c4f7da764" kindref="member">get_new_intervall</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>wert);</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a3fd55b23aa4babe61a2d59a222be8694" kindref="member">get_new_intervall_komplex</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name);</highlight></codeline>
-<codeline lineno="227"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abc8462b97c0123e4368e7614c26abb06" kindref="member">get_new_ton_absolut</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>wert);</highlight></codeline>
-<codeline lineno="228"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a6a0dbd751491f5085c11429581b7a371" kindref="member">get_new_ton_komplex_positive</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*bezugston);</highlight></codeline>
-<codeline lineno="229"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a61a35dd4a9770ffd9dae313cbbebec3a" kindref="member">get_new_ton_komplex_negative</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*bezugston);</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"></highlight></codeline>
-<codeline lineno="231"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a6622ef423e84df097b1f9af65739aed0" kindref="member">init_ton_liste</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a1f78b370fd6aa726092ca8e45514f109" kindref="member">get_new_ton_in_tonsystem</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name);</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a2b04ccd2220b6e08ce8e3f59601769f0" kindref="member">get_new_tonsystem</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>taste);</highlight></codeline>
-<codeline lineno="234"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ab5fc1ffde629114171cc0ef961f384e7" kindref="member">get_new_tonsystem_negative</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>taste);</highlight></codeline>
-<codeline lineno="235"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a4b2009e8cc09b75ec9301ea80017914a" kindref="member">init_umstimmung</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name);</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ad3b04cefde80ba35a02c0273057ee5b0" kindref="member">get_new_umstimmung</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a81f1f37a6ad0efa3f8fcfe74e9cdf344" kindref="member">eintrage_parameterliste_in_umstimmung</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>umstimmung<sp/>*<sp/>ret,</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>parameter_list<sp/>*<sp/>list);</highlight></codeline>
-<codeline lineno="240"><highlight class="normal"></highlight></codeline>
-<codeline lineno="241"><highlight class="normal"></highlight></codeline>
-<codeline lineno="242"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a679ee48c12684be739a1e25e9e681237" kindref="member">get_umstimmung_taste_abs</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>argument_list<sp/>*<sp/>argument);</highlight></codeline>
-<codeline lineno="244"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ae8c57ffaa63d79e19d22378b1ce2fa39" kindref="member">get_umstimmung_taste_rel</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>argument_list<sp/>*<sp/>argument,</highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>vorzeichen);</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1afb0029eb8496e34e63e74253aa69799b" kindref="member">get_umstimmung_breite_abs</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>argument_list<sp/>*<sp/>argument);</highlight></codeline>
-<codeline lineno="249"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a9ed4653c927ff7a428a47e7785f9c417" kindref="member">get_umstimmung_breite_rel</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>argument_list<sp/>*<sp/>argument,</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>vorzeichen);</highlight></codeline>
-<codeline lineno="252"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a74239285e55c82b6f7a0531561a83793" kindref="member">init_umstimm_expression_list</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a3521fea8c664ee15602ee996189012fe" kindref="member">get_new_umstimm_expression</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>bezugston);</highlight></codeline>
-<codeline lineno="255"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aca9e570f03a86acef6c45ef5467a0fdd" kindref="member">get_new_umstimm_expression_positive</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>bezugston);</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a311b9bce537212ac5d087c73a000b635" kindref="member">get_new_umstimm_expression_negative</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
-<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>bezugston);</highlight></codeline>
-<codeline lineno="259"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1acf99854b0d79f9cb64b8777518a9f9e4" kindref="member">get_umstimmung_tonhoehe_veraendert</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="260"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a54124cff0930ab2ec34948b7408347d5" kindref="member">get_umstimmung_wiederholung_abs</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="261"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a4869a3151441c237856eef0ad0c69a9a" kindref="member">get_umstimmung_wiederholung_abs_negative</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1af7e760be07de9441e3ebd0087ebef4f2" kindref="member">get_umstimmung_wiederholung_rel_positive</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="263"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a39d30e1a582abb0f61941afbd68f3b55" kindref="member">get_umstimmung_wiederholung_rel_negative</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="264"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a1e6822eca15dc64949fe268922704ca6" kindref="member">get_umstimmung_umstimmungs_bund</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a6333b10af586226751825c0e226e26cd" kindref="member">get_umstimmungs_case_zahl_element</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>konstante);</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a3f97b5d2d0c4017b623a3249938e8a18" kindref="member">get_umstimmungs_case_default_element</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="267"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a6ddbaafcc67c482d01d54bcac50bc0f3" kindref="member">init_umstimmungs_case_liste</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="268"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac39b6e4c29bd68ce6e4535256068cdaf" kindref="member">get_umstimmung_umstimm_case</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/>argument_list<sp/>*<sp/>argument);</highlight></codeline>
-<codeline lineno="269"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abc74118c512da5bc3d57a1af68330e08" kindref="member">get_umstimmung_midi_out</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="270"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a7e52446e0d0733d5c4df17e3b1e2da64" kindref="member">init_tastenliste</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="271"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a4c8981c602564b7546e3c6eb06881a2c" kindref="member">get_new_taste</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>taste,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>stern);</highlight></codeline>
-<codeline lineno="272"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1acf43d0f11320a770db9f40fbcddc3d80" kindref="member">get_new_harmonie</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bezugstaste);</highlight></codeline>
-<codeline lineno="273"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1af58e8acdc35f2d86bcf0e5ad77e17b6f" kindref="member">get_harmoniebezeichner</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>vor_taste,</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nach_taste);</highlight></codeline>
-<codeline lineno="277"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a3dbddf5ab27dafb5445093c7fd39bde8" kindref="member">init_ausloeser</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="278"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a6e7429ba63c6fbb3107f8ac4665bd970" kindref="member">get_ausloeser_default</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="279"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aea164739fa1e8b6ea4364452ee241e7f" kindref="member">get_ausloeser_harmonie</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="280"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a677caa4804c4d7c2f37c57d88aa21828" kindref="member">get_ausloeser_harmonie_form</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="281"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ab6d26dd28051e4321f4b8e50a1ebf7df" kindref="member">get_ausloeser_taste</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name);</highlight></codeline>
-<codeline lineno="282"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aa087545814b83dfb968830c778ab6864" kindref="member">get_ausloeser_midi_in</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="283"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a173a930850fa0cd105b77a1af9753c57" kindref="member">init_anweisungs_liste</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a94d74e9e09fd25dbf282668a6fde0613" kindref="member">get_new_anweisung</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="285"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a895bbe0ce0327ba13ef50eb2a44bbdb5" kindref="member">get_new_logik</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>einstimmung);</highlight></codeline>
-<codeline lineno="286"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a3743806389c9cac36fdf308192341ca1" kindref="member">vervollstaendige_logik</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="287"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ae5e154b88f72a1cffaa0ac401435db18" kindref="member">get_instrument_dekl</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>midi_in,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>midi_von,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>midi_bis,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>midi_umleit,</highlight></codeline>
-<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>instrument<sp/>**<sp/>list_to_insert);</highlight></codeline>
-<codeline lineno="289"><highlight class="normal"></highlight></codeline>
-<codeline lineno="290"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
-<codeline lineno="291"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="293"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="294"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="295"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="296"><highlight class="normal"></highlight></codeline>
-<codeline lineno="297"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>precompiled</highlight></codeline>
-<codeline lineno="298"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>header<sp/>loaded</highlight></codeline>
-<codeline lineno="299"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af2cefa589359dd891dd690e5ac3a9d6f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af2cefa589359dd891dd690e5ac3a9d6f" kindref="member">mutex</ref>;</highlight></codeline>
+<codeline lineno="103" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1adb4511f897874f6268aa7c1081f3dd07" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1adb4511f897874f6268aa7c1081f3dd07" kindref="member">list_of_intervalle</ref>;</highlight></codeline>
+<codeline lineno="104" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac9fe6aecab8d96ffe3c4ef5f60a63a65" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d6/dea/structmutabor_1_1hidden_1_1ton" kindref="compound">ton</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac9fe6aecab8d96ffe3c4ef5f60a63a65" kindref="member">list_of_toene</ref>;</highlight></codeline>
+<codeline lineno="105" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aab9097503c7f7fc14fbde2f3b4e9b812" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="da/d01/structmutabor_1_1hidden_1_1tonsystem" kindref="compound">tonsystem</ref><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aab9097503c7f7fc14fbde2f3b4e9b812" kindref="member">list_of_tonsysteme</ref>;</highlight></codeline>
+<codeline lineno="106" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ab88c371aef925696f7e8553c290ebe5b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d91/structmutabor_1_1hidden_1_1umstimmung" kindref="compound">umstimmung</ref><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ab88c371aef925696f7e8553c290ebe5b" kindref="member">list_of_umstimmungen</ref>;</highlight></codeline>
+<codeline lineno="107" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af4ab6aa5e6bdbef0811a65f4fba4a0d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/d47/structmutabor_1_1hidden_1_1harmonie" kindref="compound">harmonie</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af4ab6aa5e6bdbef0811a65f4fba4a0d9" kindref="member">list_of_harmonien</ref>;</highlight></codeline>
+<codeline lineno="108" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a40fd46a37eaf5053447ae20018271338" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/dc6/structmutabor_1_1hidden_1_1logik" kindref="compound">logik</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a40fd46a37eaf5053447ae20018271338" kindref="member">list_of_logiken</ref>;</highlight></codeline>
+<codeline lineno="109" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1afcc7c46bc21cd7e44107566026aaec2a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d5d/structmutabor_1_1hidden_1_1instrument" kindref="compound">instrument</ref><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1afcc7c46bc21cd7e44107566026aaec2a" kindref="member">list_of_instrumente</ref>;</highlight></codeline>
+<codeline lineno="110" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac417fd2bdbc440684d1fbde60c703322" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d5d/structmutabor_1_1hidden_1_1instrument" kindref="compound">instrument</ref><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac417fd2bdbc440684d1fbde60c703322" kindref="member">list_of_config_instrumente</ref>;</highlight></codeline>
+<codeline lineno="111" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a4d703ca0cb55c86e4c7c00a5c99bf499" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d6/dea/structmutabor_1_1hidden_1_1ton" kindref="compound">ton</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a4d703ca0cb55c86e4c7c00a5c99bf499" kindref="member">ton_ohne_namen</ref>;<sp/></highlight><highlight class="comment">/*<sp/>Frequenz=0<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ad7027982a10a204eeeba70d7e4adb78f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/db6/structmutabor_1_1hidden_1_1constant__memory" kindref="compound">constant_memory</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ad7027982a10a204eeeba70d7e4adb78f" kindref="member">list_of_constants</ref>;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>temporary<sp/>data<sp/>*/</highlight></codeline>
+<codeline lineno="119" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a892b06e5363d0513dcadb966f804b1f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d6/dea/structmutabor_1_1hidden_1_1ton" kindref="compound">ton</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a892b06e5363d0513dcadb966f804b1f1" kindref="member">ton_liste</ref>;</highlight></codeline>
+<codeline lineno="120" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a0c9bff21b252c3adb8c0c5dd8f04791b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga2efb36d08e25940032af9ee71ca97e31" kindref="member">harmony_type</ref><sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a0c9bff21b252c3adb8c0c5dd8f04791b" kindref="member">tmp_harmony_flags</ref>;</highlight></codeline>
+<codeline lineno="121" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a61dc6f083130e98d1af7df87f70716b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a61dc6f083130e98d1af7df87f70716b5" kindref="member">tmp_vor_taste</ref>;</highlight></codeline>
+<codeline lineno="122" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a5d0f31e5ee565162c318db04682f4354" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a5d0f31e5ee565162c318db04682f4354" kindref="member">tmp_name</ref>;</highlight></codeline>
+<codeline lineno="123" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ad47213b1ad4a3a688de6a97f8bdf6f32" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ad47213b1ad4a3a688de6a97f8bdf6f32" kindref="member">tmp_nach_taste</ref>;</highlight></codeline>
+<codeline lineno="124" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a1f0a59b8565035f2a7750aacb78480a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/d4f/structmutabor_1_1hidden_1_1ausloeser" kindref="compound">ausloeser</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a1f0a59b8565035f2a7750aacb78480a5" kindref="member">tmp_ausloeser</ref>;</highlight></codeline>
+<codeline lineno="125" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a051199e11be05396f41786c6a35e380d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="df/d55/structmutabor_1_1hidden_1_1anweisung" kindref="compound">anweisung</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a051199e11be05396f41786c6a35e380d" kindref="member">tmp_anweisungsliste</ref>;</highlight></codeline>
+<codeline lineno="126" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a4d007fe9fc59e343f819f5fc86a6b4f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d91/structmutabor_1_1hidden_1_1umstimmung" kindref="compound">umstimmung</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a4d007fe9fc59e343f819f5fc86a6b4f5" kindref="member">tmp_umstimmung</ref>;</highlight></codeline>
+<codeline lineno="127" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a8189a252e4db850c2f7c224a53c4e6a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d6/dea/structmutabor_1_1hidden_1_1ton" kindref="compound">ton</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a8189a252e4db850c2f7c224a53c4e6a1" kindref="member">tmp_tonliste</ref>;</highlight></codeline>
+<codeline lineno="128" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a417f1330312f024a7ea14216352e1291" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/d0b/structmutabor_1_1hidden_1_1case__liste" kindref="compound">case_liste</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a417f1330312f024a7ea14216352e1291" kindref="member">tmp_umstimmungs_case_liste</ref>;</highlight></codeline>
+<codeline lineno="129" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ace3ce0930160e2ec7ce3efd56ef3161f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d5/d35/structmutabor_1_1hidden_1_1midiliste" kindref="compound">midiliste</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ace3ce0930160e2ec7ce3efd56ef3161f" kindref="member">list_of_integers</ref>;</highlight></codeline>
+<codeline lineno="130" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ab3117bb6cff8856dcfd0bf35772e322d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d4/d9f/structmutabor_1_1hidden_1_1parameter__list" kindref="compound">parameter_list</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ab3117bb6cff8856dcfd0bf35772e322d" kindref="member">list_of_names</ref>;</highlight></codeline>
+<codeline lineno="131" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a036b0b81f0b1a184db6c5d67f9e432c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/ddb/structmutabor_1_1hidden_1_1argument__list" kindref="compound">argument_list</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a036b0b81f0b1a184db6c5d67f9e432c5" kindref="member">list_of_argumente</ref>;</highlight></codeline>
+<codeline lineno="132" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae2e3624de813657f343215178845edff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/d96/structmutabor_1_1hidden_1_1aktions__liste" kindref="compound">aktions_liste</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae2e3624de813657f343215178845edff" kindref="member">list_of_aktionen</ref>;</highlight></codeline>
+<codeline lineno="133" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a9e4dadfc6e35afd6cb799f07e7bbd5f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="da/dd2/structmutabor_1_1hidden_1_1komplex__intervall" kindref="compound">komplex_intervall</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a9e4dadfc6e35afd6cb799f07e7bbd5f8" kindref="member">the_komplex_liste</ref>;</highlight></codeline>
+<codeline lineno="134" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aeda97d66b507e220620fe09e8fe7cecc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d7/d45/structmutabor_1_1hidden_1_1taste" kindref="compound">taste</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aeda97d66b507e220620fe09e8fe7cecc" kindref="member">tmp_tastenliste</ref>;</highlight></codeline>
+<codeline lineno="135" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d5d/structmutabor_1_1hidden_1_1instrument" kindref="compound">instrument</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a43898759d509ba22b904bc1358699e00" kindref="member">lauf_instrument</ref>;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a6f4784a5297be93910361c3bb0736b12" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dd/d53/structmutabor_1_1hidden_1_1interpreter__parameter__list" kindref="compound">interpreter_parameter_list</ref><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a6f4784a5297be93910361c3bb0736b12" kindref="member">start_parameters</ref>;</highlight></codeline>
+<codeline lineno="138" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae8bd3d7f7a492ae7316d2a23e0fdb353" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae8bd3d7f7a492ae7316d2a23e0fdb353" kindref="member">constant_count</ref>;</highlight></codeline>
+<codeline lineno="139" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af528f998c156cd72787678c5e154ee4a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af528f998c156cd72787678c5e154ee4a" kindref="member">parameter_count</ref>;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>some<sp/>triggers<sp/>that<sp/>are<sp/>always<sp/>active<sp/>if<sp/>the<sp/>logic<sp/>is<sp/>active.<sp/>E.g.,<sp/>the<sp/>main<sp/>triggers<sp/>of<sp/>logics<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a6d17f7a8fa346bf5d4d50fd26a77aa7d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d1/da9/structmutabor_1_1hidden_1_1harmonie__ereignis" kindref="compound">harmonie_ereignis</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a6d17f7a8fa346bf5d4d50fd26a77aa7d" kindref="member">global_harmonies</ref>;<sp/></highlight><highlight class="comment">/*&lt;<sp/>harmony<sp/>triggers<sp/>that<sp/>are<sp/>always<sp/>active<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a5f7f967bfaae99670031311890034ebc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis" kindref="compound">keyboard_ereignis</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a5f7f967bfaae99670031311890034ebc" kindref="member">global_keystrokes</ref>;<sp/></highlight><highlight class="comment">/*&lt;<sp/>keyboard<sp/>triggers<sp/>that<sp/>are<sp/>always<sp/>active<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a599eefae116273429b56c2b95283365b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d0/ddd/structmutabor_1_1hidden_1_1midi__ereignis" kindref="compound">midi_ereignis</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a599eefae116273429b56c2b95283365b" kindref="member">global_midi_inputs</ref>;<sp/></highlight><highlight class="comment">/*&lt;<sp/>MIDI<sp/>in<sp/>triggers<sp/>that<sp/>are<sp/>always<sp/>active<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a93708455dd552303dd55096dd0879fbc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/d71/structmutabor_1_1hidden_1_1mutabor__syntax__heap" kindref="compound">mutabor_syntax_heap</ref><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a93708455dd552303dd55096dd0879fbc" kindref="member">heap</ref>;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/**************************************************************</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"></highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Hier<sp/>werden<sp/>die<sp/>Toene<sp/>aufgelîst.</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Nach<sp/>dem<sp/>Parsing<sp/>ist<sp/>nur<sp/>die<sp/>Syntax-Struktur</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vorhanden,<sp/>aber<sp/>keine<sp/>fertig<sp/>ausgerechneten<sp/>Toene.</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"></highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Es<sp/>wird<sp/>ein<sp/>azyklischer<sp/>Graph<sp/>der<sp/>Toene<sp/>und<sp/>ihrer</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Untertoene<sp/>gebildet,<sp/>der<sp/>dann<sp/>nach<sp/>den</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>depth-first-search<sp/>traversiert<sp/>wird.</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Dabei<sp/>bekommt<sp/>jeder<sp/>Ton<sp/>seine<sp/>Absolutfrequenz<sp/>berechnet.</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"></highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>****************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>some<sp/>variables<sp/>to<sp/>support<sp/>loop<sp/>checking<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae6f6fba2f7574aa98af677b97ecec43f" kindref="member">interval_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*&lt;<sp/>size<sp/>of<sp/>read<sp/>intervals<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="dc/d19/structmutabor_1_1hidden_1_1intervall" kindref="compound">intervall</ref><sp/>**<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a13def7381e98941059e0bdd64ea4b005" kindref="member">check_intervals</ref>;<sp/></highlight><highlight class="comment">/*&lt;<sp/>fast<sp/>access<sp/>to<sp/>intervals<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af5aa1fc4e25da87352287a4facb0b462" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1af5aa1fc4e25da87352287a4facb0b462" kindref="member">visited_intervals</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*&lt;<sp/>mark<sp/>traversed<sp/>nodes<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aaf20cb55dae854019a714c28eae0cb10" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1aaf20cb55dae854019a714c28eae0cb10" kindref="member">interval_matrix</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*&lt;<sp/>directed<sp/>graph<sp/>containing<sp/>the<sp/>loops<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a742cd5038e8faef86ff2eea81286520a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a742cd5038e8faef86ff2eea81286520a" kindref="member">anzahl_toene</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*&lt;<sp/>Number<sp/>of<sp/>read<sp/>tones<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac555bb683ec90abdb69598e108497c8a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d6/dea/structmutabor_1_1hidden_1_1ton" kindref="compound">ton</ref><sp/>**<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ac555bb683ec90abdb69598e108497c8a" kindref="member">toene</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*&lt;<sp/>faster<sp/>access<sp/>than<sp/>using<sp/>lists<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a0cf7e33869ef1aedabbbf2c9e146afb2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a0cf7e33869ef1aedabbbf2c9e146afb2" kindref="member">visited_tones</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>marker<sp/>for<sp/>traversing<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1abd8068ed1d66cf174ecd9c92c1e96660" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1abd8068ed1d66cf174ecd9c92c1e96660" kindref="member">tone_matrix</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Adjacency<sp/>matrix<sp/>access<sp/>only<sp/>using<sp/>the<sp/>macro<sp/>mutabor_adjacent<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/**************************************************************</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Es<sp/>wird<sp/>ein<sp/>azyklischer<sp/>Graph<sp/>der<sp/>Umstimmungen</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gebildet,<sp/>der<sp/>dann<sp/>nach<sp/>den</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>depth-first-search<sp/>traversiert<sp/>wird.</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Dabei<sp/>wird<sp/>ein<sp/>beliebiger<sp/>Zyklus<sp/>festgestellt.</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"></highlight></codeline>
+<codeline lineno="179"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>****************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a672e976350e96b79be3fec5437d0f7ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a672e976350e96b79be3fec5437d0f7ce" kindref="member">anzahl_umstimmungen_und_logiken</ref>;<sp/><sp/></highlight><highlight class="comment">/*<sp/>so<sp/>viele<sp/>Umstimmungen<sp/>wurden<sp/>gelesen<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a9944bd0dd6f338dc98725647721acc50" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d8/d82/structmutabor_1_1hidden_1_1umst__oder__logik" kindref="compound">umst_oder_logik</ref><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a9944bd0dd6f338dc98725647721acc50" kindref="member">zyklen_feld</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Feld<sp/>von<sp/>Umstimmungen</highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>zum<sp/>schnelleren<sp/>Zugriff<sp/>als<sp/>ueber<sp/>Listen<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a50c1b7860c56d674fe733e6e91e1bc9e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1a50c1b7860c56d674fe733e6e91e1bc9e" kindref="member">u_visited</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Traversierungsmerker<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184" refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae87fff6f12d55d3689e9844fec582274" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/d5d/structmutabor_1_1hidden_1_1mutabor__logic__parsed_1ae87fff6f12d55d3689e9844fec582274" kindref="member">u_matrix</ref>;<sp/></highlight><highlight class="comment">/*<sp/>Adjazenzmatrix<sp/>(auf<sp/>sie<sp/>darf<sp/>nur<sp/>ueber</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>das<sp/>folgende<sp/>Makro<sp/>zugegriffen<sp/>werden<sp/>!*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189" refid="d6/d0c/Parser_8h_1a7a133099015d4596bd67d584c5838da6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>mutabor_adjacent(matrix,a,b)<sp/>matrix<sp/>[<sp/>(a)<sp/>*<sp/>box-&gt;file-&gt;anzahl_toene<sp/>*<sp/>sizeof<sp/>(char)<sp/>\</highlight></codeline>
+<codeline lineno="190"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(b)<sp/>*<sp/>sizeof<sp/>(char)]</highlight></codeline>
+<codeline lineno="191" refid="d6/d0c/Parser_8h_1afd69cea7827ee09e5504e2d63b78ea97" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>mutabor_u_adjacent(u_matrix,a,b)<sp/>u_matrix<sp/>[<sp/>(a)<sp/>*<sp/>box-&gt;file-&gt;anzahl_umstimmungen_und_logiken<sp/>\</highlight></codeline>
+<codeline lineno="192"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>sizeof<sp/>(char)<sp/>+<sp/>(b)<sp/>*<sp/>sizeof<sp/>(char)]</highlight></codeline>
+<codeline lineno="193"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1acc4c9b84ab796b238c3486f5f2835a48" kindref="member">ton_list_laenge</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>ton<sp/>*list);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac3c7118f2ab2a55cfe24907c9a94148b" kindref="member">tonsystem_list_laenge</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>tonsystem<sp/>*list);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a7a916c9ff884f4b54cb14b5984ac95de" kindref="member">umstimmungs_list_laenge</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>umstimmung<sp/>*list);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a693e061782917267888ee9038317a3c8" kindref="member">logik_list_laenge</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>logik<sp/>*list);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a36853cc2dcc8d688320ff260fa72fecb" kindref="member">midi_list_laenge</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>midiliste<sp/>*list);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a777154b4c34808a075df2c5c39df8313" kindref="member">get_logik_nummer</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>logik<sp/>*<sp/>liste);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">ton<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a90646451f6a5e07cbc30d3667d75daea" kindref="member">get_ton</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>ton<sp/>*<sp/>liste);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">intervall<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a0f7f70c4e2a58c11fc80284fee21cd93" kindref="member">get_intervall</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>intervall<sp/>*<sp/>liste);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">tonsystem<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a94ebadf3292eae7813c1218a2337b264" kindref="member">parser_get_tonsystem</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>tonsystem<sp/>*<sp/>liste);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">umstimmung<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1af7fbfc30dc250437bddfa7ea1e6a12a5" kindref="member">get_umstimmung</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>umstimmung<sp/>*<sp/>liste);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">harmonie<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a47d9c14928e4449d97b119243491aecf" kindref="member">get_harmonie</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>harmonie<sp/>*<sp/>liste);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">logik<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a7b9335dd1c1acd2d32db8444889df874" kindref="member">get_logik</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>logik<sp/>*<sp/>liste);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac99f9ea4f65c8ce4f2788824ec1eb66c" kindref="member">init_integersequenz</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5c98a110a50b9faadddee7cfafc308ab" kindref="member">get_new_integer_in_integersequenz</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>wert);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*void<sp/>init_parameter_liste<sp/>(mutabor_box_type<sp/>*<sp/>box);<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">parameter_list<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ab6821429cbbf99ccb2cf3f1f5a7e98e2" kindref="member">get_new_name_in_parameterlist</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a237f866755e35778c4d93c5df821e797" kindref="member">enumerate_parameters</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>parameter_list<sp/>*<sp/>parameters);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*void<sp/>init_argument_liste<sp/>(mutabor_box_type<sp/>*<sp/>box);<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">argument_list<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ad1bac4b8da0108ea86621cc8bd62593d" kindref="member">get_new_number_in_argument_list</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>number);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">argument_list<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ae58e9ab3342ef3e981b24670ff25b0a7" kindref="member">get_new_name_in_argument_list</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>parameter);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">argument_list<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a9bf9e8e15f7d1d79f7938a1012be023a" kindref="member">get_new_distance_in_argument_list</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">argument_list<sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aec7d0a86febb5c7d8e77800c2b8a7153" kindref="member">get_new_anchor_in_argument_list</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac003da3df825071250037e2cab99256a" kindref="member">init_aktions_liste</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a2b01f471a436715efe5832346e79e607" kindref="member">get_new_aktion_aufruf_element</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>argument_list<sp/>*<sp/>arguments);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a7fcc5582dc41e104355644719d3a266e" kindref="member">get_new_aktion_midi_out_element</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac377a0babb3e6870eb5446bbf765131b" kindref="member">get_new_aktion_harmony_analysis</ref>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a29411f595d065fef7caaad95f81820d6" kindref="member">init_komplex_ton_list</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a1eb5aa585224ec5898edbb84d528f6ef" kindref="member">get_new_faktor_anteil</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>f,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a4f6812ce7bcbd0bc4048f7492ccbb0b4" kindref="member">mutabor_programm_einlesen</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>logic);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a41e35ca2ae8353b95a2d639c4f7da764" kindref="member">get_new_intervall</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>wert);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a3fd55b23aa4babe61a2d59a222be8694" kindref="member">get_new_intervall_komplex</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abc8462b97c0123e4368e7614c26abb06" kindref="member">get_new_ton_absolut</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>wert);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a6a0dbd751491f5085c11429581b7a371" kindref="member">get_new_ton_komplex_positive</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*bezugston);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a61a35dd4a9770ffd9dae313cbbebec3a" kindref="member">get_new_ton_komplex_negative</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*bezugston);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a6622ef423e84df097b1f9af65739aed0" kindref="member">init_ton_liste</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a1f78b370fd6aa726092ca8e45514f109" kindref="member">get_new_ton_in_tonsystem</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a2b04ccd2220b6e08ce8e3f59601769f0" kindref="member">get_new_tonsystem</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>taste);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ab5fc1ffde629114171cc0ef961f384e7" kindref="member">get_new_tonsystem_negative</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>taste);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a4b2009e8cc09b75ec9301ea80017914a" kindref="member">init_umstimmung</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ad3b04cefde80ba35a02c0273057ee5b0" kindref="member">get_new_umstimmung</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a81f1f37a6ad0efa3f8fcfe74e9cdf344" kindref="member">eintrage_parameterliste_in_umstimmung</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>umstimmung<sp/>*<sp/>ret,</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>parameter_list<sp/>*<sp/>list);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a679ee48c12684be739a1e25e9e681237" kindref="member">get_umstimmung_taste_abs</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>argument_list<sp/>*<sp/>argument);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ae8c57ffaa63d79e19d22378b1ce2fa39" kindref="member">get_umstimmung_taste_rel</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>argument_list<sp/>*<sp/>argument,</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>vorzeichen);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1afb0029eb8496e34e63e74253aa69799b" kindref="member">get_umstimmung_breite_abs</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>argument_list<sp/>*<sp/>argument);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a9ed4653c927ff7a428a47e7785f9c417" kindref="member">get_umstimmung_breite_rel</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>argument_list<sp/>*<sp/>argument,</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>vorzeichen);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a74239285e55c82b6f7a0531561a83793" kindref="member">init_umstimm_expression_list</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a3521fea8c664ee15602ee996189012fe" kindref="member">get_new_umstimm_expression</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>bezugston);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aca9e570f03a86acef6c45ef5467a0fdd" kindref="member">get_new_umstimm_expression_positive</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>bezugston);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a311b9bce537212ac5d087c73a000b635" kindref="member">get_new_umstimm_expression_negative</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>bezugston);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1acf99854b0d79f9cb64b8777518a9f9e4" kindref="member">get_umstimmung_tonhoehe_veraendert</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a54124cff0930ab2ec34948b7408347d5" kindref="member">get_umstimmung_wiederholung_abs</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a4869a3151441c237856eef0ad0c69a9a" kindref="member">get_umstimmung_wiederholung_abs_negative</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1af7e760be07de9441e3ebd0087ebef4f2" kindref="member">get_umstimmung_wiederholung_rel_positive</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a39d30e1a582abb0f61941afbd68f3b55" kindref="member">get_umstimmung_wiederholung_rel_negative</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a1e6822eca15dc64949fe268922704ca6" kindref="member">get_umstimmung_umstimmungs_bund</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a6333b10af586226751825c0e226e26cd" kindref="member">get_umstimmungs_case_zahl_element</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>konstante);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a3f97b5d2d0c4017b623a3249938e8a18" kindref="member">get_umstimmungs_case_default_element</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a6ddbaafcc67c482d01d54bcac50bc0f3" kindref="member">init_umstimmungs_case_liste</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac39b6e4c29bd68ce6e4535256068cdaf" kindref="member">get_umstimmung_umstimm_case</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>argument_list<sp/>*<sp/>argument);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abc74118c512da5bc3d57a1af68330e08" kindref="member">get_umstimmung_midi_out</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a7e52446e0d0733d5c4df17e3b1e2da64" kindref="member">init_tastenliste</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a4c8981c602564b7546e3c6eb06881a2c" kindref="member">get_new_taste</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>taste,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>stern);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1acf43d0f11320a770db9f40fbcddc3d80" kindref="member">get_new_harmonie</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bezugstaste);</highlight></codeline>
+<codeline lineno="291"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a023be66c2dfb48b9b6ad4f089aefb1af" kindref="member">get_harmoniebezeichner</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga2efb36d08e25940032af9ee71ca97e31" kindref="member">harmony_type</ref><sp/>flags,</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>vor_taste,</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name,</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nach_taste);</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a3dbddf5ab27dafb5445093c7fd39bde8" kindref="member">init_ausloeser</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a6e7429ba63c6fbb3107f8ac4665bd970" kindref="member">get_ausloeser_default</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aea164739fa1e8b6ea4364452ee241e7f" kindref="member">get_ausloeser_harmonie</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a677caa4804c4d7c2f37c57d88aa21828" kindref="member">get_ausloeser_harmonie_form</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ab6d26dd28051e4321f4b8e50a1ebf7df" kindref="member">get_ausloeser_taste</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name);</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aa087545814b83dfb968830c778ab6864" kindref="member">get_ausloeser_midi_in</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a173a930850fa0cd105b77a1af9753c57" kindref="member">init_anweisungs_liste</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a94d74e9e09fd25dbf282668a6fde0613" kindref="member">get_new_anweisung</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ae967e0bc4a6dc4aeb1e5200c21e8fb73" kindref="member">get_new_logik</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>name);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a3743806389c9cac36fdf308192341ca1" kindref="member">vervollstaendige_logik</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ae5e154b88f72a1cffaa0ac401435db18" kindref="member">get_instrument_dekl</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>midi_in,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>midi_von,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>midi_bis,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>midi_umleit,</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>instrument<sp/>**<sp/>list_to_insert);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="310"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="312"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="314"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>precompiled<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="317"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>header<sp/>loaded<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="318"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Parser.h"/>
   </compounddef>
 </doxygen>

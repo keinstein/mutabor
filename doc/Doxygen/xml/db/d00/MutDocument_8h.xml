@@ -5,207 +5,117 @@
     <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
     <includes local="yes">wx/docview.h</includes>
     <includes local="yes">wx/cmdproc.h</includes>
-    <includedby refid="d5/d1c/MutApp_8cpp" local="yes">src/wxGUI/MutApp.cpp</includedby>
     <includedby refid="dd/db0/MutDocManager_8cpp" local="yes">src/wxGUI/MutDocManager.cpp</includedby>
     <includedby refid="d6/d3b/MutDocument_8cpp" local="yes">src/wxGUI/MutDocument.cpp</includedby>
     <includedby refid="dc/df3/MutFrame_8cpp" local="yes">src/wxGUI/MutFrame.cpp</includedby>
     <includedby refid="d8/d33/MutView_8cpp" local="yes">src/wxGUI/MutView.cpp</includedby>
     <incdepgraph>
-      <node id="28833">
-        <label>list</label>
-      </node>
-      <node id="28826">
-        <label>stdarg.h</label>
-      </node>
-      <node id="28841">
-        <label>wx/cmdline.h</label>
-      </node>
-      <node id="28829">
-        <label>wx/stdpaths.h</label>
-      </node>
-      <node id="28825">
-        <label>src/kernel/Defs.h</label>
-        <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="28826" relation="include">
-        </childnode>
-        <childnode refid="28827" relation="include">
-        </childnode>
-        <childnode refid="28846" relation="include">
-        </childnode>
-        <childnode refid="28847" relation="include">
-        </childnode>
-        <childnode refid="28840" relation="include">
-        </childnode>
-        <childnode refid="28848" relation="include">
-        </childnode>
-        <childnode refid="28849" relation="include">
-        </childnode>
-      </node>
-      <node id="28840">
-        <label>stdint.h</label>
-      </node>
-      <node id="28846">
-        <label>wx/wxchar.h</label>
-      </node>
-      <node id="28835">
-        <label>wx/image.h</label>
-      </node>
-      <node id="28850">
-        <label>string</label>
-      </node>
-      <node id="28845">
-        <label>mutDebugFlags.h</label>
-        <link refid="d7/d49/mutDebugFlags_8h"/>
-      </node>
-      <node id="28828">
-        <label>wx/window.h</label>
-      </node>
-      <node id="28847">
-        <label>wx/intl.h</label>
-      </node>
-      <node id="28824">
+      <node id="27347">
         <label>src/wxGUI/MutDocument.h</label>
         <link refid="MutDocument.h"/>
-        <childnode refid="28825" relation="include">
+        <childnode refid="27348" relation="include">
         </childnode>
-        <childnode refid="28851" relation="include">
+        <childnode refid="27358" relation="include">
         </childnode>
-        <childnode refid="28852" relation="include">
-        </childnode>
-      </node>
-      <node id="28834">
-        <label>src/wxGUI/Mutabor.rh</label>
-        <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="28825" relation="include">
+        <childnode refid="27359" relation="include">
         </childnode>
       </node>
-      <node id="28830">
-        <label>wx/filename.h</label>
+      <node id="27356">
+        <label>stdint.h</label>
       </node>
-      <node id="28832">
-        <label>typeinfo</label>
+      <node id="27349">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="27348" relation="include">
+        </childnode>
       </node>
-      <node id="28843">
-        <label>wx/debug.h</label>
+      <node id="27355">
+        <label>boost/format.hpp</label>
       </node>
-      <node id="28838">
+      <node id="27353">
+        <label>string</label>
+      </node>
+      <node id="27348">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="27349" relation="include">
+        </childnode>
+        <childnode refid="27350" relation="include">
+        </childnode>
+        <childnode refid="27351" relation="include">
+        </childnode>
+      </node>
+      <node id="27354">
         <label>cstdio</label>
       </node>
-      <node id="28837">
-        <label>bitset</label>
-      </node>
-      <node id="28827">
-        <label>src/wxGUI/generic/mhDefs.h</label>
-        <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="28825" relation="include">
+      <node id="27351">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="27348" relation="include">
         </childnode>
-        <childnode refid="28828" relation="include">
+        <childnode refid="27352" relation="include">
         </childnode>
-        <childnode refid="28829" relation="include">
+        <childnode refid="27353" relation="include">
         </childnode>
-        <childnode refid="28830" relation="include">
+        <childnode refid="27354" relation="include">
         </childnode>
-        <childnode refid="28831" relation="include">
+        <childnode refid="27355" relation="include">
         </childnode>
-        <childnode refid="28832" relation="include">
+        <childnode refid="27356" relation="include">
         </childnode>
-        <childnode refid="28833" relation="include">
-        </childnode>
-        <childnode refid="28834" relation="include">
-        </childnode>
-        <childnode refid="28835" relation="include">
-        </childnode>
-        <childnode refid="28836" relation="include">
+        <childnode refid="27357" relation="include">
         </childnode>
       </node>
-      <node id="28839">
-        <label>vector</label>
-      </node>
-      <node id="28836">
-        <label>mutDebug.h</label>
-        <link refid="de/de1/mutDebug_8h"/>
-        <childnode refid="28837" relation="include">
-        </childnode>
-        <childnode refid="28831" relation="include">
-        </childnode>
-        <childnode refid="28838" relation="include">
-        </childnode>
-        <childnode refid="28839" relation="include">
-        </childnode>
-        <childnode refid="28840" relation="include">
-        </childnode>
-        <childnode refid="28841" relation="include">
-        </childnode>
-        <childnode refid="28842" relation="include">
-        </childnode>
-        <childnode refid="28843" relation="include">
-        </childnode>
-        <childnode refid="28844" relation="include">
-        </childnode>
-        <childnode refid="28845" relation="include">
-        </childnode>
-      </node>
-      <node id="28849">
+      <node id="27352">
         <label>src/wxintl/libintl.h</label>
         <link refid="d4/d64/libintl_8h"/>
-        <childnode refid="28825" relation="include">
+        <childnode refid="27348" relation="include">
         </childnode>
-        <childnode refid="28850" relation="include">
+        <childnode refid="27353" relation="include">
         </childnode>
       </node>
-      <node id="28842">
-        <label>wx/string.h</label>
+      <node id="27350">
+        <label>cstddef</label>
       </node>
-      <node id="28831">
-        <label>iostream</label>
-      </node>
-      <node id="28852">
+      <node id="27359">
         <label>wx/cmdproc.h</label>
       </node>
-      <node id="28844">
-        <label>wx/thread.h</label>
-      </node>
-      <node id="28848">
-        <label>wx/setup.h</label>
-      </node>
-      <node id="28851">
+      <node id="27358">
         <label>wx/docview.h</label>
+      </node>
+      <node id="27357">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="28855">
-        <label>src/wxGUI/MutDocManager.cpp</label>
-        <link refid="dd/db0/MutDocManager_8cpp"/>
-      </node>
-      <node id="28854">
-        <label>src/wxGUI/MutApp.cpp</label>
-        <link refid="d5/d1c/MutApp_8cpp"/>
-      </node>
-      <node id="28856">
-        <label>src/wxGUI/MutDocument.cpp</label>
-        <link refid="d6/d3b/MutDocument_8cpp"/>
-      </node>
-      <node id="28853">
+      <node id="27360">
         <label>src/wxGUI/MutDocument.h</label>
         <link refid="MutDocument.h"/>
-        <childnode refid="28854" relation="include">
+        <childnode refid="27361" relation="include">
         </childnode>
-        <childnode refid="28855" relation="include">
+        <childnode refid="27362" relation="include">
         </childnode>
-        <childnode refid="28856" relation="include">
+        <childnode refid="27363" relation="include">
         </childnode>
-        <childnode refid="28857" relation="include">
-        </childnode>
-        <childnode refid="28858" relation="include">
+        <childnode refid="27364" relation="include">
         </childnode>
       </node>
-      <node id="28858">
+      <node id="27363">
+        <label>src/wxGUI/MutFrame.cpp</label>
+        <link refid="dc/df3/MutFrame_8cpp"/>
+      </node>
+      <node id="27364">
         <label>src/wxGUI/MutView.cpp</label>
         <link refid="d8/d33/MutView_8cpp"/>
       </node>
-      <node id="28857">
-        <label>src/wxGUI/MutFrame.cpp</label>
-        <link refid="dc/df3/MutFrame_8cpp"/>
+      <node id="27361">
+        <label>src/wxGUI/MutDocManager.cpp</label>
+        <link refid="dd/db0/MutDocManager_8cpp"/>
+      </node>
+      <node id="27362">
+        <label>src/wxGUI/MutDocument.cpp</label>
+        <link refid="d6/d3b/MutDocument_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="dc/d14/classmutaborGUI_1_1MutCommandProcessor" prot="public">mutaborGUI::MutCommandProcessor</innerclass>
@@ -220,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocument.h" line="36" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocument.h" bodystart="36" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocument.h" line="36" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocument.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="da/d79/group__docview_1gad01ca0d0b0502b2e2c3827e5467dbb82" prot="public" static="no">
         <name>MUWX_MUTDOCUMENT_H_PRECOMPILED</name>
@@ -230,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocument.h" line="46" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocument.h" bodystart="46" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocument.h" line="46" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocument.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -344,7 +254,7 @@
 <codeline lineno="136"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>OnCreate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxString&amp;<sp/>path,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>flags);</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>event<sp/>handlers<sp/>go<sp/>here</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>CmdNewView(wxCommandEvent&amp;<sp/>event);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>CmdNewView(wxCommandEvent&amp;<sp/><ref refid="d5/dee/group__route_1ga3761b2ff72e19d32966fa4e647dd5eba" kindref="member">event</ref>);</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>OnNewViewUpdateUI(wxUpdateUIEvent&amp;<sp/>event);</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>CmdUpdateAllViews(wxCommandEvent&amp;<sp/>event);</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
@@ -362,6 +272,6 @@
 <codeline lineno="160"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="161"><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocument.h"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/MutDocument.h"/>
   </compounddef>
 </doxygen>

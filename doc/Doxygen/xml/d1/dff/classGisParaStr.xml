@@ -5,9 +5,9 @@
     <basecompoundref refid="d2/db7/classGisToken" prot="public" virt="non-virtual">GisToken</basecompoundref>
     <includes refid="dd/d4d/GIS_8h" local="no">GIS.h</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="d1/dff/classGisParaStr_1a22bcaca6d0dcd37f3b4db385fb93be76" prot="public" static="no" mutable="no">
-        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
-        <definition>mutString GisParaStr::s</definition>
+      <memberdef kind="variable" id="d1/dff/classGisParaStr_1a9bcfdb77fc3c85ea9221702729887ca1" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string GisParaStr::s</definition>
         <argsstring></argsstring>
         <name>s</name>
         <briefdescription>
@@ -16,28 +16,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="594" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="594" bodyend="-1"/>
-        <referencedby refid="d1/dff/classGisParaStr_1a926184f3252cf1283fd0bbd0a3ca210c" compoundref="dd/d4d/GIS_8h" startline="618" endline="622">Copy</referencedby>
-        <referencedby refid="d1/dff/classGisParaStr_1aa141cc3994865228e34726352417d011" compoundref="dd/d4d/GIS_8h" startline="596" endline="600">GisParaStr</referencedby>
-        <referencedby refid="d1/dff/classGisParaStr_1a875fa4c7a39e1ed0d64c4cec24ad13ce" compoundref="dd/d4d/GIS_8h" startline="628" endline="632">ToString</referencedby>
-        <referencedby refid="d1/dff/classGisParaStr_1aeed5a1914dd48749d21ef45c32db6090" compoundref="dd/d4d/GIS_8h" startline="602" endline="611">~GisParaStr</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="560" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="560" bodyend="-1"/>
+        <referencedby refid="d1/dff/classGisParaStr_1a926184f3252cf1283fd0bbd0a3ca210c" compoundref="dd/d4d/GIS_8h" startline="581" endline="585">Copy</referencedby>
+        <referencedby refid="d1/dff/classGisParaStr_1ad806b84243c4b624b9122943c55b16e2" compoundref="dd/d4d/GIS_8h" startline="562" endline="566">GisParaStr</referencedby>
+        <referencedby refid="d1/dff/classGisParaStr_1a355ac2e3a129f169867977cc82d0b0e3" compoundref="dd/d4d/GIS_8h" startline="590" endline="594">ToString</referencedby>
+        <referencedby refid="d1/dff/classGisParaStr_1aeed5a1914dd48749d21ef45c32db6090" compoundref="dd/d4d/GIS_8h" startline="568" endline="574">~GisParaStr</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="d1/dff/classGisParaStr_1aa141cc3994865228e34726352417d011" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="d1/dff/classGisParaStr_1ad806b84243c4b624b9122943c55b16e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GisParaStr::GisParaStr</definition>
-        <argsstring>(const mutString value=mutEmptyString, mutString sep=mutEmptyString, GisToken *next=0)</argsstring>
+        <argsstring>(const std::string value=&quot;&quot;, std::string sep=&quot;&quot;, GisToken *next=0)</argsstring>
         <name>GisParaStr</name>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <type>const std::string</type>
           <declname>value</declname>
-          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+          <defval>&quot;&quot;</defval>
         </param>
         <param>
-          <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <type>std::string</type>
           <declname>sep</declname>
-          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+          <defval>&quot;&quot;</defval>
         </param>
         <param>
           <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
@@ -50,10 +50,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="596" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="596" bodyend="600"/>
-        <references refid="d5/dee/group__route_1gaa0037a2877aeb7d2658ae43bdff3b245" compoundref="dd/d4d/GIS_8h" startline="71">CHECKDUP</references>
-        <references refid="d1/dff/classGisParaStr_1a22bcaca6d0dcd37f3b4db385fb93be76" compoundref="dd/d4d/GIS_8h" startline="594">s</references>
-        <referencedby refid="d1/dff/classGisParaStr_1a926184f3252cf1283fd0bbd0a3ca210c" compoundref="dd/d4d/GIS_8h" startline="618" endline="622">Copy</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="562" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="562" bodyend="566"/>
+        <references refid="d5/dee/group__route_1gaa0037a2877aeb7d2658ae43bdff3b245" compoundref="dd/d4d/GIS_8h" startline="63">CHECKDUP</references>
+        <references refid="d1/dff/classGisParaStr_1a9bcfdb77fc3c85ea9221702729887ca1" compoundref="dd/d4d/GIS_8h" startline="560">s</references>
+        <referencedby refid="d1/dff/classGisParaStr_1a926184f3252cf1283fd0bbd0a3ca210c" compoundref="dd/d4d/GIS_8h" startline="581" endline="585">Copy</referencedby>
       </memberdef>
       <memberdef kind="function" id="d1/dff/classGisParaStr_1aeed5a1914dd48749d21ef45c32db6090" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -66,8 +66,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="602" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="602" bodyend="611"/>
-        <references refid="d1/dff/classGisParaStr_1a22bcaca6d0dcd37f3b4db385fb93be76" compoundref="dd/d4d/GIS_8h" startline="594">s</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="568" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="568" bodyend="574"/>
+        <references refid="d1/dff/classGisParaStr_1a9bcfdb77fc3c85ea9221702729887ca1" compoundref="dd/d4d/GIS_8h" startline="560">s</references>
       </memberdef>
       <memberdef kind="function" id="d1/dff/classGisParaStr_1afd8206deec0f0d74749f7c02f70c19d1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="d5/dee/group__route_1gaef354ea2f89281ef17c6735860c89861" kindref="member">GisType</ref></type>
@@ -81,8 +81,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="613" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="613" bodyend="616"/>
-        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a47da418be1ab05f8322f6a21bde2d45e" compoundref="dd/d4d/GIS_8h" startline="126">GTParaStr</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="576" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="576" bodyend="579"/>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a47da418be1ab05f8322f6a21bde2d45e" compoundref="dd/d4d/GIS_8h" startline="110">GTParaStr</references>
       </memberdef>
       <memberdef kind="function" id="d1/dff/classGisParaStr_1a926184f3252cf1283fd0bbd0a3ca210c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
@@ -96,26 +96,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="618" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="618" bodyend="622"/>
-        <references refid="d1/dff/classGisParaStr_1aa141cc3994865228e34726352417d011" compoundref="dd/d4d/GIS_8h" startline="596" endline="600">GisParaStr</references>
-        <references refid="d1/dff/classGisParaStr_1a22bcaca6d0dcd37f3b4db385fb93be76" compoundref="dd/d4d/GIS_8h" startline="594">s</references>
-        <references refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" compoundref="dd/d4d/GIS_8h" startline="137">GisToken::Sep</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="581" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="581" bodyend="585"/>
+        <references refid="d1/dff/classGisParaStr_1ad806b84243c4b624b9122943c55b16e2" compoundref="dd/d4d/GIS_8h" startline="562" endline="566">GisParaStr</references>
+        <references refid="d1/dff/classGisParaStr_1a9bcfdb77fc3c85ea9221702729887ca1" compoundref="dd/d4d/GIS_8h" startline="560">s</references>
+        <references refid="d2/db7/classGisToken_1a1de7ea6d14070e7cc8f01ad8e036a4ed" compoundref="dd/d4d/GIS_8h" startline="121">GisToken::Sep</references>
       </memberdef>
-      <memberdef kind="function" id="d1/dff/classGisParaStr_1a875fa4c7a39e1ed0d64c4cec24ad13ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>wxString</type>
-        <definition>virtual wxString GisParaStr::ToString</definition>
-        <argsstring>()</argsstring>
+      <memberdef kind="function" id="d1/dff/classGisParaStr_1a355ac2e3a129f169867977cc82d0b0e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>virtual std::string GisParaStr::ToString</definition>
+        <argsstring>() const </argsstring>
         <name>ToString</name>
-        <reimplements refid="d2/db7/classGisToken_1a2f256cfca7c10770a90574980dfbd59f">ToString</reimplements>
+        <reimplements refid="d2/db7/classGisToken_1a281f55a69942c9730b96ca962b01018e">ToString</reimplements>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="628" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="628" bodyend="632"/>
-        <references refid="d1/dff/classGisParaStr_1a22bcaca6d0dcd37f3b4db385fb93be76" compoundref="dd/d4d/GIS_8h" startline="594">s</references>
-        <references refid="d2/db7/classGisToken_1a2f256cfca7c10770a90574980dfbd59f" compoundref="dd/d4d/GIS_8h" startline="182" endline="185">GisToken::ToString</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="590" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="590" bodyend="594"/>
+        <references refid="d1/dff/classGisParaStr_1a9bcfdb77fc3c85ea9221702729887ca1" compoundref="dd/d4d/GIS_8h" startline="560">s</references>
+        <references refid="d6/daa/namespacemutabor_1abae2a6ffddc4e68d7e52f67803cb091f" compoundref="d1/d73/Defs_8h" startline="110" endline="110">mutabor::str</references>
+        <references refid="d2/db7/classGisToken_1a281f55a69942c9730b96ca962b01018e" compoundref="dd/d4d/GIS_8h" startline="164" endline="167">GisToken::ToString</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -123,42 +124,56 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3014">
+      <node id="3637">
         <label>GisParaStr</label>
         <link refid="d1/dff/classGisParaStr"/>
-        <childnode refid="3015" relation="public-inheritance">
+        <childnode refid="3638" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3015">
+      <node id="3638">
         <label>GisToken</label>
         <link refid="d2/db7/classGisToken"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3016">
+      <node id="3642">
+        <label>std::basic_string&lt; char &gt;</label>
+      </node>
+      <node id="3639">
         <label>GisParaStr</label>
         <link refid="d1/dff/classGisParaStr"/>
-        <childnode refid="3017" relation="public-inheritance">
+        <childnode refid="3640" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3641" relation="usage">
+          <edgelabel>s</edgelabel>
         </childnode>
       </node>
-      <node id="3017">
+      <node id="3640">
         <label>GisToken</label>
         <link refid="d2/db7/classGisToken"/>
-        <childnode refid="3017" relation="usage">
+        <childnode refid="3641" relation="usage">
+          <edgelabel>Sep</edgelabel>
+        </childnode>
+        <childnode refid="3640" relation="usage">
           <edgelabel>Next</edgelabel>
         </childnode>
       </node>
+      <node id="3641">
+        <label>std::string</label>
+        <childnode refid="3642" relation="public-inheritance">
+        </childnode>
+      </node>
     </collaborationgraph>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="591" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="590" bodyend="635"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="557" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="556" bodyend="595"/>
     <listofallmembers>
       <member refid="d1/dff/classGisParaStr_1a926184f3252cf1283fd0bbd0a3ca210c" prot="public" virt="virtual"><scope>GisParaStr</scope><name>Copy</name></member>
-      <member refid="d1/dff/classGisParaStr_1aa141cc3994865228e34726352417d011" prot="public" virt="non-virtual"><scope>GisParaStr</scope><name>GisParaStr</name></member>
-      <member refid="d2/db7/classGisToken_1aa7d3797aec95b6fe33acf8c255fc1268" prot="public" virt="non-virtual"><scope>GisParaStr</scope><name>GisToken</name></member>
+      <member refid="d1/dff/classGisParaStr_1ad806b84243c4b624b9122943c55b16e2" prot="public" virt="non-virtual"><scope>GisParaStr</scope><name>GisParaStr</name></member>
+      <member refid="d2/db7/classGisToken_1a64a74bcd95ddaee39e4f3e2a6766a90a" prot="public" virt="non-virtual"><scope>GisParaStr</scope><name>GisToken</name></member>
       <member refid="d2/db7/classGisToken_1a5ebe3590397490871cf0839a758e2449" prot="public" virt="non-virtual"><scope>GisParaStr</scope><name>Next</name></member>
-      <member refid="d2/db7/classGisToken_1add72c4892e22fd742bc3924d0903a5ad" prot="public" virt="non-virtual"><scope>GisParaStr</scope><name>operator wxString</name></member>
-      <member refid="d1/dff/classGisParaStr_1a22bcaca6d0dcd37f3b4db385fb93be76" prot="public" virt="non-virtual"><scope>GisParaStr</scope><name>s</name></member>
-      <member refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" prot="public" virt="non-virtual"><scope>GisParaStr</scope><name>Sep</name></member>
-      <member refid="d1/dff/classGisParaStr_1a875fa4c7a39e1ed0d64c4cec24ad13ce" prot="public" virt="virtual"><scope>GisParaStr</scope><name>ToString</name></member>
+      <member refid="d2/db7/classGisToken_1a3f5f79982326a3e306825da879cae10b" prot="public" virt="virtual"><scope>GisParaStr</scope><name>operator std::string</name></member>
+      <member refid="d1/dff/classGisParaStr_1a9bcfdb77fc3c85ea9221702729887ca1" prot="public" virt="non-virtual"><scope>GisParaStr</scope><name>s</name></member>
+      <member refid="d2/db7/classGisToken_1a1de7ea6d14070e7cc8f01ad8e036a4ed" prot="public" virt="non-virtual"><scope>GisParaStr</scope><name>Sep</name></member>
+      <member refid="d1/dff/classGisParaStr_1a355ac2e3a129f169867977cc82d0b0e3" prot="public" virt="virtual"><scope>GisParaStr</scope><name>ToString</name></member>
       <member refid="d1/dff/classGisParaStr_1afd8206deec0f0d74749f7c02f70c19d1" prot="public" virt="virtual"><scope>GisParaStr</scope><name>Type</name></member>
       <member refid="d1/dff/classGisParaStr_1aeed5a1914dd48749d21ef45c32db6090" prot="public" virt="non-virtual"><scope>GisParaStr</scope><name>~GisParaStr</name></member>
       <member refid="d2/db7/classGisToken_1ab3ec071213876b13b7ce9f9900cfec69" prot="public" virt="virtual"><scope>GisParaStr</scope><name>~GisToken</name></member>

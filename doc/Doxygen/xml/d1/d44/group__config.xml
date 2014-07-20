@@ -22,9 +22,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="147" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" bodystart="147" bodyend="151"/>
-        <references refid="d5/dee/group__route_1ga8ffdbcbb93567fd8aea32fcb8a09bafe" compoundref="d1/d65/Route_8h" startline="653" endline="659">mutabor::RouteFactory::LoadRoutes</references>
-        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1502">IMPLEMENT_APP</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="155" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" bodystart="155" bodyend="159"/>
+        <references refid="d5/dee/group__route_1ga8ffdbcbb93567fd8aea32fcb8a09bafe" compoundref="d1/d65/Route_8h" startline="656" endline="662">mutabor::RouteFactory::LoadRoutes</references>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="87" endline="1537">IMPLEMENT_APP</referencedby>
       </memberdef>
       <memberdef kind="function" id="d1/d44/group__config_1ga711cccb60856959ada469b72a188047d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -41,18 +41,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="153" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" bodystart="153" bodyend="157"/>
-        <references refid="d5/dee/group__route_1ga7967d16e41377608b99ae06048d60254" compoundref="d1/d65/Route_8h" startline="664" endline="670">mutabor::RouteFactory::SaveRoutes</references>
-        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1502">IMPLEMENT_APP</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="161" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" bodystart="161" bodyend="165"/>
+        <references refid="d5/dee/group__route_1ga7967d16e41377608b99ae06048d60254" compoundref="d1/d65/Route_8h" startline="667" endline="673">mutabor::RouteFactory::SaveRoutes</references>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="87" endline="1537">IMPLEMENT_APP</referencedby>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1ga1cc13e816941bfda9d932bbbc01adc30" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d1/d44/group__config_1gade24afb74a0a794fad93306fc154b8a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>long</type>
         <definition>long configtree::Read</definition>
-        <argsstring>(const mutStringRef key, long defval)</argsstring>
+        <argsstring>(const std::string &amp;key, long defval)</argsstring>
         <name>Read</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a80f4ed4e4d6294644d70885e186f6156">Read</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1aab2b2939a0c886921cb0e9708bfa156d">Read</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -62,7 +62,7 @@
         <briefdescription>
 <para>Reads a long integer value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  defval (long) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  defval (long) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -73,18 +73,18 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="88" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="31" bodyend="34"/>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <referencedby refid="d1/d44/group__config_1ga935e8aa63f4252de5c16c0ff63f2d37c" compoundref="d4/d26/configtree_8cpp" startline="36" endline="39">configtree::Read</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="90" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="31" bodyend="34"/>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <referencedby refid="d1/d44/group__config_1gad96aa9797f889a9d6ecbec1eb4233f4a" compoundref="d4/d26/configtree_8cpp" startline="36" endline="39">configtree::Read</referencedby>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1ga935e8aa63f4252de5c16c0ff63f2d37c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d1/d44/group__config_1gad96aa9797f889a9d6ecbec1eb4233f4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>double</type>
         <definition>double configtree::Read</definition>
-        <argsstring>(const mutStringRef key, double defval)</argsstring>
+        <argsstring>(const std::string &amp;key, double defval)</argsstring>
         <name>Read</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a86194d95a676f8ab4d28c2144b4c9f56">Read</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1ad1a8dfe20676083943e78efa945cfc5a">Read</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -94,7 +94,7 @@
         <briefdescription>
 <para>Reads a double value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  defval (double) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  defval (double) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -105,18 +105,18 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="89" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="36" bodyend="39"/>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="d1/d44/group__config_1ga1cc13e816941bfda9d932bbbc01adc30" compoundref="d4/d26/configtree_8cpp" startline="31" endline="34">configtree::Read</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="91" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="36" bodyend="39"/>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <references refid="d1/d44/group__config_1gade24afb74a0a794fad93306fc154b8a3" compoundref="d4/d26/configtree_8cpp" startline="31" endline="34">configtree::Read</references>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1ga4c7137265c70120b4b8de9259c0a6075" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d1/d44/group__config_1ga529e68ab3f636c7d173f6e950c6f3d06" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>int</type>
         <definition>int configtree::Read</definition>
-        <argsstring>(const mutStringRef key, int defval)</argsstring>
+        <argsstring>(const std::string &amp;key, int defval)</argsstring>
         <name>Read</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a3aade5c12052f23a9cb399113ff5688d">Read</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1abba4caa9044e3eb42090bd7f6c6ac2a9">Read</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -126,7 +126,7 @@
         <briefdescription>
 <para>Reads an integer value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  defval (int) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  defval (int) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -137,18 +137,18 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="90" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="41" bodyend="44"/>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="d1/d44/group__config_1ga1cc13e816941bfda9d932bbbc01adc30" compoundref="d4/d26/configtree_8cpp" startline="31" endline="34">configtree::Read</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="92" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="41" bodyend="44"/>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <references refid="d1/d44/group__config_1gade24afb74a0a794fad93306fc154b8a3" compoundref="d4/d26/configtree_8cpp" startline="31" endline="34">configtree::Read</references>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1ga4aa518e1fc0169924cba8d8d61188dbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d1/d44/group__config_1ga6354805b32c631e30bcca58bb670d2e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool configtree::Read</definition>
-        <argsstring>(const mutStringRef key, bool defval)</argsstring>
+        <argsstring>(const std::string &amp;key, bool defval)</argsstring>
         <name>Read</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a916a514313463df3e2ae061d38eaf2db">Read</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a9dc6fc8b2c07dcb47b703ef620ac50a8">Read</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -158,7 +158,7 @@
         <briefdescription>
 <para>Reads a boolean value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  defval (bool) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  defval (bool) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -169,28 +169,28 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="91" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="46" bodyend="49"/>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="d1/d44/group__config_1ga1cc13e816941bfda9d932bbbc01adc30" compoundref="d4/d26/configtree_8cpp" startline="31" endline="34">configtree::Read</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="93" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="46" bodyend="49"/>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <references refid="d1/d44/group__config_1gade24afb74a0a794fad93306fc154b8a3" compoundref="d4/d26/configtree_8cpp" startline="31" endline="34">configtree::Read</references>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1ga165f331a7e479d4adada9af026780eb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
-        <definition>mutString configtree::Read</definition>
-        <argsstring>(const mutStringRef key, const mutStringRef defval)</argsstring>
+      <memberdef kind="function" id="d1/d44/group__config_1gae369f7f5f1d2e2289d9e684ebf4c8bb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string configtree::Read</definition>
+        <argsstring>(const std::string &amp;key, const std::string &amp;defval)</argsstring>
         <name>Read</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a506792c4fd7183c1966c68c72a0de6a0">Read</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1ab8f12d8a67c07a1f55e4661d8c865980">Read</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>defval</declname>
         </param>
         <briefdescription>
 <para>Reads a string value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  defval (mutStringRef) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  defval (std::string&amp;) default value, if the leaf is not availlable <parameterlist kind="retval"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -201,18 +201,18 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="92" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="51" bodyend="54"/>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="d1/d44/group__config_1ga1cc13e816941bfda9d932bbbc01adc30" compoundref="d4/d26/configtree_8cpp" startline="31" endline="34">configtree::Read</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="94" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="51" bodyend="55"/>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <references refid="d1/d44/group__config_1gade24afb74a0a794fad93306fc154b8a3" compoundref="d4/d26/configtree_8cpp" startline="31" endline="34">configtree::Read</references>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1ga48752da6c47ece70fa8a03add381812e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d1/d44/group__config_1ga9c56d324b26d0ca9ba9a3a31aa1dd2bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void configtree::Write</definition>
-        <argsstring>(const mutStringRef key, long value)</argsstring>
+        <argsstring>(const std::string &amp;key, long value)</argsstring>
         <name>Write</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1aa1883b11f7457404ba7036104924e42a">Write</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a331885e032f43ebe53a492268bab377a">Write</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -222,21 +222,21 @@
         <briefdescription>
 <para>Writes a long integer value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  value (long) value, to be written </para>        </detaileddescription>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  value (long) value, to be written </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="94" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="56" bodyend="59"/>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <referencedby refid="d1/d44/group__config_1gafce96db16bbb49e65455fa30b0989468" compoundref="d4/d26/configtree_8cpp" startline="61" endline="64">configtree::Write</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="96" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="57" bodyend="60"/>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <referencedby refid="d1/d44/group__config_1gab1da141764ae067c213836568dea99c0" compoundref="d4/d26/configtree_8cpp" startline="62" endline="65">configtree::Write</referencedby>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1gafce96db16bbb49e65455fa30b0989468" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d1/d44/group__config_1gab1da141764ae067c213836568dea99c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void configtree::Write</definition>
-        <argsstring>(const mutStringRef key, double value)</argsstring>
+        <argsstring>(const std::string &amp;key, double value)</argsstring>
         <name>Write</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a07276f0ffc5df576f6174059a4b98541">Write</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1ae97b8f43989a47d65f8cafe7d744e615">Write</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -246,21 +246,21 @@
         <briefdescription>
 <para>Writes a double value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  value (double) value, to be written </para>        </detaileddescription>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  value (double) value, to be written </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="95" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="61" bodyend="64"/>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="d1/d44/group__config_1ga48752da6c47ece70fa8a03add381812e" compoundref="d4/d26/configtree_8cpp" startline="56" endline="59">configtree::Write</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="97" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="62" bodyend="65"/>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <references refid="d1/d44/group__config_1ga9c56d324b26d0ca9ba9a3a31aa1dd2bd" compoundref="d4/d26/configtree_8cpp" startline="57" endline="60">configtree::Write</references>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1gaf5a59c78ddf27af841da3f20af7fa8a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d1/d44/group__config_1ga1fab03e10498d3cf22d24fecbbe9c499" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void configtree::Write</definition>
-        <argsstring>(const mutStringRef key, int value)</argsstring>
+        <argsstring>(const std::string &amp;key, int value)</argsstring>
         <name>Write</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1aff91e4eb2aa361d3b73027a3cccb79d6">Write</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a4911dd7c9b659cf9a08402401fa239d0">Write</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -270,21 +270,21 @@
         <briefdescription>
 <para>Writes an integer value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  value (int) value, to be written </para>        </detaileddescription>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  value (int) value, to be written </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="96" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="66" bodyend="69"/>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="d1/d44/group__config_1ga48752da6c47ece70fa8a03add381812e" compoundref="d4/d26/configtree_8cpp" startline="56" endline="59">configtree::Write</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="98" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="67" bodyend="70"/>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <references refid="d1/d44/group__config_1ga9c56d324b26d0ca9ba9a3a31aa1dd2bd" compoundref="d4/d26/configtree_8cpp" startline="57" endline="60">configtree::Write</references>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1gabb1fa56dd4cbf5e361539fc000a3a36d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d1/d44/group__config_1ga2db5cf35978f2f44d6ac827141367334" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void configtree::Write</definition>
-        <argsstring>(const mutStringRef key, bool value)</argsstring>
+        <argsstring>(const std::string &amp;key, bool value)</argsstring>
         <name>Write</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a4f950f71ce477de8ac59738ef8c14542">Write</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1abd598e75bd3238b94d2c58e3bd04aafc">Write</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -294,95 +294,95 @@
         <briefdescription>
 <para>Writes a boolean value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  value (bool) value, to be written </para>        </detaileddescription>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  value (bool) value, to be written </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="97" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="71" bodyend="74"/>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="d1/d44/group__config_1ga48752da6c47ece70fa8a03add381812e" compoundref="d4/d26/configtree_8cpp" startline="56" endline="59">configtree::Write</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="99" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="72" bodyend="75"/>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <references refid="d1/d44/group__config_1ga9c56d324b26d0ca9ba9a3a31aa1dd2bd" compoundref="d4/d26/configtree_8cpp" startline="57" endline="60">configtree::Write</references>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1gae0741e9bd02b45bd86283d929d87bb4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d1/d44/group__config_1ga3821940989d496fb3812adf251761539" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void configtree::Write</definition>
-        <argsstring>(const mutStringRef key, const mutStringRef value)</argsstring>
+        <argsstring>(const std::string &amp;key, const std::string &amp;value)</argsstring>
         <name>Write</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1acda2cd434a6bc0c89a35cc3f9a1465b3">Write</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a1485fda2de1bad0b29c649c00dae55f7">Write</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>key</declname>
         </param>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>value</declname>
         </param>
         <briefdescription>
 <para>Writes a string value. </para>        </briefdescription>
         <detaileddescription>
-<para>key (mutStringRef) Name of the desired leaf in the tree  value (mutStringRef) value, to be written </para>        </detaileddescription>
+<para>key (std::string&amp;) Name of the desired leaf in the tree  value (std::string&amp;) value, to be written </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="98" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="76" bodyend="79"/>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="d1/d44/group__config_1ga48752da6c47ece70fa8a03add381812e" compoundref="d4/d26/configtree_8cpp" startline="56" endline="59">configtree::Write</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="100" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="77" bodyend="80"/>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <references refid="d1/d44/group__config_1ga9c56d324b26d0ca9ba9a3a31aa1dd2bd" compoundref="d4/d26/configtree_8cpp" startline="57" endline="60">configtree::Write</references>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1gad472d647e3e7436a961ba9d3dc557229" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d1/d44/group__config_1gaaf915bc053977a3dfa65de95db183edd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool configtree::HasGroup</definition>
-        <argsstring>(const mutStringRef subdir) const </argsstring>
+        <argsstring>(const std::string &amp;subdir) const </argsstring>
         <name>HasGroup</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a9d514c48c8f88641a054dfa6e79488d0">HasGroup</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1ab94d21edc9dc97e0e1b4b11701314fe2">HasGroup</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
         </param>
         <briefdescription>
 <para>Checks if the tree has a branch with the given name. </para>        </briefdescription>
         <detaileddescription>
-<para>subdir (mutStringRef) subdirectory to check for. <simplesect kind="return"><para>true if the current node has a leaf with the given name which is a node itself. </para></simplesect>
+<para>subdir (std::string&amp;) subdirectory to check for. <simplesect kind="return"><para>true if the current node has a leaf with the given name which is a node itself. </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="100" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="81" bodyend="84"/>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="102" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="82" bodyend="85"/>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1ga2c54863d019f420bff002cb76a4b519f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d1/d44/group__config_1ga76418ee6b83d800ae26170b6374f0347" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void configtree::toLeaf</definition>
-        <argsstring>(const mutStringRef subdir)</argsstring>
+        <argsstring>(const std::string &amp;subdir)</argsstring>
         <name>toLeaf</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1afb9a095fbd779e53fde69e0a0df4a7b3">toLeaf</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1aff36a4266f985cc8c5c5c4f356a63d75">toLeaf</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>subdir</declname>
         </param>
         <briefdescription>
 <para>Changes the current node downwards. </para>        </briefdescription>
         <detaileddescription>
-<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered like a subdirectory in a file system.  subdir (mutStringRef) subdirectory to be written to. </para>        </detaileddescription>
+<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered like a subdirectory in a file system.  subdir (std::string&amp;) subdirectory to be written to. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="101" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="86" bodyend="106"/>
-        <references refid="d9/de4/structconfigtree_1_1state_1ad4514ef56c2bdbcb6b7c4dabd7f043f8" compoundref="d5/d6b/configtree_8h" startline="60">configtree::state::chdepth</references>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
-        <references refid="d1/d44/group__config_1gab636a7b132498318e2e5c295f4278842" compoundref="d4/d26/configtree_8cpp" startline="228" endline="231">configtree::GetPath</references>
-        <references refid="d9/de4/structconfigtree_1_1state_1a323934dc786f32ba266a202b746f49ff" compoundref="d5/d6b/configtree_8h" startline="64">configtree::state::group</references>
-        <references refid="d9/de4/structconfigtree_1_1state_1a96c937da41adcfcb941a1b782e869a71" compoundref="d5/d6b/configtree_8h" startline="61">configtree::state::leafid</references>
-        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
-        <references refid="d9/de4/structconfigtree_1_1state_1a777737892758fea84c7ce5a975d175d1" compoundref="d5/d6b/configtree_8h" startline="63">configtree::state::oldpath</references>
-        <references refid="d1/d44/group__config_1ga515d665453d65bd383a6d36f106cb0f2" compoundref="d4/d26/configtree_8cpp" startline="233" endline="237">configtree::SetPath</references>
-        <references refid="d8/d7f/classconfigtree_1a2997797df3303c0fcadb85c3a29eccc3" compoundref="d5/d6b/configtree_8h" startline="77">configtree::states</references>
-        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
-        <referencedby refid="d1/d44/group__config_1ga5c8f0b5d5fbcd05fb1664d23112b15b8" compoundref="d4/d26/configtree_8cpp" startline="125" endline="153">configtree::toFirstLeaf</referencedby>
-        <referencedby refid="d1/d44/group__config_1gae2420401c115e8b7cae22a73b1d3b776" compoundref="d4/d26/configtree_8cpp" startline="108" endline="123">configtree::toLeaf</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="103" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="87" bodyend="107"/>
+        <references refid="d9/de4/structconfigtree_1_1state_1ad4514ef56c2bdbcb6b7c4dabd7f043f8" compoundref="d5/d6b/configtree_8h" startline="62">configtree::state::chdepth</references>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="db/d16/debug_8h" startline="240">DEBUGLOG</references>
+        <references refid="d1/d44/group__config_1gaa769c24e9ae0d93a64ea142afd6c0814" compoundref="d4/d26/configtree_8cpp" startline="233" endline="236">configtree::GetPath</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a323934dc786f32ba266a202b746f49ff" compoundref="d5/d6b/configtree_8h" startline="66">configtree::state::group</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a96c937da41adcfcb941a1b782e869a71" compoundref="d5/d6b/configtree_8h" startline="63">configtree::state::leafid</references>
+        <references refid="dc/d3d/group__templates_1ga6a74fe1453277b5ee1d921a28a936a0f" compoundref="de/ddd/interface__deps_8h" startline="51">mutASSERT</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a777737892758fea84c7ce5a975d175d1" compoundref="d5/d6b/configtree_8h" startline="65">configtree::state::oldpath</references>
+        <references refid="d1/d44/group__config_1gaadb289d2c08c2f6be58368430c7405f1" compoundref="d4/d26/configtree_8cpp" startline="238" endline="242">configtree::SetPath</references>
+        <references refid="d8/d7f/classconfigtree_1a2997797df3303c0fcadb85c3a29eccc3" compoundref="d5/d6b/configtree_8h" startline="79">configtree::states</references>
+        <references refid="de/db7/group__debug_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="db/d16/debug_8h" startline="256">UNREACHABLEC</references>
+        <referencedby refid="d1/d44/group__config_1ga9e81e9f5d9925568aa9f092133487e99" compoundref="d4/d26/configtree_8cpp" startline="126" endline="156">configtree::toFirstLeaf</referencedby>
+        <referencedby refid="d1/d44/group__config_1gaa68386bab67e062b52b999f7a7552784" compoundref="d4/d26/configtree_8cpp" startline="109" endline="124">configtree::toLeaf</referencedby>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1gae2420401c115e8b7cae22a73b1d3b776" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d1/d44/group__config_1gaa68386bab67e062b52b999f7a7552784" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void configtree::toLeaf</definition>
-        <argsstring>(const mutStringRef name, int id)</argsstring>
+        <argsstring>(const std::string &amp;name, int id)</argsstring>
         <name>toLeaf</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1ad80873e9facf7bfa53f83971b2f042b3">toLeaf</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a3470bb3b8124602d7a2cff0c67a94f2d">toLeaf</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
         <param>
@@ -392,80 +392,80 @@
         <briefdescription>
 <para>Changes the current node downwards. </para>        </briefdescription>
         <detaileddescription>
-<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id. if the id is negative, it will create a new item.  subdir (mutStringRef) name of the entity to be written to.  id (int) id of the current object </para>        </detaileddescription>
+<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id. if the id is negative, it will create a new item.  subdir (std::string&amp;) name of the entity to be written to.  id (int) id of the current object </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="102" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="108" bodyend="123"/>
-        <references refid="d9/de4/structconfigtree_1_1state_1ad4514ef56c2bdbcb6b7c4dabd7f043f8" compoundref="d5/d6b/configtree_8h" startline="60">configtree::state::chdepth</references>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
-        <references refid="d9/de4/structconfigtree_1_1state_1a323934dc786f32ba266a202b746f49ff" compoundref="d5/d6b/configtree_8h" startline="64">configtree::state::group</references>
-        <references refid="d9/de4/structconfigtree_1_1state_1a96c937da41adcfcb941a1b782e869a71" compoundref="d5/d6b/configtree_8h" startline="61">configtree::state::leafid</references>
-        <references refid="d9/de4/structconfigtree_1_1state_1a777737892758fea84c7ce5a975d175d1" compoundref="d5/d6b/configtree_8h" startline="63">configtree::state::oldpath</references>
-        <references refid="d8/d7f/classconfigtree_1a2997797df3303c0fcadb85c3a29eccc3" compoundref="d5/d6b/configtree_8h" startline="77">configtree::states</references>
-        <references refid="d1/d44/group__config_1ga2c54863d019f420bff002cb76a4b519f" compoundref="d4/d26/configtree_8cpp" startline="86" endline="106">configtree::toLeaf</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="104" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="109" bodyend="124"/>
+        <references refid="d9/de4/structconfigtree_1_1state_1ad4514ef56c2bdbcb6b7c4dabd7f043f8" compoundref="d5/d6b/configtree_8h" startline="62">configtree::state::chdepth</references>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="db/d16/debug_8h" startline="240">DEBUGLOG</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a323934dc786f32ba266a202b746f49ff" compoundref="d5/d6b/configtree_8h" startline="66">configtree::state::group</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a96c937da41adcfcb941a1b782e869a71" compoundref="d5/d6b/configtree_8h" startline="63">configtree::state::leafid</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a777737892758fea84c7ce5a975d175d1" compoundref="d5/d6b/configtree_8h" startline="65">configtree::state::oldpath</references>
+        <references refid="d8/d7f/classconfigtree_1a2997797df3303c0fcadb85c3a29eccc3" compoundref="d5/d6b/configtree_8h" startline="79">configtree::states</references>
+        <references refid="d1/d44/group__config_1ga76418ee6b83d800ae26170b6374f0347" compoundref="d4/d26/configtree_8cpp" startline="87" endline="107">configtree::toLeaf</references>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1ga5c8f0b5d5fbcd05fb1664d23112b15b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d1/d44/group__config_1ga9e81e9f5d9925568aa9f092133487e99" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>int</type>
         <definition>int configtree::toFirstLeaf</definition>
-        <argsstring>(const mutStringRef name, mutStringRef id)</argsstring>
+        <argsstring>(const std::string &amp;name, std::string &amp;id)</argsstring>
         <name>toFirstLeaf</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1ab42d62373ba090a907d651a334353462">toFirstLeaf</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1ac8c3315996067e54399dab28477c43f7">toFirstLeaf</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
         <param>
-          <type><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>std::string &amp;</type>
           <declname>id</declname>
         </param>
         <briefdescription>
 <para>Changes the current node downdwards to the first leaf of given type. </para>        </briefdescription>
         <detaileddescription>
-<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id.  subdir (mutStringRef) name of the entity to be read from.  id (mutStringRef) reference to a String where the id of the leaf will be stored <simplesect kind="return"><para>(int) id of the selected item </para></simplesect>
-<simplesect kind="see"><para><ref refid="d8/d7f/classconfigtree_1a1b07378117c869830b265998da5935e3" kindref="member">toNextLeaf</ref> </para></simplesect>
+<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id.  subdir (std::string&amp;) name of the entity to be read from.  id (std::string&amp;) reference to a String where the id of the leaf will be stored <simplesect kind="return"><para>(int) id of the selected item </para></simplesect>
+<simplesect kind="see"><para><ref refid="d8/d7f/classconfigtree_1ac9c99afb8cda8e8cde3d7cf5b85e03bd" kindref="member">toNextLeaf</ref> </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="112" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="125" bodyend="153"/>
-        <references refid="d9/de4/structconfigtree_1_1state_1ad4514ef56c2bdbcb6b7c4dabd7f043f8" compoundref="d5/d6b/configtree_8h" startline="60">configtree::state::chdepth</references>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
-        <references refid="d9/de4/structconfigtree_1_1state_1a323934dc786f32ba266a202b746f49ff" compoundref="d5/d6b/configtree_8h" startline="64">configtree::state::group</references>
-        <references refid="d9/de4/structconfigtree_1_1state_1a96c937da41adcfcb941a1b782e869a71" compoundref="d5/d6b/configtree_8h" startline="61">configtree::state::leafid</references>
-        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
-        <references refid="d9/de4/structconfigtree_1_1state_1a777737892758fea84c7ce5a975d175d1" compoundref="d5/d6b/configtree_8h" startline="63">configtree::state::oldpath</references>
-        <references refid="d8/d7f/classconfigtree_1a2997797df3303c0fcadb85c3a29eccc3" compoundref="d5/d6b/configtree_8h" startline="77">configtree::states</references>
-        <references refid="d1/d44/group__config_1ga2c54863d019f420bff002cb76a4b519f" compoundref="d4/d26/configtree_8cpp" startline="86" endline="106">configtree::toLeaf</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="117" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="126" bodyend="156"/>
+        <references refid="d9/de4/structconfigtree_1_1state_1ad4514ef56c2bdbcb6b7c4dabd7f043f8" compoundref="d5/d6b/configtree_8h" startline="62">configtree::state::chdepth</references>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="db/d16/debug_8h" startline="240">DEBUGLOG</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a323934dc786f32ba266a202b746f49ff" compoundref="d5/d6b/configtree_8h" startline="66">configtree::state::group</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a96c937da41adcfcb941a1b782e869a71" compoundref="d5/d6b/configtree_8h" startline="63">configtree::state::leafid</references>
+        <references refid="dc/d3d/group__templates_1ga6a74fe1453277b5ee1d921a28a936a0f" compoundref="de/ddd/interface__deps_8h" startline="51">mutASSERT</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a777737892758fea84c7ce5a975d175d1" compoundref="d5/d6b/configtree_8h" startline="65">configtree::state::oldpath</references>
+        <references refid="d8/d7f/classconfigtree_1a2997797df3303c0fcadb85c3a29eccc3" compoundref="d5/d6b/configtree_8h" startline="79">configtree::states</references>
+        <references refid="d1/d44/group__config_1ga76418ee6b83d800ae26170b6374f0347" compoundref="d4/d26/configtree_8cpp" startline="87" endline="107">configtree::toLeaf</references>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1gaba4af6230f51279af880fd0644ef37a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d1/d44/group__config_1ga7ecd104f2b17acda6c1300fc08a44b80" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>int</type>
         <definition>int configtree::toNextLeaf</definition>
-        <argsstring>(const mutStringRef name, mutStringRef id)</argsstring>
+        <argsstring>(const std::string &amp;name, std::string &amp;id)</argsstring>
         <name>toNextLeaf</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a0e37ed52c00069e6063418ea13d35aa4">toNextLeaf</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1aab94221d2c1f5039dfd3d1da4d5cbd02">toNextLeaf</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
         <param>
-          <type><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>std::string &amp;</type>
           <declname>id</declname>
         </param>
         <briefdescription>
 <para>Changes the current node downdwards to the next leaf of given type. </para>        </briefdescription>
         <detaileddescription>
-<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id.  subdir (mutStringRef) name of the entity to be read from.  id (mutStringRef) reference to a String where the id of the leaf will be stored <simplesect kind="return"><para>(int) id of the selected item </para></simplesect>
-<simplesect kind="see"><para><ref refid="d8/d7f/classconfigtree_1aac1483e877ede2a10d57cd06081c7917" kindref="member">toFirstLeaf</ref> </para></simplesect>
+<para>this function can be used to navigate towards the leaves in the tree. The argument can be considered as Items with a unique id.  subdir (std::string&amp;) name of the entity to be read from.  id (std::string&amp;) reference to a String where the id of the leaf will be stored <simplesect kind="return"><para>(int) id of the selected item </para></simplesect>
+<simplesect kind="see"><para><ref refid="d8/d7f/classconfigtree_1aa57465d8f332a55581b8af26b4de2aef" kindref="member">toFirstLeaf</ref> </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="122" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="156" bodyend="192"/>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
-        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
-        <references refid="d1/d44/group__config_1ga515d665453d65bd383a6d36f106cb0f2" compoundref="d4/d26/configtree_8cpp" startline="233" endline="237">configtree::SetPath</references>
-        <references refid="d8/d7f/classconfigtree_1a2997797df3303c0fcadb85c3a29eccc3" compoundref="d5/d6b/configtree_8h" startline="77">configtree::states</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="130" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="159" bodyend="197"/>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="db/d16/debug_8h" startline="240">DEBUGLOG</references>
+        <references refid="dc/d3d/group__templates_1ga6a74fe1453277b5ee1d921a28a936a0f" compoundref="de/ddd/interface__deps_8h" startline="51">mutASSERT</references>
+        <references refid="d1/d44/group__config_1gaadb289d2c08c2f6be58368430c7405f1" compoundref="d4/d26/configtree_8cpp" startline="238" endline="242">configtree::SetPath</references>
+        <references refid="d8/d7f/classconfigtree_1a2997797df3303c0fcadb85c3a29eccc3" compoundref="d5/d6b/configtree_8h" startline="79">configtree::states</references>
       </memberdef>
       <memberdef kind="function" id="d1/d44/group__config_1ga3b8d3fac8b8769cc93ead97d80ad0359" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -484,30 +484,30 @@
 <para>count (int) number of nodes to go upward. Default: 1. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="123" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="195" bodyend="226"/>
-        <references refid="d9/de4/structconfigtree_1_1state_1ad4514ef56c2bdbcb6b7c4dabd7f043f8" compoundref="d5/d6b/configtree_8h" startline="60">configtree::state::chdepth</references>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
-        <references refid="d9/de4/structconfigtree_1_1state_1a323934dc786f32ba266a202b746f49ff" compoundref="d5/d6b/configtree_8h" startline="64">configtree::state::group</references>
-        <references refid="d9/de4/structconfigtree_1_1state_1a96c937da41adcfcb941a1b782e869a71" compoundref="d5/d6b/configtree_8h" startline="61">configtree::state::leafid</references>
-        <references refid="d9/d7c/group__kernel_1ga565c8973b3b2a87c7f9c7c7aabb9665e" compoundref="d1/d73/Defs_8h" startline="222">mutASSERT</references>
-        <references refid="d9/de4/structconfigtree_1_1state_1a777737892758fea84c7ce5a975d175d1" compoundref="d5/d6b/configtree_8h" startline="63">configtree::state::oldpath</references>
-        <references refid="d1/d44/group__config_1ga515d665453d65bd383a6d36f106cb0f2" compoundref="d4/d26/configtree_8cpp" startline="233" endline="237">configtree::SetPath</references>
-        <references refid="d8/d7f/classconfigtree_1a2997797df3303c0fcadb85c3a29eccc3" compoundref="d5/d6b/configtree_8h" startline="77">configtree::states</references>
-        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="131" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="200" bodyend="231"/>
+        <references refid="d9/de4/structconfigtree_1_1state_1ad4514ef56c2bdbcb6b7c4dabd7f043f8" compoundref="d5/d6b/configtree_8h" startline="62">configtree::state::chdepth</references>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="db/d16/debug_8h" startline="240">DEBUGLOG</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a323934dc786f32ba266a202b746f49ff" compoundref="d5/d6b/configtree_8h" startline="66">configtree::state::group</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a96c937da41adcfcb941a1b782e869a71" compoundref="d5/d6b/configtree_8h" startline="63">configtree::state::leafid</references>
+        <references refid="dc/d3d/group__templates_1ga6a74fe1453277b5ee1d921a28a936a0f" compoundref="de/ddd/interface__deps_8h" startline="51">mutASSERT</references>
+        <references refid="d9/de4/structconfigtree_1_1state_1a777737892758fea84c7ce5a975d175d1" compoundref="d5/d6b/configtree_8h" startline="65">configtree::state::oldpath</references>
+        <references refid="d1/d44/group__config_1gaadb289d2c08c2f6be58368430c7405f1" compoundref="d4/d26/configtree_8cpp" startline="238" endline="242">configtree::SetPath</references>
+        <references refid="d8/d7f/classconfigtree_1a2997797df3303c0fcadb85c3a29eccc3" compoundref="d5/d6b/configtree_8h" startline="79">configtree::states</references>
+        <references refid="de/db7/group__debug_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="db/d16/debug_8h" startline="256">UNREACHABLEC</references>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1gab636a7b132498318e2e5c295f4278842" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
-        <definition>mutString configtree::GetPath</definition>
+      <memberdef kind="function" id="d1/d44/group__config_1gaa769c24e9ae0d93a64ea142afd6c0814" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string configtree::GetPath</definition>
         <argsstring>()</argsstring>
         <name>GetPath</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a56fd0890515d0b39ae35acb7c0682339">GetPath</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a66b9a5fff9a5927df560a680d2f60b4c">GetPath</reimplements>
         <briefdescription>
 <para>Return a string representation of the position in the current tree. </para>        </briefdescription>
         <detaileddescription>
 <para>This function can be used to store the current position in the tree. <parameterlist kind="retval"><parameteritem>
 <parameternamelist>
-<parametername>mutString</parametername>
+<parametername>std::string</parametername>
 </parameternamelist>
 <parameterdescription>
 <para>String representation of the current path. The concrete representation is implementation dependent and can vary for different tree types. </para></parameterdescription>
@@ -516,32 +516,32 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="125" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="228" bodyend="231"/>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <referencedby refid="d1/d44/group__config_1ga2c54863d019f420bff002cb76a4b519f" compoundref="d4/d26/configtree_8cpp" startline="86" endline="106">configtree::toLeaf</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="133" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="233" bodyend="236"/>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <referencedby refid="d1/d44/group__config_1ga76418ee6b83d800ae26170b6374f0347" compoundref="d4/d26/configtree_8cpp" startline="87" endline="107">configtree::toLeaf</referencedby>
       </memberdef>
-      <memberdef kind="function" id="d1/d44/group__config_1ga515d665453d65bd383a6d36f106cb0f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="d1/d44/group__config_1gaadb289d2c08c2f6be58368430c7405f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void configtree::SetPath</definition>
-        <argsstring>(const mutStringRef path)</argsstring>
+        <argsstring>(const std::string &amp;path)</argsstring>
         <name>SetPath</name>
-        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1a1af0bde57236a6b74e18ec68ea8fa5b5">SetPath</reimplements>
+        <reimplements refid="da/de5/classmutabor_1_1tree__storage_1ae388ba2d4260632fa89f2ba608ce4bac">SetPath</reimplements>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string &amp;</type>
           <declname>path</declname>
         </param>
         <briefdescription>
 <para>Set the current pointer in the tree. </para>        </briefdescription>
         <detaileddescription>
-<para>This function can be used to store the current position in the tree.  path (mutString) String representation of the new path as returned by <ref refid="d1/d44/group__config_1gab636a7b132498318e2e5c295f4278842" kindref="member">GetPath()</ref>. The concrete representation is implementation dependent and can vary for different tree types. </para>        </detaileddescription>
+<para>This function can be used to store the current position in the tree.  path (std::string) String representation of the new path as returned by <ref refid="d1/d44/group__config_1gaa769c24e9ae0d93a64ea142afd6c0814" kindref="member">GetPath()</ref>. The concrete representation is implementation dependent and can vary for different tree types. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="126" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="233" bodyend="237"/>
-        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="51">configtree::config</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
-        <referencedby refid="d1/d44/group__config_1ga2c54863d019f420bff002cb76a4b519f" compoundref="d4/d26/configtree_8cpp" startline="86" endline="106">configtree::toLeaf</referencedby>
-        <referencedby refid="d1/d44/group__config_1gaba4af6230f51279af880fd0644ef37a2" compoundref="d4/d26/configtree_8cpp" startline="156" endline="192">configtree::toNextLeaf</referencedby>
-        <referencedby refid="d1/d44/group__config_1ga3b8d3fac8b8769cc93ead97d80ad0359" compoundref="d4/d26/configtree_8cpp" startline="195" endline="226">configtree::toParent</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="134" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.cpp" bodystart="238" bodyend="242"/>
+        <references refid="d8/d7f/classconfigtree_1a903be0990c9e4ab7e9c1271b540a2169" compoundref="d5/d6b/configtree_8h" startline="53">configtree::config</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="db/d16/debug_8h" startline="240">DEBUGLOG</references>
+        <referencedby refid="d1/d44/group__config_1ga76418ee6b83d800ae26170b6374f0347" compoundref="d4/d26/configtree_8cpp" startline="87" endline="107">configtree::toLeaf</referencedby>
+        <referencedby refid="d1/d44/group__config_1ga7ecd104f2b17acda6c1300fc08a44b80" compoundref="d4/d26/configtree_8cpp" startline="159" endline="197">configtree::toNextLeaf</referencedby>
+        <referencedby refid="d1/d44/group__config_1ga3b8d3fac8b8769cc93ead97d80ad0359" compoundref="d4/d26/configtree_8cpp" startline="200" endline="231">configtree::toParent</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="define">
@@ -553,7 +553,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="40" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" bodystart="40" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="40" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/d44/group__config_1ga2cac3d468778136c69d584b293d511d4" prot="public" static="no">
         <name>MU32_TREESTORAGE_H_PRECOMPILED</name>
@@ -563,7 +563,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="50" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" bodystart="50" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" line="50" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/treestorage.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/d44/group__config_1gaace2ea1c1a7a08ba10e9a84a7389aa61" prot="public" static="no">
         <name>MUWX_CONFIGTREE_H</name>
@@ -573,7 +573,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="32" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" bodystart="32" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="32" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/d44/group__config_1ga80582c91a4f6db7b866f71baabbd1fd5" prot="public" static="no">
         <name>MUWX_CONFIGTREE_H_PRECOMPILED</name>
@@ -583,7 +583,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="45" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" bodystart="45" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" line="45" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/configtree.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/d44/group__config_1ga4a20864b02a4157b2b6a7fd01547e539" prot="public" static="no">
         <name>MUWX_XMLTREE_H</name>
@@ -593,7 +593,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" line="32" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" bodystart="32" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" line="32" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d1/d44/group__config_1gadfaf852105ed4262087ee4add0d977ab" prot="public" static="no">
         <name>MUWX_XMLTREE_H_PRECOMPILED</name>
@@ -603,7 +603,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" line="45" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" bodystart="45" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" line="45" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/xmltree.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

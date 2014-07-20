@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="838" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="838" bodyend="838"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="955" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="955" bodyend="955"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="821" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="821" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="941" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="941" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -71,8 +71,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="837" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="837" bodyend="-1"/>
-        <referencedby refid="dc/d51/classmutabor_1_1CommonMidiInput_1af0df5287ed0adfb9a731df5e7f8f4777" compoundref="de/d21/midicmn_8h" startline="827" endline="829">mutabor::CommonMidiInput&lt; InputDeviceClass &gt;::GetChannelData</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="954" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="954" bodyend="-1"/>
+        <referencedby refid="dc/d51/classmutabor_1_1CommonMidiInput_1af0df5287ed0adfb9a731df5e7f8f4777" compoundref="de/d21/midicmn_8h" startline="944" endline="946">mutabor::CommonMidiInput&lt; InputDeviceClass &gt;::GetChannelData</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -82,7 +82,7 @@
         <argsstring>(const std::vector&lt; unsigned char &gt; *midiCode, int data=0, int channel_offset=0)</argsstring>
         <name>Proceed</name>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> std::vector&lt; unsigned char &gt; *</type>
+          <type>const std::vector&lt; unsigned char &gt; *</type>
           <declname>midiCode</declname>
         </param>
         <param>
@@ -110,28 +110,32 @@
 <parametername>data</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Additional data that might be necessardy Check which routes shall work on the midi code and forward the code.</para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>midiCode</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Code to be processed </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>data</parametername>
-</parameternamelist>
-<parameterdescription>
 <para>Additional data that might be necessardy </para></parameterdescription>
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="825" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="1105" bodyend="1131"/>
-        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="942" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="1101" bodyend="1169"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaea5706f32a51b36323f3f0d9046eed71" compoundref="da/dfd/MidiKern_8h" startline="154">mutabor::midi::ACTIVE_SENSE</references>
+        <references refid="d5/dee/group__route_1ga4ef0b3c845bc5373fb7c51b0858168d1" compoundref="de/d05/Device_8h" startline="909" endline="915">mutabor::OutputDeviceClass::all_handle_event</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaa974601792066f75ac4a0a45f1655ba2" compoundref="da/dfd/MidiKern_8h" startline="148">mutabor::midi::CLOCK</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab8827c43d0c87b70707e6844eefe02d6" compoundref="da/dfd/MidiKern_8h" startline="151">mutabor::midi::CONTINUE_PLAY</references>
+        <references refid="d6/daa/namespacemutabor_1aaa36a446a3ea52a23110357390b5bc7e" compoundref="dd/d20/event_8h" startline="638" endline="666">mutabor::create_event</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea597b963d24128a1986fd4baf63ffbdf1" compoundref="da/dfd/MidiKern_8h" startline="163">mutabor::midi::META</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ead1fac92a547fa123ca5500c075908ca4" compoundref="da/dfd/MidiKern_8h" startline="140">mutabor::midi::QUARTER_FRAME</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaa332afce2a56c4b143617aa299f2eb2c" compoundref="da/dfd/MidiKern_8h" startline="153">mutabor::midi::REALTIME_UNDEFINED</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea26a84b354a54afaf1c0929ca48337ea4" compoundref="da/dfd/MidiKern_8h" startline="141">mutabor::midi::SONG_POSITION</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eac05c2c255ba453932c6bd2385c67a2fd" compoundref="da/dfd/MidiKern_8h" startline="142">mutabor::midi::SONG_SELECT</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab9213998abc464824cce1031b47c0938" compoundref="da/dfd/MidiKern_8h" startline="150">mutabor::midi::START_PLAY</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea10f6a089ddbb6272bfc0308d104f17df" compoundref="da/dfd/MidiKern_8h" startline="152">mutabor::midi::STOP_PLAY</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea0a53af595ed2e1a23a8c671e3e043a62" compoundref="da/dfd/MidiKern_8h" startline="146">mutabor::midi::SYSEX_END</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea9b1eab461457cda726681eedea0a5505" compoundref="da/dfd/MidiKern_8h" startline="139">mutabor::midi::SYSEX_START</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea76e4e53a91250c7b2e8cd2a624eaa692" compoundref="da/dfd/MidiKern_8h" startline="143">mutabor::midi::SYSTEM_UNDEFINED1</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eafb38762a11e373f2caec8df2f34fce23" compoundref="da/dfd/MidiKern_8h" startline="144">mutabor::midi::SYSTEM_UNDEFINED2</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea97cae8ff9181e0c31077e7f9e4baa004" compoundref="da/dfd/MidiKern_8h" startline="149">mutabor::midi::TICK</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea23cf0840cf227463d6d436b1375c465c" compoundref="da/dfd/MidiKern_8h" startline="145">mutabor::midi::TUNE_REQUEST</references>
+        <references refid="de/db7/group__debug_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="db/d16/debug_8h" startline="256">UNREACHABLEC</references>
       </memberdef>
       <memberdef kind="function" id="dc/d51/classmutabor_1_1CommonMidiInput_1af0df5287ed0adfb9a731df5e7f8f4777" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="d4/d4a/classmutabor_1_1ChannelData" kindref="compound">ChannelData</ref> &amp;</type>
@@ -139,7 +143,7 @@
         <argsstring>(const InputDeviceClass::current_keys_type::entry &amp;key) const </argsstring>
         <name>GetChannelData</name>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d1/d2b/structmutabor_1_1InputDeviceClass_1_1current__keys__type_1_1entry" kindref="compound">InputDeviceClass::current_keys_type::entry</ref> &amp;</type>
+          <type>const <ref refid="d1/d2b/structmutabor_1_1InputDeviceClass_1_1current__keys__type_1_1entry" kindref="compound">InputDeviceClass::current_keys_type::entry</ref> &amp;</type>
           <declname>key</declname>
         </param>
         <briefdescription>
@@ -148,19 +152,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="827" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="827" bodyend="829"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="944" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="944" bodyend="946"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
-      <memberdef kind="function" id="dc/d51/classmutabor_1_1CommonMidiInput_1a2ebad09121371c7770d66e5f4da151df" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="dc/d51/classmutabor_1_1CommonMidiInput_1a667157999dba5d71421816b7ed0dc742" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>mutabor::CommonMidiInput&lt; D &gt;::CommonMidiInput</definition>
-        <argsstring>(const mutStringRef name=mutEmptyString, MutaborModeType mode=DeviceStop, int id=-1)</argsstring>
+        <argsstring>(const std::string name=&quot;&quot;, MutaborModeType mode=DeviceStop, int id=-1)</argsstring>
         <name>CommonMidiInput</name>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref></type>
+          <type>const std::string</type>
           <declname>name</declname>
-          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+          <defval>&quot;&quot;</defval>
         </param>
         <param>
           <type><ref refid="d5/dee/group__route_1gaa3d7d1e712c727d12c3b60c8dc04b484" kindref="member">MutaborModeType</ref></type>
@@ -178,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="833" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="833" bodyend="835"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="950" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="950" bodyend="952"/>
       </memberdef>
       <memberdef kind="function" id="dc/d51/classmutabor_1_1CommonMidiInput_1ab6618f04373c0de7b62bd70f12bd1dbc" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -186,7 +190,7 @@
         <argsstring>(const std::vector&lt; unsigned char &gt; *midiCode, Route route, int channel_offset)</argsstring>
         <name>ProceedRoute</name>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> std::vector&lt; unsigned char &gt; *</type>
+          <type>const std::vector&lt; unsigned char &gt; *</type>
           <declname>midiCode</declname>
         </param>
         <param>
@@ -202,27 +206,44 @@
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="844" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="947" bodyend="1056"/>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2a3431989dc0fddea1502205bfc0a586" compoundref="da/dfd/MidiKern_8h" startline="288">mutabor::midi::ALL_CONTROLLERS_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab041c3cb773862382dd34db3f6a8ca35" compoundref="da/dfd/MidiKern_8h" startline="290">mutabor::midi::ALL_NOTES_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690aff3ec02ce2ffe0bb1faa74c37349e9f5" compoundref="da/dfd/MidiKern_8h" startline="287">mutabor::midi::ALL_SOUND_OFF</references>
-        <references refid="d9/d7c/group__kernel_1gaec93e83855ac17c3c25c55c37ca186dd" compoundref="d1/d73/Defs_8h" startline="63">BYTE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea36825b9d33417a47a35f079501d2f8c7" compoundref="da/dfd/MidiKern_8h" startline="145">mutabor::midi::CHANNEL_PRESSURE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eabd8152734c0a8cb12f11f2b164df0e75" compoundref="da/dfd/MidiKern_8h" startline="143">mutabor::midi::CONTROLLER</references>
-        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="de/de1/mutDebug_8h" startline="146">DEBUGLOG</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab6eb91d4667f9fb9f162bbeae3ed23d2" compoundref="da/dfd/MidiKern_8h" startline="142">mutabor::midi::KEY_PRESSURE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a97fe532b2fcd5e16112a886fdda11dcb" compoundref="da/dfd/MidiKern_8h" startline="289">mutabor::midi::LOCAL_ON_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2932f1c1103e325a6bfab3e7177c0f94" compoundref="da/dfd/MidiKern_8h" startline="294">mutabor::midi::MONO_ON</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ead35b3866e37a78e1cc4295e63979ef6e" compoundref="da/dfd/MidiKern_8h" startline="139">mutabor::midi::NOTE_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eabcf966a1839e3e35f6e60752e80b1d1a" compoundref="da/dfd/MidiKern_8h" startline="140">mutabor::midi::NOTE_ON</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab20fc26ad14179a9ba29270509f5c908" compoundref="da/dfd/MidiKern_8h" startline="291">mutabor::midi::OMNI_OFF</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1869ff44ef4942e884f36fcc707cf561" compoundref="da/dfd/MidiKern_8h" startline="292">mutabor::midi::OMNI_ON</references>
-        <references refid="d5/dee/group__route_1gad4092c9965b9f85607cf343adbfa8649" compoundref="dd/dc6/Box_8cpp" startline="990" endline="1001">mutabor::Panic</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690aa51ceb9f345863cafa21214dd0db92fa" compoundref="da/dfd/MidiKern_8h" startline="297">mutabor::midi::POLY_ON</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaa7c0c9dd640fb213255c9b5176623009" compoundref="da/dfd/MidiKern_8h" startline="144">mutabor::midi::PROGRAM_CHANGE</references>
-        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab3977b2c3228dda6d08ad9177f350676" compoundref="da/dfd/MidiKern_8h" startline="147">mutabor::midi::SYSTEM</references>
-        <references refid="df/dd1/group__GUI_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="d0/d68/mhDefs_8h" startline="148">UNREACHABLEC</references>
+<para><xrefsect id="dd/da0/todo_1_todo000024"><xreftitle>Noch zu erledigen</xreftitle><xrefdescription><para>handle all these messages in mutabor </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="958" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.cpp" bodystart="962" bodyend="1090"/>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaea5706f32a51b36323f3f0d9046eed71" compoundref="da/dfd/MidiKern_8h" startline="154">mutabor::midi::ACTIVE_SENSE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2a3431989dc0fddea1502205bfc0a586" compoundref="da/dfd/MidiKern_8h" startline="303">mutabor::midi::ALL_CONTROLLERS_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab041c3cb773862382dd34db3f6a8ca35" compoundref="da/dfd/MidiKern_8h" startline="305">mutabor::midi::ALL_NOTES_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690aff3ec02ce2ffe0bb1faa74c37349e9f5" compoundref="da/dfd/MidiKern_8h" startline="302">mutabor::midi::ALL_SOUND_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea36825b9d33417a47a35f079501d2f8c7" compoundref="da/dfd/MidiKern_8h" startline="135">mutabor::midi::CHANNEL_PRESSURE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a13ff6f5b106d893da9a112a4e492af14a0cb3cb0ed74ca366747893f0b427c9e4" compoundref="da/dfd/MidiKern_8h" startline="317">mutabor::midi::CHANNEL_PRESSURE_VAL</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaa974601792066f75ac4a0a45f1655ba2" compoundref="da/dfd/MidiKern_8h" startline="148">mutabor::midi::CLOCK</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab8827c43d0c87b70707e6844eefe02d6" compoundref="da/dfd/MidiKern_8h" startline="151">mutabor::midi::CONTINUE_PLAY</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eabd8152734c0a8cb12f11f2b164df0e75" compoundref="da/dfd/MidiKern_8h" startline="133">mutabor::midi::CONTROLLER</references>
+        <references refid="d6/daa/namespacemutabor_1aaa36a446a3ea52a23110357390b5bc7e" compoundref="dd/d20/event_8h" startline="638" endline="666">mutabor::create_event</references>
+        <references refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" compoundref="db/d16/debug_8h" startline="240">DEBUGLOG</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab6eb91d4667f9fb9f162bbeae3ed23d2" compoundref="da/dfd/MidiKern_8h" startline="132">mutabor::midi::KEY_PRESSURE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a97fe532b2fcd5e16112a886fdda11dcb" compoundref="da/dfd/MidiKern_8h" startline="304">mutabor::midi::LOCAL_ON_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea597b963d24128a1986fd4baf63ffbdf1" compoundref="da/dfd/MidiKern_8h" startline="163">mutabor::midi::META</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a2932f1c1103e325a6bfab3e7177c0f94" compoundref="da/dfd/MidiKern_8h" startline="309">mutabor::midi::MONO_ON</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ead35b3866e37a78e1cc4295e63979ef6e" compoundref="da/dfd/MidiKern_8h" startline="129">mutabor::midi::NOTE_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eabcf966a1839e3e35f6e60752e80b1d1a" compoundref="da/dfd/MidiKern_8h" startline="130">mutabor::midi::NOTE_ON</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690ab20fc26ad14179a9ba29270509f5c908" compoundref="da/dfd/MidiKern_8h" startline="306">mutabor::midi::OMNI_OFF</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690a1869ff44ef4942e884f36fcc707cf561" compoundref="da/dfd/MidiKern_8h" startline="307">mutabor::midi::OMNI_ON</references>
+        <references refid="d5/dee/group__route_1gad4092c9965b9f85607cf343adbfa8649" compoundref="dd/dc6/Box_8cpp" startline="1042" endline="1053">mutabor::Panic</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1ae3572d906d4b21d1e960535f97cc5690aa51ceb9f345863cafa21214dd0db92fa" compoundref="da/dfd/MidiKern_8h" startline="312">mutabor::midi::POLY_ON</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaa7c0c9dd640fb213255c9b5176623009" compoundref="da/dfd/MidiKern_8h" startline="134">mutabor::midi::PROGRAM_CHANGE</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ead1fac92a547fa123ca5500c075908ca4" compoundref="da/dfd/MidiKern_8h" startline="140">mutabor::midi::QUARTER_FRAME</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eaa332afce2a56c4b143617aa299f2eb2c" compoundref="da/dfd/MidiKern_8h" startline="153">mutabor::midi::REALTIME_UNDEFINED</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea26a84b354a54afaf1c0929ca48337ea4" compoundref="da/dfd/MidiKern_8h" startline="141">mutabor::midi::SONG_POSITION</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eac05c2c255ba453932c6bd2385c67a2fd" compoundref="da/dfd/MidiKern_8h" startline="142">mutabor::midi::SONG_SELECT</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab9213998abc464824cce1031b47c0938" compoundref="da/dfd/MidiKern_8h" startline="150">mutabor::midi::START_PLAY</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea10f6a089ddbb6272bfc0308d104f17df" compoundref="da/dfd/MidiKern_8h" startline="152">mutabor::midi::STOP_PLAY</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea0a53af595ed2e1a23a8c671e3e043a62" compoundref="da/dfd/MidiKern_8h" startline="146">mutabor::midi::SYSEX_END</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea9b1eab461457cda726681eedea0a5505" compoundref="da/dfd/MidiKern_8h" startline="139">mutabor::midi::SYSEX_START</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eab3977b2c3228dda6d08ad9177f350676" compoundref="da/dfd/MidiKern_8h" startline="137">mutabor::midi::SYSTEM</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea76e4e53a91250c7b2e8cd2a624eaa692" compoundref="da/dfd/MidiKern_8h" startline="143">mutabor::midi::SYSTEM_UNDEFINED1</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40eafb38762a11e373f2caec8df2f34fce23" compoundref="da/dfd/MidiKern_8h" startline="144">mutabor::midi::SYSTEM_UNDEFINED2</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea97cae8ff9181e0c31077e7f9e4baa004" compoundref="da/dfd/MidiKern_8h" startline="149">mutabor::midi::TICK</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea23cf0840cf227463d6d436b1375c465c" compoundref="da/dfd/MidiKern_8h" startline="145">mutabor::midi::TUNE_REQUEST</references>
+        <references refid="de/db7/group__debug_1ga21a35e4a9e56bbe15aded747eb5a7147" compoundref="db/d16/debug_8h" startline="256">UNREACHABLEC</references>
       </memberdef>
       <memberdef kind="function" id="dc/d51/classmutabor_1_1CommonMidiInput_1ac84353f9e39196fbbed4ab9813e46c37" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="dc/d51/classmutabor_1_1CommonMidiInput_1a3b305d753980dc61b353214bc9fc84e5" kindref="member">proceed_bool</ref></type>
@@ -236,7 +257,7 @@
           <declname>R</declname>
         </param>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> std::vector&lt; unsigned char &gt; *</type>
+          <type>const std::vector&lt; unsigned char &gt; *</type>
           <declname>midiCode</declname>
         </param>
         <param>
@@ -250,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="848" column="1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="959" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -258,51 +279,58 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2711">
+      <node id="3262">
         <label>D</label>
       </node>
-      <node id="2710">
+      <node id="3261">
         <label>mutabor::CommonMidiInput&lt; D &gt;</label>
         <link refid="dc/d51/classmutabor_1_1CommonMidiInput"/>
-        <childnode refid="2711" relation="public-inheritance">
+        <childnode refid="3262" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2713">
+      <node id="3268">
+        <label>size_t</label>
+      </node>
+      <node id="3264">
         <label>D</label>
       </node>
-      <node id="2712">
+      <node id="3263">
         <label>mutabor::CommonMidiInput&lt; D &gt;</label>
         <link refid="dc/d51/classmutabor_1_1CommonMidiInput"/>
-        <childnode refid="2713" relation="public-inheritance">
+        <childnode refid="3264" relation="public-inheritance">
         </childnode>
-        <childnode refid="2714" relation="usage">
+        <childnode refid="3265" relation="usage">
           <edgelabel>channel_data</edgelabel>
         </childnode>
       </node>
-      <node id="2715">
+      <node id="3266">
         <label>mutabor::ChannelData</label>
         <link refid="d4/d4a/classmutabor_1_1ChannelData"/>
-        <childnode refid="2716" relation="usage">
+        <childnode refid="3267" relation="usage">
           <edgelabel>controller_changed</edgelabel>
           <edgelabel>controller</edgelabel>
         </childnode>
+        <childnode refid="3268" relation="usage">
+          <edgelabel>first_unchanged</edgelabel>
+          <edgelabel>IGNORE_UNIQUE_ID</edgelabel>
+        </childnode>
       </node>
-      <node id="2714">
+      <node id="3265">
         <label>std::vector&lt; mutabor::ChannelData &gt;</label>
-        <childnode refid="2715" relation="usage">
+        <childnode refid="3266" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="2716">
+      <node id="3267">
         <label>std::vector&lt; int &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="819" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="819" bodyend="851"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" line="939" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/midi/midicmn.h" bodystart="939" bodyend="962"/>
     <listofallmembers>
       <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1ad7f41b9b656778fcc8c17eb3a79d7e19" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiInput</scope><name>channel_data</name></member>
-      <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1a2ebad09121371c7770d66e5f4da151df" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiInput</scope><name>CommonMidiInput</name></member>
+      <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1a667157999dba5d71421816b7ed0dc742" prot="protected" virt="non-virtual"><scope>mutabor::CommonMidiInput</scope><name>CommonMidiInput</name></member>
       <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1af0df5287ed0adfb9a731df5e7f8f4777" prot="public" virt="virtual"><scope>mutabor::CommonMidiInput</scope><name>GetChannelData</name></member>
       <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1a124a4bbb1fb433bdb353368b8bcce71b" prot="public" virt="non-virtual"><scope>mutabor::CommonMidiInput</scope><name>parenttype</name></member>
       <member refid="dc/d51/classmutabor_1_1CommonMidiInput_1a22eba71fad439334bd9955fd40ddd568" prot="public" virt="non-virtual"><scope>mutabor::CommonMidiInput</scope><name>Proceed</name></member>

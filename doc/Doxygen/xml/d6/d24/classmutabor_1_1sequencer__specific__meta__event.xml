@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="d6/d24/classmutabor_1_1sequencer__specific__meta__event" kind="class" prot="public">
+    <compoundname>mutabor::sequencer_specific_meta_event</compoundname>
+    <basecompoundref refid="d7/d83/classmutabor_1_1event__class" prot="public" virt="non-virtual">mutabor::event_class</basecompoundref>
+    <includes refid="dd/d20/event_8h" local="no">event.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d6/d24/classmutabor_1_1sequencer__specific__meta__event_1a41addbb5a263ef30d9d7f77ad0fe96ea" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; unsigned char &gt;</type>
+        <definition>std::vector&lt;unsigned char&gt; mutabor::sequencer_specific_meta_event::msg</definition>
+        <argsstring></argsstring>
+        <name>msg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="448" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="448" bodyend="-1"/>
+        <referencedby refid="d6/d24/classmutabor_1_1sequencer__specific__meta__event_1a12bc711491cc4b4b09bce17832a0c217" compoundref="dd/d20/event_8h" startline="444" endline="444">get_message</referencedby>
+        <referencedby refid="d6/d24/classmutabor_1_1sequencer__specific__meta__event_1aba602165fb01e23ce08db9a308aba1df" compoundref="dd/d20/event_8h" startline="435" endline="442">sequencer_specific_meta_event</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d6/d24/classmutabor_1_1sequencer__specific__meta__event_1aba602165fb01e23ce08db9a308aba1df" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>mutabor::sequencer_specific_meta_event::sequencer_specific_meta_event</definition>
+        <argsstring>(size_t id, const std::vector&lt; unsigned char &gt; &amp;data)</argsstring>
+        <name>sequencer_specific_meta_event</name>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="435" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="435" bodyend="442"/>
+        <references refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ac1daf05e883c2e4042a9868a1a8957fe" compoundref="dd/d20/event_8h" startline="58">mutabor::hidden::mutabor_event_type::input_channel</references>
+        <references refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a5fcf0a8e79a0a634aad1ca25d3e42c84">mutabor::hidden::mutabor_event_type::meta</references>
+        <references refid="d6/d24/classmutabor_1_1sequencer__specific__meta__event_1a41addbb5a263ef30d9d7f77ad0fe96ea" compoundref="dd/d20/event_8h" startline="448">msg</references>
+        <references refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a54256bb9d86e721fabaabe780c55aeab" compoundref="dd/d20/event_8h" startline="57">mutabor::hidden::mutabor_event_type::route_channel</references>
+        <references refid="d6/d7c/namespacemutabor_1_1midi_1a61487f8f3f95832d7519d0c8dcc5b40ea5bad60f8da43eeceeed7a809f2f4495a" compoundref="da/dfd/MidiKern_8h" startline="180">mutabor::midi::SEQUENCER_SPECIFIC</references>
+        <references refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a18bfa1517c4ed28420828266fd7a730f" compoundref="dd/d20/event_8h" startline="56">mutabor::hidden::mutabor_event_type::type</references>
+        <references refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ae5e7bb920757b22f1c30a8ec6d44534c" compoundref="dd/d20/event_8h" startline="59">mutabor::hidden::mutabor_event_type::unique_id</references>
+      </memberdef>
+      <memberdef kind="function" id="d6/d24/classmutabor_1_1sequencer__specific__meta__event_1a12bc711491cc4b4b09bce17832a0c217" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+        <definition>const std::vector&lt;unsigned char&gt;&amp; mutabor::sequencer_specific_meta_event::get_message</definition>
+        <argsstring>()</argsstring>
+        <name>get_message</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="444" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="444" bodyend="444"/>
+        <references refid="d6/d24/classmutabor_1_1sequencer__specific__meta__event_1a41addbb5a263ef30d9d7f77ad0fe96ea" compoundref="dd/d20/event_8h" startline="448">msg</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5326">
+        <label>mutabor::sequencer_specific_meta_event</label>
+        <link refid="d6/d24/classmutabor_1_1sequencer__specific__meta__event"/>
+        <childnode refid="5327" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5327">
+        <label>mutabor::event_class</label>
+        <link refid="d7/d83/classmutabor_1_1event__class"/>
+        <childnode refid="5328" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="5328">
+        <label>mutabor::hidden::mutabor_event_type</label>
+        <link refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5332">
+        <label>size_t</label>
+      </node>
+      <node id="5329">
+        <label>mutabor::sequencer_specific_meta_event</label>
+        <link refid="d6/d24/classmutabor_1_1sequencer__specific__meta__event"/>
+        <childnode refid="5330" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5333" relation="usage">
+          <edgelabel>msg</edgelabel>
+        </childnode>
+      </node>
+      <node id="5330">
+        <label>mutabor::event_class</label>
+        <link refid="d7/d83/classmutabor_1_1event__class"/>
+        <childnode refid="5331" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="5333">
+        <label>std::vector&lt; unsigned char &gt;</label>
+      </node>
+      <node id="5331">
+        <label>mutabor::hidden::mutabor_event_type</label>
+        <link refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type"/>
+        <childnode refid="5332" relation="usage">
+          <edgelabel>route_channel</edgelabel>
+          <edgelabel>unique_id</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" line="433" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/event.h" bodystart="433" bodyend="449"/>
+    <listofallmembers>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1abfce74f8461072e11d6a707dfdb8a492" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>aftertouch</name></member>
+      <member refid="d7/d83/classmutabor_1_1event__class_1a8753fe942171531e359827ecbc1e7304" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>box</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ae89be5ffbffd93dc2f627762160c8c93" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>channel</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a59eac710d9bc8ec8dd0b84af799edcd6" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>clocksperclick</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ad81baa49804e5e8cf3955beed4f8181d" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>controller</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a914573020b3c2369f0ce126d60166f9c" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>data</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ac5ca2a2d5628a1df0c7f9c49b9536cda" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>denominator</name></member>
+      <member refid="d7/d83/classmutabor_1_1event__class_1a15deb48f970d0ae2d41ae045104146bb" prot="public" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>event_class</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1acffadbf8ff44e96e993d36b120f04dd9" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>frame_100ths</name></member>
+      <member refid="d6/d24/classmutabor_1_1sequencer__specific__meta__event_1a12bc711491cc4b4b09bce17832a0c217" prot="public" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>get_message</name></member>
+      <member refid="d7/d83/classmutabor_1_1event__class_1a0f39edffa6062eefb56b35bfde4bebca" prot="public" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>get_route_channel</name></member>
+      <member refid="d7/d83/classmutabor_1_1event__class_1a1bdebd61d2e6a9b6c0bd4f982639b335" prot="public" virt="virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>get_type</name></member>
+      <member refid="d7/d83/classmutabor_1_1event__class_1ad6fd04fc86d31a349555df403904386a" prot="public" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>get_unique_id</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a9efb7253660fcb347becdd5ee9ab455c" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>hour</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ac1daf05e883c2e4042a9868a1a8957fe" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>input_channel</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1af51b85ea4c583cf12e36da14fd09e3e8" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>ismajor</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a61cc658b7fcb4f106d468cc663b10505" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>key_signature</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a5fcf0a8e79a0a634aad1ca25d3e42c84" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>meta</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a1f36e7c376b8d7dfd909f76550fd3401" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>minute</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a713791ffa4b8dae8ec897397602a6987" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>ms_per_s</name></member>
+      <member refid="d6/d24/classmutabor_1_1sequencer__specific__meta__event_1a41addbb5a263ef30d9d7f77ad0fe96ea" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>msg</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1aaf58da1033a628eb070a775308431cb4" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>note</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a699850c4083f7a6a00360bcf6a02c1d9" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>number</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a6c9676fa9946c3e8bcbaa8ac91784e03" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>numerator</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a8a4997525b7c2230d8ec3a1030fdb5d2" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>position</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ad6e2e8f1d438767d1dbcb8f74a9268c9" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>pressure</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a921639dc447104ffd5d3e3db85d39ad3" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>quarter_frame</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a15aef15fdc29e59f821fe55d4656b001" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>quarter_in32ths</name></member>
+      <member refid="d7/d83/classmutabor_1_1event__class_1afad7f8bcfd8d3a4a16033f3183599466" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>REFPTR_INTERFACE</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a54256bb9d86e721fabaabe780c55aeab" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>route_channel</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ad2670b081e851cb60c9c77eb61d6a2a4" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>secound</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ace47d7565600d4106115b723a70daecc" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>sequence</name></member>
+      <member refid="d6/d24/classmutabor_1_1sequencer__specific__meta__event_1aba602165fb01e23ce08db9a308aba1df" prot="public" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>sequencer_specific_meta_event</name></member>
+      <member refid="d7/d83/classmutabor_1_1event__class_1a83fe305413653d16705c749fc6c46244" prot="public" virt="virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>set_box</name></member>
+      <member refid="d7/d83/classmutabor_1_1event__class_1a08fca57054a54ce8bf774fb6f5a40fb9" prot="public" virt="virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>set_route</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a36f50f71960ec4fe3d304b669d5e1af3" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>sharps</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a5560ba708d80d4a7fcc2e581995f7fe3" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>smpte</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a9b1eb4c08237a77a187b5ab77e528a3a" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>song_position</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a34ae8ede20696d4965891c255f77d27a" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>song_select</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ac3fa99922ff75a4dad2a6d3892e34a9b" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>sysex</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a61ef40ea094d7b68d27cac41ef0668dc" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>tempo</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a137409051c8ff7ea060f333dd85d1566" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>text</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a04736ba055541af65888d2a3687c08f0" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>text</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a1ccffefbe57d43d6792e328d390ab340" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>time_signature</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a18bfa1517c4ed28420828266fd7a730f" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>type</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1ae5e7bb920757b22f1c30a8ec6d44534c" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>unique_id</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1a672973e25ae7266ebf33da41ce374a35" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>value</name></member>
+      <member refid="d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type_1adac63a8c51cf3a3697ab5f17c924f46b" prot="protected" virt="non-virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>values</name></member>
+      <member refid="d7/d83/classmutabor_1_1event__class_1a0db6507fd0be4a94208ec83247b1585c" prot="public" virt="virtual"><scope>mutabor::sequencer_specific_meta_event</scope><name>~event_class</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

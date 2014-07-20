@@ -4,155 +4,72 @@
     <compoundname>valNum.cpp</compoundname>
     <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
     <incdepgraph>
-      <node id="26998">
-        <label>list</label>
-      </node>
-      <node id="26991">
-        <label>stdarg.h</label>
-      </node>
-      <node id="27006">
-        <label>wx/cmdline.h</label>
-      </node>
-      <node id="26994">
-        <label>wx/stdpaths.h</label>
-      </node>
-      <node id="26990">
-        <label>src/kernel/Defs.h</label>
-        <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="26991" relation="include">
-        </childnode>
-        <childnode refid="26992" relation="include">
-        </childnode>
-        <childnode refid="27011" relation="include">
-        </childnode>
-        <childnode refid="27012" relation="include">
-        </childnode>
-        <childnode refid="27005" relation="include">
-        </childnode>
-        <childnode refid="27013" relation="include">
-        </childnode>
-        <childnode refid="27014" relation="include">
-        </childnode>
-      </node>
-      <node id="27005">
+      <node id="25639">
         <label>stdint.h</label>
       </node>
-      <node id="27011">
-        <label>wx/wxchar.h</label>
+      <node id="25632">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="25631" relation="include">
+        </childnode>
       </node>
-      <node id="27000">
-        <label>wx/image.h</label>
+      <node id="25638">
+        <label>boost/format.hpp</label>
       </node>
-      <node id="27015">
+      <node id="25636">
         <label>string</label>
       </node>
-      <node id="27010">
-        <label>mutDebugFlags.h</label>
-        <link refid="d7/d49/mutDebugFlags_8h"/>
-      </node>
-      <node id="26993">
-        <label>wx/window.h</label>
-      </node>
-      <node id="27012">
-        <label>wx/intl.h</label>
-      </node>
-      <node id="26999">
-        <label>src/wxGUI/Mutabor.rh</label>
-        <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="26990" relation="include">
+      <node id="25631">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="25632" relation="include">
+        </childnode>
+        <childnode refid="25633" relation="include">
+        </childnode>
+        <childnode refid="25634" relation="include">
         </childnode>
       </node>
-      <node id="26995">
-        <label>wx/filename.h</label>
-      </node>
-      <node id="26997">
-        <label>typeinfo</label>
-      </node>
-      <node id="27008">
-        <label>wx/debug.h</label>
-      </node>
-      <node id="27003">
+      <node id="25637">
         <label>cstdio</label>
       </node>
-      <node id="27002">
-        <label>bitset</label>
-      </node>
-      <node id="26992">
-        <label>src/wxGUI/generic/mhDefs.h</label>
-        <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="26990" relation="include">
+      <node id="25634">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="25631" relation="include">
         </childnode>
-        <childnode refid="26993" relation="include">
+        <childnode refid="25635" relation="include">
         </childnode>
-        <childnode refid="26994" relation="include">
+        <childnode refid="25636" relation="include">
         </childnode>
-        <childnode refid="26995" relation="include">
+        <childnode refid="25637" relation="include">
         </childnode>
-        <childnode refid="26996" relation="include">
+        <childnode refid="25638" relation="include">
         </childnode>
-        <childnode refid="26997" relation="include">
+        <childnode refid="25639" relation="include">
         </childnode>
-        <childnode refid="26998" relation="include">
-        </childnode>
-        <childnode refid="26999" relation="include">
-        </childnode>
-        <childnode refid="27000" relation="include">
-        </childnode>
-        <childnode refid="27001" relation="include">
+        <childnode refid="25640" relation="include">
         </childnode>
       </node>
-      <node id="27004">
-        <label>vector</label>
-      </node>
-      <node id="27001">
-        <label>mutDebug.h</label>
-        <link refid="de/de1/mutDebug_8h"/>
-        <childnode refid="27002" relation="include">
-        </childnode>
-        <childnode refid="26996" relation="include">
-        </childnode>
-        <childnode refid="27003" relation="include">
-        </childnode>
-        <childnode refid="27004" relation="include">
-        </childnode>
-        <childnode refid="27005" relation="include">
-        </childnode>
-        <childnode refid="27006" relation="include">
-        </childnode>
-        <childnode refid="27007" relation="include">
-        </childnode>
-        <childnode refid="27008" relation="include">
-        </childnode>
-        <childnode refid="27009" relation="include">
-        </childnode>
-        <childnode refid="27010" relation="include">
-        </childnode>
-      </node>
-      <node id="27014">
+      <node id="25635">
         <label>src/wxintl/libintl.h</label>
         <link refid="d4/d64/libintl_8h"/>
-        <childnode refid="26990" relation="include">
+        <childnode refid="25631" relation="include">
         </childnode>
-        <childnode refid="27015" relation="include">
+        <childnode refid="25636" relation="include">
         </childnode>
       </node>
-      <node id="27007">
-        <label>wx/string.h</label>
+      <node id="25633">
+        <label>cstddef</label>
       </node>
-      <node id="26996">
-        <label>iostream</label>
-      </node>
-      <node id="27009">
-        <label>wx/thread.h</label>
-      </node>
-      <node id="27013">
-        <label>wx/setup.h</label>
-      </node>
-      <node id="26989">
+      <node id="25630">
         <label>src/wxGUI/generic/valNum.cpp</label>
         <link refid="valNum.cpp"/>
-        <childnode refid="26990" relation="include">
+        <childnode refid="25631" relation="include">
         </childnode>
+      </node>
+      <node id="25640">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
       </node>
     </incdepgraph>
     <briefdescription>
@@ -202,7 +119,7 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="66"><highlight class="normal">wxNumValidator::wxNumValidator(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>*val,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>style,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>min,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max,<sp/>wxCheckBox*<sp/>enabler)</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>wxTextValidator(wxFILTER_NUMERIC,<sp/>&amp;bufferString)</highlight></codeline>
 <codeline lineno="68"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(other,_T(</highlight><highlight class="stringliteral">&quot;val:<sp/>%p,<sp/>style:<sp/>%d,<sp/>min:<sp/>%d,<sp/>max:<sp/>%d,<sp/>enabler:<sp/>%p&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref><sp/>(other,<sp/></highlight><highlight class="stringliteral">&quot;val:<sp/>%p,<sp/>style:<sp/>%d,<sp/>min:<sp/>%d,<sp/>max:<sp/>%d,<sp/>enabler:<sp/>%p&quot;</highlight><highlight class="normal"><sp/>,</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)val,style,min,max,(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)enabler);</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Style<sp/>=<sp/>style<sp/>;</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Min<sp/>=<sp/>min;</highlight></codeline>
@@ -228,9 +145,9 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="92"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ga23ee5f5f1dcdcf81c4ea7c3fe44acbdc" kindref="member">wxNumValidator::Copy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wxNumValidator&amp;<sp/>val)</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
 <codeline lineno="94"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(other,_T(</highlight><highlight class="stringliteral">&quot;%p&quot;</highlight><highlight class="normal">),(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)m_stringValue);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref><sp/>(other,<sp/></highlight><highlight class="stringliteral">&quot;%p&quot;</highlight><highlight class="normal"><sp/>,(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)m_stringValue);</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dee/group__route_1ga23ee5f5f1dcdcf81c4ea7c3fe44acbdc" kindref="member">wxTextValidator::Copy</ref>(val);</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(other,_T(</highlight><highlight class="stringliteral">&quot;%p&quot;</highlight><highlight class="normal">),(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)m_stringValue);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref><sp/>(other,<sp/></highlight><highlight class="stringliteral">&quot;%p&quot;</highlight><highlight class="normal"><sp/>,(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)m_stringValue);</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_stringValue<sp/>=<sp/>&amp;bufferString;</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Style<sp/>=<sp/>val.Style<sp/>;</highlight></codeline>
@@ -245,7 +162,7 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="109"><highlight class="normal">wxNumValidator::~wxNumValidator()</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight></codeline>
 <codeline lineno="111"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(other,_T(</highlight><highlight class="stringliteral">&quot;value:<sp/>%s&quot;</highlight><highlight class="normal">),bufferString.c_str());</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref><sp/>(other,<sp/></highlight><highlight class="stringliteral">&quot;value:<sp/>%s&quot;</highlight><highlight class="normal"><sp/>,bufferString.c_str());</highlight></codeline>
 <codeline lineno="113"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Called<sp/>when<sp/>the<sp/>value<sp/>in<sp/>the<sp/>window<sp/>must<sp/>be<sp/>validated.</highlight><highlight class="normal"></highlight></codeline>
@@ -333,12 +250,12 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="197"><highlight class="normal"></highlight></codeline>
 <codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>res<sp/>=<sp/>m_stringValue-&gt;ToLong(m_intValue);</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"></highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(other,_T(</highlight><highlight class="stringliteral">&quot;before<sp/>enabler&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref><sp/>(other,<sp/></highlight><highlight class="stringliteral">&quot;before<sp/>enabler&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="201"><highlight class="normal"></highlight></codeline>
 <codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!Enabler<sp/>||<sp/>Enabler-&gt;GetValue()<sp/>)</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"></highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(other,_T(</highlight><highlight class="stringliteral">&quot;after<sp/>enabler&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref><sp/>(other,<sp/></highlight><highlight class="stringliteral">&quot;after<sp/>enabler&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="206"><highlight class="normal"></highlight></codeline>
 <codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!res<sp/>)</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*m_intValue)<sp/>=<sp/>0;</highlight></codeline>
@@ -361,6 +278,6 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="226"><highlight class="normal"></highlight><highlight class="comment">//<sp/>mode:<sp/>c++</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="227"><highlight class="normal"></highlight><highlight class="comment">//<sp/>End:</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/valNum.cpp"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/valNum.cpp"/>
   </compounddef>
 </doxygen>

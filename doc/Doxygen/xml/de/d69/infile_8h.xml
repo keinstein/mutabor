@@ -4,13 +4,13 @@
     <compoundname>infile.h</compoundname>
     <includes local="no">fstream.h</includes>
     <incdepgraph>
-      <node id="17953">
+      <node id="17193">
         <label>src/gmut/infile.h</label>
         <link refid="infile.h"/>
-        <childnode refid="17954" relation="include">
+        <childnode refid="17194" relation="include">
         </childnode>
       </node>
-      <node id="17954">
+      <node id="17194">
         <label>fstream.h</label>
       </node>
     </incdepgraph>
@@ -25,7 +25,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="6" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="6" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="6" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="6" bodyend="-1"/>
         <referencedby refid="dc/ddd/classInFile_1a9f39f32a77384cc84d354243428499b7" compoundref="d9/dc1/infile_8cpp" startline="86" endline="96">InFile::NewLine</referencedby>
       </memberdef>
       </sectiondef>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="11" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="11" bodyend="11"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" line="11" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h" bodystart="11" bodyend="11"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -113,7 +113,7 @@
 <codeline lineno="23" refid="dc/ddd/classInFile_1ab1d5d7ddcf906b2e88997568440ecad8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="dc/ddd/classInFile_1ab1d5d7ddcf906b2e88997568440ecad8" kindref="member">InFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*Name)<sp/>:<sp/>ifstream(Name,<sp/>ios::in)</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="dc/ddd/classInFile_1afb59ee109172ac54e1a5fc6d1bff2392" kindref="member">s1</ref>[0]<sp/>=<sp/>0;<sp/><ref refid="dc/ddd/classInFile_1add3fc638f920fe2cea0d07bf353e58b4" kindref="member">s</ref><sp/>=<sp/><ref refid="dc/ddd/classInFile_1afb59ee109172ac54e1a5fc6d1bff2392" kindref="member">s1</ref>;<sp/><ref refid="dc/ddd/classInFile_1a6783f545d40281c18e83296f87aeca71" kindref="member">TokenType</ref><sp/>=<sp/><ref refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5ab0b93306ddd4f3cea57d5aa90d2add0a" kindref="member">TT_SIGN</ref>;<sp/><ref refid="dc/ddd/classInFile_1a82721b5f29d280221a7dd3c518a719c8" kindref="member">Line</ref><sp/>=<sp/>0;<sp/>};</highlight></codeline>
 <codeline lineno="25" refid="dc/ddd/classInFile_1a09e1363a5b306b11a8a0e2d447a1831f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="dc/ddd/classInFile_1a09e1363a5b306b11a8a0e2d447a1831f" kindref="member">~InFile</ref>()<sp/>{<sp/>close();<sp/>}</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><ref refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5" kindref="member">TTokenType</ref><sp/><ref refid="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" kindref="member">ReadToken</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*str<sp/>=<sp/>0,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max<sp/>=<sp/>0);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><ref refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5" kindref="member">TTokenType</ref><sp/><ref refid="dc/ddd/classInFile_1aaadb642faf0c2ad1231f6e2b4ad88d07" kindref="member">ReadToken</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="d6/daa/namespacemutabor_1abae2a6ffddc4e68d7e52f67803cb091f" kindref="member">str</ref><sp/>=<sp/>0,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max<sp/>=<sp/>0);</highlight></codeline>
 <codeline lineno="27" refid="dc/ddd/classInFile_1a09de3f19e4e3753df08f53a17020e2c5" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="de/d69/infile_8h_1aec89eef61792c2085bbe176365e146c5" kindref="member">TTokenType</ref><sp/><ref refid="dc/ddd/classInFile_1a09de3f19e4e3753df08f53a17020e2c5" kindref="member">GetTokenType</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/ddd/classInFile_1a6783f545d40281c18e83296f87aeca71" kindref="member">TokenType</ref>;<sp/>}</highlight></codeline>
 <codeline lineno="28" refid="dc/ddd/classInFile_1ac2cab1717b2576ed0c06e9e65bcabf4f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="dc/ddd/classInFile_1ac2cab1717b2576ed0c06e9e65bcabf4f" kindref="member">GetString</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/ddd/classInFile_1a26803830de35bdde8b0c4f069bc71749" kindref="member">String</ref>;<sp/>}</highlight></codeline>
 <codeline lineno="29" refid="dc/ddd/classInFile_1a18afb5c6b58d997bf73fa12f301c4a4c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="dc/ddd/classInFile_1a18afb5c6b58d997bf73fa12f301c4a4c" kindref="member">GetSign</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">)<ref refid="dc/ddd/classInFile_1a77c1f8c49d1ad37621106a514787bab4" kindref="member">Long</ref><sp/>&amp;<sp/>0xFF;<sp/>}</highlight></codeline>
@@ -126,6 +126,6 @@
 <codeline lineno="36"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/gmut/infile.h"/>
   </compounddef>
 </doxygen>

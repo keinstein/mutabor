@@ -60,11 +60,11 @@ Makrodefinitionen</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funktionen</h2></td></tr>
-<tr class="memitem:a26cb06e647f72c1f728a65970fbd0a62"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d7c/group__kernel.html#gaa39b39d94407451a6ec0226479db68cf">DWORD</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df2/mis_8cpp.html#a26cb06e647f72c1f728a65970fbd0a62">ReadLength</a> (istream &amp;is)</td></tr>
+<tr class="memitem:a26cb06e647f72c1f728a65970fbd0a62"><td class="memItemLeft" align="right" valign="top">DWORD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df2/mis_8cpp.html#a26cb06e647f72c1f728a65970fbd0a62">ReadLength</a> (istream &amp;is)</td></tr>
 <tr class="separator:a26cb06e647f72c1f728a65970fbd0a62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3259b43da528318989730caeb66a18a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df2/mis_8cpp.html#a3259b43da528318989730caeb66a18a9">WriteLength</a> (ostream &amp;os, <a class="el" href="../../d9/d7c/group__kernel.html#gaa39b39d94407451a6ec0226479db68cf">DWORD</a> l)</td></tr>
+<tr class="memitem:a3259b43da528318989730caeb66a18a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df2/mis_8cpp.html#a3259b43da528318989730caeb66a18a9">WriteLength</a> (ostream &amp;os, DWORD l)</td></tr>
 <tr class="separator:a3259b43da528318989730caeb66a18a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae780e388a96e91e908a3a3f2f86d89e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df2/mis_8cpp.html#ae780e388a96e91e908a3a3f2f86d89e2">MisReadDummy</a> (<a class="el" href="../../da/dd9/classMisTrack.html">MisTrack</a> *, <a class="el" href="../../d9/d7c/group__kernel.html#gaa39b39d94407451a6ec0226479db68cf">DWORD</a>)</td></tr>
+<tr class="memitem:ae780e388a96e91e908a3a3f2f86d89e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df2/mis_8cpp.html#ae780e388a96e91e908a3a3f2f86d89e2">MisReadDummy</a> (<a class="el" href="../../da/dd9/classMisTrack.html">MisTrack</a> *, DWORD)</td></tr>
 <tr class="separator:ae780e388a96e91e908a3a3f2f86d89e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa426abc414a3e63f85c1ff6064dbd60a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dc6/classInstrument.html">Instrument</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df2/mis_8cpp.html#aa426abc414a3e63f85c1ff6064dbd60a">GetInstrument</a> (<a class="el" href="../../d5/dc6/classInstrument.html">Instrument</a> *root, int id)</td></tr>
 <tr class="separator:aa426abc414a3e63f85c1ff6064dbd60a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,7 +166,7 @@ Variablen</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/d7c/group__kernel.html#gaa39b39d94407451a6ec0226479db68cf">DWORD</a>&#160;</td>
+          <td class="paramtype">DWORD&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -189,7 +189,7 @@ Variablen</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d9/d7c/group__kernel.html#gaa39b39d94407451a6ec0226479db68cf">DWORD</a> ReadLength </td>
+          <td class="memname">DWORD ReadLength </td>
           <td>(</td>
           <td class="paramtype">istream &amp;&#160;</td>
           <td class="paramname"><em>is</em></td><td>)</td>
@@ -200,17 +200,13 @@ Variablen</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d4/df2/mis_8cpp_source.html#l00027">27</a> der Datei <a class="el" href="../../d4/df2/mis_8cpp_source.html">mis.cpp</a>.</p>
 
-<p>Benutzt <a class="el" href="../../d1/d73/Defs_8h_source.html#l00063">BYTE</a> und <a class="el" href="../../d1/d73/Defs_8h_source.html#l00062">DWORD</a>.</p>
-
 <p>Wird benutzt von <a class="el" href="../../d4/df2/mis_8cpp_source.html#l00105">MisFile::Load()</a> und <a class="el" href="../../d4/df2/mis_8cpp_source.html#l00341">MisTrack::Load()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <a class="code" href="../../d9/d7c/group__kernel.html#gaec93e83855ac17c3c25c55c37ca186dd">BYTE</a> a1, a2, a3, a4;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  BYTE a1, a2, a3, a4;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  is &gt;&gt; a1 &gt;&gt; a2 &gt;&gt; a3 &gt;&gt; a4;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordflow">return</span> (((<a class="code" href="../../d9/d7c/group__kernel.html#gaa39b39d94407451a6ec0226479db68cf">DWORD</a>)a1) &lt;&lt; 24) + (((<a class="code" href="../../d9/d7c/group__kernel.html#gaa39b39d94407451a6ec0226479db68cf">DWORD</a>)a2) &lt;&lt; 16) +</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;         (((<a class="code" href="../../d9/d7c/group__kernel.html#gaa39b39d94407451a6ec0226479db68cf">DWORD</a>)a3) &lt;&lt; 8) + ((<a class="code" href="../../d9/d7c/group__kernel.html#gaa39b39d94407451a6ec0226479db68cf">DWORD</a>)a4);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordflow">return</span> (((DWORD)a1) &lt;&lt; 24) + (((DWORD)a2) &lt;&lt; 16) +</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;         (((DWORD)a3) &lt;&lt; 8) + ((DWORD)a4);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
-<div class="ttc" id="group__kernel_html_gaec93e83855ac17c3c25c55c37ca186dd"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gaec93e83855ac17c3c25c55c37ca186dd">BYTE</a></div><div class="ttdeci">#define BYTE</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00063">Defs.h:63</a></div></div>
-<div class="ttc" id="group__kernel_html_gaa39b39d94407451a6ec0226479db68cf"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gaa39b39d94407451a6ec0226479db68cf">DWORD</a></div><div class="ttdeci">#define DWORD</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00062">Defs.h:62</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -227,7 +223,7 @@ Variablen</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/d7c/group__kernel.html#gaa39b39d94407451a6ec0226479db68cf">DWORD</a>&#160;</td>
+          <td class="paramtype">DWORD&#160;</td>
           <td class="paramname"><em>l</em>&#160;</td>
         </tr>
         <tr>
@@ -240,16 +236,13 @@ Variablen</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d4/df2/mis_8cpp_source.html#l00035">35</a> der Datei <a class="el" href="../../d4/df2/mis_8cpp_source.html">mis.cpp</a>.</p>
 
-<p>Benutzt <a class="el" href="../../d1/d73/Defs_8h_source.html#l00063">BYTE</a>.</p>
-
-<p>Wird benutzt von <a class="el" href="../../d4/df2/mis_8cpp_source.html#l00144">MisFile::Save()</a>, <a class="el" href="../../d4/df2/mis_8cpp_source.html#l00368">MisTrack::Save()</a> und <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00200">mutabor::Track::Save()</a>.</p>
+<p>Wird benutzt von <a class="el" href="../../d4/df2/mis_8cpp_source.html#l00144">MisFile::Save()</a>, <a class="el" href="../../d4/df2/mis_8cpp_source.html#l00368">MisTrack::Save()</a> und <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00203">mutabor::Track::Save()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  os.put((<a class="code" href="../../d9/d7c/group__kernel.html#gaec93e83855ac17c3c25c55c37ca186dd">BYTE</a>) ((l &gt;&gt; 24) &amp; 0xFF));</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  os.put((<a class="code" href="../../d9/d7c/group__kernel.html#gaec93e83855ac17c3c25c55c37ca186dd">BYTE</a>) ((l &gt;&gt; 16) &amp; 0xFF));</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  os.put((<a class="code" href="../../d9/d7c/group__kernel.html#gaec93e83855ac17c3c25c55c37ca186dd">BYTE</a>) ((l &gt;&gt; 8) &amp; 0xFF));</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  os.put((<a class="code" href="../../d9/d7c/group__kernel.html#gaec93e83855ac17c3c25c55c37ca186dd">BYTE</a>) (l &amp; 0xFF));</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  os.put((BYTE) ((l &gt;&gt; 24) &amp; 0xFF));</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  os.put((BYTE) ((l &gt;&gt; 16) &amp; 0xFF));</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  os.put((BYTE) ((l &gt;&gt; 8) &amp; 0xFF));</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  os.put((BYTE) (l &amp; 0xFF));</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
-<div class="ttc" id="group__kernel_html_gaec93e83855ac17c3c25c55c37ca186dd"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gaec93e83855ac17c3c25c55c37ca186dd">BYTE</a></div><div class="ttdeci">#define BYTE</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00063">Defs.h:63</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -266,7 +259,7 @@ Variablen</h2></td></tr>
 
 <p>Definiert in Zeile <a class="el" href="../../d4/df2/mis_8cpp_source.html#l00007">7</a> der Datei <a class="el" href="../../d4/df2/mis_8cpp_source.html">mis.cpp</a>.</p>
 
-<p>Wird benutzt von <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00283">mutabor::OutputMidiFile::Load()</a>, <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00249">mutabor::OutputMidiFile::Save()</a> und <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00347">mutabor::OutputMidiFile::TowxString()</a>.</p>
+<p>Wird benutzt von <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00526">mutabor::CommonMidiOutput&lt; T, D &gt;::do_Controller()</a>, <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00287">mutabor::OutputMidiFile::Load()</a>, <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00357">mutabor::OutputMidiFile::operator std::string()</a> und <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00253">mutabor::OutputMidiFile::Save()</a>.</p>
 
 </div>
 </div>
@@ -288,6 +281,6 @@ Variablen</h2></td></tr>
 </div>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Son Feb 9 2014 18:39:14 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Apr 26 2014 12:58:28 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

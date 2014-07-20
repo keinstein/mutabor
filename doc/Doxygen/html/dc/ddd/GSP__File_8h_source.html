@@ -32,7 +32,7 @@
 <div class="contents">
 <a href="../../dc/ddd/GSP__File_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// ##################################################################</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// ##################################################################</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/* we guard a little bit complicated to ensure the references are set right</span></div>
@@ -57,13 +57,13 @@
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">// system headers which do seldom change</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">extern</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a> <a class="code" href="../../d5/dee/group__route.html#ga5eafb3c54b7a4150acd7a8c54c3f962b">CurrentLine</a>; <span class="comment">//[GSP_MAX_LINE];</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">extern</span> std::string <a class="code" href="../../d5/dee/group__route.html#ga679f6254dec33768a25e370e2aa301a5">CurrentLine</a>; <span class="comment">//[GSP_MAX_LINE];</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">size_t</span>  <a class="code" href="../../d5/dee/group__route.html#ga432140b36c09b0144e6b524eb28168c3">CurrentPos</a>;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="../../d5/dee/group__route.html#ga21b703155e944d426cea6dff26aad408">Eof</a>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d5/dee/group__route.html#ga5d4ed25cd3b9daac41302813632cdef7">OpenFile</a>(<span class="keyword">const</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a> &amp;Name);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d5/dee/group__route.html#ga095394c7227cb9e9a68c7df4865b1299">OpenFile</a>(<span class="keyword">const</span> std::string &amp;Name);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d5/dee/group__route.html#ga272f09e93d6493d458e7b6345311c4ed">CloseFile</a>();</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
@@ -73,17 +73,16 @@
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="ttc" id="group__route_html_ga21b703155e944d426cea6dff26aad408"><div class="ttname"><a href="../../d5/dee/group__route.html#ga21b703155e944d426cea6dff26aad408">Eof</a></div><div class="ttdeci">int Eof</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2f/GSP__File_8cpp_source.html#l00043">GSP_File.cpp:43</a></div></div>
+<div class="ttc" id="group__route_html_ga21b703155e944d426cea6dff26aad408"><div class="ttname"><a href="../../d5/dee/group__route.html#ga21b703155e944d426cea6dff26aad408">Eof</a></div><div class="ttdeci">int Eof</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2f/GSP__File_8cpp_source.html#l00038">GSP_File.cpp:38</a></div></div>
 <div class="ttc" id="group__route_html_gaa177fc4bc9824e9329280d353c6fa778"><div class="ttname"><a href="../../d5/dee/group__route.html#gaa177fc4bc9824e9329280d353c6fa778">ReadNewLine</a></div><div class="ttdeci">int ReadNewLine()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2f/GSP__File_8cpp_source.html#l00083">GSP_File.cpp:83</a></div></div>
-<div class="ttc" id="group__route_html_ga5d4ed25cd3b9daac41302813632cdef7"><div class="ttname"><a href="../../d5/dee/group__route.html#ga5d4ed25cd3b9daac41302813632cdef7">OpenFile</a></div><div class="ttdeci">int OpenFile(const mutString &amp;Name)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2f/GSP__File_8cpp_source.html#l00062">GSP_File.cpp:62</a></div></div>
-<div class="ttc" id="group__route_html_ga5eafb3c54b7a4150acd7a8c54c3f962b"><div class="ttname"><a href="../../d5/dee/group__route.html#ga5eafb3c54b7a4150acd7a8c54c3f962b">CurrentLine</a></div><div class="ttdeci">mutString CurrentLine</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2f/GSP__File_8cpp_source.html#l00038">GSP_File.cpp:38</a></div></div>
+<div class="ttc" id="group__route_html_ga095394c7227cb9e9a68c7df4865b1299"><div class="ttname"><a href="../../d5/dee/group__route.html#ga095394c7227cb9e9a68c7df4865b1299">OpenFile</a></div><div class="ttdeci">int OpenFile(const std::string &amp;Name)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2f/GSP__File_8cpp_source.html#l00053">GSP_File.cpp:53</a></div></div>
 <div class="ttc" id="group__route_html_ga272f09e93d6493d458e7b6345311c4ed"><div class="ttname"><a href="../../d5/dee/group__route.html#ga272f09e93d6493d458e7b6345311c4ed">CloseFile</a></div><div class="ttdeci">int CloseFile()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2f/GSP__File_8cpp_source.html#l00075">GSP_File.cpp:75</a></div></div>
 <div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
-<div class="ttc" id="group__route_html_ga432140b36c09b0144e6b524eb28168c3"><div class="ttname"><a href="../../d5/dee/group__route.html#ga432140b36c09b0144e6b524eb28168c3">CurrentPos</a></div><div class="ttdeci">size_t CurrentPos</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2f/GSP__File_8cpp_source.html#l00042">GSP_File.cpp:42</a></div></div>
+<div class="ttc" id="group__route_html_ga679f6254dec33768a25e370e2aa301a5"><div class="ttname"><a href="../../d5/dee/group__route.html#ga679f6254dec33768a25e370e2aa301a5">CurrentLine</a></div><div class="ttdeci">std::string CurrentLine</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2f/GSP__File_8cpp_source.html#l00036">GSP_File.cpp:36</a></div></div>
+<div class="ttc" id="group__route_html_ga432140b36c09b0144e6b524eb28168c3"><div class="ttname"><a href="../../d5/dee/group__route.html#ga432140b36c09b0144e6b524eb28168c3">CurrentPos</a></div><div class="ttdeci">size_t CurrentPos</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d2f/GSP__File_8cpp_source.html#l00037">GSP_File.cpp:37</a></div></div>
 <div class="ttc" id="GSP_8h_html"><div class="ttname"><a href="../../dd/da2/GSP_8h.html">GSP.h</a></div><div class="ttdoc">Description. </div></div>
-<div class="ttc" id="group__kernel_html_ga7e6a85a8235f7b6e5f1ab363345262a8"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga7e6a85a8235f7b6e5f1ab363345262a8">mutString</a></div><div class="ttdeci">#define mutString</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00084">Defs.h:84</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Son Feb 9 2014 18:39:13 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Apr 26 2014 12:58:27 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

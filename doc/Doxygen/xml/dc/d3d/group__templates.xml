@@ -1,70 +1,33 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="dc/d3d/group__templates" kind="group">
     <compoundname>templates</compoundname>
     <title>Templates</title>
-    <innernamespace refid="db/d94/namespacemutaborGUI">mutaborGUI</innernamespace>
-      <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="dc/d3d/group__templates_1ga2f9056ab092c15f0a40251ebd9ea1f67" prot="public" static="no">
-        <type>wxMBConv</type>
-        <definition>typedef wxMBConv muConvAuto</definition>
-        <argsstring></argsstring>
-        <name>muConvAuto</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.h" line="167" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.h" bodystart="167" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="dc/d3d/group__templates_1gad050a8f1bc1f4750890cbb62991a213a" prot="public" static="no" mutable="no">
-        <type>wxMBConv *</type>
-        <definition>wxMBConv* muConvAutoFallback</definition>
-        <argsstring></argsstring>
-        <name>muConvAutoFallback</name>
-        <initializer>= &amp;wxConvISO8859_1</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.cpp" line="235" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.cpp" bodystart="235" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="dc/d3d/group__templates_1gad050a8f1bc1f4750890cbb62991a213a" prot="public" static="no" mutable="no">
-        <type>wxMBConv *</type>
-        <definition>wxMBConv* muConvAutoFallback</definition>
-        <argsstring></argsstring>
-        <name>muConvAutoFallback</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.h" line="39" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/muconvauto.cpp" bodystart="235" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="dc/d3d/group__templates_1ga482d062291f5f663447001fb08ce7f93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="dc/dd4/structMutFileDataType" kindref="compound">MutFileDataType</ref></type>
-        <definition>MutFileDataType FileNameDialog</definition>
-        <argsstring>(wxWindow *parent, int Command, wxString Filename)</argsstring>
-        <name>FileNameDialog</name>
+      <memberdef kind="function" id="dc/d3d/group__templates_1ga82608b9cdf97dadb5022911ec9ce3d94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mutabor_assert_fail</definition>
+        <argsstring>(const char *file, int line, const char *func, const char *cond, const char *msg)</argsstring>
+        <name>mutabor_assert_fail</name>
         <param>
-          <type>wxWindow *</type>
-          <declname>parent</declname>
+          <type>const char *</type>
+          <declname>file</declname>
         </param>
         <param>
           <type>int</type>
-          <declname>Command</declname>
+          <declname>line</declname>
         </param>
         <param>
-          <type>wxString</type>
-          <declname>Filename</declname>
+          <type>const char *</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>cond</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -72,52 +35,326 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mxDefs.cpp" line="42" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mxDefs.cpp" bodystart="42" bodyend="148"/>
-        <references refid="d9/d7c/group__kernel_1gae4dfd7b0d66121016d6466d2ff10e8ba" compoundref="df/d23/Execute_8cpp" startline="57">_</references>
-        <references refid="dc/dd4/structMutFileDataType_1a42131aa37bcfbc629cf45b68dae00fc9a422ad6af89085a0e1201ff8dfd583b1b" compoundref="d0/d68/mhDefs_8h" startline="105">MutFileDataType::Canceled</references>
-        <references refid="db/d94/namespacemutaborGUI_1ad0068938481aeecb1aab653b6cb30759a4a3ddde2676e7be85542c0a42c0db4ba" compoundref="d9/d64/Mutabor_8rh" startline="70">mutaborGUI::CM_EXECUTE</references>
-        <references refid="d9/d64/Mutabor_8rh_1a90e12f9eca1903822664d9b7759c2a4f" compoundref="d9/d64/Mutabor_8rh" startline="56">CM_FILEOPEN</references>
-        <references refid="d9/d64/Mutabor_8rh_1a3c5a2f14af5ee9c36d82c2a7c52bce9a" compoundref="d9/d64/Mutabor_8rh" startline="60">CM_FILESAVEAS</references>
-        <references refid="db/d94/namespacemutaborGUI_1ad0068938481aeecb1aab653b6cb30759a8b860a934193b378226ea7c437f3202d" compoundref="d9/d64/Mutabor_8rh" startline="86">mutaborGUI::CM_ROUTELOAD</references>
-        <references refid="db/d94/namespacemutaborGUI_1ad0068938481aeecb1aab653b6cb30759a7e2439fb70f07ce6cfc176fafb532f1a" compoundref="d9/d64/Mutabor_8rh" startline="87">mutaborGUI::CM_ROUTESAVE</references>
-        <references refid="db/d94/namespacemutaborGUI_1ad0068938481aeecb1aab653b6cb30759afec421310e3ec0444f8d12543477d41a" compoundref="d9/d64/Mutabor_8rh" startline="88">mutaborGUI::CM_ROUTESAVEAS</references>
-        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG2</references>
-        <references refid="dc/dd4/structMutFileDataType_1a42131aa37bcfbc629cf45b68dae00fc9a8b19c67db033830dd90a3bdffc7cab75" compoundref="d0/d68/mhDefs_8h" startline="110">MutFileDataType::LogicSource</references>
-        <references refid="dc/ddf/idlist_8hh_1a8f8f80d37794cde9472343e4487ba3eb" compoundref="dc/ddf/idlist_8hh" startline="6">name</references>
-        <references refid="dc/dd4/structMutFileDataType_1aeaadee03a788a9c3f071c423f484f046" compoundref="d0/d68/mhDefs_8h" startline="103">MutFileDataType::name</references>
-        <references refid="dc/dd4/structMutFileDataType_1a7f5a1215118f076e5bb4f6745c3bcbf4">MutFileDataType::type</references>
-        <references refid="dc/dd4/structMutFileDataType_1a42131aa37bcfbc629cf45b68dae00fc9a6f93dc737f54602ba83a37cb965daddf" compoundref="d0/d68/mhDefs_8h" startline="106">MutFileDataType::Unknown</references>
-        <references refid="dc/dd4/structMutFileDataType_1a42131aa37bcfbc629cf45b68dae00fc9a053ea7a913becf1600f84b46fce2b26b" compoundref="d0/d68/mhDefs_8h" startline="108">MutFileDataType::UTF8TextRoute</references>
-        <references refid="dc/dd4/structMutFileDataType_1a42131aa37bcfbc629cf45b68dae00fc9af88744e38f46c995394ca5027c84c5f6" compoundref="d0/d68/mhDefs_8h" startline="109">MutFileDataType::XMLRoute1</references>
-        <referencedby refid="d3/d34/group__src_1ga0bd91229d7dd30901944246960f0ac8f" compoundref="dc/df3/MutFrame_8cpp" startline="567" endline="614">mutaborGUI::MutFrame::CmFileOpen</referencedby>
-        <referencedby refid="d3/d34/group__src_1ga32ac26aebb3a2368c60285b39b30422b" compoundref="d1/da4/MutEditFile_8cpp" startline="389" endline="407">mutaborGUI::MutEditFile::CmFileSaveAs</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga24bfe10e24a2431758a4ee4e8153291e" compoundref="dc/def/MutRouteWnd_8cpp" startline="422" endline="522">mutaborGUI::MutRouteWnd::CmRouteLoad</referencedby>
-        <referencedby refid="d5/dee/group__route_1ga6e292c98b7e68b4b9f846d186786e11d" compoundref="dc/def/MutRouteWnd_8cpp" startline="601" endline="633">mutaborGUI::MutRouteWnd::CmRouteSaveAs</referencedby>
-        <referencedby refid="d3/d34/group__src_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="88" endline="1503">IMPLEMENT_APP</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/interface_deps.h" line="68" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/interface_deps_generic.c" bodystart="32" bodyend="45"/>
+        <references refid="d6/daa/namespacemutabor_1abae2a6ffddc4e68d7e52f67803cb091f" compoundref="d1/d73/Defs_8h" startline="110" endline="110">mutabor::str</references>
+        <referencedby refid="df/dd1/group__GUI_1gac8c56c621ee1c64b7b506ebe7d8aff76" compoundref="d5/d1c/MutApp_8cpp" startline="87" endline="1537">IMPLEMENT_APP</referencedby>
       </memberdef>
-      <memberdef kind="function" id="dc/d3d/group__templates_1ga49f3b489f6e01165a786ba55352f628a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void PRINTWINDOW</definition>
-        <argsstring>(wxWindow *window, const wxString &amp;offset=_T(&quot;&quot;))</argsstring>
-        <name>PRINTWINDOW</name>
-        <param>
-          <type>wxWindow *</type>
-          <declname>window</declname>
-        </param>
-        <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> wxString &amp;</type>
-          <declname>offset</declname>
-          <defval>_T(&quot;&quot;)</defval>
-        </param>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="dc/d3d/group__templates_1ga7952139d7d7a99dba4ab9f2c79d0a792" prot="public" static="no">
+        <name>SRC_KERNEL_INTERFACE_DEPS_H</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mxDefs.cpp" line="150" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/wxGUI/generic/mxDefs.cpp" bodystart="150" bodyend="155"/>
-        <references refid="de/db7/group__debug_1gad0fa697ccfdac1d20857a4359add2996" compoundref="de/de1/mutDebug_8h" startline="141">DEBUGLOG2</references>
-        <references refid="d9/d7c/group__kernel_1gaedf3113729faf15522da4884cc137733" compoundref="d1/d73/Defs_8h" startline="79">mutUnused</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/interface_deps.h" line="37" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/interface_deps.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/d3d/group__templates_1ga5b9527823e4cbd602d7702e2ece7236b" prot="public" static="no">
+        <name>SRC_KERNEL_INTERFACE_DEPS_H_PRECOMPILED</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/interface_deps.h" line="47" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/interface_deps.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/d3d/group__templates_1ga6a74fe1453277b5ee1d921a28a936a0f" prot="public" static="no">
+        <name>mutASSERT</name>
+        <param><defname>expr</defname></param>
+        <initializer><ref refid="d0/dc8/mutlex_8cc_1ad4a65b873df5c05570846b5413b41dfd" kindref="member">if</ref> (!(expr)) {							\
+		<ref refid="d9/d7c/group__kernel_1ga82608b9cdf97dadb5022911ec9ce3d94" kindref="member">mutabor_assert_fail</ref>(__FILE__,				\
+				    __LINE__,				\
+				    __FUNCTION__,			\
+				    #expr,				\
+				    &quot;&quot;);				\
+	}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/interface_deps.h" line="51" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/interface_deps.h" bodystart="51" bodyend="-1"/>
+        <referencedby refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1a68866b89d808ed81697756a2a41b6ae1" compoundref="d2/d73/GUIRoute-inlines_8h" startline="413" endline="449">mutaborGUI::GUIRouteBase::Add</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga4f86f32d782b2a4e8b617271b4bbb72b" compoundref="d8/db4/BoxShape_8cpp" startline="175" endline="196">mutaborGUI::MutBoxShape::Add</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga2ecd01f8051a6d75426493539c48f3c4" compoundref="d9/d94/DeviceShape_8cpp" startline="133" endline="144">mutaborGUI::MutDeviceShape&lt; T &gt;::Add</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga98e55db8b2a412d4162932b13d7e04ea" compoundref="dd/dc6/Box_8cpp" startline="124" endline="136">mutabor::BoxClass::Add</referencedby>
+        <referencedby refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1acbe6a6861cb75a7c0d2193a541d13fbf" compoundref="d2/d73/GUIRoute-inlines_8h" startline="844" endline="873">mutaborGUI::GUIOutputDeviceBase::Add</referencedby>
+        <referencedby refid="d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase_1a18213d34025588792bbcd571e3a2c6a2" compoundref="d2/d73/GUIRoute-inlines_8h" startline="1038" endline="1067">mutaborGUI::GUIInputDeviceBase::Add</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga310387a6e3aebf00b508887391d82b3d" compoundref="d2/dc0/Device_8cpp" startline="135" endline="146">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Add</referencedby>
+        <referencedby refid="dc/d06/classmutaborGUI_1_1MutRouteWnd_1a1b62a9db129f1f62e8d69a83a125ea52" compoundref="d3/dd7/MutRouteWnd_8h" startline="194" endline="212">mutaborGUI::MutRouteWnd::AddBox</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga18d2239d72bbc464a53764b63b59ddef" compoundref="d8/db4/BoxShape_8cpp" startline="198" endline="218">mutaborGUI::MutBoxShape::AddChannel</referencedby>
+        <referencedby refid="dc/d06/classmutaborGUI_1_1MutRouteWnd_1a00125762b84acb51b6fcfde4a69dd350" compoundref="d3/dd7/MutRouteWnd_8h" startline="161" endline="168">mutaborGUI::MutRouteWnd::AddInputDevice</referencedby>
+        <referencedby refid="dc/d06/classmutaborGUI_1_1MutRouteWnd_1a4af05f817169dd40400f4f833052da21" compoundref="d3/dd7/MutRouteWnd_8h" startline="178" endline="185">mutaborGUI::MutRouteWnd::AddOutputDevice</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga514c2f3ff836e2d2aa7a1bc470b44a1d" compoundref="d8/db4/BoxShape_8cpp" startline="247" endline="258">mutaborGUI::MutBoxShape::AddPossibleOutput</referencedby>
+        <referencedby refid="dc/d06/classmutaborGUI_1_1MutRouteWnd_1af66b426a5b66893aef6df4b91e59206c" compoundref="d3/dd7/MutRouteWnd_8h" startline="214" endline="221">mutaborGUI::MutRouteWnd::AddRoute</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga76fc7cf8a8a8ab9a2060244aae6b50d1" compoundref="d8/dfb/Route_8cpp" startline="282" endline="293">mutabor::TRouteClass&lt; I, O, B &gt;::AppendToRouteList</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga2e005c6f49a1547b9b3b011a940879be" compoundref="d2/dc0/Device_8cpp" startline="446" endline="498">mutabor::InputDeviceClass::BatchPlay</referencedby>
+        <referencedby refid="da/d79/group__docview_1ga113841024d2d545e8a68c7c7de47f144" compoundref="d6/d3b/MutDocument_8cpp" startline="55" endline="388">BEGIN_EVENT_TABLE</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gae91e1ff5ac7d0866e88220faba0a463b" compoundref="da/d72/MutChild_8cpp" startline="77" endline="151">mutaborGUI::BEGIN_EVENT_TABLE</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga26f8a3927e5cf8a5b0c22aba23d408d7" compoundref="dc/d76/IconShape_8cpp" startline="87" endline="283">BEGIN_EVENT_TABLE_TEMPLATE1</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga37d38084aafdad27b4f9629ad34ac45b" compoundref="da/d72/MutChild_8cpp" startline="160" endline="170">mutaborGUI::MutChild::BoxChanged</referencedby>
+        <referencedby refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1a9d7180fb22ab43a9f0fb6ab6bfdf064a" compoundref="df/d11/MutLogicWnd_8cpp" startline="271" endline="281">mutaborGUI::MutLogicWnd::BoxChanged</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga1262d6fe5e3397a65d68bf4d78b66567" compoundref="de/d0f/Box_8h" startline="783" endline="788">mutabor::BoxClass::BoxLock::BoxLock</referencedby>
+        <referencedby refid="d4/d4c/classGisReadArtHead_1a90d31800a22510740544210e2377b26f" compoundref="d1/db5/GIS__Head_8h" startline="220" endline="226">GisReadArtHead::Build</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1acc98857416d668261e627ea99aa63e48" compoundref="df/d23/Execute_8cpp" startline="191" endline="268">mutabor::hidden::call_actions</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1ab78a75d7f11b6e12ee315675f04eaf24" compoundref="d9/d27/DebugRoute_8cpp" startline="197" endline="209">mutaborGUI::Check</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1af7ed178f7767faa640ea86e2b9863c69" compoundref="d9/d27/DebugRoute_8cpp" startline="185" endline="193">mutaborGUI::CheckList</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaf902f52cc92b92c56c800871fb2a4593" compoundref="de/d0f/Box_8h" startline="374" endline="385">mutabor::BoxClass::ClearBoxList</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga6a549b9131f3f5f7322b89bfa941de4a" compoundref="de/d05/Device_8h" startline="797" endline="808">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::ClearDeviceList</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga73740bb3f86dc6fb25ee199b311145ac" compoundref="d1/d65/Route_8h" startline="443" endline="458">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::ClearRouteList</referencedby>
+        <referencedby refid="d9/d7a/classmutaborGUI_1_1MutChild_1ae1560ba68f0edb0049a64a9ded76660d" compoundref="d2/df9/MutChild_8h" startline="140" endline="147">mutaborGUI::MutChild::ClientToScreen</referencedby>
+        <referencedby refid="d5/d27/classmutabor_1_1CommonFileOutputDevice_1a3c0166efbf86a6680e348db7b74f665e" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="90" endline="94">mutabor::CommonFileOutputDevice::Close</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aa69af4fd6fa82b1aef79985433de8929" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="207" endline="251">mutabor::CommonFileInputDevice::Close</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a740abd9128e6155e4ba35a25976390c6" compoundref="de/d21/midicmn_8h" startline="342" endline="348">mutabor::DebugMidiOutputProvider::Close</referencedby>
+        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1a997ed9a715013d4c8ba576fe282fba8a" compoundref="df/d8f/DevMidi_8cpp" startline="414" endline="428">mutabor::InputMidiPort::Close</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ab263ae394691352ce2878bedc397edae" compoundref="d3/d0f/midicmn_8cpp" startline="105" endline="122">mutabor::CommonMidiOutput&lt; T, D &gt;::Close</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga53b1990e041472bf1266f54c164ad190" compoundref="dd/db5/MutFrame_8h" startline="308" endline="325">mutaborGUI::MutFrame::CloseClientWindow</referencedby>
+        <referencedby refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1a1c354ce66d8bdc8fea4e62445a78083b" compoundref="df/d11/MutLogicWnd_8cpp" startline="487" endline="502">mutaborGUI::MutLogicWnd::CmMutTag</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga24bfe10e24a2431758a4ee4e8153291e" compoundref="dc/def/MutRouteWnd_8cpp" startline="411" endline="511">mutaborGUI::MutRouteWnd::CmRouteLoad</referencedby>
+        <referencedby refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1a143b7a0f1252f8d90ddf34f19796c4f9" compoundref="df/d11/MutLogicWnd_8cpp" startline="386" endline="409">mutaborGUI::MutLogicWnd::CmTaste</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ac6472e7bef2ea2f15f78c44f45916e9e" compoundref="de/d21/midicmn_8h" startline="768" endline="780">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::controller</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga501f42fc660e1b3a0186f842380d8a09" compoundref="d9/d24/BoxChannelShape_8cpp" startline="109" endline="137">mutaborGUI::MutBoxChannelShape::Create</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gac28205df760882ad9288729db6db31a6" compoundref="d9/d94/DeviceShape_8cpp" startline="108" endline="129">mutaborGUI::MutDeviceShape&lt; T &gt;::Create</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga1b747523cf90d4b44b18f88512405445" compoundref="de/d0f/Box_8h" startline="899" endline="914">mutabor::BoxFactory::Create</referencedby>
+        <referencedby refid="d6/daa/namespacemutabor_1aaa36a446a3ea52a23110357390b5bc7e" compoundref="dd/d20/event_8h" startline="638" endline="666">mutabor::create_event</referencedby>
+        <referencedby refid="d6/daa/namespacemutabor_1a594359578511dc8bee4aca00b12896d2" compoundref="dd/d20/event_8h" startline="579" endline="636">mutabor::create_system_event</referencedby>
+        <referencedby refid="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a997f1178a8757ba2bcde5243a8e31dc0" compoundref="d6/dfa/GUIRoute_8h" startline="303" endline="311">mutaborGUI::GUIRouteFactory::CreateBoxChannelShape</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga7f8aa71bcfc8c3f458fd39e26633bfd9" compoundref="dc/def/MutRouteWnd_8cpp" startline="297" endline="325">mutaborGUI::MutRouteWnd::createBoxes</referencedby>
+        <referencedby refid="dc/d58/classmutaborGUI_1_1GUIBoxFactory_1af2957a4f3be6647626c3f792ce2acddd" compoundref="d5/df7/GUIBoxData_8h" startline="280" endline="296">mutaborGUI::GUIBoxFactory::CreateBoxShape</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga47b3119edf0ff6ae698d323f08a92797" compoundref="de/d05/Device_8h" startline="1381" endline="1394">mutabor::DeviceFactory::CreateInput</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gac97eebe7c50158ac3e1402b4a5842e7b" compoundref="dc/def/MutRouteWnd_8cpp" startline="260" endline="286">mutaborGUI::MutRouteWnd::createInputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga8ba8f76e8e60d1d4d3592e3ac081d8f8" compoundref="de/d05/Device_8h" startline="1364" endline="1378">mutabor::DeviceFactory::CreateOutput</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga25ac222d32b7b93c9adcafb6cf1a5120" compoundref="d9/d94/DeviceShape_8cpp" startline="355" endline="366">mutaborGUI::MutDeviceShape&lt; T &gt;::createPauseButton</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga3c40a9d7ce68de43e26580e6be8bbd4c" compoundref="d9/d94/DeviceShape_8cpp" startline="335" endline="352">mutaborGUI::MutDeviceShape&lt; T &gt;::createPlayButtons</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga9e7b47016edd33498ccab2438a030eee" compoundref="d9/d94/DeviceShape_8cpp" startline="368" endline="385">mutaborGUI::MutDeviceShape&lt; T &gt;::createRecordButtons</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga8a6cd441b939453995eb7857ff6df5be" compoundref="dc/def/MutRouteWnd_8cpp" startline="327" endline="359">mutaborGUI::MutRouteWnd::createRoutes</referencedby>
+        <referencedby refid="d2/d9a/classmutaborGUI_1_1GUIDeviceFactory_1a6a137e06c4f10eb731d599afb456aafc" compoundref="d2/d73/GUIRoute-inlines_8h" startline="1227" endline="1243">mutaborGUI::GUIDeviceFactory::CreateShape</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga2d15f81e4fff876bc86dadc798f3db04" compoundref="d7/da0/GIS__Head_8cpp" startline="214" endline="260">GisReadHead::CutOut</referencedby>
+        <referencedby refid="de/db7/group__debug_1ga33e4d2337c0d8d97f3f9527159d490a0" compoundref="d1/d00/debug_8cpp" startline="117" endline="124">debug_destroy_class</referencedby>
+        <referencedby refid="de/db7/group__debug_1gad832f7644d01ea65a5de5dc9ba942d11" compoundref="d1/d00/debug_8cpp" startline="126" endline="134">debug_destruct_class</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1a981cc43d26594717af82abab06375f92" compoundref="d9/d27/DebugRoute_8cpp" startline="838" endline="854">mutaborGUI::DebugCheckRoutes</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gaebe1551353855119fe9578553baa7355" compoundref="d8/db4/BoxShape_8cpp" startline="618" endline="636">mutaborGUI::MutBoxShape::DeleteBox</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga8e30373643393e8af375299ba1171372" compoundref="da/d72/MutChild_8cpp" startline="184" endline="241">mutaborGUI::MutChild::deleteFromWinAttrs</referencedby>
+        <referencedby refid="d2/d14/classmutaborGUI_1_1GUIfiedRoute_1a2d218f3e79bcd368dc9fd2e3fddc970c" compoundref="d4/dee/GUIRoute_8cpp" startline="528" endline="551">mutaborGUI::GUIfiedRoute&lt; T &gt;::Destroy</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1afed80e409e1ea1e2b0977b9830d892f3" compoundref="d3/d0f/midicmn_8cpp" startline="501" endline="523">mutabor::CommonMidiOutput&lt; T, D &gt;::do_Controller</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a695084d69d0dd0b194bac47b74cfa21f" compoundref="d3/d0f/midicmn_8cpp" startline="692" endline="705">mutabor::CommonMidiOutput&lt; T, D &gt;::do_GetChannel</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ac4ebdd04cc1b0b2ca5bddd9283d77464" compoundref="d3/d0f/midicmn_8cpp" startline="373" endline="428">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOff</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a23dfccd2e97e799cd8b32dea22306e5c" compoundref="d3/d0f/midicmn_8cpp" startline="285" endline="370">mutabor::CommonMidiOutput&lt; T, D &gt;::do_NoteOn</referencedby>
+        <referencedby refid="d5/d27/classmutabor_1_1CommonFileOutputDevice_1aed0cc73862fbf2e9849f632c8e0e3ba6" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="83" endline="88">mutabor::CommonFileOutputDevice::do_Open</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a70648241a951d4f79aa3eb3aa9f83122" compoundref="d3/d0f/midicmn_8cpp" startline="50" endline="102">mutabor::CommonMidiOutput&lt; T, D &gt;::do_Open</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1a1664accfd269911e4875d852f7fb1d44" compoundref="d3/d0f/midicmn_8cpp" startline="912" endline="924">mutabor::CommonMidiOutput&lt; T, D &gt;::do_Quiet</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ac1adec297fd503ce324963296f659eb1" compoundref="d3/d0f/midicmn_8cpp" startline="708" endline="832">mutabor::CommonMidiOutput&lt; T, D &gt;::do_SplitOut</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1ae068c3fe86a1c768f15c0249cdfb11ea" compoundref="d3/d0f/midicmn_8cpp" startline="431" endline="498">mutabor::CommonMidiOutput&lt; T, D &gt;::do_UpdateTones</referencedby>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1a684ed3207623117eeab3befa6fa83dfb" compoundref="d2/dd3/GUIBoxData_8cpp" startline="336" endline="375">mutaborGUI::BoxData::DoClose</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga2cb0ec2ffc3dae5bc21639e1a0249bc8" compoundref="dd/dc6/Box_8cpp" startline="405" endline="412">mutabor::BoxClass::DoClose</referencedby>
+        <referencedby refid="d6/de3/classmutaborGUI_1_1GUIRouteFactory_1a75a8d7d51409f856c07a7845fd8f6a66" compoundref="d4/dee/GUIRoute_8cpp" startline="617" endline="651">mutaborGUI::GUIRouteFactory::DoCreateBoxChannelShape</referencedby>
+        <referencedby refid="d3/db0/classmutaborGUI_1_1GUIMidiPortFactory_1a75fa9c4e3f4fef1579499524d8825a02" compoundref="d4/dee/GUIRoute_8cpp" startline="825" endline="839">mutaborGUI::GUIMidiPortFactory::DoCreateShape</referencedby>
+        <referencedby refid="d0/d6a/classmutaborGUI_1_1GUIMidiFileFactory_1a260b321e50b33cce001df6ed24876fe0" compoundref="d4/dee/GUIRoute_8cpp" startline="897" endline="907">mutaborGUI::GUIMidiFileFactory::DoCreateShape</referencedby>
+        <referencedby refid="d9/dbd/classmutaborGUI_1_1GUIGisFactory_1a5ae8dd570f119197bda066ba4f120237" compoundref="d4/dee/GUIRoute_8cpp" startline="961" endline="971">mutaborGUI::GUIGisFactory::DoCreateShape</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gafb111fbc128036409103a64b8f106cec" compoundref="dc/d76/IconShape_8cpp" startline="304" endline="350">MutIconShapeClass&lt; T &gt;::DoGetBestSize</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga9cff412769db7e55f0dafac64012bf34" compoundref="d8/db4/BoxShape_8cpp" startline="381" endline="464">mutaborGUI::MutBoxShape::DoLeftDblClick</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga095ea6c276b2d08e7dc8f6c5b1e023b3" compoundref="d9/d94/DeviceShape_8cpp" startline="407" endline="474">mutaborGUI::MutDeviceShape&lt; T &gt;::DoLeftDblClick</referencedby>
+        <referencedby refid="d5/dee/group__route_1gae7d8b2c6ad14d3d94718377969abcd8c" compoundref="d8/dfb/Route_8cpp" startline="573" endline="587">mutabor::RouteFactory::DoLoadRoutes</referencedby>
+        <referencedby refid="d2/d7d/group__tests_1ga926fd4f56909a0f0ac059a4d513b62e0" compoundref="d5/dfb/MkIDlist_8h" startline="68" endline="198">MkIDlist::doMkIDlist</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga50d4c338ce3a0c239468bd27be0b51e1" compoundref="da/d72/MutChild_8cpp" startline="340" endline="375">mutaborGUI::DontWant</referencedby>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1ab26b4050180fd5202231f3588d3faf36" compoundref="d2/dd3/GUIBoxData_8cpp" startline="306" endline="334">mutaborGUI::BoxData::DoOpen</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaf17cf4768d8fb8cc93dc827b40153605" compoundref="d8/dfb/Route_8cpp" startline="589" endline="612">mutabor::RouteFactory::DoSaveRoutes</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaa1bf774bdb8339a85aedd19958ec5e2e" compoundref="dc/df3/MutFrame_8cpp" startline="941" endline="972">mutaborGUI::MutFrame::DoStop</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga70973d87a9ef5aad354f21bd03f3a427" compoundref="d8/db4/BoxShape_8cpp" startline="261" endline="319">mutaborGUI::MutBoxShape::DrawLines</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gadaf11d23630d7830e333f7d339bfa418" compoundref="d9/d24/BoxChannelShape_8cpp" startline="564" endline="619">mutaborGUI::MutBoxChannelShape::DrawLines</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga74ff809a8d83e77a09f3846059689f46" compoundref="d9/d24/BoxChannelShape_8cpp" startline="685" endline="698">mutaborGUI::MutBoxChannelShape::DrawPerimeterPoint</referencedby>
+        <referencedby refid="dd/df5/classmutabor_1_1CommonMidiOutput_1abf8c289438dc78db52b32f807ad5d0b7" compoundref="d3/d0f/midicmn_8cpp" startline="146" endline="180">mutabor::CommonMidiOutput&lt; T, D &gt;::EmergencyFindChannel</referencedby>
+        <referencedby refid="dd/db0/MutDocManager_8cpp_1a9e7a087c5c550acffcd802f4b40bd609" compoundref="dd/db0/MutDocManager_8cpp" startline="50" endline="339">END_EVENT_TABLE</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aee6e64acc04c4953933ed9f755c9d2a8" compoundref="df/d23/Execute_8cpp" startline="270" endline="647">mutabor::hidden::execute_aktion</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a5b50b41814c8ac579c5ee30bcd35ead0" compoundref="d3/da0/TabGen_8cpp" startline="1324" endline="1404">mutabor::hidden::expand_decition_tree</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1af0e0c3bfa8b6c1dfaf5ee0ec26b9759b" compoundref="d3/da0/TabGen_8cpp" startline="1250" endline="1291">mutabor::hidden::expandiere_in_globale_liste</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4ef02782584fd7bc601362b61382da4a" compoundref="d3/da0/TabGen_8cpp" startline="509" endline="583">mutabor::hidden::expandiere_logik</referencedby>
+        <referencedby refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1ac8124ea14aaca76047ce164eed8b0a48" compoundref="df/d11/MutLogicWnd_8cpp" startline="288" endline="337">mutaborGUI::MutLogicWnd::FixSizer</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga3202445b8b30aba7d7207fd261264cf6" compoundref="dd/dc6/Box_8cpp" startline="918" endline="924">mutabor::BoxClass::free_mutex_callback</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ac1bb1758a4029fba875fd56baa9b3dd8" compoundref="df/d23/Execute_8cpp" startline="1124" endline="1158">mutabor::hidden::generic_keyboard_analysis</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1ga32d069bf3b61bb44351df1b9953ef001" compoundref="d2/de4/Interval_8c" startline="50" endline="87">get_intervall_wert</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaab2a6a750a2210c98106549c88a91d07" compoundref="de/d05/Device_8h" startline="392" endline="404">mutabor::ChannelData::get_next_changed_controller</referencedby>
+        <referencedby refid="d8/d4a/classmutaborGUI_1_1MutaborBoxSettings_1ae428d55dd355fe35f056b782adeaf936" compoundref="d9/dd2/BoxDlg_8h" startline="67" endline="72">mutaborGUI::MutaborBoxSettings::GetBoxNumber</referencedby>
+        <referencedby refid="df/d7d/classmutaborGUI_1_1BoxDlg_1abf33a95630904a5bb2e8db91ea3fabef" compoundref="d9/dd2/BoxDlg_8h" startline="218" endline="223">mutaborGUI::BoxDlg::GetBoxNumber</referencedby>
+        <referencedby refid="d9/d7a/classmutaborGUI_1_1MutChild_1a2219dc9056217c979e8c142bc517cdce" compoundref="d2/df9/MutChild_8h" startline="116" endline="124">mutaborGUI::MutChild::GetClientSize</referencedby>
+        <referencedby refid="d8/dd6/classmutaborGUI_1_1MutView_1a33890494df2f24c54e1394b054478c9e" compoundref="d0/d9e/MutView_8h" startline="93" endline="99">mutaborGUI::MutView::GetMutFrame</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gadd0fd1ab2542eb0b51d6bd37b0239581" compoundref="d9/d24/BoxChannelShape_8cpp" startline="140" endline="153">mutaborGUI::MutBoxChannelShape::GetMutIcon</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga02073f2d3d273764a6e4b703d4517163" compoundref="d2/de0/BoxIconShape_8h" startline="98" endline="101">mutaborGUI::MutBoxIconShape::GetMutIcon</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gafb46b285ddfcaf567dadb66d6abafc53" compoundref="dc/d76/IconShape_8cpp" startline="553" endline="651">MutIconShapeClass&lt; T &gt;::GetPerimeterPoint</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gab4f07f2901e8229e1d80d3a5a702b017" compoundref="d9/d24/BoxChannelShape_8cpp" startline="621" endline="683">mutaborGUI::MutBoxChannelShape::GetPerimeterPoint</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga30914043e8136ba34542f8433212bdcf" compoundref="d8/db4/BoxShape_8cpp" startline="48" endline="57">mutaborGUI::GetStaticBoxSize</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4c9c4d1277fb78585bb2471863214fbb" compoundref="dd/dc6/Box_8cpp" startline="616" endline="650">mutabor::BoxClass::GetToneSystem</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gaac9fc5ac87267ae042fe566abf6b5edb" compoundref="de/d50/OutputDevDlg_8h" startline="152" endline="162">mutaborGUI::OutputDevDlg::GetType</referencedby>
+        <referencedby refid="d2/dcc/classmutaborGUI_1_1InputDevDlg_1a33d525b7563e25fb844d9764a67579db" compoundref="d9/d12/InputDevDlg_8h" startline="164" endline="174">mutaborGUI::InputDevDlg::GetType</referencedby>
+        <referencedby refid="d5/d27/classmutabor_1_1CommonFileOutputDevice_1aa06c85ae80e7a175d51251ab8e4c2047" compoundref="d9/d17/CommonFileDevice_8h" startline="104" endline="107">mutabor::CommonFileOutputDevice::GetTypeName</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ad46e31479601ee104a6b87f23c5028c3" compoundref="df/d23/Execute_8cpp" startline="893" endline="925">mutabor::hidden::HarmonyAnalysis</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gafa5bda15bef951c8e5b190f9d83d7328" compoundref="d8/db4/BoxShape_8cpp" startline="234" endline="245">mutaborGUI::MutBoxShape::HasChannel</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gac56ad39fecbb8d6207794d9d94bcd4bd" compoundref="d8/dba/NewBoxShape_8cpp" startline="48" endline="56">mutaborGUI::IMPLEMENT_CLASS</referencedby>
+        <referencedby refid="df/d7d/classmutaborGUI_1_1BoxDlg_1a97c4e784eaf63a716a03bbee0d3bc5ca" compoundref="d3/d2a/BoxDlg_8cpp" startline="281" endline="301">mutaborGUI::BoxDlg::InitializeBoxTypes</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga9d64270fb543fc0bf3a19aeeba441cff" compoundref="d8/dba/NewBoxShape_8cpp" startline="58" endline="65">mutaborGUI::NewMutBoxShape::InitializeDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga8ed71b2e946cfd1a00f0346552376688" compoundref="d6/d68/OutputMidiDeviceShape_8cpp" startline="74" endline="85">mutaborGUI::MutOutputMidiDeviceShape::InitializeDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gadf0b97764ab072536439537fde9b07f9" compoundref="d3/d21/OutputGuidoFileDeviceShape_8cpp" startline="44" endline="51">mutaborGUI::MutOutputGuidoFileDeviceShape::InitializeDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga36d3c286adbb3b8a440f9782f9e65e17" compoundref="d5/d00/OutputMidiFileDeviceShape_8cpp" startline="78" endline="87">mutaborGUI::MutOutputMidiFileDeviceShape::InitializeDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga66f7fca7ea2e010fd683be7ccac86f55" compoundref="d8/da8/InputGuidoFileDeviceShape_8cpp" startline="123" endline="130">mutaborGUI::MutInputGuidoFileDeviceShape::InitializeDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga15f862043e3c700673846806e35b1740" compoundref="d8/db4/BoxShape_8cpp" startline="533" endline="541">mutaborGUI::MutBoxShape::InitializeDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gadc80e5c5f8ead159e61236e286f47f66" compoundref="d1/d14/InputMidiDeviceShape_8cpp" startline="38" endline="47">mutaborGUI::MutInputMidiDeviceShape::InitializeDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga79eeb6aa80712a26b1b50ecfc14c90a3" compoundref="d3/de3/InputMidiFileDeviceShape_8cpp" startline="40" endline="47">mutaborGUI::MutInputMidiFileDeviceShape::InitializeDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga9001ac287a871d24d14a6193261882de" compoundref="d9/d24/BoxChannelShape_8cpp" startline="293" endline="350">mutaborGUI::MutBoxChannelShape::InitializeInputFilter</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga190e24cde75e2eac5bd925b1cca9c40f" compoundref="d9/d24/BoxChannelShape_8cpp" startline="396" endline="443">mutaborGUI::MutBoxChannelShape::InitializeOutputFilter</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga08e6dc46a984309820088a110e40c83e" compoundref="d9/d24/BoxChannelShape_8cpp" startline="352" endline="394">mutaborGUI::MutBoxChannelShape::InitializeRoute</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1a5bf6cf4c43a5fcb71967e45acf691ee8" compoundref="d7/db6/MutBitmaps_8cpp" startline="60" endline="73">mutaborGUI::initMutBitmap</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga374d8bfbca7ba97b2da54620fc8a3a1c" compoundref="dc/def/MutRouteWnd_8cpp" startline="202" endline="235">mutaborGUI::MutRouteWnd::InitShapes</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ad3b8dddfaa1a2bbacdd78f0c002e38eb" compoundref="d3/da0/TabGen_8cpp" startline="972" endline="1098">mutabor::hidden::insert_in_globale_liste</referencedby>
+        <referencedby refid="d5/dee/group__route_1gab8c6313f016650a6e06383621c29b45f" compoundref="d7/da0/GIS__Head_8cpp" startline="145" endline="212">GisReadHead::InsertInfrontOf</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga9acebb2cce4e38f90431f7c8d254afd9" compoundref="de/d05/Device_8h" startline="433" endline="441">mutabor::ChannelData::is_changed_controller</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga7ad6b2305e866ae3936c307f5f9f4c04" compoundref="da/d72/MutChild_8cpp" startline="265" endline="301">mutaborGUI::IsOpen</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gaa27217b7463db6fd1afec3c485c9428d" compoundref="da/d72/MutChild_8cpp" startline="303" endline="338">mutaborGUI::IsWanted</referencedby>
+        <referencedby refid="d5/d27/classmutabor_1_1CommonFileOutputDevice_1a9119337e1ce1171453937dad0436204f" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="72" endline="81">mutabor::CommonFileOutputDevice::Load</referencedby>
+        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1a7482ffe26bfb44849c73ff441988cbdf" compoundref="db/d78/DevGIS_8cpp" startline="211" endline="218">mutabor::OutputGis::Load</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaa1eefe81dfc1036f5f7dd578dfb2aff8" compoundref="d8/dfb/Route_8cpp" startline="88" endline="100">mutabor::TRouteClass&lt; I, O, B &gt;::Load</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a1f853e58525a5ff67937c48a208b7670" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="129" endline="138">mutabor::CommonFileInputDevice::Load</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ac67841f0c9bae7577c4260994e0135fc" compoundref="db/d78/DevGIS_8cpp" startline="269" endline="278">mutabor::InputGis::Load</referencedby>
+        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1af99fc0245eac479b47629ce1a6cb07f3" compoundref="df/d8f/DevMidi_8cpp" startline="94" endline="106">mutabor::OutputMidiPort::Load</referencedby>
+        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1a89584d87c83b2877a96fea2b46e7e7a3" compoundref="df/d8f/DevMidi_8cpp" startline="268" endline="281">mutabor::InputMidiPort::Load</referencedby>
+        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a85e0f75c86bb35421a7b780877427744" compoundref="d0/d6b/DevMidF_8cpp" startline="287" endline="295">mutabor::OutputMidiFile::Load</referencedby>
+        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a79fc7f29bcff21db0af9043bf00f8797" compoundref="d0/d6b/DevMidF_8cpp" startline="438" endline="516">mutabor::InputMidiFile::Load</referencedby>
+        <referencedby refid="d5/dee/group__route_1gadb66e7b7d79f26402ffb5ae5c82e9bc8" compoundref="dd/dc6/Box_8cpp" startline="965" endline="985">mutabor::BoxFactory::LoadBoxes</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga258cd4bc238074cb6834c10248c0f3fa" compoundref="d2/dc0/Device_8cpp" startline="587" endline="618">mutabor::DeviceFactory::LoadInputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1gabd6e84a77a79c3ca0960442ed17f6b51" compoundref="d2/dc0/Device_8cpp" startline="534" endline="562">mutabor::DeviceFactory::LoadOutputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga87ced6bf8715054517f72a0dcb433d8c" compoundref="d8/dfb/Route_8cpp" startline="247" endline="278">mutabor::TRouteClass&lt; I, O, B &gt;::LoadRoutes</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1aa90f36c87c5ace50f2828e8156adc4f5" compoundref="d9/d27/DebugRoute_8cpp" startline="803" endline="818">mutaborGUI::MakeTopLevelsBoxes</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1aa21aee5cd384b8caa508efff20132240" compoundref="d9/d27/DebugRoute_8cpp" startline="771" endline="786">mutaborGUI::MakeTopLevelsInput</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1a9fd7bc4c8f2ea7037a12484991a0c1ae" compoundref="d9/d27/DebugRoute_8cpp" startline="787" endline="802">mutaborGUI::MakeTopLevelsOutput</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1a41cfeac473872fa0d41743a74156c78a" compoundref="d9/d27/DebugRoute_8cpp" startline="819" endline="835">mutaborGUI::MakeTopLevelsRoutes</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a533aa7673dd0b9b9026de7468dcf3d78" compoundref="df/d23/Execute_8cpp" startline="1069" endline="1100">mutabor::hidden::MidiAnalysis</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a0f561bb18a34e4637b61859c66c72e55" compoundref="de/d21/midicmn_8h" startline="245" endline="252">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::move_to_end</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a75cc72a7627ca023c30db1dbcb95ed65" compoundref="de/d21/midicmn_8h" startline="260" endline="267">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::move_to_front</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gae0f74d776b3a7a00dd4dbb6642e63316" compoundref="dc/def/MutRouteWnd_8cpp" startline="745" endline="765">mutaborGUI::MutRouteWnd::MoveShape</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa444846aa9425a8b9e6b0209f24a7994" compoundref="d1/dce/box_8cpp" startline="202" endline="221">mutabor::hidden::mutabor_check_key_count</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a4c60e0b1ccd5c76473b01e52cd18b296" compoundref="dc/d19/box_8h" startline="282" endline="343">mutabor::hidden::mutabor_create_key_in_box</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a81c3919234110a27daeb721ffb5aeafb" compoundref="dc/d19/box_8h" startline="223" endline="279">mutabor::hidden::mutabor_delete_key_in_box</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aa0998cfb4b4213cca647acc613350738" compoundref="d2/dd8/Interpre_8h" startline="394" endline="404">mutabor::hidden::mutabor_get_note_distance</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1a471fd77633fd0ffb63f81b547cf52460" compoundref="d2/dd8/Interpre_8h" startline="384" endline="392">mutabor::hidden::mutabor_get_note_index</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ae99a4ea1d2fbe5b06b6f82ca731b1ac8" compoundref="d1/dce/box_8cpp" startline="136" endline="161">mutabor::hidden::mutabor_initialize_box</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga40bf9dbffab44d62f1453bfe4bd1121a" compoundref="da/d72/MutChild_8cpp" startline="173" endline="182">mutaborGUI::MutChild::OnActivate</referencedby>
+        <referencedby refid="d9/d7a/classmutaborGUI_1_1MutChild_1a876c8fa3614dd7d69307ff372eb06e99" compoundref="d2/df9/MutChild_8h" startline="105" endline="112">mutaborGUI::MutChild::OnAuiClose</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gafa78b94fb498060f5dae3df4e0bb8a5c" compoundref="da/d72/MutChild_8cpp" startline="243" endline="263">mutaborGUI::MutChild::OnChar</referencedby>
+        <referencedby refid="d9/d7a/classmutaborGUI_1_1MutChild_1ac5d09bd56aa953efd1c8dfc035c7edc5" compoundref="d2/df9/MutChild_8h" startline="86" endline="92">mutaborGUI::MutChild::OnClose</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga34944c40a018673cfd06db1da64867f3" compoundref="df/d3c/MutTextBox_8cpp" startline="103" endline="146">MutTextBox::OnClose</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga4a3aa65587bafd8ca1a136b338bc1206" compoundref="dc/def/MutRouteWnd_8cpp" startline="708" endline="732">mutaborGUI::MutRouteWnd::OnDraw</referencedby>
+        <referencedby refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1af0f260d3c21578002d95f1b1eac5fae1" compoundref="d9/d17/CommonFileDevice_8h" startline="151" endline="158">mutabor::CommonFileInputDevice::FileTimer::OnExit</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a3415f4a6ff1dac5d6436689cde87a136" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="143" endline="205">mutabor::CommonFileInputDevice::Open</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a70295054393d3ceb243329441b95bfb2" compoundref="de/d21/midicmn_8h" startline="323" endline="330">mutabor::DebugMidiOutputProvider::Open</referencedby>
+        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1aedb33a4bf5a6ea6826199d0636b1ef93" compoundref="df/d8f/DevMidi_8cpp" startline="367" endline="412">mutabor::InputMidiPort::Open</referencedby>
+        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1aa7848ecf7c1cdd9ee118105da426b3c9" compoundref="d0/d6b/DevMidF_8cpp" startline="519" endline="674">mutabor::InputMidiFile::Open</referencedby>
+        <referencedby refid="d2/db3/classmutabor_1_1MidiPortOutputProvider_1aff9c075c9a9b5e784094b44018f6ac4b" compoundref="d4/da2/DevMidi_8h" startline="141" endline="153">mutabor::MidiPortOutputProvider::operator()</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a1418861b5292fd8add9ee1056b22e1ca" compoundref="de/d21/midicmn_8h" startline="360" endline="368">mutabor::DebugMidiOutputProvider::operator()</referencedby>
+        <referencedby refid="d3/d8e/classmutabor_1_1MidiFileOutputProvider_1aa2cbb324f62927ebd89a0e9b79ecb07d" compoundref="da/d3c/DevMidF_8h" startline="426" endline="438">mutabor::MidiFileOutputProvider::operator()</referencedby>
+        <referencedby refid="d7/dda/classmutabor_1_1CurrentTimer_1a3ad7efc693ed99e0b66e8ab63ab2dfa3" compoundref="db/d41/timing_8h" startline="526" endline="530">mutabor::CurrentTimer::operator+=</referencedby>
+        <referencedby refid="d6/d06/structmutaborGUI_1_1xmltree_1_1state_1a8e13a24d2f4097d01b0490a706f0faf5" compoundref="d8/d53/xmltree_8h" startline="70" endline="75">mutaborGUI::xmltree::state::operator==</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac2b70947947163c95ca37619b696e8b7" compoundref="dd/dc6/Box_8cpp" startline="327" endline="346">mutabor::BoxClass::Panic</referencedby>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1a46a6456df9da9879e6cb446e172f3dae" compoundref="da/d3c/DevMidF_8h" startline="150" endline="160">mutabor::Track::PassDelta</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1ab981fd4cdd68dc456a97889ddc851736" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="328" endline="351">mutabor::CommonFileInputDevice::Pause</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a9678c9f5b289630497c3d88ed0e8d359" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="270" endline="326">mutabor::CommonFileInputDevice::Play</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1a2b3ede588a224861e7a1810e983c6b45" compoundref="db/d78/DevGIS_8cpp" startline="413" endline="503">mutabor::InputGis::Proceed</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ab1fd97ac67b58b0a4627308223f52c6b" compoundref="db/d78/DevGIS_8cpp" startline="505" endline="549">mutabor::InputGis::ProceedRoute</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga5f8058ce90acb4d2325b5a30082d66d8" compoundref="dc/df3/MutFrame_8cpp" startline="900" endline="939">mutaborGUI::MutFrame::RaiseLogic</referencedby>
+        <referencedby refid="d2/db3/classmutabor_1_1MidiPortOutputProvider_1a8e17b5118b4274bc2d4052d41c0f60cb" compoundref="d4/da2/DevMidi_8h" startline="225" endline="232">mutabor::MidiPortOutputProvider::RawMsg</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1a25946baf8b9c92fa776da100b5994404" compoundref="de/d21/midicmn_8h" startline="379" endline="392">mutabor::DebugMidiOutputProvider::RawMsg</referencedby>
+        <referencedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a4ee0d3df1dfed791ca4a8b354246de45" compoundref="de/d4f/xmltree_8cpp" startline="96" endline="108">mutaborGUI::xmltree::Read</referencedby>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1a8356bf6ddd6cecdfd5a80e85ca2e0bd4" compoundref="d0/d6b/DevMidF_8cpp" startline="107" endline="114">mutabor::Track::ReadDelta</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga32e7dd9a817e947821d3eca7c60ca2a9" compoundref="d6/d68/OutputMidiDeviceShape_8cpp" startline="87" endline="101">mutaborGUI::MutOutputMidiDeviceShape::readDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga70153cca84c5decea4580575013edf2e" compoundref="d5/d00/OutputMidiFileDeviceShape_8cpp" startline="89" endline="101">mutaborGUI::MutOutputMidiFileDeviceShape::readDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga9914e1a45379f01f016cd2ff2f95c6f6" compoundref="d3/d21/OutputGuidoFileDeviceShape_8cpp" startline="53" endline="63">mutaborGUI::MutOutputGuidoFileDeviceShape::readDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga30f6e98382989b8a4d94c96e74fa8deb" compoundref="d8/da8/InputGuidoFileDeviceShape_8cpp" startline="132" endline="142">mutaborGUI::MutInputGuidoFileDeviceShape::readDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga02f66ab16f700de96700d35913a63a19" compoundref="d1/d14/InputMidiDeviceShape_8cpp" startline="49" endline="61">mutaborGUI::MutInputMidiDeviceShape::readDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga5c0eacea1d6d046b297150c66fed7f5e" compoundref="d3/de3/InputMidiFileDeviceShape_8cpp" startline="61" endline="70">mutaborGUI::MutInputMidiFileDeviceShape::readDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gacbd37538b85e160a339c48e2dac82cb7" compoundref="d8/db4/BoxShape_8cpp" startline="543" endline="605">mutaborGUI::MutBoxShape::readDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gaa79f1671fe006269006802c11e853b3a" compoundref="d9/d4d/DeviceShape_8h" startline="361" endline="364">mutaborGUI::MutDeviceShape&lt; T &gt;::readDialog</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga7a0ffa45185026cfa53aa68ff07de6f9" compoundref="d6/d68/OutputMidiDeviceShape_8cpp" startline="128" endline="140">mutaborGUI::MutOutputMidiDeviceShape::ReadFilterPanel</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gaa8d24dd26329cb9ef874d2908e2687e7" compoundref="d5/d00/OutputMidiFileDeviceShape_8cpp" startline="124" endline="136">mutaborGUI::MutOutputMidiFileDeviceShape::ReadFilterPanel</referencedby>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1ab27de7a5339ed4cd5583989586934b29" compoundref="d0/d6b/DevMidF_8cpp" startline="153" endline="193">mutabor::Track::ReadMessage</referencedby>
+        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1aeda6e5119f71a31dd51dfd99938836f2" compoundref="d0/d6b/DevMidF_8cpp" startline="733" endline="806">mutabor::InputMidiFile::ReadMidiProceed</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1abcbb90946508b3df2e99f7c3771e4566" compoundref="db/d78/DevGIS_8cpp" startline="588" endline="756">mutabor::InputGis::ReadOn</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gae9ee118a5a1b3c79f29ab4069bea87b6" compoundref="d9/d94/DeviceShape_8cpp" startline="196" endline="228">mutaborGUI::MutDeviceShape&lt; T &gt;::ReadPanel</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga4f90260150415ed28bd6069cb7c1298a" compoundref="d9/d24/BoxChannelShape_8cpp" startline="445" endline="561">mutaborGUI::MutBoxChannelShape::ReadPanel</referencedby>
+        <referencedby refid="d6/daa/namespacemutabor_1ac5c14c96add881a3815e6590554eccbe" compoundref="d2/d2c/Route-inlines_8h" startline="111" endline="125">mutabor::reconnect</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1a38cb90f1ef998ab2afcd0dafa5302e55" compoundref="d2/d73/GUIRoute-inlines_8h" startline="321" endline="330">mutaborGUI::reconnect</referencedby>
+        <referencedby refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1abdda40a92ac14984a9517b9cb939d2a1" compoundref="d2/d73/GUIRoute-inlines_8h" startline="610" endline="651">mutaborGUI::GUIRouteBase::Remove</referencedby>
+        <referencedby refid="df/d08/classmutaborGUI_1_1BoxData_1a4ebd3f206c43e475f9d06f9f38296662" compoundref="d5/d12/GUIBoxData-inlines_8h" startline="227" endline="241">mutaborGUI::BoxData::Remove</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga1152cffd18fd59bae2c11df3a694f106" compoundref="dd/dc6/Box_8cpp" startline="151" endline="168">mutabor::BoxClass::Remove</referencedby>
+        <referencedby refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1afea3064b511c8418e28a891dee4940b8" compoundref="d2/d73/GUIRoute-inlines_8h" startline="907" endline="941">mutaborGUI::GUIOutputDeviceBase::Remove</referencedby>
+        <referencedby refid="d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase_1aecb28ea97672d0f7493a84ca7db69e5e" compoundref="d2/d73/GUIRoute-inlines_8h" startline="1104" endline="1138">mutaborGUI::GUIInputDeviceBase::Remove</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga75c2c1c9312c7fd3b0ac67482bc3f3b7" compoundref="d2/dc0/Device_8cpp" startline="164" endline="180">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Remove</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga1534110e2edb2322b7ac8cb924c8d6d9" compoundref="de/d0f/Box_8h" startline="775" endline="778">mutabor::BoxClass::remove_watchdog</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4300bee27190c026ec59d094a8a83f9b" compoundref="d8/dfb/Route_8cpp" startline="296" endline="307">mutabor::TRouteClass&lt; I, O, B &gt;::RemoveFromRouteList</referencedby>
+        <referencedby refid="d8/db4/classmutaborGUI_1_1GUIRouteBase_1ac5617cbdba3df10d8191a1d7b36fc5f2" compoundref="d2/d73/GUIRoute-inlines_8h" startline="451" endline="502">mutaborGUI::GUIRouteBase::Replace</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gade0e2c0002cd68cb14e2bef3dd3299ba" compoundref="d9/d24/BoxChannelShape_8cpp" startline="188" endline="200">mutaborGUI::MutBoxChannelShape::Replace</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga6ae93f5190a9dccf6a000a3ae7986a0e" compoundref="d9/d94/DeviceShape_8cpp" startline="147" endline="159">mutaborGUI::MutDeviceShape&lt; T &gt;::Replace</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga5d8ae12bbd63fa47a65380f9b074d1bd" compoundref="dd/dc6/Box_8cpp" startline="138" endline="149">mutabor::BoxClass::Replace</referencedby>
+        <referencedby refid="d9/d79/classmutaborGUI_1_1GUIOutputDeviceBase_1af64f5a0e0e56d4acdb6b3c82a85fd6f7" compoundref="d2/d73/GUIRoute-inlines_8h" startline="875" endline="906">mutaborGUI::GUIOutputDeviceBase::Replace</referencedby>
+        <referencedby refid="d4/d3b/classmutaborGUI_1_1GUIInputDeviceBase_1a4e3eebc2221ba139023389355161897a" compoundref="d2/d73/GUIRoute-inlines_8h" startline="1070" endline="1102">mutaborGUI::GUIInputDeviceBase::Replace</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga2875373929d294d6c51991238407f542" compoundref="d2/dc0/Device_8cpp" startline="149" endline="161">mutabor::CommonTypedDeviceAPI&lt; T, P, L &gt;::Replace</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gaf197019e836f6fbb61bd7192732dd61b" compoundref="d8/dba/NewBoxShape_8cpp" startline="67" endline="81">mutaborGUI::NewMutBoxShape::replaceSelfBy</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga0d08040e0353a0525e25f52d0dc7ebcd" compoundref="df/d62/NewInputDeviceShape_8cpp" startline="50" endline="57">mutaborGUI::MutNewInputDeviceShape::replaceSelfBy</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1ga7727c91439e84a87903d8f5202621357" compoundref="d8/db4/BoxShape_8cpp" startline="607" endline="616">mutaborGUI::MutBoxShape::replaceSelfBy</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gab5acbf0b0cc8d599bb2389213dd09774" compoundref="d9/d94/DeviceShape_8cpp" startline="509" endline="540">mutaborGUI::MutDeviceShape&lt; T &gt;::replaceSelfBy</referencedby>
+        <referencedby refid="d3/d85/classmutabor_1_1channel__queue__template_1a0c8aa257a77fe16b451ca04cb0347dd5" compoundref="de/d21/midicmn_8h" startline="128" endline="146">mutabor::channel_queue_template&lt; unsigned char, 16 &gt;::reserve_channel</referencedby>
+        <referencedby refid="d5/d27/classmutabor_1_1CommonFileOutputDevice_1a572270a4299a15982d3bf858666ddba0" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="56" endline="65">mutabor::CommonFileOutputDevice::Save</referencedby>
+        <referencedby refid="dd/de6/classmutabor_1_1OutputGis_1a5238013279f1d14d5ffab06444e5952c" compoundref="db/d78/DevGIS_8cpp" startline="180" endline="187">mutabor::OutputGis::Save</referencedby>
+        <referencedby refid="d5/dee/group__route_1gae3b27d9f1b4c9652482e8c8a49c2c570" compoundref="d8/dfb/Route_8cpp" startline="71" endline="85">mutabor::TRouteClass&lt; I, O, B &gt;::Save</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1aebd2d366f92f7fcb3fda5c3ffd7fa2a3" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="113" endline="122">mutabor::CommonFileInputDevice::Save</referencedby>
+        <referencedby refid="dc/da1/classmutabor_1_1InputGis_1ac8990a1c448400d582db2fc4b9262169" compoundref="db/d78/DevGIS_8cpp" startline="252" endline="261">mutabor::InputGis::Save</referencedby>
+        <referencedby refid="d7/d7b/classmutabor_1_1OutputMidiPort_1a34c460bc0275c3a6708dd837e50e3bbe" compoundref="df/d8f/DevMidi_8cpp" startline="76" endline="89">mutabor::OutputMidiPort::Save</referencedby>
+        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1aaa4af14652364420cff3b3f045dff0c8" compoundref="df/d8f/DevMidi_8cpp" startline="224" endline="232">mutabor::InputMidiPort::Save</referencedby>
+        <referencedby refid="d5/d5f/classmutabor_1_1OutputMidiFile_1a6edbcd23203804c50bf66e0c50cb357f" compoundref="d0/d6b/DevMidF_8cpp" startline="253" endline="261">mutabor::OutputMidiFile::Save</referencedby>
+        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a6146930f86cbd9c73933d50c1543fcc7" compoundref="d0/d6b/DevMidF_8cpp" startline="406" endline="428">mutabor::InputMidiFile::Save</referencedby>
+        <referencedby refid="d5/dee/group__route_1gac12082bf0a070d44b66f36e28cfa11bd" compoundref="dd/dc6/Box_8cpp" startline="987" endline="1008">mutabor::BoxFactory::SaveBoxes</referencedby>
+        <referencedby refid="d5/dee/group__route_1gae8161f3d5d3a0cbb02c724b6d8515e53" compoundref="d2/dc0/Device_8cpp" startline="620" endline="642">mutabor::DeviceFactory::SaveInputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga4e80ba5e5d5fb69eba97cd43d9ffbd95" compoundref="d2/dc0/Device_8cpp" startline="564" endline="585">mutabor::DeviceFactory::SaveOutputDevices</referencedby>
+        <referencedby refid="d5/dee/group__route_1gad17e61b049b311b1878679297b324cc9" compoundref="d8/dfb/Route_8cpp" startline="227" endline="244">mutabor::TRouteClass&lt; I, O, B &gt;::SaveRoutes</referencedby>
+        <referencedby refid="de/d1e/classmutabor_1_1DebugMidiOutputProvider_1af30d5680a5c740c23348d23588cf856d" compoundref="de/d21/midicmn_8h" startline="466" endline="482">mutabor::DebugMidiOutputProvider::SendSysEx</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga76f0aef39bc81c389c6202f7f6cf3864" compoundref="dd/dc6/Box_8cpp" startline="97" endline="108">mutabor::BoxClass::set_routefile_id</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gac130fb3e87472adbdb29d2c170241457" compoundref="d8/db4/BoxShape_8cpp" startline="114" endline="132">mutaborGUI::MutBoxShape::SetBackgroundColour</referencedby>
+        <referencedby refid="d8/d4a/classmutaborGUI_1_1MutaborBoxSettings_1a0106bdeaf4397b28e229b4c04dcea1c6" compoundref="d3/d2a/BoxDlg_8cpp" startline="51" endline="58">mutaborGUI::MutaborBoxSettings::SetBoxNumber</referencedby>
+        <referencedby refid="df/d7d/classmutaborGUI_1_1BoxDlg_1ad63d59141a1f8fac3e7b8c08c86274f4" compoundref="d9/dd2/BoxDlg_8h" startline="211" endline="216">mutaborGUI::BoxDlg::SetBoxNumber</referencedby>
+        <referencedby refid="df/d7d/classmutaborGUI_1_1BoxDlg_1add3353f6c9ee7c99f34446729ea58b66" compoundref="d3/d2a/BoxDlg_8cpp" startline="328" endline="356">mutaborGUI::BoxDlg::SetBoxType</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga178efc5eccb11e4a6b43129eeeaae563" compoundref="dc/df3/MutFrame_8cpp" startline="663" endline="682">mutaborGUI::MutFrame::SetClient</referencedby>
+        <referencedby refid="d9/d7a/classmutaborGUI_1_1MutChild_1aed36641445441cf1a4113643acdfc6c6" compoundref="d2/df9/MutChild_8h" startline="126" endline="130">mutaborGUI::MutChild::SetClientSize</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga9c38263d8d0e9374e1e5df15192cdf84" compoundref="d5/d6f/IconShape_8h" startline="105" endline="113">MutIconShapeClass&lt; MutPanel &gt;::SetLabel</referencedby>
+        <referencedby refid="d1/dea/classmutaborGUI_1_1MutSTCLexer_1aee5ea6f87755d1016abec5f4acc64645" compoundref="dc/d0c/stclanguage_8cpp" startline="569" endline="592">mutaborGUI::MutSTCLexer::SetStyling</referencedby>
+        <referencedby refid="d2/dea/classmutabor_1_1InputMidiPort_1a12844ee9a3a8672f2a6b1acb98095dd6" compoundref="df/d8f/DevMidi_8cpp" startline="449" endline="472">mutabor::InputMidiPort::shouldProceed</referencedby>
+        <referencedby refid="d6/d12/classmutabor_1_1InputMidiFile_1a9b9410cda8d53b5d1ea022f296c14291" compoundref="d0/d6b/DevMidF_8cpp" startline="862" endline="890">mutabor::InputMidiFile::shouldProceed</referencedby>
+        <referencedby refid="dc/df2/group__GUIroute_1gac946c92d094b2ce45b65b2a82de379f2" compoundref="d8/db4/BoxShape_8cpp" startline="478" endline="531">mutaborGUI::MutBoxShape::ShowBoxDialog</referencedby>
+        <referencedby refid="d5/dab/classmutabor_1_1sysex__event_1a2b1a2f50800e75173ac5c7cfdc2ffbca" compoundref="dd/d20/event_8h" startline="262" endline="271">mutabor::sysex_event::sysex_event</referencedby>
+        <referencedby refid="d9/d7c/group__kernel_1gae5cd429df106dae578f5e9bca96fdcce" compoundref="d1/da7/boxTest_8cpp" startline="313" endline="359">boxTest::testFindKeyByKey</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1gad5b0693526e79475688bcb1ea0a679d5" compoundref="dc/df3/MutFrame_8cpp" startline="1183" endline="1263">mutaborGUI::MutFrame::TextBoxOpen</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a423d3eece573e61472d6ec5f1c782486" compoundref="d9/d6a/CommonFileDevice-inlines_8h" startline="357" endline="512">mutabor::CommonFileInputDevice::ThreadPlay</referencedby>
+        <referencedby refid="d1/d44/group__config_1ga9e81e9f5d9925568aa9f092133487e99" compoundref="d4/d26/configtree_8cpp" startline="126" endline="156">configtree::toFirstLeaf</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga238fcaaf812e146c5b92c39f7ac8aca2" compoundref="dc/df3/MutFrame_8cpp" startline="1075" endline="1134">mutaborGUI::MutFrame::ToggleTextBox</referencedby>
+        <referencedby refid="db/d94/namespacemutaborGUI_1a523a519a578cfbb4735203dee5fd2fd4" compoundref="d5/df7/GUIBoxData_8h" startline="260" endline="263">mutaborGUI::ToGUIBase</referencedby>
+        <referencedby refid="d1/d44/group__config_1ga76418ee6b83d800ae26170b6374f0347" compoundref="d4/d26/configtree_8cpp" startline="87" endline="107">configtree::toLeaf</referencedby>
+        <referencedby refid="dd/d18/classmutaborGUI_1_1xmltree_1a0b997f435049a4960de262b5a2f64341" compoundref="de/d4f/xmltree_8cpp" startline="191" endline="211">mutaborGUI::xmltree::toLeaf</referencedby>
+        <referencedby refid="d1/d44/group__config_1ga7ecd104f2b17acda6c1300fc08a44b80" compoundref="d4/d26/configtree_8cpp" startline="159" endline="197">configtree::toNextLeaf</referencedby>
+        <referencedby refid="d1/d44/group__config_1ga3b8d3fac8b8769cc93ead97d80ad0359" compoundref="d4/d26/configtree_8cpp" startline="200" endline="231">configtree::toParent</referencedby>
+        <referencedby refid="dd/d18/classmutaborGUI_1_1xmltree_1aa160b14a043dbfad6237702fefdcc9b4" compoundref="de/d4f/xmltree_8cpp" startline="337" endline="353">mutaborGUI::xmltree::toParent</referencedby>
+        <referencedby refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1a3bf84995a51856f957a56fed9c9bc63f" compoundref="df/d11/MutLogicWnd_8cpp" startline="411" endline="484">mutaborGUI::MutLogicWnd::UpDate</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga7a4591f67fcd9ca05e58dfb84ede840b" compoundref="dc/df3/MutFrame_8cpp" startline="1894" endline="2012">mutaborGUI::MutFrame::UpdateBoxMenu</referencedby>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1af6130726525d528f329d4295200ed324" compoundref="da/d3c/DevMidF_8h" startline="161" endline="170">mutabor::Track::UpdateDelta</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a0e07f85298f243526c07a976c7a44faa" compoundref="d9/d17/CommonFileDevice_8h" startline="254" endline="285">mutabor::CommonFileInputDevice::WaitForDeviceFinish</referencedby>
+        <referencedby refid="dd/dbe/classmutabor_1_1Track_1a3b6c5f28f6c01575275865de1b25ce7c" compoundref="d0/d6b/DevMidF_8cpp" startline="116" endline="134">mutabor::Track::WriteDelta</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1af683e9a4df80a5abc8d7816a0a228948" compoundref="df/d33/mut_8cc" startline="3227" endline="3459">mutabor::hidden::yylex</referencedby>
+        <referencedby refid="dd/d3c/classmutabor_1_1CommonFileInputDevice_1a0ff99f1e190f67f0293e772bf1aafaa7" compoundref="d9/d17/CommonFileDevice_8h" startline="173" endline="176">mutabor::CommonFileInputDevice::~CommonFileInputDevice</referencedby>
+        <referencedby refid="d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer_1add1c80ab7fafc2dc054de0d3b453342b" compoundref="d9/d17/CommonFileDevice_8h" startline="132" endline="138">mutabor::CommonFileInputDevice::FileTimer::~FileTimer</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga3933ab909bb2d07ccd37eaf64d026e84" compoundref="da/d72/MutChild_8cpp" startline="153" endline="158">mutaborGUI::MutChild::~MutChild</referencedby>
+        <referencedby refid="df/dd1/group__GUI_1ga2255fbb1b03e902ac19724c508ed1f9a" compoundref="dc/df3/MutFrame_8cpp" startline="359" endline="374">mutaborGUI::MutFrame::~MutFrame</referencedby>
+        <referencedby refid="dd/d65/classmutaborGUI_1_1MutLogicWnd_1a08879430599f7c41b7627a43dee58946" compoundref="d6/d81/MutLogicWnd_8h" startline="70" endline="77">mutaborGUI::MutLogicWnd::~MutLogicWnd</referencedby>
+        <referencedby refid="d5/dee/group__route_1gaf2a30408568febfb9f0eb4212fa0f314" compoundref="de/d05/Device_8h" startline="844" endline="848">mutabor::OutputDeviceClass::~OutputDeviceClass</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga0ea227d86a7168f2b705748fb24e69f1" compoundref="d8/dfb/Route_8cpp" startline="55" endline="67">mutabor::TRouteClass&lt; I, O, B &gt;::~TRouteClass</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>

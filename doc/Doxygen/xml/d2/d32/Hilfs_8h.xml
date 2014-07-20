@@ -6,306 +6,224 @@
     <includes refid="dc/d19/box_8h" local="yes">box.h</includes>
     <includes local="no">stdio.h</includes>
     <includedby refid="d1/dce/box_8cpp" local="yes">src/kernel/box.cpp</includedby>
-    <includedby refid="df/d23/Execute_8cpp" local="yes">src/kernel/Execute.cpp</includedby>
     <includedby refid="da/d02/Hilfs_8cpp" local="yes">src/kernel/Hilfs.cpp</includedby>
-    <includedby refid="d3/dca/Interval_8cpp" local="yes">src/kernel/Interval.cpp</includedby>
+    <includedby refid="d2/de4/Interval_8c" local="yes">src/kernel/Interval.c</includedby>
     <includedby refid="df/d33/mut_8cc" local="yes">src/kernel/mut.cc</includedby>
-    <includedby refid="d1/de1/Mut__Tab_8cpp" local="yes">src/kernel/Mut_Tab.cpp</includedby>
     <includedby refid="dc/df5/Parser_8cpp" local="yes">src/kernel/Parser.cpp</includedby>
     <includedby refid="dd/dc6/Box_8cpp" local="yes">src/kernel/routing/Box.cpp</includedby>
     <includedby refid="db/d80/Runtime_8cpp" local="yes">src/kernel/Runtime.cpp</includedby>
     <includedby refid="d3/da0/TabGen_8cpp" local="yes">src/kernel/TabGen.cpp</includedby>
     <includedby refid="d1/da7/boxTest_8cpp" local="yes">src/kernel/tests/boxTest.cpp</includedby>
     <incdepgraph>
-      <node id="19267">
-        <label>list</label>
-      </node>
-      <node id="19260">
+      <node id="18684">
         <label>stdarg.h</label>
       </node>
-      <node id="19291">
-        <label>Execute.h</label>
-        <link refid="de/d11/Execute_8h"/>
-        <childnode refid="19259" relation="include">
-        </childnode>
-        <childnode refid="19287" relation="include">
-        </childnode>
-      </node>
-      <node id="19275">
-        <label>wx/cmdline.h</label>
-      </node>
-      <node id="19263">
-        <label>wx/stdpaths.h</label>
-      </node>
-      <node id="19259">
-        <label>Defs.h</label>
-        <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="19260" relation="include">
-        </childnode>
-        <childnode refid="19261" relation="include">
-        </childnode>
-        <childnode refid="19280" relation="include">
-        </childnode>
-        <childnode refid="19281" relation="include">
-        </childnode>
-        <childnode refid="19274" relation="include">
-        </childnode>
-        <childnode refid="19282" relation="include">
-        </childnode>
-        <childnode refid="19283" relation="include">
-        </childnode>
-      </node>
-      <node id="19274">
-        <label>stdint.h</label>
-      </node>
-      <node id="19288">
-        <label>stdlib.h</label>
-      </node>
-      <node id="19280">
-        <label>wx/wxchar.h</label>
-      </node>
-      <node id="19269">
-        <label>wx/image.h</label>
-      </node>
-      <node id="19292">
-        <label>malloc.h</label>
-      </node>
-      <node id="19284">
-        <label>string</label>
-      </node>
-      <node id="19279">
-        <label>mutDebugFlags.h</label>
-        <link refid="d7/d49/mutDebugFlags_8h"/>
-      </node>
-      <node id="19262">
-        <label>wx/window.h</label>
-      </node>
-      <node id="19290">
-        <label>Interpre.h</label>
-        <link refid="d2/dd8/Interpre_8h"/>
-        <childnode refid="19259" relation="include">
-        </childnode>
-        <childnode refid="19286" relation="include">
-        </childnode>
-      </node>
-      <node id="19285">
-        <label>box.h</label>
-        <link refid="dc/d19/box_8h"/>
-        <childnode refid="19259" relation="include">
-        </childnode>
-        <childnode refid="19286" relation="include">
-        </childnode>
-        <childnode refid="19290" relation="include">
-        </childnode>
-        <childnode refid="19291" relation="include">
-        </childnode>
-        <childnode refid="19292" relation="include">
-        </childnode>
-      </node>
-      <node id="19281">
-        <label>wx/intl.h</label>
-      </node>
-      <node id="19268">
-        <label>src/wxGUI/Mutabor.rh</label>
-        <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="19259" relation="include">
-        </childnode>
-      </node>
-      <node id="19264">
-        <label>wx/filename.h</label>
-      </node>
-      <node id="19266">
-        <label>typeinfo</label>
-      </node>
-      <node id="19277">
-        <label>wx/debug.h</label>
-      </node>
-      <node id="19272">
-        <label>cstdio</label>
-      </node>
-      <node id="19271">
-        <label>bitset</label>
-      </node>
-      <node id="19261">
-        <label>src/wxGUI/generic/mhDefs.h</label>
-        <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="19259" relation="include">
-        </childnode>
-        <childnode refid="19262" relation="include">
-        </childnode>
-        <childnode refid="19263" relation="include">
-        </childnode>
-        <childnode refid="19264" relation="include">
-        </childnode>
-        <childnode refid="19265" relation="include">
-        </childnode>
-        <childnode refid="19266" relation="include">
-        </childnode>
-        <childnode refid="19267" relation="include">
-        </childnode>
-        <childnode refid="19268" relation="include">
-        </childnode>
-        <childnode refid="19269" relation="include">
-        </childnode>
-        <childnode refid="19270" relation="include">
-        </childnode>
-      </node>
-      <node id="19258">
+      <node id="18669">
         <label>src/kernel/Hilfs.h</label>
         <link refid="Hilfs.h"/>
-        <childnode refid="19259" relation="include">
+        <childnode refid="18670" relation="include">
         </childnode>
-        <childnode refid="19285" relation="include">
+        <childnode refid="18680" relation="include">
         </childnode>
-        <childnode refid="19287" relation="include">
-        </childnode>
-      </node>
-      <node id="19273">
-        <label>vector</label>
-      </node>
-      <node id="19270">
-        <label>mutDebug.h</label>
-        <link refid="de/de1/mutDebug_8h"/>
-        <childnode refid="19271" relation="include">
-        </childnode>
-        <childnode refid="19265" relation="include">
-        </childnode>
-        <childnode refid="19272" relation="include">
-        </childnode>
-        <childnode refid="19273" relation="include">
-        </childnode>
-        <childnode refid="19274" relation="include">
-        </childnode>
-        <childnode refid="19275" relation="include">
-        </childnode>
-        <childnode refid="19276" relation="include">
-        </childnode>
-        <childnode refid="19277" relation="include">
-        </childnode>
-        <childnode refid="19278" relation="include">
-        </childnode>
-        <childnode refid="19279" relation="include">
+        <childnode refid="18682" relation="include">
         </childnode>
       </node>
-      <node id="19283">
+      <node id="18680">
+        <label>box.h</label>
+        <link refid="dc/d19/box_8h"/>
+        <childnode refid="18670" relation="include">
+        </childnode>
+        <childnode refid="18681" relation="include">
+        </childnode>
+        <childnode refid="18687" relation="include">
+        </childnode>
+        <childnode refid="18690" relation="include">
+        </childnode>
+        <childnode refid="18691" relation="include">
+        </childnode>
+      </node>
+      <node id="18678">
+        <label>stdint.h</label>
+      </node>
+      <node id="18683">
+        <label>stdlib.h</label>
+      </node>
+      <node id="18671">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="18670" relation="include">
+        </childnode>
+      </node>
+      <node id="18677">
+        <label>boost/format.hpp</label>
+      </node>
+      <node id="18687">
+        <label>Interpre.h</label>
+        <link refid="d2/dd8/Interpre_8h"/>
+        <childnode refid="18670" relation="include">
+        </childnode>
+        <childnode refid="18688" relation="include">
+        </childnode>
+        <childnode refid="18681" relation="include">
+        </childnode>
+        <childnode refid="18689" relation="include">
+        </childnode>
+      </node>
+      <node id="18691">
+        <label>malloc.h</label>
+      </node>
+      <node id="18675">
+        <label>string</label>
+      </node>
+      <node id="18689">
+        <label>limits.h</label>
+      </node>
+      <node id="18688">
+        <label>MidiKern.h</label>
+        <link refid="da/dfd/MidiKern_8h"/>
+        <childnode refid="18670" relation="include">
+        </childnode>
+        <childnode refid="18686" relation="include">
+        </childnode>
+      </node>
+      <node id="18670">
+        <label>Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="18671" relation="include">
+        </childnode>
+        <childnode refid="18672" relation="include">
+        </childnode>
+        <childnode refid="18673" relation="include">
+        </childnode>
+      </node>
+      <node id="18685">
+        <label>string.h</label>
+      </node>
+      <node id="18676">
+        <label>cstdio</label>
+      </node>
+      <node id="18673">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="18670" relation="include">
+        </childnode>
+        <childnode refid="18674" relation="include">
+        </childnode>
+        <childnode refid="18675" relation="include">
+        </childnode>
+        <childnode refid="18676" relation="include">
+        </childnode>
+        <childnode refid="18677" relation="include">
+        </childnode>
+        <childnode refid="18678" relation="include">
+        </childnode>
+        <childnode refid="18679" relation="include">
+        </childnode>
+      </node>
+      <node id="18674">
         <label>src/wxintl/libintl.h</label>
         <link refid="d4/d64/libintl_8h"/>
-        <childnode refid="19259" relation="include">
+        <childnode refid="18670" relation="include">
         </childnode>
-        <childnode refid="19284" relation="include">
-        </childnode>
-      </node>
-      <node id="19276">
-        <label>wx/string.h</label>
-      </node>
-      <node id="19286">
-        <label>Global.h</label>
-        <link refid="dd/d40/Global_8h"/>
-        <childnode refid="19259" relation="include">
-        </childnode>
-        <childnode refid="19287" relation="include">
-        </childnode>
-        <childnode refid="19288" relation="include">
-        </childnode>
-        <childnode refid="19260" relation="include">
-        </childnode>
-        <childnode refid="19284" relation="include">
-        </childnode>
-        <childnode refid="19289" relation="include">
+        <childnode refid="18675" relation="include">
         </childnode>
       </node>
-      <node id="19289">
+      <node id="18686">
         <label>math.h</label>
       </node>
-      <node id="19265">
-        <label>iostream</label>
+      <node id="18690">
+        <label>Execute.h</label>
+        <link refid="de/d11/Execute_8h"/>
+        <childnode refid="18670" relation="include">
+        </childnode>
+        <childnode refid="18682" relation="include">
+        </childnode>
       </node>
-      <node id="19278">
-        <label>wx/thread.h</label>
+      <node id="18672">
+        <label>cstddef</label>
       </node>
-      <node id="19282">
-        <label>wx/setup.h</label>
+      <node id="18681">
+        <label>Global.h</label>
+        <link refid="dd/d40/Global_8h"/>
+        <childnode refid="18670" relation="include">
+        </childnode>
+        <childnode refid="18682" relation="include">
+        </childnode>
+        <childnode refid="18683" relation="include">
+        </childnode>
+        <childnode refid="18684" relation="include">
+        </childnode>
+        <childnode refid="18685" relation="include">
+        </childnode>
+        <childnode refid="18686" relation="include">
+        </childnode>
       </node>
-      <node id="19287">
+      <node id="18682">
         <label>stdio.h</label>
+      </node>
+      <node id="18679">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="19304">
-        <label>src/kernel/TabGen.cpp</label>
-        <link refid="d3/da0/TabGen_8cpp"/>
-      </node>
-      <node id="19303">
-        <label>src/kernel/routing/midi/tests/midicmnTest.cpp</label>
-        <link refid="d8/d59/midicmnTest_8cpp"/>
-      </node>
-      <node id="19305">
-        <label>src/kernel/tests/boxTest.cpp</label>
-        <link refid="d1/da7/boxTest_8cpp"/>
-      </node>
-      <node id="19297">
-        <label>src/kernel/Interval.cpp</label>
-        <link refid="d3/dca/Interval_8cpp"/>
-      </node>
-      <node id="19299">
-        <label>src/kernel/Mut_Tab.cpp</label>
-        <link refid="d1/de1/Mut__Tab_8cpp"/>
-      </node>
-      <node id="19302">
-        <label>src/kernel/Runtime.cpp</label>
-        <link refid="db/d80/Runtime_8cpp"/>
-        <childnode refid="19303" relation="include">
-        </childnode>
-      </node>
-      <node id="19296">
-        <label>src/kernel/Hilfs.cpp</label>
-        <link refid="da/d02/Hilfs_8cpp"/>
-      </node>
-      <node id="19300">
-        <label>src/kernel/Parser.cpp</label>
-        <link refid="dc/df5/Parser_8cpp"/>
-      </node>
-      <node id="19293">
+      <node id="18692">
         <label>src/kernel/Hilfs.h</label>
         <link refid="Hilfs.h"/>
-        <childnode refid="19294" relation="include">
+        <childnode refid="18693" relation="include">
         </childnode>
-        <childnode refid="19295" relation="include">
+        <childnode refid="18694" relation="include">
         </childnode>
-        <childnode refid="19296" relation="include">
+        <childnode refid="18695" relation="include">
         </childnode>
-        <childnode refid="19297" relation="include">
+        <childnode refid="18696" relation="include">
         </childnode>
-        <childnode refid="19298" relation="include">
+        <childnode refid="18697" relation="include">
         </childnode>
-        <childnode refid="19299" relation="include">
+        <childnode refid="18698" relation="include">
         </childnode>
-        <childnode refid="19300" relation="include">
+        <childnode refid="18699" relation="include">
         </childnode>
-        <childnode refid="19301" relation="include">
+        <childnode refid="18700" relation="include">
         </childnode>
-        <childnode refid="19302" relation="include">
-        </childnode>
-        <childnode refid="19304" relation="include">
-        </childnode>
-        <childnode refid="19305" relation="include">
+        <childnode refid="18701" relation="include">
         </childnode>
       </node>
-      <node id="19294">
+      <node id="18693">
         <label>src/kernel/box.cpp</label>
         <link refid="d1/dce/box_8cpp"/>
       </node>
-      <node id="19298">
-        <label>src/kernel/mut.cc</label>
-        <link refid="df/d33/mut_8cc"/>
+      <node id="18701">
+        <label>src/kernel/tests/boxTest.cpp</label>
+        <link refid="d1/da7/boxTest_8cpp"/>
       </node>
-      <node id="19295">
-        <label>src/kernel/Execute.cpp</label>
-        <link refid="df/d23/Execute_8cpp"/>
+      <node id="18694">
+        <label>src/kernel/Hilfs.cpp</label>
+        <link refid="da/d02/Hilfs_8cpp"/>
       </node>
-      <node id="19301">
+      <node id="18698">
         <label>src/kernel/routing/Box.cpp</label>
         <link refid="dd/dc6/Box_8cpp"/>
+      </node>
+      <node id="18697">
+        <label>src/kernel/Parser.cpp</label>
+        <link refid="dc/df5/Parser_8cpp"/>
+      </node>
+      <node id="18699">
+        <label>src/kernel/Runtime.cpp</label>
+        <link refid="db/d80/Runtime_8cpp"/>
+      </node>
+      <node id="18695">
+        <label>src/kernel/Interval.c</label>
+        <link refid="d2/de4/Interval_8c"/>
+      </node>
+      <node id="18700">
+        <label>src/kernel/TabGen.cpp</label>
+        <link refid="d3/da0/TabGen_8cpp"/>
+      </node>
+      <node id="18696">
+        <label>src/kernel/mut.cc</label>
+        <link refid="df/d33/mut_8cc"/>
       </node>
     </invincdepgraph>
     <innernamespace refid="d6/daa/namespacemutabor">mutabor</innernamespace>
@@ -319,7 +237,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" line="35" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" bodystart="35" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" line="35" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d9/d7c/group__kernel_1gae4ff2f67ed5a782777877235f39669e9" prot="public" static="no">
         <name>MU32_Hilfs_H_PRECOMPILED</name>
@@ -329,7 +247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" line="46" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" bodystart="46" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" line="46" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d2/d32/Hilfs_8h_1aa93f2514a0844adf4ff82a3853148266" prot="public" static="no">
         <name>HEAP_PORTION_SYNTAX</name>
@@ -340,9 +258,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" line="57" column="10" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" bodystart="57" bodyend="-1"/>
-        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ad8ff783d284e0e18b3b9c854a97c0087" compoundref="da/d02/Hilfs_8cpp" startline="154" endline="234">mutabor::hidden::xmalloc</referencedby>
-        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aace3211515e24c8717c38370668d41f0" compoundref="da/d02/Hilfs_8cpp" startline="236" endline="267">mutabor::hidden::xrealloc</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" line="57" column="10" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" bodystart="57" bodyend="-1"/>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1ad8ff783d284e0e18b3b9c854a97c0087" compoundref="da/d02/Hilfs_8cpp" startline="146" endline="226">mutabor::hidden::xmalloc</referencedby>
+        <referencedby refid="d6/dbb/namespacemutabor_1_1hidden_1aace3211515e24c8717c38370668d41f0" compoundref="da/d02/Hilfs_8cpp" startline="228" endline="259">mutabor::hidden::xrealloc</referencedby>
       </memberdef>
       <memberdef kind="define" id="d2/d32/Hilfs_8h_1a2ed983b16ea3bd4d726f9c5a2a36cc7d" prot="public" static="no">
         <name>HEAP_PORTION_LAUFZEIT</name>
@@ -353,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" line="58" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" bodystart="58" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" line="58" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h" bodystart="58" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -372,9 +290,9 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="35" refid="d9/d7c/group__kernel_1gabc5d9755cd2497a19f7e704b84867761" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MU32_Hilfs_H</highlight></codeline>
 <codeline lineno="36"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>---------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>headers<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>---------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dc/d19/box_8h" kindref="compound">box.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -382,7 +300,7 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MU32_Hilfs_H_PRECOMPILED</highlight></codeline>
 <codeline lineno="46" refid="d9/d7c/group__kernel_1gae4ff2f67ed5a782777877235f39669e9" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MU32_Hilfs_H_PRECOMPILED</highlight></codeline>
 <codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>system<sp/>headers<sp/>which<sp/>do<sp/>seldom<sp/>change</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>system<sp/>headers<sp/>which<sp/>do<sp/>seldom<sp/>change<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
@@ -395,21 +313,21 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="58" refid="d2/d32/Hilfs_8h_1a2ed983b16ea3bd4d726f9c5a2a36cc7d" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>HEAP_PORTION_LAUFZEIT<sp/></highlight><highlight class="comment">/*65536L*/</highlight><highlight class="preprocessor"><sp/>64000</highlight></codeline>
 <codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a7b4eade34906b044ff674b240d51919b" kindref="member">xfree</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>pointer);</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ad8ff783d284e0e18b3b9c854a97c0087" kindref="member">xmalloc</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aace3211515e24c8717c38370668d41f0" kindref="member">xrealloc</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>block,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>newsize);</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb1d132e2f1bd9f78092bb9d30d2cb5" kindref="member">xcalloc</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>anzahl,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga7b4eade34906b044ff674b240d51919b" kindref="member">xfree</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>pointer);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ad8ff783d284e0e18b3b9c854a97c0087" kindref="member">xmalloc</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1aace3211515e24c8717c38370668d41f0" kindref="member">xrealloc</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>block,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>newsize);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb1d132e2f1bd9f78092bb9d30d2cb5" kindref="member">xcalloc</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>anzahl,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ad65f78c68f5305908d622695784459cb" kindref="member">yfree</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>pointer);</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac5053d1aa70a1f88a246f3d99ac347e4" kindref="member">ymalloc</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a537f5d38f4a3636b150f602df33acb60" kindref="member">yrealloc</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>block,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>newsize);</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a680c7d61b190b98816d142e0a5d52b09" kindref="member">ycalloc</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>anzahl,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac5053d1aa70a1f88a246f3d99ac347e4" kindref="member">ymalloc</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a537f5d38f4a3636b150f602df33acb60" kindref="member">yrealloc</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>block,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>newsize);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a680c7d61b190b98816d142e0a5d52b09" kindref="member">ycalloc</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>anzahl,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a89ba87b0e079700339d0135a2c1ce770" kindref="member">loesche_syntax_speicher</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ab7172a24ea20bd654932cf5678c5c1bd" kindref="member">init_syntax_speicher</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a6c835f824d9499ceebd10fd58108559a" kindref="member">init_laufzeit_speicher</ref><sp/>(<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box<sp/>);</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a074921eb004273f2c218cfc6a8fc5f94" kindref="member">loesche_laufzeit_speicher</ref><sp/>(<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box<sp/>);</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac489eaad950d3b19b0b1e4f218a304c5" kindref="member">xalloca</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a89ba87b0e079700339d0135a2c1ce770" kindref="member">loesche_syntax_speicher</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ab7172a24ea20bd654932cf5678c5c1bd" kindref="member">init_syntax_speicher</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a6c835f824d9499ceebd10fd58108559a" kindref="member">init_laufzeit_speicher</ref><sp/>(<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box<sp/>);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a074921eb004273f2c218cfc6a8fc5f94" kindref="member">loesche_laufzeit_speicher</ref><sp/>(<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box<sp/>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ac489eaad950d3b19b0b1e4f218a304c5" kindref="member">xalloca</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1ad4554a723729d37d1ae7b9f383cfed24" kindref="member">xde_alloca</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>pointer);</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
@@ -425,6 +343,6 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="88"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/Hilfs.h"/>
   </compounddef>
 </doxygen>

@@ -5,9 +5,9 @@
     <basecompoundref refid="d2/db7/classGisToken" prot="public" virt="non-virtual">GisToken</basecompoundref>
     <includes refid="dd/d4d/GIS_8h" local="no">GIS.h</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="d9/d18/classGisNote_1a03994c84a4848cbbbcd7d99e068e448b" prot="public" static="no" mutable="no">
-        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
-        <definition>mutString GisNote::Name</definition>
+      <memberdef kind="variable" id="d9/d18/classGisNote_1af62ecc5142a84228f379d4f5dd27fe8a" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string GisNote::Name</definition>
         <argsstring></argsstring>
         <name>Name</name>
         <briefdescription>
@@ -16,13 +16,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="461" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="461" bodyend="-1"/>
-        <referencedby refid="d9/d18/classGisNote_1a14f32da4ae5a85835129fb6fb2269fc3" compoundref="dd/d4d/GIS_8h" startline="466" endline="480">GisNote</referencedby>
-        <referencedby refid="d9/d18/classGisNote_1a6bbfcb8e1c2994c14bf7a3a9a7132e1f" compoundref="dd/d4d/GIS_8h" startline="501" endline="507">ToString</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="427" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="427" bodyend="-1"/>
+        <referencedby refid="d9/d18/classGisNote_1a2f6264029f33392870f900853c4f80ee" compoundref="dd/d4d/GIS_8h" startline="432" endline="446">GisNote</referencedby>
+        <referencedby refid="d9/d18/classGisNote_1a4dd4e48bc8abce74236968cba5600598" compoundref="dd/d4d/GIS_8h" startline="471" endline="477">ToString</referencedby>
       </memberdef>
-      <memberdef kind="variable" id="d9/d18/classGisNote_1a98c52aeac9ef11ff9262b602473a2b0d" prot="public" static="no" mutable="no">
-        <type><ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
-        <definition>mutString GisNote::Accedentials</definition>
+      <memberdef kind="variable" id="d9/d18/classGisNote_1aa12969eb6c58c2dae80ed3d9356c24c8" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string GisNote::Accedentials</definition>
         <argsstring></argsstring>
         <name>Accedentials</name>
         <briefdescription>
@@ -31,10 +31,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="462" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="462" bodyend="-1"/>
-        <referencedby refid="d5/dee/group__route_1gaa3cc2eb32425f88fdad402d1ca09f26a" compoundref="dc/de7/GIS_8cpp" startline="396" endline="408">GetKey</referencedby>
-        <referencedby refid="d5/dee/group__route_1gad652f7ea335a92b55351734a3b863e8a" compoundref="dc/de7/GIS_8cpp" startline="351" endline="394">GisNote</referencedby>
-        <referencedby refid="d9/d18/classGisNote_1a6bbfcb8e1c2994c14bf7a3a9a7132e1f" compoundref="dd/d4d/GIS_8h" startline="501" endline="507">ToString</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="428" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="428" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gaa3cc2eb32425f88fdad402d1ca09f26a" compoundref="dc/de7/GIS_8cpp" startline="388" endline="400">GetKey</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga457d7166db6e3539d2565e6bda4f3ecb" compoundref="dc/de7/GIS_8cpp" startline="343" endline="386">GisNote</referencedby>
+        <referencedby refid="d9/d18/classGisNote_1a4dd4e48bc8abce74236968cba5600598" compoundref="dd/d4d/GIS_8h" startline="471" endline="477">ToString</referencedby>
       </memberdef>
       <memberdef kind="variable" id="d9/d18/classGisNote_1ad4504bfe7546b2b73fec3fecfb8a7d47" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -47,14 +47,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="463" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="463" bodyend="-1"/>
-        <referencedby refid="d5/dee/group__route_1gaa3cc2eb32425f88fdad402d1ca09f26a" compoundref="dc/de7/GIS_8cpp" startline="396" endline="408">GetKey</referencedby>
-        <referencedby refid="d5/dee/group__route_1gad652f7ea335a92b55351734a3b863e8a" compoundref="dc/de7/GIS_8cpp" startline="351" endline="394">GisNote</referencedby>
-        <referencedby refid="d9/d18/classGisNote_1a6bbfcb8e1c2994c14bf7a3a9a7132e1f" compoundref="dd/d4d/GIS_8h" startline="501" endline="507">ToString</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="429" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="429" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1gaa3cc2eb32425f88fdad402d1ca09f26a" compoundref="dc/de7/GIS_8cpp" startline="388" endline="400">GetKey</referencedby>
+        <referencedby refid="d5/dee/group__route_1ga457d7166db6e3539d2565e6bda4f3ecb" compoundref="dc/de7/GIS_8cpp" startline="343" endline="386">GisNote</referencedby>
+        <referencedby refid="d9/d18/classGisNote_1a4dd4e48bc8abce74236968cba5600598" compoundref="dd/d4d/GIS_8h" startline="471" endline="477">ToString</referencedby>
       </memberdef>
-      <memberdef kind="variable" id="d9/d18/classGisNote_1a8ea816c5d54a83f008b6b5421ae09403" prot="public" static="no" mutable="no">
-        <type><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref></type>
-        <definition>frac GisNote::Duration</definition>
+      <memberdef kind="variable" id="d9/d18/classGisNote_1a1be3b84a4958be863600290efff2f70a" prot="public" static="no" mutable="no">
+        <type><ref refid="d9/ded/classmutabor_1_1frac" kindref="compound">mutabor::frac</ref></type>
+        <definition>mutabor::frac GisNote::Duration</definition>
         <argsstring></argsstring>
         <name>Duration</name>
         <briefdescription>
@@ -63,26 +63,26 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="464" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="464" bodyend="-1"/>
-        <referencedby refid="d5/dee/group__route_1gad652f7ea335a92b55351734a3b863e8a" compoundref="dc/de7/GIS_8cpp" startline="351" endline="394">GisNote</referencedby>
-        <referencedby refid="d9/d18/classGisNote_1a6bbfcb8e1c2994c14bf7a3a9a7132e1f" compoundref="dd/d4d/GIS_8h" startline="501" endline="507">ToString</referencedby>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="430" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="430" bodyend="-1"/>
+        <referencedby refid="d5/dee/group__route_1ga457d7166db6e3539d2565e6bda4f3ecb" compoundref="dc/de7/GIS_8cpp" startline="343" endline="386">GisNote</referencedby>
+        <referencedby refid="d9/d18/classGisNote_1a4dd4e48bc8abce74236968cba5600598" compoundref="dd/d4d/GIS_8h" startline="471" endline="477">ToString</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="d9/d18/classGisNote_1a14f32da4ae5a85835129fb6fb2269fc3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="d9/d18/classGisNote_1a2f6264029f33392870f900853c4f80ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GisNote::GisNote</definition>
-        <argsstring>(const mutString &amp;name=mutEmptyString, const mutString &amp;accedentials=mutEmptyString, int octave=0, frac duration=frac(1, 4), const mutString &amp;sep=mutEmptyString, GisToken *next=0)</argsstring>
+        <argsstring>(const std::string &amp;name=&quot;&quot;, const std::string &amp;accedentials=&quot;&quot;, int octave=0, const mutabor::frac &amp;duration=mutabor::frac(1, 4), const std::string &amp;sep=&quot;&quot;, GisToken *next=0)</argsstring>
         <name>GisNote</name>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref> &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>name</declname>
-          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+          <defval>&quot;&quot;</defval>
         </param>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref> &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>accedentials</declname>
-          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+          <defval>&quot;&quot;</defval>
         </param>
         <param>
           <type>int</type>
@@ -90,14 +90,14 @@
           <defval>0</defval>
         </param>
         <param>
-          <type><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref></type>
+          <type>const <ref refid="d9/ded/classmutabor_1_1frac" kindref="compound">mutabor::frac</ref> &amp;</type>
           <declname>duration</declname>
-          <defval><ref refid="d7/dcc/classfrac" kindref="compound">frac</ref>(1, 4)</defval>
+          <defval><ref refid="d9/ded/classmutabor_1_1frac" kindref="compound">mutabor::frac</ref>(1, 4)</defval>
         </param>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref> &amp;</type>
+          <type>const std::string &amp;</type>
           <declname>sep</declname>
-          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+          <defval>&quot;&quot;</defval>
         </param>
         <param>
           <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
@@ -110,16 +110,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="466" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="466" bodyend="480"/>
-        <references refid="d5/dee/group__route_1gafd5a78f79d1b3035496e23e9a47dd78d" compoundref="d3/d9e/GSP_8cpp" startline="89">accedentials</references>
-        <references refid="d9/d18/classGisNote_1a98c52aeac9ef11ff9262b602473a2b0d" compoundref="dd/d4d/GIS_8h" startline="462">Accedentials</references>
-        <references refid="d5/dee/group__route_1gaa0037a2877aeb7d2658ae43bdff3b245" compoundref="dd/d4d/GIS_8h" startline="71">CHECKDUP</references>
-        <references refid="d9/d18/classGisNote_1a03994c84a4848cbbbcd7d99e068e448b" compoundref="dd/d4d/GIS_8h" startline="461">Name</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="432" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="432" bodyend="446"/>
+        <references refid="d5/dee/group__route_1gad460d6045a2a3d030403901a614f791e" compoundref="d3/d9e/GSP_8cpp" startline="68">accedentials</references>
+        <references refid="d9/d18/classGisNote_1aa12969eb6c58c2dae80ed3d9356c24c8" compoundref="dd/d4d/GIS_8h" startline="428">Accedentials</references>
+        <references refid="d5/dee/group__route_1gaa0037a2877aeb7d2658ae43bdff3b245" compoundref="dd/d4d/GIS_8h" startline="63">CHECKDUP</references>
+        <references refid="d9/d18/classGisNote_1af62ecc5142a84228f379d4f5dd27fe8a" compoundref="dd/d4d/GIS_8h" startline="427">Name</references>
       </memberdef>
-      <memberdef kind="function" id="d5/dee/group__route_1gad652f7ea335a92b55351734a3b863e8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="d5/dee/group__route_1ga457d7166db6e3539d2565e6bda4f3ecb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>GisNote::GisNote</definition>
-        <argsstring>(int key, int octave, int acc, const mutString sep=mutEmptyString, GisToken *next=0)</argsstring>
+        <argsstring>(int key, int octave, int acc, const std::string &amp;sep=&quot;&quot;, GisToken *next=0)</argsstring>
         <name>GisNote</name>
         <param>
           <type>int</type>
@@ -134,9 +134,9 @@
           <declname>acc</declname>
         </param>
         <param>
-          <type><ref refid="d1/de1/Mut__Tab_8cpp_1a2c212835823e3c54a8ab6d95c652660e" kindref="member">const</ref> <ref refid="d9/d7c/group__kernel_1ga7e6a85a8235f7b6e5f1ab363345262a8" kindref="member">mutString</ref></type>
+          <type>const std::string &amp;</type>
           <declname>sep</declname>
-          <defval><ref refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" kindref="member">mutEmptyString</ref></defval>
+          <defval>&quot;&quot;</defval>
         </param>
         <param>
           <type><ref refid="d2/db7/classGisToken" kindref="compound">GisToken</ref> *</type>
@@ -149,16 +149,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="482" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.cpp" bodystart="351" bodyend="394"/>
-        <references refid="d9/d18/classGisNote_1a98c52aeac9ef11ff9262b602473a2b0d" compoundref="dd/d4d/GIS_8h" startline="462">Accedentials</references>
-        <references refid="d9/d18/classGisNote_1a8ea816c5d54a83f008b6b5421ae09403" compoundref="dd/d4d/GIS_8h" startline="464">Duration</references>
-        <references refid="d5/dee/group__route_1ga01ad2325629ef1b5c53634e74160c69f" compoundref="dd/d4d/GIS_8h" startline="105">GMN_NO_KEY</references>
-        <references refid="d9/d7c/group__kernel_1ga13c03a937e32254ea17154104db5208a" compoundref="d1/d73/Defs_8h" startline="83">mutChar</references>
-        <references refid="d9/d7c/group__kernel_1ga610d7c4be5ea54d60cc7ba385f0f03f7" compoundref="d1/d73/Defs_8h" startline="86">mutEmptyString</references>
-        <references refid="d9/d7c/group__kernel_1gab0bf0415f048ff66e8cd015b484a3a09" compoundref="d1/d73/Defs_8h" startline="77">mutT</references>
-        <references refid="d5/dee/group__route_1gaf482b236d88ad4a0248dbc7a4086cf35" compoundref="d3/d9e/GSP_8cpp" startline="87">octave</references>
-        <references refid="d9/d18/classGisNote_1ad4504bfe7546b2b73fec3fecfb8a7d47" compoundref="dd/d4d/GIS_8h" startline="463">Octave</references>
-        <references refid="d5/dee/group__route_1gaedbfe5f55d2f2f557eb8d4b80cdb9f26" compoundref="dc/de7/GIS_8cpp" startline="339">strdupchr</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="448" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.cpp" bodystart="343" bodyend="386"/>
+        <references refid="d9/d18/classGisNote_1aa12969eb6c58c2dae80ed3d9356c24c8" compoundref="dd/d4d/GIS_8h" startline="428">Accedentials</references>
+        <references refid="d9/d18/classGisNote_1a1be3b84a4958be863600290efff2f70a" compoundref="dd/d4d/GIS_8h" startline="430">Duration</references>
+        <references refid="d5/dee/group__route_1ga01ad2325629ef1b5c53634e74160c69f" compoundref="dd/d4d/GIS_8h" startline="89">GMN_NO_KEY</references>
+        <references refid="d5/dee/group__route_1gaf482b236d88ad4a0248dbc7a4086cf35" compoundref="d3/d9e/GSP_8cpp" startline="66">octave</references>
+        <references refid="d9/d18/classGisNote_1ad4504bfe7546b2b73fec3fecfb8a7d47" compoundref="dd/d4d/GIS_8h" startline="429">Octave</references>
+        <references refid="d5/dee/group__route_1gaedbfe5f55d2f2f557eb8d4b80cdb9f26" compoundref="dc/de7/GIS_8cpp" startline="331">strdupchr</references>
       </memberdef>
       <memberdef kind="function" id="d5/dee/group__route_1gaa3cc2eb32425f88fdad402d1ca09f26a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -171,11 +168,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="484" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.cpp" bodystart="396" bodyend="408"/>
-        <references refid="d5/dee/group__route_1gae1a3a9629a58b6e96f819e6826965e84" compoundref="dc/de7/GIS_8cpp" startline="316" endline="336">Acc2Int</references>
-        <references refid="d9/d18/classGisNote_1a98c52aeac9ef11ff9262b602473a2b0d" compoundref="dd/d4d/GIS_8h" startline="462">Accedentials</references>
-        <references refid="d5/dee/group__route_1gad719c8a4d36928a5cf0b2a9631ad76f7" compoundref="dc/de7/GIS_8cpp" startline="283" endline="314">Name2Key</references>
-        <references refid="d9/d18/classGisNote_1ad4504bfe7546b2b73fec3fecfb8a7d47" compoundref="dd/d4d/GIS_8h" startline="463">Octave</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="454" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.cpp" bodystart="388" bodyend="400"/>
+        <references refid="d5/dee/group__route_1ga8aec71b8f8fff2698893de96c72b285b" compoundref="dc/de7/GIS_8cpp" startline="308" endline="328">Acc2Int</references>
+        <references refid="d9/d18/classGisNote_1aa12969eb6c58c2dae80ed3d9356c24c8" compoundref="dd/d4d/GIS_8h" startline="428">Accedentials</references>
+        <references refid="d5/dee/group__route_1gae75018179d5e238ea0a85d1e2d25785e" compoundref="dc/de7/GIS_8cpp" startline="275" endline="306">Name2Key</references>
+        <references refid="d9/d18/classGisNote_1ad4504bfe7546b2b73fec3fecfb8a7d47" compoundref="dd/d4d/GIS_8h" startline="429">Octave</references>
       </memberdef>
       <memberdef kind="function" id="d9/d18/classGisNote_1adb2dd88b6c75627ce670ab78fd560f92" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="d5/dee/group__route_1gaef354ea2f89281ef17c6735860c89861" kindref="member">GisType</ref></type>
@@ -189,28 +186,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="486" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="486" bodyend="489"/>
-        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a4b64e411111d6f015cd6421b13889b9e" compoundref="dd/d4d/GIS_8h" startline="123">GTNote</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="456" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="456" bodyend="459"/>
+        <references refid="d5/dee/group__route_1ggaef354ea2f89281ef17c6735860c89861a4b64e411111d6f015cd6421b13889b9e" compoundref="dd/d4d/GIS_8h" startline="107">GTNote</references>
       </memberdef>
-      <memberdef kind="function" id="d9/d18/classGisNote_1a6bbfcb8e1c2994c14bf7a3a9a7132e1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>wxString</type>
-        <definition>virtual wxString GisNote::ToString</definition>
-        <argsstring>()</argsstring>
+      <memberdef kind="function" id="d9/d18/classGisNote_1a4dd4e48bc8abce74236968cba5600598" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>virtual std::string GisNote::ToString</definition>
+        <argsstring>() const </argsstring>
         <name>ToString</name>
-        <reimplements refid="d2/db7/classGisToken_1a2f256cfca7c10770a90574980dfbd59f">ToString</reimplements>
+        <reimplements refid="d2/db7/classGisToken_1a281f55a69942c9730b96ca962b01018e">ToString</reimplements>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="501" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="501" bodyend="507"/>
-        <references refid="d9/d18/classGisNote_1a98c52aeac9ef11ff9262b602473a2b0d" compoundref="dd/d4d/GIS_8h" startline="462">Accedentials</references>
-        <references refid="d9/d18/classGisNote_1a8ea816c5d54a83f008b6b5421ae09403" compoundref="dd/d4d/GIS_8h" startline="464">Duration</references>
-        <references refid="d9/d18/classGisNote_1a03994c84a4848cbbbcd7d99e068e448b" compoundref="dd/d4d/GIS_8h" startline="461">Name</references>
-        <references refid="d9/d18/classGisNote_1ad4504bfe7546b2b73fec3fecfb8a7d47" compoundref="dd/d4d/GIS_8h" startline="463">Octave</references>
-        <references refid="d2/db7/classGisToken_1a2f256cfca7c10770a90574980dfbd59f" compoundref="dd/d4d/GIS_8h" startline="182" endline="185">GisToken::ToString</references>
-        <references refid="d9/d7c/group__kernel_1ga975290ffe456dce146b1e8d5a7ef7cef" compoundref="df/d4f/Frac_8h" startline="146" endline="149">TowxString</references>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="471" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="471" bodyend="477"/>
+        <references refid="d9/d18/classGisNote_1aa12969eb6c58c2dae80ed3d9356c24c8" compoundref="dd/d4d/GIS_8h" startline="428">Accedentials</references>
+        <references refid="d9/d18/classGisNote_1a1be3b84a4958be863600290efff2f70a" compoundref="dd/d4d/GIS_8h" startline="430">Duration</references>
+        <references refid="d9/d18/classGisNote_1af62ecc5142a84228f379d4f5dd27fe8a" compoundref="dd/d4d/GIS_8h" startline="427">Name</references>
+        <references refid="d9/d18/classGisNote_1ad4504bfe7546b2b73fec3fecfb8a7d47" compoundref="dd/d4d/GIS_8h" startline="429">Octave</references>
+        <references refid="d6/daa/namespacemutabor_1abae2a6ffddc4e68d7e52f67803cb091f" compoundref="d1/d73/Defs_8h" startline="110" endline="110">mutabor::str</references>
+        <references refid="d2/db7/classGisToken_1a281f55a69942c9730b96ca962b01018e" compoundref="dd/d4d/GIS_8h" startline="164" endline="167">GisToken::ToString</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -218,54 +215,69 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2997">
+      <node id="3614">
         <label>GisNote</label>
         <link refid="d9/d18/classGisNote"/>
-        <childnode refid="2998" relation="public-inheritance">
+        <childnode refid="3615" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2998">
+      <node id="3615">
         <label>GisToken</label>
         <link refid="d2/db7/classGisToken"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2999">
+      <node id="3620">
+        <label>mutabor::frac</label>
+        <link refid="d9/ded/classmutabor_1_1frac"/>
+      </node>
+      <node id="3619">
+        <label>std::basic_string&lt; char &gt;</label>
+      </node>
+      <node id="3616">
         <label>GisNote</label>
         <link refid="d9/d18/classGisNote"/>
-        <childnode refid="3000" relation="public-inheritance">
+        <childnode refid="3617" relation="public-inheritance">
         </childnode>
-        <childnode refid="3001" relation="usage">
+        <childnode refid="3618" relation="usage">
+          <edgelabel>Accedentials</edgelabel>
+          <edgelabel>Name</edgelabel>
+        </childnode>
+        <childnode refid="3620" relation="usage">
           <edgelabel>Duration</edgelabel>
         </childnode>
       </node>
-      <node id="3001">
-        <label>frac</label>
-        <link refid="d7/dcc/classfrac"/>
-      </node>
-      <node id="3000">
+      <node id="3617">
         <label>GisToken</label>
         <link refid="d2/db7/classGisToken"/>
-        <childnode refid="3000" relation="usage">
+        <childnode refid="3618" relation="usage">
+          <edgelabel>Sep</edgelabel>
+        </childnode>
+        <childnode refid="3617" relation="usage">
           <edgelabel>Next</edgelabel>
         </childnode>
       </node>
+      <node id="3618">
+        <label>std::string</label>
+        <childnode refid="3619" relation="public-inheritance">
+        </childnode>
+      </node>
     </collaborationgraph>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="458" column="1" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="457" bodyend="510"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" line="424" column="1" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/gmn/GIS.h" bodystart="423" bodyend="479"/>
     <listofallmembers>
-      <member refid="d9/d18/classGisNote_1a98c52aeac9ef11ff9262b602473a2b0d" prot="public" virt="non-virtual"><scope>GisNote</scope><name>Accedentials</name></member>
+      <member refid="d9/d18/classGisNote_1aa12969eb6c58c2dae80ed3d9356c24c8" prot="public" virt="non-virtual"><scope>GisNote</scope><name>Accedentials</name></member>
       <member refid="d2/db7/classGisToken_1a699f4bc89b801908bd6178f6f144d645" prot="public" virt="virtual"><scope>GisNote</scope><name>Copy</name></member>
-      <member refid="d9/d18/classGisNote_1a8ea816c5d54a83f008b6b5421ae09403" prot="public" virt="non-virtual"><scope>GisNote</scope><name>Duration</name></member>
+      <member refid="d9/d18/classGisNote_1a1be3b84a4958be863600290efff2f70a" prot="public" virt="non-virtual"><scope>GisNote</scope><name>Duration</name></member>
       <member refid="d5/dee/group__route_1gaa3cc2eb32425f88fdad402d1ca09f26a" prot="public" virt="non-virtual"><scope>GisNote</scope><name>GetKey</name></member>
-      <member refid="d9/d18/classGisNote_1a14f32da4ae5a85835129fb6fb2269fc3" prot="public" virt="non-virtual"><scope>GisNote</scope><name>GisNote</name></member>
-      <member refid="d5/dee/group__route_1gad652f7ea335a92b55351734a3b863e8a" prot="public" virt="non-virtual"><scope>GisNote</scope><name>GisNote</name></member>
-      <member refid="d2/db7/classGisToken_1aa7d3797aec95b6fe33acf8c255fc1268" prot="public" virt="non-virtual"><scope>GisNote</scope><name>GisToken</name></member>
-      <member refid="d9/d18/classGisNote_1a03994c84a4848cbbbcd7d99e068e448b" prot="public" virt="non-virtual"><scope>GisNote</scope><name>Name</name></member>
+      <member refid="d9/d18/classGisNote_1a2f6264029f33392870f900853c4f80ee" prot="public" virt="non-virtual"><scope>GisNote</scope><name>GisNote</name></member>
+      <member refid="d5/dee/group__route_1ga457d7166db6e3539d2565e6bda4f3ecb" prot="public" virt="non-virtual"><scope>GisNote</scope><name>GisNote</name></member>
+      <member refid="d2/db7/classGisToken_1a64a74bcd95ddaee39e4f3e2a6766a90a" prot="public" virt="non-virtual"><scope>GisNote</scope><name>GisToken</name></member>
+      <member refid="d9/d18/classGisNote_1af62ecc5142a84228f379d4f5dd27fe8a" prot="public" virt="non-virtual"><scope>GisNote</scope><name>Name</name></member>
       <member refid="d2/db7/classGisToken_1a5ebe3590397490871cf0839a758e2449" prot="public" virt="non-virtual"><scope>GisNote</scope><name>Next</name></member>
       <member refid="d9/d18/classGisNote_1ad4504bfe7546b2b73fec3fecfb8a7d47" prot="public" virt="non-virtual"><scope>GisNote</scope><name>Octave</name></member>
-      <member refid="d2/db7/classGisToken_1add72c4892e22fd742bc3924d0903a5ad" prot="public" virt="non-virtual"><scope>GisNote</scope><name>operator wxString</name></member>
-      <member refid="d2/db7/classGisToken_1a5987643937d79847fcd3f0dab8fe4b58" prot="public" virt="non-virtual"><scope>GisNote</scope><name>Sep</name></member>
-      <member refid="d9/d18/classGisNote_1a6bbfcb8e1c2994c14bf7a3a9a7132e1f" prot="public" virt="virtual"><scope>GisNote</scope><name>ToString</name></member>
+      <member refid="d2/db7/classGisToken_1a3f5f79982326a3e306825da879cae10b" prot="public" virt="virtual"><scope>GisNote</scope><name>operator std::string</name></member>
+      <member refid="d2/db7/classGisToken_1a1de7ea6d14070e7cc8f01ad8e036a4ed" prot="public" virt="non-virtual"><scope>GisNote</scope><name>Sep</name></member>
+      <member refid="d9/d18/classGisNote_1a4dd4e48bc8abce74236968cba5600598" prot="public" virt="virtual"><scope>GisNote</scope><name>ToString</name></member>
       <member refid="d9/d18/classGisNote_1adb2dd88b6c75627ce670ab78fd560f92" prot="public" virt="virtual"><scope>GisNote</scope><name>Type</name></member>
       <member refid="d2/db7/classGisToken_1ab3ec071213876b13b7ce9f9900cfec69" prot="public" virt="virtual"><scope>GisNote</scope><name>~GisToken</name></member>
     </listofallmembers>

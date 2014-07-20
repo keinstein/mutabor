@@ -5,206 +5,131 @@
     <includes local="no">stdexcept</includes>
     <includes refid="db/d41/timing_8h" local="yes">src/kernel/routing/timing.h</includes>
     <incdepgraph>
-      <node id="25125">
-        <label>list</label>
-      </node>
-      <node id="25118">
-        <label>stdarg.h</label>
-      </node>
-      <node id="25116">
-        <label>src/kernel/routing/timing.h</label>
-        <link refid="db/d41/timing_8h"/>
-        <childnode refid="25117" relation="include">
-        </childnode>
-        <childnode refid="25143" relation="include">
-        </childnode>
-        <childnode refid="25144" relation="include">
-        </childnode>
-        <childnode refid="25145" relation="include">
-        </childnode>
-        <childnode refid="25115" relation="include">
-        </childnode>
-        <childnode refid="25146" relation="include">
-        </childnode>
-        <childnode refid="25147" relation="include">
-        </childnode>
-        <childnode refid="25148" relation="include">
-        </childnode>
-      </node>
-      <node id="25144">
+      <node id="24147">
         <label>limits</label>
       </node>
-      <node id="25133">
-        <label>wx/cmdline.h</label>
-      </node>
-      <node id="25121">
-        <label>wx/stdpaths.h</label>
-      </node>
-      <node id="25117">
-        <label>src/kernel/Defs.h</label>
-        <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="25118" relation="include">
-        </childnode>
-        <childnode refid="25119" relation="include">
-        </childnode>
-        <childnode refid="25138" relation="include">
-        </childnode>
-        <childnode refid="25139" relation="include">
-        </childnode>
-        <childnode refid="25132" relation="include">
-        </childnode>
-        <childnode refid="25140" relation="include">
-        </childnode>
-        <childnode refid="25141" relation="include">
-        </childnode>
-      </node>
-      <node id="25114">
-        <label>src/kernel/routing/timing.cpp</label>
-        <link refid="timing.cpp"/>
-        <childnode refid="25115" relation="include">
-        </childnode>
-        <childnode refid="25116" relation="include">
-        </childnode>
-      </node>
-      <node id="25132">
+      <node id="24143">
         <label>stdint.h</label>
       </node>
-      <node id="25138">
-        <label>wx/wxchar.h</label>
+      <node id="24136">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="24135" relation="include">
+        </childnode>
       </node>
-      <node id="25127">
-        <label>wx/image.h</label>
+      <node id="24142">
+        <label>boost/format.hpp</label>
       </node>
-      <node id="25115">
+      <node id="24133">
         <label>stdexcept</label>
       </node>
-      <node id="25146">
+      <node id="24149">
         <label>boost/throw_exception.hpp</label>
       </node>
-      <node id="25142">
+      <node id="24140">
         <label>string</label>
       </node>
-      <node id="25145">
+      <node id="24134">
+        <label>src/kernel/routing/timing.h</label>
+        <link refid="db/d41/timing_8h"/>
+        <childnode refid="24135" relation="include">
+        </childnode>
+        <childnode refid="24145" relation="include">
+        </childnode>
+        <childnode refid="24147" relation="include">
+        </childnode>
+        <childnode refid="24148" relation="include">
+        </childnode>
+        <childnode refid="24133" relation="include">
+        </childnode>
+        <childnode refid="24149" relation="include">
+        </childnode>
+        <childnode refid="24150" relation="include">
+        </childnode>
+        <childnode refid="24151" relation="include">
+        </childnode>
+      </node>
+      <node id="24148">
         <label>exception</label>
       </node>
-      <node id="25137">
-        <label>mutDebugFlags.h</label>
-        <link refid="d7/d49/mutDebugFlags_8h"/>
-      </node>
-      <node id="25120">
-        <label>wx/window.h</label>
-      </node>
-      <node id="25139">
-        <label>wx/intl.h</label>
-      </node>
-      <node id="25126">
-        <label>src/wxGUI/Mutabor.rh</label>
-        <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="25117" relation="include">
-        </childnode>
-      </node>
-      <node id="25122">
-        <label>wx/filename.h</label>
-      </node>
-      <node id="25143">
+      <node id="24145">
         <label>src/kernel/MidiKern.h</label>
         <link refid="da/dfd/MidiKern_8h"/>
-        <childnode refid="25117" relation="include">
+        <childnode refid="24135" relation="include">
+        </childnode>
+        <childnode refid="24146" relation="include">
         </childnode>
       </node>
-      <node id="25124">
-        <label>typeinfo</label>
+      <node id="24135">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="24136" relation="include">
+        </childnode>
+        <childnode refid="24137" relation="include">
+        </childnode>
+        <childnode refid="24138" relation="include">
+        </childnode>
       </node>
-      <node id="25135">
-        <label>wx/debug.h</label>
-      </node>
-      <node id="25130">
+      <node id="24141">
         <label>cstdio</label>
       </node>
-      <node id="25129">
-        <label>bitset</label>
-      </node>
-      <node id="25119">
-        <label>src/wxGUI/generic/mhDefs.h</label>
-        <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="25117" relation="include">
+      <node id="24132">
+        <label>src/kernel/routing/timing.cpp</label>
+        <link refid="timing.cpp"/>
+        <childnode refid="24133" relation="include">
         </childnode>
-        <childnode refid="25120" relation="include">
-        </childnode>
-        <childnode refid="25121" relation="include">
-        </childnode>
-        <childnode refid="25122" relation="include">
-        </childnode>
-        <childnode refid="25123" relation="include">
-        </childnode>
-        <childnode refid="25124" relation="include">
-        </childnode>
-        <childnode refid="25125" relation="include">
-        </childnode>
-        <childnode refid="25126" relation="include">
-        </childnode>
-        <childnode refid="25127" relation="include">
-        </childnode>
-        <childnode refid="25128" relation="include">
+        <childnode refid="24134" relation="include">
         </childnode>
       </node>
-      <node id="25131">
-        <label>vector</label>
-      </node>
-      <node id="25128">
-        <label>mutDebug.h</label>
-        <link refid="de/de1/mutDebug_8h"/>
-        <childnode refid="25129" relation="include">
-        </childnode>
-        <childnode refid="25123" relation="include">
-        </childnode>
-        <childnode refid="25130" relation="include">
-        </childnode>
-        <childnode refid="25131" relation="include">
-        </childnode>
-        <childnode refid="25132" relation="include">
-        </childnode>
-        <childnode refid="25133" relation="include">
-        </childnode>
-        <childnode refid="25134" relation="include">
-        </childnode>
-        <childnode refid="25135" relation="include">
-        </childnode>
-        <childnode refid="25136" relation="include">
-        </childnode>
-        <childnode refid="25137" relation="include">
-        </childnode>
-      </node>
-      <node id="25141">
-        <label>src/wxintl/libintl.h</label>
-        <link refid="d4/d64/libintl_8h"/>
-        <childnode refid="25117" relation="include">
-        </childnode>
-        <childnode refid="25142" relation="include">
-        </childnode>
-      </node>
-      <node id="25134">
-        <label>wx/string.h</label>
-      </node>
-      <node id="25123">
-        <label>iostream</label>
-      </node>
-      <node id="25136">
-        <label>wx/thread.h</label>
-      </node>
-      <node id="25148">
+      <node id="24151">
         <label>thread.h</label>
         <link refid="db/dd5/thread_8h"/>
-        <childnode refid="25117" relation="include">
+        <childnode refid="24135" relation="include">
         </childnode>
-        <childnode refid="25136" relation="include">
+        <childnode refid="24152" relation="include">
         </childnode>
       </node>
-      <node id="25140">
-        <label>wx/setup.h</label>
+      <node id="24138">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="24135" relation="include">
+        </childnode>
+        <childnode refid="24139" relation="include">
+        </childnode>
+        <childnode refid="24140" relation="include">
+        </childnode>
+        <childnode refid="24141" relation="include">
+        </childnode>
+        <childnode refid="24142" relation="include">
+        </childnode>
+        <childnode refid="24143" relation="include">
+        </childnode>
+        <childnode refid="24144" relation="include">
+        </childnode>
       </node>
-      <node id="25147">
+      <node id="24139">
+        <label>src/wxintl/libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="24135" relation="include">
+        </childnode>
+        <childnode refid="24140" relation="include">
+        </childnode>
+      </node>
+      <node id="24146">
+        <label>math.h</label>
+      </node>
+      <node id="24137">
+        <label>cstddef</label>
+      </node>
+      <node id="24152">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="24150">
         <label>wx/stopwatch.h</label>
+      </node>
+      <node id="24144">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
       </node>
     </incdepgraph>
     <innernamespace refid="d6/daa/namespacemutabor">mutabor</innernamespace>
@@ -233,7 +158,7 @@
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" kindref="member">is_fixed_ticks</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.first<sp/>=<sp/>(<ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>&gt;&gt;<sp/>8)&amp;<sp/>0xFF;</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.second<sp/>=<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>&amp;<sp/>0xFF;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(midifile,_T(</highlight><highlight class="stringliteral">&quot;%lx:<sp/>%x<sp/>%x&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref><sp/>(midifile,<sp/></highlight><highlight class="stringliteral">&quot;%lx:<sp/>%x<sp/>%x&quot;</highlight><highlight class="normal"><sp/>,</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref>,<sp/></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.first,</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.second);</highlight></codeline>
@@ -244,7 +169,7 @@
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>quotient<sp/>=<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>/<sp/>myfps;</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.second<sp/>=<sp/>quotient<sp/>&amp;<sp/>0xFF;</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>%<sp/>myfps)<sp/>{</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::throw_exception(<sp/>std::range_error(<ref refid="d9/d7c/group__kernel_1ga426d842d7b3e04622b2da17b089e586d" kindref="member">gettext_noop</ref>(</highlight><highlight class="stringliteral">&quot;frame<sp/>rate<sp/>does<sp/>not<sp/>divide<sp/>time<sp/>divisiens&quot;</highlight><highlight class="normal">)));</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_THROW_EXCEPTION(<sp/>std::range_error(<ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;frame<sp/>rate<sp/>does<sp/>not<sp/>divide<sp/>time<sp/>divisiens&quot;</highlight><highlight class="normal">)));</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{<sp/></highlight></codeline>
@@ -255,7 +180,7 @@
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(<ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>%<sp/>24))<sp/></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref><sp/>=<sp/>24;</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::throw_exception(<sp/>std::range_error(<ref refid="d9/d7c/group__kernel_1ga426d842d7b3e04622b2da17b089e586d" kindref="member">gettext_noop</ref>(</highlight><highlight class="stringliteral">&quot;frame<sp/>rate<sp/>does<sp/>not<sp/>divide<sp/>time<sp/>divisiens&quot;</highlight><highlight class="normal">)));</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_THROW_EXCEPTION(<sp/>std::range_error(<ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;frame<sp/>rate<sp/>does<sp/>not<sp/>divide<sp/>time<sp/>divisiens&quot;</highlight><highlight class="normal">)));</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>quotient<sp/>=<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>/<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref>;</highlight></codeline>
@@ -264,10 +189,10 @@
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(quotient<sp/>&gt;<sp/>0xFF)<sp/>{</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::throw_exception(<sp/>std::range_error(<ref refid="d9/d7c/group__kernel_1ga426d842d7b3e04622b2da17b089e586d" kindref="member">gettext_noop</ref>(</highlight><highlight class="stringliteral">&quot;time<sp/>division<sp/>is<sp/>too<sp/>high<sp/>for<sp/>current<sp/>frame<sp/>rate&quot;</highlight><highlight class="normal">)));</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_THROW_EXCEPTION(<sp/>std::range_error(<ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;time<sp/>division<sp/>is<sp/>too<sp/>high<sp/>for<sp/>current<sp/>frame<sp/>rate&quot;</highlight><highlight class="normal">)));</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref>(midifile,_T(</highlight><highlight class="stringliteral">&quot;%lx:<sp/>%x<sp/>%x&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/db7/group__debug_1ga86ae1dca49d692e6adabb3ba38154f09" kindref="member">DEBUGLOG</ref><sp/>(midifile,<sp/></highlight><highlight class="stringliteral">&quot;%lx:<sp/>%x<sp/>%x&quot;</highlight><highlight class="normal"><sp/>,</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref>,</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.first,</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retval.second);</highlight></codeline>
@@ -278,23 +203,23 @@
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(bfps<sp/>&amp;<sp/>0x80))<sp/>{</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>quarter<sp/>divisions</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!bfps<sp/>&amp;&amp;<sp/>!<sp/>bcount)<sp/></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::throw_exception(<sp/>std::range_error(<ref refid="d9/d7c/group__kernel_1ga426d842d7b3e04622b2da17b089e586d" kindref="member">gettext_noop</ref>(</highlight><highlight class="stringliteral">&quot;Trying<sp/>to<sp/>set<sp/>bad<sp/>midi<sp/>header<sp/>parameters&quot;</highlight><highlight class="normal">)));</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_THROW_EXCEPTION(<sp/>std::range_error(<ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;Trying<sp/>to<sp/>set<sp/>bad<sp/>midi<sp/>header<sp/>parameters&quot;</highlight><highlight class="normal">)));</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>=<sp/>(((int)<sp/>bfps)<sp/>&lt;&lt;<sp/>8)<sp/>+<sp/>bcount;</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" kindref="member">is_fixed_ticks</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<sp/>bcount)<sp/></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::throw_exception(<sp/>std::range_error(<ref refid="d9/d7c/group__kernel_1ga426d842d7b3e04622b2da17b089e586d" kindref="member">gettext_noop</ref>(</highlight><highlight class="stringliteral">&quot;Trying<sp/>to<sp/>set<sp/>bad<sp/>midi<sp/>header<sp/>parameters&quot;</highlight><highlight class="normal">)));</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_THROW_EXCEPTION(<sp/>std::range_error(<ref refid="d9/d7c/group__kernel_1ga78c9a8a19031e20ef02260f2ccee563a" kindref="member">_mutN</ref>(</highlight><highlight class="stringliteral">&quot;Trying<sp/>to<sp/>set<sp/>bad<sp/>midi<sp/>header<sp/>parameters&quot;</highlight><highlight class="normal">)));</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" kindref="member">is_fixed_ticks</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref><sp/>=<sp/>0x100<sp/>-<sp/>(int)<sp/>bfps;</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref><sp/>==<sp/>29)<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref><sp/>=<sp/>30;<sp/></highlight><highlight class="comment">//<sp/>ignoring<sp/>NTSC<sp/>29.97Hz<sp/>frame<sp/>dropping<sp/>should<sp/>be<sp/>ok.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref><sp/>=<sp/>(<ref refid="d9/d7c/group__kernel_1ga1bb8df7bf7d8902a3b46416c023bbcd4" kindref="member">mutint64</ref>)<ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref><sp/>*<sp/>(<ref refid="d9/d7c/group__kernel_1ga1bb8df7bf7d8902a3b46416c023bbcd4" kindref="member">mutint64</ref>)bcount;</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109" refid="d9/de0/classmutabor_1_1timing__params_1aa8ab063d3451df81c53a5f549bba1f4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wxString<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa8ab063d3451df81c53a5f549bba1f4d" kindref="member">timing_params::TowxString</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>wxString::Format(_T(</highlight><highlight class="stringliteral">&quot;\</highlight></codeline>
-<codeline lineno="111"><highlight class="stringliteral">is_fixed_ticks<sp/>=<sp/>%d,<sp/>fps<sp/>=<sp/>%d,<sp/>quarter_divisions<sp/>=<sp/>%ld,<sp/>quarter_duration<sp/>=<sp/>%ld&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1a2d06322e52f1a565efdb7e57d0bf1926" kindref="member">is_fixed_ticks</ref>,<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa15f4927b057009f4435f4e0dd4c3566" kindref="member">fps</ref>,<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1acc6c0e9a659765bb62518ffba52e8ce2" kindref="member">quarter_divisions</ref>,<sp/><ref refid="d9/de0/classmutabor_1_1timing__params_1aa6a719796af0458e9a133d78c3bdf7c2" kindref="member">quarter_duration</ref>);</highlight></codeline>
+<codeline lineno="109" refid="d9/de0/classmutabor_1_1timing__params_1a4df26ee105703af228f31be88a4377c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>timing_params::operator<sp/>std::string()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/daa/namespacemutabor_1abae2a6ffddc4e68d7e52f67803cb091f" kindref="member">boost::str</ref>(boost::format(</highlight><highlight class="stringliteral">&quot;\</highlight></codeline>
+<codeline lineno="111"><highlight class="stringliteral">is_fixed_ticks<sp/>=<sp/>%d,<sp/>fps<sp/>=<sp/>%d,<sp/>quarter_divisions<sp/>=<sp/>%ld,<sp/>quarter_duration<sp/>=<sp/>%ld&quot;</highlight><highlight class="normal">)<sp/>%</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is_fixed_ticks<sp/>%<sp/>fps<sp/>%<sp/><sp/>quarter_divisions<sp/>%<sp/><sp/>quarter_duration);</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight></codeline>
@@ -302,6 +227,6 @@
 <codeline lineno="117"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.cpp"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/timing.cpp"/>
   </compounddef>
 </doxygen>

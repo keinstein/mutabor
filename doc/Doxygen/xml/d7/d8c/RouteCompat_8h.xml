@@ -3,186 +3,76 @@
   <compounddef id="d7/d8c/RouteCompat_8h" kind="file">
     <compoundname>RouteCompat.h</compoundname>
     <includes refid="d1/d73/Defs_8h" local="yes">src/kernel/Defs.h</includes>
-    <includes refid="db/dbe/treestorage_8h" local="yes">src/kernel/treestorage.h</includes>
-    <includes local="yes">wx/config.h</includes>
-    <includedby refid="dc/def/MutRouteWnd_8cpp" local="yes">src/wxGUI/MutRouteWnd.cpp</includedby>
     <incdepgraph>
-      <node id="24136">
-        <label>list</label>
-      </node>
-      <node id="24129">
-        <label>stdarg.h</label>
-      </node>
-      <node id="24144">
-        <label>wx/cmdline.h</label>
-      </node>
-      <node id="24132">
-        <label>wx/stdpaths.h</label>
-      </node>
-      <node id="24128">
-        <label>src/kernel/Defs.h</label>
-        <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="24129" relation="include">
-        </childnode>
-        <childnode refid="24130" relation="include">
-        </childnode>
-        <childnode refid="24149" relation="include">
-        </childnode>
-        <childnode refid="24150" relation="include">
-        </childnode>
-        <childnode refid="24143" relation="include">
-        </childnode>
-        <childnode refid="24151" relation="include">
-        </childnode>
-        <childnode refid="24152" relation="include">
-        </childnode>
-      </node>
-      <node id="24143">
+      <node id="23357">
         <label>stdint.h</label>
       </node>
-      <node id="24149">
-        <label>wx/wxchar.h</label>
-      </node>
-      <node id="24138">
-        <label>wx/image.h</label>
-      </node>
-      <node id="24127">
-        <label>src/kernel/routing/RouteCompat.h</label>
-        <link refid="RouteCompat.h"/>
-        <childnode refid="24128" relation="include">
-        </childnode>
-        <childnode refid="24154" relation="include">
-        </childnode>
-        <childnode refid="24155" relation="include">
+      <node id="23350">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="23349" relation="include">
         </childnode>
       </node>
-      <node id="24153">
+      <node id="23356">
+        <label>boost/format.hpp</label>
+      </node>
+      <node id="23354">
         <label>string</label>
       </node>
-      <node id="24148">
-        <label>mutDebugFlags.h</label>
-        <link refid="d7/d49/mutDebugFlags_8h"/>
-      </node>
-      <node id="24131">
-        <label>wx/window.h</label>
-      </node>
-      <node id="24150">
-        <label>wx/intl.h</label>
-      </node>
-      <node id="24137">
-        <label>src/wxGUI/Mutabor.rh</label>
-        <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="24128" relation="include">
-        </childnode>
-      </node>
-      <node id="24133">
-        <label>wx/filename.h</label>
-      </node>
-      <node id="24135">
-        <label>typeinfo</label>
-      </node>
-      <node id="24146">
-        <label>wx/debug.h</label>
-      </node>
-      <node id="24141">
-        <label>cstdio</label>
-      </node>
-      <node id="24140">
-        <label>bitset</label>
-      </node>
-      <node id="24130">
-        <label>src/wxGUI/generic/mhDefs.h</label>
-        <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="24128" relation="include">
-        </childnode>
-        <childnode refid="24131" relation="include">
-        </childnode>
-        <childnode refid="24132" relation="include">
-        </childnode>
-        <childnode refid="24133" relation="include">
-        </childnode>
-        <childnode refid="24134" relation="include">
-        </childnode>
-        <childnode refid="24135" relation="include">
-        </childnode>
-        <childnode refid="24136" relation="include">
-        </childnode>
-        <childnode refid="24137" relation="include">
-        </childnode>
-        <childnode refid="24138" relation="include">
-        </childnode>
-        <childnode refid="24139" relation="include">
-        </childnode>
-      </node>
-      <node id="24142">
-        <label>vector</label>
-      </node>
-      <node id="24139">
-        <label>mutDebug.h</label>
-        <link refid="de/de1/mutDebug_8h"/>
-        <childnode refid="24140" relation="include">
-        </childnode>
-        <childnode refid="24134" relation="include">
-        </childnode>
-        <childnode refid="24141" relation="include">
-        </childnode>
-        <childnode refid="24142" relation="include">
-        </childnode>
-        <childnode refid="24143" relation="include">
-        </childnode>
-        <childnode refid="24144" relation="include">
-        </childnode>
-        <childnode refid="24145" relation="include">
-        </childnode>
-        <childnode refid="24146" relation="include">
-        </childnode>
-        <childnode refid="24147" relation="include">
-        </childnode>
-        <childnode refid="24148" relation="include">
-        </childnode>
-      </node>
-      <node id="24152">
-        <label>src/wxintl/libintl.h</label>
-        <link refid="d4/d64/libintl_8h"/>
-        <childnode refid="24128" relation="include">
-        </childnode>
-        <childnode refid="24153" relation="include">
-        </childnode>
-      </node>
-      <node id="24145">
-        <label>wx/string.h</label>
-      </node>
-      <node id="24155">
-        <label>wx/config.h</label>
-      </node>
-      <node id="24134">
-        <label>iostream</label>
-      </node>
-      <node id="24147">
-        <label>wx/thread.h</label>
-      </node>
-      <node id="24151">
-        <label>wx/setup.h</label>
-      </node>
-      <node id="24154">
-        <label>src/kernel/treestorage.h</label>
-        <link refid="db/dbe/treestorage_8h"/>
-        <childnode refid="24128" relation="include">
-        </childnode>
-      </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="24157">
-        <label>src/wxGUI/MutRouteWnd.cpp</label>
-        <link refid="dc/def/MutRouteWnd_8cpp"/>
-      </node>
-      <node id="24156">
+      <node id="23348">
         <label>src/kernel/routing/RouteCompat.h</label>
         <link refid="RouteCompat.h"/>
-        <childnode refid="24157" relation="include">
+        <childnode refid="23349" relation="include">
         </childnode>
       </node>
-    </invincdepgraph>
+      <node id="23349">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="23350" relation="include">
+        </childnode>
+        <childnode refid="23351" relation="include">
+        </childnode>
+        <childnode refid="23352" relation="include">
+        </childnode>
+      </node>
+      <node id="23355">
+        <label>cstdio</label>
+      </node>
+      <node id="23352">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="23349" relation="include">
+        </childnode>
+        <childnode refid="23353" relation="include">
+        </childnode>
+        <childnode refid="23354" relation="include">
+        </childnode>
+        <childnode refid="23355" relation="include">
+        </childnode>
+        <childnode refid="23356" relation="include">
+        </childnode>
+        <childnode refid="23357" relation="include">
+        </childnode>
+        <childnode refid="23358" relation="include">
+        </childnode>
+      </node>
+      <node id="23353">
+        <label>src/wxintl/libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="23349" relation="include">
+        </childnode>
+        <childnode refid="23354" relation="include">
+        </childnode>
+      </node>
+      <node id="23351">
+        <label>cstddef</label>
+      </node>
+      <node id="23358">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
+      </node>
+    </incdepgraph>
+    <innerclass refid="dc/dad/classcompat30_1_1RouteIOError" prot="public">compat30::RouteIOError</innerclass>
     <innernamespace refid="dd/d72/namespacecompat30">compat30</innernamespace>
       <sectiondef kind="define">
       <memberdef kind="define" id="d5/dee/group__route_1gaf2a22e31be25c2ca649a089d9a6062d7" prot="public" static="no">
@@ -193,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.h" line="42" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.h" bodystart="42" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.h" line="42" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.h" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d5/dee/group__route_1ga20e302428e14cabee83806f16835190d" prot="public" static="no">
         <name>MU32_ROUTING_ROUTECOMPAT_H_PRECOMPILED</name>
@@ -203,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.h" line="53" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.h" bodystart="53" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.h" line="52" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.h" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -233,33 +123,32 @@ GPL</para><para>This program is free software; you can redistribute it and/or mo
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d1/d73/Defs_8h" kindref="compound">src/kernel/Defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="db/dbe/treestorage_8h" kindref="compound">src/kernel/treestorage.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MU32_ROUTING_ROUTECOMPAT_H_PRECOMPILED</highlight></codeline>
-<codeline lineno="53" refid="d5/dee/group__route_1ga20e302428e14cabee83806f16835190d" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MU32_ROUTING_ROUTECOMPAT_H_PRECOMPILED</highlight></codeline>
-<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>WX</highlight></codeline>
-<codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;wx/config.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="58"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">compat30<sp/>{</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="63"></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ga83268772461a3fb8219d0c9ce088f1cb" kindref="member">LoadRoutes</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MU32_ROUTING_ROUTECOMPAT_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="52" refid="d5/dee/group__route_1ga20e302428e14cabee83806f16835190d" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>MU32_ROUTING_ROUTECOMPAT_H_PRECOMPILED</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">compat30<sp/>{</highlight></codeline>
+<codeline lineno="55" refid="dc/dad/classcompat30_1_1RouteIOError" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="dc/dad/classcompat30_1_1RouteIOError" kindref="compound">RouteIOError</ref>:</highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::range_error<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="57" refid="d5/dee/group__route_1gab43933a86e912feb21d9e3d470ce693d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gab43933a86e912feb21d9e3d470ce693d" kindref="member">RouteIOError</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>what_arg):</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>range_error(what_arg)<sp/>{}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="62"></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ga768980ac2520700cfd5a8c2dd4854dee" kindref="member">LoadRoutes</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;);</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
 <codeline lineno="68"></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1ga5c58701727fcbf758c71f89daac276f0" kindref="member">SaveRoutes</ref>(<ref refid="d9/d7c/group__kernel_1ga0357d6ebe41b7958687f47fd0d2d288e" kindref="member">mutStringRef</ref>);</highlight></codeline>
-<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>PRECOMPILED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="74"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="75"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="77"><highlight class="comment"><sp/>*<sp/>\}</highlight></codeline>
-<codeline lineno="78"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d5/dee/group__route_1gad29c28957f7f43e3751d76e5750a8e99" kindref="member">SaveRoutes</ref>(std::string<sp/>&amp;);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>PRECOMPILED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*<sp/>\}</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.h"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/RouteCompat.h"/>
   </compounddef>
 </doxygen>

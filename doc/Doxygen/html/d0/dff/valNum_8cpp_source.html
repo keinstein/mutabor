@@ -71,7 +71,7 @@
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;wxNumValidator::wxNumValidator(<span class="keywordtype">long</span> *val, <span class="keywordtype">int</span> style, <span class="keywordtype">int</span> min, <span class="keywordtype">int</span> max, wxCheckBox* enabler)</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                : wxTextValidator(wxFILTER_NUMERIC, &amp;bufferString)</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(other,_T(<span class="stringliteral">&quot;val: %p, style: %d, min: %d, max: %d, enabler: %p&quot;</span>),</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, <span class="stringliteral">&quot;val: %p, style: %d, min: %d, max: %d, enabler: %p&quot;</span> ,</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                 (<span class="keywordtype">void</span>*)val,style,min,max,(<span class="keywordtype">void</span>*)enabler);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        Style = style ;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        Min = min;</div>
@@ -97,9 +97,9 @@
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d5/dee/group__route.html#ga23ee5f5f1dcdcf81c4ea7c3fe44acbdc">wxNumValidator::Copy</a>(<span class="keyword">const</span> wxNumValidator&amp; val)</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;{</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(other,_T(<span class="stringliteral">&quot;%p&quot;</span>),(<span class="keywordtype">void</span>*)m_stringValue);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, <span class="stringliteral">&quot;%p&quot;</span> ,(<span class="keywordtype">void</span>*)m_stringValue);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="../../d5/dee/group__route.html#ga23ee5f5f1dcdcf81c4ea7c3fe44acbdc">wxTextValidator::Copy</a>(val);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(other,_T(<span class="stringliteral">&quot;%p&quot;</span>),(<span class="keywordtype">void</span>*)m_stringValue);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, <span class="stringliteral">&quot;%p&quot;</span> ,(<span class="keywordtype">void</span>*)m_stringValue);</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        m_stringValue = &amp;bufferString;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        Style = val.Style ;</div>
@@ -114,7 +114,7 @@
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;wxNumValidator::~wxNumValidator()</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;{</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(other,_T(<span class="stringliteral">&quot;value: %s&quot;</span>),bufferString.c_str());</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, <span class="stringliteral">&quot;value: %s&quot;</span> ,bufferString.c_str());</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">// Called when the value in the window must be validated.</span></div>
@@ -202,12 +202,12 @@
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordtype">bool</span> res = m_stringValue-&gt;ToLong(m_intValue);</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(other,_T(<span class="stringliteral">&quot;before enabler&quot;</span>));</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, <span class="stringliteral">&quot;before enabler&quot;</span> );</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">if</span> ( !Enabler || Enabler-&gt;GetValue() )</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                <span class="keywordflow">return</span> res;</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(other,_T(<span class="stringliteral">&quot;after enabler&quot;</span>));</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a> (other, <span class="stringliteral">&quot;after enabler&quot;</span> );</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordflow">if</span> ( !res )</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                (*m_intValue) = 0;</div>
@@ -230,14 +230,14 @@
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">// mode: c++</span></div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">// End:</span></div>
 <div class="ttc" id="valNum_8h_html"><div class="ttname"><a href="../../d7/d3d/valNum_8h.html">valNum.h</a></div><div class="ttdoc">Validator for numeric text. </div></div>
-<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00146">mutDebug.h:146</a></div></div>
-<div class="ttc" id="group__debug_html_ga86acd9c1c30c8cb1831b46da11b1ec62"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a></div><div class="ttdeci">#define TRACEC</div><div class="ttdef"><b>Definition:</b> <a href="../../de/de1/mutDebug_8h_source.html#l00151">mutDebug.h:151</a></div></div>
+<div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/debug_8h_source.html#l00240">debug.h:240</a></div></div>
+<div class="ttc" id="group__debug_html_ga86acd9c1c30c8cb1831b46da11b1ec62"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86acd9c1c30c8cb1831b46da11b1ec62">TRACEC</a></div><div class="ttdeci">#define TRACEC</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/debug_8h_source.html#l00246">debug.h:246</a></div></div>
 <div class="ttc" id="group__docview_html_ga6ec13dcf56fb697ed3fc3f815657c4fa"><div class="ttname"><a href="../../da/d79/group__docview.html#ga6ec13dcf56fb697ed3fc3f815657c4fa">IMPLEMENT_DYNAMIC_CLASS</a></div><div class="ttdeci">IMPLEMENT_DYNAMIC_CLASS(MutCommandProcessor, wxCommandProcessor) IMPLEMENT_DYNAMIC_CLASS(MutDocument</div></div>
 <div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
-<div class="ttc" id="group__route_html_ga23ee5f5f1dcdcf81c4ea7c3fe44acbdc"><div class="ttname"><a href="../../d5/dee/group__route.html#ga23ee5f5f1dcdcf81c4ea7c3fe44acbdc">Copy</a></div><div class="ttdeci">TagList * Copy(TagList *list)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da0/GIS__Head_8cpp_source.html#l00445">GIS_Head.cpp:445</a></div></div>
-<div class="ttc" id="group__kernel_html_gae4dfd7b0d66121016d6466d2ff10e8ba"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a></div><div class="ttdeci">#define _</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/Execute_8cpp_source.html#l00057">Execute.cpp:57</a></div></div>
+<div class="ttc" id="group__route_html_ga23ee5f5f1dcdcf81c4ea7c3fe44acbdc"><div class="ttname"><a href="../../d5/dee/group__route.html#ga23ee5f5f1dcdcf81c4ea7c3fe44acbdc">Copy</a></div><div class="ttdeci">TagList * Copy(TagList *list)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da0/GIS__Head_8cpp_source.html#l00438">GIS_Head.cpp:438</a></div></div>
+<div class="ttc" id="group__kernel_html_gae4dfd7b0d66121016d6466d2ff10e8ba"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gae4dfd7b0d66121016d6466d2ff10e8ba">_</a></div><div class="ttdeci">#define _</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/de4/Interval_8c_source.html#l00041">Interval.c:41</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Son Feb 9 2014 18:39:14 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Apr 26 2014 12:58:27 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
 </body>
 </html>

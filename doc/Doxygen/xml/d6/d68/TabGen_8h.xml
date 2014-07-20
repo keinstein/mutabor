@@ -4,182 +4,92 @@
     <compoundname>TabGen.h</compoundname>
     <includes refid="d1/d73/Defs_8h" local="yes">Defs.h</includes>
     <includedby refid="d1/dce/box_8cpp" local="yes">src/kernel/box.cpp</includedby>
-    <includedby refid="dd/dc6/Box_8cpp" local="yes">src/kernel/routing/Box.cpp</includedby>
     <includedby refid="d1/da7/boxTest_8cpp" local="yes">src/kernel/tests/boxTest.cpp</includedby>
     <incdepgraph>
-      <node id="25397">
-        <label>list</label>
-      </node>
-      <node id="25390">
-        <label>stdarg.h</label>
-      </node>
-      <node id="25405">
-        <label>wx/cmdline.h</label>
-      </node>
-      <node id="25393">
-        <label>wx/stdpaths.h</label>
-      </node>
-      <node id="25389">
-        <label>Defs.h</label>
-        <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="25390" relation="include">
-        </childnode>
-        <childnode refid="25391" relation="include">
-        </childnode>
-        <childnode refid="25410" relation="include">
-        </childnode>
-        <childnode refid="25411" relation="include">
-        </childnode>
-        <childnode refid="25404" relation="include">
-        </childnode>
-        <childnode refid="25412" relation="include">
-        </childnode>
-        <childnode refid="25413" relation="include">
-        </childnode>
-      </node>
-      <node id="25388">
-        <label>src/kernel/TabGen.h</label>
-        <link refid="TabGen.h"/>
-        <childnode refid="25389" relation="include">
-        </childnode>
-      </node>
-      <node id="25404">
+      <node id="24422">
         <label>stdint.h</label>
       </node>
-      <node id="25410">
-        <label>wx/wxchar.h</label>
+      <node id="24415">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="24414" relation="include">
+        </childnode>
       </node>
-      <node id="25399">
-        <label>wx/image.h</label>
+      <node id="24421">
+        <label>boost/format.hpp</label>
       </node>
-      <node id="25414">
+      <node id="24419">
         <label>string</label>
       </node>
-      <node id="25409">
-        <label>mutDebugFlags.h</label>
-        <link refid="d7/d49/mutDebugFlags_8h"/>
-      </node>
-      <node id="25392">
-        <label>wx/window.h</label>
-      </node>
-      <node id="25411">
-        <label>wx/intl.h</label>
-      </node>
-      <node id="25398">
-        <label>src/wxGUI/Mutabor.rh</label>
-        <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="25389" relation="include">
+      <node id="24414">
+        <label>Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="24415" relation="include">
+        </childnode>
+        <childnode refid="24416" relation="include">
+        </childnode>
+        <childnode refid="24417" relation="include">
         </childnode>
       </node>
-      <node id="25394">
-        <label>wx/filename.h</label>
+      <node id="24413">
+        <label>src/kernel/TabGen.h</label>
+        <link refid="TabGen.h"/>
+        <childnode refid="24414" relation="include">
+        </childnode>
       </node>
-      <node id="25396">
-        <label>typeinfo</label>
-      </node>
-      <node id="25407">
-        <label>wx/debug.h</label>
-      </node>
-      <node id="25402">
+      <node id="24420">
         <label>cstdio</label>
       </node>
-      <node id="25401">
-        <label>bitset</label>
-      </node>
-      <node id="25391">
-        <label>src/wxGUI/generic/mhDefs.h</label>
-        <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="25389" relation="include">
+      <node id="24417">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="24414" relation="include">
         </childnode>
-        <childnode refid="25392" relation="include">
+        <childnode refid="24418" relation="include">
         </childnode>
-        <childnode refid="25393" relation="include">
+        <childnode refid="24419" relation="include">
         </childnode>
-        <childnode refid="25394" relation="include">
+        <childnode refid="24420" relation="include">
         </childnode>
-        <childnode refid="25395" relation="include">
+        <childnode refid="24421" relation="include">
         </childnode>
-        <childnode refid="25396" relation="include">
+        <childnode refid="24422" relation="include">
         </childnode>
-        <childnode refid="25397" relation="include">
-        </childnode>
-        <childnode refid="25398" relation="include">
-        </childnode>
-        <childnode refid="25399" relation="include">
-        </childnode>
-        <childnode refid="25400" relation="include">
+        <childnode refid="24423" relation="include">
         </childnode>
       </node>
-      <node id="25403">
-        <label>vector</label>
-      </node>
-      <node id="25400">
-        <label>mutDebug.h</label>
-        <link refid="de/de1/mutDebug_8h"/>
-        <childnode refid="25401" relation="include">
-        </childnode>
-        <childnode refid="25395" relation="include">
-        </childnode>
-        <childnode refid="25402" relation="include">
-        </childnode>
-        <childnode refid="25403" relation="include">
-        </childnode>
-        <childnode refid="25404" relation="include">
-        </childnode>
-        <childnode refid="25405" relation="include">
-        </childnode>
-        <childnode refid="25406" relation="include">
-        </childnode>
-        <childnode refid="25407" relation="include">
-        </childnode>
-        <childnode refid="25408" relation="include">
-        </childnode>
-        <childnode refid="25409" relation="include">
-        </childnode>
-      </node>
-      <node id="25413">
+      <node id="24418">
         <label>src/wxintl/libintl.h</label>
         <link refid="d4/d64/libintl_8h"/>
-        <childnode refid="25389" relation="include">
+        <childnode refid="24414" relation="include">
         </childnode>
-        <childnode refid="25414" relation="include">
+        <childnode refid="24419" relation="include">
         </childnode>
       </node>
-      <node id="25406">
-        <label>wx/string.h</label>
+      <node id="24416">
+        <label>cstddef</label>
       </node>
-      <node id="25395">
-        <label>iostream</label>
-      </node>
-      <node id="25408">
-        <label>wx/thread.h</label>
-      </node>
-      <node id="25412">
-        <label>wx/setup.h</label>
+      <node id="24423">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="25415">
-        <label>src/kernel/TabGen.h</label>
-        <link refid="TabGen.h"/>
-        <childnode refid="25416" relation="include">
-        </childnode>
-        <childnode refid="25417" relation="include">
-        </childnode>
-        <childnode refid="25418" relation="include">
-        </childnode>
-      </node>
-      <node id="25418">
-        <label>src/kernel/tests/boxTest.cpp</label>
-        <link refid="d1/da7/boxTest_8cpp"/>
-      </node>
-      <node id="25416">
+      <node id="24425">
         <label>src/kernel/box.cpp</label>
         <link refid="d1/dce/box_8cpp"/>
       </node>
-      <node id="25417">
-        <label>src/kernel/routing/Box.cpp</label>
-        <link refid="dd/dc6/Box_8cpp"/>
+      <node id="24426">
+        <label>src/kernel/tests/boxTest.cpp</label>
+        <link refid="d1/da7/boxTest_8cpp"/>
+      </node>
+      <node id="24424">
+        <label>src/kernel/TabGen.h</label>
+        <link refid="TabGen.h"/>
+        <childnode refid="24425" relation="include">
+        </childnode>
+        <childnode refid="24426" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innernamespace refid="d6/daa/namespacemutabor">mutabor</innernamespace>
@@ -193,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.h" line="36" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.h" bodystart="36" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.h" line="36" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d9/d7c/group__kernel_1ga275c0c59be7f44ecc7c51dd59b0fd57c" prot="public" static="no">
         <name>SRC_KERNEL_TABGEN_H_PRECOMPILED</name>
@@ -203,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.h" line="46" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.h" bodystart="46" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.h" line="46" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -241,7 +151,7 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>TabGen.cpp<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5b50b41814c8ac579c5ee30bcd35ead0" kindref="member">expand_decition_tree</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1abcb81b5b4ff6213bb18cb9eea3ae374e" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5b50b41814c8ac579c5ee30bcd35ead0" kindref="member">expand_decition_tree</ref><sp/>(<ref refid="d6/dbb/namespacemutabor_1_1hidden_1a5aa9b62feeb6bf19e234254001b2c228" kindref="member">mutabor_box_type</ref><sp/>*<sp/>box);</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus<sp/></highlight></codeline>
 <codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>extern<sp/>&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -254,6 +164,6 @@ This program is free software; you can redistribute it and/or modify it under th
 <codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.h"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/TabGen.h"/>
   </compounddef>
 </doxygen>

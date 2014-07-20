@@ -6,435 +6,420 @@
     <includes refid="de/d0f/Box_8h" local="yes">src/kernel/routing/Box.h</includes>
     <includes refid="d2/dd8/Interpre_8h" local="yes">src/kernel/Interpre.h</includes>
     <includes refid="d2/d2c/Route-inlines_8h" local="yes">src/kernel/routing/Route-inlines.h</includes>
-    <includedby refid="dd/dc6/Box_8cpp" local="yes">src/kernel/routing/Box.cpp</includedby>
     <incdepgraph>
-      <node id="19977">
+      <node id="19426">
         <label>list</label>
       </node>
-      <node id="19995">
-        <label>src/kernel/routing/Box.h</label>
-        <link refid="de/d0f/Box_8h"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-        <childnode refid="19996" relation="include">
-        </childnode>
-        <childnode refid="19997" relation="include">
-        </childnode>
-        <childnode refid="19998" relation="include">
-        </childnode>
-        <childnode refid="20005" relation="include">
-        </childnode>
-        <childnode refid="20007" relation="include">
-        </childnode>
-        <childnode refid="19983" relation="include">
-        </childnode>
-        <childnode refid="20013" relation="include">
-        </childnode>
-        <childnode refid="20014" relation="include">
-        </childnode>
-        <childnode refid="19970" relation="include">
-        </childnode>
-        <childnode refid="20006" relation="include">
-        </childnode>
-      </node>
-      <node id="19970">
-        <label>stdarg.h</label>
-      </node>
-      <node id="20020">
-        <label>src/kernel/routing/timing.h</label>
-        <link refid="db/d41/timing_8h"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-        <childnode refid="19999" relation="include">
-        </childnode>
-        <childnode refid="20021" relation="include">
-        </childnode>
-        <childnode refid="20022" relation="include">
-        </childnode>
-        <childnode refid="20002" relation="include">
-        </childnode>
-        <childnode refid="20003" relation="include">
-        </childnode>
-        <childnode refid="20023" relation="include">
-        </childnode>
-        <childnode refid="19997" relation="include">
-        </childnode>
-      </node>
-      <node id="20021">
-        <label>limits</label>
-      </node>
-      <node id="20005">
-        <label>src/kernel/Execute.h</label>
-        <link refid="de/d11/Execute_8h"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-        <childnode refid="20006" relation="include">
-        </childnode>
-      </node>
-      <node id="20001">
-        <label>boost/intrusive_ptr.hpp</label>
-      </node>
-      <node id="19968">
-        <label>src/kernel/routing/Box-inlines.h</label>
-        <link refid="Box-inlines.h"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-        <childnode refid="19995" relation="include">
-        </childnode>
-        <childnode refid="20011" relation="include">
-        </childnode>
-        <childnode refid="20015" relation="include">
-        </childnode>
-      </node>
-      <node id="19985">
-        <label>wx/cmdline.h</label>
-      </node>
-      <node id="19973">
-        <label>wx/stdpaths.h</label>
-      </node>
-      <node id="19969">
-        <label>src/kernel/Defs.h</label>
-        <link refid="d1/d73/Defs_8h"/>
-        <childnode refid="19970" relation="include">
-        </childnode>
-        <childnode refid="19971" relation="include">
-        </childnode>
-        <childnode refid="19990" relation="include">
-        </childnode>
-        <childnode refid="19991" relation="include">
-        </childnode>
-        <childnode refid="19984" relation="include">
-        </childnode>
-        <childnode refid="19992" relation="include">
-        </childnode>
-        <childnode refid="19993" relation="include">
-        </childnode>
-      </node>
-      <node id="19984">
-        <label>stdint.h</label>
-      </node>
-      <node id="20009">
-        <label>stdlib.h</label>
-      </node>
-      <node id="19990">
-        <label>wx/wxchar.h</label>
-      </node>
-      <node id="19979">
-        <label>wx/image.h</label>
-      </node>
-      <node id="20002">
-        <label>stdexcept</label>
-      </node>
-      <node id="20012">
-        <label>malloc.h</label>
-      </node>
-      <node id="20003">
-        <label>boost/throw_exception.hpp</label>
-      </node>
-      <node id="19994">
-        <label>string</label>
-      </node>
-      <node id="20022">
-        <label>exception</label>
-      </node>
-      <node id="19989">
-        <label>mutDebugFlags.h</label>
-        <link refid="d7/d49/mutDebugFlags_8h"/>
-      </node>
-      <node id="19972">
-        <label>wx/window.h</label>
-      </node>
-      <node id="20024">
-        <label>limits.h</label>
-      </node>
-      <node id="20011">
-        <label>Interpre.h</label>
-        <link refid="d2/dd8/Interpre_8h"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-        <childnode refid="20008" relation="include">
-        </childnode>
-      </node>
-      <node id="20007">
-        <label>src/kernel/box.h</label>
-        <link refid="dc/d19/box_8h"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-        <childnode refid="20008" relation="include">
-        </childnode>
-        <childnode refid="20011" relation="include">
-        </childnode>
-        <childnode refid="20005" relation="include">
-        </childnode>
-        <childnode refid="20012" relation="include">
-        </childnode>
-      </node>
-      <node id="19991">
-        <label>wx/intl.h</label>
-      </node>
-      <node id="19978">
-        <label>src/wxGUI/Mutabor.rh</label>
-        <link refid="d9/d64/Mutabor_8rh"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-      </node>
-      <node id="19974">
-        <label>wx/filename.h</label>
-      </node>
-      <node id="19999">
-        <label>src/kernel/MidiKern.h</label>
-        <link refid="da/dfd/MidiKern_8h"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-      </node>
-      <node id="20019">
-        <label>string.h</label>
-      </node>
-      <node id="19976">
-        <label>typeinfo</label>
-      </node>
-      <node id="19987">
-        <label>wx/debug.h</label>
-      </node>
-      <node id="19982">
-        <label>cstdio</label>
-      </node>
-      <node id="19981">
-        <label>bitset</label>
-      </node>
-      <node id="19971">
-        <label>src/wxGUI/generic/mhDefs.h</label>
-        <link refid="d0/d68/mhDefs_8h"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-        <childnode refid="19972" relation="include">
-        </childnode>
-        <childnode refid="19973" relation="include">
-        </childnode>
-        <childnode refid="19974" relation="include">
-        </childnode>
-        <childnode refid="19975" relation="include">
-        </childnode>
-        <childnode refid="19976" relation="include">
-        </childnode>
-        <childnode refid="19977" relation="include">
-        </childnode>
-        <childnode refid="19978" relation="include">
-        </childnode>
-        <childnode refid="19979" relation="include">
-        </childnode>
-        <childnode refid="19980" relation="include">
-        </childnode>
-      </node>
-      <node id="19983">
-        <label>vector</label>
-      </node>
-      <node id="19980">
-        <label>mutDebug.h</label>
-        <link refid="de/de1/mutDebug_8h"/>
-        <childnode refid="19981" relation="include">
-        </childnode>
-        <childnode refid="19975" relation="include">
-        </childnode>
-        <childnode refid="19982" relation="include">
-        </childnode>
-        <childnode refid="19983" relation="include">
-        </childnode>
-        <childnode refid="19984" relation="include">
-        </childnode>
-        <childnode refid="19985" relation="include">
-        </childnode>
-        <childnode refid="19986" relation="include">
-        </childnode>
-        <childnode refid="19987" relation="include">
-        </childnode>
-        <childnode refid="19988" relation="include">
-        </childnode>
-        <childnode refid="19989" relation="include">
-        </childnode>
-      </node>
-      <node id="19998">
+      <node id="19425">
         <label>src/kernel/routing/Route.h</label>
         <link refid="d1/d65/Route_8h"/>
-        <childnode refid="19969" relation="include">
+        <childnode refid="19395" relation="include">
         </childnode>
-        <childnode refid="19999" relation="include">
+        <childnode refid="19418" relation="include">
         </childnode>
-        <childnode refid="19996" relation="include">
+        <childnode refid="19406" relation="include">
         </childnode>
-        <childnode refid="20000" relation="include">
+        <childnode refid="19409" relation="include">
         </childnode>
-        <childnode refid="19977" relation="include">
+        <childnode refid="19426" relation="include">
         </childnode>
-        <childnode refid="19983" relation="include">
+        <childnode refid="19427" relation="include">
         </childnode>
-        <childnode refid="20002" relation="include">
+        <childnode refid="19422" relation="include">
         </childnode>
-        <childnode refid="20003" relation="include">
+        <childnode refid="19423" relation="include">
         </childnode>
-        <childnode refid="20004" relation="include">
-        </childnode>
-      </node>
-      <node id="20025">
-        <label>boost/unordered_set.hpp</label>
-      </node>
-      <node id="19993">
-        <label>src/wxintl/libintl.h</label>
-        <link refid="d4/d64/libintl_8h"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-        <childnode refid="19994" relation="include">
+        <childnode refid="19428" relation="include">
         </childnode>
       </node>
-      <node id="20014">
-        <label>sstream</label>
+      <node id="19438">
+        <label>stdarg.h</label>
       </node>
-      <node id="19986">
-        <label>wx/string.h</label>
+      <node id="19420">
+        <label>limits</label>
       </node>
-      <node id="20017">
-        <label>src/kernel/routing/gmn/GIS.h</label>
-        <link refid="dd/d4d/GIS_8h"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-        <childnode refid="20018" relation="include">
-        </childnode>
-        <childnode refid="20019" relation="include">
-        </childnode>
-        <childnode refid="20009" relation="include">
-        </childnode>
+      <node id="19415">
+        <label>boost/intrusive_ptr.hpp</label>
       </node>
-      <node id="20008">
-        <label>Global.h</label>
-        <link refid="dd/d40/Global_8h"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-        <childnode refid="20006" relation="include">
-        </childnode>
-        <childnode refid="20009" relation="include">
-        </childnode>
-        <childnode refid="19970" relation="include">
-        </childnode>
-        <childnode refid="19994" relation="include">
-        </childnode>
-        <childnode refid="20010" relation="include">
-        </childnode>
-      </node>
-      <node id="20015">
-        <label>src/kernel/routing/Route-inlines.h</label>
-        <link refid="d2/d2c/Route-inlines_8h"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-        <childnode refid="19998" relation="include">
-        </childnode>
-        <childnode refid="20016" relation="include">
-        </childnode>
-        <childnode refid="19995" relation="include">
-        </childnode>
-      </node>
-      <node id="20010">
-        <label>math.h</label>
-      </node>
-      <node id="20004">
-        <label>wx/config.h</label>
-      </node>
-      <node id="19975">
-        <label>iostream</label>
-      </node>
-      <node id="20018">
-        <label>src/kernel/Frac.h</label>
-        <link refid="df/d4f/Frac_8h"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-        <childnode refid="19986" relation="include">
-        </childnode>
-        <childnode refid="19975" relation="include">
-        </childnode>
-      </node>
-      <node id="19988">
-        <label>wx/thread.h</label>
-      </node>
-      <node id="19997">
-        <label>src/kernel/routing/thread.h</label>
-        <link refid="db/dd5/thread_8h"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-        <childnode refid="19988" relation="include">
-        </childnode>
-      </node>
-      <node id="20000">
-        <label>src/kernel/boost-interface.h</label>
-        <link refid="d1/da4/boost-interface_8h"/>
-        <childnode refid="19969" relation="include">
-        </childnode>
-        <childnode refid="19997" relation="include">
-        </childnode>
-        <childnode refid="20001" relation="include">
-        </childnode>
-      </node>
-      <node id="19992">
-        <label>wx/setup.h</label>
-      </node>
-      <node id="20023">
-        <label>wx/stopwatch.h</label>
-      </node>
-      <node id="20013">
-        <label>algorithm</label>
-      </node>
-      <node id="20016">
+      <node id="19429">
         <label>src/kernel/routing/Device.h</label>
         <link refid="de/d05/Device_8h"/>
-        <childnode refid="19969" relation="include">
+        <childnode refid="19395" relation="include">
         </childnode>
-        <childnode refid="20017" relation="include">
+        <childnode refid="19430" relation="include">
         </childnode>
-        <childnode refid="19998" relation="include">
+        <childnode refid="19425" relation="include">
         </childnode>
-        <childnode refid="20020" relation="include">
+        <childnode refid="19417" relation="include">
         </childnode>
-        <childnode refid="19999" relation="include">
+        <childnode refid="19418" relation="include">
         </childnode>
-        <childnode refid="19983" relation="include">
+        <childnode refid="19427" relation="include">
         </childnode>
-        <childnode refid="19977" relation="include">
+        <childnode refid="19426" relation="include">
         </childnode>
-        <childnode refid="20024" relation="include">
+        <childnode refid="19435" relation="include">
         </childnode>
-        <childnode refid="20013" relation="include">
+        <childnode refid="19436" relation="include">
         </childnode>
-        <childnode refid="20014" relation="include">
+        <childnode refid="19437" relation="include">
         </childnode>
-        <childnode refid="19970" relation="include">
+        <childnode refid="19438" relation="include">
         </childnode>
-        <childnode refid="19988" relation="include">
+        <childnode refid="19408" relation="include">
         </childnode>
-        <childnode refid="20023" relation="include">
+        <childnode refid="19424" relation="include">
         </childnode>
-        <childnode refid="20025" relation="include">
-        </childnode>
-      </node>
-      <node id="20006">
-        <label>stdio.h</label>
-      </node>
-      <node id="19996">
-        <label>src/kernel/treestorage.h</label>
-        <link refid="db/dbe/treestorage_8h"/>
-        <childnode refid="19969" relation="include">
+        <childnode refid="19439" relation="include">
         </childnode>
       </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="20026">
+      <node id="19442">
+        <label>src/kernel/box.h</label>
+        <link refid="dc/d19/box_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19443" relation="include">
+        </childnode>
+        <childnode refid="19444" relation="include">
+        </childnode>
+        <childnode refid="19440" relation="include">
+        </childnode>
+        <childnode refid="19445" relation="include">
+        </childnode>
+      </node>
+      <node id="19403">
+        <label>stdint.h</label>
+      </node>
+      <node id="19434">
+        <label>stdlib.h</label>
+      </node>
+      <node id="19396">
+        <label>interface_deps.h</label>
+        <link refid="de/ddd/interface__deps_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+      </node>
+      <node id="19405">
+        <label>src/kernel/routing/Box.h</label>
+        <link refid="de/d0f/Box_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19406" relation="include">
+        </childnode>
+        <childnode refid="19407" relation="include">
+        </childnode>
+        <childnode refid="19409" relation="include">
+        </childnode>
+        <childnode refid="19416" relation="include">
+        </childnode>
+        <childnode refid="19425" relation="include">
+        </childnode>
+        <childnode refid="19440" relation="include">
+        </childnode>
+        <childnode refid="19442" relation="include">
+        </childnode>
+        <childnode refid="19427" relation="include">
+        </childnode>
+        <childnode refid="19436" relation="include">
+        </childnode>
+        <childnode refid="19437" relation="include">
+        </childnode>
+        <childnode refid="19438" relation="include">
+        </childnode>
+        <childnode refid="19441" relation="include">
+        </childnode>
+        <childnode refid="19402" relation="include">
+        </childnode>
+      </node>
+      <node id="19416">
+        <label>src/kernel/routing/watchdog.h</label>
+        <link refid="d9/da3/watchdog_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19407" relation="include">
+        </childnode>
+        <childnode refid="19417" relation="include">
+        </childnode>
+      </node>
+      <node id="19402">
+        <label>boost/format.hpp</label>
+      </node>
+      <node id="19444">
+        <label>Interpre.h</label>
+        <link refid="d2/dd8/Interpre_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19418" relation="include">
+        </childnode>
+        <childnode refid="19443" relation="include">
+        </childnode>
+        <childnode refid="19435" relation="include">
+        </childnode>
+      </node>
+      <node id="19428">
+        <label>src/kernel/routing/event.h</label>
+        <link refid="dd/d20/event_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19429" relation="include">
+        </childnode>
+        <childnode refid="19420" relation="include">
+        </childnode>
+      </node>
+      <node id="19422">
+        <label>stdexcept</label>
+      </node>
+      <node id="19446">
+        <label>src/kernel/routing/Route-inlines.h</label>
+        <link refid="d2/d2c/Route-inlines_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19425" relation="include">
+        </childnode>
+        <childnode refid="19429" relation="include">
+        </childnode>
+        <childnode refid="19405" relation="include">
+        </childnode>
+        <childnode refid="19428" relation="include">
+        </childnode>
+      </node>
+      <node id="19413">
+        <label>src/wxintl/libintl.h</label>
+      </node>
+      <node id="19445">
+        <label>malloc.h</label>
+      </node>
+      <node id="19423">
+        <label>boost/throw_exception.hpp</label>
+      </node>
+      <node id="19400">
+        <label>string</label>
+      </node>
+      <node id="19410">
+        <label>/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/interface_deps.h</label>
+      </node>
+      <node id="19417">
+        <label>timing.h</label>
+        <link refid="db/d41/timing_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19418" relation="include">
+        </childnode>
+        <childnode refid="19420" relation="include">
+        </childnode>
+        <childnode refid="19421" relation="include">
+        </childnode>
+        <childnode refid="19422" relation="include">
+        </childnode>
+        <childnode refid="19423" relation="include">
+        </childnode>
+        <childnode refid="19424" relation="include">
+        </childnode>
+        <childnode refid="19407" relation="include">
+        </childnode>
+      </node>
+      <node id="19421">
+        <label>exception</label>
+      </node>
+      <node id="19435">
+        <label>limits.h</label>
+      </node>
+      <node id="19394">
         <label>src/kernel/routing/Box-inlines.h</label>
         <link refid="Box-inlines.h"/>
-        <childnode refid="20027" relation="include">
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19405" relation="include">
+        </childnode>
+        <childnode refid="19444" relation="include">
+        </childnode>
+        <childnode refid="19446" relation="include">
         </childnode>
       </node>
-      <node id="20027">
-        <label>src/kernel/routing/Box.cpp</label>
-        <link refid="dd/dc6/Box_8cpp"/>
+      <node id="19418">
+        <label>src/kernel/MidiKern.h</label>
+        <link refid="da/dfd/MidiKern_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19419" relation="include">
+        </childnode>
       </node>
-    </invincdepgraph>
+      <node id="19395">
+        <label>src/kernel/Defs.h</label>
+        <link refid="d1/d73/Defs_8h"/>
+        <childnode refid="19396" relation="include">
+        </childnode>
+        <childnode refid="19397" relation="include">
+        </childnode>
+        <childnode refid="19398" relation="include">
+        </childnode>
+      </node>
+      <node id="19433">
+        <label>string.h</label>
+      </node>
+      <node id="19411">
+        <label>src/kernel/Defs.h</label>
+      </node>
+      <node id="19401">
+        <label>cstdio</label>
+      </node>
+      <node id="19414">
+        <label>/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/debugFlags.h</label>
+      </node>
+      <node id="19427">
+        <label>vector</label>
+      </node>
+      <node id="19407">
+        <label>src/kernel/routing/thread.h</label>
+        <link refid="db/dd5/thread_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19408" relation="include">
+        </childnode>
+      </node>
+      <node id="19398">
+        <label>src/kernel/debug.h</label>
+        <link refid="db/d16/debug_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19399" relation="include">
+        </childnode>
+        <childnode refid="19400" relation="include">
+        </childnode>
+        <childnode refid="19401" relation="include">
+        </childnode>
+        <childnode refid="19402" relation="include">
+        </childnode>
+        <childnode refid="19403" relation="include">
+        </childnode>
+        <childnode refid="19404" relation="include">
+        </childnode>
+      </node>
+      <node id="19430">
+        <label>src/kernel/routing/gmn/GIS.h</label>
+        <link refid="dd/d4d/GIS_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19431" relation="include">
+        </childnode>
+        <childnode refid="19433" relation="include">
+        </childnode>
+        <childnode refid="19434" relation="include">
+        </childnode>
+      </node>
+      <node id="19399">
+        <label>src/wxintl/libintl.h</label>
+        <link refid="d4/d64/libintl_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19400" relation="include">
+        </childnode>
+      </node>
+      <node id="19439">
+        <label>boost/unordered_set.hpp</label>
+      </node>
+      <node id="19437">
+        <label>sstream</label>
+      </node>
+      <node id="19419">
+        <label>math.h</label>
+      </node>
+      <node id="19409">
+        <label>src/kernel/boost-interface.h</label>
+        <link refid="d1/da4/boost-interface_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19410" relation="include">
+        </childnode>
+        <childnode refid="19411" relation="include">
+        </childnode>
+        <childnode refid="19397" relation="include">
+        </childnode>
+        <childnode refid="19412" relation="include">
+        </childnode>
+        <childnode refid="19413" relation="include">
+        </childnode>
+        <childnode refid="19400" relation="include">
+        </childnode>
+        <childnode refid="19401" relation="include">
+        </childnode>
+        <childnode refid="19402" relation="include">
+        </childnode>
+        <childnode refid="19403" relation="include">
+        </childnode>
+        <childnode refid="19414" relation="include">
+        </childnode>
+        <childnode refid="19407" relation="include">
+        </childnode>
+        <childnode refid="19408" relation="include">
+        </childnode>
+        <childnode refid="19415" relation="include">
+        </childnode>
+      </node>
+      <node id="19412">
+        <label>src/kernel/debug.h</label>
+      </node>
+      <node id="19440">
+        <label>src/kernel/Execute.h</label>
+        <link refid="de/d11/Execute_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19441" relation="include">
+        </childnode>
+      </node>
+      <node id="19432">
+        <label>iostream</label>
+      </node>
+      <node id="19431">
+        <label>src/kernel/Frac.h</label>
+        <link refid="df/d4f/Frac_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19432" relation="include">
+        </childnode>
+      </node>
+      <node id="19397">
+        <label>cstddef</label>
+      </node>
+      <node id="19443">
+        <label>Global.h</label>
+        <link refid="dd/d40/Global_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19441" relation="include">
+        </childnode>
+        <childnode refid="19434" relation="include">
+        </childnode>
+        <childnode refid="19438" relation="include">
+        </childnode>
+        <childnode refid="19433" relation="include">
+        </childnode>
+        <childnode refid="19419" relation="include">
+        </childnode>
+      </node>
+      <node id="19408">
+        <label>wx/thread.h</label>
+      </node>
+      <node id="19424">
+        <label>wx/stopwatch.h</label>
+      </node>
+      <node id="19436">
+        <label>algorithm</label>
+      </node>
+      <node id="19441">
+        <label>stdio.h</label>
+      </node>
+      <node id="19406">
+        <label>src/kernel/treestorage.h</label>
+        <link refid="db/dbe/treestorage_8h"/>
+        <childnode refid="19395" relation="include">
+        </childnode>
+      </node>
+      <node id="19404">
+        <label>debugFlags.h</label>
+        <link refid="d4/dab/debugFlags_8h"/>
+      </node>
+    </incdepgraph>
     <innernamespace refid="d6/daa/namespacemutabor">mutabor</innernamespace>
       <sectiondef kind="define">
       <memberdef kind="define" id="d5/dee/group__route_1ga8fae7b9201a7a027acbfe12bddedee8a" prot="public" static="no">
@@ -445,7 +430,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h" line="35" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h" bodystart="35" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h" line="35" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="d5/dee/group__route_1gafc8850a890e795b7a37d0089e6daef7c" prot="public" static="no">
         <name>ROUTING_BOX_INLINES_PRECOMPILED</name>
@@ -455,7 +440,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h" line="48" column="9" bodyfile="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h" bodystart="48" bodyend="-1"/>
+        <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h" line="48" column="9" bodyfile="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -519,22 +504,22 @@
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="83" refid="d6/daa/namespacemutabor_1abbf7f952288b9f3feba7a558a439abb1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/daa/namespacemutabor_1abbf7f952288b9f3feba7a558a439abb1" kindref="member">is_key_trigger</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger" kindref="compound">any_trigger</ref><sp/>&amp;<sp/>trigger)<sp/>{</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.<ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1ac695fea6030d9e6323979e52957d3bb1" kindref="member">type</ref><sp/>==<sp/><ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1a44ca293a0a931c1287eb10f0098db5b1a999ed846160dbf37b2774a06b4cbc002" kindref="member">any_trigger::key</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.<ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1a0cc60546cff6d3372cdd4d83e5326fd8" kindref="member">type</ref><sp/>==<sp/><ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1af7e982b824ac4920aeae63db51ce19b2a999ed846160dbf37b2774a06b4cbc002" kindref="member">any_trigger::key</ref>;</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="86" refid="d6/daa/namespacemutabor_1a54822580288f249e5459f38de38b98f4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/daa/namespacemutabor_1a54822580288f249e5459f38de38b98f4" kindref="member">is_harmony_trigger</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger" kindref="compound">any_trigger</ref><sp/>&amp;<sp/>trigger)<sp/>{</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.<ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1ac695fea6030d9e6323979e52957d3bb1" kindref="member">type</ref><sp/>==<sp/><ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1a44ca293a0a931c1287eb10f0098db5b1a999ed846160dbf37b2774a06b4cbc002" kindref="member">any_trigger::key</ref>;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.<ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1a0cc60546cff6d3372cdd4d83e5326fd8" kindref="member">type</ref><sp/>==<sp/><ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1af7e982b824ac4920aeae63db51ce19b2a999ed846160dbf37b2774a06b4cbc002" kindref="member">any_trigger::key</ref>;</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="89" refid="d6/daa/namespacemutabor_1aa7dbda7a6a85890fa28770dd651a6eaf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/daa/namespacemutabor_1aa7dbda7a6a85890fa28770dd651a6eaf" kindref="member">is_midi_trigger</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger" kindref="compound">any_trigger</ref><sp/>&amp;<sp/>trigger)<sp/>{</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.<ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1ac695fea6030d9e6323979e52957d3bb1" kindref="member">type</ref><sp/>==<sp/><ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1a44ca293a0a931c1287eb10f0098db5b1a999ed846160dbf37b2774a06b4cbc002" kindref="member">any_trigger::key</ref>;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.<ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1a0cc60546cff6d3372cdd4d83e5326fd8" kindref="member">type</ref><sp/>==<sp/><ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1af7e982b824ac4920aeae63db51ce19b2a999ed846160dbf37b2774a06b4cbc002" kindref="member">any_trigger::key</ref>;</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="92" refid="d6/daa/namespacemutabor_1ac8e88f0e6c25fbe394c5a310cca961ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="db/d2d/structmutabor_1_1hidden_1_1keyboard__ereignis" kindref="compound">keyboard_action</ref><sp/>*<sp/><ref refid="d6/daa/namespacemutabor_1ac8e88f0e6c25fbe394c5a310cca961ea" kindref="member">get_key_trigger</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger" kindref="compound">any_trigger</ref><sp/>&amp;<sp/>trigger)<sp/>{</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.<ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1a4edcb68d0bc3dc7caee792eba178c854" kindref="member">key_trigger</ref>;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.<ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1aa93008452e95d4c0a58d636674025f2d" kindref="member">u</ref>.<ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1a88f5c78dd485b019d9190ca7f6479e2a" kindref="member">key_trigger</ref>;</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="95" refid="d6/daa/namespacemutabor_1a419bf8fd7cedee3dc5fb32d8a0c6aa94" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="d1/da9/structmutabor_1_1hidden_1_1harmonie__ereignis" kindref="compound">harmony_action</ref><sp/>*<sp/><ref refid="d6/daa/namespacemutabor_1a419bf8fd7cedee3dc5fb32d8a0c6aa94" kindref="member">get_harmony_trigger</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger" kindref="compound">any_trigger</ref><sp/>&amp;<sp/>trigger)<sp/>{</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.<ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1a2492f98c2378ab5adb9598929a44d882" kindref="member">harmony_trigger</ref>;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.<ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1aa93008452e95d4c0a58d636674025f2d" kindref="member">u</ref>.<ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1a88b7525fb7ab604b0d682f17db8279cd" kindref="member">harmony_trigger</ref>;</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="98" refid="d6/daa/namespacemutabor_1a5d86f3a514529cf373951103eec48710" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="d0/ddd/structmutabor_1_1hidden_1_1midi__ereignis" kindref="compound">midi_action</ref><sp/>*<sp/><ref refid="d6/daa/namespacemutabor_1a5d86f3a514529cf373951103eec48710" kindref="member">get_midi_trigger</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger" kindref="compound">any_trigger</ref><sp/>&amp;<sp/>trigger)<sp/>{</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.<ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1ac36236d6aeffc15bc3a5d06ee6c58adc" kindref="member">midi_trigger</ref>;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>trigger.<ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1aa93008452e95d4c0a58d636674025f2d" kindref="member">u</ref>.<ref refid="d1/d32/structmutabor_1_1hidden_1_1any__trigger_1a1ac0eac563500053e47854c8ce9fc92f" kindref="member">midi_trigger</ref>;</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal">}</highlight></codeline>
@@ -544,6 +529,6 @@
 <codeline lineno="106"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="107"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/tobias/macbookbackup/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h"/>
+    <location file="/home/tobias/Entwicklung/mutabor/mutabor-git/src/kernel/routing/Box-inlines.h"/>
   </compounddef>
 </doxygen>
