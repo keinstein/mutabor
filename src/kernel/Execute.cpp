@@ -198,7 +198,8 @@ inline static void call_actions (mutabor_box_type * box,
 
 	// check whether we must allocate memory
 	if ((box->current_parameters == NULL && box->parameters == NULL)
-	    || box->current_parameters->next == NULL) {
+        || (box->current_parameters != NULL
+            && box->current_parameters->next == NULL)) {
 		current_parameters = (struct interpreter_parameter_list *)
 			ymalloc(box,sizeof(struct interpreter_parameter_list));
 		current_parameters->next = NULL;
