@@ -382,6 +382,8 @@ namespace mutabor {
 		mutint64 Time() {
 			struct timespec tmp;
 			mutASSERT(running);
+			if (!running)
+				return 0;
 			clock_gettime(CLOCK_MONOTONIC,&tmp);
 			tmp.tv_sec -= start.tv_sec;
 			tmp.tv_nsec -= start.tv_nsec;

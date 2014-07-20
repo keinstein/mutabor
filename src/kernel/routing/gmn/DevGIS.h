@@ -224,7 +224,8 @@ virtual void SetName(const std::string & s)
 			 mutabor::MutaborModeType mode
 			 = mutabor::DeviceStop,
 			 int id = -1)
-			: CommonFileInputDevice(name,mode,id)
+			: CommonFileInputDevice(name,mode,id),
+			  minDelta(0)
 			{
 				Head = 0;
 				Data = 0;

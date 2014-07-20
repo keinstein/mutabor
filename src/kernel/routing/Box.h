@@ -498,7 +498,10 @@ namespace mutabor {
 			int index;
 			size_t id;
 			int channel;
-			current_tone_entry():tone_entry() {}
+			current_tone_entry():tone_entry(),
+					     index(-1),
+					     id(0),
+					     channel(-7) {}
 			current_tone_entry(int ind,
 					   double p,
 					   size_t i,

@@ -74,7 +74,8 @@ public:
 	char Turn;
 	bool SingleToken; // proceed only one token (in accords)
 
-	GisReadHead(GisReadHead *boss, GisToken *cursor, const std::string &id, bool singleToken = false)
+	GisReadHead(GisReadHead *boss, GisToken *cursor, const std::string &id, bool singleToken = false):
+		Turn (0)
 		{
 			PrevPtr = &Prev;
 			DEBUGLOG (gmnfile, "boss = %p" ,(void *)boss);
@@ -327,7 +328,8 @@ public:
 	TagList *Octave;
 	TagList *Key;
 
-	GisWriteHead(GisWriteHead *boss, const std::string id)
+	GisWriteHead(GisWriteHead *boss, const std::string id):
+		ChordPos(0)
 		{
 			Prev = 0;
 			Next = 0;

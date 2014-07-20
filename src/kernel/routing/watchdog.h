@@ -59,9 +59,10 @@ namespace mutabor {
 		typedef T targettype;
 	public:
 		watchdog(T t,
-			 mutint64 timeout,
+			 mutint64 to,
 			 ThreadKind kind = wxTHREAD_DETACHED):Thread(kind),
 							      target(t),
+							      timeout(to),
 							      exit(false) {}
 		virtual ~watchdog() {
 			targettype tmp = const_cast<targettype&>(target);

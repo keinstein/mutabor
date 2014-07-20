@@ -965,7 +965,7 @@ int ChordNote::MutNoteOff()
 		*Cursor = 0;
 		// delete alter
 
-		if ( Status & CNAlter && !(*AlterBegin)->Next ) {
+		if ( (Status & CNAlter) && !(*AlterBegin)->Next ) {
 			delete *AlterBegin;
 			Cursor = AlterBegin;
 			*Cursor = 0;
