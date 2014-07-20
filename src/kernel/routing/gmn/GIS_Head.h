@@ -449,41 +449,33 @@ public:
 	int Key;       // outputed key
 	double Pitch;  // corresponding pitch
 	ChordNote(GisWriteHead *boss) // first ChordNote of a WriteHead
-		{
-			Boss = boss;
-			BossPos = Boss->Cursor;
-			Next = 0;
-			TotalTime = Boss->CurrentTime;
-			Data = 0;
-			Cursor = &Data;
+	{
+		Boss = boss;
+		BossPos = Boss->Cursor;
+		Next = 0;
+		TotalTime = Boss->CurrentTime;
+		Data = 0;
+		Cursor = &Data;
 
-			if ( (bool) TotalTime )
-				AddGis(new GisNote("_",
-						   "",
-						   0,
-						   TotalTime,
-						   " ", 0));
+		if ( (bool) TotalTime )
+			AddGis(new GisNote("_",
+					   "",
+					   0,
+					   TotalTime,
+					   " ", 0));
 
-			CurrentTime = 0;
+		CurrentTime = 0;
+		Boss->ChordPos = Boss->Cursor;
+		Status = 0;
+		TieBegin = 0;
+		nTie = 0;
+		LastSep = 0;
+		InstrId = -1;
+		Taste = GMN_NO_KEY;
+		Key = GMN_NO_KEY;
+		Pitch = 0;
+	}
 
-			Boss->ChordPos = Boss->Cursor;
-
-			Status = 0;
-
-			TieBegin = 0;
-
-			nTie = 0;
-
-			LastSep = 0;
-
-			InstrId = -1;
-
-			Taste = GMN_NO_KEY;
-
-			Key = GMN_NO_KEY;
-
-			Pitch = 0;
-		}
 	ChordNote(ChordNote *first); // not the first ChordNote
 	~ChordNote()
 		{
