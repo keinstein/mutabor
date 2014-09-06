@@ -337,9 +337,9 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 	}
 
 
-	void OutputMidiFile::Close()
+	void OutputMidiFile::do_Close(bool sync)
 	{
-		base::Close();
+		base::do_Close();
 
 		/* tell boost that we are using UTF-8 file names */
 		boost::filesystem::detail::utf8_codecvt_facet utf8;
@@ -350,6 +350,8 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 					       std::ios::out | std::ios::binary);
 
 		Out.Save(os);
+		if (sync)
+			os.flush();
 	}
 
 

@@ -597,7 +597,6 @@ namespace mutabor {
 		virtual void Load (tree_storage & config, RouteClass * route);
 
 
-		virtual void Close();
 		virtual void SetName(const std::string & s)
 		{
 			if (s != Name) {
@@ -653,6 +652,8 @@ namespace mutabor {
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
 #endif
+
+		virtual void do_Close(bool sync=false);
 
 	};
 

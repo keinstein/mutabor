@@ -516,7 +516,6 @@ namespace mutabor {
 			msb_first
 		};
 
-		void Close();
 		channel_queue_type::const_iterator EmergencyFindChannel(RouteClass * r);
 
 		/**
@@ -572,6 +571,7 @@ namespace mutabor {
 					nKeyOn(0) {}
 
 		bool do_Open();
+		void do_Close(bool sync=false);
 
 		/**
 		 * Really send the beginning of a sounding note.

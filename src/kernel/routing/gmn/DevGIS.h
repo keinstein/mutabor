@@ -116,17 +116,13 @@ namespace mutabor {
 			return false;
 		}
 
-		virtual void Close()
-			{
-				CloseAllSubs(Head);
-			};
 
 virtual void SetName(const std::string & s)
 			{
 				if (s != Name) {
 					bool reopen = IsOpen();
 					if (reopen)
-						Close();
+						Close(false);
 
 					Name = s;
 
@@ -202,6 +198,10 @@ virtual void SetName(const std::string & s)
 			{};
 		virtual void do_Quiet(Route r, int type, size_t id)
 			{};
+
+		virtual void do_Close(bool sync) {
+			CloseAllSubs(Head);
+		};
 
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.

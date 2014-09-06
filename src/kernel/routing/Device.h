@@ -925,7 +925,14 @@ namespace mutabor {
 		void Panic(int type) {
 			ScopedLock lock(write_lock);
 			do_Panic(type);
-		};
+		}
+		void Close() {
+			Close(false);
+		}
+		void Close(bool sync) {
+			ScopedLock lock(write_lock);
+			do_Close(sync);
+		}
 		bool Open() {
 			ScopedLock lock(write_lock);
 			return do_Open();
@@ -959,6 +966,7 @@ namespace mutabor {
 				  int id = -1):
 			CommonTypedDeviceAPI<OutputDeviceClass>(name, id),
 			write_lock() {}
+
 
 		/**
 		 * Really Send the beginning of a sounding note.
@@ -1000,6 +1008,7 @@ namespace mutabor {
 		virtual void do_Quiet(Route r, int type, size_t id) = 0;
 		virtual void do_Panic(int type) { STUBC; };
 		virtual bool do_Open() { return true; }
+		virtual void do_Close(bool sync = false) = 0;
 
 	};
 

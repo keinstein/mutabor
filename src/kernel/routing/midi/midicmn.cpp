@@ -102,7 +102,7 @@ namespace mutabor {
 	}
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::Close() {
+	void CommonMidiOutput<T,D>::do_Close(bool sync) {
 		ScopedLock lock(this->write_lock);
 #ifdef DEBUG
 		if (mutabor::CurrentTime.isRealtime()) {

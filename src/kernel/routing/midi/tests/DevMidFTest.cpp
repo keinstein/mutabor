@@ -5371,7 +5371,7 @@ void  OutputMidiFileTest::testBatchPlay1()
 	in->Close();
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,(__FILE__)));
 
-	out->Close();
+	out->Close(true);
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,(__FILE__)));
 
 
