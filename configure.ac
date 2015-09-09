@@ -128,7 +128,7 @@ AC_ARG_ENABLE(debug,
 	       AC_LANG_PUSH(C++)
 	       for flag in -Wall  -Wno-unused-local-typedefs  -fdump-class-hierarchy \
 	       	    -fbounds-check  -pedantic  -fdiagnostics-show-option  -Wno-long-long \
-		     -Wno-variadic-macros -ggdb3 -g3
+		     -Wno-variadic-macros -Wno-nested-anon-types -Wno-c++11-extensions -ggdb3 -g3 -fipa-icf
 	       do
 	       	       tmpcxxflags="$CXXFLAGS"
 	       	       CXXFLAGS="$CXXFLAGS $flag"
