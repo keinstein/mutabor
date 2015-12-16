@@ -84,7 +84,7 @@ namespace mutabor {
 		virtual void Load (tree_storage & config);
 
 		virtual bool do_Open();
-		virtual void Close();
+		virtual void do_Close();
 
 		virtual void SetName(const std::string & s)
 			{

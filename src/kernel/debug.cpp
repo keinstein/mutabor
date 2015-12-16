@@ -313,15 +313,20 @@ extern "C" {
 
 #ifdef DEBUG
 
-struct backtrace_state * mutabor_backtrace::state =
-	backtrace_create_state(NULL,
-			       true,
-			       &mutabor_backtrace_error_callback,
-			       NULL);
+/* state may not be configured with the guard state here, as it will
+   be referenced by global variables that are contained in another
+   compilation unit. */
+struct backtrace_state * mutabor_backtrace::state = 0;
 
 mutabor_backtrace::mutabor_backtrace(int omit_count):base(0),
 						     print(false)
 {
+	if (!state)
+		state = backtrace_create_state(NULL,
+					       true,
+					       &mutabor_backtrace_error_callback,
+					       NULL);
+
 	reserve(10);
 
 	backtrace_simple(state,

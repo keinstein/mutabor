@@ -318,7 +318,7 @@ namespace mutabor {
 			if (id != DevId) {
 				DevId = id;
 				if ((reopen = IsOpen()))
-					Close();
+					Close(false);
 			}
 			if (rtmidiout) {
 				try {
