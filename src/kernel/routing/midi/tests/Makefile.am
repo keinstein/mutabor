@@ -9,7 +9,9 @@ CLEANFILES += \
 AM_CPPFLAGS += -DSRCDIR="\"$(srcdir)\""
 check_PROGRAMS = \
 	playmidi1 \
-	midiopenfail1
+	midiopenfail1 \
+	genmidirnd \
+	genmidilinear
 
 EXTRA_DIST = \
 	midi1_source.mid \
@@ -39,7 +41,9 @@ check_SCRIPTS = playmidi1.mid
 
 TESTS = \
 	playmidi1$(EXEEXT) \
-	midiopenfail1$(EXEEXT)
+	midiopenfail1$(EXEEXT) \
+	genmidirnd$(EXEEXT) \
+	genmidilinear$(EXEEXT)
 
 playmidi1_SOURCES = \
 	playmidi1.cpp
@@ -80,6 +84,47 @@ midiopenfail1_SOURCES = \
 
 nodist_midiopenfail1_SOURCES = \
 	debugPaths.cpp
+
+genmidirnd_SOURCES = \
+	genmidirnd.cpp
+
+nodist_genmidirnd_SOURCES = \
+	debugPaths.cpp
+
+genmidirnd_LDADD = \
+	$(top_builddir)/libmutabordebugtest.a \
+	$(top_builddir)/libmutaborgui.a \
+	$(top_builddir)/libmutaborrouting.a \
+	$(top_builddir)/libmutaborkernel.a \
+	$(top_builddir)/librtmidi.a \
+	$(top_builddir)/src/wxintl/libwxintl.a \
+	$(LDADD) \
+	$(AM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LDFLAGS) \
+	$(BOOST_SYSTEM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIBS) \
+	$(BOOST_SYSTEM_LIBS)
+
+
+genmidilinear_SOURCES = \
+	genmidilinear.cpp
+
+nodist_genmidilinear_SOURCES = \
+	debugPaths.cpp
+
+genmidilinear_LDADD = \
+	$(top_builddir)/libmutabordebugtest.a \
+	$(top_builddir)/libmutaborgui.a \
+	$(top_builddir)/libmutaborrouting.a \
+	$(top_builddir)/libmutaborkernel.a \
+	$(top_builddir)/librtmidi.a \
+	$(top_builddir)/src/wxintl/libwxintl.a \
+	$(LDADD) \
+	$(AM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LDFLAGS) \
+	$(BOOST_SYSTEM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIBS) \
+	$(BOOST_SYSTEM_LIBS)
 
 
 if HAVE_CPPUNIT
