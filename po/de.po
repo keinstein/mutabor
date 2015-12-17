@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Mutabor 3.1.0-0pre1\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
 "POT-Creation-Date: 2014-04-24 18:35+0200\n"
-"PO-Revision-Date: 2015-12-11 14:21+0100\n"
+"PO-Revision-Date: 2015-12-16 13:18+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.sourceforge.net>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "Language: de\n"
@@ -928,6 +928,10 @@ msgstr "Überwache GUIDO-Datei-Geräte "
 msgid "Other gui related debug information"
 msgstr "Sonstige Informationen der grafischen Oberfläche"
 
+#: src/kernel/debugFlags.h:37
+msgid "Debug configuration and postprocessing of dialogs"
+msgstr ""
+
 #: src/kernel/debugFlags.h:38
 msgid "Debug the routing system"
 msgstr "Routingsystem überwachen"
@@ -1155,6 +1159,7 @@ msgstr "Basistyp eines Gerätes"
 msgid "Undefined output device"
 msgstr "Undefiniertes Ausgabegerät"
 
+#: src/kernel/routing/Device.h:1237
 msgid "Undefined input device"
 msgstr "Unbekanntes Eingabegerät"
 
@@ -2522,6 +2527,10 @@ msgstr "Kann Routendatei „%s“ nicht zum Schreiben öffnen."
 msgid "Error writing file '%s'."
 msgstr "Fehler beim Schreiben der Datei „%s“."
 
+#: src/wxGUI/MutTextBox.cpp:63
+#, fuzzy
+msgid "Current keys"
+msgstr "Aktuelle &Tasten\tF5"
 
 #: src/wxGUI/MutTextBox.cpp:54
 msgid "Tone system"
@@ -2594,7 +2603,10 @@ msgstr "%2lu : %8.1lf Hz (%6.2lf HT)"
 msgid "%2lu : empty"
 msgstr "%2lu : leer"
 
-#: src/wxGUI/MutTextBox.cpp:266
+#: src/wxGUI/MutTextBox.cpp:353
+#, fuzzy, c-format
+msgid "%2lu : invalid tone"
+msgstr "%3d : ungültiger Ton"
 #, c-format
 msgid "%2lu : (unknown type %d)"
 msgstr "%2lu : (unbekannter Typ %d)"
