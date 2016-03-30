@@ -134,6 +134,7 @@ namespace mutabor {
 		}
 
 		bool check() {
+			if (!route) return true;
 			return route->GetOutputFrom() <= route->GetOutputTo();
 		}
 	protected:
