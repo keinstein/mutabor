@@ -93,14 +93,6 @@ namespace mutabor {
 		isOpen = false;
 	}
 
-	inline CommonFileOutputDevice::operator std::string() const {
-		std::string s = OutputDeviceClass::operator std::string() +
-			boost::str(boost::format("\n  Name = %s\n  session_id = %lu\n  routefile_id = %d")
-				   % Name.c_str() % (unsigned long)session_id() % routefile_id);
-		return s;
-	}
-
-
 
 	
 // CommonFileInputDevice -------------------------------------------------------

@@ -42,6 +42,14 @@
 
 namespace mutabor {
 
+	CommonFileOutputDevice::operator std::string() const {
+		std::string s = OutputDeviceClass::operator std::string() +
+			boost::str(boost::format("\n  Name = %s\n  session_id = %lu\n  routefile_id = %d")
+				   % Name.c_str() % (unsigned long)session_id() % routefile_id);
+		return s;
+	}
+
+
 	wxThread::ExitCode CommonFileInputDevice::exception_error() {
 		std::string str = boost::current_exception_diagnostic_information();
 		Stop();
@@ -63,6 +71,7 @@ the current file and the following information:\n") + str).c_str());
 	}
 	HANDLE CommonFileInputDevice::ostimer::TimerQueue = NULL;
 #endif
+
 }
 
 
