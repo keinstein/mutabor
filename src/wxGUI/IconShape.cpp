@@ -34,6 +34,9 @@
 #include "wx/sizer.h"
 #include "wx/graphics.h"
 #include "wx/dcclient.h"
+#include "wx/dcmemory.h"
+#include "wx/dcprint.h"
+#include "wx/dcgraph.h"
 #include <algorithm>
 //#include "MutApp.h"
 //#include "MutIcon.h"
@@ -490,8 +493,10 @@ void MutIconShapeClass<T>::OnPaint( wxPaintEvent& WXUNUSED(event) )
 	this->OnDraw(dc);
 }
 
+/* dc should be either wxWindowDC (and we create a graphicscontext) or
+   preferable a wxGCDC object that has already a graphics context */
 template<typename T>
-void MutIconShapeClass<T>::OnDraw (wxPaintDC & dc)
+void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 {
 	wxRect size = this->GetRect();
 #if __WXMSW__
@@ -520,17 +525,37 @@ void MutIconShapeClass<T>::OnDraw (wxPaintDC & dc)
 	int y = borderOffset.y;
 	wxPoint center(size.width/2,y + GetIcon().GetHeight()/2);
 
-	wxGraphicsContext * gc = wxGraphicsContext::Create( dc );
-	if (!gc) {
-		return;
+	
+	wxGraphicsContext * gc = NULL;
+	{
+		wxGCDC * d = dynamic_cast<wxGCDC *>(&dc);
+		if (d) gc = d->GetGraphicsContext();
 	}
+	if (!gc) {
+		wxWindowDC * d = dynamic_cast<wxWindowDC *>(&dc);
+		if (d) gc = wxGraphicsContext::Create(*d);
+	}
+	if (!gc) {
+		wxMemoryDC * d = dynamic_cast<wxMemoryDC *>(&dc);
+		if (d) gc = wxGraphicsContext::Create(*d);
+	}
+	if (!gc) {
+		wxPrinterDC * d = dynamic_cast<wxPrinterDC *>(&dc);
+		if (d) gc = wxGraphicsContext::Create(*d);
+	}
+	if (!gc) {
+		gc = wxGraphicsContext::Create(this);
+	}
+			
+	else {
+		wxPen pen(*wxBLACK,2);
+		gc->SetPen(pen);
 
-	wxPen pen(*wxBLACK,2);
-	gc->SetPen(pen);
-
-	for (mutpointlist::iterator i = usedperimeterpoints.begin();
-	     i != usedperimeterpoints.end();++i) {
-		DrawPerimeterPoint(*gc,center, *i);
+		for (mutpointlist::iterator i = usedperimeterpoints.begin();
+		     i != usedperimeterpoints.end();++i) {
+			DrawPerimeterPoint(*gc,center, *i);
+		}
+		delete gc;
 	}
 
 	if (GetIcon().IsOk()) {
@@ -544,7 +569,6 @@ void MutIconShapeClass<T>::OnDraw (wxPaintDC & dc)
 		dc.DrawIcon(GetIcon(), x, y);
 	}
 
-	delete gc;
 
 	DEBUGLOG (other, "Focus %p and this %p" ,(void*)this->FindFocus(),(void*)this);
 }

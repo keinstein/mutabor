@@ -128,7 +128,7 @@ public:
 
 	void         OnPaint (wxPaintEvent &event ) ;
 	void OnMove(wxMoveEvent &event);
-	virtual void OnDraw (wxPaintDC & dc);
+	virtual void OnDraw (wxDC & dc);
 	virtual wxPoint GetPerimeterPoint( const wxPoint &i,
 					   const wxPoint &o,
 					   wxWindow * paintingWindow ) const;

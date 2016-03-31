@@ -45,8 +45,10 @@ namespace mutaborGUI {
 		borderOther = 0;
 	}
 
-	void MutBoxIconShape::OnDraw (wxPaintDC & dc)
+	void MutBoxIconShape::OnDraw (wxDC & dc)
 	{
+		base::OnDraw(dc);
+#if 0	       
 		DEBUGLOG (other, ("Checking icon"));
 
 		if (!GetIcon().IsOk()) {
@@ -55,6 +57,7 @@ namespace mutaborGUI {
 
 		}
 		DEBUGLOG (other, ("Icon ok."));
+#endif		
 
 		int x, y;
 		x = 0;
@@ -75,11 +78,6 @@ namespace mutaborGUI {
 		}
 #endif
 
-		wxGraphicsContext * gc = wxGraphicsContext::Create( dc );
-		if (!gc) return;
-
-
-
 		y += borderOffset.y;
 		if (staticText) y += staticText->GetSize().y;
 		if (GetIcon().IsOk()) {
@@ -90,13 +88,11 @@ namespace mutaborGUI {
 			x -= maxBorderSize.x - borderOffset.x;
 #endif
 			const wxIcon & icon = GetIcon();
-			gc->DrawIcon(GetIcon(), x, y, icon.GetWidth(), icon.GetHeight());
+			dc.DrawIcon(icon, x, y/*, icon.GetWidth(), icon.GetHeight()*/);
 		}
 
 		size.width -= 2* borderOffset.x;
 		size.height -= 2* borderOffset.y;
-		delete gc;
-
 	}
 
 	bool MutBoxIconShape::Layout() {

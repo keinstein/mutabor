@@ -44,7 +44,7 @@
 using namespace mutabor;
 
 namespace mutaborGUI {
-
+#if 0
 	static inline wxSize GetStaticBoxSize( MutBoxIconShape *box )
 	{
 		// this has to be done platform by platform as there is no way to
@@ -55,6 +55,7 @@ namespace mutaborGUI {
 		DEBUGLOGTYPE(other,*box,("Best Size: %dx%d"),s.x,s.y);
 		return s;
 	}
+#endif
 
 	IMPLEMENT_CLASS(MutBoxShape, MutBoxIconShape)
 
