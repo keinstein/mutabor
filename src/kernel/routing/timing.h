@@ -321,7 +321,7 @@ namespace mutabor {
 		CurrentTimerBase():running(false) {
 		}
 
-		void Sleep(mutint64 time) {
+		static void Sleep(mutint64 time) {
 			struct timespec data,remain = {0,0};
 #ifdef DEBUG
 			if (isDebugFlag(timer)) {
