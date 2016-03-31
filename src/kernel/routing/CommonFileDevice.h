@@ -69,7 +69,7 @@ namespace mutabor {
 				       int id = -1)
 			: OutputDeviceClass(name, id) { }
  	public:
-		virtual ~CommonFileOutputDevice() {};
+		virtual ~CommonFileOutputDevice() {}
 
 		using OutputDeviceClass::Save;
 		/// Save current device settings in a tree storage
@@ -367,6 +367,11 @@ namespace mutabor {
 	};
 
 
+#if 0
+	/* For completeness we show how a factory would look like.
+	   This is not used as (Input|Output)DeviceClass are abstract
+	   classes.
+	*/
 	class CommonFileDeviceFactory:public DeviceFactory {
 	public:
 		CommonFileDeviceFactory(size_t id = 0):
@@ -380,7 +385,8 @@ namespace mutabor {
 			}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput() const = 0;
+		//		virtual mutabor::OutputDeviceClass * DoCreateOutput() const = 0;
+
 
 		virtual mutabor::InputDeviceClass * DoCreateInput() const = 0;
 		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
@@ -402,7 +408,7 @@ namespace mutabor {
 							   int id = -1) const = 0;
 	};
 
-
+#endif
 // Function ---------------------------------------------------------
 
 }

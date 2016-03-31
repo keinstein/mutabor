@@ -441,7 +441,7 @@ namespace mutabor {
 		virtual bool Open();
 		virtual void Close();
 		virtual void Stop() { Panic(midi::DEFAULT_PANIC); };
-		virtual void Play(wxThreadKind tk = wxTHREAD_DETACHED) {};
+//		virtual void Play(wxThreadKind tk = wxTHREAD_DETACHED) {};
 		virtual void Pause() {};
 
 //	   void Proceed(GisReadArtHead *h, char turn, Route route) {};
