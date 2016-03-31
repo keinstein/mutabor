@@ -47,6 +47,7 @@
 
 #define bindtextdomain wxwidgets_bindtextdomain
 #define textdomain wxwidgets_textdomain
+#define dgettext wxwidgets_dgettext
 
 /* system headers which do seldom change */
 

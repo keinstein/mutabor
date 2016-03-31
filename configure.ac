@@ -312,7 +312,6 @@ dnl Perform all the tests Automake and Autoconf need.
 AC_PROG_LEX
 
 AC_PROG_YACC
-LT_INIT
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MKDIR_P
@@ -391,7 +390,8 @@ dnl GNU/Linux on an Intel or compatible
 	AC_MSG_RESULT(using ALSA)
 	AC_CHECK_LIB(asound, snd_seq_open, , AC_MSG_ERROR(ALSA support requires the asound library!))], )
 
-	if [test "$midiapi" == "";] then
+	if [[ "$midiapi" = "" ]]
+	then
 	    AC_MSG_RESULT(searching for ALSA and Jack)
 	    AC_CHECK_LIB(asound, snd_seq_open)
 	    if test "x$ac_cv_lib_asound_snd_seq_open" = xyes; then :
@@ -399,10 +399,11 @@ dnl GNU/Linux on an Intel or compatible
 	    fi
 	    dnl the 4th argument to PKG_CHECK_MODULES should must be provided to prevent an error message, here
 	    AS_IF(test -n "$PKG_CONFIG",
-		    PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"],))
+		    PKG_CHECK_MODULES([JACK],[jack],[midiapi="$midiapi -D__UNIX_JACK__"],[true]))
 	fi
 
-	if [test "$midiapi" == "";] then
+	if [[ "$midiapi" = "" ]]
+	then
 	    AC_MSG_ERROR(ALSA or Jack are needed to configure MIDI support!)
 	fi
 
@@ -431,7 +432,8 @@ darwin*)
 		LIBS="$LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio" ], )
 
 	# If no api flags specified, use CoreMidi
-	if [test "$midiapi" == "";] then
+	if [[ "$midiapi" = "" ]]
+	then
 	   AC_MSG_RESULT(using both CoreMIDI and Jack if possible)
 	   AC_CHECK_HEADER(CoreMIDI/CoreMIDI.h,[
 		midiapi="$midiapi -D__MACOSX_CORE__"]
@@ -442,7 +444,8 @@ darwin*)
 		    PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"],))
 	fi
 
-	if [test "$midiapi" == "";] then
+	if [[ "$midiapi" = "" ]]
+	then
 	    AC_MSG_ERROR(Core MIDI or Jack are needed to configure MIDI support!)
 	fi
 
@@ -481,19 +484,20 @@ darwin*)
 	    AC_SUBST( LIBS, ["-lsetupapi -lksuser"] )
 	    AC_MSG_RESULT(using kernel streaming) ], )
 
-  # If no api flags specified, use WinMM
-  if [test "$api" == "";] then
-	    midiapi="$midiapi -D__WINDOWS_MM__"
-	    ac_includes_default="$ac_includes_default
+  # 	    If no api flags specified, use WinMM
+   	    if [[ "$api" = "" ]]
+	    then
+	    	    midiapi="$midiapi -D__WINDOWS_MM__"
+	    	    ac_includes_default="$ac_includes_default
 #include <windows.h>
 #include <mmsystem.h>
 "
-	    AC_LANG_PUSH(C)
-	    AC_LIB_WINMM([midiOutGetNumDevs])
-	    AC_LANG_POP(C)
-	    AC_MSG_RESULT(using WinMM)
-	    dnl LIBS="$LIBS -lwinmm
-  fi
+		    AC_LANG_PUSH(C)
+	    	    AC_LIB_WINMM([midiOutGetNumDevs])
+		    AC_LANG_POP(C)
+		    AC_MSG_RESULT(using WinMM)
+		    dnl LIBS="$LIBS -lwinmm
+	    fi
 
 	if test "$cross_compiling" = yes; then
 		case "$target_os" in
@@ -581,6 +585,7 @@ else
 	AC_SUBST(WXINTLCFLAGS,[-I\$\(top_srcdir\)/$\(WXINTLDIR\)])
 	AC_SUBST(USE_INCLUDED_LIBINTL,no)
 	AC_SUBST(BUILD_INCLUDED_LIBINTL,no)
+	CXXFLAGS="$CXXFLAGS -DRTMIDI_GETTEXT"
 	WX_LIBS=`echo -n "$WX_LIBS"|sed -e 's/-mwindows//g'`
 	enable_nls="no"
 fi
