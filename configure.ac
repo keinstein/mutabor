@@ -1,8 +1,14 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
+
 AC_PREREQ([2.67])
 AC_INIT([Mutabor],[4.0.0beta4+sm],[mutabor@mailbox.tu-dresden.de])
+
+# we don't want to debug leaks while configuring.
+# some checks trigger errors
+ASAN_OPTIONS="detect_leaks=0"
+export ASAN_OPTIONS
 
 AC_ARG_ENABLE(XCode,
 	AS_HELP_STRING([--enable-XCode],[Enable XCode compilation mode]),
