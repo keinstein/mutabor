@@ -685,6 +685,7 @@ namespace mutabor {
 		virtual ~InputMidiFile()
 			{};
 
+		using base::Save;
 		/// Save route settings (filter settings) for a given route
 		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function saves them in a tree storage.
@@ -694,6 +695,7 @@ namespace mutabor {
 		virtual void Save (tree_storage & config, const RouteClass * route);
 
 
+		using base::Load;
 		/// Loade route settings (filter settings) for a given route
 		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function loads them from a tree storage.

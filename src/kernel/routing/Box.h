@@ -517,7 +517,7 @@ namespace mutabor {
 
 		// this mimics CompDlg
 		struct CompileCallback {
-			virtual void Refresh() = 0;
+			virtual void RefreshDlg() = 0;
 			virtual void SetStatus(std::string status) = 0;
 			virtual void SetMessage(std::string message) = 0;
 			virtual void SetStatus(int logics,
@@ -949,7 +949,7 @@ namespace mutabor {
 		typedef std::vector<BoxFactory *> factorylist;
 		static factorylist factories;
 
-		virtual size_t GetType() { return Box0; };
+		virtual size_t GetType() const { return Box0; };
 
 		virtual BoxClass * DoCreateBox (int id = -1) const;
 

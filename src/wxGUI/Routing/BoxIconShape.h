@@ -59,10 +59,12 @@ namespace mutaborGUI {
 	class MutBoxIconShape:public MutIconShapeClass<MutPanel>
 	{
 	public:
-		MutBoxIconShape():MutIconShapeClass<MutPanel>() {}
+		typedef MutIconShapeClass<MutPanel> base;
+		
+		MutBoxIconShape():base() {}
 	
 		MutBoxIconShape(wxWindow * parent, wxWindowID id = wxID_ANY):
-			MutIconShapeClass<MutPanel>() 
+			base() 
 			{
 				Create (parent, id);
 			}
@@ -71,14 +73,14 @@ namespace mutaborGUI {
 	
 		bool Create (wxWindow * parent = NULL, wxWindowID id = wxID_ANY)
 			{
-				return MutIconShapeClass<MutPanel>::Create(parent, id);
+				return base::Create(parent, id);
 			}
 
 		virtual bool SetForegroundColour (const wxColour & colour) 
 			{
 				if (staticText)
 					staticText->SetForegroundColour(colour);
-				return MutIconShapeClass<MutPanel>::SetForegroundColour(colour);
+				return base::SetForegroundColour(colour);
 			}
 
 		/*  bool Create( wxWindow *parent,
@@ -92,7 +94,7 @@ namespace mutaborGUI {
 
 		void GetBordersForSizer(int &borderTop, int &borderOther) const;
  
-		virtual void OnDraw (wxPaintDC & dc);
+		virtual void OnDraw (wxDC & dc);
 		virtual bool Layout();
 
 		MutIcon & GetMutIcon () {

@@ -62,7 +62,7 @@ public:
 		wxWindowID id,
 		const wxString & name):wxStaticText(parent,id,name) {}
 	virtual ~NoTabStaticText() {}
-	bool AcceptsFocusFromKeyboard() { return false; }
+	virtual bool AcceptsFocusFromKeyboard() const { return false; }
 };
 
 /// An icon control with static text
@@ -128,7 +128,7 @@ public:
 
 	void         OnPaint (wxPaintEvent &event ) ;
 	void OnMove(wxMoveEvent &event);
-	virtual void OnDraw (wxPaintDC & dc);
+	virtual void OnDraw (wxDC & dc);
 	virtual wxPoint GetPerimeterPoint( const wxPoint &i,
 					   const wxPoint &o,
 					   wxWindow * paintingWindow ) const;

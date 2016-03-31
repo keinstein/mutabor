@@ -149,7 +149,13 @@ namespace mutaborGUI {
 				wxSafeYield(this,true);
 			}
 
-		void Refresh() {
+		/** Refresh the dialog.
+		 *
+		 * This function must be implemented since
+		 * CompileCallback depends on it beeing defined.
+		 *
+		 */
+		void RefreshDlg() {
 			CompileDlg::Refresh();
 		}
 

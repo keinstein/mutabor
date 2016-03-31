@@ -289,7 +289,7 @@ namespace mutaborGUI {
 		virtual wxPoint GetPerimeterPoint(const wxPoint &i,
 						  const wxPoint &o,
 						  wxWindow * paintingWindow) const;
-		virtual void DrawPerimeterPoint(wxDC & dc,
+		virtual void DrawPerimeterPoint(wxGraphicsContext & dc,
 						const wxPoint & center,
 						wxPoint p) const;
 		virtual void Refresh(bool eraseBackground = true, const wxRect* rect = NULL);

@@ -50,11 +50,17 @@
 
 /* system headers which do seldom change */
 
+
 #include <setjmp.h>
 
-
-extern jmp_buf weiter_gehts_nach_compilerfehler;
-
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+	extern jmp_buf weiter_gehts_nach_compilerfehler;
+#ifdef __cplusplus
+}
+#endif
 
 /*  void  InDeviceActionAll(char action); */
 /*void  InDeviceAction(int inDevNr, enum mutabor::MutaborModeType action); */

@@ -50,6 +50,7 @@
 
 // system headers which do seldom change
 #include <vector>
+#include <cmath>
 
 #define DEFAULT_BENDING_RANGE 2l
 
@@ -891,7 +892,7 @@ namespace mutabor {
 
 			long interval_range = bending_range << 24;
 
-			if (abs(new_bend) > interval_range)
+			if (std::abs(new_bend) > interval_range)
 				return pitch_and_bend(tuned_note);
 
 			pitch_bend_type data;

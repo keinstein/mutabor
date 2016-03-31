@@ -105,7 +105,7 @@ struct mutabor_box_flags {
 };
 
 /** Mutabor box type. */
-typedef struct mutabor_box_type_struct {
+struct mutabor_box_type_struct {
         int id;
 /*	int next_used; */
 	void * userdata;
@@ -156,7 +156,8 @@ typedef struct mutabor_box_type_struct {
 
 	volatile struct mutabor_box_flags flags;
 
-} mutabor_box_type;
+};
+typedef struct  mutabor_box_type_struct mutabor_box_type;
 
 
 /*extern mutabor_box_type mut_box[MAX_BOX]; */

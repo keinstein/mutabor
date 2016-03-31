@@ -38,7 +38,11 @@
 #include "wx/log.h"
 #include "wx/dc.h"
 #include "wx/dcclient.h"
+#include "wx/dcmemory.h"
+#include "wx/dcprint.h"
 #include "wx/graphics.h"
+#include "wx/dcgraph.h"
+
 
 //#include "src/kernel/Runtime.h"
 #include "src/wxGUI/generic/mhDefs.h"
@@ -705,7 +709,7 @@ void MutRouteWnd::OnPaint(wxPaintEvent & event)
 
 
 
-void MutRouteWnd::OnDraw(wxPaintDC& dc)
+void MutRouteWnd::OnDraw(wxDC& dc)
 {
         wxScrolledWindow::OnDraw(dc);
         PRINTSIZER(GetSizer());
@@ -715,7 +719,27 @@ void MutRouteWnd::OnDraw(wxPaintDC& dc)
                 return;
         }
 
-	wxGraphicsContext * gc = wxGraphicsContext::Create( dc );
+	wxGraphicsContext * gc = NULL;
+	{
+		wxGCDC * d = dynamic_cast<wxGCDC *>(&dc);
+		if (d) gc = d->GetGraphicsContext();
+	}
+	if (!gc) {
+		wxWindowDC * d = dynamic_cast<wxWindowDC *>(&dc);
+		if (d) gc = wxGraphicsContext::Create(*d);
+	}
+	if (!gc) {
+		wxMemoryDC * d = dynamic_cast<wxMemoryDC *>(&dc);
+		if (d) gc = wxGraphicsContext::Create(*d);
+	}
+	if (!gc) {
+		wxPrinterDC * d = dynamic_cast<wxPrinterDC *>(&dc);
+		if (d) gc = wxGraphicsContext::Create(*d);
+	}
+	if (!gc) {
+		gc = wxGraphicsContext::Create(this);
+	}
+
 	if (!gc) return;
 
 	wxPoint origin(dc.DeviceToLogicalX(0), dc.DeviceToLogicalY(0));

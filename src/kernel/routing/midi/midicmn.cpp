@@ -168,7 +168,7 @@ namespace mutabor {
 				continue;
 
 			mutint64 current
-				= abs(AM - ton_auf_kanal[j].tuned_key.get_value());
+				= std::abs(AM - ton_auf_kanal[j].tuned_key.get_value());
 			if (current < reference) {
 				reference = current;
 				free = j;

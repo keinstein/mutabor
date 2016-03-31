@@ -116,7 +116,7 @@ namespace mutaborGUI {
 		void InitText(wxDC& dc);
 		void OnPaint(wxPaintEvent& WXUNUSED(event));
 #endif
-		void OnDraw (wxPaintDC & dc);
+		void OnDraw (wxDC & dc);
 		void OnChar(wxKeyEvent& event);
 		void OnLeftDown(wxMouseEvent& event);
 		void OnGetFocus(wxFocusEvent& event);
@@ -168,7 +168,7 @@ namespace mutaborGUI {
 	}
 
 
-	void MutTag::OnDraw(wxPaintDC & dc) {
+	void MutTag::OnDraw(wxDC & dc) {
 		MutIconShape::OnDraw(dc);
 		dc.SetTextBackground(GetBackgroundColour());
 		dc.SetTextForeground(*wxBLACK);

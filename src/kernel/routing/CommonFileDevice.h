@@ -69,22 +69,23 @@ namespace mutabor {
 				       int id = -1)
 			: OutputDeviceClass(name, id) { }
  	public:
-		virtual ~CommonFileOutputDevice() {};
+		virtual ~CommonFileOutputDevice() {}
 
+		using OutputDeviceClass::Save;
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
 		 */
 		virtual void Save (tree_storage & config);
 
 
-
+		using OutputDeviceClass::Load;
 		/// Load current device settings from a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be loaded from.
 		 */
 		virtual void Load (tree_storage & config);
 
 		virtual bool do_Open();
-		virtual void do_Close();
+		virtual void do_Close(bool sync = false);
 
 		virtual void SetName(const std::string & s)
 			{
@@ -132,6 +133,7 @@ namespace mutabor {
 			virtual ~FileTimer() {
 				mutASSERT(!file);
 				if (file) {
+					ScopedLock lock (file->exitLock);
 					if (file->timer == this)
 						file -> timer = NULL;
 				}
@@ -149,8 +151,8 @@ namespace mutabor {
 
 
 			void OnExit() {
-				mutASSERT(!IsDetached() || !file);
 				if (file) {
+					ScopedLock lock (file->exitLock);
 					if (file->timer == this)
 						file -> timer = NULL;
 				}
@@ -173,13 +175,29 @@ namespace mutabor {
 		virtual ~CommonFileInputDevice() {
 			if (isOpen) Close();
 			mutASSERT(timer == NULL);
+#ifdef DEBUG
+			if (waitMutex.TryLock() == wxMUTEX_BUSY) {
+				DEBUGLOG(thread,"Error: waitMutex is still busy");
+			}
+			if (threadReady.TryLock() == wxMUTEX_BUSY) {
+			DEBUGLOG(thread, "Error: threadReady is still busy");
+			}
+			if (lockMode.TryLock() == wxMUTEX_BUSY) {
+			DEBUGLOG(thread, "Error: lockMode is still busy");
+			}
+			if (exitLock.TryLock() == wxMUTEX_BUSY) {
+			DEBUGLOG(thread, "Error: exitLock is still busy");
+			}
+#endif
 		};
 
+		using InputDeviceClass::Save;
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
 		 */
 		virtual void Save (tree_storage & config);
 
+		using InputDeviceClass::Load;
 		/// Load current device settings from a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be loaded from.
 		 */
@@ -251,7 +269,7 @@ namespace mutabor {
 		wxThread::ExitCode ThreadPlay(FileTimer * timer);
 
 
-		wxThread::ExitCode WaitForDeviceFinish() {
+		wxThread::ExitCode WaitForDeviceFinish(wxThreadWait flags=wxTHREAD_WAIT_BLOCK) {
 			mutASSERT(timer);
 			if (timer) {
 				mutASSERT(wxThread::This() != timer);
@@ -322,6 +340,9 @@ namespace mutabor {
 					 timer (NULL),
 					 threadsignal (Nothing),
 					 waitMutex(),
+					 threadReady(),
+					 lockMode(),
+					 exitLock(),
 					 waitCondition(waitMutex),
 					 referenceTime(0),
 					 pauseTime(0),
@@ -335,6 +356,9 @@ namespace mutabor {
 					       timer(NULL),
 					       threadsignal (Nothing),
 					       waitMutex(),
+					       threadReady(),
+					       lockMode(),
+					       exitLock(),
 					       waitCondition(waitMutex),
 					       referenceTime(0),
 					       pauseTime(0),
@@ -343,6 +367,11 @@ namespace mutabor {
 	};
 
 
+#if 0
+	/* For completeness we show how a factory would look like.
+	   This is not used as (Input|Output)DeviceClass are abstract
+	   classes.
+	*/
 	class CommonFileDeviceFactory:public DeviceFactory {
 	public:
 		CommonFileDeviceFactory(size_t id = 0):
@@ -356,7 +385,8 @@ namespace mutabor {
 			}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput() const = 0;
+		//		virtual mutabor::OutputDeviceClass * DoCreateOutput() const = 0;
+
 
 		virtual mutabor::InputDeviceClass * DoCreateInput() const = 0;
 		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
@@ -378,7 +408,7 @@ namespace mutabor {
 							   int id = -1) const = 0;
 	};
 
-
+#endif
 // Function ---------------------------------------------------------
 
 }

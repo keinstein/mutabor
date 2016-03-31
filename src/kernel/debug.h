@@ -51,7 +51,33 @@
 
 #ifdef __cplusplus
 #include <string>
+#ifdef __clang__
 #include <cstdio>
+/* the following line is a workaround for using boost and clang together.
+ *  It avoids the following error messages:
+ *  In file included from ../../../../../mutabor-git/src/wxintl/libintl.cpp:34:
+ *  In file included from ../../../../../mutabor-git/src/wxintl/libintl.h:43:
+ * In file included from ../../../../../mutabor-git/src/kernel/Defs.h:86:
+ * In file included from ../../../../../mutabor-git/src/kernel/debug.h:56:
+ * In file included from /usr/include/boost/format.hpp:19:
+ * In file included from /usr/include/boost/detail/workaround.hpp:41:
+ * In file included from /usr/include/boost/config.hpp:57:
+ * In file included from /usr/include/boost/config/platform/linux.hpp:15:
+ * /usr/bin/../lib/gcc/x86_64-linux-gnu/5.2.1/../../../../include/c++/5.2.1/cstdlib:153:11: error: no member named 'realloc' in the
+ *       global namespace
+ *   using ::realloc;
+ *         ~~^
+ */
+extern "C" {
+#include <stdlib.h>
+}
+//#include <cstdlib>
+#define _GLIBCXX_CSTDLIB 1
+namespace std {
+	using ::free;
+	using ::rand;
+}
+#endif
 using std::fflush;
 #include "boost/format.hpp"
 #else
@@ -178,7 +204,7 @@ void mutabor_debug_unlock();
 	do {								\
 		if (level) {						\
 		    mutabor_debug_lock();				\
-		    fprintf(stderr, "%s:%d:%s::%s",			\
+		    fprintf(stderr, "%s:%d:%s::%s ",			\
 			    __FILE__,					\
                             __LINE__,					\
 			    type,					\

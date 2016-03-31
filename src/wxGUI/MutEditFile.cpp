@@ -1249,7 +1249,7 @@ namespace mutaborGUI {
 
 	}
 
-	bool MutEditFile::IsModified () {
+	bool MutEditFile::IsModified () const {
 
 		// return modified state
 		return (GetModify() && !GetReadOnly());

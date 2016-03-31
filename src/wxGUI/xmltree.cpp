@@ -358,7 +358,7 @@ namespace mutaborGUI {
 		if (!node) return _T("/");
 		wxString path = _T("/") + node->GetName();
 		while ((node = node->GetParent()))
-			wxString path = _T("/") + node->GetName() + path;
+			path = _T("/") + node->GetName() + path;
 		return path;
 	}
 

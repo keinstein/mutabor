@@ -56,6 +56,7 @@
 #include <inttypes.h>
 
 #include "src/kernel/routing/midi/midicmn-inlines.h"
+#include "src/kernel/routing/CommonFileDevice-inlines.h"
 
 // the following file is not compiled independently
 #include "src/kernel/routing/midi/midicmn.cpp"
@@ -339,7 +340,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 
 	void OutputMidiFile::do_Close(bool sync)
 	{
-		base::do_Close();
+		base::do_Close(sync);
 
 		/* tell boost that we are using UTF-8 file names */
 		boost::filesystem::detail::utf8_codecvt_facet utf8;

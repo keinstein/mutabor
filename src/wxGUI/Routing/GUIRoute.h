@@ -209,7 +209,7 @@ namespace mutaborGUI {
 			     mutabor::RouteType type = mutabor::RTall,
 			     int iFrom = -1,
 			     int iTo = -1,
-			     mutabor::Box box = -1,
+			     mutabor::Box box = NULL,
 			     bool active = false,
 			     int oFrom = -1,
 			     int oTo = -1,

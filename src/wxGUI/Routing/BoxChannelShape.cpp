@@ -682,7 +682,7 @@ namespace mutaborGUI {
 #endif
 	}
 
-	void MutBoxChannelShape::DrawPerimeterPoint(wxDC & dc,
+	void MutBoxChannelShape::DrawPerimeterPoint(wxGraphicsContext & dc,
 						    const wxPoint & center,
 						    wxPoint p) const
 	{
@@ -694,7 +694,13 @@ namespace mutaborGUI {
 		mycenter.y -= maxBorderSize.y;
 		p.y -= maxBorderSize.y;
 #endif
+		wxGraphicsPath path = dc.CreatePath();
+		path.MoveToPoint(mycenter);
+		path.AddLineToPoint(p);
+		dc.StrokePath(path);
+#if 0
 		dc.DrawLine(mycenter, p);
+#endif
 	}
 
 
