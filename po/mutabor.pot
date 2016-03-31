@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Technische Universität Dresden, Institut für Algebra
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the mutabor package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mutabor 4.0.0beta4+sm\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2015-12-16 13:32+0100\n"
+"POT-Creation-Date: 2016-03-31 09:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: lib/rtmidi/RtMidi.h:1555 lib/rtmidi/RtMidi.h:1577
+msgid "MidiInDummy: This class provides no functionality."
+msgstr ""
 
 #: src/kernel/Errors.cpp:153
 #, c-format
@@ -124,8 +128,7 @@ msgstr ""
 msgid "Undefined symbol: %s"
 msgstr ""
 
-#: src/kernel/Errors.cpp:185 src/kernel/Interval.c:83
-#: src/kernel/Interval.c:159
+#: src/kernel/Errors.cpp:185 src/kernel/Interval.c:83 src/kernel/Interval.c:159
 #, c-format
 msgid "Undefined interval: %s"
 msgstr ""
@@ -393,7 +396,7 @@ msgstr ""
 
 #: src/kernel/Execute.cpp:66 src/wxGUI/MutBitmaps.cpp:68
 #: src/wxGUI/MutEditFile.cpp:261 src/wxGUI/MutEditFile.cpp:268
-#: src/wxGUI/MutEditFile.cpp:295 src/wxGUI/Routing/BoxShape.cpp:407
+#: src/wxGUI/MutEditFile.cpp:295 src/wxGUI/Routing/BoxShape.cpp:408
 msgid "Error"
 msgstr ""
 
@@ -1140,7 +1143,7 @@ msgstr ""
 msgid "GUIDO box"
 msgstr ""
 
-#: src/kernel/routing/Box.h:272 src/wxGUI/Routing/BoxShape.cpp:153
+#: src/kernel/routing/Box.h:272 src/wxGUI/Routing/BoxShape.cpp:154
 #, c-format
 msgid "Box %d"
 msgstr ""
@@ -1155,18 +1158,18 @@ msgstr ""
 msgid "The logic in box %d is too slow."
 msgstr ""
 
-#: src/kernel/routing/CommonFileDevice.cpp:51
+#: src/kernel/routing/CommonFileDevice.cpp:59
 msgid ""
 "The playback thread has been killed.\n"
 "Please report the error to the developers and include (if possible)\n"
 "\tthe current file and the following information:\n"
 msgstr ""
 
-#: src/kernel/routing/CommonFileDevice.h:106
+#: src/kernel/routing/CommonFileDevice.h:107
 msgid "Generic output file"
 msgstr ""
 
-#: src/kernel/routing/CommonFileDevice.h:288
+#: src/kernel/routing/CommonFileDevice.h:306
 msgid "Generic input file"
 msgstr ""
 
@@ -1217,7 +1220,7 @@ msgstr ""
 msgid "GIS output file"
 msgstr ""
 
-#: src/kernel/routing/gmn/DevGIS.h:276
+#: src/kernel/routing/gmn/DevGIS.h:278
 msgid "GIS input file"
 msgstr ""
 
@@ -1290,82 +1293,82 @@ msgstr ""
 msgid "Range without preceeding tag."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:143
+#: src/kernel/routing/midi/DevMidF.cpp:144
 msgid "Number contains too many bytes"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:164
+#: src/kernel/routing/midi/DevMidF.cpp:165
 #, c-format
 msgid "Invalid status byte: %x  at position %d"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:333
-#: src/kernel/routing/midi/DevMidF.cpp:472
+#: src/kernel/routing/midi/DevMidF.cpp:334
+#: src/kernel/routing/midi/DevMidF.cpp:473
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
 "current route had to be corrected."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:380
-#: src/kernel/routing/midi/DevMidF.cpp:386
+#: src/kernel/routing/midi/DevMidF.cpp:381
+#: src/kernel/routing/midi/DevMidF.cpp:387
 #: src/kernel/routing/midi/DevMidi.cpp:155
 #: src/kernel/routing/midi/DevMidi.cpp:161
 msgid "Bending_Range"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:504
+#: src/kernel/routing/midi/DevMidF.cpp:505
 #, c-format
 msgid ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
 "current route had to be corrected."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:533
+#: src/kernel/routing/midi/DevMidF.cpp:534
 msgid "You instructed me to open a file without file name. I can't do that."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:550
+#: src/kernel/routing/midi/DevMidF.cpp:551
 #, c-format
 msgid "Can not open Midi input file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:560
+#: src/kernel/routing/midi/DevMidF.cpp:561
 #, c-format
 msgid "File '%s' is not a valid midi file."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:569
+#: src/kernel/routing/midi/DevMidF.cpp:570
 #, c-format
 msgid "Unknown header (chunk length %d) in file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:581
+#: src/kernel/routing/midi/DevMidF.cpp:582
 #, c-format
 msgid "Unknown file type %d in file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:598
+#: src/kernel/routing/midi/DevMidF.cpp:599
 #, c-format
 msgid "Midi file '%s' has corrupted timing information."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:618
+#: src/kernel/routing/midi/DevMidF.cpp:619
 #, c-format
 msgid "Could not allocate memory for the track list of file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:627
+#: src/kernel/routing/midi/DevMidF.cpp:628
 #, c-format
 msgid "File '%s' has a broken track header."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:644
+#: src/kernel/routing/midi/DevMidF.cpp:645
 #, c-format
 msgid "Could not allocate data for track %d of MIDI input file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:661
+#: src/kernel/routing/midi/DevMidF.cpp:662
 #, c-format
 msgid ""
 "The MIDI input file “%s” is corrupted. This has been detected while reading "
@@ -1394,7 +1397,7 @@ msgstr ""
 msgid "MIDI output file"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.h:749
+#: src/kernel/routing/midi/DevMidF.h:751
 msgid "MIDI input file"
 msgstr ""
 
@@ -1495,9 +1498,9 @@ msgstr ""
 
 #: src/wxGUI/CompDlg.cpp:155 src/wxGUI/CompDlg.cpp:158
 #: src/wxGUI/CompDlg.cpp:161 src/wxGUI/CompDlg.cpp:179
-#: src/wxGUI/CompDlg.cpp:182 src/wxGUI/CompDlg.cpp:185
-#: src/xrc/reslocale.cpp:27 src/xrc/reslocale.cpp:29 src/xrc/reslocale.cpp:31
-#: src/xrc/reslocale.cpp:33 src/xrc/reslocale.cpp:35 src/xrc/reslocale.cpp:37
+#: src/wxGUI/CompDlg.cpp:182 src/wxGUI/CompDlg.cpp:185 src/xrc/reslocale.cpp:27
+#: src/xrc/reslocale.cpp:29 src/xrc/reslocale.cpp:31 src/xrc/reslocale.cpp:33
+#: src/xrc/reslocale.cpp:35 src/xrc/reslocale.cpp:37
 msgid "000000"
 msgstr ""
 
@@ -2401,8 +2404,8 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: src/wxGUI/MutFrame.cpp:418 src/xrc/reslocale.cpp:16
-#: src/xrc/reslocale.cpp:62 src/xrc/reslocale.cpp:77 src/xrc/reslocale.cpp:96
+#: src/wxGUI/MutFrame.cpp:418 src/xrc/reslocale.cpp:16 src/xrc/reslocale.cpp:62
+#: src/xrc/reslocale.cpp:77 src/xrc/reslocale.cpp:96
 msgid "Help"
 msgstr ""
 
@@ -2507,27 +2510,27 @@ msgstr ""
 msgid "Logic: %s - Box %d"
 msgstr ""
 
-#: src/wxGUI/MutRouteWnd.cpp:433 src/wxGUI/MutRouteWnd.cpp:615
+#: src/wxGUI/MutRouteWnd.cpp:437 src/wxGUI/MutRouteWnd.cpp:619
 #, c-format
 msgid "The string '%s' is not a valid file name."
 msgstr ""
 
-#: src/wxGUI/MutRouteWnd.cpp:446 src/wxGUI/MutRouteWnd.cpp:465
+#: src/wxGUI/MutRouteWnd.cpp:450 src/wxGUI/MutRouteWnd.cpp:469
 #, c-format
 msgid "File '%s' couldn't be loaded"
 msgstr ""
 
-#: src/wxGUI/MutRouteWnd.cpp:455
+#: src/wxGUI/MutRouteWnd.cpp:459
 #, c-format
 msgid "File '%s' could be opened, but not loaded."
 msgstr ""
 
-#: src/wxGUI/MutRouteWnd.cpp:551
+#: src/wxGUI/MutRouteWnd.cpp:555
 #, c-format
 msgid "Cannot open routes file '%s' for writing."
 msgstr ""
 
-#: src/wxGUI/MutRouteWnd.cpp:570
+#: src/wxGUI/MutRouteWnd.cpp:574
 #, c-format
 msgid "Error writing file '%s'."
 msgstr ""
@@ -2661,15 +2664,15 @@ msgstr ""
 msgid "GUIDO file box"
 msgstr ""
 
-#: src/wxGUI/Routing/BoxShape.cpp:143 src/wxGUI/Routing/NewBoxShape.h:75
+#: src/wxGUI/Routing/BoxShape.cpp:144 src/wxGUI/Routing/NewBoxShape.h:75
 msgid "New Box"
 msgstr ""
 
-#: src/wxGUI/Routing/BoxShape.cpp:150
+#: src/wxGUI/Routing/BoxShape.cpp:151
 msgid "GUIDO Box"
 msgstr ""
 
-#: src/wxGUI/Routing/BoxShape.cpp:406
+#: src/wxGUI/Routing/BoxShape.cpp:407
 msgid "You selected a box id that is already in use. Please, try another one."
 msgstr ""
 
@@ -2693,13 +2696,11 @@ msgstr ""
 msgid "GUIDO file"
 msgstr ""
 
-#: src/wxGUI/Routing/InputDevDlg.cpp:135
-#: src/wxGUI/Routing/OutputDevDlg.cpp:135
+#: src/wxGUI/Routing/InputDevDlg.cpp:135 src/wxGUI/Routing/OutputDevDlg.cpp:135
 msgid "Choose device type"
 msgstr ""
 
-#: src/wxGUI/Routing/InputDevDlg.cpp:146
-#: src/wxGUI/Routing/OutputDevDlg.cpp:146
+#: src/wxGUI/Routing/InputDevDlg.cpp:146 src/wxGUI/Routing/OutputDevDlg.cpp:146
 msgid "Unknown device type"
 msgstr ""
 
@@ -2944,26 +2945,23 @@ msgstr ""
 msgid "&staff"
 msgstr ""
 
-#: src/xrc/reslocale.cpp:56 src/xrc/reslocale.cpp:113
-#: src/xrc/reslocale.cpp:119 src/xrc/reslocale.cpp:125
-#: src/xrc/reslocale.cpp:129 src/xrc/reslocale.cpp:139
-#: src/xrc/reslocale.cpp:143
+#: src/xrc/reslocale.cpp:56 src/xrc/reslocale.cpp:113 src/xrc/reslocale.cpp:119
+#: src/xrc/reslocale.cpp:125 src/xrc/reslocale.cpp:129
+#: src/xrc/reslocale.cpp:139 src/xrc/reslocale.cpp:143
 msgid "Range"
 msgstr ""
 
-#: src/xrc/reslocale.cpp:57 src/xrc/reslocale.cpp:114
-#: src/xrc/reslocale.cpp:120 src/xrc/reslocale.cpp:126
-#: src/xrc/reslocale.cpp:130 src/xrc/reslocale.cpp:134
-#: src/xrc/reslocale.cpp:140 src/xrc/reslocale.cpp:144
-#: src/xrc/reslocale.cpp:148
+#: src/xrc/reslocale.cpp:57 src/xrc/reslocale.cpp:114 src/xrc/reslocale.cpp:120
+#: src/xrc/reslocale.cpp:126 src/xrc/reslocale.cpp:130
+#: src/xrc/reslocale.cpp:134 src/xrc/reslocale.cpp:140
+#: src/xrc/reslocale.cpp:144 src/xrc/reslocale.cpp:148
 msgid "from"
 msgstr ""
 
-#: src/xrc/reslocale.cpp:58 src/xrc/reslocale.cpp:116
-#: src/xrc/reslocale.cpp:121 src/xrc/reslocale.cpp:127
-#: src/xrc/reslocale.cpp:131 src/xrc/reslocale.cpp:135
-#: src/xrc/reslocale.cpp:141 src/xrc/reslocale.cpp:145
-#: src/xrc/reslocale.cpp:149
+#: src/xrc/reslocale.cpp:58 src/xrc/reslocale.cpp:116 src/xrc/reslocale.cpp:121
+#: src/xrc/reslocale.cpp:127 src/xrc/reslocale.cpp:131
+#: src/xrc/reslocale.cpp:135 src/xrc/reslocale.cpp:141
+#: src/xrc/reslocale.cpp:145 src/xrc/reslocale.cpp:149
 msgid "to"
 msgstr ""
 
