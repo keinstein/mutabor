@@ -709,7 +709,7 @@ namespace mutabor {
 				//	 show_line_number(-1);
 
 				callback->SetStatus(_mut("Generating tables"));
-				callback->Refresh();
+				callback->RefreshDlg();
 			}
 
 			expand_decition_tree(box);
@@ -718,7 +718,7 @@ namespace mutabor {
 			if (callback) {
 				callback->SetStatus(_mut("Translation successful"));
 				callback->SetMessage(_mut("No error occured."));
-				callback->Refresh();
+				callback->RefreshDlg();
 			}
 			return true;
 		} else {
@@ -726,7 +726,7 @@ namespace mutabor {
 			if (callback) {
 				callback->SetStatus(_mut("Translation interrupted."));
 				callback->SetMessage(get_errors());
-				callback->Refresh();
+				callback->RefreshDlg();
 			}
 
 			return false;

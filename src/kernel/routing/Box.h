@@ -517,7 +517,7 @@ namespace mutabor {
 
 		// this mimics CompDlg
 		struct CompileCallback {
-			virtual void Refresh() = 0;
+			virtual void RefreshDlg() = 0;
 			virtual void SetStatus(std::string status) = 0;
 			virtual void SetMessage(std::string message) = 0;
 			virtual void SetStatus(int logics,
