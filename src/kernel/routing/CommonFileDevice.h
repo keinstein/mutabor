@@ -71,13 +71,14 @@ namespace mutabor {
  	public:
 		virtual ~CommonFileOutputDevice() {};
 
+		using OutputDeviceClass::Save;
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
 		 */
 		virtual void Save (tree_storage & config);
 
 
-
+		using OutputDeviceClass::Load;
 		/// Load current device settings from a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be loaded from.
 		 */
