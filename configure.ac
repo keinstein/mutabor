@@ -553,7 +553,7 @@ AM_GNU_GETTEXT_VERSION([0.18])
 AM_GNU_GETTEXT_INTL_SUBDIR
 BISON_I18N
 dnl wxMenuItem::GetItemLabel is implemented from 2.8.5
-AM_PATH_WXCONFIG(2.8.5, wxWin=1, wxWin=0, [aui,adv,core,html,xrc,stc,xml],[$wxflags])
+AM_PATH_WXCONFIG(2.8.5, wxWin=1, wxWin=0, [aui,adv,html,xrc,stc,xml,core],[$wxflags])
 if test "$wxWin" != 1 -a -z "$XCode"; then
          AC_MSG_ERROR([
                 wxWindows must be installed on your system
