@@ -132,6 +132,7 @@ namespace mutabor {
 			virtual ~FileTimer() {
 				mutASSERT(!file);
 				if (file) {
+					ScopedLock lock (file->exitLock);
 					if (file->timer == this)
 						file -> timer = NULL;
 				}
@@ -149,8 +150,8 @@ namespace mutabor {
 
 
 			void OnExit() {
-				mutASSERT(!IsDetached() || !file);
 				if (file) {
+					ScopedLock lock (file->exitLock);
 					if (file->timer == this)
 						file -> timer = NULL;
 				}
@@ -173,13 +174,29 @@ namespace mutabor {
 		virtual ~CommonFileInputDevice() {
 			if (isOpen) Close();
 			mutASSERT(timer == NULL);
+#ifdef DEBUG
+			if (waitMutex.TryLock() == wxMUTEX_BUSY) {
+				DEBUGLOG(thread,"Error: waitMutex is still busy");
+			}
+			if (threadReady.TryLock() == wxMUTEX_BUSY) {
+			DEBUGLOG(thread, "Error: threadReady is still busy");
+			}
+			if (lockMode.TryLock() == wxMUTEX_BUSY) {
+			DEBUGLOG(thread, "Error: lockMode is still busy");
+			}
+			if (exitLock.TryLock() == wxMUTEX_BUSY) {
+			DEBUGLOG(thread, "Error: exitLock is still busy");
+			}
+#endif
 		};
 
+		using InputDeviceClass::Save;
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
 		 */
 		virtual void Save (tree_storage & config);
 
+		using InputDeviceClass::Load;
 		/// Load current device settings from a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be loaded from.
 		 */
@@ -251,7 +268,7 @@ namespace mutabor {
 		wxThread::ExitCode ThreadPlay(FileTimer * timer);
 
 
-		wxThread::ExitCode WaitForDeviceFinish() {
+		wxThread::ExitCode WaitForDeviceFinish(wxThreadWait flags=wxTHREAD_WAIT_BLOCK) {
 			mutASSERT(timer);
 			if (timer) {
 				mutASSERT(wxThread::This() != timer);
@@ -322,6 +339,9 @@ namespace mutabor {
 					 timer (NULL),
 					 threadsignal (Nothing),
 					 waitMutex(),
+					 threadReady(),
+					 lockMode(),
+					 exitLock(),
 					 waitCondition(waitMutex),
 					 referenceTime(0),
 					 pauseTime(0),
@@ -335,6 +355,9 @@ namespace mutabor {
 					       timer(NULL),
 					       threadsignal (Nothing),
 					       waitMutex(),
+					       threadReady(),
+					       lockMode(),
+					       exitLock(),
 					       waitCondition(waitMutex),
 					       referenceTime(0),
 					       pauseTime(0),
