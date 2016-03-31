@@ -45,7 +45,7 @@ template class mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider, mutab
 
 
 struct MyCompileCallback:public mutabor::BoxClass::CompileCallback {
-	void Refresh() {}
+	void RefreshDlg() {}
 	void SetStatus(std::string status) {
 		DEBUGLOG(kernel_parser,("INFO: %s"), status);
 	}

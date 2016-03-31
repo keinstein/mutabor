@@ -31,8 +31,11 @@
 
 
 #include "src/kernel/Defs.h"
+#include "src/kernel/routing/timing.h"
 #include "src/kernel/routing/midi/DevMidF.h"
 #include "src/kernel/routing/CommonFileDevice-inlines.h"
+#include "src/kernel/routing/midi/midicmn-inlines.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include <cstdlib>
 #include <time.h>
 #include <wx/app.h>
@@ -151,9 +154,9 @@ int main(int argc, char **argv)
 		bytes[i-1] = tonwert;
 			
 		out->NoteOn(box, tonwert, 0x40, route.get(), 0, cd);
-		mutabor::CurrentTime = CurrentTime.Get()+125000;
+		mutabor::CurrentTime = mutabor::CurrentTime.Get()+125000;
 		out->NoteOff(box, tonwert, 0x40, route.get(), 0, false);
-		mutabor::CurrentTime = CurrentTime.Get()+125000;
+		mutabor::CurrentTime = mutabor::CurrentTime.Get()+125000;
 	}
 	
 	if (out) 

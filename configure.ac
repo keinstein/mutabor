@@ -825,7 +825,7 @@ dnl non verbose
 dnl AC_SUBST(top_srcdir_nsi,[`echo "$srcdir"|sed -e 's,/,\\\\,g'`])
 AC_SUBST(top_srcdir_nsi,[`echo "$srcdir"|sed -e 's,/,/,g'`])
 
-function abspath {
+abspath () {
 	if [[ -d "$1" ]]
 	then
 		pushd "$1" >/dev/null

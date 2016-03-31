@@ -32,6 +32,7 @@
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/midi/DevMidF.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/routing/CommonFileDevice-inlines.h"
 #include <cstdlib>
 #include <wx/app.h>

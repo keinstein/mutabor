@@ -51,8 +51,8 @@
 
 #ifdef __cplusplus
 #include <string>
-#ifdef __clang__
 #include <cstdio>
+#ifdef __clang__
 /* the following line is a workaround for using boost and clang together.
  *  It avoids the following error messages:
  *  In file included from ../../../../../mutabor-git/src/wxintl/libintl.cpp:34:

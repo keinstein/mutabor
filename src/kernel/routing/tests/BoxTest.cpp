@@ -63,7 +63,7 @@ struct mutabor::hidden::mutabor_callback_type test_backend_callbacks  = {
 
 
 struct MyCompileCallback:public mutabor::BoxClass::CompileCallback {
-	void Refresh() {}
+	void RefreshDlg() {}
 	void SetStatus(std::string status) {
 		DEBUGLOG(kernel_parser,("INFO: %s"), status);
 	}

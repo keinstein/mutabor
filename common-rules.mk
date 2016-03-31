@@ -14,7 +14,7 @@ AM_CFLAGS = $(ALSA_CFLAGS) $(JACK_LIBS)  $(WX_CFLAGS) $(WXINTLCFLAGS)
 AM_CXXFLAGS = $(AM_CFLAGS)
 AM_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
 AM_YFLAGS = -d -v --report=all -x --graph
-EXTRA_PROGRAMS = 
+EXTRA_PROGRAMS =
 
 TAGS_FILES = $(POTFILES)
 AM_ETAGSFLAGS = -I --members --declarations -r '/inline[ \t]+\([^ \t(]+[ \t]+\)*\([^ \t(]+\)[ \t]*(/\2/m'

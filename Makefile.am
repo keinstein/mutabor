@@ -455,7 +455,7 @@ noinst_HEADERS += $(librtmidi_a_INLINEHEADERS)
 
 
 librtmidi_a_SOURCES = \
-		lib/rtmidi/RtMidi.cpp 
+		lib/rtmidi/RtMidi.cpp
 
 librtmidi_a_POTSOURCES = $(librtmidi_a_SOURCES)
 
