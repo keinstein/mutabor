@@ -296,7 +296,7 @@ namespace mutaborGUI {
 				DoCreateBoxShape(box,parent);
 		}
 	protected:
-		virtual size_t GetType() const { return 0; }
+		virtual size_t GetType() const { return mutabor::Box0; }
 
 		virtual mutabor::BoxClass * DoCreateBox (int id = -1) const {
 			return new BoxData(id);

@@ -181,7 +181,7 @@ namespace mutaborGUI {
 		bool LoadFile (const wxString &filename);
 		bool SaveFile ();
 		bool SaveFile (const wxString &filename);
-		bool IsModified ();
+		bool IsModified () const;
 		wxString GetFilename () {return m_filename;};
 		void SetFilename (const wxString &filename) {m_filename = filename;};
 

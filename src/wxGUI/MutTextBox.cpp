@@ -289,7 +289,7 @@ void MutTextBox::GetKeys(bool asTS)
 			break;
 		default:
 			keys.Printf(_("%3d : (unknown type %d)"),
-				    tones[i].index,tones[i].flag);
+				    tones[i].index,(int)(tones[i].flag));
 		}
 		Append(keys);
 	}
@@ -356,7 +356,7 @@ void MutTextBox::GetToneSystem(bool asTS)
 		default:
 			keys.Printf(_("%2lu : (unknown type %d)"),
 				    (unsigned long)i,
-				    tonesys.tones[i].flag);
+				    (int) ( tonesys.tones[i].flag));
 		}
 		Append(keys);
 	}

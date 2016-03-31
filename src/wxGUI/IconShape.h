@@ -62,7 +62,7 @@ public:
 		wxWindowID id,
 		const wxString & name):wxStaticText(parent,id,name) {}
 	virtual ~NoTabStaticText() {}
-	bool AcceptsFocusFromKeyboard() { return false; }
+	virtual bool AcceptsFocusFromKeyboard() const { return false; }
 };
 
 /// An icon control with static text
