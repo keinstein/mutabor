@@ -57,7 +57,7 @@
 #include <list>
 #include <cstring>
 #include <cstdio>
-#if __LINUX__
+#if __LINUX__ && !(__clang__)
 #include "backtrace.h"
 #endif
 #endif
@@ -185,7 +185,7 @@ extern "C" {
 
 	void print_stacktrace (bool flag) {
 		if (!flag) return;
-#if __LINUX__
+#if __LINUX__ && !(__clang__)
 		backtrace_state * state = backtrace_create_state(NULL,
 								 false,
 								 &mutabor_backtrace_error_callback,
@@ -321,6 +321,7 @@ struct backtrace_state * mutabor_backtrace::state = 0;
 mutabor_backtrace::mutabor_backtrace(int omit_count):base(0),
 						     print(false)
 {
+#if __LINUX__ && !(__clang__)
 	if (!state)
 		state = backtrace_create_state(NULL,
 					       true,
@@ -334,6 +335,7 @@ mutabor_backtrace::mutabor_backtrace(int omit_count):base(0),
 			 mutabor_save_backtrace_callback,
 			 mutabor_backtrace_error_callback,
 			 reinterpret_cast<void *>(this));
+#endif
 }
 
 mutabor_backtrace::~mutabor_backtrace() {
