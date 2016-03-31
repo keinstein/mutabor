@@ -185,8 +185,8 @@ namespace mutabor {
 				Close();
 				return false;
 			}
-			timer->Run();
 			threadsignal = RequestPause;
+			timer->Run();
 			/* wait until the timer thread has been initialized */
 			DEBUGLOG(thread,
 				 ("Thread %p waiting at threadsignal = %x"),
@@ -227,23 +227,29 @@ namespace mutabor {
 				 ("Thread %p broadcasting at threadsignal = %x"),
 				 Thread::This(),
 				 threadsignal.get());
-			FileTimer *tmp = timer;
 			/* detached status must be checked before a
 			   detached thead may be deleted. */
 			bool must_join = !timer->IsDetached(); 
-			timer = NULL;
-			tmp -> ClearFile();
+			// timer = NULL;
+			// tmp -> ClearFile();
 			waitCondition.Broadcast();
 			waitMutex.Unlock();
 			exitLock.Unlock();
 			// tmp -> Delete();
 			if (must_join) {
+				ScopedLock lock (exitLock);
 #if wxCHECK_VERSION(2,9,2)
-				tmp -> Wait(wxTHREAD_WAIT_BLOCK);
+				timer -> Wait(wxTHREAD_WAIT_BLOCK);
 #else
-				tmp -> Wait();
+				timer -> Wait();
 #endif
-			        delete tmp;
+			}
+			while (true) {
+				{
+					ScopedLock lock(exitLock);
+					if (!timer) break;
+				}
+				CurrentTimerBase::Sleep(1000);
 			}
 		} else exitLock.Unlock();
 		
@@ -419,8 +425,11 @@ namespace mutabor {
 					 Thread::This(),
 					 threadsignal.get());
 #endif
-				if (threadsignal & RequestExit)
+				if (threadsignal & RequestExit) {
+					ScopedLock modelock(lockMode);
+					e = (void *)Mode;
 					break;
+				}
 				if (threadsignal & ResetTime) {
 					nextEvent = (0); // in μs
 					playTime  = (0); // in μs
@@ -430,7 +439,12 @@ namespace mutabor {
 				reference = referenceTime;
 				ResumeKeys();
 			} else if (thistimer -> TestDestroy()) {
-				return (void *) (Mode + (size_t)0x100);
+				{ 
+					ScopedLock modelock(lockMode);
+					e = (void *) (Mode + (size_t)0x100);
+					// unlocking
+				}
+				break;
 			}
 			mutASSERT(IsDelta(nextEvent));
 			if (!delta && IsDelta(nextEvent)) {
@@ -487,17 +501,19 @@ namespace mutabor {
 			}
 		}
 		DEBUGLOG (timer, "returning" );
-		switch (Mode) {
-		case DevicePlay:
-		case DevicePause: 
-			Stop();
-		case DeviceStop:
-			break;
-		case DeviceTimingError:
-		case DeviceCompileError:
-		default:
-			e = (void *)Mode;
-			break;
+		{
+			ScopedLock modelock(lockMode);
+			switch (Mode) {
+			case DevicePlay:
+			case DevicePause: 
+				Stop();
+			case DeviceStop:
+				break;
+			case DeviceTimingError:
+			case DeviceCompileError:
+			default:
+				break;
+			}
 		}
 		DEBUGLOG(thread,
 			 ("Thread %p unlocking at threadsignal = %x"),
