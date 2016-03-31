@@ -204,7 +204,7 @@ void mutabor_debug_unlock();
 	do {								\
 		if (level) {						\
 		    mutabor_debug_lock();				\
-		    fprintf(stderr, "%s:%d:%s::%s",			\
+		    fprintf(stderr, "%s:%d:%s::%s ",			\
 			    __FILE__,					\
                             __LINE__,					\
 			    type,					\
