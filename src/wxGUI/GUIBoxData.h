@@ -188,8 +188,9 @@ namespace mutaborGUI {
 
 		virtual	int MoveInList(int count);
 
-
+		using basetype::Add;
 		void Add(MutBoxShape * shape);
+		using basetype::Remove;
 		bool Remove(MutBoxShape * shape);
 
 		/** 
