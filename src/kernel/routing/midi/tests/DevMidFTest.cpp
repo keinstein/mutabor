@@ -4812,7 +4812,7 @@ void OutputMidiFileTest::setUp()
 //	std::clog << "Running setUp()" << std::endl;
 
 	// input device is already configured
-	CPPUNIT_ASSERT(!mutabor::InputDeviceClass::GetDeviceList().size() == 1);
+	CPPUNIT_ASSERT(!(mutabor::InputDeviceClass::GetDeviceList().size() == 1));
 	CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
 	CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
 	CPPUNIT_ASSERT(mutabor::BoxClass::GetBoxList().empty());
