@@ -144,8 +144,8 @@ namespace mutaborGUI {
 		}
 
 		rtmidi::PortPointer GetMidiDevice(int p) const {
-			mutASSERT (dynamic_cast<TypeData *>(DeviceChoice->GetClientObject(p)));
-			PortData * obj = (PortData *)DeviceChoice->GetClientObject(p);
+			mutASSERT (dynamic_cast<PortData *>(PortChoice->GetClientObject(p)));
+			PortData * obj = static_cast<PortData *>(PortChoice->GetClientObject(p));
 
 			if (obj) return  *obj;
 			else return NULL;
@@ -153,7 +153,7 @@ namespace mutaborGUI {
 
 		rtmidi::PortPointer GetMidiDevice() const
 		{
-			int p = DeviceChoice->GetSelection();
+			int p = PortChoice->GetSelection();
 			if (p == wxNOT_FOUND) return NULL;
 			return GetMidiDevice(p);
 
