@@ -754,9 +754,9 @@ namespace mutabor {
 		virtual operator std::string() const;
 
 		proceed_bool shouldProceed(Route R,
-					   const std::vector<unsigned char > * midiCode,
+					   const std::vector<unsigned char > &midiCode,
 					   int data =0);
-		void Proceed(const std::vector<unsigned char > * midiCode, int data =0, int channel_offset = 0);
+		void Proceed(const std::vector<unsigned char > &midiCode, int data =0, int channel_offset = 0);
 
 	protected:
 		int FileType;

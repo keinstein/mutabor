@@ -41,6 +41,7 @@
 #include "src/kernel/Defs.h"
 #include "src/wxGUI/resourceload.h"
 #include "src/kernel/routing/Device.h"
+#include "lib/rtmidi/RtMidi.h"
 
 #ifndef MUWX_ROUTING_INPUTDEVDLG_H_PRECOMPILED
 #define MUWX_ROUTING_INPUTDEVDLG_H_PRECOMPILED
@@ -88,23 +89,39 @@ namespace mutaborGUI {
 		struct TypeData:wxClientData
 		{
 			mutabor::DevType nr;
-			TypeData(mutabor::DevType i):wxClientData()
-				{
-					nr=i;
-				}
+			TypeData(mutabor::DevType i):wxClientData(),
+						      nr(i)
+			{
+			}
 
 			bool operator == (mutabor::DevType i)
-				{
-					if (this)
-						return i == nr;
-					else return false;
-				}
+			{
+				return i == nr;
+			}
 
 			operator mutabor::DevType()
-				{
-					if (this) return nr;
-					else return mutabor::DTNotSet;
-				}
+			{
+				return nr;
+			}
+		};
+
+		struct PortData:wxClientData
+		{
+                        rtmidi::PortPointer port;
+                        PortData(rtmidi::PortPointer &p):wxClientData(),
+							port(p)
+			{
+                        }
+
+			bool operator == (rtmidi::PortPointer p)
+			{
+                                 return port == p;
+                        }
+
+			operator rtmidi::PortPointer()
+			{
+                                return port;
+                        }
 		};
 
 		int FindType (mutabor::DevType t);
@@ -123,18 +140,50 @@ namespace mutaborGUI {
 
 		void UpdateLayout(mutabor::DevType type);
 
-		int GetMidiDevice() const
-			{
-				return PortChoice->GetSelection() ;
-			}
+		void SelectMidiDevice (int n) {
+			PortChoice->SetSelection(n);
+		}
 
-		void SetMidiDevice(int value)
+                void SetMidiDevice(rtmidi::PortPointer value)
 
-			{
-				DEBUGLOG (other, "%d" ,value);
-				PortChoice->SetSelection (value) ;
-				Update();
+		{
+			DEBUGLOG (other, "%p" ,&(*value));
+			int choices = PortChoice->GetCount();
+			for (int i = 0 ; i < choices ; i++) {
+				PortData * entry = static_cast<PortData *>(PortChoice->GetClientObject(i));
+				if (entry && entry->port == value) {
+					PortChoice->SetSelection(i);
+					break;
+				}
 			}
+			Update();
+		}
+
+		rtmidi::PortPointer GetMidiDevice(int p) const {
+			mutASSERT (dynamic_cast<PortData *>(PortChoice->GetClientObject(p)));
+			PortData * obj = static_cast<PortData *>(PortChoice->GetClientObject(p));
+
+			if (obj) return  *obj;
+			else return NULL;
+		}
+
+		rtmidi::PortPointer GetMidiDevice() const
+		{
+			int p = PortChoice->GetSelection();
+			if (p == wxNOT_FOUND) return NULL;
+			return GetMidiDevice(p);
+
+		}
+
+		void AppendPortChoice (rtmidi::PortPointer p)
+		{
+			PortChoice->Append (p->getName(),new PortData(p));
+		}
+
+		void AppendPortChoiceNoDevice()
+		{
+			PortChoice->Append(_("no device"));
+		}
 
 		wxString GetMidiFile() const
 			{
@@ -154,48 +203,37 @@ namespace mutaborGUI {
 		}
 
 		void SetGUIDOFile(wxString value)
-
-			{
-				DEBUGLOG(other, "", value);
-				GuidoFilePicker->SetPath(value);
-				Update();
-			}
+		{
+			DEBUGLOG(other, "", value);
+			GuidoFilePicker->SetPath(value);
+			Update();
+		}
 
 		mutabor::DevType GetType() const
-			{
-				int Type = DeviceChoice->GetSelection();
-				if (Type == wxNOT_FOUND) return mutabor::DTNotSet;
+		{
+			int Type = DeviceChoice->GetSelection();
+			if (Type == wxNOT_FOUND) return mutabor::DTNotSet;
 
-				mutASSERT (dynamic_cast<TypeData *>(DeviceChoice->GetClientObject(Type)));
-				TypeData * obj = (TypeData *)DeviceChoice->GetClientObject(Type);
+			mutASSERT (dynamic_cast<TypeData *>(DeviceChoice->GetClientObject(Type)));
+			TypeData * obj = (TypeData *)DeviceChoice->GetClientObject(Type);
 
-				if (obj) return  *obj;
-				else return mutabor::DTNotSet;
-			}
+			if (obj) return  *obj;
+			else return mutabor::DTNotSet;
+		}
 
 		void SetType(mutabor::DevType value)
 
-			{
-				DEBUGLOG (other, "%d" ,value);
-				UpdateLayout(value);
-				Update();
-			}
+		{
+			DEBUGLOG (other, "%d" ,value);
+			UpdateLayout(value);
+			Update();
+		}
 
-		wxString GetPortString(int i)
-			{
-				return PortChoice->GetString (i);
-			}
-
-		void AppendPortChoice (const wxString &s)
-			{
-				PortChoice->Append (s);
-			}
-	
-		void DisableRemove (bool disable=true) 
-			{
-				wxID_REMOVE->Show(!disable);
-				wxID_REMOVE->Enable(!disable);
-			}
+		void DisableRemove (bool disable=true)
+		{
+			wxID_REMOVE->Show(!disable);
+			wxID_REMOVE->Enable(!disable);
+		}
 
 		/// Retrieves bitmap resources
 		wxBitmap GetBitmapResource (const wxString& name );

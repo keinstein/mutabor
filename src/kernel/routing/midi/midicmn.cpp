@@ -960,7 +960,7 @@ namespace mutabor {
 
 
 	template <class D>
-	void CommonMidiInput<D>::ProceedRoute(const std::vector<unsigned char > * midiCode, Route route, int channel_offset)
+	void CommonMidiInput<D>::ProceedRoute(const std::vector<unsigned char > &midiCode, Route route, int channel_offset)
 	{
 
 		if (!route) {
@@ -968,21 +968,21 @@ namespace mutabor {
 			return;
 		}
 		DEBUGLOG (midifile, "Code: %p, Active: %d, Out: %p" ,
-			  (void*)midiCode,
+			  (void*)&midiCode,
 			  route->GetActive(),
 			  (void*)route->GetOutputDevice().get());
 		Box box = route->GetBox();
-		unsigned char MidiChannel = (midiCode->at(0) & 0x0F) + channel_offset;
-		unsigned char MidiStatus  = midiCode->at(0) & 0xF0;
+		unsigned char MidiChannel = (midiCode.at(0) & 0x0F) + channel_offset;
+		unsigned char MidiStatus  = midiCode.at(0) & 0xF0;
 		DEBUGLOG (midifile, "Status: %x" , MidiStatus);
 
 		switch ( MidiStatus ) {
 
 		case midi::NOTE_ON: // Note On
-			if ( (midiCode->at(2) & 0x7f) > 0 ) {
+			if ( (midiCode.at(2) & 0x7f) > 0 ) {
 				this->NoteOn(route,
-					     midiCode->at(1),
-					     midiCode->at(2),
+					     midiCode.at(1),
+					     midiCode.at(2),
 					     MidiChannel,
 					     channel_data[MidiChannel],
 					     NULL);
@@ -991,13 +991,13 @@ namespace mutabor {
 
 		case midi::NOTE_OFF: // Note Off
 			this->NoteOff(route,
-				      midiCode->at(1),
-				      midiCode->at(2),
+				      midiCode.at(1),
+				      midiCode.at(2),
 				      MidiChannel);
 			break;
 
 		case midi::PROGRAM_CHANGE: // Programm Change
-			channel_data[MidiChannel].program_change(midiCode->at(1));
+			channel_data[MidiChannel].program_change(midiCode.at(1));
 
 			break;
 
@@ -1007,7 +1007,7 @@ namespace mutabor {
 			bool panic = false;
 			bool reset = false;
 			/* cases that need special treatment */
-			switch (midiCode -> at(1)) {
+			switch (midiCode.at(1)) {
 			case midi::ALL_CONTROLLERS_OFF:
 				reset = true;
 			case midi::ALL_SOUND_OFF:
@@ -1028,10 +1028,10 @@ namespace mutabor {
 			}
 
 			if (propagate)
-				channel_data[MidiChannel].set_controller(midiCode->at(1),
-									 midiCode->at(2));
+				channel_data[MidiChannel].set_controller(midiCode.at(1),
+									 midiCode.at(2));
 			if (panic)
-				this->Panic(midiCode->at(1),MidiChannel);
+				this->Panic(midiCode.at(1),MidiChannel);
 			if (reset)
 				channel_data[MidiChannel].MidiReset();
 
@@ -1043,7 +1043,7 @@ namespace mutabor {
 			break;
 		case midi::CHANNEL_PRESSURE:
 			channel_data[MidiChannel].set_controller(midi::CHANNEL_PRESSURE_VAL,
-								 midiCode->at(1));
+								 midiCode.at(1));
 			// … and create a proper event.
 		case midi::KEY_PRESSURE: {
 			event e = create_event(midiCode,
@@ -1055,7 +1055,7 @@ namespace mutabor {
 			break;
 		case midi::SYSTEM:
 			/** \todo handle all these messages in mutabor */
-			switch(midiCode->at(0)) {
+			switch(midiCode.at(0)) {
 			case midi::SYSTEM_UNDEFINED1:
 			case midi::SYSTEM_UNDEFINED2:
 			case midi::SYSEX_END:
@@ -1074,7 +1074,7 @@ namespace mutabor {
 				break;
 
 			case midi::META:
-				if (midiCode->size() == 1)
+				if (midiCode.size() == 1)
 					break;
 			case midi::SYSEX_START: {
 				event e = create_event(midiCode,
@@ -1099,13 +1099,13 @@ namespace mutabor {
 	 */// Routen testen und jenachdem entsprechend Codeverarbeitung
 
 	template <class D>
-	void CommonMidiInput<D>::Proceed(const std::vector<unsigned char > * midiCode, int data, int channel_offset)
+	void CommonMidiInput<D>::Proceed(const std::vector<unsigned char > &midiCode, int data, int channel_offset)
 	{
 		bool DidOut = 0;
 		routeListType elseroutes;
 
-		unsigned char MidiStatus  = midiCode->at(0);
-		unsigned char MidiChannel = (midiCode->at(0) & 0x0F) + channel_offset;
+		unsigned char MidiStatus  = midiCode.at(0);
+		unsigned char MidiChannel = (midiCode.at(0) & 0x0F) + channel_offset;
 
 		switch ( MidiStatus ) {
 		case midi::SYSTEM_UNDEFINED1:
@@ -1132,7 +1132,7 @@ namespace mutabor {
 		}
 			return;
 		case midi::META:
-			if (midiCode->size() == 1) {
+			if (midiCode.size() == 1) {
 				// this is the position where we must reset Mutabor
 				return;
 			} // otherwise we pass the event to the output devices

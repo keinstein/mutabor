@@ -48,26 +48,26 @@ namespace mutaborGUI {
 			from_channel->SetValue(current);
 		}
 		int GetFromChannel() const 
-			{
-				return from_channel->GetValue();
-			}
+		{
+			return from_channel->GetValue();
+		}
 	
 		void SetToChannel(int current, int min, int max) {
 			to_channel->SetRange(min,max);
 			to_channel->SetValue(current);
 		}
 		int GetToChannel() const
-			{
-				return to_channel->GetValue();
-			}
+		{
+			return to_channel->GetValue();
+		}
 	
 		void SetAvoidDrumChannel(bool avoid) {
 			avoid_drum_channel->SetValue(avoid);
 		}
 		bool GetAvoidDrumChannel() const
-			{
-				return avoid_drum_channel->GetValue();
-			}
+		{
+			return avoid_drum_channel->GetValue();
+		}
 	};
 
 
@@ -93,7 +93,7 @@ namespace mutaborGUI {
 		OutputMidiPort * dev = dynamic_cast<OutputMidiPort *> (device.get());
 		if (!dev) return false;
 		mutASSERT (dev);
-		DEBUGLOG (routing, "New midi device: %p" ,&(*(out -> GetMidiDevice())));
+		DEBUGLOG (routing, "New output midi device: %p" ,&(*(out -> GetMidiDevice())));
 		dev->SetDevId (out -> GetMidiDevice());
 		dev->SetBendingRange (out->GetMidiBendingRange());
 		SetLabel (dev->GetName());

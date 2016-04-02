@@ -532,9 +532,9 @@ namespace mutabor {
 		bool Compile(CompileCallback * callback, const char * logic);
 		static void compile_callback(mutabor_box_type * b, int line_number);
 
-		void MidiAnalysis(const std::vector<unsigned char > * midiCode) {
+		void MidiAnalysis(const std::vector<unsigned char > &midiCode) {
 			scoped_watchdog lock(this);
-			hidden::MidiAnalysis(box, midiCode->data(), midiCode->size());
+			hidden::MidiAnalysis(box, midiCode.data(), midiCode.size());
 		}
 
 		void MidiOut(struct midiliste * outliste);

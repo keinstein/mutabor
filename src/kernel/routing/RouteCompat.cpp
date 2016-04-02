@@ -267,8 +267,15 @@ namespace compat30 {
 							   (std::string)Name);
 
 			switch (Str2DT(Type)) {
-			case DTMidiPort:
-				static_cast<InputMidiPort *>(In.get()) -> SetDevId(DevId);
+			case DTMidiPort: {
+				if (rtmidiin) {
+					rtmidi::PortList list = rtmidiin->getPortList();
+					rtmidi::PortList::iterator i = list.begin();
+					while (DevId && ++i != list.end()) DevId--;
+					if (i != list.end())
+						static_cast<InputMidiPort *>(In.get()) -> SetDevId(*i);
+				}
+			}
 			case DTNotSet:
 			case DTUnknown:
 			case DTMidiFile:
@@ -428,29 +435,48 @@ namespace compat30 {
 
 			switch ( (*In)->GetType() ) {
 
-				case DTUnknown:
-					config += boost::str(boost::format("  UNKNOWN %s\n") % sName.c_str());
+			case DTUnknown:
+				config += boost::str(boost::format("  UNKNOWN %s\n") % sName.c_str());
 
-					break;
+				break;
 
-				case DTGis:
-					config += boost::str(boost::format("  GMN %s\n") % sName.c_str());
+			case DTGis:
+				config += boost::str(boost::format("  GMN %s\n") % sName.c_str());
 
-					break;
+				break;
 
-				case DTMidiPort:
-				  config += boost::str(boost::format("  MIDIPORT %s %d\n") % sName.c_str()
-						       % static_cast<InputMidiPort *>((*In).get())->GetDevId());
+			case DTMidiPort: {
+				int nr = 0;
+				if (rtmidiin) {
+					rtmidi::PortList list = rtmidiin->getPortList();
+					std::string port = static_cast<InputMidiPort *>((*In).get())->GetDevId()
+						-> getName( rtmidi::PortDescriptor::INCLUDE_API |
+							    rtmidi::PortDescriptor::UNIQUE_NAME |
+							    rtmidi::PortDescriptor::SESSION_PATH );
+					for (rtmidi::PortList::iterator i = list.begin();
+					     i != list.end(); ++i) {
+						if ((*i)-> getName( rtmidi::PortDescriptor::INCLUDE_API |
+								    rtmidi::PortDescriptor::UNIQUE_NAME |
+								    rtmidi::PortDescriptor::SESSION_PATH ) == port)
+							break;
+						++nr;
+					}
+				}
 
-					break;
+				config += boost::str(boost::format("  MIDIPORT %s %d\n")
+						     % sName.c_str()
+						     % nr);
 
-				case DTMidiFile:
-					config += boost::str(boost::format("  MIDIFILE %s\n") % sName.c_str());
+				break;
+			}
 
-					break;
+			case DTMidiFile:
+				config += boost::str(boost::format("  MIDIFILE %s\n") % sName.c_str());
 
-				case DTNotSet:
-					UNREACHABLE;
+				break;
+
+			case DTNotSet:
+				UNREACHABLE;
 
 				break;
 			}

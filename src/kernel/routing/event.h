@@ -280,7 +280,7 @@ namespace mutabor {
 	class meta_event: public event_class {
 	public:
 		meta_event(size_t id,
-			    const std::vector<unsigned char> & data):msg(data) {
+			   const std::vector<unsigned char> & data):msg(data) {
 			type = midi::UNKNOWN_META;
 			input_channel = -1;
 			route_channel = std::numeric_limits<size_t>::max();
@@ -449,87 +449,83 @@ namespace mutabor {
 	};
 
 
-	inline event_class * create_meta_event(const std::vector<unsigned char> * code,
+	inline event_class * create_meta_event(const std::vector<unsigned char> &code,
 					      size_t unique_id) {
-		if (!code) {
-			std::vector<unsigned char> tmp;
-			return new meta_event(unique_id, tmp);
-		}
-		if (code->size() < 2) {
-			return new meta_event(unique_id, *code);
+		if (code.size() < 2) {
+			return new meta_event(unique_id, code);
 		}
 
 
-		switch (code->at(1)) {
+		switch (code.at(1)) {
 		case midi::META_SEQUENCE_NUMBER: {
-			if (code->size() >= 4) {
+			if (code.size() >= 4) {
 				return new sequence_number_event(unique_id,
-								 (code->at(2) << 8) & code->at(3));
+								 (code.at(2) << 8) & code.at(3));
 			}
 		}
 			break;
 		case midi::META_EVENT_TEXT: {
-			if (code->size() >= 3)
+			if (code.size() >= 3)
 				return new text_event(unique_id,
-						      &(code->at(2)),
-						      code->size()-2);
+						      &(code.at(2)),
+						      code.size()-2);
 		}
 			break;
 		case midi::META_COPYRIGHT_NOTICE: {
-			if (code->size() >= 3)
+			if (code.size() >= 3)
 				return new copyright_event(unique_id,
-							   &(code->at(2)),
-							   code->size()-2);
+							   &(code.at(2)),
+							   code.size()-2);
 		}
 			break;
 		case midi::META_SEQUENCE_NAME: {
-			if (code->size() >= 3) {
+			if (code.size() >= 3) {
 				// Sequcence and track are something different in MIDI.
 				// Nevertheless they share the same id.
 				if (false)
 					return new sequence_name_event(unique_id,
-								       &(code->at(2)),
-								       code->size()-2);
+								       &(code.at(2)),
+								       code.size()-2);
 				else
 					return new track_name_event(unique_id,
-								    &(code->at(2)),
-								    code->size()-2);
+								    &(code.at(2)),
+								    code.size()-2);
 			}
 		}
 			break;
 
 		case midi::META_INSTRUMENT_NAME: {
-			if (code->size() >= 3)
+			if (code.size() >= 3)
 				return new instrument_name_event(unique_id,
-								 &(code->at(2)),
-								 code->size()-2);
+								 &(code.at(2)),
+								 code.size()-2);
 		}
 			break;
 		case midi::META_LYRIC: {
-			if (code->size() >= 3)
+			if (code.size() >= 3)
 				return new lyric_event(unique_id,
-						       &(code->at(2)),
-						       code->size()-2);
+						       &(code.at(2)),
+						       code.size()-2);
 		}
 			break;
 		case midi::META_MARKER: {
-			if (code->size() >= 3)
+			if (code.size() >= 3)
 				return new marker_event(unique_id,
-							&(code->at(2)),
-							code->size()-2);
+							&(code.at(2)),
+							code.size()-2);
 		}
 			break;
 		case midi::META_CUE_POINT: {
-			if (code->size() >= 3)
+			if (code.size() >= 3)
 				return new cue_point_event(unique_id,
-							   &(code->at(2)),
-							   code->size()-2);
+							   &(code.at(2)),
+							   code.size()-2);
 		}
 			break;
 		case midi::META_CHANNEL_PREFIX: {
-			if (code->size() >= 3)
+			if (code.size() >= 3)
 				return new channel_select_event(unique_id,
-								(code->at(2)));
+								(code.at(2)));
 		}
 			break;
 		case midi::META_END_OF_TRACK: {
@@ -537,71 +533,70 @@ namespace mutabor {
 		}
 			break;
 		case midi::META_SET_TEMPO: {
-			if (code->size() >= 5)
+			if (code.size() >= 5)
 				return new set_tempo_event(unique_id,
-							   (code->at(2) << 16) | (code->at(3) << 8) | code->at(4));
+							   (code.at(2) << 16) | (code.at(3) << 8) | code.at(4));
 		}
 			break;
 		case midi::META_SMPTE_OFFSET: {
-			if (code->size() >= 7)
+			if (code.size() >= 7)
 				return new smpte_event(unique_id,
-						       code->at(2),
-						       code->at(3),
-						       code->at(4),
-						       code->at(5),
-						       code->at(6));
+						       code.at(2),
+						       code.at(3),
+						       code.at(4),
+						       code.at(5),
+						       code.at(6));
 		}
 			break;
 		case midi::META_TIME_SIGNATURE: {
-			if (code->size() >= 6)
+			if (code.size() >= 6)
 				return new time_signature_event(unique_id,
-								code->at(2),
-								1 << code->at(3),
-								code->at(4),
-								code->at(5));
+								code.at(2),
+								1 << code.at(3),
+								code.at(4),
+								code.at(5));
 		}
 			break;
 		case midi::META_KEY_SIGNATURE: {
-			if (code->size() >= 3)
+			if (code.size() >= 3)
 				return new key_signature_event(unique_id,
-							       code->at(2),
-							       ! code->at(3));
+							       code.at(2),
+							       ! code.at(3));
 		}
 			break;
 		case midi::META_SEQUENCER_SPECIFIC:
-			return new sequencer_specific_meta_event(unique_id, *code);
+			return new sequencer_specific_meta_event(unique_id, code);
 		default:
-			return new meta_event(unique_id, *code);
+			return new meta_event(unique_id, code);
 		}
-		return new meta_event(unique_id, *code);
+		return new meta_event(unique_id, code);
 	}
 
-	inline event_class * create_system_event(const std::vector<unsigned char> * code,
+	inline event_class * create_system_event(const std::vector<unsigned char> &code,
 						 size_t unique_id) {
-		mutASSERT(code);
-		switch (code -> at(0)) {
+		switch (code.at(0)) {
 		case midi::SYSEX_START:
-			if (code->size() < 2) {
+			if (code.size() < 2) {
 				std::vector<unsigned char> tmp;
 				return new sysex_event(unique_id);
 			}
-			return new sysex_event (unique_id,*code);
+			return new sysex_event (unique_id,code);
 		case midi::QUARTER_FRAME:
-			if (code->size() > 1)
+			if (code.size() > 1)
 				return new quarter_frame_event(unique_id,
-							       (code->at(1) & 0x70) >> 4,
-							       code->at(1) & 0x0F);
+							       (code.at(1) & 0x70) >> 4,
+							       code.at(1) & 0x0F);
 			break;
 		case midi::SONG_POSITION:
-			if (code->size() > 2)
+			if (code.size() > 2)
 				return new song_position_event(unique_id,
-							       code->at(1)
-							       | (code -> at(2) << 7));
+							       code.at(1)
+							       | (code . at(2) << 7));
 			break;
 		case midi::SONG_SELECT:
-			if (code->size() > 1)
+			if (code.size() > 1)
 				return new song_select_event(unique_id,
-							     code->at(1));
+							     code.at(1));
 			break;
 		case midi::SYSTEM_UNDEFINED1:
 			return new system_common_midi_undef1_event(unique_id);
@@ -626,7 +621,7 @@ namespace mutabor {
 		case midi::ACTIVE_SENSE:
 			return new active_sense_event(unique_id);
 		case midi::META:
-			if (code->size() > 1)
+			if (code.size() > 1)
 				return create_meta_event(code,unique_id);
 			else
 				return new reset_event(unique_id);
@@ -635,29 +630,28 @@ namespace mutabor {
 
 	}
 
-	inline event_class * create_event(const std::vector<unsigned char> * code,
+	inline event_class * create_event(const std::vector<unsigned char> &code,
 				   size_t unique_id) {
-		mutASSERT(code);
-		unsigned char midiStatus = code -> at(0) & 0xF0;
+		unsigned char midiStatus = code.at(0) & 0xF0;
 		switch (midiStatus) {
 		case midi::KEY_PRESSURE:
-			if (code->size() > 2)
-				return new key_pressure_event(code->at(0) & 0x0f,
+			if (code.size() > 2)
+				return new key_pressure_event(code.at(0) & 0x0f,
 							      unique_id,
-							      code->at(1),
-							      code->at(2));
+							      code.at(1),
+							      code.at(2));
 		case midi::CONTROLLER:
-			if (code->size() > 2)
-				return new controller_event(code->at(0) & 0x0f,
+			if (code.size() > 2)
+				return new controller_event(code.at(0) & 0x0f,
 							    unique_id,
-							    code->at(1),
-							    code->at(2));
+							    code.at(1),
+							    code.at(2));
 		case midi::CHANNEL_PRESSURE:
-			if (code->size() > 1)
-				return new controller_event(code->at(0) & 0x0f,
+			if (code.size() > 1)
+				return new controller_event(code.at(0) & 0x0f,
 							    unique_id,
 							    midi::CHANNEL_PRESSURE_VAL,
-							    code->at(1));
+							    code.at(1));
 		case midi::SYSTEM:
 			return create_system_event(code,unique_id);
 		default:

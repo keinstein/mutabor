@@ -54,19 +54,23 @@ namespace mutabor {
 
 	using namespace midi;
 
-	extern  RtMidiOut * rtmidiout;
-	extern RtMidiIn *rtmidiin;
+	extern rtmidi::MidiOut * rtmidiout;
+	extern rtmidi::MidiIn  * rtmidiin;
 
         /// Save current device settings in a tree storage
         /** \argument config (tree_storage) storage class, where the data will be saved.
 	 */
 	void OutputMidiPort::Save (tree_storage & config)
 	{
+#ifdef DEBUG
+		std::string oldpath = config.GetPath();
+#endif
 		config.Write("Device Id",DevId->getName(rtmidi::PortDescriptor::STORAGE_PATH |
 							rtmidi::PortDescriptor::UNIQUE_NAME |
 							rtmidi::PortDescriptor::INCLUDE_API));
 		config.Write("Device Name",Name);
 		config.Write("Bending Range",GetBendingRange());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
         /// Save route settings (filter settings) for a given route
@@ -98,7 +102,7 @@ namespace mutabor {
 #ifdef DEBUG
 		std::string oldpath = config.GetPath();
 #endif
-		std::string name = config.Read("Device Id", _mut(""));
+		std::string idstring = config.Read("Device Id", _mut(""));
 		Name = config.Read("Device Name", _mut("no device"));
 		if (rtmidiout) {
 			rtmidi::PortList list = rtmidiout->getPortList(rtmidi::PortDescriptor::OUTPUT);
@@ -110,13 +114,13 @@ namespace mutabor {
 					try {
 						if ((*i)->getName(rtmidi::PortDescriptor::STORAGE_PATH |
 								  rtmidi::PortDescriptor::UNIQUE_NAME |
-								  rtmidi::PortDescriptor::INCLUDE_API) == name) {
+								  rtmidi::PortDescriptor::INCLUDE_API) == idstring) {
 							DevId = *i;
 							Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
-									      rtmidi::PortDescriptor::LONG_NAME |
+									      rtmidi::PortDescriptor::SHORT_NAME |
 									      rtmidi::PortDescriptor::UNIQUE_NAME).c_str();
 						}
-					} catch (RtMidiError &error) {
+					} catch (rtmidi::Error &error) {
 						runtime_error(false,
 							      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))									  % (*i)->getName(rtmidi::PortDescriptor::INCLUDE_API |
 																													rtmidi::PortDescriptor::SESSION_PATH).c_str()
@@ -167,7 +171,7 @@ namespace mutabor {
 		}
 		if (!correct) {
 			runtime_error(mutabor::warning,
-				      boost::str(boost::format("The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. The current route had to be corrected.") 
+				      boost::str(boost::format("The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. The current route had to be corrected.")
 					  % oldfrom % oldto % GetName().c_str() % GetMinChannel() % GetMaxChannel()));
 		}
 		config.toParent();
@@ -192,7 +196,7 @@ namespace mutabor {
 		std::string channelString;
 		for (int i = 0 ; i<16; i++) {
 			channelString += boost::str(boost::format(" ({not implemented},%d,[in=%d,p=%d,b=%d,u=%d,ch=%d])")
-								  % ton_auf_kanal[i].active 
+								  % ton_auf_kanal[i].active
 								  % ton_auf_kanal[i].inkey
 								  % ton_auf_kanal[i].outkey.pitch
 								  % ton_auf_kanal[i].outkey.bend
@@ -213,21 +217,25 @@ OutputMidiPort:\n\
 // InputMidiPort -------------------------------------------------------
 
 #ifdef RTMIDI
+	class mycallback:public rtmidi::MidiInterface {
+	public:
+		mycallback(InputMidiPort * c):
+			MidiInterface(),
+			appclass(c) {}
+		virtual ~mycallback() {}
 
-	void mycallback( double deltatime, std::vector< unsigned char > *message, void *userData )
-	{
-		mutUnused(deltatime);
-
-		mutASSERT(userData);
-		mutASSERT(message);
-		if (!message || !userData) {
-			UNREACHABLE;
+		void rtmidi_midi_in( double deltatime, std::vector< unsigned char > &message)
+		{
+			mutUnused(deltatime);
+			appclass -> Proceed(message, 0, 0);
+			return;
 		}
-		InputMidiPort * thisPort = static_cast<InputMidiPort *>(userData);
 
-		thisPort -> Proceed(message, 0, 0);
-		return;
-	}
+		void delete_me() { delete this; }
+
+	protected:
+		InputMidiPort * appclass;
+	};
 
 #else
 
@@ -252,7 +260,9 @@ OutputMidiPort:\n\
 #ifdef DEBUG
 		std::string oldpath = config.GetPath();
 #endif
-		config.Write("Device Id",   DevId);
+		config.Write("Device Id",DevId->getName(rtmidi::PortDescriptor::STORAGE_PATH |
+							rtmidi::PortDescriptor::UNIQUE_NAME |
+							rtmidi::PortDescriptor::INCLUDE_API));
 		config.Write("Device Name", Name);
 		mutASSERT(oldpath == config.GetPath());
 	}
@@ -296,13 +306,35 @@ OutputMidiPort:\n\
 #ifdef DEBUG
 		std::string oldpath = config.GetPath();
 #endif
-		DevId = config.Read("Device Id", 0);
-		Name  = config.Read("Device Name",
-				    (rtmidiin?
-				     (rtmidiin->getPortCount()?
-				      rtmidiin->getPortName(0).c_str()
-				      :"Unknown")
-				     :"no device"));
+		std::string idstring = config.Read("Device Id", _mut(""));
+		Name = config.Read("Device Name", _mut("no device"));
+		if (rtmidiin) {
+			rtmidi::PortList list = rtmidiin->getPortList(rtmidi::PortDescriptor::INPUT);
+			if (!list.empty()) {
+				DevId = *(list.begin());
+				for (rtmidi::PortList::iterator i = list.begin();
+				     i != list.end();
+				     ++i) {
+					try {
+						if ((*i)->getName(rtmidi::PortDescriptor::STORAGE_PATH |
+								  rtmidi::PortDescriptor::UNIQUE_NAME |
+								  rtmidi::PortDescriptor::INCLUDE_API) == idstring) {
+							DevId = *i;
+							Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
+									      rtmidi::PortDescriptor::SHORT_NAME |
+									      rtmidi::PortDescriptor::UNIQUE_NAME).c_str();
+						}
+					} catch (rtmidi::Error &error) {
+						runtime_error(false,
+							      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))									  % (*i)->getName(rtmidi::PortDescriptor::INCLUDE_API |
+																													rtmidi::PortDescriptor::SESSION_PATH).c_str()
+								  % error.what()));
+						Name = _mut("invalid device");
+						return ;
+					}
+				}
+			}
+		}
 		mutASSERT(oldpath == config.GetPath());
 	}
 
@@ -351,7 +383,7 @@ OutputMidiPort:\n\
 							       % GetMaxChannel()));
 			break;
 		}
-		
+
 		case RTstaff:
 		{
 			int oldfrom, oldto;
@@ -377,7 +409,7 @@ OutputMidiPort:\n\
 			if (!correct) {
 				runtime_error(false,
 					      boost::str(boost::format("The Channel range %d--%d of the MIDI input device must be inside %d--%d. The current route had to be corrected.")
-							 % oldfrom % oldto %  GetName().c_str() 
+							 % oldfrom % oldto %  GetName().c_str()
 							 % GetMinKey() %  GetMaxKey()));
 			}
 			break;
@@ -398,34 +430,33 @@ OutputMidiPort:\n\
 
 #ifdef RTMIDI
 		try {
-			hMidiIn = new RtMidiIn(RtMidi::UNSPECIFIED, PACKAGE_STRING);
-		} catch (RtMidiError &error) {
+			port = new rtmidi::MidiIn(rtmidi::UNSPECIFIED, PACKAGE_STRING);
+		} catch (rtmidi::Error &error) {
+			runtime_error(false,
+				      _mut("Can not open MIDI input devices due to memory allocation problems."));
+			return false;
+		}
+
+		try {
+			port->openPort(DevId,(GetName().c_str()));
+		} catch (rtmidi::Error &error) {
 			runtime_error(mutabor::warning,
-				      boost::str(boost::format(_mut("Can not open Midi input device no. %d (%s):\n%s"))
-						 % DevId
+				      boost::str(boost::format(_mut("Can not open MIDI input device %s (%s):\n%s"))
 						 % (GetName().c_str())
+						 % DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
+								       rtmidi::PortDescriptor::SESSION_PATH).c_str()
 						 % error.what()));
 			return false;
 		}
 
 		try {
-			hMidiIn->openPort(DevId,(GetName().c_str()));
-		} catch (RtMidiError &error) {
+			port->setCallback(new mycallback(this));
+		} catch (rtmidi::Error & error) {
 			runtime_error(mutabor::warning,
-				      boost::str(boost::format(_mut("Can not open Midi input device no. %d (%s):\n%s"))
-						 % DevId
+				      boost::str(boost::format(_mut("Can not register callback for MIDI input device %s (%s):\n%s"))
 						 % (GetName().c_str())
-						 % error.what()));
-			return false;
-		}
-
-		try {
-			hMidiIn->setCallback(mycallback, this);
-		} catch (RtMidiError & error) {
-			runtime_error(mutabor::warning,
-				      boost::str(boost::format(_mut("Can not open Midi input device no. %d (%s):\n%s"))
-						 % DevId
-						 % (GetName().c_str())
+						 % DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
+								       rtmidi::PortDescriptor::SESSION_PATH).c_str()
 						 % error.what()));
 		}
 
@@ -441,9 +472,9 @@ OutputMidiPort:\n\
 	{
 		mutASSERT(isOpen);
 #ifdef RTMIDI
-		hMidiIn->closePort();
-		delete hMidiIn;
-		hMidiIn = NULL;
+		port->closePort();
+		delete port;
+		port = NULL;
 #else
 		midiInStop(hMidiIn);
 		midiInReset(hMidiIn);
@@ -454,7 +485,7 @@ OutputMidiPort:\n\
 	}
 
 
-	
+
 
 	 InputMidiPort::operator std::string() const {
 		std::string channelString;
@@ -464,26 +495,25 @@ OutputMidiPort:\n\
 		return InputDeviceClass::operator std::string()
 			+ boost::str(boost::format("\
 InputMidiPort:\n\
-   hMidiIn = %p\n\
+   port = %p\n\
    channels {sound,sustain,MSB,LSB,pitch}:\n\
              %s\n\
-") %  (void*)hMidiIn % channelString);
+") %  (void*)port % channelString);
 
 	}
 
 
-	InputMidiPort::proceed_bool InputMidiPort::shouldProceed(Route R, const std::vector<unsigned char > * midiCode, int data)
+	InputMidiPort::proceed_bool InputMidiPort::shouldProceed(Route R, const std::vector<unsigned char > &midiCode, int data)
 	{
-		mutASSERT(midiCode);
 		switch ( R->GetType() ) {
 		case RTchannel:
-			if (R->Check(midiCode->at(0) & 0x0F))
+			if (R->Check(midiCode.at(0) & 0x0F))
 				return ProceedYes;
 			break;
 		case RTstaff:
-			if ( ((midiCode->at(0) & 0xF0) != 0x80 &&
-			      (midiCode->at(0) & 0xF0) != 0x90)
-			     || R->Check(midiCode->at(1)) )
+			if ( ((midiCode.at(0) & 0xF0) != 0x80 &&
+			      (midiCode.at(0) & 0xF0) != 0x90)
+			     || R->Check(midiCode.at(1)) )
 				return ProceedYes;
 			break;
 
@@ -498,10 +528,10 @@ InputMidiPort:\n\
 	}
 
 
-	void InputMidiPort::Proceed(const std::vector<unsigned char > * midiCode, int data, int channel_offset) {
+	void InputMidiPort::Proceed(const std::vector<unsigned char > &midiCode, int data, int channel_offset) {
 		/** \todo implement system messages */
-		uint8_t MidiChannel = (midiCode->at(0) & 0x0F) + channel_offset;
-		uint8_t MidiStatus  = midiCode->at(0);
+		uint8_t MidiChannel = (midiCode.at(0) & 0x0F) + channel_offset;
+		uint8_t MidiStatus  = midiCode.at(0);
 		DEBUGLOG (midifile, "Status: %x" , MidiStatus);
 
 		switch ( MidiStatus ) {
@@ -602,8 +632,8 @@ InputMidiPort:\n\
 
 	using namespace std;
 #include "RtMidi.h"
-	RtMidiOut *rtmidiout;
-	RtMidiIn *rtmidiin;
+	rtmidi::MidiOut * rtmidiout;
+	rtmidi::MidiIn  * rtmidiin;
 #endif
 
 	void MidiInit()
@@ -611,15 +641,15 @@ InputMidiPort:\n\
 #ifdef RTMIDI
 
 		try {
-			rtmidiout = new RtMidiOut(RtMidi::UNSPECIFIED, PACKAGE_STRING);
-		} catch (RtMidiError &error) {
+			rtmidiout = new rtmidi::MidiOut(rtmidi::UNSPECIFIED, PACKAGE_STRING);
+		} catch (rtmidi::Error &error) {
 			error.printMessage();
 			// abort();
 		}
 
 		try {
-			rtmidiin = new RtMidiIn(RtMidi::UNSPECIFIED, PACKAGE_STRING);
-		} catch (RtMidiError &error) {
+			rtmidiin = new rtmidi::MidiIn(rtmidi::UNSPECIFIED, PACKAGE_STRING);
+		} catch (rtmidi::Error &error) {
 			error.printMessage();
 			// abort();
 		}

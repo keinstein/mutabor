@@ -4,7 +4,7 @@
  *
  * Copyright:   (c) 2012 Tobias Schlemmer
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
+ * \date
  * $Date: 2011/09/27 20:13:26 $
  * \version $Version$
  * \license GPL
@@ -71,8 +71,8 @@ public:
 	typedef mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider,
 					  mutabor::OutputDeviceClass> base;
 
-	midicmnOutputDevice(std::string name, 
-			    int id = -1, 
+	midicmnOutputDevice(std::string name,
+			    int id = -1,
 			    int bendingRange = 2):base(name,id,bendingRange) {}
 	~midicmnOutputDevice() {}
 	mutabor::DebugMidiOutputProvider & getOut() { return Out; }
@@ -98,7 +98,7 @@ public:
 	}
 };
 
-class CommonMidiOutputTest : public CPPUNIT_NS::TestFixture 
+class CommonMidiOutputTest : public CPPUNIT_NS::TestFixture
 {
 	CPPUNIT_TEST_SUITE( CommonMidiOutputTest );
 	CPPUNIT_TEST( testNoteOnOff );
@@ -116,11 +116,11 @@ public:
 	}
 
 	int countTestCases () const
-	{ 
+	{
 		abort();
-		return 1; 
+		return 1;
 	}
-  
+
 	void setUp();
 	void tearDown();
 
@@ -154,8 +154,8 @@ public:
 	void Load(mutabor::tree_storage&, mutabor::RouteClass*) {}
 	bool Open () { isOpen = true; return true; }
 	proceed_bool shouldProceed(mutabor::Route R, uint32_t midiCode,  int data =0) { return ProceedYes; }
-	proceed_bool shouldProceed(mutabor::Route R, 
-				   const std::vector<unsigned char > * midiCode,  
+	proceed_bool shouldProceed(mutabor::Route R,
+				   const std::vector<unsigned char > & midiCode,
 				   int data =0) { return ProceedYes; }
 
 	void NoteOn(int channel, int inkey, int velocity) {
@@ -163,19 +163,19 @@ public:
 		message[0] = mutabor::midi::NOTE_ON | (channel & 0x0f);
 		message[1] = inkey & 0x7f;
 		message[2] = velocity & 0x7f;
-		Proceed(&message);
+		Proceed(message);
 	}
 	void NoteOff(int channel, int inkey, int velocity) {
 		std::vector <unsigned char > message(3);
 		message[0] = mutabor::midi::NOTE_OFF | (channel & 0x0f);
 		message[1] = inkey & 0x7f;
 		message[2] = velocity & 0x7f;
-		Proceed(&message);
+		Proceed(message);
 	}
 
 };
 
-class CommonMidiInputTest : public CPPUNIT_NS::TestFixture 
+class CommonMidiInputTest : public CPPUNIT_NS::TestFixture
 {
 	CPPUNIT_TEST_SUITE( CommonMidiInputTest );
 	CPPUNIT_TEST( testPanic );
@@ -193,11 +193,11 @@ public:
 	}
 
 	int countTestCases () const
-	{ 
+	{
 		abort();
-		return 1; 
+		return 1;
 	}
-  
+
 	void setUp();
 	void tearDown();
 
