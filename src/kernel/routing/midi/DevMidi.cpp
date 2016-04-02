@@ -62,7 +62,9 @@ namespace mutabor {
 	 */
 	void OutputMidiPort::Save (tree_storage & config)
 	{
-		config.Write("Device Id",DevId);
+		config.Write("Device Id",DevId->getName(rtmidi::PortDescriptor::STORAGE_PATH |
+							rtmidi::PortDescriptor::UNIQUE_NAME |
+							rtmidi::PortDescriptor::INCLUDE_API));
 		config.Write("Device Name",Name);
 		config.Write("Bending Range",GetBendingRange());
 	}
@@ -96,11 +98,35 @@ namespace mutabor {
 #ifdef DEBUG
 		std::string oldpath = config.GetPath();
 #endif
-		DevId = config.Read("Device Id",0);
-		Name = config.Read("Device Name", rtmidiout?(rtmidiout->getPortCount()?
-							     rtmidiout->getPortName(0).c_str()
-							     :_mut("Unknown"))
-				   :_mut("no device"));
+		std::string name = config.Read("Device Id", _mut(""));
+		Name = config.Read("Device Name", _mut("no device"));
+		if (rtmidiout) {
+			rtmidi::PortList list = rtmidiout->getPortList(rtmidi::PortDescriptor::OUTPUT);
+			if (!list.empty()) {
+				DevId = *(list.begin());
+				for (rtmidi::PortList::iterator i = list.begin();
+				     i != list.end();
+				     ++i) {
+					try {
+						if ((*i)->getName(rtmidi::PortDescriptor::STORAGE_PATH |
+								  rtmidi::PortDescriptor::UNIQUE_NAME |
+								  rtmidi::PortDescriptor::INCLUDE_API) == name) {
+							DevId = *i;
+							Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
+									      rtmidi::PortDescriptor::LONG_NAME |
+									      rtmidi::PortDescriptor::UNIQUE_NAME).c_str();
+						}
+					} catch (RtMidiError &error) {
+						runtime_error(false,
+							      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))									  % (*i)->getName(rtmidi::PortDescriptor::INCLUDE_API |
+																													rtmidi::PortDescriptor::SESSION_PATH).c_str()
+								  % error.what()));
+						Name = _mut("invalid device");
+						return ;
+					}
+				}
+			}
+		}
 		SetBendingRange(config.Read("Bending Range",DEFAULT_BENDING_RANGE));
 		mutASSERT(oldpath == config.GetPath());
 	}

@@ -44,6 +44,7 @@
 #include "src/kernel/Defs.h"
 #include "src/wxGUI/resourceload.h"
 #include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/midi/DevMidi.h"
 
 #ifndef MUWX_ROUTING_OUTPUTDEVDLG_H_PRECOMPILED
 #define MUWX_ROUTING_OUTPUTDEVDLG_H_PRECOMPILED
@@ -63,7 +64,7 @@
 
 namespace mutaborGUI {
 
-	class OutputDevDlg: public OutputDevDlgBase
+        class OutputDevDlg: public OutputDevDlgBase
 	{
 		DECLARE_DYNAMIC_CLASS( OutputDevDlg )
 		DECLARE_EVENT_TABLE()
@@ -74,23 +75,39 @@ namespace mutaborGUI {
 		struct TypeData:wxClientData
 		{
 			mutabor::DevType nr;
-			TypeData(mutabor::DevType i):wxClientData()
-				{
-					nr=i;
-				}
+                        TypeData(mutabor::DevType i):wxClientData(),
+						     nr(i)
+			{
+                        }
 
 			bool operator == (mutabor::DevType i)
 				{
-					if (this)
-						return i == nr;
-					else return false;
+                                        return i == nr;
 				}
 
 			operator mutabor::DevType()
 				{
-					if (this) return nr;
-					else return mutabor::DTNotSet;
+					return nr;
 				}
+		};
+
+		struct PortData:wxClientData
+		{
+                        rtmidi::PortPointer port;
+                        PortData(rtmidi::PortPointer p):wxClientData(),
+							port(p)
+			{
+                        }
+
+			bool operator == (rtmidi::PortPointer p)
+			{
+                                 return port == p;
+                        }
+
+			operator rtmidi::PortPointer()
+			{
+                                return port;
+                        }
 		};
 
 		int FindType (mutabor::DevType t);
@@ -109,18 +126,49 @@ namespace mutaborGUI {
 
 		void UpdateLayout(mutabor::DevType type);
 
-		int GetMidiDevice() const
-			{
-				return PortChoice->GetSelection() ;
-			}
+		void SelectMidiDevice (int n) {
+			PortChoice->SetSelection(n);
+		}
+                void SetMidiDevice(rtmidi::PortPointer value)
 
-		void SetMidiDevice(int value)
-
-			{
-				DEBUGLOG (other, "%d" ,value);
-				PortChoice->SetSelection (value) ;
-				Update();
+		{
+			DEBUGLOG (other, "%p" ,&(*value));
+			int choices = PortChoice->GetCount();
+			for (int i = 0 ; i < choices ; i++) {
+				if (static_cast<PortData *>(PortChoice->GetClientObject(i))->port == value) {
+					PortChoice->SetSelection(i);
+					break;
+				}
 			}
+			Update();
+		}
+
+		rtmidi::PortPointer GetMidiDevice(int p) const {
+			mutASSERT (dynamic_cast<PortData *>(PortChoice->GetClientObject(p)));
+			PortData * obj = static_cast<PortData *>(PortChoice->GetClientObject(p));
+
+			if (obj) return  *obj;
+			else return NULL;
+		}
+
+		rtmidi::PortPointer GetMidiDevice() const
+		{
+			int p = PortChoice->GetSelection();
+			if (p == wxNOT_FOUND) return NULL;
+			return GetMidiDevice(p);
+
+		}
+
+		void AppendPortChoice (rtmidi::PortPointer p)
+		{
+			PortChoice->Append (p->getName(),new PortData(p));
+		}
+		void AppendPortChoiceNoDevice()
+		{
+			PortChoice->Append(_("no device"));
+		}
+
+
 
 		wxString GetMidiFile() const
 			{
@@ -184,16 +232,6 @@ namespace mutaborGUI {
 		void SetMidiFileBendingRange (long i) {
 			MidiFileBendingRange->SetValue (i);
 		}
-
-		wxString GetPortString(int i)
-			{
-				return PortChoice->GetString (i);
-			}
-
-		void AppendPortChoice (const wxString &s)
-			{
-				PortChoice->Append (s);
-			}
 
 		/// Retrieves bitmap resources
 		wxBitmap GetBitmapResource (const wxString& name );

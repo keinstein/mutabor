@@ -401,7 +401,7 @@ namespace mutaborGUI {
 			break;
 		}
 	}
-	
+
 
 	template <class T>
 	void MutDeviceShape<T>::DoLeftDblClick() {
@@ -583,26 +583,25 @@ namespace mutaborGUI {
 	OutputDevDlg * MutOutputDeviceShape::ShowDeviceDialog()
 	{
 		OutputDevDlg * out = new OutputDevDlg (m_parent);
-		int nMidi;
 
 #ifdef RTMIDI
-		nMidi = (rtmidiout?rtmidiout->getPortCount():0);
-
-		DEBUGLOG (other, "Midi ports %d" ,nMidi);
-		if ( nMidi )  {
-			wxString portName;
-
-			for (int i = 0; i < nMidi; i++) {
-				try {
-					portName = muT(rtmidiout->getPortName(i).c_str());
-				} catch (RtMidiError &error) {
-					error.printMessage();
-					break;
+		if (rtmidiout) {
+			try {
+				rtmidi::PortList ports = rtmidiout->getPortList();
+				if (ports.empty()) {
+					out->AppendPortChoiceNoDevice();
 				}
-				out->AppendPortChoice(portName);
+				else for (rtmidi::PortList::iterator i = ports.begin();
+					  i != ports.end();
+					  ++i) {
+						out->AppendPortChoice(*i);
+					}
+			} catch (RtMidiError &error) {
+				error.printMessage();
+				out->AppendPortChoiceNoDevice();
 			}
-		} else
-			out->AppendPortChoice(_("no device"));
+		}
+
 #else
 		/*    nMidi = midiInGetNumDevs();
 		      if ( nMidi )
@@ -618,7 +617,7 @@ namespace mutaborGUI {
 		      DataR0.Device.AddString("no device");*/
 #endif
 		//		in->SetType(DTUnknown);
-		out->SetMidiDevice(0);
+		out->SelectMidiDevice(0);
 		out->SetMidiFile(wxEmptyString);
 		out->SetGUIDOFile(wxEmptyString);
 		out->SetMidiBendingRange(2);

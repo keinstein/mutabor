@@ -84,7 +84,7 @@ namespace mutabor {
 			}
 		}
 
-		bool Open(int id, const std::string name) {
+		bool Open(rtmidi::PortDescriptor & id, const std::string name) {
 #ifdef RTMIDI
 			try {
 				port = new RtMidiOut(RtMidi::UNSPECIFIED, PACKAGE_STRING);
@@ -98,8 +98,10 @@ namespace mutabor {
 				port->openPort(id, name);
 			} catch (RtMidiError &error) {
 				device->runtime_error(false,
-						      str(boost::format(_mut("Can not open output Midi device no. %d (%s)"))
-							  % id % name.c_str()));
+						      str(boost::format(_mut("Can not open output Midi device %s (%s)"))
+							  % name.c_str()
+							  % id.getName(rtmidi::PortDescriptor::INCLUDE_API |
+								       rtmidi::PortDescriptor::SESSION_PATH).c_str()));
 				return false;
 			}
 
@@ -313,20 +315,23 @@ namespace mutabor {
 				return true;
 			}
 
-		virtual void SetDevId (int id) {
+		virtual void SetDevId (rtmidi::PortPointer id) {
 			bool reopen = false;
 			if (id != DevId) {
 				DevId = id;
 				if ((reopen = IsOpen()))
 					Close(false);
 			}
-			if (rtmidiout) {
+			if (id) {
 				try {
-					Name = rtmidiout->getPortName (DevId).c_str();
+					Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
+							      rtmidi::PortDescriptor::LONG_NAME |
+							      rtmidi::PortDescriptor::UNIQUE_NAME).c_str();
 				} catch (RtMidiError &error) {
 					runtime_error(false,
 						      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s")) 
-							  % DevId
+							  % id->getName(rtmidi::PortDescriptor::INCLUDE_API |
+									rtmidi::PortDescriptor::SESSION_PATH).c_str()
 							  % error.what()));
 					Name = _mut("invalid device");
 					return ;
@@ -339,7 +344,7 @@ namespace mutabor {
 			}
 		}
 		
-		int GetDevId() { return DevId; }
+		rtmidi::PortPointer GetDevId() { return DevId; }
 
 		virtual DevType GetType() const
 			{
@@ -361,7 +366,7 @@ namespace mutabor {
 		virtual int GetMinChannel() const { return 0; }
 	
 	protected:
-		int DevId; //< Id of the hardware MIDI device
+		rtmidi::PortPointer DevId; //< Id of the hardware MIDI device
 #if 0
 #ifdef RTMIDI
 		RtMidiOut *hMidiOut;
@@ -374,11 +379,11 @@ namespace mutabor {
 			       int id = -1, 
 			       int bendingRange = 2):
 			base(name, id, bendingRange),
-			DevId(-1) {
+			DevId(NULL) {
 			TRACEC;
 		}
 		bool do_Open() {
-			bool retval = Out.Open(DevId, Name);
+			bool retval = Out.Open(*DevId, Name);
 			if (!retval) return false;
 			return base::do_Open();
 		}

@@ -196,10 +196,14 @@ namespace compat30 {
 						dynamic_cast<OutputMidiPort *>(Out.get());
 					if (!dev)
 						UNREACHABLE;
-					else {
-						dev -> SetDevId(DevId);
-						dev -> SetBendingRange (BendingRange);
+					else if (rtmidiout) {
+						rtmidi::PortList list = rtmidiout->getPortList();
+						rtmidi::PortList::iterator i = list.begin();
+						while (DevId && ++i != list.end()) DevId--;
+						if (i != list.end())
+							dev -> SetDevId(*i);
 					}
+					dev -> SetBendingRange (BendingRange);
 				}
 				break;
 			case DTMidiFile:
