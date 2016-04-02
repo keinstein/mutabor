@@ -1,4 +1,4 @@
-/** \file 
+/** \file
  ********************************************************************
  * Box data structures and management functions
  *
@@ -51,11 +51,11 @@ size_t minimal_box_used = 0;
 
 void mutabor_set_logic(mutabor_box_type * box, struct mutabor_logic_parsed * logic) {
 	if (logic == box->file) return;
-	if (logic) {
+	if (logic || logic != NULL) {
 		mutabor_lock_logic(logic);
 		logic->refcount++;
 	}
-	if (box->file) {
+	if (box->file || box->file != NULL) {
 		mutabor_lock_logic(box->file);
 		box->file->refcount--;
 		if (!box->file->refcount) {
@@ -75,6 +75,23 @@ void mutabor_set_logic(mutabor_box_type * box, struct mutabor_logic_parsed * log
 	}
 }
 
+void mutabor_clear_box(mutabor_box_type * box) {
+	mutabor_key_index_type *plane;
+	mutabor_key_index_type *oldplane;
+
+	mutabor_clear_box_scanner(box);
+	mutabor_box_clear_logic(box);
+
+	oldplane = plane = box->current_keys.next;
+	/* the first plane is hard coded into mutabor_box_type */
+	while (oldplane) {
+		plane = oldplane->next;
+		free(oldplane);
+		oldplane=plane;
+	}
+	loesche_laufzeit_speicher(box);
+
+}
 
 void mutabor_reset_keys(mutabor_box_type * box)
 {
@@ -107,12 +124,12 @@ void mutabor_reset_keys(mutabor_box_type * box)
 void mutabor_reset_box(mutabor_box_type * box)
 {
 	static tone_system tonesystem_init =
-		{0, 1, mutabor_get_interval_from_pitch (1), 
+		{0, 1, mutabor_get_interval_from_pitch (1),
 		 { mutabor_get_tone_from_pitch(60) }} ;
 	if (!tonesystem_init.anker) {
 		memset(&(tonesystem_init.ton[1]),
-		       0, 
-		       (MUTABOR_KEYRANGE_MAX_WIDTH-1) 
+		       0,
+		       (MUTABOR_KEYRANGE_MAX_WIDTH-1)
 		       * sizeof(tonesystem_init.ton[1]));
 		tonesystem_init.anker = 60;
 	}
@@ -133,7 +150,7 @@ void mutabor_reset_box(mutabor_box_type * box)
 }
 
 
-void mutabor_initialize_box(mutabor_box_type * box, int id) 
+void mutabor_initialize_box(mutabor_box_type * box, int id)
 {
 /* C standard does not define NULL to be 0 */
 	mutASSERT(box != NULL);
@@ -160,7 +177,7 @@ void mutabor_initialize_box(mutabor_box_type * box, int id)
 	mutabor_reset_box(box);
 }
 /* This function uses tonsystem_memory which is just a set of tone systems
-   that will be assigned to the boxes via pointers later. 
+   that will be assigned to the boxes via pointers later.
 void GlobalReset()
 {
 #pragma message "tonesystem_memory should be box specific to be thread proof"
@@ -177,7 +194,7 @@ void GlobalReset()
 			 */
 
 /*
-void initialize_boxes () 
+void initialize_boxes ()
 {
 	// use int here, as otherwise C++ doesn't find mutabor_initialize_box
 	for (int i = 0 ; i < MAX_BOX; i++) {
@@ -222,7 +239,8 @@ void mutabor_check_key_count(mutabor_box_type * box) {
 
 #endif
 
-#ifdef __cplusplus 
+
+#ifdef __cplusplus
 		}
 	}
 }

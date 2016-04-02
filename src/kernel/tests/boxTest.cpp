@@ -69,6 +69,8 @@ void boxTest::setUp()
 
 void boxTest::tearDown()
 {
+	for (size_t i = 0; i < 7; i++)
+		mutabor_clear_box(&boxes[i]);
 #ifdef DEBUG
 	//		debugFlags::flags.kernel_box = false;
 	//		debugFlags::flags.midifile = false;
@@ -315,6 +317,7 @@ void boxTest::testFindKeyByKey()
 	mutabor_box_type * box = &boxes[0];
 	loesche_syntax_speicher(box);
 	mutabor_programm_einlesen(box,"");
+	mutabor_clear_box_scanner(box);
 	expand_decition_tree(box);
 	AddKey (box,77,1,5,NULL);
 	AddKey (box,78,3,5,NULL);
@@ -356,12 +359,14 @@ void boxTest::testFindKeyByKey()
 		mutabor_delete_key_in_box(box,0);
 	}
 	mutASSERT(box->key_count == 0);
+	mutabor_clear_box(box);
 }
 
 void boxTest::testBug1Permutation1 () {
 	mutabor_box_type * box = &boxes[0];
 	loesche_syntax_speicher(box);
 	mutabor_programm_einlesen(box,"");
+	mutabor_clear_box_scanner(box);
 	expand_decition_tree(box);
 
 	AddKey (box,77,1,5,NULL);
@@ -393,6 +398,7 @@ void boxTest::testBug1Permutation1 () {
 	CPPUNIT_ASSERT(index == MUTABOR_NO_NEXT);
 
 	CPPUNIT_ASSERT(box->key_count == 0);
+	mutabor_clear_box(box);
 }
 
 
@@ -401,6 +407,7 @@ void boxTest::testBug1Permutation2 () {
 
 	loesche_syntax_speicher(box);
 	mutabor_programm_einlesen(box,"");
+	mutabor_clear_box_scanner(box);
 	expand_decition_tree(box);
 	/* second try (check all permutations) */
 	/* deleting first 77 */
@@ -484,10 +491,11 @@ void boxTest::testBug1Permutation2 () {
 	CPPUNIT_ASSERT(box->last_key == 0);
 	DeleteKey (box,77,1,5);
 	CPPUNIT_ASSERT(box->last_key == 0);
+	mutabor_clear_box(box);
 }
 
 
-void boxTest::testHaronic_form () {
+void boxTest::testHarmonic_form () {
 	mutabor_box_type * box = &boxes[0];
 #ifdef DEBUG
 	yydebug = 0;
@@ -522,10 +530,13 @@ logic\n\
 
 	loesche_syntax_speicher(box);
 	mutabor_programm_einlesen(box,logic_string);
+	mutabor_clear_box_scanner(box);
 	expand_decition_tree(box);
 
 	CPPUNIT_ASSERT(box);
 	CPPUNIT_ASSERT(box->file);
+	std::cout << std::endl << "Refcount: " << box->file->refcount << std::endl;
+	CPPUNIT_ASSERT(box->file->refcount == 1);
 	struct harmonie_ereignis * current_harmony
 		= box->file->global_harmonies;
 	CPPUNIT_ASSERT(current_harmony);
@@ -639,6 +650,8 @@ logic\n\
 	CPPUNIT_ASSERT(!current_harmony -> next);
 
 	CPPUNIT_ASSERT(box->key_count == 0);
+	CPPUNIT_ASSERT(box->file->refcount == 1);
+	mutabor_clear_box(box);
 }
 
 
@@ -671,6 +684,7 @@ LOGIC \n\
 
 	loesche_syntax_speicher(box);
 	mutabor_programm_einlesen(box,logic_string);
+	mutabor_clear_box_scanner(box);
 	CPPUNIT_ASSERT(box->file);
 	CPPUNIT_ASSERT(box->file->list_of_intervalle);
 	CPPUNIT_ASSERT(box->file->list_of_toene);
@@ -686,6 +700,7 @@ LOGIC \n\
 	expand_decition_tree(box);
 
 	CPPUNIT_ASSERT(box->key_count == 0);
+	mutabor_clear_box(box);
 }
 
 

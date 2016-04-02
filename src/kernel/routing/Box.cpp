@@ -91,7 +91,9 @@ namespace mutabor {
 #endif
 		TRACEC;
 		debug_destruct_class(this);
-		if (box) free(box);
+		if (box) {
+			mutabor_delete_box(box);
+		}
 	}
 
 	void BoxClass::set_routefile_id(int id) {
@@ -691,9 +693,10 @@ namespace mutabor {
 	}
 
 	bool BoxClass::Compile(CompileCallback * callback, const char * logic) {
+
 		set_callback callback_holder(this,callback);
 		if (!setjmp(weiter_gehts_nach_compilerfehler)) {
-			loesche_syntax_speicher(box);
+			mutabor_box_clear_logic(box);
 			//			init_yylex ();
 
 			mutabor_programm_einlesen (box, logic);
@@ -711,6 +714,8 @@ namespace mutabor {
 				callback->SetStatus(_mut("Generating tables"));
 				callback->RefreshDlg();
 			}
+
+			mutabor_clear_box_scanner(box);
 
 			expand_decition_tree(box);
 
@@ -939,10 +944,10 @@ namespace mutabor {
 		BoxClass::MidiOutCallback,
 		error_callback,
 		BoxClass::compile_callback,
-		log_action,
-		lock_callback,
-		unlock_callback,
-		free_mutex_callback
+		BoxClass::log_action,
+		BoxClass::lock_callback,
+		BoxClass::unlock_callback,
+		BoxClass::free_mutex_callback
 	};
 
 

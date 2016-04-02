@@ -1,10 +1,10 @@
-/** \file 
+/** \file
  ********************************************************************
  * Description: Collect all properties, which are used by boxes
  *
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
+ * \date
  * $Date: 2011/09/27 20:13:21 $
  * \version $Revision: 1.6 $
  * \license GPL
@@ -80,7 +80,7 @@ typedef struct {
 typedef struct mutabor_key_index_type {
 	mutabor_note_type key[1 << MUT_BOX_MAX_KEY_INDEX_LOG];
 	struct mutabor_key_index_type * next;
-	
+
 } mutabor_key_index_type;
 
 struct mutabor_scanner_data;
@@ -119,14 +119,14 @@ struct mutabor_box_type_struct {
 	 * has been calculated during the last harmony analysis.
 	 */
 	int distance;
-    
+
 	/* parameter lists are arrays arranged in a linked list. Each
-	   list element represents a maximal parameter vector. 
-	   It doesn't have to be used completely. As we reuse old list elements 
+	   list element represents a maximal parameter vector.
+	   It doesn't have to be used completely. As we reuse old list elements
 	   after they became free all data vectors must have the same size.
 
 	   Current_parameters refers to the parameters of the current call.
-	   Parameters refers to the global box parameters such as distance 
+	   Parameters refers to the global box parameters such as distance
 	   and anchor.
 	*/
 	struct interpreter_parameter_list * current_parameters;  /*< currently active parameter list */
@@ -134,11 +134,11 @@ struct mutabor_box_type_struct {
 
 	/** pattern structure in current box */
 	PATTERNN pattern;
-	
 
-	/** tone system.  
+
+	/** tone system.
 	    we use pointers here, since this enables us
-	    to quickly change the tone sytem. This saves us 
+	    to quickly change the tone sytem. This saves us
 	    a copy operation.
 	 */
 	tone_system * tonesystem;
@@ -167,6 +167,21 @@ extern size_t minimal_box_used;
 
 			/* extern int keys_changed_sum; */
 void mutabor_set_logic(mutabor_box_type * box, struct mutabor_logic_parsed * logic);
+inline void mutabor_box_clear_logic(mutabor_box_type * box) {
+	mutabor_set_logic(box,NULL);
+}
+inline void mutabor_clear_box_scanner(mutabor_box_type * box) {
+	if ((!box->scanner) || box->scanner == NULL) return;
+	free(box->scanner);
+	box->scanner = NULL;
+}
+void mutabor_clear_box(mutabor_box_type * box);
+
+inline void mutabor_delete_box(mutabor_box_type * box) {
+	mutabor_clear_box(box);
+	free(box);
+}
+
 void mutabor_reset_keys(mutabor_box_type * box);
 void mutabor_reset_box(mutabor_box_type * box);
 
@@ -179,6 +194,8 @@ void mutabor_check_key_count(mutabor_box_type * box);
 inline void mutabor_check_key_count(mutabor_box_type * box) {}
 #endif
 
+
+
 inline mutabor_note_type * mutabor_find_key_in_box(mutabor_box_type * box, size_t index) {
 	mutabor_key_index_type *plane_ptr;
 	size_t plane;
@@ -189,17 +206,17 @@ inline mutabor_note_type * mutabor_find_key_in_box(mutabor_box_type * box, size_
 	while (plane-- && plane_ptr) plane_ptr = plane_ptr->next;
 	if (!plane_ptr) {
 		return NULL;
-	} 
+	}
 	return &(plane_ptr->key[index & MUT_BOX_MAX_KEY_INDEX]);
 }
-/** 
+/**
  * Find a key in the given box.
- * 
+ *
  * \param box Box to be seached in.
  * \param key Key number to be found.
  * \param index Starting point. The first index to be checked is its successer. So you have to
  * check index number 0 yourself (which should be fast enough).
- * 
+ *
  * \return index of the key structure that has been found our 0
  * otherwise.
  */
@@ -215,9 +232,9 @@ inline size_t mutabor_find_key_in_box_by_key(mutabor_box_type * box, int key_num
 	return newidx;
 }
 
-/** 
+/**
  * Delete the key with the given index from the box.
- * 
+ *
  * \param box Box where the key shall be deleted.
  * \param index Index of the key in box->current_keys of the key that shall be deleted.
  */
@@ -234,9 +251,9 @@ inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
 	}
 
 	if (!index) {
-		
+
 		if (current_key -> next != MUTABOR_NO_NEXT) {
-			mutabor_note_type * next_key 
+			mutabor_note_type * next_key
 				= mutabor_find_key_in_box(box,current_key->next);
 			if (current_key->next == box->last_key)
 				box -> last_key = 0;
@@ -244,7 +261,7 @@ inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
 			next_key->next = MUTABOR_NO_NEXT;
 			next_key->userdata = NULL;
 			box->key_count--;
-			
+
 		} else {
 			mutASSERT(box->key_count == 1);
 			current_key->userdata = NULL;
@@ -253,8 +270,8 @@ inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
 		return;
 	}
 
-	
-	
+
+
 	DEBUGLOG2(kernel_box,("index = %d"),(int)index);
 	last_key = mutabor_find_key_in_box(box,0);
 	last_index = 0;
@@ -305,7 +322,7 @@ inline mutabor_note_type * mutabor_create_key_in_box (mutabor_box_type * box) {
 		return NULL;
 	}
 	oldplane = plane = &(box->current_keys);
-	
+
 	while (plane != NULL && new_key == NULL) {
 		size_t i;
 		size_t curridx = planeidx << MUT_BOX_MAX_KEY_INDEX_LOG;

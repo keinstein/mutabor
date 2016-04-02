@@ -946,7 +946,20 @@ namespace mutabor {
 
 
 	protected:
-		typedef std::vector<BoxFactory *> factorylist;
+		struct factorylist:public std::vector<BoxFactory *> {
+			typedef std::vector<BoxFactory *> base;
+			factorylist():base() {}
+			~factorylist() {
+				for (base::iterator i = begin();
+				     i != end ();
+				     i++) {
+					if (*i) {
+						delete (*i);
+						*i = 0;
+					}
+				}
+			}
+		};
 		static factorylist factories;
 
 		virtual size_t GetType() const { return Box0; };

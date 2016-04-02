@@ -124,6 +124,8 @@ namespace mutabor {
 			*/
 		}
 
+		~ChannelData() {}
+
 		void Reset()
 		{
 			for (controller_vector::iterator i = controller.begin();
@@ -1442,7 +1444,21 @@ namespace mutabor {
 		static void SaveInputDevices(tree_storage & config);
 
 	protected:
-		typedef std::vector<DeviceFactory *> factorylist;
+		struct factorylist:public std::vector<DeviceFactory *> {
+			typedef std::vector<DeviceFactory *> base;
+			factorylist():base() {}
+			~factorylist() {
+				for (base::iterator i = begin();
+				     i != end ();
+				     i++) {
+					if (*i) {
+						delete (*i);
+						*i = 0;
+					}
+				}
+			}
+		};
+
 		static factorylist factories;
 
 		virtual size_t GetType() const = 0;

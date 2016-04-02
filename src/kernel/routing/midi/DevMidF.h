@@ -567,7 +567,7 @@ namespace mutabor {
 	public:
 		typedef CommonMidiOutput<MidiFileOutputProvider,CommonFileOutputDevice> base;
 
-		virtual ~OutputMidiFile() {};
+		virtual ~OutputMidiFile() {}
 
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
@@ -683,7 +683,7 @@ namespace mutabor {
 
 	public:
 		virtual ~InputMidiFile()
-			{};
+			{}
 
 		using base::Save;
 		/// Save route settings (filter settings) for a given route

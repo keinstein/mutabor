@@ -571,6 +571,8 @@ namespace mutabor {
 					channel_queue(),
 					nKeyOn(0) {}
 
+		virtual ~CommonMidiOutput() {}
+
 		bool do_Open();
 		void do_Close(bool sync=false);
 
@@ -951,6 +953,8 @@ namespace mutabor {
 		CommonMidiInput(const std::string name = "",
 				MutaborModeType mode = DeviceStop,
 				int id = -1):parenttype(name,mode,id) {}
+
+		virtual ~CommonMidiInput() {}
 
 		std::vector<ChannelData> channel_data;
 		enum proceed_bool {ProceedYes,ProceedNo,ProceedElse};

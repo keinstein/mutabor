@@ -617,11 +617,15 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 	}
 	*/
 
-	box->scanner = (mutabor_scanner_data *) calloc(1, sizeof(struct mutabor_scanner_data));
+	if (!box->scanner || box->scanner == NULL)
+		box->scanner = (mutabor_scanner_data *) calloc(1, sizeof(struct mutabor_scanner_data));
 	box->scanner->data = logic;
 	box->scanner->pos = box->scanner->data;
 
+
+	mutabor_set_logic(box,NULL);
 	box->file = (mutabor_logic_parsed *) calloc(1,sizeof(struct mutabor_logic_parsed));
+	box->file->refcount                      = 1;
 	box->file->mutex                         = NULL;
 	box->file->list_of_constants             = NULL;
 	box->file->list_of_intervalle            = NULL;
