@@ -298,7 +298,7 @@ potfilechk-recursive:potfilechk-makerecursive
 
 potfilechk-makerecursive:
 	-test '$(RECURSIVE_TARGETS)' != 'potfilechk-recursive' && \
-		$(MAKE) $(AM_MAKEFLAGS) RECURSIVE_TARGETS=potfilechk-recursive potfilechk-recursive
+		$(MAKE) $(AM_MAKEFLAGS) RECURSIVE_TARGETS=potfilechk-recursive potfilechk-recursive -k
 
 potfilechk: potfilechk-am
 
