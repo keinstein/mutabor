@@ -650,12 +650,12 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 	// (das Problem l‰ﬂt sich sicher auch direkt lˆsen ...)
 
 	if ( !box->file->list_of_intervalle )
-		get_new_intervall(box,"__TopSecret__RK__Intervall__", 1.0);
+		get_new_intervall(box,"** default semitone **", 1.0);
 
 	berechne_intervalle_absolut (box,box->file->list_of_intervalle);
 
 	if ( !box->file->list_of_toene )
-		get_new_ton_absolut(box,"__TopSecret__RK__Ton__", 440.0);
+		get_new_ton_absolut(box,"** default a' **", 440.0);
 
 	berechne_toene_absolut (box,box->file->list_of_toene);
 
