@@ -567,7 +567,7 @@ namespace mutabor {
 	public:
 		typedef CommonMidiOutput<MidiFileOutputProvider,CommonFileOutputDevice> base;
 
-		virtual ~OutputMidiFile() {};
+		virtual ~OutputMidiFile() {}
 
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
@@ -683,7 +683,7 @@ namespace mutabor {
 
 	public:
 		virtual ~InputMidiFile()
-			{};
+			{}
 
 		using base::Save;
 		/// Save route settings (filter settings) for a given route
@@ -754,9 +754,9 @@ namespace mutabor {
 		virtual operator std::string() const;
 
 		proceed_bool shouldProceed(Route R,
-					   const std::vector<unsigned char > * midiCode,
+					   const std::vector<unsigned char > &midiCode,
 					   int data =0);
-		void Proceed(const std::vector<unsigned char > * midiCode, int data =0, int channel_offset = 0);
+		void Proceed(const std::vector<unsigned char > &midiCode, int data =0, int channel_offset = 0);
 
 	protected:
 		int FileType;

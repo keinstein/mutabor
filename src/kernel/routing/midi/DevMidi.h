@@ -1,5 +1,5 @@
-// -*- C++ -*- 
-/** \file 
+// -*- C++ -*-
+/** \file
  ********************************************************************
  * Classes for midi port
  *
@@ -67,8 +67,8 @@
 
 namespace mutabor {
 
-	extern RtMidiOut * rtmidiout;
-	extern RtMidiIn * rtmidiin;
+	extern rtmidi::MidiOut * rtmidiout;
+	extern rtmidi::MidiIn  * rtmidiin;
 
 // OutputMidiPort ------------------------------------------------------
 
@@ -87,21 +87,22 @@ namespace mutabor {
 		bool Open(rtmidi::PortDescriptor & id, const std::string name) {
 #ifdef RTMIDI
 			try {
-				port = new RtMidiOut(RtMidi::UNSPECIFIED, PACKAGE_STRING);
-			} catch (RtMidiError &error) {
+				port = new rtmidi::MidiOut(rtmidi::UNSPECIFIED, PACKAGE_STRING);
+			} catch (rtmidi::Error &error) {
 				device->runtime_error(false,
-						      _mut("Can not open ouput Midi devices due to memory allocation  problems."));
+						      _mut("Can not open MIDI output devices due to memory allocation problems."));
 				return false;
 			}
-			
+
 			try {
 				port->openPort(id, name);
-			} catch (RtMidiError &error) {
+			} catch (rtmidi::Error &error) {
 				device->runtime_error(false,
-						      str(boost::format(_mut("Can not open output Midi device %s (%s)"))
+						      str(boost::format(_mut("Can not open output Midi device %s (%s):\n%s"))
 							  % name.c_str()
 							  % id.getName(rtmidi::PortDescriptor::INCLUDE_API |
-								       rtmidi::PortDescriptor::SESSION_PATH).c_str()));
+								       rtmidi::PortDescriptor::SESSION_PATH).c_str()
+							  % error.what()));
 				return false;
 			}
 
@@ -111,7 +112,7 @@ namespace mutabor {
 #endif
 			return true;
 		}
-		
+
 		bool Open() {
 			// Should be done by device.
 			if (!port) return false;
@@ -127,17 +128,17 @@ namespace mutabor {
 			midiOutClose(hMidiOut);
 
 #endif
-			
+
 		}
 
-		/** 
+		/**
 		 * Outputs a three-byte message.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
-		 *        subdevices is managed by the OutputProvider 
-		 * \param byte1 1st byte 
-		 * \param byte2 2nd byte 
+		 *        subdevices is managed by the OutputProvider
+		 * \param byte1 1st byte
+		 * \param byte2 2nd byte
 		 * \param byte3 3rd byte
 		 */
 		MidiPortOutputProvider & operator() (int channel,
@@ -153,35 +154,35 @@ namespace mutabor {
 			}
 			return RawMsg(channel,byte1,byte2,byte3);
 		}
-		/** 
+		/**
 		 * Outputs a raw three-byte message.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
-		 *        subdevices is managed by the OutputProvider 
-		 * \param byte1 1st byte 
-		 * \param byte2 2nd byte 
+		 *        subdevices is managed by the OutputProvider
+		 * \param byte1 1st byte
+		 * \param byte2 2nd byte
 		 * \param byte3 3rd byte
 		 */
 		MidiPortOutputProvider & RawMsg (int channel,
 						  uint8_t byte1,
 						  uint8_t byte2,
-						  uint8_t byte3) { 
+						  uint8_t byte3) {
 			std::vector<unsigned char> message(3);
 			message[0] = byte1;
 			message[1] = byte2;
 			message[2] = byte3;
-			
-			port->sendMessage(&message);
+
+			port->sendMessage(message);
 			return *this;
 		}
 
-		/** 
+		/**
 		 * Outputs a two-byte message.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
-		 *        subdevices is managed by the OutputProvider 
+		 *        subdevices is managed by the OutputProvider
 		 * \param byte1 1st byte
 		 * \param byte2 2nd byte
 		 */
@@ -195,16 +196,16 @@ namespace mutabor {
 			} else {
 				UNREACHABLEC;
 			}
-			
+
 			return RawMsg(channel,byte1,byte2);
 		}
 
-		/** 
+		/**
 		 * Outputs a two-byte message.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
-		 *        subdevices is managed by the OutputProvider 
+		 *        subdevices is managed by the OutputProvider
 		 * \param byte1 1st byte
 		 * \param byte2 2nd byte
 		 */
@@ -214,34 +215,34 @@ namespace mutabor {
 			std::vector<unsigned char> message(2);
 			message[0] = byte1;
 			message[1] = byte2;
-			
-			port->sendMessage(&message);
+
+			port->sendMessage(message);
 			return *this;
 		}
 
-		/** 
+		/**
 		 * Outputs a one-byte message.
-		 * 
+		 *
 		 * \param byte1 1st byte
 		 */
 		MidiPortOutputProvider & RawMsg (int channel, uint8_t byte1) {
 			mutASSERT(channel == -1);
 			std::vector<unsigned char> message(1);
 			message[0] = byte1;
-			
-			port->sendMessage(&message);
+
+			port->sendMessage(message);
 			return *this;
 		}
 
-		/** 
-		 * Outputs a system exclusive message. The message must include 
+		/**
+		 * Outputs a system exclusive message. The message must include
 		 * a valid device id.
-		 * 
+		 *
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
 		 *        subdevices is managed by the OutputProvider (ignored)
 		 * \param from iterator pointing to the beginning of the message.
-		 * \param to iterator pointing just after the end of the message. 
+		 * \param to iterator pointing just after the end of the message.
 		 * \note the final 0xf7 is sent automatically.
 		 */
 		template<class iterator>
@@ -261,13 +262,13 @@ namespace mutabor {
 				message[i++] = (*(from++));
 			}
 			message[i] = midi::SYSEX_END;
-			
-			port->sendMessage(&message);
+
+			port->sendMessage(message);
 			return *this;
 		}
 
 	protected:
-		RtMidiOut * port;
+		rtmidi::MidiOut * port;
 		mutabor::Device * device;
 	};
 
@@ -278,37 +279,37 @@ namespace mutabor {
 	public:
 
 		typedef CommonMidiOutput<MidiPortOutputProvider, OutputDeviceClass> base;
-		
+
 		~OutputMidiPort() {};
-	
+
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
 		 */
 		virtual void Save (tree_storage & config);
-	
+
 		/// Save route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function saves them in a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be saved.
 		 * \argument route (Route ) Route whos data shall be saved.
 		 */
 		virtual void Save (tree_storage & config, const RouteClass * route);
-	
-	
+
+
 		/// Load current device settings from a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be loaded from.
 		 */
 		virtual void Load (tree_storage & config);
-	
+
 		/// Loade route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function loads them from a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be restored from.
 		 * \argument route (Route ) Route whos data shall be loaded.
 		 */
 		virtual void Load (tree_storage & config, RouteClass *  route);
 
-	
+
 
 		virtual bool NeedsRealTime()
 			{
@@ -325,25 +326,25 @@ namespace mutabor {
 			if (id) {
 				try {
 					Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
-							      rtmidi::PortDescriptor::LONG_NAME |
+							      rtmidi::PortDescriptor::SHORT_NAME |
 							      rtmidi::PortDescriptor::UNIQUE_NAME).c_str();
-				} catch (RtMidiError &error) {
+				} catch (rtmidi::Error &error) {
 					runtime_error(false,
-						      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s")) 
+						      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))
 							  % id->getName(rtmidi::PortDescriptor::INCLUDE_API |
 									rtmidi::PortDescriptor::SESSION_PATH).c_str()
 							  % error.what()));
 					Name = _mut("invalid device");
 					return ;
 				}
-			
+
 			} else
 				Name = _mut("no device");
 			if (reopen) {
 				Open();
 			}
 		}
-		
+
 		rtmidi::PortPointer GetDevId() { return DevId; }
 
 		virtual DevType GetType() const
@@ -359,24 +360,17 @@ namespace mutabor {
 		virtual void ReadData(wxConfigBase * config);
 		virtual void WriteData(wxConfigBase * config);
 #endif
-	
+
 		virtual operator std::string() const;
 
 		virtual int GetMaxChannel() const { return 15; }
 		virtual int GetMinChannel() const { return 0; }
-	
+
 	protected:
 		rtmidi::PortPointer DevId; //< Id of the hardware MIDI device
-#if 0
-#ifdef RTMIDI
-		RtMidiOut *hMidiOut;
-#else
-		HMIDIOUT hMidiOut;
-#endif
-#endif
-		
-		OutputMidiPort(std::string name = "", 
-			       int id = -1, 
+
+		OutputMidiPort(std::string name = "",
+			       int id = -1,
 			       int bendingRange = 2):
 			base(name, id, bendingRange),
 			DevId(NULL) {
@@ -387,7 +381,7 @@ namespace mutabor {
 			if (!retval) return false;
 			return base::do_Open();
 		}
-	
+
 #if defined(_MSC_VER)
 #pragma warning(push) // Save warning settings.
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
@@ -402,7 +396,7 @@ namespace mutabor {
 //		virtual void MidiOut(DWORD data, size_t n);
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
-#endif 
+#endif
 	};
 
 // InputMidiPort -------------------------------------------------------
@@ -413,36 +407,36 @@ namespace mutabor {
 		typedef CommonMidiInput<InputDeviceClass> parentType;
 	public:
 		virtual ~InputMidiPort() {}
-	
+
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
 		 */
 		virtual void Save (tree_storage & config);
-	
+
 		/// Save route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function saves them in a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be saved.
 		 * \argument route (Route ) Route whos data shall be saved.
 		 */
 		virtual void Save (tree_storage & config, const RouteClass *  route);
-	
-	
+
+
 		/// Load current device settings from a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be loaded from.
 		 */
 		virtual void Load (tree_storage & config);
-	
+
 		/// Loade route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function loads them from a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be restored from.
 		 * \argument route (Route ) Route whos data shall be loaded.
 		 */
 		virtual void Load (tree_storage & config, RouteClass * route);
 
-	
-	
+
+
 		virtual bool Open();
 		virtual void Close();
 		virtual void Stop() { Panic(midi::DEFAULT_PANIC); };
@@ -457,72 +451,85 @@ namespace mutabor {
 #endif
 
 		virtual frac ReadOn(frac time)
-			{
-				return frac(0,1);
-			};
+		{
+			return frac(0,1);
+		};
 
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
-#endif 
+#endif
 
 		virtual bool NeedsRealTime()
-			{
-				return true;
-			}
+		{
+			return true;
+		}
 
-		virtual void SetDevId (int id) {
+		virtual void SetDevId (rtmidi::PortPointer id) {
 			bool reopen = false;
 			if (id != DevId) {
 				DevId = id;
-				if ((reopen = IsOpen())) 
+				if ((reopen = IsOpen()))
 					Close();
 			}
-			if (rtmidiin)
-				Name = rtmidiin->getPortName (DevId).c_str();
-			else
+			if (id) {
+				try {
+					Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
+							      rtmidi::PortDescriptor::SHORT_NAME |
+							      rtmidi::PortDescriptor::UNIQUE_NAME).c_str();
+				} catch (rtmidi::Error &error) {
+					runtime_error(false,
+						      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))
+							  % id->getName(rtmidi::PortDescriptor::INCLUDE_API |
+									rtmidi::PortDescriptor::SESSION_PATH).c_str()
+							  % error.what()));
+					Name = _mut("invalid device");
+					return ;
+				}
+
+			} else
 				Name = _mut("no device");
 			if (reopen) {
 				Open();
 			}
 		}
 
-		virtual int GetDevId() 
-			{
-				return DevId; 
-			}
+		virtual rtmidi::PortPointer GetDevId()
+		{
+			return DevId;
+		}
 
 		virtual const std::string& GetName()
-			{
-				return Name;
-			}
+		{
+			return Name;
+		}
 
 #if defined(_MSC_VER)
 #pragma warning(push) // Save warning settings.
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
 #endif
 
-		virtual void SetName(const std::string & s) 
-			{
-				assert (false);
-				//Name = s;
-			}
+		virtual void SetName(const std::string & s)
+		{
+			assert (false);
+			//Name = s;
+		}
 
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
-#endif 
+#endif
 
-		proceed_bool shouldProceed(Route R, 
-					   const std::vector<unsigned char > * midiCode,  
+		proceed_bool shouldProceed(Route R,
+					   const std::vector<unsigned char > &midiCode,
 					   int data =0);
-	
-		void Proceed(const std::vector<unsigned char > * midiCode, int data =0, int channel_offset = 0);
+
+		void Proceed(const std::vector<unsigned char > &midiCode, int data =0, int channel_offset = 0);
 
 
 		virtual int GetMaxChannel() const { return 15; }
 		virtual int GetMinChannel() const { return 0; }
 		virtual int GetMaxKey() const { return 127; }
-		virtual int GetMinKey() const { return 0; }	
-	
+		virtual int GetMinKey() const { return 0; }
+
 
 		virtual DevType GetType() const
 			{
@@ -537,28 +544,28 @@ namespace mutabor {
 
 
 	protected:
-		int DevId; //< Id of the hardware MIDI device;
-	
+		rtmidi::PortPointer DevId; //< Id of the hardware MIDI device;
+
 #ifdef RTMIDI
-		RtMidiIn *hMidiIn;
+		rtmidi::MidiIn *port;
 
 #else
-		HMIDIIN hMidiIn;
+		HMIDIIN port;
 
 #endif
 		InputMidiPort(const std::string name = "",
 			      MutaborModeType mode = DeviceStop,
 			      int id = -1):
 			parentType (name,mode,id),
-			DevId(-1),
-			hMidiIn (NULL) {
+			DevId(NULL),
+			port (NULL) {
 			channel_data.resize(16);
 		}
 
 
 	};
 
-	class MidiPortFactory:public DeviceFactory { 
+	class MidiPortFactory:public DeviceFactory {
 	public:
 		MidiPortFactory(size_t id =  mutabor::DTMidiPort):
 			DeviceFactory(id) {}
@@ -571,11 +578,11 @@ namespace mutabor {
 			}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(const std::string &name, 
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const std::string &name,
 								    int id = -1) const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput(const std::string &name, 
-								  mutabor::MutaborModeType mode, 
+
+		virtual mutabor::InputDeviceClass * DoCreateInput(const std::string &name,
+								  mutabor::MutaborModeType mode,
 								  int id = -1) const;
 	};
 

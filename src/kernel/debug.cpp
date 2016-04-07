@@ -63,7 +63,6 @@
 #endif
 
 
-
 #ifdef DEBUG
 bool mutabor_backtrace::global_print = false;
 

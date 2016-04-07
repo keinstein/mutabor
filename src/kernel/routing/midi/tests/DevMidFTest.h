@@ -40,6 +40,7 @@
 
 #include "src/kernel/Defs.h"
 
+
 #ifndef DEVFMIDFTEST_H_PRECOMPILED
 #define DEVFMIDFTEST_H_PRECOMPILED
 
@@ -100,10 +101,12 @@ public:
 	void setUp() 
 	{ 
 // change DEBUGA to DEBUG in case you need the debug output
-#ifdef DEBUGA
+#ifdef DEBUG
 //		debugFlags::flags.timer = true;
 //		debugFlags::flags.midifile = true;
+//		isDebugFlag(smartptr) = true;
 #endif
+		mutabor_backtrace::set_global_print();
 		CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
 		CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
 		CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
@@ -115,16 +118,19 @@ public:
   
 	void tearDown()
 	{ 
-#ifdef DEBUG
-		isDebugFlag(timer) = false;
-		isDebugFlag(midifile) = false;
-#endif
-		if (in) 
+		if (in) {
 			in -> Destroy();
+			std::cout << std::endl << "Refcount : " << intrusive_ptr_get_refcount(in.get()) << std::endl;
+		}
 		in.reset();
 		CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
 		CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
 		CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
+#ifdef DEBUG
+		isDebugFlag(timer) = false;
+		isDebugFlag(midifile) = false;
+		isDebugFlag(smartptr) = false;
+#endif
 	}
   
 	void testOpenFail() 

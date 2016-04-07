@@ -250,6 +250,7 @@ namespace mutabor {
 
 	inline void CommonFileInputDevice::Stop()
 	{
+		SilenceKeys(true);
 		ScopedLock modelock(lockMode);
 		DEBUGLOG (routing, "old mode = %d" ,Mode);
 		if ( Mode == DevicePlay || Mode == DeviceTimingError ) {

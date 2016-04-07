@@ -1,3 +1,9 @@
+AM_TESTS_ENVIRONMENT= \
+	if [ -f $(srcdir)/lsan_suppressions.txt ] ; \
+	then \
+		LSAN_OPTIONS="suppressions=$(srcdir)/lsan_suppressions.txt fast_unwind_on_malloc=0" \
+		export LSAN_OPTIONS; \
+	fi;
 buildincludedir=$(top_builddir)
 AM_CPPFLAGS = -I$(buildincludedir)  \
 	-I$(top_srcdir)/includes \
@@ -292,7 +298,7 @@ potfilechk-recursive:potfilechk-makerecursive
 
 potfilechk-makerecursive:
 	-test '$(RECURSIVE_TARGETS)' != 'potfilechk-recursive' && \
-		$(MAKE) $(AM_MAKEFLAGS) RECURSIVE_TARGETS=potfilechk-recursive potfilechk-recursive
+		$(MAKE) $(AM_MAKEFLAGS) RECURSIVE_TARGETS=potfilechk-recursive potfilechk-recursive -k
 
 potfilechk: potfilechk-am
 

@@ -617,11 +617,15 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 	}
 	*/
 
-	box->scanner = (mutabor_scanner_data *) calloc(1, sizeof(struct mutabor_scanner_data));
+	if (!box->scanner || box->scanner == NULL)
+		box->scanner = (mutabor_scanner_data *) calloc(1, sizeof(struct mutabor_scanner_data));
 	box->scanner->data = logic;
 	box->scanner->pos = box->scanner->data;
 
+
+	mutabor_set_logic(box,NULL);
 	box->file = (mutabor_logic_parsed *) calloc(1,sizeof(struct mutabor_logic_parsed));
+	box->file->refcount                      = 1;
 	box->file->mutex                         = NULL;
 	box->file->list_of_constants             = NULL;
 	box->file->list_of_intervalle            = NULL;
@@ -646,12 +650,12 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 	// (das Problem l‰ﬂt sich sicher auch direkt lˆsen ...)
 
 	if ( !box->file->list_of_intervalle )
-		get_new_intervall(box,"__TopSecret__RK__Intervall__", 1.0);
+		get_new_intervall(box,"** default semitone **", 1.0);
 
 	berechne_intervalle_absolut (box,box->file->list_of_intervalle);
 
 	if ( !box->file->list_of_toene )
-		get_new_ton_absolut(box,"__TopSecret__RK__Ton__", 440.0);
+		get_new_ton_absolut(box,"** default a' **", 440.0);
 
 	berechne_toene_absolut (box,box->file->list_of_toene);
 

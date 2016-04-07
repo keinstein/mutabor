@@ -55,6 +55,7 @@ namespace mutaborGUI {
 		InputMidiPort * dev = dynamic_cast<InputMidiPort *> (device.get());
 		if (!dev) return false;
 		mutASSERT (dev);
+		DEBUGLOG (routing, "New input midi device: %p" ,&(*(in -> GetMidiDevice())));
 		dev->SetDevId (in -> GetMidiDevice());
 		SetLabel (dev->GetName());
 		return true;

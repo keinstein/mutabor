@@ -2,7 +2,7 @@
  ***********************************************************************
  * Input device selection dialog.
  *
- * Copyright:   (c) R. Krauße, TU Dresden, 
+ * Copyright:   (c) R. Krauße, TU Dresden,
  *              2013 Tobias Schlemmer
  * \author R. Krauße <krausze@users.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
@@ -81,21 +81,21 @@ namespace mutaborGUI {
                         }
 
 			bool operator == (mutabor::DevType i)
-				{
-                                        return i == nr;
-				}
+			{
+				return i == nr;
+			}
 
 			operator mutabor::DevType()
-				{
-					return nr;
-				}
+			{
+				return nr;
+			}
 		};
 
 		struct PortData:wxClientData
 		{
                         rtmidi::PortPointer port;
-                        PortData(rtmidi::PortPointer p):wxClientData(),
-							port(p)
+                        PortData(rtmidi::PortPointer &p):wxClientData(),
+							 port(p)
 			{
                         }
 
@@ -129,13 +129,15 @@ namespace mutaborGUI {
 		void SelectMidiDevice (int n) {
 			PortChoice->SetSelection(n);
 		}
+
                 void SetMidiDevice(rtmidi::PortPointer value)
 
 		{
 			DEBUGLOG (other, "%p" ,&(*value));
 			int choices = PortChoice->GetCount();
 			for (int i = 0 ; i < choices ; i++) {
-				if (static_cast<PortData *>(PortChoice->GetClientObject(i))->port == value) {
+				PortData * entry = static_cast<PortData *>(PortChoice->GetClientObject(i));
+				if (entry && entry->port == value) {
 					PortChoice->SetSelection(i);
 					break;
 				}

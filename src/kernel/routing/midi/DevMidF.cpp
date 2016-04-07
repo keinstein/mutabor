@@ -757,7 +757,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 					size_t j,e;
 					set_tempo_event *ev
 						= static_cast<set_tempo_event*>
-						(create_event(&message,-1));
+						(create_event(message,-1));
 					if (!ev) {
 						break;
 					}
@@ -786,7 +786,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 				}
 			}
 
-			Proceed(&message, nr, nr << 4);
+			Proceed(message, nr, nr << 4);
 
 			if (Delta ==  MUTABOR_NO_DELTA)
 				return Delta;
@@ -809,10 +809,10 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 	}
 
 
-	void InputMidiFile::Proceed(const std::vector<unsigned char > * midiCode, int data, int channel_offset) {
+	void InputMidiFile::Proceed(const std::vector<unsigned char > &midiCode, int data, int channel_offset) {
 		/** \todo implement system messages */
-		uint8_t MidiChannel = (midiCode->at(0) & 0x0F) + channel_offset;
-		uint8_t MidiStatus  = midiCode->at(0);
+		uint8_t MidiChannel = (midiCode.at(0) & 0x0F) + channel_offset;
+		uint8_t MidiStatus  = midiCode.at(0);
 		DEBUGLOG (midifile, "Status: %x" , MidiStatus);
 
 		switch ( MidiStatus ) {
@@ -863,15 +863,13 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 
 
 	InputMidiFile::proceed_bool InputMidiFile::shouldProceed(Route R,
-								 const std::vector<unsigned char > * midiCode,
+								 const std::vector<unsigned char > &midiCode,
 								 int track)
 	{
-		mutASSERT(midiCode);
-
 		//		DEBUGLOG (midifile, "midiCode: %x, track %d" ,midiCode,track);
 		switch ( R->GetType() ) {
 		case RTchannel:
-			if ( R->Check(midiCode->at(0) & 0x0F) ) {
+			if ( R->Check(midiCode.at(0) & 0x0F) ) {
 				return ProceedYes;
 			}
 			break;

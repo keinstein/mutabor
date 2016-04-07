@@ -27,6 +27,7 @@
 ********************************************************************/
 // availlable groups: GUI, Parser, route, kernel, debug, docview, config, GUIroute
 
+#include <iostream>
 #include "interface_deps.h"
 #include <stdio.h>
 #include "cppunit/Message.h"

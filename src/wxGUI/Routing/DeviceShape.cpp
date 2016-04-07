@@ -545,30 +545,29 @@ namespace mutaborGUI {
 	template<>
 	InputDevDlg * MutInputDeviceShape::ShowDeviceDialog() {
 		InputDevDlg * in = new InputDevDlg (m_parent);
-		int nMidi;
 
 #ifdef RTMIDI
-		nMidi = (rtmidiin?rtmidiin->getPortCount():0);
-
-		if ( nMidi )  {
-			wxString portName;
-
-			for (int i = 0; i < nMidi; i++) {
-				try {
-					portName = muT(rtmidiin->getPortName(i).c_str());
-					in->AppendPortChoice(portName);
-				} catch (RtMidiError &error) {
-					error.printMessage();
-					break;
+		if (rtmidiin) {
+			try {
+				rtmidi::PortList ports = rtmidiin->getPortList();
+				if (ports.empty()) {
+					in->AppendPortChoiceNoDevice();
 				}
+				else for (rtmidi::PortList::iterator i = ports.begin();
+					  i != ports.end();
+					  ++i) {
+						in->AppendPortChoice(*i);
+					}
+			} catch (RtMidiError &error) {
+				error.printMessage();
+				in->AppendPortChoiceNoDevice();
 			}
-		} else
-			in->AppendPortChoice(_("no device"));
+		}
 #else
 		STUBC;
 #endif
 		//		in->SetType(DTUnknown);
-		in->SetMidiDevice(0);
+		in->SelectMidiDevice(0);
 		in->SetMidiFile(wxEmptyString);
 		in->SetGUIDOFile(wxEmptyString);
 
