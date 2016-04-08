@@ -295,15 +295,11 @@ namespace mutabor {
 	template <class I, class O, class B>
 	void TRouteClass<I,O,B>::RemoveFromRouteList (Route route)
 	{
-		typename TRouteClass<I, O>::routeListType::iterator r =
-			std::find(routeList.begin(),
-				  routeList.end(),
-				  route.get());
-		mutASSERT(r != routeList.end());
-
-		if (r != routeList.end()) {
-			routeList.erase(r);
-		}
+#ifndef NDEBUG
+		bool erg =
+#endif
+			routeList.erase(route);
+		mutASSERT(erg);
 	}
 
 	template <class I, class O, class B>
