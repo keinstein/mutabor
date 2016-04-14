@@ -132,6 +132,8 @@ struct debugFlags {
 };
 
 extern debugFlags debugFlagInitialiser;
+class Mutex;
+extern Mutex debugmutex;
 #endif
 
 
@@ -399,7 +401,6 @@ extern const char * top_builddir;
 
 std::string StreamToHex(std::istream & buf);
 #endif
-
 
 #endif /* precompiled */
 #endif /* header loaded */
