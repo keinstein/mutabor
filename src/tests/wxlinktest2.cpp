@@ -1,6 +1,6 @@
 #include "src/kernel/Defs.h"
 #include <iostream>
-#include "wx/app.h"
+#include "src/wxGUI/TestInitializer.h"
 
 // Skip the GUI related checks from DebugRoute.cpp
 #if 1
@@ -14,14 +14,7 @@ int main() {
 	std::clog << "In case of segmentation faults assure that wxWidgets is compiled using -D_GLIBCXX_DEBUG" << std::endl;
 #endif
 
-	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
-	
-	wxInitializer initializer;
-	if ( !initializer )
-	{
-		fprintf(stderr, "Failed to initialize the wxWidgets library, aborting.");
-		return -1;
-	}
+	mutwxInitializer initializer;
 
 	std::cout << "wxlinktest running" << std::endl;
 }

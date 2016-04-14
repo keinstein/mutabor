@@ -38,7 +38,7 @@
 #include "src/kernel/routing/Route-inlines.h"
 #include <cstdlib>
 #include <time.h>
-#include <wx/app.h>
+#include "src/wxGUI/TestInitializer.h"
 
 // Skip the GUI related checks from DebugRoute.cpp
 #define no_wxGUI 1
@@ -94,14 +94,7 @@ int main(int argc, char **argv)
 //	debugFlags::flags.timer = true;
 //	debugFlags::flags.midifile = true;
 #endif
-	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
-
-	wxInitializer initializer;
-	if ( !initializer )
-	{
-		fprintf(stderr, "Failed to initialize the wxWidgets library, aborting.");
-		return -1;
-	}
+	mutwxInitializer initializer;
 	time_t t;
 	
 	time(&t);

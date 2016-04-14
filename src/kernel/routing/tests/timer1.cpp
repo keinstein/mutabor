@@ -45,6 +45,7 @@
 #define no_wxGUI 1
 #include "src/wxGUI/Routing/DebugRoute.cpp"
 #undef no_wxGUI
+#include "src/wxGUI/TestInitializer.h"
 
 
 /// not for headers
@@ -136,19 +137,11 @@ const mutabor::ChannelData testCommonFileDeviceTimer::Cd(0);
 
 int main(int argc, char **argv)
 {
-	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
 #ifdef DEBUG
 //	debugFlags::flags.timer = true;
 	mutabor_debug_flags.thread = true;
 #endif
-
-	wxInitializer initializer;
-	if ( !initializer )
-	{
-		fprintf(stderr, "Failed to initialize the wxWidgets library, aborting.");
-		return -1;
-	}
-
+	mutwxInitializer initializer;
 	testCommonFileDeviceTimer * tim = new testCommonFileDeviceTimer();
 	mutabor::ScopedInputDevice guard;
 	guard = tim;
