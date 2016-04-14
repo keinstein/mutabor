@@ -763,7 +763,7 @@ dnl then
 dnl	AC_DEFINE(MUST_REUSE,1,[Define to x if the scope of C++ loop variables is inside the loop])
 dnl fi
 
-BOOST_REQUIRE([1.50.0])
+BOOST_REQUIRE([1.53.0])
 BOOST_FORMAT
 dnl BOOST_INTRUSIVE_PTR
 dnl BOOST_RATIONAL
