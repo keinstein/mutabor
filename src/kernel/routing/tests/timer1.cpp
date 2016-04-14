@@ -5,7 +5,7 @@
 * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/templates/template.cpp,v 1.5 2011/09/27 20:13:26 keinstein Exp $
 * Copyright:   (c) 2012 TU Dresden
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
-* \date 
+* \date
 * $Date: 2011/09/27 20:13:26 $
 * \version $Revision: 1.5 $
 * \license GPL
@@ -105,7 +105,7 @@ public:
 		if (max < tl)  max = tl;
 		if (min > tl || min == 0) min = tl;
 		if (tl > 10) {
-			std::cerr << "Too slow: (" << i << "^2 + " << i << ") / 2 = " << (i*(i+1))/2 
+			std::cerr << "Too slow: (" << i << "^2 + " << i << ") / 2 = " << (i*(i+1))/2
 				  << " Runtime: " << tl << "ms" << std::endl;
 			exit(3);
 		}
@@ -123,7 +123,7 @@ public:
 			   mutabor::RouteClass * route) {}
 
 	virtual mutabor::ChannelData & GetChannelData(const mutabor::InputDeviceClass::current_keys_type::entry & key) const
-	{ 
+	{
 		return const_cast<mutabor::ChannelData & >(Cd);
 	}
 
@@ -142,6 +142,7 @@ int main(int argc, char **argv)
 	mutabor_debug_flags.thread = true;
 #endif
 	mutwxInitializer initializer;
+
 	testCommonFileDeviceTimer * tim = new testCommonFileDeviceTimer();
 	mutabor::ScopedInputDevice guard;
 	guard = tim;
@@ -154,8 +155,9 @@ int main(int argc, char **argv)
 	tim->Play();
 
 	wxThread::ExitCode e = tim->WaitForDeviceFinish();
+	tim->Close();
 	std::clog << "Deviation min: " << tim->min << " max: " << tim->max << std::endl;
-	
-	return (intptr_t)e; 
+
+	return (intptr_t)e;
 }
 ///\}
