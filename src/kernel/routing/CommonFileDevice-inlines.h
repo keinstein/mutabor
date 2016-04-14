@@ -53,7 +53,7 @@ namespace mutabor {
 /// Save current file name in a tree storage
 /** \argument config (tree_storage) storage class, where the data will be saved.
  */
-	inline void CommonFileOutputDevice::Save (tree_storage & config) 
+	inline void CommonFileOutputDevice::Save (tree_storage & config)
 	{
 #ifdef DEBUG
 		std::string oldpath = config.GetPath();
@@ -94,7 +94,7 @@ namespace mutabor {
 	}
 
 
-	
+
 // CommonFileInputDevice -------------------------------------------------------
 
 
@@ -128,42 +128,42 @@ namespace mutabor {
 		mutASSERT(oldpath == config.GetPath());
 #endif
 	}
-	
+
 
 
 
 	inline bool CommonFileInputDevice::Open()
 	{
-		
+
 		mutASSERT(!isOpen);
 		DEBUGLOG (other, "start" );
 
 		Mode = DeviceStop;
 		// init
 		Stop();
-		DEBUGLOG (other, 
+		DEBUGLOG (other,
 			  ("finished. Mode = %d, this = %p"),
 			  Mode,
 			  (void*)this);
 
-		
+
 		if ( mutabor::CurrentTime.isRealtime() ) {
 			mutASSERT(timer == NULL);
 			DEBUGLOG(thread,
 				 ("Thread %p locking at threadsignal = %x"),
 				 Thread::This(),
 				 threadsignal.get());
-			ScopedLock locker(waitMutex);
+			ScopedLock locker(playerActive);
 			DEBUGLOG(thread,
 				 ("Thread %p locked at threadsignal = %x"),
 				 Thread::This(),
 				 threadsignal.get());
-			
+
 			/* creating threads might be expensive. So we
 			   create it here, as Play() must be
 			   considered to be a realtime function
 			   synchronized with other devices */
-			timer = new FileTimer(this,threadkind);
+			timer = new FileTimer(this);
 			if (!timer) {
 				Mode = DeviceTimingError;
 				Close();
@@ -179,12 +179,15 @@ namespace mutabor {
 			}
 			threadsignal = RequestPause;
 			timer->Run();
-			/* wait until the timer thread has been initialized */
 			DEBUGLOG(thread,
 				 ("Thread %p waiting at threadsignal = %x"),
 				 Thread::This(),
 				 threadsignal.get());
-			waitCondition.Wait();
+			/* wait until the timer thread has locked the activeCondition.
+			 * After signalling the player thread we won't continue before
+			 * playerActive is unlocked which is the case when the player is idle.
+			 */
+			pauseCondition.Wait();
 			DEBUGLOG(thread,
 				 ("Thread %p continue at threadsignal = %x"),
 				 Thread::This(),
@@ -198,21 +201,20 @@ namespace mutabor {
 
 	inline void CommonFileInputDevice::Close()
 	{
-		exitLock.Lock();
 #ifdef DEBUG
 		if (mutabor::CurrentTime.isRealtime()) {
 			mutASSERT(isOpen);
 		}
 #endif
 		Stop();
-		
+		playerActive.Lock();
+
 		DEBUGLOG (thread, "timer = %p" ,(void *)timer);
 		if (timer) {
 			DEBUGLOG(thread,
 				 ("Thread %p locking at threadsignal = %x"),
 				 Thread::This(),
 				 threadsignal.get());
-			waitMutex.Lock();
 			// prepare exit when the thread is paused.
 			threadsignal |= RequestExit;
 			DEBUGLOG(thread,
@@ -221,75 +223,101 @@ namespace mutabor {
 				 threadsignal.get());
 			/* detached status must be checked before a
 			   detached thead may be deleted. */
-			bool must_join = !timer->IsDetached(); 
+			bool must_join = !timer->IsDetached();
 			// timer = NULL;
 			// tmp -> ClearFile();
-			waitCondition.Broadcast();
-			waitMutex.Unlock();
-			exitLock.Unlock();
+			pauseCondition.Broadcast();
+			playerActive.Unlock();
 			// tmp -> Delete();
 			if (must_join) {
-				ScopedLock lock (exitLock);
+				timer->ClearFile();
 #if wxCHECK_VERSION(2,9,2)
 				timer -> Wait(wxTHREAD_WAIT_BLOCK);
 #else
 				timer -> Wait();
 #endif
 			}
-			while (true) {
-				{
-					ScopedLock lock(exitLock);
-					if (!timer) break;
-				}
-				CurrentTimerBase::Sleep(1000);
-			}
-		} else exitLock.Unlock();
-		
+			timer = NULL;
+		} else playerActive.Unlock();
+
 		isOpen = false;
 	}
 
 	inline void CommonFileInputDevice::Stop()
 	{
-		SilenceKeys(true);
-		ScopedLock modelock(lockMode);
-		DEBUGLOG (routing, "old mode = %d" ,Mode);
-		if ( Mode == DevicePlay || Mode == DeviceTimingError ) {
-			threadsignal |= RequestPanic;
-			Pause();
-		}
-		
-		threadsignal |= ResetTime;
-		referenceTime = 0;
-		pauseTime = 0;
+		bool lock_active = (Thread::This() != timer);
+		{
+			ScopedLock modelock(lockMode);
+			DEBUGLOG (routing, "old mode = %d" ,Mode);
+			if ( Mode == DevicePlay || Mode == DeviceTimingError ) {
+				pauseTime = CurrentTime.Get();
+				if ( CurrentTime.isRealtime() ) {
+					// we use this function for some cleanup inside Stop()
+					// which is called from inside the thread.
+					// In this case we shouldn't pause ourselves
+					threadsignal |= RequestPause; // should be atomic
+				}
+			}
 
-		if ( Mode != DeviceCompileError )
-			Mode = DeviceStop;
+		}
+		{
+			if (lock_active) {
+				{
+					// wake the sleeping thread up.
+					ScopedLock lock(waitMutex);
+					waitCondition.Broadcast();
+				}
+				playerActive.Lock(); // Wait until Player stops
+			}
+			{
+				ScopedLock lock(write_lock);
+				current_keys.clear();
+			}
+			{
+				ScopedLock lock(lockMode);
+				threadsignal |= ResetTime;
+				referenceTime = 0;
+				pauseTime = 0;
+				if ( Mode != DeviceCompileError )
+					Mode = DeviceStop;
+			}
+			if (lock_active)
+				playerActive.Unlock(); // Player can start again, now
+		}
 	}
 
 	inline void CommonFileInputDevice::Play()
 	{
-		static bool starting = false;
-		ScopedLock modelock(lockMode);
+		static bool starting = false; // should be atomic
 
 		if (starting) return;
 		starting = true;
-		
-		switch (Mode) {
-		case DeviceCompileError:
-		case DeviceTimingError:
-		case DeviceUnregistered:
-		case DeviceKilled:
-			DEBUGLOG(timer,
-				 ("Returnung due to device error."));
-			starting = false; 
-			return;
-		case DeviceInitializing: 
-			// this will eventually change to DeviceStop
-			// DevicePause case will wait until the device is initialized.
-		case DeviceStop:
-			referenceTime = 0;
-			pauseTime = 0;
-		case DevicePause:
+
+		{
+			ScopedLock modelock(lockMode);
+			switch (Mode) {
+			case DeviceCompileError:
+			case DeviceTimingError:
+			case DeviceUnregistered:
+			case DeviceKilled:
+				DEBUGLOG(timer,
+					 ("Returnung due to device error."));
+				starting = false;
+				return;
+			case DeviceInitializing:
+				// this will eventually change to DeviceStop
+				// DevicePause case will wait until the device is initialized.
+			case DeviceStop:
+				referenceTime = 0;
+				pauseTime = 0;
+			case DevicePause:
+				break;
+			case DevicePlay:
+				starting = false;
+				return;
+
+			}
+
 			DEBUGLOG(timer,
 				 ("Paused. Realtime = %d."),
 				 (int)CurrentTime.isRealtime());
@@ -300,49 +328,54 @@ namespace mutabor {
 			// timer should be 0 in Realtime mode
 			mutASSERT(!timer || CurrentTime.isRealtime());
 			if (timer) {
-				threadsignal &= ~(int)RequestPause;
+				threadsignal &= ~(int)RequestPause; // threadsignal should be atomic
 				DEBUGLOG(thread,
 					 ("Thread %p locking at threadsignal = %x"),
 					 Thread::This(),
 					 threadsignal.get());
-				waitMutex.Lock();
 				DEBUGLOG(thread,
 					 ("Thread %p broadcasting at threadsignal = %x"),
 					 Thread::This(),
 					 threadsignal.get());
-				waitCondition.Broadcast();
-				waitMutex.Unlock();
 			}
-			break;
-		case DevicePlay:
-			starting = false; 
-			return;
-			
+			DEBUGLOG (timer, "timer = %p" ,(void*)timer);
+			Mode = DevicePlay;
 		}
-		DEBUGLOG (timer, "timer = %p" ,(void*)timer);
-		Mode = DevicePlay;
+		/* we should not nest modeLock and playerActive, here. Otherwise we might deadlock. */
+		{
+			ScopedLock pauselock(playerActive);
+			pauseCondition.Broadcast();
+		}
+
 		starting = false;
 	}
 
 	inline void CommonFileInputDevice::Pause()
 	{
+		ScopedLock modelock(lockMode);
 		switch (Mode) {
 		case DeviceCompileError:
 		case DeviceTimingError:
 		case DeviceStop:
 			break;
 		case DevicePlay:
-			if ( CurrentTime.isRealtime() ) {
-				// we use this function for some cleanup inside Stop()
-				// which is called from inside the thread.
-				// In this case we shouldn't pause ourselves
-				threadsignal |= RequestPause;
+			{
+				ScopedLock waitlock(waitMutex);
+				pauseTime = CurrentTime.Get();
+				if ( CurrentTime.isRealtime() ) {
+					// we use this function for some cleanup inside Stop()
+					// which is called from inside the thread.
+					// In this case we shouldn't pause ourselves
+					threadsignal |= RequestPause;
+				}
+				waitCondition.Broadcast();
 			}
-			pauseTime = CurrentTime.Get();
 			Mode = DevicePause;
 			break;
 		case DevicePause:
+			lockMode.Unlock();
 			Play(); // A mechanical Pause button usually is released if pressed twice
+			lockMode.Lock(); // avoid problems with modelock
 			break;
 		default:
 			mutASSERT(!"Unknown value");
@@ -357,25 +390,26 @@ namespace mutabor {
 	{
 		/// \todo clean-up race conditions
 		mutASSERT(wxThread::This() == timer);
-		
+
 		mutASSERT(timer != NULL);
 		mutASSERT(Mode != DeviceCompileError );
 
 
 
-		if (Mode == DeviceInitializing) 
+		if (Mode == DeviceInitializing)
 			Mode = DeviceStop;
 		/* tell the main thread that we are initialized */
 		DEBUGLOG(thread,
 			 ("Thread %p locking at threadsignal = %x"),
 			 Thread::This(),
 			 threadsignal.get());
-		waitMutex.Lock(); 
+		playerActive.Lock();
 		DEBUGLOG(thread,
 			 ("Thread %p broadcasting at threadsignal = %x"),
 			 Thread::This(),
 			 threadsignal.get());
-		waitCondition.Broadcast();
+		pauseCondition.Broadcast();
+		waitMutex.Lock();
 		DEBUGLOG(thread,
 			 ("Thread %p locking again at threadsignal = %x"),
 			 Thread::This(),
@@ -406,59 +440,37 @@ namespace mutabor {
 					 ("Thread %p waiting at threadsignal = %x"),
 					 Thread::This(),
 					 threadsignal.get());
-				waitCondition.Wait();
+				waitMutex.Unlock();
+				while ((threadsignal & RequestPause) &&
+				       !(threadsignal & RequestExit))
+					pauseCondition.Wait();
+				waitMutex.Lock();
+
 				DEBUGLOG(thread,
 					 ("Thread %p continuing and locking at threadsignal = %x"),
 					 Thread::This(),
 					 threadsignal.get());
-#if 0
-				waitMutex.Lock();
-				DEBUGLOG(thread,
-					 ("Thread %p Locked at threadsignal = %x"),
-					 Thread::This(),
-					 threadsignal.get());
-#endif
-				if (threadsignal & RequestExit) {
-					ScopedLock modelock(lockMode);
-					e = (void *)Mode;
-					break;
-				}
 				if (threadsignal & ResetTime) {
 					nextEvent = (0); // in μs
 					playTime  = (0); // in μs
 					doResetTime();
 					threadsignal &= ~(int)ResetTime;
-				} 
+				}
 				reference = referenceTime;
 				ResumeKeys();
 			} else if (thistimer -> TestDestroy()) {
-				{ 
+				{
 					ScopedLock modelock(lockMode);
 					e = (void *) (Mode + (size_t)0x100);
 					// unlocking
 				}
 				break;
-			}
-			mutASSERT(IsDelta(nextEvent));
-			if (!delta && IsDelta(nextEvent)) {
-				nextEvent = PrepareNextEvent();
-				mutASSERT(nextEvent >= 0);
-				DEBUGLOG(timer,
-					 ("Preparing next event is at %ld (isdelta=%d)"), 
-					 nextEvent,
-					 IsDelta(nextEvent));
-				DEBUGLOG (timer, "NoDelta = %ld" , GetNO_DELTA());
-				if (IsDelta(nextEvent)) {
-					reference = referenceTime;
-					playTime += nextEvent;
-				}
-			}
-			if (!IsDelta(nextEvent)) {
-				{ 
+			} else if (!IsDelta(nextEvent)) {
+				{
 					ScopedLock modelock(lockMode);
 					switch (Mode) {
 					case DevicePlay:
-					case DevicePause: 
+					case DevicePause:
 					case DeviceStop:
 						break;
 					case DeviceTimingError:
@@ -472,24 +484,39 @@ namespace mutabor {
 				Stop();
 			} else if (!(threadsignal & (ResetTime | RequestExit | RequestPause))) {
 				DEBUGLOG (timer, "time: %ld μs" ,CurrentTime.Get());
-				delta = reference + playTime - CurrentTime.Get();
+				delta = std::max(reference + playTime - CurrentTime.Get(),(mutint64)0);
 				DEBUGLOG (timer, "Delta %ld μs." ,delta);
 
-				/* we wake up in regular time intervals in order
-				   to assure that external commands (stop/close)
-				   can be handled in reasonable time) 
+				CurrentTime.Sleep(delta,waitCondition);
+			}
+			// some shortcuts after the pause
+			if (threadsignal & RequestExit) {
+				ScopedLock modelock(lockMode);
+				e = (void *)Mode;
+				break;
+			}
 
-				   The delta slices should be smaller than the 
-				   resolution that is forced in the test suite.
-				   Currently (as this comment is created) the
-				   maximum allowed difference is 10 ms.
-				*/
-				if (delta > 2000) {
-					CurrentTime.Sleep(2000);
-				} else {
-					if (delta > 0) 
-						CurrentTime.Sleep(delta);
-					delta = 0;
+			if (threadsignal & RequestPause) {
+				continue;
+			}
+
+			mutASSERT(IsDelta(nextEvent));
+			// we must evaluate the time again as spurious
+			// wakeups may occur and we wake up the thread
+			// on certain status changes. Furthermore the
+			// delay from the previous code also take some
+			// time.
+			if (reference + playTime - CurrentTime.Get() <= 0) {
+						nextEvent = PrepareNextEvent();
+						mutASSERT(nextEvent >= 0);
+						DEBUGLOG(timer,
+					 ("Preparing next event is at %ld (isdelta=%d)"),
+					 nextEvent,
+					 IsDelta(nextEvent));
+				DEBUGLOG (timer, "NoDelta = %ld" , GetNO_DELTA());
+				if (IsDelta(nextEvent)) {
+					reference = referenceTime;
+					playTime += nextEvent;
 				}
 			}
 		}
@@ -498,7 +525,7 @@ namespace mutabor {
 			ScopedLock modelock(lockMode);
 			switch (Mode) {
 			case DevicePlay:
-			case DevicePause: 
+			case DevicePause:
 				Stop();
 			case DeviceStop:
 				break;
@@ -513,14 +540,13 @@ namespace mutabor {
 			 Thread::This(),
 			 threadsignal.get());
 		// assure that Close() has done its worke before exiting
-		exitLock.Lock();
 		threadCleanUp();
 		waitMutex.Unlock();
-		exitLock.Unlock();
+		playerActive.Unlock();
 		return e;
 	}
 
-	
+
 	inline CommonFileInputDevice::operator std::string() const {
 		return InputDeviceClass::operator std::string() +
 			boost::str(boost::format("\n  time zero at = %ld ms\n  paused at  = %ld msx")
