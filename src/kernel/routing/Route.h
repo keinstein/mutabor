@@ -47,6 +47,7 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
+#include "src/kernel/cow_container.h"
 #include "src/kernel/MidiKern.h"
 
 #include "src/kernel/treestorage.h"
@@ -117,8 +118,10 @@ namespace mutabor {
 
 		// To gain a little speed in realtime we use intrusive_ptr
 		typedef boost::intrusive_ptr<TRouteClass> Route;
-		typedef std::list<Route> routeListType;
+		typedef cow_container<std::vector<Route> > routeListType;
+#if 0
 		typedef std::list<thistype *> routePtrList;
+#endif
 	protected: // types
 		// private members: access only via access functions for debugging purposes
 
@@ -545,7 +548,9 @@ namespace mutabor {
 	typedef TRouteClass<InputDevice,OutputDevice, Box>::Route Route;
 	typedef TRouteClass<InputDevice,OutputDevice, Box> RouteClass;
 	typedef TRouteClass<InputDevice,OutputDevice, Box>::routeListType routeListType;
+#if 0
 	typedef TRouteClass<InputDevice,OutputDevice, Box>::routePtrList routePtrList;
+#endif
 
 
 	Route FindRoute(size_t id);

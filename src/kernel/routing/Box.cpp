@@ -128,7 +128,7 @@ namespace mutabor {
 		DEBUGLOG (smartptr, "Route; %p" ,(void*)route.get());
 #ifdef DEBUG
 		routeListType::const_iterator i =
-			find(routes.begin(),routes.end(),route);
+			std::find(routes.begin(),routes.end(),route);
 		mutASSERT(i == routes.end());
 		mutASSERT(IsInBoxList(this));
 #endif
@@ -155,15 +155,9 @@ namespace mutabor {
 		DEBUGLOG (smartptr, "Route: %p (%d)" ,
 			 (void*)route.get(),
 			 (int)intrusive_ptr_get_refcount(route.get()));
-		routeListType::iterator i =
-			std::find(routes.begin(),routes.end(),route);
-		bool found = (i != routes.end());
+		bool found =
+			routes.erase(route);
 		mutASSERT(found);
-		if (found) {
-			(*i).reset();// list can save some memory for reuse,
-			// but route must be deleted
-			routes.erase(i);
-		}
 		DEBUGLOG (smartptr, "Route; %p (%d)" ,(void*)route.get(),
 			 (int)intrusive_ptr_get_refcount(route.get()));
 		return found;

@@ -136,7 +136,7 @@ namespace mutabor {
 		DEBUGLOG (smartptr, "Route; %p" ,(void*)route.get());
 #ifdef DEBUG
 		routeListType::const_iterator i =
-			find(routes.begin(),routes.end(),route);
+			std::find(routes.begin(),routes.end(),route);
 		mutASSERT(i == routes.end());
 		mutASSERT(IsInDeviceList(static_cast<thistype *>(this)));
 #endif
@@ -165,15 +165,8 @@ namespace mutabor {
 		DEBUGLOG (smartptr, "Route: %p (%d)" ,
 			 (void*)route.get(),
 			 (int)intrusive_ptr_get_refcount(route.get()));
-		routeListType::iterator i =
-			std::find(routes.begin(),routes.end(),route);
-		bool found = (i != routes.end());
+		bool found = routes.erase(route);
 		mutASSERT(found);
-		if (found) {
-			(*i).reset();// list can save some memory for reuse,
-			// but route must be deleted
-			routes.erase(i);
-		}
 		DEBUGLOG (smartptr, "Route; %p (%d)" ,(void*)route.get(),
 			 (int)intrusive_ptr_get_refcount(route.get()));
 		return found;
@@ -181,6 +174,9 @@ namespace mutabor {
 
 	template <class T, class P, class L>
 	bool CommonTypedDeviceAPI<T,P,L>::MoveRoutes (DevicePtr & newclass) {
+		// We use the slow approach here in order to allow
+		// overloading of he connection and disconnection
+		// routines.
 		TRACEC;
 		if (!newclass->routes.empty()) {
 			UNREACHABLEC;
@@ -253,26 +249,32 @@ namespace mutabor {
 	int CommonTypedDeviceAPI<T,P,L>::MoveInList(int count) {
 		if (!count) return -1;
 		thistype * dev = static_cast <thistype *> (this);
-		typename listtype::iterator pos = FindInDeviceList(DevicePtr(dev));
+		typename listtype::base_container list;
+		deviceList.copy_to(list);
+		typename listtype::base_container::iterator pos = std::find(list.begin(),
+								       list.end(),
+								       dev);
 
-		if (pos == deviceList.end()) return -1;
-		int current_pos = pos - deviceList.begin();
-		typename listtype::iterator newpos;
+		if (pos == list.end()) return -1;
+		int current_pos = pos - list.begin();
+		typename listtype::base_container::iterator newpos;
 		if (current_pos + count <= 0) {
-			newpos = deviceList.begin();
+			newpos = list.begin();
 			count = -1;
-		} else 	if (current_pos + count >= deviceList.size()) {
-			newpos = deviceList.end() - 1;
+		} else 	if ((size_t)(current_pos + count) >= list.size()) {
+			newpos = list.end() - 1;
 			count = 1;
 		} else {
 			newpos = pos + count;
 		}
- 		if (newpos == deviceList.end()) --newpos;
+		if (newpos == list.end()) --newpos;
 		if (count > 0)
 			std::rotate (pos, newpos, newpos + 1);
 		else
 			std::rotate (newpos, pos, pos + 1);
-		return newpos - deviceList.begin();
+		int retval =  newpos - list.begin();
+		deviceList.swap(list);
+		return retval;
 
 	}
 
@@ -304,12 +306,7 @@ CommonTypedDeviceAPI:\n\
 	template <class T, class P, class L>
 	void CommonTypedDeviceAPI<T,P,L>::RemoveFromDeviceList (DevicePtr dev)
 	{
-		typename listtype::iterator i =
-			FindInDeviceList(dev);
-		if (i == deviceList.end()) {
-			UNREACHABLECT(listtype);
-		} else
-			deviceList.erase(i);
+			deviceList.erase(dev);
 	}
 
 	template <class T, class P, class L>

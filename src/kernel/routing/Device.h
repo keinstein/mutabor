@@ -42,6 +42,7 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
+#include "src/kernel/cow_container.h"
 #include "src/kernel/routing/gmn/GIS.h"
 #if 0
 #endif
@@ -682,7 +683,7 @@ namespace mutabor {
 	// A common api for input and output devices that must be typed
 
 	template <class T, class P = boost::intrusive_ptr<T>,
-		  class L = std::vector <P> >
+		  class L = cow_container<std::vector <P> > >
 	class CommonTypedDeviceAPI: public Device {
 	private:
 		REFPTR_INTERFACE;
