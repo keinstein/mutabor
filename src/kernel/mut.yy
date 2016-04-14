@@ -56,9 +56,6 @@
 #include "src/kernel/Parser.h"
 #include "src/kernel/Hilfs.h"
 #include "src/kernel/Execute.h"
-#ifdef SRC_WXINTL_LIBINTL
-#define dgettext(domain,string) wxwidgets_sgettext(string)
-#endif
 
 #ifdef _
 #undef _
