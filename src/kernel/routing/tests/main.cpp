@@ -31,7 +31,7 @@
 #include "src/kernel/routing/tests/BoxTest.h"
 #include "src/kernel/routing/tests/timing.h"
 #include "src/kernel/routing/Route-inlines.h"
-#include "wx/app.h"
+#include "src/wxGUI/TestInitializer.h"
 #include <cppunit/ui/text/TestRunner.h>
 #include <cppunit/TestResult.h>
 #include <cppunit/BriefTestProgressListener.h>
@@ -45,14 +45,8 @@
 int 
 main(int argc, char** argv)
 {
-	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
-	
-	wxInitializer initializer;
-	if ( !initializer )
-	{
-		fprintf(stderr, "Failed to initialize the wxWidgets library, aborting.");
-		return -1;
-	}
+	mutwxInitializer initializer;
+
 	mutabor::InitDeviceFactories();
 
 #ifdef _GLIBCXX_DEBUG
@@ -76,3 +70,4 @@ main(int argc, char** argv)
 	//CurrentTime.Sleep(1000);
 	return wasSuccessful ? 0 : 1;
 }
+

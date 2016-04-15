@@ -135,6 +135,18 @@ namespace mutabor {
 	typedef wxMutex       Mutex;
 #endif
 
+	class ScopedUnlock {
+	public:
+		ScopedUnlock(Mutex & m):mutex(m) {
+			mutex.Unlock();
+		}
+		~ScopedUnlock() {
+			mutex.Lock();
+		}
+	protected:
+		Mutex & mutex;
+	};
+
 	class ThreadCondition:public wxCondition {
 	public:
 		ThreadCondition(Mutex &m):wxCondition(m) {}

@@ -32,6 +32,7 @@
 #include "src/kernel/routing/CommonFileDevice-inlines.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/routing/timing.h"
+#include "src/kernel/routing/thread.h"
 #include <cstdlib>
 #include "cppunit/extensions/HelperMacros.h"
 
@@ -44,26 +45,39 @@ public:
 	mutint64 lasttime;
 	mutint64 firsttime; 
 	mutint64 pausetime;
+	mutabor::Mutex timelock;
 	testCommonFileDeviceTimer():CommonFileInputDevice(),i(0) {
 		//		SetThreadKind(wxTHREAD_JOINABLE);
 	}
 	virtual ~testCommonFileDeviceTimer() {}
 	void Play() {
-		mutabor::CurrentTime.UseRealtime(true);
-		max = 0; min = 100000; i= 0;
-		lasttime = mutabor::CurrentTime.Get();
+		{
+			mutabor::ScopedLock lock(timelock);
+			mutabor::CurrentTime.UseRealtime(true);
+			max = 0; min = 100000; i= 0;
+			lasttime = mutabor::CurrentTime.Get();
+		}
 		CommonFileInputDevice::Play();
-		firsttime += lasttime - pausetime;
+		{
+			mutabor::ScopedLock lock(timelock);
+			firsttime += lasttime - pausetime;
+		}
 		DEBUGLOG (timer, "Paused for %ld μs" ,(long) lasttime-pausetime);
 	}
 
 	void Pause() {
 		CommonFileInputDevice::Pause();
-		pausetime = mutabor::CurrentTime.Get();
+		{
+			mutabor::ScopedLock lock(timelock);
+			pausetime = mutabor::CurrentTime.Get();
+		}
 	}
 
 	bool Open() {
-		firsttime = lasttime = pausetime = mutabor::CurrentTime.Get();
+		{
+			mutabor::ScopedLock lock(timelock);
+			firsttime = lasttime = pausetime = mutabor::CurrentTime.Get();
+		}
 		return CommonFileInputDevice::Open();
 	}
 
@@ -77,6 +91,7 @@ public:
 	}
 
 	mutint64 PrepareNextEvent() {
+		mutabor::ScopedLock lock(timelock);
 		/* race condition: Mode should be DevicePlay, but it
 		   may be any error free state as the device might
 		   have been paused or stopped already. */

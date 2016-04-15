@@ -31,6 +31,8 @@
  */
 
 #include "src/wxGUI/TestInitializer.h"
+#include "wx/app.h"
+#include "wx/log.h"
 
 /* system headers which do seldom change */
 #include "wx/app.h"
@@ -48,6 +50,7 @@ mutwxInitializer::mutwxInitializer()
 		fprintf(stderr, "Failed to initialize the wxWidgets library, aborting.");
 		exit(255);
 	}
+	wxLog::SetActiveTarget(new wxLogStderr);
 }
 
 mutwxInitializer::~mutwxInitializer() {

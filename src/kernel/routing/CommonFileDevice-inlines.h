@@ -395,128 +395,110 @@ namespace mutabor {
 		mutASSERT(Mode != DeviceCompileError );
 
 
-
-		if (Mode == DeviceInitializing)
-			Mode = DeviceStop;
-		/* tell the main thread that we are initialized */
+		{
+			ScopedLock modelock(lockMode);
+			if (Mode == DeviceInitializing)
+				Mode = DeviceStop;
+		}
 		DEBUGLOG(thread,
 			 ("Thread %p locking at threadsignal = %x"),
 			 Thread::This(),
 			 threadsignal.get());
-		playerActive.Lock();
+		/* We use manual locking and unlocking, here */
+		ScopedLock activeLock(playerActive);
 		DEBUGLOG(thread,
 			 ("Thread %p broadcasting at threadsignal = %x"),
 			 Thread::This(),
 			 threadsignal.get());
+		/* tell the main thread that we are initialized */
 		pauseCondition.Broadcast();
-		waitMutex.Lock();
-		DEBUGLOG(thread,
-			 ("Thread %p locking again at threadsignal = %x"),
-			 Thread::This(),
-			 threadsignal.get());
-		/* leave Mutex locked */
-		/*
-		waitMutex.Lock();
-		DEBUGLOG(thread,
-			 ("Thread %p locked at threadsignal = %x"),
-			 Thread::This(),
-			 threadsignal.get());
-		*/
-
-		mutint64 nextEvent = (0); // in μs
-		mutint64 playTime  = (0); // in μs
-		mutint64 reference = (0); // in μs
-		mutint64 delta = GetNO_DELTA(); // in ms
 		wxThread::ExitCode e = 0;
-		while (true) {
-			if (threadsignal & RequestPause) {
-				if (threadsignal & RequestPanic ) {
-					this->Panic(midi::DEFAULT_PANIC);
-					threadsignal &= ~(int)RequestPanic;
-				} else {
-					SilenceKeys(false);
-				}
-				DEBUGLOG(thread,
-					 ("Thread %p waiting at threadsignal = %x"),
-					 Thread::This(),
-					 threadsignal.get());
-				waitMutex.Unlock();
-				while ((threadsignal & RequestPause) &&
-				       !(threadsignal & RequestExit))
-					pauseCondition.Wait();
-				waitMutex.Lock();
+		{
+			ScopedLock waitLock(waitMutex);
 
-				DEBUGLOG(thread,
-					 ("Thread %p continuing and locking at threadsignal = %x"),
-					 Thread::This(),
-					 threadsignal.get());
-				if (threadsignal & ResetTime) {
-					nextEvent = (0); // in μs
-					playTime  = (0); // in μs
-					doResetTime();
-					threadsignal &= ~(int)ResetTime;
-				}
-				reference = referenceTime;
-				ResumeKeys();
-			} else if (thistimer -> TestDestroy()) {
-				{
-					ScopedLock modelock(lockMode);
-					e = (void *) (Mode + (size_t)0x100);
-					// unlocking
-				}
-				break;
-			} else if (!IsDelta(nextEvent)) {
-				{
-					ScopedLock modelock(lockMode);
-					switch (Mode) {
-					case DevicePlay:
-					case DevicePause:
-					case DeviceStop:
-						break;
-					case DeviceTimingError:
-					case DeviceCompileError:
-					default:
-						e = (void *)Mode;
-						break;
+			mutint64 nextEvent = (0); // in μs
+			mutint64 playTime  = (0); // in μs
+			mutint64 reference = (0); // in μs
+			mutint64 delta = GetNO_DELTA(); // in ms
+			while (true) {
+				if (threadsignal & RequestPause) {
+					if (threadsignal & RequestPanic ) {
+						this->Panic(midi::DEFAULT_PANIC);
+						threadsignal &= ~(int)RequestPanic;
+					} else {
+						SilenceKeys(false);
 					}
-					// unlocking
-				}
-				Stop();
-			} else if (!(threadsignal & (ResetTime | RequestExit | RequestPause))) {
-				DEBUGLOG (timer, "time: %ld μs" ,CurrentTime.Get());
-				delta = std::max(reference + playTime - CurrentTime.Get(),(mutint64)0);
-				DEBUGLOG (timer, "Delta %ld μs." ,delta);
-
-				CurrentTime.Sleep(delta,waitCondition);
-			}
-			// some shortcuts after the pause
-			if (threadsignal & RequestExit) {
-				ScopedLock modelock(lockMode);
-				e = (void *)Mode;
-				break;
-			}
-
-			if (threadsignal & RequestPause) {
-				continue;
-			}
-
-			mutASSERT(IsDelta(nextEvent));
-			// we must evaluate the time again as spurious
-			// wakeups may occur and we wake up the thread
-			// on certain status changes. Furthermore the
-			// delay from the previous code also take some
-			// time.
-			if (reference + playTime - CurrentTime.Get() <= 0) {
-						nextEvent = PrepareNextEvent();
-						mutASSERT(nextEvent >= 0);
-						DEBUGLOG(timer,
-					 ("Preparing next event is at %ld (isdelta=%d)"),
-					 nextEvent,
-					 IsDelta(nextEvent));
-				DEBUGLOG (timer, "NoDelta = %ld" , GetNO_DELTA());
-				if (IsDelta(nextEvent)) {
+					DEBUGLOG(thread,
+						 ("Thread %p waiting at threadsignal = %x"),
+						 Thread::This(),
+						 threadsignal.get());
+					{
+						ScopedUnlock waitUnlock(waitMutex);
+						while ((threadsignal & RequestPause) &&
+						       !(threadsignal & RequestExit))
+							pauseCondition.Wait();
+					}
+					DEBUGLOG(thread,
+						 ("Thread %p continuing and locking at threadsignal = %x"),
+						 Thread::This(),
+						 threadsignal.get());
+					if (threadsignal & ResetTime) {
+						nextEvent = (0); // in μs
+						playTime  = (0); // in μs
+						doResetTime();
+						threadsignal &= ~(int)ResetTime;
+					}
 					reference = referenceTime;
-					playTime += nextEvent;
+					ResumeKeys();
+				} else if (thistimer -> TestDestroy()) {
+					{
+						e = (void *) (Mode + (size_t)0x100);
+						// unlocking
+					}
+					break;
+				} else if (!IsDelta(nextEvent)) {
+					ScopedUnlock unlock(waitMutex);
+					Stop();
+				} else if (!(threadsignal & (ResetTime | RequestExit | RequestPause))) {
+					DEBUGLOG (timer, "time: %ld μs" ,CurrentTime.Get());
+					delta = std::max(reference + playTime - CurrentTime.Get(),(mutint64)0);
+					DEBUGLOG (timer, "Delta %ld μs." ,delta);
+
+					CurrentTime.Sleep(delta,waitCondition);
+				}
+				// some shortcuts after the pause
+				if (threadsignal & RequestExit) {
+					e = 0;
+					break;
+				}
+
+				if (threadsignal & RequestPause) {
+					continue;
+				}
+
+				mutASSERT(IsDelta(nextEvent));
+				// we must evaluate the time again as spurious
+				// wakeups may occur and we wake up the thread
+				// on certain status changes. Furthermore the
+				// delay from the previous code also take some
+				// time.
+				if (reference + playTime - CurrentTime.Get() <= 0) {
+					try {
+						nextEvent = PrepareNextEvent();
+					} catch (...) {
+						ScopedUnlock unlock(waitMutex);
+						exception_error();
+					}
+					mutASSERT(nextEvent >= 0);
+					DEBUGLOG(timer,
+						 ("Preparing next event is at %ld (isdelta=%d)"),
+						 nextEvent,
+						 IsDelta(nextEvent));
+					DEBUGLOG (timer, "NoDelta = %ld" , GetNO_DELTA());
+					if (IsDelta(nextEvent)) {
+						reference = referenceTime;
+						playTime += nextEvent;
+					}
 				}
 			}
 		}
@@ -541,8 +523,6 @@ namespace mutabor {
 			 threadsignal.get());
 		// assure that Close() has done its worke before exiting
 		threadCleanUp();
-		waitMutex.Unlock();
-		playerActive.Unlock();
 		return e;
 	}
 

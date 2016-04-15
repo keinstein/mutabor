@@ -59,12 +59,14 @@ namespace mutabor {
 		typedef T targettype;
 	public:
 		watchdog(T t,
-			 mutint64 to,
-			 ThreadKind kind = wxTHREAD_DETACHED):Thread(kind),
+			 mutint64 to):Thread(wxTHREAD_JOINABLE),
+							      mutex(),
+							      cond(mutex),
 							      target(t),
 							      timeout(to),
 							      exit(false) {}
 		virtual ~watchdog() {
+			ScopedLock lock(mutex);
 			targettype tmp = const_cast<targettype&>(target);
 			if (tmp) {
 				const_cast<targettype &>(target) = NULL;
@@ -73,31 +75,44 @@ namespace mutabor {
 		}
 		
 		ExitCode Entry() {
+			ScopedLock lock(mutex);
+			cond.Sleep(timeout);
 			while (!exit && const_cast<targettype&>(target)) {
-				CurrentTime.Sleep(timeout);
 				targettype tmp = const_cast<targettype&>(target);
 				if (tmp)
 					tmp->dog_watching();
+				cond.Sleep(timeout);
 			}
 			return (ExitCode)0;
 		}
 		
 		void OnExit() {
+			ScopedLock lock(mutex);
 			targettype tmp = const_cast<targettype&>(target);
 			if (tmp) {
-				const_cast<targettype &>(target) = NULL;
+				const_cast<targettype &>(target).reset();
 				tmp->remove_watchdog(this);
 			}
 		}
 		
 		void request_exit() {
-			const_cast<targettype &>(target) = NULL;
 			exit = true;
+			{
+				ScopedLock lock(mutex);
+				cond.Broadcast();
+			}
+#if wxCHECK_VERSION(2,9,2)
+			Wait(wxTHREAD_WAIT_BLOCK);
+#else
+			Wait();
+#endif
  		}
 	protected:
-		volatile targettype target;
+		Mutex mutex;
+		ThreadCondition cond;
+		mutable targettype target;
 		mutint64 timeout;
-		volatile bool exit;
+		boost::atomic<bool> exit;
 	};
 }
 

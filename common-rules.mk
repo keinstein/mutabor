@@ -12,8 +12,7 @@ AM_TESTS_ENVIRONMENT= \
 	fi ; \
 	export TSAN_OPTIONS; \
 	ASAN_SYMBOLIZER_PATH=/usr/bin/llvm_symbolize-3.6 ; \
-	export BASAN_SYMBOLIZER_PATH ; \
-        echo TSAN_OPTIONS="$$TSAN_OPTIONS" ;
+	export BASAN_SYMBOLIZER_PATH ; 
 buildincludedir=$(top_builddir)
 AM_CPPFLAGS = -I$(buildincludedir)  \
 	-I$(top_srcdir)/includes \
