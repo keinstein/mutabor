@@ -382,10 +382,12 @@ libmutabordebugcppunit_a_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS) -DMUTABOR_T
 
 libmutabormaincppunit_a_INLINEHEADERS = 
 libmutabormaincppunit_a_INDENTHEADERS = \
-		src/wxGUI/MutApp.h
+		src/wxGUI/MutApp.h \
+		src/wxGUI/TestInitializer.h
 libmutabormaincppunit_a_INDENTS = \
 		src/kernel/interface_deps_cppunit.cpp \
-		src/wxGUI/MutApp.cpp
+		src/wxGUI/MutApp.cpp \
+		src/wxGUI/TestInitializer.cpp
 
 # no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
 
@@ -409,12 +411,14 @@ libmutabordebugtest_a_INLINEHEADERS = \
 		$(libmutabordebug_a_INLINEHEADERS)
 libmutabordebugtest_a_INDENTHEADERS = \
 		$(libmutabordebug_a_INDENTHEADERS) \
-		src/wxGUI/MutApp.h
+		src/wxGUI/MutApp.h \
+		src/wxGUI/TestInitializer.h
 
 libmutabordebugtest_a_INDENTS = \
 		$(libmutabordebug_a_INDENTS) \
 		src/kernel/interface_deps_generic.cpp \
-		src/wxGUI/MutApp.cpp
+		src/wxGUI/MutApp.cpp \
+		src/wxGUI/TestInitializer.cpp
 
 
 # no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
@@ -429,10 +433,12 @@ libmutabordebugtest_a_CXXFLAGS = $(AM_CXXFLAGS) -DMUTABOR_TEST
 
 libmutabormaintest_a_INLINEHEADERS = 
 libmutabormaintest_a_INDENTHEADERS = \
-		src/wxGUI/MutApp.h
+		src/wxGUI/MutApp.h \
+		src/wxGUI/TestInitializer.h
 libmutabormaintest_a_INDENTS = \
 		src/kernel/interface_deps_generic.cpp \
-		src/wxGUI/MutApp.cpp
+		src/wxGUI/MutApp.cpp \
+		src/wxGUI/TestInitializer.cpp
 
 # no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
 

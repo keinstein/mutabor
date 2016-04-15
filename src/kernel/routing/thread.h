@@ -53,12 +53,110 @@ namespace mutabor {
 	// see CommonFileDevice for usage
 	typedef wxThread      Thread;
 	typedef wxThreadKind  ThreadKind;
-	typedef wxMutex       Mutex;
 	typedef wxMutexLocker ScopedLock;
 	typedef wxMutexError  ThreadResult;
-	typedef wxCondition   ThreadCondition;
+	typedef wxCondError   WaitResult;
+#ifdef DEBUG
+	class Mutex: public wxMutex {
+	public:
+		Mutex(wxMutexType mutexType = wxMUTEX_DEFAULT):wxMutex(mutexType) {}
+		~Mutex() {}
+		wxMutexError Lock() {
+			if (debugmutex.m_internal == m_internal) return wxMutex::Lock();
+			wxMutexError error = wxMutex::TryLock();
+			if (error != wxMUTEX_NO_ERROR) {
+				DEBUGLOG(thread,
+					 ("Thread %p waiting for mutex %p."),
+					 Thread::This(),
+					 m_internal);
+				error = wxMutex::Lock();
+			}
+			DEBUGLOG(thread,
+				 ("Thread %p locking result for mutex %p (%s)."),
+				 Thread::This(),
+				 m_internal,
+				 str_error(error));
+			mutASSERT(error == wxMUTEX_NO_ERROR);
+			return error;
+		}
 
-	template<bool dolock> 
+		wxMutexError Unlock() {
+			wxMutexError error = wxMutex::Unlock();
+			if (debugmutex.m_internal == m_internal) return error;
+			DEBUGLOG(thread,
+				 ("Thread %p unlocking mutex %p (%s)."),
+				 Thread::This(),
+				 m_internal,
+				 str_error(error));
+			mutASSERT(error == wxMUTEX_NO_ERROR);
+			return error;
+		}
+
+		wxMutexError TryLock() {
+			wxMutexError error = wxMutex::TryLock();
+			if (debugmutex.m_internal == m_internal) return error;
+			DEBUGLOG(thread,
+				 ("Thread %p trying to lock mutex %p (%s)."),
+				 Thread::This(),
+				 m_internal,
+				 str_error(error));
+			mutASSERT(error == wxMUTEX_NO_ERROR || error == wxMUTEX_BUSY);
+			return error;
+		}
+
+		wxMutexError LockTimeout(unsigned long ms) {
+			wxMutexError error = wxMutex::LockTimeout(ms);
+			if (debugmutex.m_internal == m_internal) return error;
+			DEBUGLOG(thread,
+				 ("Thread %p trying to lock mutex %p for %lu ms (%s)."),
+				 Thread::This(),
+				 m_internal,
+				 ms,
+				 str_error(error));
+			mutASSERT(error == wxMUTEX_NO_ERROR || error == wxMUTEX_TIMEOUT);
+			return error;
+		}
+
+		const char * str_error (wxMutexError error) {
+			static const char * s[] = {
+				"ok",
+				"uninitialized mutex",
+				"we already own this mutex",
+				"another thread owns this mutex",
+				"unlocking an unlocked mutex",
+				"timeout",
+				"other error"
+			};
+			if (error > 6 || error < 0) return "unknown error";
+			else return s[error];
+		}
+	};
+#else
+	typedef wxMutex       Mutex;
+#endif
+
+	class ScopedUnlock {
+	public:
+		ScopedUnlock(Mutex & m):mutex(m) {
+			mutex.Unlock();
+		}
+		~ScopedUnlock() {
+			mutex.Lock();
+		}
+	protected:
+		Mutex & mutex;
+	};
+
+	class ThreadCondition:public wxCondition {
+	public:
+		ThreadCondition(Mutex &m):wxCondition(m) {}
+		WaitResult Sleep(mutint64 time)
+		{
+			return WaitTimeout(time/1000);
+		}
+	};
+
+	template<bool dolock>
 	class ScopedCondLock: public ScopedLock
 	{
 	public:
@@ -66,13 +164,13 @@ namespace mutabor {
 		// nothing
 	};
 
-	template<> 
+	template<>
 	struct ScopedCondLock<false> {
 		ScopedCondLock(const Mutex) {}
 	};
-	
-	
-	template<class T> 
+
+
+	template<class T>
 	class safe_integer {
 	public:
 		typedef T datatype;
@@ -120,13 +218,13 @@ namespace mutabor {
 			data &= other;
 			return *this;
 		}
-		operator datatype () { 
-			ScopedLock l1(mutex); 
-			return data; 
+		operator datatype () {
+			ScopedLock l1(mutex);
+			return data;
 		}
 		datatype get()  {
 			ScopedLock l1(mutex);
-			return data; 
+			return data;
 		}
 
 	protected:

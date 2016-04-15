@@ -56,8 +56,8 @@
 //#elseif __WXMSW__
 #else
 #include "wx/stopwatch.h"
-#include "thread.h"
 #endif
+#include "thread.h"
 
 #define MUTABOR_NO_DELTA (std::numeric_limits<mutint64>::max()) //2147483647  // long max-Zahl
 
@@ -532,6 +532,19 @@ namespace mutabor {
 		}
 
 
+		/**
+		 * Sleep for a given time of microsecounds.
+		 * The sleep can be interupted by a signal from another thread.
+		 *
+		 * \param time time to sleep
+		 * \param condition the condition that can be used to wake the thread up
+		 *
+		 * \return a status information frem the thread.
+		 */
+		WaitResult Sleep(mutint64 time, ThreadCondition & condition) {
+			return condition.Sleep(time);
+		}
+		using CurrentTimerBase::Sleep;
 	protected:
 		mutint64 time; //< Time value for batch mode
 		bool is_realtime; //< flag indicating whether we are in batch mode.

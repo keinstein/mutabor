@@ -1,9 +1,18 @@
 AM_TESTS_ENVIRONMENT= \
+	LSAN_OPTIONS="fast_unwind_on_malloc=0" ; \
 	if [ -f $(srcdir)/lsan_suppressions.txt ] ; \
 	then \
-		LSAN_OPTIONS="suppressions=$(srcdir)/lsan_suppressions.txt fast_unwind_on_malloc=0" \
-		export LSAN_OPTIONS; \
-	fi;
+		LSAN_OPTIONS="suppressions=$(srcdir)/lsan_suppressions.txt $$LSAN_OPTIONS" ; \
+	fi; \
+	export LSAN_OPTIONS; \
+	TSAN_OPTIONS="second_deadlock_stack=1 symbolize=1" ; \
+	if [ -f $(srcdir)/tsan_suppressions.txt ] ; \
+	then \
+		TSAN_OPTIONS="$$TSAN_OPTIONS suppressions=$(srcdir)/tsan_suppressions.txt" ; \
+	fi ; \
+	export TSAN_OPTIONS; \
+	ASAN_SYMBOLIZER_PATH=/usr/bin/llvm_symbolize-3.6 ; \
+	export BASAN_SYMBOLIZER_PATH ; 
 buildincludedir=$(top_builddir)
 AM_CPPFLAGS = -I$(buildincludedir)  \
 	-I$(top_srcdir)/includes \

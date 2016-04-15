@@ -30,7 +30,7 @@
 #include "src/wxGUI/Routing/RouteIcons.h"
 #include "src/wxGUI/Routing/GUIRoute.h"
 #include "src/kernel/routing/Route-inlines.h"
-#include "wx/app.h"
+#include "src/wxGUI/TestInitializer.h"
 #include <cppunit/ui/text/TestRunner.h>
 #include <cppunit/TestResult.h>
 #include <cppunit/BriefTestProgressListener.h>
@@ -43,15 +43,7 @@
 int 
 main(int argc, char** argv)
 {
-	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
-	
-	wxInitializer initializer;
-	if ( !initializer )
-	{
-		fprintf(stderr, "Failed to initialize the wxWidgets library, aborting.");
-		return -1;
-	}
-
+	mutwxInitializer initializer;
 
 	// We are using .png files for some extra bitmaps.
 	wxImageHandler * pnghandler = new wxPNGHandler;

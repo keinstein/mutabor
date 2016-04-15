@@ -250,7 +250,7 @@ AC_ARG_ENABLE(thread-sanitizer,
 	AS_HELP_STRING([--enable-thread-sanitizer],[Enable gcc/clang thread santizer]),
 	[AS_IF(test "$enableval" = yes,
 	       AC_LANG_PUSH(C++)
-	       for flag in  -fsanitize=thread  -fno-omit-frame-pointer  -fno-common -fPIC
+	       for flag in  -fsanitize=thread  -fno-omit-frame-pointer  -fno-common
 	       do
 		       tmpcxxflags="$CXXFLAGS"
 		       CXXFLAGS="$CXXFLAGS $flag"
@@ -269,17 +269,17 @@ AC_ARG_ENABLE(thread-sanitizer,
 			         AC_MSG_RESULT([no])])
 		       AC_LANG_POP(C)
 	       done
-	       for flag in  -pie
-	       do
-		       tmpldflags="$LDFLAGS"
-		       LDFLAGS="$LDFLAGS $flag"
-		       AC_MSG_CHECKING([whether $LD supports $flag])
-		       AC_LINK_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-		                         [AC_MSG_RESULT([yes])],
-					 [LDFLAGS="$tmpldflags"
-			         AC_MSG_RESULT([no])])
-	       done
-	       AC_LANG_POP(C++)
+dnl	       for flag in  -pie
+dnl	       do
+dnl		       tmpldflags="$LDFLAGS"
+dnl		       LDFLAGS="$LDFLAGS $flag"
+dnl		       AC_MSG_CHECKING([whether $LD supports $flag])
+dnl		       AC_LINK_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+dnl		                         [AC_MSG_RESULT([yes])],
+dnl					 [LDFLAGS="$tmpldflags"
+dnl			         AC_MSG_RESULT([no])])
+dnl	       done
+dnl	       AC_LANG_POP(C++)
 	       )
 	]
 )
@@ -763,7 +763,7 @@ dnl then
 dnl	AC_DEFINE(MUST_REUSE,1,[Define to x if the scope of C++ loop variables is inside the loop])
 dnl fi
 
-BOOST_REQUIRE([1.50.0])
+BOOST_REQUIRE([1.53.0])
 BOOST_FORMAT
 dnl BOOST_INTRUSIVE_PTR
 dnl BOOST_RATIONAL
@@ -809,7 +809,7 @@ AC_FUNC_MALLOC
 AC_FUNC_ALLOCA
 AC_FUNC_ERROR_AT_LINE
 AC_FUNC_MEMCMP
-AC_FUNC_REALLOC
+dnl AC_FUNC_REALLOC
 AC_FUNC_SELECT_ARGTYPES
 AC_FUNC_VPRINTF
 AC_CHECK_FUNCS([memmove pow getcwd gettimeofday memset select stpcpy strchr strstr bcopy bzero bcmp])

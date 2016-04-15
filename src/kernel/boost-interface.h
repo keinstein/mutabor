@@ -51,71 +51,107 @@
 // system headers which do seldom change
 
 #include "src/kernel/Defs.h"
+#include <boost/atomic.hpp>
 
-template<bool locking=1>
-class intrusive_ptr_refcount_type {
+
+
+/* Documentation from Boost.Atomic
+
+#include <boost/intrusive_ptr.hpp>
+
+class X {
 public:
-	typedef mutabor::ScopedCondLock<locking> locker;
-	intrusive_ptr_refcount_type():value(0) {}
+  typedef boost::intrusive_ptr<X> pointer;
+  X() : refcount_(0) {}
 
-	void lock () {
-		if (locking)
-			mutex.Lock();
-	}
+private:
+  mutable boost::atomic<int> refcount_;
+  friend void intrusive_ptr_add_ref(const X * x)
+  {
+    x->refcount_.fetch_add(1, boost::memory_order_relaxed);
+  }
+  friend void intrusive_ptr_release(const X * x)
+  {
+    if (x->refcount_.fetch_sub(1, boost::memory_order_release) == 1) {
+      boost::atomic_thread_fence(boost::memory_order_acquire);
+      delete x;
+    }
+  }
+};
+*/
 
-	void unlock () {
-		if (locking)
-			mutex.Unlock();
-	}
+template<class T>
+class atomic_refcount_type {
+public:
+	atomic_refcount_type():value(0) {}
+	atomic_refcount_type(T init):value(init) {}
 
-	size_t operator ++() {
-		locker lock(mutex);
-		return ++value;
-	}
-
-	size_t operator ++(int) {
-		locker lock(mutex);
-		return value++;
-	}
-
-	size_t operator --() {
-		locker lock(mutex);
-		return --value;
-	}
-
-	size_t operator --(int) {
-		locker lock(mutex);
-		return value--;
-	}
-
-	operator size_t () const {
-		locker lock(const_cast<intrusive_ptr_refcount_type *>(this)->mutex);
+	T get()
+	{
 		return value;
 	}
-private:
-        volatile size_t value;
-	mutabor::Mutex mutex;
 
-	template<class intrusive_ptr_T>
-		friend void intrusive_ptr_add_ref(intrusive_ptr_T * obj);
-	template<class intrusive_ptr_T>
-		friend void intrusive_ptr_release(intrusive_ptr_T * obj);
-	template <class intrusive_ptr_T>
-		friend size_t intrusive_ptr_get_refcount(intrusive_ptr_T * obj);
+	T fetch_add(T number, boost::memory_order order)
+	{
+		return value.fetch_add(number,order);
+	}
+
+	T fetch_sub(T number, boost::memory_order order)
+	{
+		return value.fetch_sub(number,order);
+	}
+protected:
+	boost::atomic<T> value;
 };
+
+template<class T>
+class nonatomic_refcount_type {
+public:
+	nonatomic_refcount_type():value(0) {}
+	nonatomic_refcount_type(T init):value(init) {}
+
+	T get()
+	{
+		return value;
+	}
+
+	T fetch_add(T number, boost::memory_order order)
+	{
+		T retval = value;
+		value += number;
+		return retval;
+	}
+
+	T fetch_sub(T number, boost::memory_order order)
+	{
+		T retval = value;
+		value -= number;
+		return retval;
+	}
+protected:
+	T value;
+};
+
+template <class intrusive_ptr_T>
+inline void intrusive_ptr_atomic_fence(intrusive_ptr_T * obj) {
+	boost::atomic_thread_fence(boost::memory_order_acquire);
+}
+
+template <>
+inline void intrusive_ptr_atomic_fence<nonatomic_refcount_type <int> >(nonatomic_refcount_type <int> * obj) {}
 
 template <class intrusive_ptr_T>
 inline size_t intrusive_ptr_get_refcount(intrusive_ptr_T * obj)
 {
 	if (!obj) return 0;
-	return obj->intrusive_ptr_refcount;
+	return obj->intrusive_ptr_refcount.get();
 }
 
 template <class intrusive_ptr_T>
 inline void intrusive_ptr_add_ref(intrusive_ptr_T * obj)
 {
 	if (!obj) return;
-	++(obj->intrusive_ptr_refcount);
+	obj->intrusive_ptr_refcount.fetch_add(1,boost::memory_order_relaxed);
 	DEBUGLOGTYPE(smartptr,*obj,("Incrementing %p to %d"),
 		     (void *)obj,(int)intrusive_ptr_get_refcount(obj));
 	// print_stacktrace(isDebugFlag(smartptr));
@@ -128,17 +164,20 @@ inline void intrusive_ptr_release(intrusive_ptr_T * obj)
 	DEBUGLOGTYPE(smartptr,*obj,("Decrementing %p from %d"),
 		     (void *)obj,(int)intrusive_ptr_get_refcount(obj));
 	//	print_stacktrace(isDebugFlag(smartptr));
-	if (!(--(obj->intrusive_ptr_refcount))) delete obj;
+	if (obj->intrusive_ptr_refcount.fetch_sub(1, boost::memory_order_release) == 1) {
+		intrusive_ptr_atomic_fence(obj);
+		delete obj;
+	}
 }
 
 
 #define REFPTR_INTERFACE						\
 	public:								\
-	intrusive_ptr_refcount_type<true> intrusive_ptr_refcount
+	mutable atomic_refcount_type<int> intrusive_ptr_refcount
 
 #define REFPTR_INTERFACE_NOLOCK						\
 	public:								\
-	intrusive_ptr_refcount_type<false> intrusive_ptr_refcount
+	intrusive_ptr_refcount_type<int> intrusive_ptr_refcount
 
 
 #define CHECK_REFPTR_NULL(class_data)				\

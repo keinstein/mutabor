@@ -83,7 +83,7 @@ namespace mutabor {
 			//	flags.smartptr = true;
 		}
 
-		static Mutex debugmutex;
+		Mutex debugmutex;
 	}
 }
 

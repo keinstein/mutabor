@@ -125,19 +125,11 @@ namespace mutabor {
 
 			boost::intrusive_ptr<CommonFileInputDevice> file;
 		public:
-			FileTimer(CommonFileInputDevice * f,
-				  ThreadKind kind = wxTHREAD_DETACHED) : wxThread(kind),
-									 file(f)
+			FileTimer(CommonFileInputDevice * f) : wxThread(wxTHREAD_JOINABLE),
+							       file(f)
 			{}
 
-			virtual ~FileTimer() {
-				mutASSERT(!file);
-				if (file) {
-					ScopedLock lock (file->exitLock);
-					if (file->timer == this)
-						file -> timer = NULL;
-				}
-			}
+			virtual ~FileTimer() {}
 
 			ExitCode Entry() {
 				ExitCode e;
@@ -150,14 +142,7 @@ namespace mutabor {
 			}
 
 
-			void OnExit() {
-				if (file) {
-					ScopedLock lock (file->exitLock);
-					if (file->timer == this)
-						file -> timer = NULL;
-				}
-				file.reset();
-			}
+			void OnExit() {}
 
 			void ClearFile() {
 				file.reset();
@@ -178,16 +163,16 @@ namespace mutabor {
 #ifdef DEBUG
 			if (waitMutex.TryLock() == wxMUTEX_BUSY) {
 				DEBUGLOG(thread,"Error: waitMutex is still busy");
-			}
+			} else waitMutex.Unlock();
 			if (threadReady.TryLock() == wxMUTEX_BUSY) {
-			DEBUGLOG(thread, "Error: threadReady is still busy");
-			}
+				DEBUGLOG(thread, "Error: threadReady is still busy");
+			} else threadReady.Unlock();
 			if (lockMode.TryLock() == wxMUTEX_BUSY) {
-			DEBUGLOG(thread, "Error: lockMode is still busy");
-			}
-			if (exitLock.TryLock() == wxMUTEX_BUSY) {
-			DEBUGLOG(thread, "Error: exitLock is still busy");
-			}
+				DEBUGLOG(thread, "Error: lockMode is still busy");
+			} else lockMode.Unlock();
+			if (playerActive.TryLock() == wxMUTEX_BUSY) {
+				DEBUGLOG(thread, "Error: playerActive is still busy");
+			} else playerActive.Unlock();
 #endif
 		};
 
@@ -235,22 +220,6 @@ namespace mutabor {
 			}
 		}
 
-		/**
-		 * Sets the thread kind for the next thread that is
-		 * being generated. If we have already a timer thread
-		 * then the thread kind will not be changed, but the
-		 * value is stored for the next generated thread.
-		 *
-		 * \param k thread kind to be saved
-		 *
-		 * \retval true if everything is ok.
-		 * \retval false if there is a thread that
-		 * could not be updated.
-		 */
-		virtual bool SetThreadKind(wxThreadKind k) {
-			threadkind = k;
-			return !timer;
-		}
 
 		/**
 		 * Issue an error message and stop the device.
@@ -278,7 +247,7 @@ namespace mutabor {
 						 ("Thread %p locking at threadsignal = %x"),
 						 Thread::This(),
 						 threadsignal.get());
-					ScopedLock lock(waitMutex);
+					ScopedLock lock(playerActive);
 					DEBUGLOG(thread,
 						 ("Thread %p locked at threadsignal = %x"),
 						 Thread::This(),
@@ -300,7 +269,7 @@ namespace mutabor {
 				} else return timer;
 			}
 			return 0;
-	}
+		}
 
 		virtual std::string GetTypeName () const {
 			return _mutN("Generic input file");
@@ -326,15 +295,14 @@ namespace mutabor {
 		};
 		/* volatile is handled inside the class */
 		safe_integer<int> threadsignal; //< signal
-		Mutex waitMutex, threadReady, lockMode, exitLock;
-		ThreadCondition waitCondition;
+		Mutex waitMutex, threadReady, lockMode, playerActive;
+		ThreadCondition waitCondition, pauseCondition;
 		/**
 		 * Fixed offset for the relative time the file returns.
 		 */
 		volatile mutint64 referenceTime; // ms
 		volatile mutint64 pauseTime;     // ms
 		timing_params timing;
-		wxThreadKind threadkind;
 
 		CommonFileInputDevice(): InputDeviceClass(),
 					 timer (NULL),
@@ -342,11 +310,11 @@ namespace mutabor {
 					 waitMutex(),
 					 threadReady(),
 					 lockMode(),
-					 exitLock(),
+					 playerActive(),
 					 waitCondition(waitMutex),
+					 pauseCondition(playerActive),
 					 referenceTime(0),
-					 pauseTime(0),
-					 threadkind(wxTHREAD_DETACHED) { }
+					 pauseTime(0) { }
 
 		CommonFileInputDevice(std::string name,
 				      MutaborModeType mode,
@@ -358,11 +326,11 @@ namespace mutabor {
 					       waitMutex(),
 					       threadReady(),
 					       lockMode(),
-					       exitLock(),
+					       playerActive(),
 					       waitCondition(waitMutex),
+					       pauseCondition(playerActive),
 					       referenceTime(0),
-					       pauseTime(0),
-					       threadkind(wxTHREAD_DETACHED) {}
+					       pauseTime(0) {}
 
 	};
 
