@@ -894,6 +894,9 @@ src/includes/mutabor/tests/Makefile
 src/includes/netinet/Makefile
 src/includes/tests/Makefile
 src/kernel/Makefile
+src/kernel/parsers/Makefile
+src/kernel/parsers/scala/Makefile
+src/kernel/parsers/scala/tests/Makefile
 src/kernel/routing/gmn/Makefile
 src/kernel/routing/gmn/tests/Makefile
 src/kernel/routing/Makefile

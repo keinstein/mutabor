@@ -39,6 +39,16 @@
 /*#define MUTMIDI */
 #endif
 
+/* workaround for inflexible Flex */
+#ifdef __cplusplus
+#define MUTABOR_NAMESPACE(X) namespace X {
+#define MUTABOR_NAMESPACE_END(X) }
+#else
+#define MUTABOR_NAMESPACE(X)
+#define MUTABOR_NAMESPACE_END(X)
+#endif
+
+
 #include "interface_deps.h"
 
 #ifdef __cplusplus

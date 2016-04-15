@@ -1,2 +1,2 @@
-SUBDIRS=. tests routing parsers
+SUBDIRS=. tests
 include $(top_srcdir)/common-rules.mk

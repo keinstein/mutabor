@@ -33,6 +33,8 @@ EXTRA_DIST = config.rpath \
 	Images \
 	src/kernel/mut.yy \
 	src/kernel/mutlex.ll \
+	src/kernel/parsers/scala/scale_parser.yy \
+	src/kernel/parsers/scala/scale_lexer.ll \
 	osdep/macosx/Application_Code.txt \
 	osdep/macosx/background.png \
 	osdep/macosx/background.svg \
@@ -291,7 +293,10 @@ libmutaborrouting_a_SOURCES = $(libmutaborrouting_a_INDENTS)
 libmutaborkernel_a_INLINEHEADERS = \
 		src/kernel/mut.cc \
 		src/kernel/mut.hh \
-		src/kernel/mutlex.cc
+		src/kernel/mutlex.cc \
+		src/kernel/parsers/scala/scale_parser.cc \
+		src/kernel/parsers/scala/scale_parser.hh \
+		src/kernel/parsers/scala/scale_lexer.cc
 
 libmutaborkernel_a_INDENTHEADERS = \
 		src/kernel/Defs.h \
@@ -331,7 +336,9 @@ libmutaborkernel_a_POTSOURCES = $(libmutaborkernel_a_INLINEHEADERS) $(libmutabor
 
 libmutaborkernel_a_SOURCES = $(libmutaborkernel_a_INDENTS) \
 			src/kernel/mut.yy \
-			src/kernel/mutlex.ll
+			src/kernel/mutlex.ll \
+			src/kernel/parsers/scala/scale_parser.yy \
+			src/kernel/parsers/scala/scale_lexer.ll
 
 
 #-------------------------------------------------------------
