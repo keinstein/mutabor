@@ -1,6 +1,6 @@
 /** \file               -*- C++ -*-
  ********************************************************************
- * Internal data structures for the scala parseer.
+ * Data structures for the scala file parser and generator.
  *
  * Copyright:   (c) 2016 Tobias Schlemmer
  * \author  Tobias Schlemmer <keinstein@users.sf.net>
@@ -47,11 +47,12 @@
 
 /* system headers which do seldom change */
 #include <vector>
+#include <iostream>
 
 namespace mutabor {
 	namespace scala_parser {
-		class scala_lexer;
-
+		class scale_lexer;
+		class scale_parser;
 		struct interval {
 			enum interval_type {
 				cent_value,
@@ -81,20 +82,42 @@ namespace mutabor {
 				data.f.numerator = n;
 				data.f.denominator = d;
 			}
-		};
-		inline std::ostream & operator<< (std::ostream & o, const interval & i) {
-			switch (i.type) {
-			case interval::cent_value:
-				o << i.data.cents;
-				break;
-			case interval::ratio:
-				o << i.data.f.numerator
-				  << "/"
-				  << i.data.f.denominator;
-			default:
-				o << "<unknown interval>";
+			std::ostream & print (std::ostream & o) const {
+				if (!comment.empty())
+					o << "!" << comment << std::endl;
+				switch (type) {
+				case interval::cent_value:
+					o << data.cents;
+					break;
+				case interval::ratio:
+					o << data.f.numerator
+					  << "/"
+					  << data.f.denominator;
+					break;
+				default:
+					o << "<unknown interval>";
+				}
+				o << description;
+				return o;
 			}
-			return o;
+			bool operator == (const interval & o) const {
+				bool retval = type == o.type;
+				if (!retval) return false;
+				switch (type) {
+				case cent_value: retval = data.cents == o.data.cents;
+					break;
+				case ratio:
+					retval = data.f.denominator == o.data.f.denominator
+						&& data.f.numerator == o.data.f.numerator;
+					break;
+				default:
+					return false;
+				}
+				retval = retval && comment == o.comment && description == o.description;
+				return retval;
+			}
+		};
+		inline std::ostream & operator<< (std::ostream & o, const interval & i) {		return i.print(o);
 		}
 		typedef typename std::vector<interval> interval_list;
 		struct interval_pattern {
@@ -105,24 +128,56 @@ namespace mutabor {
 			std::string count_comment;
 			interval_list intervals;
 			std::string garbage;
+			interval_pattern() {}
 			interval_pattern(const std::string & n,
 					 size_t c):name(n),count(c) {}
+			bool operator == (const interval_pattern & o) const {
+				return name == o.name &&
+					count == o.count &&
+					intervals == o.intervals &&
+					comment1 == o.comment1 &&
+					comment2 == o.comment2 &&
+					count_comment==o.count_comment &&
+					garbage == o.garbage;
+			}
+			std::ostream & print (std::ostream & o) const {
+				o << "!" << comment1 << std::endl
+				  << name << std::endl
+				  << "!" << comment2 << std::endl
+				  << count << count_comment << std::endl;
+				for (interval_list::const_iterator i = intervals.begin();
+				     i != intervals.end();
+				     ++i) {
+					o << *i << std::endl;
+				}
+				return o << garbage;
+			}
 		};
+
+		inline std::ostream & operator << (std::ostream & o, const interval_pattern & i) {
+			return (i.print(o)) << std::endl;
+		}
+
 
 		class parser {
 		public:
-			parser (const std::string & s) {
+			parser (const std::string & s): intervals(),
+							lexer(NULL),
+							bison_parser(NULL)
+			{
 				parse(s);
 			}
+			virtual ~parser();
 
-			void parse (const std::string & s) {
+			void parse (const std::string & s);
 
-			}
+			virtual void error(const char *  format, ...);
 
-			void error(const char *  format, ...) {}
+			const interval_pattern & get_intervals () { return intervals; }
 		protected:
-			scala_parser::scala_lexer * lexer;
-
+			interval_pattern intervals;
+			scale_lexer * lexer;
+			scale_parser * bison_parser;
 		};
 	}
 }

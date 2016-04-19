@@ -6,6 +6,20 @@ SUBDIRS = po intl lib src . Images doc tools/midi2text #libmutabor .
 precompCOMPILESOURCES=$(mutabor_COMPILESOURCES)
 include common-rules.mk
 
+TSBUILTSOURCES += \
+	$(top_srcdir)/src/kernel/mut.hh \
+	$(top_srcdir)/src/kernel/mut.hh \
+	$(top_srcdir)/src/kernel/mut.cc \
+	$(top_srcdir)/src/kernel/mutlex.cc \
+	$(top_srcdir)/src/kernel/parsers/scala/scale_parser.hh \
+	$(top_srcdir)/src/kernel/parsers/scala/scale_parser.cc \
+	$(top_srcdir)/src/kernel/parsers/scala/location.hh \
+	$(top_srcdir)/src/kernel/parsers/scala/position.hh \
+	$(top_srcdir)/src/kernel/parsers/scala/stack.hh \
+	$(top_srcdir)/src/kernel/parsers/scala/scale_lexer.cc
+TAGS_DEPENDENCIES: $(TSBUILTSOURCES)
+
+
 RCCOMPILE = $(RC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) $(RCFLAGS)
 CVS = cvs
 GIT = git
@@ -110,6 +124,7 @@ noinst_LIBRARIES = \
 	libmutaborgui.a \
 	libmutaborrouting.a \
 	libmutaborkernel.a \
+	libmutaborscala.a \
 	libmutabordebug.a \
 	librtmidi.a #libmutaborGUIrouting.a libmutaborGUI.a
 check_LIBRARIES = \
@@ -293,10 +308,7 @@ libmutaborrouting_a_SOURCES = $(libmutaborrouting_a_INDENTS)
 libmutaborkernel_a_INLINEHEADERS = \
 		src/kernel/mut.cc \
 		src/kernel/mut.hh \
-		src/kernel/mutlex.cc \
-		src/kernel/parsers/scala/scale_parser.cc \
-		src/kernel/parsers/scala/scale_parser.hh \
-		src/kernel/parsers/scala/scale_lexer.cc
+		src/kernel/mutlex.cc
 
 libmutaborkernel_a_INDENTHEADERS = \
 		src/kernel/Defs.h \
@@ -337,6 +349,33 @@ libmutaborkernel_a_POTSOURCES = $(libmutaborkernel_a_INLINEHEADERS) $(libmutabor
 libmutaborkernel_a_SOURCES = $(libmutaborkernel_a_INDENTS) \
 			src/kernel/mut.yy \
 			src/kernel/mutlex.ll \
+			src/kernel/parsers/scala/scale_parser.yy \
+			src/kernel/parsers/scala/scale_lexer.ll
+
+#-------------------------------------------------------------
+# libmutaborscala.a
+#-------------------------------------------------------------
+
+libmutaborscala_a_INLINEHEADERS = \
+		src/kernel/parsers/scala/scale_parser.cc \
+		src/kernel/parsers/scala/scale_parser.hh \
+		src/kernel/parsers/scala/position.hh \
+		src/kernel/parsers/scala/location.hh \
+		src/kernel/parsers/scala/stack.hh \
+		src/kernel/parsers/scala/scale_lexer.cc
+
+libmutaborscala_a_INDENTHEADERS = \
+		src/kernel/parsers/scala/scala.h
+
+
+libmutaborscala_a_INDENTS = \
+		src/kernel/parsers/scala/scala.cpp 
+
+noinst_HEADERS += $(libmutaborscala_a_INLINEHEADERS) $(libmutaborscala_a_INDENTHEADERS)
+
+libmutaborscala_a_POTSOURCES = $(libmutaborscala_a_INLINEHEADERS) $(libmutaborscala_a_INDENTHEADERS) $(libmutaborscala_a_INDENTS)
+
+libmutaborscala_a_SOURCES = $(libmutaborscala_a_INDENTS) \
 			src/kernel/parsers/scala/scale_parser.yy \
 			src/kernel/parsers/scala/scale_lexer.ll
 
@@ -397,6 +436,7 @@ libmutabormaincppunit_a_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS) -DMUTABOR_TE
 libmutabormaincppunit_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
 				$(libmutaborrouting_a_OBJECTS) \
 				$(libmutaborkernel_a_OBJECTS) \
+				$(libmutaborscala_a_OBJECTS) \
 				$(libmutabordebugcppunit_a_OBJECTS) \
 				$(librtmidi_a_OBJECTS)
 
@@ -447,6 +487,7 @@ libmutabormaintest_a_CXXFLAGS = $(AM_CXXFLAGS) $(TEST_CFLAGS) -DMUTABOR_TEST
 libmutabormaintest_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
 				$(libmutaborrouting_a_OBJECTS) \
 				$(libmutaborkernel_a_OBJECTS) \
+				$(libmutaborscala_a_OBJECTS) \
 				$(libmutabordebugtest_a_OBJECTS) \
 				$(librtmidi_a_OBJECTS)
 
@@ -479,6 +520,7 @@ librtmidi_a_POTSOURCES = $(librtmidi_a_SOURCES)
 INLINEHEADERS = \
 		$(libmutaborrouting_a_INLINEHEADERS) \
 		$(libmutaborkernel_a_INLINEHEADERS) \
+		$(libmutaborscala_a_INLINEHEADERS) \
 		$(libmutabordebug_a_INLINEHEADERS) \
 		$(librtmidi_a_INLINEHEADERS) \
 		$(libmutaborgui_a_INLINEHEADERS)
@@ -486,6 +528,7 @@ INLINEHEADERS = \
 INDENTHEADERS = \
 		$(libmutaborrouting_a_INDENTHEADERS) \
 		$(libmutaborkernel_a_INDENTHEADERS) \
+		$(libmutaborscala_a_INDENTHEADERS) \
 		$(libmutabordebug_a_INDENTHEADERS) \
 		$(libmutaborgui_a_INDENTHEADERS)
 
@@ -502,6 +545,7 @@ INDENTSOURCES = \
 	$(mutabor_INDENTS) \
 	$(libmutaborrouting_a_INDENTS) \
 	$(libmutaborkernel_a_INDENTS) \
+	$(libmutaborscala_a_INDENTS) \
 	$(librtmidi_a_INDENTS) \
 	$(libmutabordebug_a_INDENTS) \
 	$(libmutaborgui_a_INDENTS)
@@ -518,6 +562,7 @@ POTSOURCES=$(INDENTSOURCES) \
 	$(NOCOMPSOURCES) \
 	$(libmutaborrouting_a_POTSOURCES) \
 	$(libmutaborkernel_a_POTSOURCES) \
+	$(libmutaborscala_a_POTSOURCES) \
 	$(librtmidi_a_POTSOURCES) \
 	$(libmutabordebug_a_POTSOURCES) \
 	$(libmutaborgui_a_POTSOURCES)
@@ -846,7 +891,22 @@ debuild: dch
 
 check-local: potfilechk
 
-#$(srcdir)/src/kernel/mut.hh: src/kernel/mut.yy
+# $(top_srcdir)/src/kernel/mut.hh: src/kernel/mut.hh
+# 	cmp "$<" "$@" || cp "$<" "$@"
+# $(top_srcdir)/src/kernel/mut.cc: src/kernel/mut.cc
+# 	cmp "$<" "$@" || cp "$<" "$@"
+# $(top_srcdir)/src/kernel/mutlex.cc: src/kernel/mutlex.cc
+# 	cmp "$<" "$@" || cp "$<" "$@"
+# $(top_srcdir)/src/kernel/parsers/scala/scale_parser.hh: src/kernel/parsers/scala/scale_parser.hh
+# 	cmp "$<" "$@" || cp "$<" "$@"
+# $(top_srcdir)/src/kernel/parsers/scala/scale_parser.cc: src/kernel/parsers/scala/scale_parser.cc
+# 	cmp $< "$@" || cp $< "$@"
+# $(top_srcdir)/src/kernel/parsers/scala/scale_lexer.cc: src/kernel/parsers/scala/scale_lexer.cc
+# 	cmp "$<" "$@" || cp "$<" "$@"
+# 
+
+
+
 #	rm -f $(srcdir)/src/kernel/mut.cc
 #	$(MAKE) $(srcdir)/src/kernel/mut.cc
 #src/kernel/mut.cc: src/kernel/mut.yy

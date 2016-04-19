@@ -52,7 +52,8 @@
 #define SRC_KERNEL_MUTLEX_H_PRECOMPILED
 
 // system headers which do seldom change
-
+#include <cstring>
+					
 namespace mutabor {
 	namespace scala_parser {
 
@@ -76,24 +77,27 @@ namespace mutabor {
 				    size_t len):
 				yyFlexLexer(),
 				file(f),
-				buffer(string),
+				buffer(strdup(string)),
 				buflen(len),
 				position(0),
 				report_parameters(true)
 				//			  yylval(new mutabor::hidden::YYSTYPE)
 			{}
-			~scale_lexer() { /* delete yylval; */ }
+			~scale_lexer() {
+				// delete yylval;
+				free(buffer);
+			}
 
 			void error (const location & loc,
 				    const char * message) {
-				std::cerr << message;
+				std::cerr << loc << std::endl << message << std::endl;
 			}
 			std::string & get_filename() {return file;}
 			symbol_type get_token();
 			void free_identifier() { /* free(yylval->identifier); yylval->identifier = NULL; */ }
 		protected:
 			std::string file;
-			const char * buffer;
+			char * buffer;
 			size_t buflen;
 			size_t position;
 			bool report_parameters;

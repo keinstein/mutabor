@@ -93,7 +93,7 @@ namespace mutabor {
 	protected:
 		virtual int LexerInput( char* buf, int max_size ) {
 			int size = std::min(max_size, (int)(buflen - position));
-			memcpy(buf,buffer,size);
+			memcpy(buf,buffer+position,size);
 			position += size;
 			return std::max(size,0);
 		}

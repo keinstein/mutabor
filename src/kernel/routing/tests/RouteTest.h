@@ -34,7 +34,7 @@ public:
 	{
 // change DEBUGA to DEBUG in case you need the debug output
 #ifdef DEBUG
-		isDebugFlag(smartptr) = true;
+		isDebugFlag(smartptr) = false;
 //		debugFlags::flags.timer = true;
 //		debugFlags::flags.midifile = true;
 #endif

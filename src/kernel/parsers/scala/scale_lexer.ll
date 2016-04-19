@@ -54,6 +54,7 @@ MUTABOR_NAMESPACE(scala_parser)
 # include <cstdio>
 # include <cstring>
 # include <unistd.h>
+# include <algorithm>
 /* the header file defines yyFlexLexer in order move everything to the right name space.
    But yyFlexLexer will be defined by Flex as soon as possible. So we must undefine it, here. */
 #undef yyFlexLexer
@@ -82,18 +83,20 @@ MUTABOR_NAMESPACE(scala_parser)
 \n                           return scale_parser::make_NEWLINE(loc);
 \/                            return scale_parser::make_SLASH(loc);
 \!                           return scale_parser::make_COMMENT_SIGN(loc);
+blank+                       return scale_parser::make_SPACE(yytext,loc);
 [ ]                          return scale_parser::make_BLANK(loc);
 \t                           return scale_parser::make_TAB(loc);
 [[:digit:]]*"."[[:digit:]]*  return scale_parser::make_F_NUMBER(yytext,loc);
 [[:digit:]]*                 return scale_parser::make_INTEGER(yytext,loc);
-[^\n]*	                     return scale_parser::make_STRING(yytext,loc);
+[^!\n[:digit:]/][^\n]*	                     return scale_parser::make_STRING(yytext,loc);
 <<EOF>>                      return scale_parser::make_END(loc);
 %%
 int scale_lexer::LexerInput( char* buf, int max_size ) {
-	int size = std::min(max_size, (int)(buflen - position));
-	memcpy(buf,buffer,size);
+	if (buflen <= position || max_size <= 0) return 0;
+	size_t  size = std::min((size_t)max_size, buflen - position);
+	std::memcpy(buf,buffer+position,size);
 	position += size;
-	return std::max(size,0);
+	return size;
 }
 }
  }

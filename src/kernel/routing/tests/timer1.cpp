@@ -139,7 +139,7 @@ int main(int argc, char **argv)
 {
 #ifdef DEBUG
 //	debugFlags::flags.timer = true;
-	mutabor_debug_flags.thread = true;
+	mutabor_debug_flags.thread = false;
 #endif
 	mutwxInitializer initializer;
 
