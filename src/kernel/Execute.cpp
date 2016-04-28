@@ -884,7 +884,7 @@ inline static void call_actions (mutabor_box_type * box,
 			default:
 				mutabor_error_message(box,
 						      internal_error,
-						      _mut("Undefined harmonic harmony class %d in HarmonyAnalysis().\n\
+						      _mut("Undefined harmony class %d in HarmonyAnalysis().\n\
 Please, report this error to the MUTABOR team."),
 						      index->ist_harmonieform);
 			}

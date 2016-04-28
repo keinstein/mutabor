@@ -195,7 +195,7 @@ namespace mutaborGUI {
 		DEBUGLOG (config, "going to group '%s'" ,sanitized_name.c_str());
 #if 0
 		mutASSERT(sanitized_name.Find('/') == wxNOT_FOUND);
-		mutASSERT(sanitized_name != _(".."));
+		mutASSERT(sanitized_name != _T(".."));
 		if (sanitized_name.Find('/') != wxNOT_FOUND || sanitized_name == _T("..")) {
 			UNREACHABLEC;
 			return;

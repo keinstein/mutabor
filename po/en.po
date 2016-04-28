@@ -25,11 +25,13 @@
 # transliterated to apostrophes, and the double quotation marks are
 # transliterated to 0x22.
 #
+#: src/kernel/routing/midi/DevMidi.cpp:105
+#: src/kernel/routing/midi/DevMidi.cpp:309
 msgid ""
 msgstr ""
 "Project-Id-Version: Mutabor 3.1.0alpha0\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2015-12-16 13:32+0100\n"
+"POT-Creation-Date: 2016-04-22 15:28+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.berlios.de>\n"
 "Language-Team: English <mutabor@mailbox.tu-dresden.de>\n"
@@ -41,6 +43,78 @@ msgstr ""
 "X-Poedit-Language: English\n"
 "X-Poedit-Country: UNITED STATES\n"
 "X-Poedit-SourceCharset: utf-8\n"
+
+#: lib/rtmidi/RtMidi.h:1638 lib/rtmidi/RtMidi.h:1662
+msgid "MidiInDummy: This class provides no functionality."
+msgstr ""
+
+#: src/gmut/scl2mut.cpp:31
+msgid "too many positional options have been specified on the command line"
+msgstr ""
+
+#: src/gmut/scl2mut.cpp:33
+#, fuzzy, c-format
+msgid "can not read options configuration file '%s'"
+msgstr "Invalid configuration file"
+
+#: src/gmut/scl2mut.cpp:36
+#, no-c-format
+msgid "option '%canonical_option%' only takes a single argument"
+msgstr ""
+
+#: src/gmut/scl2mut.cpp:39
+#, no-c-format
+msgid "option '%canonical_option%' cannot be specified more than once"
+msgstr ""
+
+#: src/gmut/scl2mut.cpp:42
+#, no-c-format
+msgid "the option '%canonical_option%' is required but missing"
+msgstr ""
+
+#: src/gmut/scl2mut.cpp:45
+#, no-c-format
+msgid "unrecognised option '%canonical_option%'"
+msgstr ""
+
+#: src/gmut/scl2mut.cpp:48
+#, no-c-format
+msgid "option '%canonical_option%' is ambiguous"
+msgstr ""
+
+#: src/gmut/scl2mut.cpp:53
+#, fuzzy, c-format
+msgid "Error: %s"
+msgstr "Error"
+
+#: src/gmut/scl2mut.cpp:62
+#, c-format
+msgid "Synopsis: %s [options]  input-file[.scl] [output-file[.mut]]"
+msgstr ""
+
+#: src/gmut/scl2mut.cpp:85
+msgid "Allowed options"
+msgstr ""
+
+#: src/gmut/scl2mut.cpp:90
+msgid "produce this help message"
+msgstr ""
+
+#: src/gmut/scl2mut.cpp:91
+msgid "Use .krb file instead of the on with the same name as the input"
+msgstr ""
+
+#: src/gmut/scl2mut.cpp:93
+msgid "Prefix identifiers with arg"
+msgstr ""
+
+#: src/gmut/scl2mut.cpp:95
+msgid ".scl file that shall be converted"
+msgstr ""
+
+#: src/gmut/scl2mut.cpp:96
+msgid "filename of the mutabor logic"
+msgstr ""
 
 #: src/kernel/Errors.cpp:153
 #, c-format
@@ -79,8 +153,8 @@ msgstr "Not enough memory or too few data for mutabor in source file"
 msgid " "
 msgstr " "
 
-#: src/kernel/Errors.cpp:167 src/kernel/Parser.cpp:1087
-#: src/kernel/Parser.cpp:1116
+#: src/kernel/Errors.cpp:167 src/kernel/Parser.cpp:1091
+#: src/kernel/Parser.cpp:1120
 #, c-format
 msgid "The interval name %s was used twice"
 msgstr "The interval name %s was used twice"
@@ -100,7 +174,7 @@ msgstr "The tonesystem name %s was used twice"
 msgid "The retuning name %s was used twice"
 msgstr "The retuning name %s was used twice"
 
-#: src/kernel/Errors.cpp:171 src/kernel/Parser.cpp:2047
+#: src/kernel/Errors.cpp:171 src/kernel/Parser.cpp:2051
 #, c-format
 msgid "The pattern name %s was used twice"
 msgstr "The pattern name %s was used twice"
@@ -119,7 +193,7 @@ msgstr "(unused)"
 msgid "The parameter name %s was used twice"
 msgstr "The parameter name %s was used twice"
 
-#: src/kernel/Errors.cpp:175 src/kernel/Parser.cpp:2288
+#: src/kernel/Errors.cpp:175 src/kernel/Parser.cpp:2292
 #, c-format
 msgid "The MIDI-Instrument %d was used twice"
 msgstr "The MIDI-Instrument %d was used twice"
@@ -129,12 +203,12 @@ msgstr "The MIDI-Instrument %d was used twice"
 msgid "MIDI-Mapping: Channel %d was used twice"
 msgstr "MIDI-Mapping: Channel %d was used twice"
 
-#: src/kernel/Errors.cpp:177 src/kernel/Parser.cpp:3610
+#: src/kernel/Errors.cpp:177 src/kernel/Parser.cpp:3614
 #, c-format
 msgid "Logik %s contains more than one ELSE statement"
 msgstr "Logik %s contains more than one ELSE statement"
 
-#: src/kernel/Errors.cpp:178 src/kernel/Parser.cpp:3255
+#: src/kernel/Errors.cpp:178 src/kernel/Parser.cpp:3259
 #, c-format
 msgid "Retuning %s contains more than one ELSE statement"
 msgstr "Retuning %s contains more than one ELSE statement"
@@ -155,7 +229,7 @@ msgstr "Undefined symbol: %s"
 msgid "Undefined interval: %s"
 msgstr "Undefined interval: %s"
 
-#: src/kernel/Errors.cpp:186 src/kernel/Parser.cpp:2365
+#: src/kernel/Errors.cpp:186 src/kernel/Parser.cpp:2369
 #, c-format
 msgid "Undefined tone: %s"
 msgstr "Undefined tone: %s"
@@ -165,7 +239,7 @@ msgstr "Undefined tone: %s"
 msgid "Undefined tonesystem: %s"
 msgstr "Undefined tonesystem: %s"
 
-#: src/kernel/Errors.cpp:188 src/kernel/Parser.cpp:2961
+#: src/kernel/Errors.cpp:188 src/kernel/Parser.cpp:2965
 #, c-format
 msgid "Undefined retuning: %s"
 msgstr "Undefined retuning: %s"
@@ -185,12 +259,12 @@ msgstr "Undefined parameter name: %s in %s"
 msgid "Undefined interval: %s (in %s)"
 msgstr "Undefined interval: %s (in %s)"
 
-#: src/kernel/Errors.cpp:192 src/kernel/Parser.cpp:3048
+#: src/kernel/Errors.cpp:192 src/kernel/Parser.cpp:3052
 #, c-format
 msgid "Undefined tone: %s (in tone system %s)"
 msgstr "Undefined tone: %s (in tone system %s)"
 
-#: src/kernel/Errors.cpp:193 src/kernel/Parser.cpp:3128
+#: src/kernel/Errors.cpp:193 src/kernel/Parser.cpp:3132
 #, c-format
 msgid "Undefined tone: %s (in retuning %s)"
 msgstr "Undefined tone: %s (in retuning %s)"
@@ -199,17 +273,17 @@ msgstr "Undefined tone: %s (in retuning %s)"
 msgid "(to be reused)"
 msgstr "(to be reused)"
 
-#: src/kernel/Errors.cpp:195 src/kernel/Parser.cpp:3289
+#: src/kernel/Errors.cpp:195 src/kernel/Parser.cpp:3293
 #, c-format
 msgid "Undefined retuning: %s (in retuning %s)"
 msgstr "Undefined retuning: %s (in retuning %s)"
 
-#: src/kernel/Errors.cpp:196 src/kernel/Parser.cpp:3571
+#: src/kernel/Errors.cpp:196 src/kernel/Parser.cpp:3575
 #, c-format
 msgid "Undefined initial tuning: %s (in logic %s)"
 msgstr "Undefined initial tuning: %s (in logic %s)"
 
-#: src/kernel/Errors.cpp:197 src/kernel/Parser.cpp:2831
+#: src/kernel/Errors.cpp:197 src/kernel/Parser.cpp:2835
 #, c-format
 msgid "Undefined action: %s (in logic %s)"
 msgstr "Undefined action: %s (in logic %s)"
@@ -224,13 +298,13 @@ msgid "Bad MIDI channel (valid: 1...16)"
 msgstr "Bad MIDI channel (valid: 1...16)"
 
 #: src/kernel/Errors.cpp:208 src/kernel/Interval.c:104
-#: src/kernel/Parser.cpp:1095 ../../../mutabor-git/src/kernel/mut.yy:231
-#: ../../../mutabor-git/src/kernel/mut.yy:241
+#: src/kernel/Parser.cpp:1099 ../../../mutabor-git/src/kernel/mut.yy:228
+#: ../../../mutabor-git/src/kernel/mut.yy:238
 #, c-format
 msgid "Bad interval value in %s"
 msgstr "Bad interval value in %s"
 
-#: src/kernel/Errors.cpp:209 src/kernel/Parser.cpp:3034
+#: src/kernel/Errors.cpp:209 src/kernel/Parser.cpp:3038
 #, fuzzy, c-format
 msgid "Bad key %d (valid: %d...%d) in tonesystem %s"
 msgstr "Bad key %d (valid: 36..96 (in tonesystem %s)"
@@ -250,7 +324,7 @@ msgstr "Bad value in %s"
 msgid "Bad MIDI-Code in logic %s (expecting %s )"
 msgstr "Bad MIDI-Code in logic %s (expecting %s )"
 
-#: src/kernel/Errors.cpp:213 src/kernel/Parser.cpp:3556
+#: src/kernel/Errors.cpp:213 src/kernel/Parser.cpp:3560
 #, c-format
 msgid "Logic %s must not be called by ELSE"
 msgstr "Logic %s must not be called by ELSE"
@@ -265,8 +339,8 @@ msgstr "A Key needs to be a single character ( %s )"
 msgid "Division by (nearly) 0 in line %d"
 msgstr "Division by (nearly) 0 in line %d"
 
-#: src/kernel/Errors.cpp:224 src/kernel/Parser.cpp:3204
-#: src/kernel/Parser.cpp:3316
+#: src/kernel/Errors.cpp:224 src/kernel/Parser.cpp:3208
+#: src/kernel/Parser.cpp:3320
 #, c-format
 msgid "In retuning %s and %s : Bad parameters"
 msgstr "In retuning %s and %s : Bad parameters"
@@ -276,18 +350,18 @@ msgstr "In retuning %s and %s : Bad parameters"
 msgid "In logic %s : Bad number of parameters ( %s )"
 msgstr "In logic %s : Bad number of parameters ( %s )"
 
-#: src/kernel/Errors.cpp:226 src/kernel/Parser.cpp:3579
+#: src/kernel/Errors.cpp:226 src/kernel/Parser.cpp:3583
 #, c-format
 msgid "In logik %s : initial tuning %s mustn't have parameters"
 msgstr "In logik %s : initial tuning %s mustn't have parameters"
 
-#: src/kernel/Errors.cpp:227 src/kernel/Parser.cpp:3194
+#: src/kernel/Errors.cpp:227 src/kernel/Parser.cpp:3198
 #, c-format
 msgid "In collection %s : call to %s mustn't have parameters"
 msgstr "In collection %s : call to %s mustn't have parameters"
 
-#: src/kernel/Errors.cpp:228 src/kernel/Parser.cpp:3297
-#: src/kernel/Parser.cpp:3306
+#: src/kernel/Errors.cpp:228 src/kernel/Parser.cpp:3301
+#: src/kernel/Parser.cpp:3310
 #, c-format
 msgid "In case %s : call to %s mustn't have parameters"
 msgstr "In case %s : call to %s mustn't have parameters"
@@ -346,12 +420,12 @@ msgstr "Bad retuning in line %d"
 msgid "bad pattern decl. at %s"
 msgstr "bad pattern decl. at %s"
 
-#: src/kernel/Errors.cpp:246 ../../../mutabor-git/src/kernel/mut.yy:925
+#: src/kernel/Errors.cpp:246 ../../../mutabor-git/src/kernel/mut.yy:922
 #, c-format
 msgid "Bad MIDI list in line %d"
 msgstr "Bad MIDI list in line %d"
 
-#: src/kernel/Errors.cpp:247 ../../../mutabor-git/src/kernel/mut.yy:1054
+#: src/kernel/Errors.cpp:247 ../../../mutabor-git/src/kernel/mut.yy:1051
 #, c-format
 msgid "No hex number after # (line %d)"
 msgstr "No hex number after # (line %d)"
@@ -374,12 +448,12 @@ msgstr ""
 msgid "Non existent harmony event in logic %s"
 msgstr "Non existent harmony event in logic %s"
 
-#: src/kernel/Errors.cpp:257 src/kernel/Parser.cpp:2839
+#: src/kernel/Errors.cpp:257 src/kernel/Parser.cpp:2843
 #, c-format
 msgid "Non well defined event %s in logic %s"
 msgstr "Non well defined event %s in logic %s"
 
-#: src/kernel/Errors.cpp:258 src/kernel/Parser.cpp:3616
+#: src/kernel/Errors.cpp:258 src/kernel/Parser.cpp:3620
 #, c-format
 msgid "Event ELSE is last in %s"
 msgstr "Event ELSE is last in %s"
@@ -422,7 +496,7 @@ msgstr "Compiler warning"
 
 #: src/kernel/Execute.cpp:66 src/wxGUI/MutBitmaps.cpp:68
 #: src/wxGUI/MutEditFile.cpp:261 src/wxGUI/MutEditFile.cpp:268
-#: src/wxGUI/MutEditFile.cpp:295 src/wxGUI/Routing/BoxShape.cpp:407
+#: src/wxGUI/MutEditFile.cpp:295 src/wxGUI/Routing/BoxShape.cpp:408
 msgid "Error"
 msgstr "Error"
 
@@ -524,17 +598,18 @@ msgstr "Unexpected action type: %d"
 #: src/kernel/Execute.cpp:887
 #, c-format
 msgid ""
-"Undefined harmonic harmony class %d in HarmonyAnalysis().\n"
+"Undefined harmony class %d in HarmonyAnalysis().\n"
 "Please, report this error to the MUTABOR team."
 msgstr ""
 
-#: src/kernel/Execute.h:154 src/kernel/routing/Box.h:730
+#: src/kernel/Execute.h:154 src/kernel/parsers/scala/scala.cpp:80
+#: src/kernel/routing/Box.h:730
 msgid "Error in Error: Could not allocate buffer for error message."
 msgstr ""
 
 #: src/kernel/Hilfs.cpp:98
 #, fuzzy
-msgid "Not enough memory for mutabor in source file"
+msgid "Not enough memory for the MUTABOR file"
 msgstr "Not enough memory or too few data for mutabor in source file"
 
 #: src/kernel/Hilfs.cpp:152
@@ -566,7 +641,7 @@ msgstr "Intervals %s and %s are dependent"
 
 #: src/kernel/Interval.c:221
 #, fuzzy, c-format
-msgid "Unknown error in %s , line %d."
+msgid "Unknown error in %s, line %d."
 msgstr "Unknown error in %s , line %d !"
 
 #: src/kernel/Interval.c:222
@@ -592,130 +667,132 @@ msgid "CENTER"
 msgstr ""
 
 #: src/kernel/Parser.cpp:592
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Invalid argument type %d detected at\n"
-"%s:%n"
-msgstr ""
+"%s:%d"
+msgstr "Undefined retuning: %s (in retuning %s)"
 
-#: src/kernel/Parser.cpp:1044
+#: src/kernel/Parser.cpp:1048
 #, c-format
 msgid ""
 "Invalid event type %d detected at\n"
 "%s:%d"
 msgstr ""
 
-#: src/kernel/Parser.cpp:1144 src/kernel/Parser.cpp:1169
-#: src/kernel/Parser.cpp:1194
+#: src/kernel/Parser.cpp:1148 src/kernel/Parser.cpp:1173
+#: src/kernel/Parser.cpp:1198
 #, fuzzy, c-format
 msgid "The tone name %s was used twice."
 msgstr "The tone name %s was used twice"
 
-#: src/kernel/Parser.cpp:1211 src/kernel/Parser.cpp:1331
+#: src/kernel/Parser.cpp:1215 src/kernel/Parser.cpp:1335
 #, c-format
 msgid ""
 "Internal error while creating interval “%s” at\n"
 "%s:%d"
 msgstr ""
 
-#: src/kernel/Parser.cpp:1232 src/kernel/Parser.cpp:1244
+#: src/kernel/Parser.cpp:1236 src/kernel/Parser.cpp:1248
 msgid "There is already a logic with this name."
 msgstr ""
 
-#: src/kernel/Parser.cpp:1238
+#: src/kernel/Parser.cpp:1242
 msgid "There is already a retuning with this name."
 msgstr ""
 
-#: src/kernel/Parser.cpp:1287
+#: src/kernel/Parser.cpp:1291
 #, fuzzy, c-format
 msgid "The tone system name %s was used twice. %s"
 msgstr "The tonesystem name %s was used twice"
 
-#: src/kernel/Parser.cpp:1316
+#: src/kernel/Parser.cpp:1320
 #, fuzzy, c-format
-msgid "The tone system name “%s” was used twice"
+msgid "The tone system name “%s” was used twice."
 msgstr "The tonesystem name %s was used twice"
 
-#: src/kernel/Parser.cpp:1364
+#: src/kernel/Parser.cpp:1368
 #, fuzzy, c-format
 msgid "The retuning name %s was used twice. %s"
 msgstr "The retuning name %s was used twice"
 
-#: src/kernel/Parser.cpp:1393 src/kernel/Parser.cpp:1735
-#: src/kernel/Parser.cpp:1913 src/kernel/Parser.cpp:1980
+#: src/kernel/Parser.cpp:1397 src/kernel/Parser.cpp:1739
+#: src/kernel/Parser.cpp:1917 src/kernel/Parser.cpp:1984
 #, fuzzy, c-format
 msgid "Undefined parameter name “%s” in “%s”."
 msgstr "Undefined parameter name: %s in %s"
 
-#: src/kernel/Parser.cpp:1406
+#: src/kernel/Parser.cpp:1410
 #, c-format
 msgid ""
 "Invalid parameter argument type %d in retuning “%s” while calling %s. "
 "Please, report the error to the MUTABOR team."
 msgstr ""
 
-#: src/kernel/Parser.cpp:1607
+#: src/kernel/Parser.cpp:1611
 #, c-format
 msgid ""
 "Internal error at\n"
 "%s:%d"
 msgstr ""
 
-#: src/kernel/Parser.cpp:2173
+#: src/kernel/Parser.cpp:2177
 #, fuzzy, c-format
 msgid "A Key needs to be a single character (got “%s”)"
 msgstr "A Key needs to be a single character ( %s )"
 
-#: src/kernel/Parser.cpp:2236
+#: src/kernel/Parser.cpp:2240
 #, fuzzy, c-format
 msgid "The logic name %s was used twice. %s"
 msgstr "The logic name %s was used twice"
 
-#: src/kernel/Parser.cpp:2306
+#: src/kernel/Parser.cpp:2310
 #, fuzzy, c-format
 msgid "Bad MIDI channel %d (valid: 1...16)"
 msgstr "Bad MIDI channel (valid: 1...16)"
 
-#: src/kernel/Parser.cpp:2315
+#: src/kernel/Parser.cpp:2319
 #, fuzzy, c-format
-msgid "Bad MIDI from channel %d (valid: 1...16)"
+msgid "Bad start %d of MIDI channel range (valid: 1...16)"
 msgstr "Bad MIDI channel (valid: 1...16)"
 
-#: src/kernel/Parser.cpp:2321
+#: src/kernel/Parser.cpp:2325
 #, fuzzy, c-format
-msgid "Bad MIDI to channel %d (valid: 1...16)"
+msgid "Bad end %d of MIDI channel range (valid: 1...16)"
 msgstr "Bad MIDI channel (valid: 1...16)"
 
-#: src/kernel/Parser.cpp:2329
+#: src/kernel/Parser.cpp:2333
 #, fuzzy, c-format
 msgid "Bad MIDI rerouting channel %d (valid: 1...16)"
 msgstr "Bad MIDI channel (valid: 1...16)"
 
-#: src/kernel/Parser.cpp:2381
+#: src/kernel/Parser.cpp:2385
 #, fuzzy, c-format
 msgid "Tones %s and %s depend on each other."
 msgstr "Tones %s and %s are dependent"
 
-#: src/kernel/Parser.cpp:2427 src/kernel/Parser.cpp:2473
+#: src/kernel/Parser.cpp:2431 src/kernel/Parser.cpp:2477
 #, c-format
 msgid ""
 "Invalid tone type %d detected at\n"
 "%s:%d"
 msgstr ""
 
-#: src/kernel/Parser.cpp:2599
+#: src/kernel/Parser.cpp:2603
 #, fuzzy, c-format
 msgid "Undefined harmony “%s” in logic %s."
 msgstr "Undefined action: %s (in logic %s)"
 
-#: src/kernel/Parser.cpp:2613
+#: src/kernel/Parser.cpp:2617
 #, c-format
 msgid ""
 "Lowest chroma %d of harmonic form %s in logic %s is not a member of that "
-"harmony. This harmonic form trigger will be ignored."
+"harmony.\n"
+"\n"
+" This harmonic form will be ignored."
 msgstr ""
 
-#: src/kernel/Parser.cpp:2631
+#: src/kernel/Parser.cpp:2635
 #, c-format
 msgid ""
 "The highest chroma %d of the harmonic form %s in logic %s is not a member of "
@@ -724,28 +801,28 @@ msgid ""
 "This harmonic form trigger will be ignored."
 msgstr ""
 
-#: src/kernel/Parser.cpp:2651
+#: src/kernel/Parser.cpp:2655
 #, fuzzy, c-format
 msgid "Undefined harmony: %s (in logic %s)"
 msgstr "Undefined action: %s (in logic %s)"
 
-#: src/kernel/Parser.cpp:2667 src/kernel/Parser.cpp:2685
+#: src/kernel/Parser.cpp:2671 src/kernel/Parser.cpp:2689
 #, c-format
 msgid ""
 "Lowest chroma %d of harmony %s in logic %s is not a member of that harmony. "
 "This harmony trigger will be ignored."
 msgstr ""
 
-#: src/kernel/Parser.cpp:2705
+#: src/kernel/Parser.cpp:2709
 #, fuzzy, c-format
 msgid "Bad MIDI-Code %x in logic %s (expecting status byte %s )"
 msgstr "Bad MIDI-Code in logic %s (expecting %s )"
 
-#: src/kernel/Parser.cpp:2708
+#: src/kernel/Parser.cpp:2712
 msgid "status byte"
 msgstr "status byte"
 
-#: src/kernel/Parser.cpp:2716
+#: src/kernel/Parser.cpp:2720
 #, fuzzy, c-format
 msgid ""
 "MIDI event in logic %s does not start with channel 0 status byte.\n"
@@ -754,13 +831,13 @@ msgstr ""
 "MIDI event in logic %s does not start with channel 0 status byte. Value "
 "corrected."
 
-#: src/kernel/Parser.cpp:2729
+#: src/kernel/Parser.cpp:2733
 #, fuzzy, c-format
 msgid ""
 "Bad MIDI-Code #%x in logic %s (expecting a data byte in the range #00...#7f )"
 msgstr "Bad MIDI-Code in logic %s (expecting %s )"
 
-#: src/kernel/Parser.cpp:2758
+#: src/kernel/Parser.cpp:2762
 #, c-format
 msgid ""
 "Bad MIDI-Code in logic %s, expecting a byte I got %d=#%x.\n"
@@ -768,7 +845,7 @@ msgid ""
 "Trying to recover..."
 msgstr ""
 
-#: src/kernel/Parser.cpp:2787
+#: src/kernel/Parser.cpp:2791
 #, fuzzy, c-format
 msgid ""
 "MIDI event in logic %s does not start with status byte.\n"
@@ -777,7 +854,7 @@ msgstr ""
 "MIDI event in logic %s does not start with channel 0 status byte. Value "
 "corrected."
 
-#: src/kernel/Parser.cpp:2797
+#: src/kernel/Parser.cpp:2801
 #, fuzzy, c-format
 msgid ""
 "MIDI event in logic %s must be defined for channel 0, only.\n"
@@ -786,34 +863,34 @@ msgstr ""
 "MIDI event in logic %s does not start with channel 0 status byte. Value "
 "corrected."
 
-#: src/kernel/Parser.cpp:2849
+#: src/kernel/Parser.cpp:2853
 #, c-format
 msgid "In logic %s: Too many parameters while calling retuning %s."
 msgstr ""
 
-#: src/kernel/Parser.cpp:2856
+#: src/kernel/Parser.cpp:2860
 #, c-format
 msgid "In logic %s: Too few parameters while calling retuning %s."
 msgstr ""
 
-#: src/kernel/Parser.cpp:2867
+#: src/kernel/Parser.cpp:2871
 #, fuzzy, c-format
 msgid "In logic %s: Tonesystem %s must be called without parameters."
 msgstr "In logik %s : initial tuning %s mustn't have parameters"
 
-#: src/kernel/Parser.cpp:2877
+#: src/kernel/Parser.cpp:2881
 #, fuzzy, c-format
 msgid "In logic %s: Logic %s must be called without parameters."
 msgstr "In logik %s : initial tuning %s mustn't have parameters"
 
-#: src/kernel/Parser.cpp:2889
+#: src/kernel/Parser.cpp:2893
 #, c-format
 msgid ""
 "In logic %s: Harmony analysis may be performed only after a logic or "
 "tonesystem change."
 msgstr ""
 
-#: src/kernel/Parser.cpp:2897
+#: src/kernel/Parser.cpp:2901
 #, c-format
 msgid ""
 "Internal error in check_aktionen() while processing logic %s.\n"
@@ -821,46 +898,46 @@ msgid ""
 "Please, report this error to the Mutabor team."
 msgstr ""
 
-#: src/kernel/Parser.cpp:2977
+#: src/kernel/Parser.cpp:2981
 #, fuzzy, c-format
 msgid "Retunings/logics %s and %s depend on each other"
 msgstr "Retunings/logics %s and %s are dependent"
 
-#: src/kernel/Parser.cpp:3107
+#: src/kernel/Parser.cpp:3111
 #, fuzzy, c-format
 msgid "Fixed tone %s in retuning %s"
 msgstr "Undefined tone: %s (in retuning %s)"
 
-#: src/kernel/Parser.cpp:3117
+#: src/kernel/Parser.cpp:3121
 #, c-format
 msgid ""
 "Tone does %s not match its reference tone %s. Dectected in retuning code at "
 "%s:%d"
 msgstr ""
 
-#: src/kernel/Parser.cpp:3177
+#: src/kernel/Parser.cpp:3181
 #, fuzzy, c-format
 msgid "Undefined retuning: %s (in retuning %s)."
 msgstr "Undefined retuning: %s (in retuning %s)"
 
-#: src/kernel/Parser.cpp:3185
+#: src/kernel/Parser.cpp:3189
 #, fuzzy, c-format
 msgid "In collection %s : call to %s mustn't have parameters."
 msgstr "In collection %s : call to %s mustn't have parameters"
 
-#: src/kernel/Parser.cpp:3237
+#: src/kernel/Parser.cpp:3241
 #, fuzzy, c-format
 msgid "The alternative %d is used twice in %s"
 msgstr "The alternative %d is ued twice in %s"
 
-#: src/kernel/Parser.cpp:3331
+#: src/kernel/Parser.cpp:3335
 #, fuzzy, c-format
 msgid ""
 "Undefined returning type %d detected in\n"
 "%s:%d"
 msgstr "Undefined retuning: %s (in retuning %s)"
 
-#: src/kernel/Parser.cpp:3598
+#: src/kernel/Parser.cpp:3602
 #, c-format
 msgid ""
 "No event defined for action %s. Detected at\n"
@@ -1054,110 +1131,114 @@ msgstr ""
 msgid "Show messages that are always shown ;-). (for internal use only)"
 msgstr ""
 
-#: ../../../mutabor-git/src/kernel/mut.yy:162
+#: ../../../mutabor-git/src/kernel/mut.yy:159
 #, c-format
 msgid "%s at line %d"
 msgstr ""
 
-#: ../../../mutabor-git/src/kernel/mut.yy:179
+#: ../../../mutabor-git/src/kernel/mut.yy:176
 #, fuzzy, c-format
 msgid "Syntax error in line %d."
 msgstr "Syntax error in line %d"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:250
+#: ../../../mutabor-git/src/kernel/mut.yy:247
 #, fuzzy, c-format
 msgid "Bad interval declaration of intervall %s in line %d."
 msgstr "Bad interval declaration of intervall %s"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:257
+#: ../../../mutabor-git/src/kernel/mut.yy:254
 #, fuzzy, c-format
 msgid "Wrong character. Expecting %s in line %d."
 msgstr "Wrong character ! Expecting %s (line %d)"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:298
+#: ../../../mutabor-git/src/kernel/mut.yy:295
 #, fuzzy, c-format
 msgid "Bad tone declaration of tone %s in line %d."
 msgstr "Bad tone declaration of tone %s"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:332
-#: ../../../mutabor-git/src/kernel/mut.yy:342
-#: ../../../mutabor-git/src/kernel/mut.yy:352
-#: ../../../mutabor-git/src/kernel/mut.yy:362
-#: ../../../mutabor-git/src/kernel/mut.yy:401
-#: ../../../mutabor-git/src/kernel/mut.yy:412
+#: ../../../mutabor-git/src/kernel/mut.yy:329
+#: ../../../mutabor-git/src/kernel/mut.yy:339
+#: ../../../mutabor-git/src/kernel/mut.yy:349
+#: ../../../mutabor-git/src/kernel/mut.yy:359
+#: ../../../mutabor-git/src/kernel/mut.yy:398
+#: ../../../mutabor-git/src/kernel/mut.yy:409
 #, fuzzy, c-format
 msgid "Division by (nearly) 0 in line %d."
 msgstr "Division by (nearly) 0 in line %d"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:465
+#: ../../../mutabor-git/src/kernel/mut.yy:462
 #, fuzzy, c-format
 msgid "Bad tonesystem declaration in line %d."
 msgstr "Bad tonesystem declaration. (line %d)"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:497
-#: ../../../mutabor-git/src/kernel/mut.yy:504
+#: ../../../mutabor-git/src/kernel/mut.yy:494
+#: ../../../mutabor-git/src/kernel/mut.yy:501
 #, c-format
 msgid ""
 "Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as "
 "parameters as in line %d is not supported. Expect undexpected behaviour."
 msgstr ""
 
-#: ../../../mutabor-git/src/kernel/mut.yy:598
+#: ../../../mutabor-git/src/kernel/mut.yy:595
 #, fuzzy, c-format
 msgid "Invalid parameter list in retuning %s line %d"
 msgstr "Bad parameter list in call to %s in line %d"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:611
+#: ../../../mutabor-git/src/kernel/mut.yy:608
 #, fuzzy, c-format
 msgid "Error while reading %s line %d"
 msgstr "Error reading the file."
 
-#: ../../../mutabor-git/src/kernel/mut.yy:631
+#: ../../../mutabor-git/src/kernel/mut.yy:628
 #, fuzzy, c-format
 msgid "Bad retuning in line %d."
 msgstr "Bad retuning in line %d"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:749
+#: ../../../mutabor-git/src/kernel/mut.yy:746
 #, fuzzy, c-format
 msgid "Invalid argument list for call to %s in line %d"
 msgstr "Bad parameter list in call to %s in line %d"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:812
+#: ../../../mutabor-git/src/kernel/mut.yy:809
 #, fuzzy, c-format
 msgid "There is an error in the chroma list in harmony “%s” at line %d."
 msgstr "Bad tone declaration of tone %s"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:820
+#: ../../../mutabor-git/src/kernel/mut.yy:817
 #, c-format
 msgid ""
 "The chroma list must be enclosed in braces '{' '}' in harmony “%s” at line "
 "%d."
 msgstr ""
 
-#: ../../../mutabor-git/src/kernel/mut.yy:1198
+#: ../../../mutabor-git/src/kernel/mut.yy:1195
 #, fuzzy, c-format
 msgid "Invalid character: “%c” = %x at line %d."
 msgstr "Non-valid character: asc=%x (line %d)"
 
-#: src/kernel/routing/Box.cpp:469
+#: src/kernel/parsers/scala/scala.cpp:87
+msgid "Error parsing scala document: "
+msgstr ""
+
+#: src/kernel/routing/Box.cpp:465
 msgid "Activation error"
 msgstr "Activation error"
 
-#: src/kernel/routing/Box.cpp:711
+#: src/kernel/routing/Box.cpp:708
 msgid "Generating tables"
 msgstr "Generating tables"
 
-#: src/kernel/routing/Box.cpp:719
+#: src/kernel/routing/Box.cpp:718
 #, fuzzy
 msgid "Translation successful"
 msgstr "Translation successful !"
 
-#: src/kernel/routing/Box.cpp:720
+#: src/kernel/routing/Box.cpp:719
 #, fuzzy
 msgid "No error occured."
 msgstr "No error occured !"
 
-#: src/kernel/routing/Box.cpp:727
+#: src/kernel/routing/Box.cpp:726
 #, fuzzy
 msgid "Translation interrupted."
 msgstr "Translation interrupted !"
@@ -1189,7 +1270,7 @@ msgstr "Unknown device type"
 msgid "GUIDO box"
 msgstr "GUIDO Box"
 
-#: src/kernel/routing/Box.h:272 src/wxGUI/Routing/BoxShape.cpp:153
+#: src/kernel/routing/Box.h:272 src/wxGUI/Routing/BoxShape.cpp:154
 #, c-format
 msgid "Box %d"
 msgstr "Box %d"
@@ -1204,62 +1285,61 @@ msgstr ""
 msgid "The logic in box %d is too slow."
 msgstr ""
 
-#: src/kernel/routing/CommonFileDevice.cpp:51
+#: src/kernel/routing/CommonFileDevice.cpp:60
 msgid ""
 "The playback thread has been killed.\n"
 "Please report the error to the developers and include (if possible)\n"
 "\tthe current file and the following information:\n"
 msgstr ""
 
-#: src/kernel/routing/CommonFileDevice.h:106
+#: src/kernel/routing/CommonFileDevice.h:107
 #, fuzzy
 msgid "Generic output file"
 msgstr "GIS output file."
 
-#: src/kernel/routing/CommonFileDevice.h:288
+#: src/kernel/routing/CommonFileDevice.h:275
 #, fuzzy
 msgid "Generic input file"
 msgstr "GIS input file."
 
-#: src/kernel/routing/Device.h:625
+#: src/kernel/routing/Device.h:628
 msgid "Device base class"
 msgstr "Device base class"
 
-#: src/kernel/routing/Device.h:950
+#: src/kernel/routing/Device.h:953
 msgid "Undefined output device"
 msgstr "Undefined output device"
 
-#: src/kernel/routing/Device.h:1246
+#: src/kernel/routing/Device.h:1249
 msgid "Undefined input device"
 msgstr "Undefined input device"
 
-#: src/kernel/routing/Route.cpp:350 src/kernel/routing/Route.cpp:398
-#: src/kernel/routing/midi/DevMidi.cpp:102
+#: src/kernel/routing/Route.cpp:346 src/kernel/routing/Route.cpp:394
 msgid "Unknown"
 msgstr "Unknown"
 
-#: src/kernel/routing/Route.cpp:351
+#: src/kernel/routing/Route.cpp:347
 msgid "Midi Port"
 msgstr "Midi Port"
 
-#: src/kernel/routing/Route.cpp:352
+#: src/kernel/routing/Route.cpp:348
 msgid "Midi File"
 msgstr "Midi File"
 
-#: src/kernel/routing/Route.cpp:353
+#: src/kernel/routing/Route.cpp:349
 msgid "GUIDO .gmn File"
 msgstr "GUIDO .gmn File"
 
-#: src/kernel/routing/Route.h:129
+#: src/kernel/routing/Route.h:132
 #, fuzzy
 msgid "No such output device"
 msgstr "No output device"
 
-#: src/kernel/routing/Route.h:575
+#: src/kernel/routing/Route.h:580
 msgid "Route factory already set"
 msgstr ""
 
-#: src/kernel/routing/Route.h:580
+#: src/kernel/routing/Route.h:585
 msgid ""
 "Trying to create a route without the correct factory. You (the programmer) "
 "must create one!"
@@ -1270,7 +1350,7 @@ msgstr ""
 msgid "GIS output file"
 msgstr "GIS output file."
 
-#: src/kernel/routing/gmn/DevGIS.h:276
+#: src/kernel/routing/gmn/DevGIS.h:278
 #, fuzzy
 msgid "GIS input file"
 msgstr "GIS input file."
@@ -1344,17 +1424,17 @@ msgstr "The file must begin with “[” or “{”."
 msgid "Range without preceeding tag."
 msgstr "Range without preceeding tag."
 
-#: src/kernel/routing/midi/DevMidF.cpp:143
+#: src/kernel/routing/midi/DevMidF.cpp:144
 msgid "Number contains too many bytes"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:164
+#: src/kernel/routing/midi/DevMidF.cpp:165
 #, fuzzy, c-format
 msgid "Invalid status byte: %x  at position %d"
 msgstr "status byte"
 
-#: src/kernel/routing/midi/DevMidF.cpp:333
-#: src/kernel/routing/midi/DevMidF.cpp:472
+#: src/kernel/routing/midi/DevMidF.cpp:334
+#: src/kernel/routing/midi/DevMidF.cpp:473
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -1363,14 +1443,14 @@ msgstr ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
 "current route had to be corrected."
 
-#: src/kernel/routing/midi/DevMidF.cpp:380
-#: src/kernel/routing/midi/DevMidF.cpp:386
-#: src/kernel/routing/midi/DevMidi.cpp:155
-#: src/kernel/routing/midi/DevMidi.cpp:161
+#: src/kernel/routing/midi/DevMidF.cpp:381
+#: src/kernel/routing/midi/DevMidF.cpp:387
+#: src/kernel/routing/midi/DevMidi.cpp:185
+#: src/kernel/routing/midi/DevMidi.cpp:191
 msgid "Bending_Range"
 msgstr "Bending_Range"
 
-#: src/kernel/routing/midi/DevMidF.cpp:504
+#: src/kernel/routing/midi/DevMidF.cpp:505
 #, c-format
 msgid ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -1379,51 +1459,51 @@ msgstr ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
 "current route had to be corrected."
 
-#: src/kernel/routing/midi/DevMidF.cpp:533
+#: src/kernel/routing/midi/DevMidF.cpp:534
 msgid "You instructed me to open a file without file name. I can't do that."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:550
+#: src/kernel/routing/midi/DevMidF.cpp:551
 #, c-format
 msgid "Can not open Midi input file '%s'."
 msgstr "Can not open Midi input file '%s'."
 
-#: src/kernel/routing/midi/DevMidF.cpp:560
+#: src/kernel/routing/midi/DevMidF.cpp:561
 #, fuzzy, c-format
 msgid "File '%s' is not a valid midi file."
 msgstr "The string “%s”s not a valid file name."
 
-#: src/kernel/routing/midi/DevMidF.cpp:569
+#: src/kernel/routing/midi/DevMidF.cpp:570
 #, c-format
 msgid "Unknown header (chunk length %d) in file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:581
+#: src/kernel/routing/midi/DevMidF.cpp:582
 #, fuzzy, c-format
 msgid "Unknown file type %d in file '%s'."
 msgstr "Unknown device type %d."
 
-#: src/kernel/routing/midi/DevMidF.cpp:598
+#: src/kernel/routing/midi/DevMidF.cpp:599
 #, c-format
 msgid "Midi file '%s' has corrupted timing information."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:618
+#: src/kernel/routing/midi/DevMidF.cpp:619
 #, c-format
 msgid "Could not allocate memory for the track list of file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:627
+#: src/kernel/routing/midi/DevMidF.cpp:628
 #, c-format
 msgid "File '%s' has a broken track header."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:644
+#: src/kernel/routing/midi/DevMidF.cpp:645
 #, c-format
 msgid "Could not allocate data for track %d of MIDI input file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:661
+#: src/kernel/routing/midi/DevMidF.cpp:662
 #, c-format
 msgid ""
 "The MIDI input file “%s” is corrupted. This has been detected while reading "
@@ -1452,61 +1532,78 @@ msgstr ""
 msgid "MIDI output file"
 msgstr "MIDI output file"
 
-#: src/kernel/routing/midi/DevMidF.h:749
+#: src/kernel/routing/midi/DevMidF.h:751
 msgid "MIDI input file"
 msgstr "MIDI input file"
 
-#: src/kernel/routing/midi/DevMidi.cpp:103
-#: src/kernel/routing/midi/DevMidi.h:336 src/kernel/routing/midi/DevMidi.h:478
-#: src/wxGUI/Routing/DeviceShape.cpp:566 src/wxGUI/Routing/DeviceShape.cpp:605
+#: src/kernel/routing/midi/DevMidi.cpp:106
+#: src/kernel/routing/midi/DevMidi.cpp:310
+#: src/kernel/routing/midi/DevMidi.h:342 src/kernel/routing/midi/DevMidi.h:490
+#: src/wxGUI/Routing/InputDevDlg.h:185 src/wxGUI/Routing/OutputDevDlg.h:170
 msgid "no device"
 msgstr "no device"
 
-#: src/kernel/routing/midi/DevMidi.cpp:320
-#, c-format
-msgid ""
-"The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. "
-"The current route had to be corrected."
-msgstr ""
-"The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. "
-"The current route had to be corrected."
-
-#: src/kernel/routing/midi/DevMidi.cpp:378
-#: src/kernel/routing/midi/DevMidi.cpp:389
-#: src/kernel/routing/midi/DevMidi.cpp:400
-#, fuzzy, c-format
-msgid ""
-"Can not open Midi input device no. %d (%s):\n"
-"%s"
-msgstr "Can not open Midi input device no. %d (%s)."
-
-#: src/kernel/routing/midi/DevMidi.h:93
-#, fuzzy
-msgid "Can not open ouput Midi devices due to memory allocation  problems."
-msgstr "Can not open ouput Midi devices."
-
-#: src/kernel/routing/midi/DevMidi.h:101
-#, fuzzy, c-format
-msgid "Can not open output Midi device no. %d (%s)"
-msgstr "Can not open output Midi device nr. %d (%s)"
-
-#: src/kernel/routing/midi/DevMidi.h:328
+#: src/kernel/routing/midi/DevMidi.cpp:125
+#: src/kernel/routing/midi/DevMidi.cpp:329
+#: src/kernel/routing/midi/DevMidi.h:333 src/kernel/routing/midi/DevMidi.h:481
 #, c-format
 msgid ""
 "Could not get the name of the MIDI device with id %d:\n"
 "%s"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidi.h:331
+#: src/kernel/routing/midi/DevMidi.cpp:128
+#: src/kernel/routing/midi/DevMidi.cpp:332
+#: src/kernel/routing/midi/DevMidi.h:337 src/kernel/routing/midi/DevMidi.h:485
 #, fuzzy
 msgid "invalid device"
 msgstr "no device"
 
-#: src/kernel/routing/midi/DevMidi.h:350
+#: src/kernel/routing/midi/DevMidi.cpp:378
+#, c-format
+msgid ""
+"The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. "
+"The current route had to be corrected."
+msgstr ""
+"The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. "
+"The current route had to be corrected."
+
+#: src/kernel/routing/midi/DevMidi.cpp:436
+#, fuzzy
+msgid "Can not open MIDI input devices due to memory allocation problems."
+msgstr "Can not open ouput Midi devices."
+
+#: src/kernel/routing/midi/DevMidi.cpp:444
+#, fuzzy, c-format
+msgid ""
+"Can not open MIDI input device %s (%s):\n"
+"%s"
+msgstr "Can not open Midi input device no. %d (%s)."
+
+#: src/kernel/routing/midi/DevMidi.cpp:456
+#, fuzzy, c-format
+msgid ""
+"Can not register callback for MIDI input device %s (%s):\n"
+"%s"
+msgstr "Can not open Midi input device no. %d (%s)."
+
+#: src/kernel/routing/midi/DevMidi.h:93
+#, fuzzy
+msgid "Can not open MIDI output devices due to memory allocation problems."
+msgstr "Can not open ouput Midi devices."
+
+#: src/kernel/routing/midi/DevMidi.h:101
+#, fuzzy, c-format
+msgid ""
+"Can not open output Midi device %s (%s):\n"
+"%s"
+msgstr "Can not open output Midi device nr. %d (%s)"
+
+#: src/kernel/routing/midi/DevMidi.h:356
 msgid "Midi output device"
 msgstr "Midi output device"
 
-#: src/kernel/routing/midi/DevMidi.h:528
+#: src/kernel/routing/midi/DevMidi.h:540
 msgid "Midi input device"
 msgstr "Midi input device"
 
@@ -2610,27 +2707,27 @@ msgstr "Connecting command with id %d for box %d"
 msgid "Logic: %s - Box %d"
 msgstr "Logic: %s - Box %d"
 
-#: src/wxGUI/MutRouteWnd.cpp:433 src/wxGUI/MutRouteWnd.cpp:615
+#: src/wxGUI/MutRouteWnd.cpp:437 src/wxGUI/MutRouteWnd.cpp:619
 #, c-format
 msgid "The string '%s' is not a valid file name."
 msgstr "The string â%sâ is not a valid file name."
 
-#: src/wxGUI/MutRouteWnd.cpp:446 src/wxGUI/MutRouteWnd.cpp:465
+#: src/wxGUI/MutRouteWnd.cpp:450 src/wxGUI/MutRouteWnd.cpp:469
 #, c-format
 msgid "File '%s' couldn't be loaded"
 msgstr "File â%sâ couldn't be loaded"
 
-#: src/wxGUI/MutRouteWnd.cpp:455
+#: src/wxGUI/MutRouteWnd.cpp:459
 #, c-format
 msgid "File '%s' could be opened, but not loaded."
 msgstr "File â%sâ could be opened, but not loaded."
 
-#: src/wxGUI/MutRouteWnd.cpp:551
+#: src/wxGUI/MutRouteWnd.cpp:555
 #, c-format
 msgid "Cannot open routes file '%s' for writing."
 msgstr "Cannot open routes file â%sâ for writing."
 
-#: src/wxGUI/MutRouteWnd.cpp:570
+#: src/wxGUI/MutRouteWnd.cpp:574
 #, c-format
 msgid "Error writing file '%s'."
 msgstr "Error writing file '%s'."
@@ -2767,15 +2864,15 @@ msgstr "No box / thru mode"
 msgid "GUIDO file box"
 msgstr "GUIDO file box"
 
-#: src/wxGUI/Routing/BoxShape.cpp:143 src/wxGUI/Routing/NewBoxShape.h:75
+#: src/wxGUI/Routing/BoxShape.cpp:144 src/wxGUI/Routing/NewBoxShape.h:75
 msgid "New Box"
 msgstr "New Box"
 
-#: src/wxGUI/Routing/BoxShape.cpp:150
+#: src/wxGUI/Routing/BoxShape.cpp:151
 msgid "GUIDO Box"
 msgstr "GUIDO Box"
 
-#: src/wxGUI/Routing/BoxShape.cpp:406
+#: src/wxGUI/Routing/BoxShape.cpp:407
 msgid "You selected a box id that is already in use. Please, try another one."
 msgstr ""
 
@@ -2809,7 +2906,7 @@ msgstr "Choose device type"
 msgid "Unknown device type"
 msgstr "Unknown device type"
 
-#: src/wxGUI/Routing/InputDevDlg.h:67
+#: src/wxGUI/Routing/InputDevDlg.h:68
 msgid "Input Device"
 msgstr "Input Device"
 
@@ -2898,11 +2995,6 @@ msgid ""
 "Message:%s\n"
 "Do you want to call the default assert handler?"
 msgstr ""
-
-#: src/wxGUI/xmltree.cpp:198
-#, fuzzy
-msgid ".."
-msgstr "..."
 
 #: src/wxGUI/stclanguage.h:69
 msgid "<default>"
@@ -3226,6 +3318,18 @@ msgid "track"
 msgstr "track"
 
 #, fuzzy
+#~ msgid "Bad MIDI from channel %d (valid: 1...16)"
+#~ msgstr "Bad MIDI channel (valid: 1...16)"
+
+#, fuzzy
+#~ msgid "Bad MIDI to channel %d (valid: 1...16)"
+#~ msgstr "Bad MIDI channel (valid: 1...16)"
+
+#, fuzzy
+#~ msgid ".."
+#~ msgstr "..."
+
+#, fuzzy
 #~ msgid "Unable to find the initial tuning or retuning ‘%s’"
 #~ msgstr "Undefined initial tuning: %s (in logic %s)"
 
@@ -3255,10 +3359,6 @@ msgstr "track"
 #~ msgstr ""
 #~ "The Channel range %d--%d of the MIDI input device must be inside %d--%d. "
 #~ "The current route had to be corrected."
-
-#, fuzzy
-#~ msgid "Error %d:"
-#~ msgstr "Error"
 
 #~ msgid "line"
 #~ msgstr "line"

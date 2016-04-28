@@ -95,7 +95,7 @@ void * xalloca (mutabor_box_type * box, size_t size)
 		DEBUGLOG2(other,("malloc(%d) failed."),(int)size);
 		mutabor_error_message (box,
 				       error,
-				       _mut("Not enough memory for mutabor in source file"));
+				       _mut("Not enough memory for the MUTABOR file"));
 
 		return NULL;
 	}

@@ -1,4 +1,4 @@
-/** \file 
+/** \file
  ********************************************************************
  * Interval calculations
  *
@@ -65,14 +65,14 @@ static double get_intervall_wert (mutabor_box_type * box,
 
 			case intervall_absolut:
 				return lauf->u.intervall_absolut.intervall_wert ;
-				
+
 			default:
 				mutabor_error_message(box,
 						      compiler_error,
 						      _("Undefined interval type %d for interval %s."),
 						      lauf->intervall_typ,
 						      (name));
-				
+
 				return 0.0;
 			}
 		}
@@ -101,7 +101,7 @@ double get_wert_komplex_intervall (mutabor_box_type * box, struct komplex_interv
 		else {
 			mutabor_error_message(box,
 					      compiler_error,
-					      _("Bad interval value in %s"),	    
+					      _("Bad interval value in %s"),
 					      (intervall -> name));
 		}
 
@@ -157,7 +157,7 @@ static int intervall_nummer (mutabor_box_type * box, const char *name)
 	mutabor_error_message(box,
 			      compiler_error,
 			      _("Undefined interval: %s"),
-			      (name)); 
+			      (name));
 
 	return 0; /* to prevent warnings */
 }
@@ -214,11 +214,11 @@ static void berechne_intervall_endgueltig (mutabor_box_type * box, int k)
 		box->file->check_intervals[k]->u.intervall_absolut.intervall_wert = help;
 	}
 		break;
-		
+
 	default:
-		mutabor_error_message(box, 
+		mutabor_error_message(box,
 				      internal_error,
-				      _("Unknown error in %s , line %d."),	     
+				      _("Unknown error in %s, line %d."),
 				      _("loop"),
 				      -1);
 	}
@@ -339,7 +339,7 @@ void berechne_intervalle_absolut (mutabor_box_type * box, struct intervall * lis
 
 /*****************************************/
 
-void check_komplex_intervall (mutabor_box_type * box, 
+void check_komplex_intervall (mutabor_box_type * box,
 			      struct komplex_intervall * liste,
                               const char * konstrukt_name)
 {
@@ -352,7 +352,7 @@ void check_komplex_intervall (mutabor_box_type * box,
 			mutabor_error_message(box,
 					      compiler_error,
 					      _("Undefined interval: %s (in %s)"),
-					      (liste -> name), 
+					      (liste -> name),
 					      (konstrukt_name));
 			return;
 		}
@@ -362,7 +362,7 @@ void check_komplex_intervall (mutabor_box_type * box,
 					      internal_error,
 					      _("Undefined interval type %d for interval %s (%s:%d)."),
 					      help->intervall_typ,
-					      (__FILE__), 
+					      (__FILE__),
 					      __LINE__);
 			return;
 		}

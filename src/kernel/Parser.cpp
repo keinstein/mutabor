@@ -589,7 +589,7 @@ void setze_nummer_von_abstand_und_zentrum (mutabor_box_type * box)
 						TRACE;
 						mutabor_error_message(box,
 								      internal_error,
-								      _mut("Invalid argument type %d detected at\n%s:%n"),
+								      _mut("Invalid argument type %d detected at\n%s:%d"),
 								      lauf_arg->argument.argument_type,
 								      (__FILE__), __LINE__);
 
@@ -1317,7 +1317,7 @@ void get_new_tonsystem_negative (mutabor_box_type * box, const char * name, int 
 		if ( ! strcasecmp (name, (*lauf)->name)) {
 			mutabor_error_message(box,
 					      compiler_error,
-					      _mut("The tone system name “%s” was used twice"),
+					      _mut("The tone system name “%s” was used twice."),
 					      (name)); /* Tonsystemname doppelt */
 		}
 	}
@@ -2316,13 +2316,13 @@ void vervollstaendige_logik (mutabor_box_type * box)
 			if ( (midi_von < 1) || (midi_von > 16) )
 				mutabor_error_message(box,
 						      compiler_error,
-						      _mut("Bad MIDI from channel %d (valid: 1...16)"),
+						      _mut("Bad start %d of MIDI channel range (valid: 1...16)"),
 						      midi_von);
 
 			if ( (midi_bis < 1) || (midi_bis > 16) )
 				mutabor_error_message(box,
 						      compiler_error,
-						      _mut("Bad MIDI to channel %d (valid: 1...16)"),
+						      _mut("Bad end %d of MIDI channel range (valid: 1...16)"),
 						      midi_bis);
 		}
 
@@ -2614,7 +2614,7 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 			} else {
 				mutabor_error_message(box,
 						      compiler_warning,
-						      _mut("Lowest chroma %d of harmonic form %s in logic %s is not a member of that harmony. This harmonic form trigger will be ignored."),
+						      _mut("Lowest chroma %d of harmonic form %s in logic %s is not a member of that harmony.\n\n This harmonic form will be ignored."),
 						      ausloeser->u.ausloeser_harmonie_form.vortaste,
 						      (ausloeser->u.ausloeser_harmonie_form.name),
 						      (name));
