@@ -1,6 +1,7 @@
 # List of source files which contain translatable strings.
 lib/rtmidi/RtMidi.cpp
 lib/rtmidi/RtMidi.h
+src/gmut/scl2mut.cpp
 src/kernel/Defs.h
 src/kernel/Errors.cpp
 src/kernel/Errors.h
@@ -32,6 +33,14 @@ src/kernel/mut.cc
 src/kernel/mut.hh
 src/kernel/mutlex.cc
 src/kernel/mutlex.h
+src/kernel/parsers/scala/location.hh
+src/kernel/parsers/scala/position.hh
+src/kernel/parsers/scala/scala.cpp
+src/kernel/parsers/scala/scala.h
+src/kernel/parsers/scala/scale_lexer.cc
+src/kernel/parsers/scala/scale_parser.cc
+src/kernel/parsers/scala/scale_parser.hh
+src/kernel/parsers/scala/stack.hh
 src/kernel/routing/Box-inlines.h
 src/kernel/routing/Box.cpp
 src/kernel/routing/Box.h
@@ -166,6 +175,7 @@ src/wxGUI/xmltree.cpp
 src/wxGUI/xmltree.h
 src/wxGUI/stclanguage.cpp
 src/wxGUI/stclanguage.h
+src/wxintl/libintl_boost.cpp
 src/xrc/reslocale.cpp
 src/xrc/wxresource.cpp
 src/xrc/wxresource.h

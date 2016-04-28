@@ -53,7 +53,7 @@
 
 // system headers which do seldom change
 #include <cstring>
-					
+
 namespace mutabor {
 	namespace scala_parser {
 
@@ -71,6 +71,13 @@ namespace mutabor {
 
 		class scale_lexer: public yyFlexLexer {
 		public:
+			enum start_mode {
+				top_mode=0,
+				in_string,
+				in_integer,
+				in_interval,
+				in_garbage
+			};
 			typedef scale_parser::symbol_type symbol_type;
 			scale_lexer(const char * string,
 				    const char * f,
@@ -95,7 +102,33 @@ namespace mutabor {
 			std::string & get_filename() {return file;}
 			symbol_type get_token();
 			void free_identifier() { /* free(yylval->identifier); yylval->identifier = NULL; */ }
+			void push_state(start_mode mode) {
+				std::cerr << "pushing mode: " << mode << "/"
+					  << yy_start_mode[mode] << std::flush;
+				std::cerr << " (" << ((yy_start_stack_ptr>0)?yy_top_state():-1) << " -> ";
+				yy_push_state(yy_start_mode[mode]);
+#ifdef DEBUG
+				/* in debug mode we do a double push, as the current start state is
+				   usually not on the stack. With teh additional push we can verify
+				   the correct push/pop pairs later during pop */
+				yy_push_state(yy_start_mode[mode]);
+#endif
+				std::cerr << yy_top_state() << ")" << std::endl;
+			}
+			void pop_state(start_mode mode) {
+				std::cerr << "popping mode: ("
+					  << yy_start_mode[mode] << ") "
+					  << yy_top_state() << " -> ";
+				yy_pop_state();
+#ifdef DEBUG
+				std::cerr << yy_top_state() << " -> " << std::endl;
+				yy_pop_state();
+#endif
+				std::cerr << yy_top_state() << std::endl;
+
+			}
 		protected:
+			static int yy_start_mode[];
 			std::string file;
 			char * buffer;
 			size_t buflen;

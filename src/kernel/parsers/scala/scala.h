@@ -56,13 +56,18 @@ namespace mutabor {
 		struct interval {
 			enum interval_type {
 				cent_value,
-				ratio
+				ratio,
+				cent_ratio
 			} type;
 			union {
 				struct {
 					int32_t numerator;
 					int32_t denominator;
 				} f;
+				struct {
+					int32_t numerator;
+					double denominator;
+				} df;
 				double cents;
 			} data;
 			std::string comment; // comments before the interval
@@ -82,6 +87,10 @@ namespace mutabor {
 				data.f.numerator = n;
 				data.f.denominator = d;
 			}
+			interval (int32_t n, double d):type(cent_ratio) {
+				data.df.numerator = n;
+				data.df.denominator = d;
+			}
 			std::ostream & print (std::ostream & o) const {
 				if (!comment.empty())
 					o << "!" << comment << std::endl;
@@ -93,6 +102,11 @@ namespace mutabor {
 					o << data.f.numerator
 					  << "/"
 					  << data.f.denominator;
+					break;
+				case interval::cent_ratio:
+					o << data.df.numerator
+					  << "/"
+					  << data.df.denominator;
 					break;
 				default:
 					o << "<unknown interval>";
@@ -109,6 +123,10 @@ namespace mutabor {
 				case ratio:
 					retval = data.f.denominator == o.data.f.denominator
 						&& data.f.numerator == o.data.f.numerator;
+					break;
+				case cent_ratio:
+					retval = data.df.denominator == o.data.df.denominator
+						&& data.df.numerator == o.data.df.numerator;
 					break;
 				default:
 					return false;
@@ -161,6 +179,9 @@ namespace mutabor {
 
 		class parser {
 		public:
+			struct mutabor_writer_options {
+				std::string prefix;
+			};
 			parser (const std::string & s): intervals(),
 							lexer(NULL),
 							bison_parser(NULL)
@@ -174,6 +195,9 @@ namespace mutabor {
 			virtual void error(const char *  format, ...);
 
 			const interval_pattern & get_intervals () { return intervals; }
+
+
+			std::ostream & write_mutabor(std::ostream & o, const mutabor_writer_options & w);
 		protected:
 			interval_pattern intervals;
 			scale_lexer * lexer;

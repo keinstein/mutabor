@@ -1,0 +1,29 @@
+" converted from scala to -*- MUTABOR -*- "
+"        At the beginning of the file
+ Name:  My name is ambiguity008.scl
+         Between description and count
+ Tones: 5 "
+
+TONESYSTEM
+	scala 60 [ scala0, scala1, scala2, scala3, scala4 ] scala5
+
+INTERVAL
+	scalaOCTAVE = 2:1
+	scalaCENT = scalaOCTAVE / 1200
+" after count"
+	scala1 = 2.4 scalaCENT " a dot separated by spaces is not ignored. CAUTION: this line reads as 2.0 cents !!!"
+" after first interval
+ spaces in ratios are ignored"
+	scala2 = -498.478 scalaCENT " a ratio containing a a float number  is converted into cents afterwards !!"
+""
+	scala3 = 3:4 " the ratio without anything"
+""
+	scala4 = -498.045 scalaCENT " the ratio converted into cents"
+" after second interval"
+	scala5 = 5.6 scalaCENT "./2 just 5.6 cents!!!! The dot is allowed, here"
+TONE
+	scala0 = 440
+	scala1 = scala0 + scala0
+	scala2 = scala0 + scala1
+	scala3 = scala0 + scala2
+	scala4 = scala0 + scala3

@@ -93,54 +93,63 @@ namespace mutabor {
 */
 %token
 	END 0        "end of file"
-	INTERVAL_END "end of interval list"
-        NEWLINE      "\\n"
-	COMMENT_SIGN  "!"
-        SLASH         "/"
-	TAB           "->|"
-	BLANK         "' '"
-;
+
 %token <std::string>  STRING     "string token"
+%token <std::string>  GARBAGE    "text after the last interval"
 %token <std::string>  F_NUMBER   "floating point number"
 %token <std::string>  INTEGER    "integer number"
-%token <std::string>  SPACE      "white space token"
+%token <std::string>  SPACE      "white space"
 %type  <std::string>  comment    "comment"
-%type  <std::string>  comment1   "single comment line"
-%type  <int32_t>      integer    "integer"
-%type  <double>       float      "double"
-%type  <std::string>  single_space "single space"
+%type  <std::string>  comment_line   "single comment line"
+%type  <int32_t>      integer    "integer (with leadig white space)"
+%type  <int32_t>      nospace_integer    "integer"
+%type  <int32_t>      ratio_start    "integer /"
+%type  <double>       float      "double (with leadig white space)"
+%type  <double>       nospace_float      "double"
 %type  <std::string>  space      "whitespace"
-%type  <std::string>  name       "description"
-%type  <std::string>  name_start "first element of description"
 %type  <std::string>  string     "character string with newline"
+%type  <std::string>  lazy_string     "(non)empty character string with newline"
 %type  <std::string>  string_element  "one of several tokens that can be in a string"
-%type  <std::string>  string1    "character string"
 %type  <scala_parser::interval> interval "interval"
 %type  <scala_parser::interval> interval1 "bare interval"
 %type  <scala_parser::interval> interval2 "bare interval with description"
-%type  <scala_parser::interval> interval3 "interval with leading space and description"
+%type <std::string> garbage
+
 %printer { yyoutput << $$; } <*>
 
-%right '!' COMMENT_SIGN
-%right INTEGER F_NUMBER
-%right SPACE
-%right '/' SLASH
-%right STRING
+%left '!' COMMENT_SIGN
+%left STRING
+%left '/' SLASH
 %left '\n' NEWLINE
 
-			
+
 
 %% /* Grammar rules and actions */
 %start sclfile;
 
-sclfile : scl_data INTERVAL_END
-		{ YYACCEPT; }
+sclfile :       scl_data END
+                {
+                   if (result.count != result.intervals.size()) {
+			   error(@2,_mut("Too few intervals have been provided."));
+                           YYERROR;
+                   }
+                   lexer.pop_state(scale_lexer::in_garbage);
+                }
+	|	scl_data garbage END { lexer.pop_state(scale_lexer::in_garbage); }
 ;
-scl_data_start:	start_comment name count_comment integer {
-	        std::swap(result.name,$2);
-		result.count=$4;
-		if (!result.count) {  YYACCEPT; }
-		result.intervals.reserve(result.count);
+scl_data_start:	start_comment
+		{ lexer.push_state(scale_lexer::in_string); } lazy_string {
+	                std::swap(result.name,$3);
+		        lexer.push_state(scale_lexer::in_integer);
+		}
+		count_comment
+		interval_count
+		{
+		if (!result.count) {  lexer.push_state(scale_lexer::in_garbage); }
+		else {
+			result.intervals.reserve(result.count);
+                        lexer.push_state(scale_lexer::in_interval);
+		}
 		}
 	;
 start_comment : /* empty */
@@ -148,123 +157,162 @@ start_comment : /* empty */
 count_comment : /* empty */
 	| 	comment { std::swap(result.comment2,$1); }
 
-scl_data:	scl_data_start string_end
-	|	scl_data_start string {
- 	        std::swap(result.count_comment,$2);
-                }
+interval_count:	integer_number { lexer.pop_state(scale_lexer::in_integer); };
+
+integer_number:integer string_end { result.count = $1; }
+	| 	integer string { result.count = $1; std::swap(result.count_comment,$2); }
+	| 	integer '.' {  lexer.push_state(scale_lexer::in_string); }  lazy_string {
+		result.count = $1;
+		std::swap(result.count_comment,$4);
+		error(@3,_mut("The interval count must be an integer number, not a float."));
+		}
+	| 	integer '/' {  lexer.push_state(scale_lexer::in_string); }  lazy_string {
+		result.count = $1;
+		std::swap(result.count_comment,$4);
+		error(@3,_mut("The interval count must be an integer number, not a ratio."));
+		}
+		;
+
+scl_data:	scl_data_start
 	|	scl_data interval {
 	        result.intervals.push_back($2);
-	        if (result.count == result.intervals.size()) { YYACCEPT; }
+	        if (result.count == result.intervals.size()) {
+			lexer.pop_state(scale_lexer::in_interval);
+			lexer.push_state(scale_lexer::in_garbage);
 		}
-	;
+		}
+		;
 
-comment:	comment1 { std::swap($$,$1); }
-	|	comment comment {
+comment:	comment_line { std::swap($$,$1); }
+	|	comment comment_line {
  	        std::swap($$,$1);
 		$$ += "\n" + $2;
 		}
 	;
-comment1:	'!' string { std::swap($$,$2); }
-	|	COMMENT_SIGN string { std::swap($$,$2); }
-		;
-
-interval:	interval3 string_end {
-		$$.type = $1.type;
-		$$.data = $1.data;
-                std::swap($$.comment,$1.comment);
+comment_line:	'!' { lexer.push_state(scale_lexer::in_string); } string {
+			std::swap($$,$3);
+		        lexer.pop_state(scale_lexer::in_string);
 		}
-	|	interval3 string {
-		$$.type = $1.type;
-		$$.data = $1.data;
-                std::swap($$.comment,$1.comment);
-                std::swap($$.description,$2); }
 		;
 
-interval3:	interval2 { $$.type = $1.type; $$.data = $1.data; }
+interval: 	interval2 {
+	        $$.type = $1.type;
+		$$.data = $1.data;
+                std::swap($$.description,$1.description);
+		lexer.pop_state(scale_lexer::in_string);
+			}
 	|	comment interval2 {
 		$$.type = $2.type;
 		$$.data = $2.data;
+                std::swap($$.description,$2.description);
 		std::swap($$.comment,$1);
+		lexer.pop_state(scale_lexer::in_string);
+			}
+		;
+
+interval2:	interval1 lazy_string {
+		$$.type = $1.type;
+		$$.data = $1.data;
+                std::swap($$.description,$2);
+		}
+	|	integer lazy_string {
+	        $$ = scala_parser::interval($1);
+                std::swap($$.description,$2);
+                lexer.push_state(scale_lexer::in_string);
+		}
+	| 	ratio_start lazy_string {
+		lexer.error(@2, _mut("An incomplete ratio has been detected, and descriptions must not start with '/'."));
+		$$ = scala_parser::interval($1);
+                std::swap($$.description,$2);
 		}
 		;
 
-interval2:	interval1 { $$.type = $1.type; $$.data = $1.data; }
-	|	space interval1 { $$.type = $2.type; $$.data = $2.data; }
-	;
-
-interval1:      integer { $$ = scala_parser::interval($1); }
-	| 	integer slash integer { $$ = scala_parser::interval($1,$3); }
-	|	float { $$ = scala_parser::interval($1); }
+interval1:	ratio_start integer {
+		$$ = scala_parser::interval($1,$2);
+                lexer.push_state(scale_lexer::in_string);
+		}
+	| 	ratio_start float {
+		$$ = scala_parser::interval($1,$2);
+                lexer.push_state(scale_lexer::in_string);
+		}
+	|	float {
+		$$ = scala_parser::interval($1);
+                lexer.push_state(scale_lexer::in_string);
+		}
 		;
 
-slash:		'/'
-	|	SLASH
-	|	space SLASH
-
+lazy_string:	string_end { $$.clear(); }
+	|	space string_end { std::swap($$,$1); }
+	|	string { std::swap($$,$1); }
+	|	space string { std::swap($$,$1); $$ += $2; }
 	;
 
-name:		string_end { $$.clear(); }
-	|	name_start string_end { std::swap($$,$1); }
-	|	name_start string { std::swap($$,$1); $$ += $2; }
+ratio_sign:	'/'
+	|	space '/'
 	;
 
-name_start:	STRING { std::swap ($$,$1); }
-	|	F_NUMBER { std::swap ($$,$1); }
-	|	INTEGER { std::swap ($$,$1); }
-	|	space { std::swap ($$,$1); }
-	|	SLASH { $$ = "/"; }
-	|	'/' { $$ = "/"; }
-		;
-
-string_element:	name_start { std::swap($$,$1); }
-	|	COMMENT_SIGN { $$ = "!"; }
-	|	'!' { $$ = "!"; }
-	
+ratio_start:	integer ratio_sign  { $$ = $1; }
 	;
 
-string1:	string_element { std::swap($$,$1);  }
-	|	string1 string_element { std::swap($$,$1); $$ += $2; }
+string_element:	STRING { std::swap($$,$1); lexer.push_state(scale_lexer::in_string);  }
+	|	string_element STRING { std::swap($$,$1); $$ += $2; }
 		;
 
 string_end:	'\n'
-	|	NEWLINE
 	|	END
 		;
 
-string: string1 string_end { std::swap($$,$1); }
+string: string_element string_end { std::swap($$,$1); lexer.pop_state(scale_lexer::in_string); }
 		;
 
-integer: 	INTEGER {
+
+
+
+nospace_integer:INTEGER {
 		errno = 0;
 		long n = strtol ($1.c_str(), NULL, 10);
 		if (! (0x80000000l+n >= 0 && n <= 0x7fFFffFFl && errno != ERANGE))
-		lexer.error (@1, "integer is out of range");
+		lexer.error (@1, _mut("integer is out of range"));
 		$$ = n;
 		}
-	|	space integer { $$ = $2; }
+		;
+integer: 	nospace_integer { $$ = $1; }
+	|	space nospace_integer { $$ = $2; }
 		;
 
-float: 		F_NUMBER {
+nospace_float:	F_NUMBER {
 		errno = 0;
-		double value = strtod($1.c_str(), NULL);
+                std::string tmp;
+                tmp.reserve($1.length());
+                for (std::string::iterator i = $1.begin();
+		    i != $1.end();
+		    ++i) {
+			switch (*i) {
+			case ' ':
+		        case '\t':
+                            break;
+                        default:
+                              tmp += *i;
+
+		        }
+		}
+		double value = strtod(tmp.c_str(), NULL);
 		if (! (errno != ERANGE))
-		lexer.error (@1, "float is out of range");
+		lexer.error (@1, _mut("float is out of range"));
 		$$ = value;
 		}
-	|	space float { $$ = $2; }
+
+float: 		nospace_float { $$ = $1; }
+	|	space nospace_float { $$ = $2; }
 		;
 
-single_space: ' ' { $$ = " "; }
-	|	BLANK { $$ = " "; }
-	|	'\t' { $$ = "\t"; }
-	|	TAB { $$ = "\t"; }
-		;
-
-space: single_space
-	|	space single_space { std::swap($$,$1); $$ += $2; }
+space: 		space SPACE { std::swap($$,$1); $$ += $2; }
 	|	SPACE { std::swap($$,$1); }
 		;
 
+garbage: 	GARBAGE { std::swap(result.garbage,$1); }
+	|	garbage GARBAGE { result.garbage += $1; }
+		;
 
 %%
 /// \		todo check whether this function is necessary for any system but windows

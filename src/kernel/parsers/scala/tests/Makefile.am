@@ -1,13 +1,37 @@
 include $(top_srcdir)/common-rules.mk
 include $(top_srcdir)/common-linklibs.mk
 
+BUILT_SOURCES +=  \
+	debugPaths.cpp
+
 EXTRA_DIST = 
 #	all.mut
+
+TEST_EXTENSIONS = .scl
+
+SCL_LOG_COMPILER = ./run_scl2mut.sh
+
+SCLTESTS = \
+	allowed001.scl \
+	allowed002.scl \
+	allowed003.scl \
+	allowed004.scl \
+	allowed005.scl \
+	allowed006.scl \
+	allowed007.scl \
+	allowed008.scl \
+	allowed009.scl
 
 TESTS = \
 	test_empty$(EXEEXT) \
 	test_empty_comments$(EXEEXT) \
-	test_intervals1$(EXEEXT)
+	test_intervals1$(EXEEXT) \
+	$(SCLTESTS)
+
+
+
+
+
 
 
 check_PROGRAMS = \
@@ -114,7 +138,22 @@ test_intervals1_LDADD = \
 # 
 # endif
 
+$(SCLTESTS:.scl=.log): ./run_scl2mut.sh
 
+./run_scl2mut.sh: $(top_builddir)/scl2mut Makefile
+	@echo '#!/bin/sh' > $@
+	@echo 'file="$$1"' >> $@
+	@echo 'basefile=`basename "$$file"`' >> $@
+	@echo 'ls "$(top_builddir)/scl2mut" "$$file" "$${basefile%.scl}.mut2"' >> $@
+	@echo '"$(top_builddir)/scl2mut" "$$file" "$${basefile%.scl}.mut2" || exit 1' >> $@
+	@echo 'diff "$${file%.scl}.mut" "$${basefile%.scl}.mut2" || exit 2' >> $@
+	@echo 'exit 0' >> $@
+	@chmod u+x $@
+
+.PHONY: $(top_builddir)/scl2mut
+
+$(top_builddir)/scl2mut:
+	$(MAKE) -C $(top_builddir) scl2mut
 
 
 if COPYDLLS

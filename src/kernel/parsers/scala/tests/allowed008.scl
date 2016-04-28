@@ -1,0 +1,13 @@
+! At the beginning of the file
+My name is ambiguity008.scl
+! Between description and count
+5
+! after count
+2 . 4 a dot separated by spaces is not ignored. CAUTION: this line reads as 2.0 cents !!!
+! after first interval
+! spaces in ratios are ignored
+ 3	 /     4.001 a ratio containing a a float number  is converted into cents afterwards !!
+  3 	       /       4 the ratio without anything
+3 / 4. the ratio converted into cents
+! after second interval
+5.6./2 just 5.6 cents!!!! The dot is allowed, here

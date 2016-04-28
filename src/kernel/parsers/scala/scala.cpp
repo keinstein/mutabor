@@ -36,6 +36,7 @@
 
 #include "src/kernel/Defs.h"
 #include <cstdarg>
+#include <cmath>
 #include "src/kernel/parsers/scala/scala.h"
 #include "src/kernel/parsers/scala/scale_lexer.h"
 #include "src/kernel/parsers/scala/scale_parser.hh"
@@ -79,7 +80,7 @@ namespace mutabor {
 				allocated = false;
 				formatted = const_cast<char *>(_mut("Error in Error: Could not allocate buffer for error message."));
 				if (!formatted) {
-					formatted = 
+					formatted =
 						const_cast<char *>("Error in Error: Could not allocate buffer for error message.");
 				}
 			}
@@ -90,6 +91,55 @@ namespace mutabor {
 				free(formatted);
 		}
 
+		std::ostream & parser::write_mutabor(std::ostream & o, const mutabor_writer_options & w) {
+			o << "\" converted from scala to -*- MUTABOR -*- \"" << std::endl;
+			o << "\"       " << intervals.comment1 << std::endl;
+			o << " Name:  " << intervals.name << std::endl;
+			o << "        " << intervals.comment2 << std::endl;
+			o << " Tones: " << intervals.count << " " << intervals.count_comment  << "\"" << std::endl;
+			o << std::endl;
+			o << _mut("TONESYSTEM") << std::endl;
+			o << "\t" << w.prefix << " 60 [ " << w.prefix << "0";
+
+			for (size_t i = 1; i < intervals.intervals.size() ; i++) {
+				o << ", " << w.prefix << i;
+			}
+			o << " ] " << w.prefix << intervals.intervals.size() << std::endl;
+			o << std::endl;
+			o << _mut("INTERVAL") << std::endl;
+			o << "\t" << w.prefix << _mut("OCTAVE") << " = 2:1" << std::endl;
+			o << "\t" << w.prefix << _mut("CENT") << " = "
+			  << w.prefix << "OCTAVE / 1200" << std::endl;
+			if (intervals.intervals.empty()) {
+				o << "\t" << w.prefix << "0 = 1:1" << std::endl;
+			}
+			for (size_t i = 0 ; i < intervals.intervals.size() ; i++) {
+				interval &interv = intervals.intervals[i];
+				o << "\"" << interv.comment << "\"" << std::endl;
+				o << "\t" << w.prefix << i+1 << " = " ;
+				switch (interv.type) {
+				case interval::cent_value:
+					o << interv.data.cents << " " << w.prefix << "CENT";
+					break;
+				case interval::ratio:
+					o << interv.data.f.numerator << ":" << interv.data.f.denominator;
+					break;
+				case interval::cent_ratio:
+					{
+						double cents =  interv.data.df.numerator/interv.data.df.denominator;
+						cents = 1200 * log2(cents);
+						o << cents << " " << w.prefix << "CENT";
+					}
+				}
+				o << " \"" << interv.description << "\"" << std::endl;
+			}
+			o << _mut("TONE") << std::endl;
+			o << "\t" << w.prefix << "0 = 440" << std::endl;
+			for (size_t i = 1 ; i < intervals.intervals.size() ; i++) {
+				o << "\t" << w.prefix << i << " = " << w.prefix << "0 + " << w.prefix << i-1 << std::endl;
+			}
+			return o;
+		}
 	}
 }
 

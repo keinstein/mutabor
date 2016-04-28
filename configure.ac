@@ -352,7 +352,8 @@ AC_CHECK_LIB(backtrace,backtrace_print)
 
 dnl check for boost earlier as it might correct the library path.
 dnl some systems don't set it correctly
-AX_BOOST_BASE
+BOOST_REQUIRE([1.53.0])
+dnl AX_BOOST_BASE([1.53.0])
 PKG_PROG_PKG_CONFIG
 
 AC_CANONICAL_HOST
@@ -763,7 +764,8 @@ dnl then
 dnl	AC_DEFINE(MUST_REUSE,1,[Define to x if the scope of C++ loop variables is inside the loop])
 dnl fi
 
-BOOST_REQUIRE([1.53.0])
+dnl BOOST_REQUIRE([1.53.0])
+BOOST_LOCALE
 BOOST_FORMAT
 dnl BOOST_INTRUSIVE_PTR
 dnl BOOST_RATIONAL
@@ -774,7 +776,9 @@ BOOST_SMART_PTR
 BOOST_FILESYSTEM
 BOOST_SYSTEM
 BOOST_THREADS
+BOOST_PROGRAM_OPTIONS
 
+dnl AX_BOOST_FORMAT
 dnl AX_BOOST_BASE
 dnl AX_BOOST_SYSTEM
 dnl AX_BOOST_FILESYSTEM

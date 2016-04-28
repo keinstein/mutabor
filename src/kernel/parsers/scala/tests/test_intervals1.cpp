@@ -105,7 +105,7 @@ Constant tone system\n\
 		  << cmp << std::endl << std::flush;
 	mutASSERT(check_interval_patterns(p.get_intervals(), cmp));
 
-
+	cmp.garbage = "ditarenditaen";
 	scala = "\
 Constant tone system\n\
 12\n\
@@ -144,6 +144,7 @@ ditarenditaen";
 	cmp.intervals[9].description ="itiraseit";
 	cmp.intervals[10].description =" idaternid";
 	cmp.intervals[11].description =" ! ditraendai";
+	cmp.garbage.clear();
 	
 	scala = "\
 Constant tone system\n\
@@ -194,7 +195,7 @@ Constant tone system\n\
 		  << cmp << std::endl << std::flush;
 	mutASSERT(check_interval_patterns(p.get_intervals(), cmp));
 
-	
+	cmp.garbage = "ditarenditaen";
 
 	scala = "\
 Constant tone system\n\

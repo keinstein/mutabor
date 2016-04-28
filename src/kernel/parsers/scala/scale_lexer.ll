@@ -10,6 +10,7 @@
 %option prefix="scale_lexer_"
 
 blank [ \t]
+number [+-]?[ \t]*[[:digit:]]+
 
 %{
 MUTABOR_NAMESPACE_END(scala_parser)
@@ -72,24 +73,55 @@ MUTABOR_NAMESPACE(scala_parser)
 MUTABOR_NAMESPACE(mutabor)
 MUTABOR_NAMESPACE(scala_parser)
 }
-%x comment
+%x string
+%x name
+%x interval
+%x garbage
+%x integer
 %%
 %{
+	/*
+	switch (start_mode) {
+	case top_mode:BEGIN(INITIAL); break;
+	case in_string:BEGIN(string); break;
+	case in_interval:BEGIN(interval); break;
+	case in_garbage:BEGIN(garbage); break;
+	case in_integer:BEGIN(integer); break;
+	}
+	std::cerr << "start_mode: " << start_mode << std::endl;
+	*/
+	std::cerr << "yy_start: " << yy_start << std::endl;
   // Code run each time yylex is called.
-  loc.step ();
+	loc.step ();
+	std::cerr << "location: " << loc << std::endl;
 %}
 
+<*>\n                 {
+	loc.lines();
+	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
+}
+<garbage>.*                        return scale_parser::make_GARBAGE(yytext,loc);
+<string>[^\n]*                     return scale_parser::make_STRING(yytext,loc);
+<interval>{number}?{blank}*"."{number}?    return scale_parser::make_F_NUMBER(yytext,loc);
+<integer>'.'                       {
+	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
+}
+<interval,integer>{number}          return scale_parser::make_INTEGER(yytext,loc);
+<interval,integer>[!/]             {
+	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
+ }
+<interval,integer>[^ \t\n/!.]{-}[[:digit:]][^\n]* {
+	return scale_parser::make_STRING(yytext,loc);
+				}
 
-\n                           return scale_parser::make_NEWLINE(loc);
-\/                            return scale_parser::make_SLASH(loc);
-\!                           return scale_parser::make_COMMENT_SIGN(loc);
-blank+                       return scale_parser::make_SPACE(yytext,loc);
-[ ]                          return scale_parser::make_BLANK(loc);
-\t                           return scale_parser::make_TAB(loc);
-[[:digit:]]*"."[[:digit:]]*  return scale_parser::make_F_NUMBER(yytext,loc);
-[[:digit:]]*                 return scale_parser::make_INTEGER(yytext,loc);
-[^!\n[:digit:]/][^\n]*	                     return scale_parser::make_STRING(yytext,loc);
-<<EOF>>                      return scale_parser::make_END(loc);
+<INITIAL,interval,integer>"!"      {
+	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
+}
+<INITIAL,interval,integer>{blank}+   {
+	return scale_parser::make_SPACE(yytext,loc);
+ }
+[^!\n][^\n]*                       return scale_parser::make_STRING(yytext,loc);
+<*><<EOF>>                         return scale_parser::make_END(loc);
 %%
 int scale_lexer::LexerInput( char* buf, int max_size ) {
 	if (buflen <= position || max_size <= 0) return 0;
@@ -98,6 +130,8 @@ int scale_lexer::LexerInput( char* buf, int max_size ) {
 	position += size;
 	return size;
 }
+int scale_lexer::yy_start_mode[] =
+	{ INITIAL, string, integer, interval, garbage };
 }
  }
 /** \} */

@@ -119,7 +119,7 @@ dist_pkgdata_DATA = src/xrc/Mutabor.xrc \
 #RECURSIVE_TARGETS += mac-recursive
 
 
-bin_PROGRAMS = mutabor
+bin_PROGRAMS = mutabor scl2mut
 noinst_LIBRARIES = \
 	libmutaborgui.a \
 	libmutaborrouting.a \
@@ -559,6 +559,7 @@ mutabor_SOURCES = $(mutabor_COMPILESOURCES)
 POTSOURCES=$(INDENTSOURCES) \
 	$(noinst_HEADERS) \
 	$(mutabor_COMPILESOURCES) \
+	$(scl2mut_POTSOURCES) \
 	$(NOCOMPSOURCES) \
 	$(libmutaborrouting_a_POTSOURCES) \
 	$(libmutaborkernel_a_POTSOURCES) \
@@ -592,6 +593,23 @@ $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT):$(srcdir)/src/wxGUI/Mutabor.rc
 else
 $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT):$(srcdir)/src/wxGUI/Mutabor.rc
 endif
+
+scl2mut_SOURCES = \
+	src/gmut/scl2mut.cpp \
+	src/wxintl/libintl_boost.cpp
+
+scl2mut_POTSOURCES = $(scl2mut_SOURCES)
+
+scl2mut_LDADD = \
+	libmutaborscala.a \
+	$(BOOST_PROGRAM_OPTIONS_LDFLAGS) \
+	$(BOOST_LOCALE_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LDFLAGS) \
+	$(BOOST_SYSTEM_LDFLAGS) \
+	$(BOOST_PROGRAM_OPTIONS_LIBS) \
+	$(BOOST_LOCALE_LIBS) \
+	$(BOOST_FILESYSTEM_LIBS) \
+	$(BOOST_SYSTEM_LIBS)
 
 if COND_PRECOMP_C
 #AM_CFLAGS += -include mutabor-precompiled.h # -fpch-deps
@@ -910,6 +928,12 @@ check-local: potfilechk
 #	rm -f $(srcdir)/src/kernel/mut.cc
 #	$(MAKE) $(srcdir)/src/kernel/mut.cc
 #src/kernel/mut.cc: src/kernel/mut.yy
+$(top_srcdir)/src/kernel/parsers/scala/location.hh \
+$(top_srcdir)/src/kernel/parsers/scala/position.hh \
+$(top_srcdir)/src/kernel/parsers/scala/stack.hh: $(top_srcdir)/src/kernel/parsers/scala/scale_parser.yy
+	rm -rf scale_parser.cc $(top_srcdir)/src/kernel/parsers/scala/scale_parser.cc
+	$(MAKE) $(top_srcdir)/src/kernel/parsers/scala/scale_parser.cc
+	cmp `basename "$@"` "$@" || cp `basename "$@"` "$@"
 
 
 all-local:

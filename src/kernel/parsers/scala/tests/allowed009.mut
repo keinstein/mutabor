@@ -1,0 +1,16 @@
+" converted from scala to -*- MUTABOR -*- "
+"        At the beginning of the file
+ Name:  My name is allowed009.scl
+         Between description and count
+ Tones: 1 "
+
+TONESYSTEM
+	scala 60 [ scala0 ] scala1
+
+INTERVAL
+	scalaOCTAVE = 2:1
+	scalaCENT = scalaOCTAVE / 1200
+" after count"
+	scala1 = 1.1 scalaCENT ".3 two points are allowed this line reads as 1.1 cents"
+TONE
+	scala0 = 440

@@ -1,6 +1,9 @@
 include $(top_srcdir)/common-rules.mk
 include $(top_srcdir)/common-linklibs.mk
 
+BUILT_SOURCES +=  \
+	debugPaths.cpp
+
 CLEANFILES += \
 	playmidi1.mid \
 	test_output.mid \

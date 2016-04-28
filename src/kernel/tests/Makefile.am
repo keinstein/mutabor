@@ -1,6 +1,8 @@
 include $(top_srcdir)/common-rules.mk
 include $(top_srcdir)/common-linklibs.mk
 
+BUILT_SOURCES +=  \
+	debugPaths.cpp
 
 EXTRA_DIST = \
 	all.mut
