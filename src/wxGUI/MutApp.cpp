@@ -617,12 +617,12 @@ namespace mutaborGUI {
 		info.AddDeveloper(_("Bernhard Ganter"));
 		info.AddDeveloper(_("Volker Abel"));
 		info.AddDeveloper(_("Peter Reiss"));
-		info.AddDeveloper(_("Ruediger Krausze <krausze@mail.berlios.de>"));
-		info.AddDeveloper(_("Tobias Schlemmer <keinstein@mail.berlios.de>"));
+		info.AddDeveloper(_("Ruediger Krausze"));
+		info.AddDeveloper(_("Tobias Schlemmer <keinstein@users.sf.net>"));
 		info.AddDocWriter(_("Volker Abel"));
 		info.AddDocWriter(_("Peter Reiss"));
-		info.AddDocWriter(_("Ruediger Krausze <krausze@mail.berlios.de>"));
-		info.AddDocWriter(_("Tobias Schlemmer <keinstein@mail.berlios.de>"));
+		info.AddDocWriter(_("Ruediger Krausze"));
+		info.AddDocWriter(_("Tobias Schlemmer <keinstein@users.sf.net>"));
 		info.AddTranslator(_("English: Tobias Schlemmer"));
 
 		wxGenericAboutBox(info);
