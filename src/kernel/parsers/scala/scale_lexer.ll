@@ -18,6 +18,7 @@ MUTABOR_NAMESPACE_END(mutabor)
 
 # include "src/kernel/parsers/scala/scale_lexer.h"
 # include "src/kernel/parsers/scala/scale_parser.hh"
+# include "src/kernel/parsers/scala/scala-inlines.h"
 MUTABOR_NAMESPACE(mutabor)
 MUTABOR_NAMESPACE(scala_parser)
 // Work around an incompatibility in flex (at least versions
@@ -74,10 +75,10 @@ MUTABOR_NAMESPACE(mutabor)
 MUTABOR_NAMESPACE(scala_parser)
 }
 %x string
-%x name
+%x sclname
+%x integer
 %x interval
 %x garbage
-%x integer
 %%
 %{
 	/*
@@ -90,10 +91,16 @@ MUTABOR_NAMESPACE(scala_parser)
 	}
 	std::cerr << "start_mode: " << start_mode << std::endl;
 	*/
-	std::cerr << "yy_start: " << yy_start << std::endl;
-  // Code run each time yylex is called.
+	DEBUGLOG(sclparser,
+		 "yy_start: %d",
+		 yy_start);
+	// Code run each time yylex is called.
 	loc.step ();
-	std::cerr << "location: " << loc << std::endl;
+	loc.begin.filename = loc.end.filename = &file;
+
+	DEBUGLOG(sclparser,
+		 "location: %1",
+		 loc);
 %}
 
 <*>\n                 {
@@ -102,10 +109,7 @@ MUTABOR_NAMESPACE(scala_parser)
 }
 <garbage>.*                        return scale_parser::make_GARBAGE(yytext,loc);
 <string>[^\n]*                     return scale_parser::make_STRING(yytext,loc);
-<interval>{number}?{blank}*"."{number}?    return scale_parser::make_F_NUMBER(yytext,loc);
-<integer>'.'                       {
-	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
-}
+<interval,integer>{number}?{blank}*"."{number}?    return scale_parser::make_F_NUMBER(yytext,loc);
 <interval,integer>{number}          return scale_parser::make_INTEGER(yytext,loc);
 <interval,integer>[!/]             {
 	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
@@ -124,6 +128,8 @@ MUTABOR_NAMESPACE(scala_parser)
 <*><<EOF>>                         return scale_parser::make_END(loc);
 %%
 int scale_lexer::LexerInput( char* buf, int max_size ) {
+	if (!buffer)
+		return yyFlexLexer::LexerInput(buf, max_size);
 	if (buflen <= position || max_size <= 0) return 0;
 	size_t  size = std::min((size_t)max_size, buflen - position);
 	std::memcpy(buf,buffer+position,size);
@@ -131,7 +137,7 @@ int scale_lexer::LexerInput( char* buf, int max_size ) {
 	return size;
 }
 int scale_lexer::yy_start_mode[] =
-	{ INITIAL, string, integer, interval, garbage };
+	{ INITIAL, string, sclname, integer, interval, garbage };
 }
  }
 /** \} */

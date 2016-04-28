@@ -4,12 +4,15 @@ include $(top_srcdir)/common-linklibs.mk
 BUILT_SOURCES +=  \
 	debugPaths.cpp
 
-EXTRA_DIST = 
+EXTRA_DIST =
 #	all.mut
 
-TEST_EXTENSIONS = .scl
+# .nscl is a .scl file that should be rejected
+TEST_EXTENSIONS = .scl .nscl
+
 
 SCL_LOG_COMPILER = ./run_scl2mut.sh
+NSCL_LOG_COMPILER = ./run_nscl2mut.sh
 
 SCLTESTS = \
 	allowed001.scl \
@@ -22,11 +25,18 @@ SCLTESTS = \
 	allowed008.scl \
 	allowed009.scl
 
+NSCLTESTS = \
+	not_allowed001.nscl \
+	not_allowed002.nscl \
+	not_allowed003.nscl \
+	not_allowed004.nscl
+
 TESTS = \
 	test_empty$(EXEEXT) \
 	test_empty_comments$(EXEEXT) \
 	test_intervals1$(EXEEXT) \
-	$(SCLTESTS)
+	$(SCLTESTS) \
+	$(NSCLTESTS)
 
 
 
@@ -104,22 +114,22 @@ test_intervals1_LDADD = \
 
 
 # if HAVE_CPPUNIT
-# TESTS = 
+# TESTS =
 # #	testcppunit$(EXEEXT)
-# 
-# 
+#
+#
 # #testcppunit
-# 
+#
 # testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
-# 
+#
 # testcppunit_SOURCES = \
 # 	main.cpp \
 # 	boxTest.h \
 # 	boxTest.cpp
-# 
+#
 # nodist_testcppunit_SOURCES = \
 # 	debugPaths.cpp
-# 
+#
 # testcppunit_LDADD = \
 # 	$(top_builddir)/libmutabormaincppunit.a \
 # 	$(top_builddir)/libmutabordebugcppunit.a \
@@ -135,20 +145,35 @@ test_intervals1_LDADD = \
 # 	$(BOOST_SYSTEM_LDFLAGS) \
 # 	$(BOOST_FILESYSTEM_LIBS) \
 # 	$(BOOST_SYSTEM_LIBS)
-# 
+#
 # endif
 
 $(SCLTESTS:.scl=.log): ./run_scl2mut.sh
+$(NSCLTESTS:.nscl=.log): ./run_nscl2mut.sh
 
 ./run_scl2mut.sh: $(top_builddir)/scl2mut Makefile
 	@echo '#!/bin/sh' > $@
 	@echo 'file="$$1"' >> $@
 	@echo 'basefile=`basename "$$file"`' >> $@
-	@echo 'ls "$(top_builddir)/scl2mut" "$$file" "$${basefile%.scl}.mut2"' >> $@
+	@echo 'LC_ALL=C' >> $@
+	@echo 'export LC_ALL' >> $@
 	@echo '"$(top_builddir)/scl2mut" "$$file" "$${basefile%.scl}.mut2" || exit 1' >> $@
 	@echo 'diff "$${file%.scl}.mut" "$${basefile%.scl}.mut2" || exit 2' >> $@
 	@echo 'exit 0' >> $@
 	@chmod u+x $@
+
+./run_nscl2mut.sh: $(top_builddir)/scl2mut Makefile
+	@echo '#!/bin/sh' > $@
+	@echo 'file="$$1"' >> $@
+	@echo 'basefile=`basename "$$file"`' >> $@
+	@echo 'LC_ALL=C' >> $@
+	@echo 'export LC_ALL' >> $@
+	@echo '"$(top_builddir)/scl2mut" "$$file" "$${basefile%.scl}.mut2" 2>&1 | tee $${basefile%.nscl}.log2 || exit 1' >> $@
+	@echo 'echo "starting grep..."' >> $@
+	@echo 'grep -Pzo -f $${file%.nscl}.err $${basefile%.nscl}.log2 || exit 2' >> $@
+	@echo 'exit 0' >> $@
+	@chmod u+x $@
+
 
 .PHONY: $(top_builddir)/scl2mut
 

@@ -53,6 +53,7 @@ namespace mutabor {
 	namespace scala_parser {
 		class scale_lexer;
 		class scale_parser;
+		class location;
 		struct interval {
 			enum interval_type {
 				cent_value,
@@ -177,28 +178,41 @@ namespace mutabor {
 		}
 
 
-		class parser {
+		struct error_handler {
+			virtual ~error_handler() {}
+			virtual void error(const location & loc,
+					   const char * message) = 0;
+		};
+
+		class parser: public error_handler {
 		public:
 			struct mutabor_writer_options {
 				std::string prefix;
 			};
-			parser (const std::string & s): intervals(),
+			parser (const std::string & s,
+				const std::string & f): handler(this),
+							intervals(),
 							lexer(NULL),
 							bison_parser(NULL)
 			{
-				parse(s);
+				parse(s,f);
 			}
 			virtual ~parser();
 
-			void parse (const std::string & s);
+			void parse (const std::string & s,
+				    const std::string & filename);
 
-			virtual void error(const char *  format, ...);
+			error_handler * get_error_handler() const;
+			void set_error_handler(error_handler * h);
+
+			virtual void error(const location &loc, const char *  message);
 
 			const interval_pattern & get_intervals () { return intervals; }
 
 
 			std::ostream & write_mutabor(std::ostream & o, const mutabor_writer_options & w);
 		protected:
+			error_handler * handler;
 			interval_pattern intervals;
 			scale_lexer * lexer;
 			scale_parser * bison_parser;

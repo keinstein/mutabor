@@ -59,36 +59,32 @@ namespace mutabor {
 			lexer = NULL;
 		}
 
-		void parser::parse(const std::string & s) {
+		void parser::parse(const std::string & s,
+				   const std::string & filename) {
 			if (!lexer) {
-				lexer = new scale_lexer(s.c_str(),"direct input",s.length());
-				lexer ->set_debug(7);
+				lexer = new scale_lexer(s.c_str(),
+							filename.c_str(),
+							s.length());
+#ifdef DEBUG
+				if (isDebugFlag(sclparser))
+					lexer -> set_debug(7);
+#endif
+				lexer -> set_error_handler(handler);
 			}
 			if (!bison_parser) {
 				bison_parser = new scale_parser(*lexer,intervals);
-				bison_parser->set_debug_level(7);
+#ifdef DEBUG
+				if (isDebugFlag(sclparser))
+					bison_parser->set_debug_level(7);
+#endif
 			}
 			bison_parser -> parse();
 		}
 
-		void parser::error(const char *  format, ...) {
-			char * formatted;
-			va_list args;
-			bool allocated = true;
-			va_start(args,format);
-			if (vasprintf(const_cast<char **>(&formatted),format,args) == -1) {
-				allocated = false;
-				formatted = const_cast<char *>(_mut("Error in Error: Could not allocate buffer for error message."));
-				if (!formatted) {
-					formatted =
-						const_cast<char *>("Error in Error: Could not allocate buffer for error message.");
-				}
-			}
-			va_end(args);
-			std::cerr << _mut("Error parsing scala document: ")
-				  << formatted << std::endl;
-			if (allocated)
-				free(formatted);
+		void parser::error(const location & loc, const char *  message) {
+			std::cerr << loc
+				  << std::endl
+				  << message << std::endl;
 		}
 
 		std::ostream & parser::write_mutabor(std::ostream & o, const mutabor_writer_options & w) {

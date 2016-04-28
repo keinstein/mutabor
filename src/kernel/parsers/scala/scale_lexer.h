@@ -53,6 +53,7 @@
 
 // system headers which do seldom change
 #include <cstring>
+#include <cstdarg>
 
 namespace mutabor {
 	namespace scala_parser {
@@ -74,6 +75,7 @@ namespace mutabor {
 			enum start_mode {
 				top_mode=0,
 				in_string,
+				in_sclname,
 				in_integer,
 				in_interval,
 				in_garbage
@@ -83,6 +85,7 @@ namespace mutabor {
 				    const char * f,
 				    size_t len):
 				yyFlexLexer(),
+				handler(NULL),
 				file(f),
 				buffer(strdup(string)),
 				buflen(len),
@@ -92,20 +95,51 @@ namespace mutabor {
 			{}
 			~scale_lexer() {
 				// delete yylval;
-				free(buffer);
+				if (buffer)
+					free(buffer);
+			}
+
+			error_handler * get_error_handler() const {
+				return handler;
+			}
+			void set_error_handler(error_handler * h) {
+				handler = h;
 			}
 
 			void error (const location & loc,
-				    const char * message) {
-				std::cerr << loc << std::endl << message << std::endl;
+				    const char * message,
+				    ...) {
+				char * formatted;
+				va_list args;
+				bool allocated = true;
+				va_start(args,message);
+				if (vasprintf(&formatted,message,args) == -1) {
+					allocated = false;
+					formatted = (char *)_mut("Error in Error: Could not allocate buffer for error message.");
+					if (!formatted) {
+						formatted =
+							(char *) "Error in Error: Could not allocate buffer for error message.";
+					}
+				}
+				va_end(args);
+				if (handler)
+					handler->error(loc,formatted);
+				else
+					std::cerr << loc
+						  << std::endl
+						  << "Error: "
+						  << formatted << std::endl;
+				if (allocated)
+					free(formatted);
 			}
 			std::string & get_filename() {return file;}
 			symbol_type get_token();
 			void free_identifier() { /* free(yylval->identifier); yylval->identifier = NULL; */ }
 			void push_state(start_mode mode) {
-				std::cerr << "pushing mode: " << mode << "/"
-					  << yy_start_mode[mode] << std::flush;
-				std::cerr << " (" << ((yy_start_stack_ptr>0)?yy_top_state():-1) << " -> ";
+				DEBUGLOG(sclparser,"pushing mode: %d/%d (%d) ->",
+					 mode,
+					 yy_start_mode[mode],
+					 ((yy_start_stack_ptr>0)?yy_top_state():-1));
 				yy_push_state(yy_start_mode[mode]);
 #ifdef DEBUG
 				/* in debug mode we do a double push, as the current start state is
@@ -113,22 +147,33 @@ namespace mutabor {
 				   the correct push/pop pairs later during pop */
 				yy_push_state(yy_start_mode[mode]);
 #endif
-				std::cerr << yy_top_state() << ")" << std::endl;
+				DEBUGLOG(sclparser,"pushing mode: %d/%d (%d).",
+					 mode,
+					 yy_start_mode[mode],
+					 ((yy_start_stack_ptr>0)?yy_top_state():-1));
 			}
 			void pop_state(start_mode mode) {
-				std::cerr << "popping mode: ("
-					  << yy_start_mode[mode] << ") "
-					  << yy_top_state() << " -> ";
+				DEBUGLOG(sclparser,
+					 "popping mode1: (%d) %d ->",
+					 yy_start_mode[mode],
+					 yy_top_state());
 				yy_pop_state();
 #ifdef DEBUG
-				std::cerr << yy_top_state() << " -> " << std::endl;
+				DEBUGLOG(sclparser,
+					 "popping mode2: (%d) %d ->",
+					 yy_start_mode[mode],
+					 yy_top_state());
 				yy_pop_state();
 #endif
-				std::cerr << yy_top_state() << std::endl;
+				DEBUGLOG(sclparser,
+					 "popping mode3: (%d) %d.",
+					 yy_start_mode[mode],
+					 yy_top_state());
 
 			}
 		protected:
 			static int yy_start_mode[];
+			error_handler * handler;
 			std::string file;
 			char * buffer;
 			size_t buflen;

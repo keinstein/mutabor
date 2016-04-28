@@ -61,6 +61,7 @@
 #undef _
 #endif
 #define _ _mut
+#define YY_ _mut
 
 #ifdef DEBUG
 #define YYDEBUG 1

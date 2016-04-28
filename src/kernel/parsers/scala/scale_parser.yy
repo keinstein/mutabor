@@ -60,11 +60,12 @@ namespace mutabor {
 {
 #include "src/kernel/Defs.h"
 #include "src/kernel/parsers/scala/scale_lexer.h"
-
+#include "src/kernel/parsers/scala/scala-inlines.h"
 #ifdef _
 #undef _
 #endif
 #define _ _mut
+#define YY_ _mut
 
 // fix the interface to the scanner
 #ifdef yylex
@@ -332,8 +333,8 @@ yy::calcxx_parser::error (const location_type& l,
 
 namespace mutabor {
 	namespace scala_parser {
-		void scale_parser::error(location const& l, const std::string & s) {
-			std::cerr << l << std::endl << s << std::endl;
+		inline void scale_parser::error(location const& l, const std::string & s) {
+			lexer.error(l,s.c_str());
 		}
 	}
 }

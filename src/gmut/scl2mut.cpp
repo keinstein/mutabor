@@ -27,6 +27,28 @@ extern "C" {
 	void mutabor_debug_lock() {}
 	void mutabor_debug_unlock() {}
 }
+namespace mutabor {
+	struct Mutex {} ;
+	extern "C" {
+
+		struct mutabor_debug_flagtype mutabor_debug_flags;
+		debugFlags debugFlagInitialiser;
+
+		mutabor::debugFlags::debugFlags()
+		{
+#define DEBUGFLAG(flag,description)					\
+			mutabor::mutabor_debug_flags.flag = false;
+#include "src/kernel/debugFlags.h"
+#undef DEBUGFLAG
+			mutabor::mutabor_debug_flags.always = true;
+			// manual overrides for debug purposes
+			//	flags.smartptr = true;
+		}
+
+		Mutex debugmutex;
+	}
+}
+
 #endif
 
 
@@ -86,7 +108,9 @@ std::ostream & operator << (std::ostream & o,
 	return o;
 }
 
-void run(std::istream & i, std::ostream & o) {
+void run(std::istream & i,
+	 std::ostream & o,
+	 const std::string & filename) {
 	std::string s;
 
 	i.seekg(0, std::ios::end);
@@ -98,19 +122,19 @@ void run(std::istream & i, std::ostream & o) {
 	s.assign((std::istreambuf_iterator<char>(i)),
 		   std::istreambuf_iterator<char>());
 
-	mutabor::scala_parser::parser scparser(s);
+	mutabor::scala_parser::parser scparser(s,filename);
 	mutabor::scala_parser::parser::mutabor_writer_options w;
 	w.prefix = prefix;
 	scparser.write_mutabor(o,w);
 }
 
-void openout_and_run(std::istream & i) {
+void openout_and_run(std::istream & i, const std::string & filename) {
 		if (!outputfile.empty()) {
 			fs::path p(outputfile);
 			fs::ofstream os(p, std::ios::out);
-			run(i,os);
+			run(i,os,filename);
 		} else {
-			run(i,cout);
+			run(i,cout,filename);
 		}
 }
 
@@ -133,6 +157,13 @@ int main(int ac, char* av[])
 			//			("input-file,i", po::value<std::vector<std::string> >()->required(),  "files to compile")
 			("input-file,i", po::value<std::string>(&inputfile),  _mut(".scl file that shall be converted"))
 			("output-file,o", po::value<std::string>(&outputfile),  _mut("filename of the mutabor logic"))
+#ifdef DEBUG
+#define N_
+#define DEBUGFLAG(flag,description) \
+			("debug-"#flag, po::value<bool>()->notifier(::mutabor::debugFlags::set ## flag()), _mut(description))
+#include "src/kernel/debugFlags.h"
+#undef DEBUGFLAG
+#endif
 			;
 		
 		p.add("input-file", 1).add("output-file",1);
@@ -160,41 +191,18 @@ int main(int ac, char* av[])
 			return 1;
 		}
 
-		std::cerr << "in: " << inputfile << endl
-			  << "out: " << outputfile << endl
-			  << "krb: " << krbfile << endl
-			  << "prefix: " << prefix << endl;
-		//		try {
 		if (vm.count("help")) {
 			do_help(desc,*av);
 			return 0;
 		}
 
-		if (vm.count("krb-file")) {
-			cout << ".krb files: " << vm["krb-file"].as<std::string>() << std::endl;
-		}
-
-		if (vm.count("prefix")) {
-			cout << "prefix: " << vm["prefix"].as<std::string>() << std::endl;
-		}
-
-		if (vm.count("output-file")) {
-			cout << "output-file: " << vm["output-file"].as<std::string>() << std::endl;
-		}
-
 		if (!inputfile.empty()) {
 			fs::path p(inputfile);
 			fs::ifstream is(p, std::ios::in);
-			openout_and_run(is);
+			openout_and_run(is,inputfile);
 		} else {
-			openout_and_run(cin);
+			openout_and_run(cin,"<stdin>");
 		}
-		
-		
-		if (vm.count("input-file")) {
-			cout << "input: " << vm["input-file"].as<std::string >() << std::endl;
-		}
-		//		}
 	}
 	catch(exception& e) {
 		cerr << "error: " << e.what() << "\n";
