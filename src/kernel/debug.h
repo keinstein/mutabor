@@ -149,6 +149,21 @@ void mutabor_debug_lock();
 void mutabor_debug_unlock();
 
 #ifdef __cplusplus
+#ifdef __GNUC__
+#include <cxxabi.h>
+	inline std::string DEMANGLE(const std::string & x) {	\
+		int status;			      \
+		return abi::__cxa_demangle(x.c_str(), 0, 0, &status);	\
+	}
+#define DEMANGLED(x) (DEMANGLE(x).c_str())
+#else
+#define DEMANGLED(x) (x)
+#endif
+#else
+#define DEMANGLED(x) (x)
+#endif
+
+#ifdef __cplusplus
 #define GET_ARG_16(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,...) a15
 #define COUNT_ARGS(...) GET_ARG_16(__VA_ARGS__,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0)
 #define PASTE3(_1,_2,_3) _1 ## _2 ## _3
@@ -209,7 +224,7 @@ void mutabor_debug_unlock();
 		    fprintf(stderr, "%s:%d:%s::%s ",			\
 			    __FILE__,					\
                             __LINE__,					\
-			    type,					\
+			    DEMANGLED(type),				\
 			    __FUNCTION__);				\
 		    fprintf(stderr, __VA_ARGS__);			\
 		    fprintf(stderr, " (%s)\n", strlevel);		\
@@ -263,6 +278,7 @@ void mutabor_debug_unlock();
 #define DEFWATCHEDPTR
 
 #endif /* DEBUG */
+
 
 #define DEBUGLOGBASE(level,type,...) DEBUGLOGBASEINT(isDebugFlag(level),#level,type,__VA_ARGS__)
 #define DEBUGLOG(level,...) DEBUGLOGBASE(level, typeid(*this).name(),__VA_ARGS__)
