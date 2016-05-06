@@ -23,6 +23,7 @@ nodist_testcppunit_SOURCES = \
 
 testcppunit_LDADD = \
 	$(top_builddir)/libmutabormaincppunit.a \
+	$(top_builddir)/libmutaborkernel.a \
 	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \

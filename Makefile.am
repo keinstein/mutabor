@@ -7,17 +7,16 @@ precompCOMPILESOURCES=$(mutabor_COMPILESOURCES)
 include common-rules.mk
 
 TSBUILTSOURCES += \
-	$(top_srcdir)/src/kernel/mut.hh \
-	$(top_srcdir)/src/kernel/mut.hh \
-	$(top_srcdir)/src/kernel/mut.cc \
-	$(top_srcdir)/src/kernel/mutlex.cc \
-	$(top_srcdir)/src/kernel/parsers/scala/scale_parser.hh \
-	$(top_srcdir)/src/kernel/parsers/scala/scale_parser.cc \
-	$(top_srcdir)/src/kernel/parsers/scala/location.hh \
-	$(top_srcdir)/src/kernel/parsers/scala/position.hh \
-	$(top_srcdir)/src/kernel/parsers/scala/stack.hh \
-	$(top_srcdir)/src/kernel/parsers/scala/scale_lexer.cc
-TAGS_DEPENDENCIES: $(TSBUILTSOURCES)
+	src/kernel/mut.hh \
+	src/kernel/mut.cc \
+	src/kernel/mutlex.cc \
+	src/kernel/parsers/scala/scale_parser.hh \
+	src/kernel/parsers/scala/scale_parser.cc \
+	src/kernel/parsers/scala/location.hh \
+	src/kernel/parsers/scala/position.hh \
+	src/kernel/parsers/scala/stack.hh \
+	src/kernel/parsers/scala/scale_lexer.cc
+TAGS_DEPENDENCIES: generated_headers
 
 
 RCCOMPILE = $(RC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) $(RCFLAGS)
@@ -628,7 +627,7 @@ endif
 
 
 .PHONY: cvs_dist cvs_distcheck \
-	fixdependencies
+	fixdependencies generated_headers
 
 
 
@@ -909,19 +908,15 @@ debuild: dch
 
 check-local: potfilechk
 
-# $(top_srcdir)/src/kernel/mut.hh: src/kernel/mut.hh
-# 	cmp "$<" "$@" || cp "$<" "$@"
-# $(top_srcdir)/src/kernel/mut.cc: src/kernel/mut.cc
-# 	cmp "$<" "$@" || cp "$<" "$@"
-# $(top_srcdir)/src/kernel/mutlex.cc: src/kernel/mutlex.cc
-# 	cmp "$<" "$@" || cp "$<" "$@"
-# $(top_srcdir)/src/kernel/parsers/scala/scale_parser.hh: src/kernel/parsers/scala/scale_parser.hh
-# 	cmp "$<" "$@" || cp "$<" "$@"
-# $(top_srcdir)/src/kernel/parsers/scala/scale_parser.cc: src/kernel/parsers/scala/scale_parser.cc
-# 	cmp $< "$@" || cp $< "$@"
-# $(top_srcdir)/src/kernel/parsers/scala/scale_lexer.cc: src/kernel/parsers/scala/scale_lexer.cc
-# 	cmp "$<" "$@" || cp "$<" "$@"
-# 
+if VPATH_BUILD
+generated_headers: $(TSBUILTSOURCES)
+	for d in $(TSBUILTSOURCES) ; \
+	do \
+		cmp "$$d" "$(top_srcdir)/$$d" || cp "$$d" "$(top_srcdir)/$$d" ; \
+	done
+else
+generated_headers:
+endif
 
 
 

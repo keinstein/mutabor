@@ -40,6 +40,7 @@ AM_INIT_AUTOMAKE([dist-bzip2 silent-rules subdir-objects -Wall])
 AS_IF(test "${enable_silent_rules+set}" != set,
    enable_silent_rules=yes
    AM_DEFAULT_VERBOSITY=0)
+AM_CONDITIONAL(VPATH_BUILD, test "$ac_abs_confdir" != "$ac_pwd")
 
 m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
 AM_SILENT_RULES
