@@ -92,53 +92,12 @@ namespace mutabor {
 				data.df.numerator = n;
 				data.df.denominator = d;
 			}
-			std::ostream & print (std::ostream & o) const {
-				if (!comment.empty())
-					o << "!" << comment << std::endl;
-				switch (type) {
-				case interval::cent_value:
-					o << data.cents;
-					break;
-				case interval::ratio:
-					o << data.f.numerator
-					  << "/"
-					  << data.f.denominator;
-					break;
-				case interval::cent_ratio:
-					o << data.df.numerator
-					  << "/"
-					  << data.df.denominator;
-					break;
-				default:
-					o << "<unknown interval>";
-				}
-				o << description;
-				return o;
-			}
-			bool operator == (const interval & o) const {
-				bool retval = type == o.type;
-				if (!retval) return false;
-				switch (type) {
-				case cent_value: retval = data.cents == o.data.cents;
-					break;
-				case ratio:
-					retval = data.f.denominator == o.data.f.denominator
-						&& data.f.numerator == o.data.f.numerator;
-					break;
-				case cent_ratio:
-					retval = data.df.denominator == o.data.df.denominator
-						&& data.df.numerator == o.data.df.numerator;
-					break;
-				default:
-					return false;
-				}
-				retval = retval && comment == o.comment && description == o.description;
-				return retval;
-			}
+			std::ostream & print (std::ostream & o) const;
+			bool operator == (const interval & o) const;
 		};
-		inline std::ostream & operator<< (std::ostream & o, const interval & i) {		return i.print(o);
-		}
+		inline std::ostream & operator<< (std::ostream & o, const interval & i);
 		typedef typename std::vector<interval> interval_list;
+
 		struct interval_pattern {
 			std::string comment1;
 			std::string name;
@@ -159,23 +118,14 @@ namespace mutabor {
 					count_comment==o.count_comment &&
 					garbage == o.garbage;
 			}
-			std::ostream & print (std::ostream & o) const {
-				o << "!" << comment1 << std::endl
-				  << name << std::endl
-				  << "!" << comment2 << std::endl
-				  << count << count_comment << std::endl;
-				for (interval_list::const_iterator i = intervals.begin();
-				     i != intervals.end();
-				     ++i) {
-					o << *i << std::endl;
-				}
-				return o << garbage;
-			}
+			std::ostream & print (std::ostream & o) const;
 		};
 
-		inline std::ostream & operator << (std::ostream & o, const interval_pattern & i) {
-			return (i.print(o)) << std::endl;
-		}
+		std::ostream & operator << (std::ostream & o,
+					    const interval_pattern & i);
+
+		};
+
 
 
 		struct error_handler {

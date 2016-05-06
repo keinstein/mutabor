@@ -2,6 +2,7 @@
 #include "src/kernel/parsers/scala/scala.h"
 #include "src/kernel/parsers/scala/scale_parser.hh"
 #include "src/kernel/parsers/scala/scale_lexer.h"
+#include "src/kernel/parsers/scala/scala-inlines.h"
 using namespace mutabor;
 using namespace mutabor::scala_parser;
 

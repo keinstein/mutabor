@@ -95,6 +95,12 @@ namespace mutabor {
 			retval = retval && comment == o.comment && description == o.description;
 			return retval;
 		}
+
+		inline std::ostream & operator<< (std::ostream & o,
+						  const interval & i) {
+			return i.print(o);
+		}
+
 		inline std::ostream & interval_pattern::print (std::ostream & o) const {
 			o << "!" << comment1 << std::endl
 			  << name << std::endl
@@ -124,6 +130,7 @@ namespace mutabor {
 			handler = h;
 			if (lexer) lexer->set_error_handler(h);
 		}
+
 
 	}
 }
