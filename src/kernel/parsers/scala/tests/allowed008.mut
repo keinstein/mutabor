@@ -5,11 +5,12 @@
  Tones: 5 "
 
 TONESYSTEM
-	scala 60 [ scala0, scala1, scala2, scala3, scala4 ] scala5
+	scalaT = 60 [ scala0, scala1, scala2, scala3, scala4 ] scala5
 
 INTERVAL
 	scalaOCTAVE = 2:1
 	scalaCENT = scalaOCTAVE / 1200
+	scala0 = 1:1
 " after count"
 	scala1 = 2.4 scalaCENT " a dot separated by spaces is not ignored. CAUTION: this line reads as 2.0 cents !!!"
 " after first interval
@@ -23,7 +24,9 @@ INTERVAL
 	scala5 = 5.6 scalaCENT "./2 just 5.6 cents!!!! The dot is allowed, here"
 TONE
 	scala0 = 440
-	scala1 = scala0 + scala0
-	scala2 = scala0 + scala1
-	scala3 = scala0 + scala2
-	scala4 = scala0 + scala3
+	scala1 = scala0 + scala1
+	scala2 = scala0 + scala2
+	scala3 = scala0 + scala3
+	scala4 = scala0 + scala4
+LOGIC
+	scala KEY s = scalaT []

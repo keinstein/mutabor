@@ -6,7 +6,7 @@
  Tones: 0 "
 
 TONESYSTEM
-	scala 60 [ scala0 ] scala0
+	scalaT = 60 [ scala0 ] scala0
 
 INTERVAL
 	scalaOCTAVE = 2:1
@@ -14,3 +14,5 @@ INTERVAL
 	scala0 = 1:1
 TONE
 	scala0 = 440
+LOGIC
+	scala KEY s = scalaT []

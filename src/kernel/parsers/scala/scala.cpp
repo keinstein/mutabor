@@ -95,7 +95,7 @@ namespace mutabor {
 			o << " Tones: " << intervals.count << " " << intervals.count_comment  << "\"" << std::endl;
 			o << std::endl;
 			o << _mut("TONESYSTEM") << std::endl;
-			o << "\t" << w.prefix << " 60 [ " << w.prefix << "0";
+			o << "\t" << w.prefix << "T" << " = 60 [ " << w.prefix << "0";
 
 			for (size_t i = 1; i < intervals.intervals.size() ; i++) {
 				o << ", " << w.prefix << i;
@@ -106,9 +106,7 @@ namespace mutabor {
 			o << "\t" << w.prefix << _mut("OCTAVE") << " = 2:1" << std::endl;
 			o << "\t" << w.prefix << _mut("CENT") << " = "
 			  << w.prefix << "OCTAVE / 1200" << std::endl;
-			if (intervals.intervals.empty()) {
-				o << "\t" << w.prefix << "0 = 1:1" << std::endl;
-			}
+			o << "\t" << w.prefix << "0 = 1:1" << std::endl;
 			for (size_t i = 0 ; i < intervals.intervals.size() ; i++) {
 				interval &interv = intervals.intervals[i];
 				o << "\"" << interv.comment << "\"" << std::endl;
@@ -132,8 +130,12 @@ namespace mutabor {
 			o << _mut("TONE") << std::endl;
 			o << "\t" << w.prefix << "0 = 440" << std::endl;
 			for (size_t i = 1 ; i < intervals.intervals.size() ; i++) {
-				o << "\t" << w.prefix << i << " = " << w.prefix << "0 + " << w.prefix << i-1 << std::endl;
+				o << "\t" << w.prefix << i << " = "
+				  << w.prefix << "0 + " << w.prefix << i << std::endl;
 			}
+			o << _mut("LOGIC") << std::endl;
+			o << "\t" << w.prefix << " KEY " << w.prefix[0]
+			  << " = " << w.prefix << "T []" << std::endl;
 			return o;
 		}
 	}

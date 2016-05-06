@@ -171,7 +171,7 @@ void yyerror(YYLTYPE* locp, mutabor_box_type * box, const char* err)
 
 start : /* empty */
 	|	blocks
-	|  	error blocks {  
+	|  	error blocks {
 			mutabor_error_message(box,
 		                              compiler_error,
 		                              _mut("Syntax error in line %d."),
@@ -220,7 +220,7 @@ intervalldekl1 :
       ;
 
 intervalldekl2 :
-          MUTABOR_TOKEN_IDENTIFIER '=' 
+          MUTABOR_TOKEN_IDENTIFIER '='
 		GLEITKOMMA_ZAHL ':' GLEITKOMMA_ZAHL
                     { if ( fabs($5) > 0.001 )
 				    get_new_intervall (box, $1, $3 / $5);
@@ -230,7 +230,7 @@ intervalldekl2 :
 					   ($1) );
 		}
 
-        | MUTABOR_TOKEN_IDENTIFIER '=' 
+        | MUTABOR_TOKEN_IDENTIFIER '='
 		GLEITKOMMA_ZAHL MUTABOR_TOKEN_ROOT GLEITKOMMA_ZAHL
                     { if ( fabs ($3) > 0.001 )
 				    get_new_intervall (box, $1, pow ($5, 1 / $3));
@@ -239,7 +239,7 @@ intervalldekl2 :
 						     _mut("Bad interval value in %s"),
 						     ($1));
 		}
-	| MUTABOR_TOKEN_IDENTIFIER '=' 
+	| MUTABOR_TOKEN_IDENTIFIER '='
 		KOMPLEX_TON_LIST
 		{ get_new_intervall_komplex (box,$1); }
         | MUTABOR_TOKEN_IDENTIFIER '=' error {
@@ -274,7 +274,7 @@ tondekl2 :
 	  { get_new_ton_absolut (box, $1, $3); }
 
 	| 	MUTABOR_TOKEN_IDENTIFIER '='
-		MUTABOR_TOKEN_IDENTIFIER '-' 
+		MUTABOR_TOKEN_IDENTIFIER '-'
 		KOMPLEX_TON_LIST
 		{ get_new_ton_komplex_negative (box, $1, $3); }
 
@@ -282,11 +282,11 @@ tondekl2 :
 		MUTABOR_TOKEN_IDENTIFIER
 	{
 		init_komplex_ton_list (box);
-		get_new_ton_komplex_positive (box, $1, $3); 
+		get_new_ton_komplex_positive (box, $1, $3);
 	}
 
 	| 	MUTABOR_TOKEN_IDENTIFIER '='
-		MUTABOR_TOKEN_IDENTIFIER '+' 
+		MUTABOR_TOKEN_IDENTIFIER '+'
 		KOMPLEX_TON_LIST
 	{ get_new_ton_komplex_positive (box, $1, $3); }
 
@@ -340,6 +340,25 @@ KOMPLEX_TON_1 :
 							 _mut("Division by (nearly) 0 in line %d."),
 							 FEHLERZEILE);
 		   }
+        | '+' MUTABOR_TOKEN_IDENTIFIER '/' GLEITKOMMA_ZAHL
+                   { if ( fabs($4) > 0.001 )
+				   get_new_faktor_anteil (box, (double) 1 / ($4), $2);
+			   else
+				   mutabor_error_message(box,
+							 compiler_error,
+							 _mut("Division by (nearly) 0 in line %d."),
+							 FEHLERZEILE);
+		   }
+
+        | '-' MUTABOR_TOKEN_IDENTIFIER '/' GLEITKOMMA_ZAHL
+                   { if ( fabs($4) > 0.001 )
+				   get_new_faktor_anteil (box, (double) -1 / ($4), $2);
+                     else
+				   mutabor_error_message(box,
+							 compiler_error,
+							 _mut("Division by (nearly) 0 in line %d."),
+							 FEHLERZEILE);
+		   }
 
         | '+' GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL MUTABOR_TOKEN_IDENTIFIER
                    { if ( fabs($4) > 0.001 )
@@ -377,7 +396,7 @@ KOMPLEX_TON_1 :
 
 KOMPLEX_TON_START :
 	  MUTABOR_TOKEN_IDENTIFIER
-	  { init_komplex_ton_list (box); 
+	  { init_komplex_ton_list (box);
 		get_new_faktor_anteil (box, (double) 1.0 , $1); }
 
 /***
@@ -386,11 +405,11 @@ KOMPLEX_TON_START :
 ***/
 
 	|  GLEITKOMMA_ZAHL MUTABOR_TOKEN_IDENTIFIER
-	{ init_komplex_ton_list (box); 
+	{ init_komplex_ton_list (box);
 		get_new_faktor_anteil (box, $1, $2); }
 
         |  '/' GLEITKOMMA_ZAHL MUTABOR_TOKEN_IDENTIFIER
-                   { init_komplex_ton_list (box); 
+                   { init_komplex_ton_list (box);
 		if ( fabs($2) > 0.001 )
 				   get_new_faktor_anteil (box, (double) 1 / ($2), $3);
                      else
@@ -399,9 +418,19 @@ KOMPLEX_TON_START :
 						   _mut("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);
 		   }
+        |  MUTABOR_TOKEN_IDENTIFIER '/' GLEITKOMMA_ZAHL
+                   { init_komplex_ton_list (box);
+		if ( fabs($3) > 0.001 )
+				   get_new_faktor_anteil (box, (double) 1 / ($3), $1);
+                     else
+			     mutabor_error_message(box,
+						   compiler_error,
+						   _mut("Division by (nearly) 0 in line %d."),
+						   FEHLERZEILE);
+		   }
 
         | GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL MUTABOR_TOKEN_IDENTIFIER
-                   { init_komplex_ton_list (box); 
+                   { init_komplex_ton_list (box);
 		if ( fabs($3) > 0.001 )
 				   get_new_faktor_anteil (box, ($1) / ($3), $4);
                      else
@@ -439,10 +468,10 @@ tonsystemdekl1 :
       ;
 
 tonsystemdekl2_1 :
-         MUTABOR_TOKEN_IDENTIFIER '=' 
-		{ init_ton_liste (box); 
+         MUTABOR_TOKEN_IDENTIFIER '='
+		{ init_ton_liste (box);
 		$$ = $1;
-		} 
+		}
 tonsystemdekl2 : tonsystemdekl2_1 MUTABOR_TOKEN_INTEGER '[' tonliste ']'
                       { init_komplex_ton_list (box); }
                         KOMPLEX_TON_LIST
@@ -857,7 +886,7 @@ logik_dekl_2 :
                 init_anweisungs_liste (box); }
           anweisungs_liste ']'
               { vervollstaendige_logik (box); }
-        | MUTABOR_TOKEN_IDENTIFIER ausloeser '=' 
+        | MUTABOR_TOKEN_IDENTIFIER ausloeser '='
 		{ init_aktions_liste (box); }
 		aktion
 		'['
