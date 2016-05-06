@@ -35,6 +35,7 @@ TESTS = \
 	test_empty$(EXEEXT) \
 	test_empty_comments$(EXEEXT) \
 	test_intervals1$(EXEEXT) \
+	test_keymaps$(EXEEXT) \
 	$(SCLTESTS) \
 	$(NSCLTESTS)
 
@@ -47,7 +48,8 @@ TESTS = \
 check_PROGRAMS = \
 	test_empty \
 	test_empty_comments \
-	test_intervals1
+	test_intervals1 \
+	test_keymaps
 
 nodist_test_empty_SOURCES = \
 	debugPaths.cpp
@@ -98,6 +100,27 @@ test_intervals1_SOURCES = \
 	test_intervals1.cpp
 
 test_intervals1_LDADD = \
+	$(top_builddir)/libmutaborscala.a \
+	$(top_builddir)/libmutabordebugtest.a \
+	$(top_builddir)/libmutaborgui.a \
+	$(top_builddir)/libmutaborrouting.a \
+	$(top_builddir)/libmutaborkernel.a \
+	$(top_builddir)/librtmidi.a \
+	$(top_builddir)/src/wxintl/libwxintl.a \
+	$(LDADD) \
+	$(AM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LDFLAGS) \
+	$(BOOST_SYSTEM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIBS) \
+	$(BOOST_SYSTEM_LIBS)
+
+nodist_test_keymaps_SOURCES = \
+	debugPaths.cpp
+
+test_keymaps_SOURCES = \
+	test_keymaps.cpp
+
+test_keymaps_LDADD = \
 	$(top_builddir)/libmutaborscala.a \
 	$(top_builddir)/libmutabordebugtest.a \
 	$(top_builddir)/libmutaborgui.a \

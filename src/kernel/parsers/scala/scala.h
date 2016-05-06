@@ -54,6 +54,30 @@ namespace mutabor {
 		class scale_lexer;
 		class scale_parser;
 		class location;
+
+		template<class T>
+		struct scala_value {
+			std::string comment; //< Commant before the value
+			T value;             //< the value
+			std::string description; //< Text after the value
+			scala_value():value() {}
+			scala_value (const T & v):value(v) {}
+			scala_value<T> & swap(scala_value & o);
+			bool operator == (const scala_value <T> & o) const {
+				return value == o.value &&
+					description == o.description &&
+					comment == o.comment;
+			}
+
+			std::ostream & print(std::ostream & o) const;
+			scala_value & operator = (const T & v) {
+				value = v;
+				return *this;
+			}
+		};
+		template<class T>
+		std::ostream & operator << (std::ostream & o, const scala_value<T> & v);
+
 		struct interval {
 			enum interval_type {
 				cent_value,
@@ -124,10 +148,58 @@ namespace mutabor {
 		std::ostream & operator << (std::ostream & o,
 					    const interval_pattern & i);
 
+
+		struct key:public scala_value<int32_t> {
+			typedef scala_value<int32_t> base;
+			enum key_type {
+				numeric,
+				empty
+			} type;
+
+			key ():base(-1),type(empty) {}
+			key (int32_t i):base(i),type(numeric) {}
+			std::ostream & print (std::ostream & o) const;
+			bool operator == (const key & o) const;
+		};
+		typedef typename std::vector<key> key_list;
+
+
+		std::ostream & operator<< (std::ostream & o, const key & i);
+
+		struct keymap {
+			scala_value <int32_t> count;
+			scala_value <int32_t> first_key;
+			scala_value <int32_t> last_key;
+			scala_value <int32_t> reference;
+			scala_value <int32_t> anchor;
+			scala_value <double> reference_frequency;
+			scala_value <int32_t> repetition_interval;
+			key_list keys;
+			std::string garbage;
+			keymap() {}
+#ifdef DEBUG
+			bool compare(const keymap & o) const;
+#endif
+			bool operator == (const keymap & o) const {
+#ifdef DEBUG
+				return compare (o);
+#else
+				return count == o.count &&
+					first_key == o.first_key &&
+					last_key == o.last_key &&
+					reference == o.reference &&
+					anchor == o.anchor &&
+					reference_frequency == o.reference_frequency &&
+					repetition_interval == o.repetition_interval &&
+					keys == o.keys &&
+					garbage == o.garbage;
+#endif
+			}
+			std::ostream & print (std::ostream & o) const;
 		};
 
-
-
+		std::ostream & operator << (std::ostream & o,
+					    const keymap & i);
 		struct error_handler {
 			virtual ~error_handler() {}
 			virtual void error(const location & loc,
@@ -152,20 +224,26 @@ namespace mutabor {
 			void parse (const std::string & s,
 				    const std::string & filename);
 
+			void load_keymap(const std::string & s,
+					 const std::string & filename);
+
 			error_handler * get_error_handler() const;
 			void set_error_handler(error_handler * h);
 
 			virtual void error(const location &loc, const char *  message);
 
 			const interval_pattern & get_intervals () { return intervals; }
+			const keymap & get_keys () { return keys; }
 
 
 			std::ostream & write_mutabor(std::ostream & o, const mutabor_writer_options & w);
 		protected:
 			error_handler * handler;
 			interval_pattern intervals;
+			keymap keys;
 			scale_lexer * lexer;
 			scale_parser * bison_parser;
+			//			keymap_parser * key_parser;
 		};
 	}
 }

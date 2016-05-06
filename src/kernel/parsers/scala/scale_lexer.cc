@@ -1,4 +1,5 @@
-#line 2 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.cc"
+#line 2 "../../mutabor/src/kernel/parsers/scala/scale_lexer.cc"
+#line 49 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
 # include "src/kernel/Defs.h"
 # include <cerrno>
 # include <climits>
@@ -27,7 +28,9 @@
 MUTABOR_NAMESPACE(mutabor)
 MUTABOR_NAMESPACE(scala_parser)
 
-#line 31 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.cc"
+
+
+#line 34 "../../mutabor/src/kernel/parsers/scala/scale_lexer.cc"
 
 #define  YY_INT_ALIGNED short int
 
@@ -43,8 +46,8 @@ MUTABOR_NAMESPACE(scala_parser)
 
 #define FLEX_SCANNER
 #define YY_FLEX_MAJOR_VERSION 2
-#define YY_FLEX_MINOR_VERSION 6
-#define YY_FLEX_SUBMINOR_VERSION 0
+#define YY_FLEX_MINOR_VERSION 5
+#define YY_FLEX_SUBMINOR_VERSION 39
 #if YY_FLEX_SUBMINOR_VERSION > 0
 #define FLEX_BETA
 #endif
@@ -303,7 +306,7 @@ struct yy_buffer_state
 /* %endif */
 
 /* %if-c++-only */
-	std::streambuf* yy_input_file; 
+	std::istream* yy_input_file;
 /* %endif */
 
 	char *yy_ch_buf;		/* input buffer */
@@ -317,7 +320,7 @@ struct yy_buffer_state
 	/* Number of characters read into yy_ch_buf, not including EOB
 	 * characters.
 	 */
-	int yy_n_chars;
+	yy_size_t yy_n_chars;
 
 	/* Whether we "own" the buffer - i.e., we know we created it,
 	 * and can realloc() it to grow it, and should free() it to
@@ -465,8 +468,8 @@ int yyFlexLexer::yylex()
 	(yy_c_buf_p) = yy_cp;
 
 /* %% [4.0] data tables for the DFA and the user's section 1 definitions go here */
-#define YY_NUM_RULES 10
-#define YY_END_OF_BUFFER 11
+#define YY_NUM_RULES 11
+#define YY_END_OF_BUFFER 12
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -474,27 +477,29 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[26] =
+static yyconst flex_int16_t yy_accept[48] =
     {   0,
-        8,    8,    0,    0,   11,    9,    6,    1,    5,    3,
-        7,    2,    8,    9,   10,    9,    7,    7,    8,    9,
-        7,    9,    9,    4,    0
+        0,    0,    3,    3,    0,    0,    0,    0,    0,    0,
+        2,    2,   12,   10,    9,    1,    8,    3,   11,    7,
+        9,    6,    7,    4,    6,    5,    2,   10,    9,    3,
+        7,    9,    4,    5,    7,    5,    0,    0,    4,    0,
+        2,    7,    4,    7,    7,    4,    0
     } ;
 
-static yyconst YY_CHAR yy_ec[256] =
+static yyconst flex_int32_t yy_ec[256] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    4,    5,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    6,    7,    8,    8,    8,
+        1,    2,    4,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    5,    1,    5,    6,    7,    8,    8,    8,
         8,    8,    8,    8,    8,    8,    8,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    9,   10,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
 
-        1,    1,    1,    1,    1,    1,   11,   12,    1,   13,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -513,52 +518,61 @@ static yyconst YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst YY_CHAR yy_meta[14] =
+static yyconst flex_int32_t yy_meta[9] =
     {   0,
-        1,    1,    2,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1
+        1,    1,    2,    1,    1,    1,    1,    1
     } ;
 
-static yyconst flex_uint16_t yy_base[28] =
+static yyconst flex_int16_t yy_base[56] =
     {   0,
-        0,    0,    0,    0,   28,    0,    0,   29,    0,   29,
-       19,   29,    8,   14,   29,    0,   17,   16,    0,   14,
-       14,    8,    9,    8,   29,   16,   14
+        0,    3,   44,   43,   41,   40,    7,    0,    0,    0,
+       37,   36,   38,    0,   33,   57,   57,    0,   57,    0,
+       14,   57,   21,   28,   57,   32,    0,    0,   30,    0,
+        0,    0,    0,    0,    0,   35,   26,    0,   20,   19,
+        0,   18,   40,   20,   19,   13,   57,   48,   50,   52,
+       54,   18,   17,   16,    0
     } ;
 
-static yyconst flex_int16_t yy_def[28] =
+static yyconst flex_int16_t yy_def[56] =
     {   0,
-       25,    1,   26,   26,   25,   27,   27,   25,   27,   25,
-       27,   25,   25,   27,   25,   27,   27,   25,   13,   27,
-       25,   27,   27,   27,    0,   25,   25
+       48,   48,   49,   49,   50,   50,   47,    7,    7,    7,
+       51,   51,   47,   52,   52,   47,   47,   53,   47,   54,
+       47,   47,   54,   47,   47,   21,   55,   52,   52,   53,
+       54,   21,   24,   26,   23,   23,   24,   37,   47,   26,
+       55,   36,   23,   43,   43,   54,    0,   47,   47,   47,
+       47,   47,   47,   47,   47
     } ;
 
-static yyconst flex_uint16_t yy_nxt[43] =
+static yyconst flex_int16_t yy_nxt[66] =
     {   0,
-        6,    7,    8,    9,   10,   11,   12,   13,    6,   14,
-        6,    6,    6,   18,   16,   19,   15,   15,   24,   24,
-       23,   21,   22,   21,   17,   20,   17,   25,    5,   25,
-       25,   25,   25,   25,   25,   25,   25,   25,   25,   25,
-       25,   25
+       41,   15,   16,   17,   15,   16,   17,   20,   21,   16,
+       22,   23,   24,   25,   26,   32,   31,   30,   28,   33,
+       46,   34,   35,   31,   31,   31,   47,   39,   36,   37,
+       47,   29,   38,   40,   29,   39,   42,   47,   16,   16,
+       43,   44,   16,   16,   45,   16,   16,   46,   14,   14,
+       18,   18,   19,   19,   27,   27,   13,   47,   47,   47,
+       47,   47,   47,   47,   47
     } ;
 
-static yyconst flex_int16_t yy_chk[43] =
+static yyconst flex_int16_t yy_chk[66] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,   13,   27,   13,   26,   26,   24,   23,
-       22,   21,   20,   18,   17,   14,   11,    5,   25,   25,
-       25,   25,   25,   25,   25,   25,   25,   25,   25,   25,
-       25,   25
+       55,    1,    1,    1,    2,    2,    2,    7,    7,    7,
+        7,    7,    7,    7,    7,   21,   54,   53,   52,   21,
+       46,   21,   23,   45,   44,   42,   40,   39,   23,   24,
+       37,   29,   24,   26,   15,   24,   36,   13,   12,   11,
+       36,   43,    6,    5,   43,    4,    3,   43,   48,   48,
+       49,   49,   50,   50,   51,   51,   47,   47,   47,   47,
+       47,   47,   47,   47,   47
     } ;
 
 /* Table of booleans, true if rule could match eol. */
-static yyconst flex_int32_t yy_rule_can_match_eol[11] =
+static yyconst flex_int32_t yy_rule_can_match_eol[12] =
     {   0,
-1, 0, 0, 0, 0, 0, 0, 0, 0, 0,     };
+1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,     };
 
-static yyconst flex_int16_t yy_rule_linenum[10] =
+static yyconst flex_int16_t yy_rule_linenum[11] =
     {   0,
-       83,   84,   85,   86,   87,   88,   89,   90,   91
+      106,  110,  111,  112,  113,  114,  117,  121,  124,  127
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -568,15 +582,16 @@ static yyconst flex_int16_t yy_rule_linenum[10] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
-#line 3 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
+#line 1 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
+#line 3 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
 #define YY_NO_INPUT 1
-#line 15 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
+#line 16 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
 MUTABOR_NAMESPACE_END(scala_parser)
 MUTABOR_NAMESPACE_END(mutabor)
 
 # include "src/kernel/parsers/scala/scale_lexer.h"
 # include "src/kernel/parsers/scala/scale_parser.hh"
+# include "src/kernel/parsers/scala/scala-inlines.h"
 MUTABOR_NAMESPACE(mutabor)
 MUTABOR_NAMESPACE(scala_parser)
 // Work around an incompatibility in flex (at least versions
@@ -604,10 +619,18 @@ MUTABOR_NAMESPACE(scala_parser)
   # define YY_USER_ACTION  loc.columns (yyleng);
 
 
-#line 608 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.cc"
+
+
+
+
+#line 627 "../../mutabor/src/kernel/parsers/scala/scale_lexer.cc"
 
 #define INITIAL 0
-#define comment 1
+#define string 1
+#define sclname 2
+#define integer 3
+#define interval 4
+#define garbage 5
 
 #ifndef YY_NO_UNISTD_H
 /* Special case for "unistd.h", since it is non-ANSI. We include it way
@@ -687,7 +710,7 @@ static int yy_flex_strlen (yyconst char * );
 /* %% [5.0] fread()/read() definition of YY_INPUT goes here unless we're doing C++ \ */\
 \
 /* %if-c++-only C++ definition \ */\
-	if ( (int)(result = LexerInput( (char *) buf, max_size )) < 0 ) \
+	if ( (result = LexerInput( (char *) buf, max_size )) < 0 ) \
 		YY_FATAL_ERROR( "input in flex scanner failed" );
 /* %endif */
 
@@ -749,7 +772,7 @@ static int yy_flex_strlen (yyconst char * );
 
 /* Code executed at the end of each rule. */
 #ifndef YY_BREAK
-#define YY_BREAK /*LINTED*/break;
+#define YY_BREAK break;
 #endif
 
 /* %% [6.0] YY_RULE_SETUP definition goes here */
@@ -762,9 +785,9 @@ static int yy_flex_strlen (yyconst char * );
  */
 YY_DECL
 {
-	yy_state_type yy_current_state;
-	char *yy_cp, *yy_bp;
-	int yy_act;
+	register yy_state_type yy_current_state;
+	register char *yy_cp, *yy_bp;
+	register int yy_act;
     
 	if ( !(yy_init) )
 		{
@@ -781,14 +804,14 @@ YY_DECL
 /* %if-c-only */
 /* %endif */
 /* %if-c++-only */
-			yyin.rdbuf(std::cin.rdbuf());
+			yyin = & std::cin;
 /* %endif */
 
 		if ( ! yyout )
 /* %if-c-only */
 /* %endif */
 /* %if-c++-only */
-			yyout.rdbuf(std::cout.rdbuf());
+			yyout = & std::cout;
 /* %endif */
 
 		if ( ! YY_CURRENT_BUFFER ) {
@@ -802,17 +825,34 @@ YY_DECL
 
 	{
 /* %% [7.0] user's declarations go here */
-#line 76 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
+#line 82 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
 
 
-  // Code run each time yylex is called.
-  loc.step ();
+	/*
+	switch (start_mode) {
+	case top_mode:BEGIN(INITIAL); break;
+	case in_string:BEGIN(string); break;
+	case in_interval:BEGIN(interval); break;
+	case in_garbage:BEGIN(garbage); break;
+	case in_integer:BEGIN(integer); break;
+	}
+	std::cerr << "start_mode: " << start_mode << std::endl;
+	*/
+	DEBUGLOG(sclparser,
+		 "yy_start: %d",
+		 yy_start);
+	// Code run each time yylex is called.
+	loc.step ();
+	loc.begin.filename = loc.end.filename = &file;
+
+	DEBUGLOG(sclparser,
+		 "location: %1",
+		 loc);
 
 
+#line 854 "../../mutabor/src/kernel/parsers/scala/scale_lexer.cc"
 
-#line 814 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.cc"
-
-	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
+	while ( 1 )		/* loops until end-of-file is reached */
 		{
 /* %% [8.0] yymore()-related code goes here */
 		yy_cp = (yy_c_buf_p);
@@ -830,7 +870,7 @@ YY_DECL
 yy_match:
 		do
 			{
-			YY_CHAR yy_c = yy_ec[YY_SC_TO_UI(*yy_cp)] ;
+			register YY_CHAR yy_c = yy_ec[YY_SC_TO_UI(*yy_cp)] ;
 			if ( yy_accept[yy_current_state] )
 				{
 				(yy_last_accepting_state) = yy_current_state;
@@ -839,13 +879,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 26 )
+				if ( yy_current_state >= 48 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_current_state != 25 );
+		while ( yy_current_state != 47 );
 		yy_cp = (yy_last_accepting_cpos);
 		yy_current_state = (yy_last_accepting_state);
 
@@ -874,12 +914,12 @@ do_action:	/* This label is used only to access EOF actions. */
 			{
 			if ( yy_act == 0 )
 				std::cerr << "--scanner backing up\n";
-			else if ( yy_act < 10 )
+			else if ( yy_act < 11 )
 				std::cerr << "--accepting rule at line " << yy_rule_linenum[yy_act] <<
 				         "(\"" << yytext << "\")\n";
-			else if ( yy_act == 10 )
-				std::cerr << "--accepting default rule (\"" << yytext << "\")\n";
 			else if ( yy_act == 11 )
+				std::cerr << "--accepting default rule (\"" << yytext << "\")\n";
+			else if ( yy_act == 12 )
 				std::cerr << "--(end of buffer or a NUL)\n";
 			else
 				std::cerr << "--EOF (start condition " << YY_START << ")\n";
@@ -898,60 +938,80 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 83 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
-return scale_parser::make_NEWLINE(loc);
+#line 106 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
+{
+	loc.lines();
+	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
+}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 84 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
-return scale_parser::make_SLASH(loc);
+#line 110 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
+return scale_parser::make_GARBAGE(yytext,loc);
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 85 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
-return scale_parser::make_COMMENT_SIGN(loc);
+#line 111 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
+return scale_parser::make_STRING(yytext,loc);
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 86 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
-return scale_parser::make_SPACE(yytext,loc);
+#line 112 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
+return scale_parser::make_F_NUMBER(yytext,loc);
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 87 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
-return scale_parser::make_BLANK(loc);
+#line 113 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
+return scale_parser::make_INTEGER(yytext,loc);
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 88 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
-return scale_parser::make_TAB(loc);
+#line 114 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
+{
+	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
+ }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 89 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
-return scale_parser::make_F_NUMBER(yytext,loc);
+#line 117 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
+{
+	return scale_parser::make_STRING(yytext,loc);
+				}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 90 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
-return scale_parser::make_INTEGER(yytext,loc);
+#line 121 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
+{
+	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
+}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 91 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
-return scale_parser::make_STRING(yytext,loc);
-	YY_BREAK
-case YY_STATE_EOF(INITIAL):
-case YY_STATE_EOF(comment):
-#line 92 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
-return scale_parser::make_END(loc);
+#line 124 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
+{
+	return scale_parser::make_SPACE(yytext,loc);
+ }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 93 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
+#line 127 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
+return scale_parser::make_STRING(yytext,loc);
+	YY_BREAK
+case YY_STATE_EOF(INITIAL):
+case YY_STATE_EOF(string):
+case YY_STATE_EOF(sclname):
+case YY_STATE_EOF(integer):
+case YY_STATE_EOF(interval):
+case YY_STATE_EOF(garbage):
+#line 128 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
+return scale_parser::make_END(loc);
+	YY_BREAK
+case 11:
+YY_RULE_SETUP
+#line 129 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
 ECHO;
 	YY_BREAK
-#line 955 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.cc"
+#line 1015 "../../mutabor/src/kernel/parsers/scala/scale_lexer.cc"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -974,11 +1034,7 @@ ECHO;
 			 * back-up) that will match for the new input source.
 			 */
 			(yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
-/* %if-c-only */
-/* %endif */
-/* %if-c++-only */
-			YY_CURRENT_BUFFER_LVALUE->yy_input_file = yyin.rdbuf();
-/* %endif */
+			YY_CURRENT_BUFFER_LVALUE->yy_input_file = yyin;
 			YY_CURRENT_BUFFER_LVALUE->yy_buffer_status = YY_BUFFER_NORMAL;
 			}
 
@@ -1094,29 +1150,11 @@ ECHO;
 /* %not-for-header */
 
 /* The contents of this function are C++ specific, so the () macro is not used.
- * This constructor simply maintains backward compatibility.
- * DEPRECATED
  */
-yyFlexLexer::yyFlexLexer( FLEX_STD istream* arg_yyin, FLEX_STD ostream* arg_yyout ):
-	yyin(arg_yyin ? arg_yyin->rdbuf() : std::cin.rdbuf()),
-	yyout(arg_yyout ? arg_yyout->rdbuf() : std::cout.rdbuf())
+yyFlexLexer::yyFlexLexer( std::istream* arg_yyin, std::ostream* arg_yyout )
 {
-	ctor_common();
-}
-
-/* The contents of this function are C++ specific, so the () macro is not used.
- */
-yyFlexLexer::yyFlexLexer( std::istream& arg_yyin, std::ostream& arg_yyout ):
-	yyin(arg_yyin.rdbuf()),
-	yyout(arg_yyout.rdbuf())
-{
-	ctor_common();
-}
-
-/* The contents of this function are C++ specific, so the () macro is not used.
- */
-void yyFlexLexer::ctor_common()
-{
+	yyin = arg_yyin;
+	yyout = arg_yyout;
 	yy_c_buf_p = 0;
 	yy_init = 0;
 	yy_start = 0;
@@ -1153,29 +1191,16 @@ yyFlexLexer::~yyFlexLexer()
 
 /* The contents of this function are C++ specific, so the () macro is not used.
  */
-void yyFlexLexer::switch_streams( std::istream& new_in, std::ostream& new_out )
-{
-	// was if( new_in )
-	yy_delete_buffer( YY_CURRENT_BUFFER );
-	yy_switch_to_buffer( yy_create_buffer( new_in, YY_BUF_SIZE  ) );
-
-	// was if( new_out )
-	yyout.rdbuf(new_out.rdbuf());
-}
-
-/* The contents of this function are C++ specific, so the () macro is not used.
- */
 void yyFlexLexer::switch_streams( std::istream* new_in, std::ostream* new_out )
 {
-	if( ! new_in ) {
-		new_in = &yyin;
-	}
+	if ( new_in )
+		{
+		yy_delete_buffer( YY_CURRENT_BUFFER );
+		yy_switch_to_buffer( yy_create_buffer( new_in, YY_BUF_SIZE  ) );
+		}
 
-	if ( ! new_out ) {
-		new_out = &yyout;
-	}
-
-	switch_streams(*new_in, *new_out);
+	if ( new_out )
+		yyout = new_out;
 }
 
 #ifdef YY_INTERACTIVE
@@ -1184,33 +1209,33 @@ int yyFlexLexer::LexerInput( char* buf, int /* max_size */ )
 int yyFlexLexer::LexerInput( char* buf, int max_size )
 #endif
 {
-	if ( yyin.eof() || yyin.fail() )
+	if ( yyin->eof() || yyin->fail() )
 		return 0;
 
 #ifdef YY_INTERACTIVE
-	yyin.get( buf[0] );
+	yyin->get( buf[0] );
 
-	if ( yyin.eof() )
+	if ( yyin->eof() )
 		return 0;
 
-	if ( yyin.bad() )
+	if ( yyin->bad() )
 		return -1;
 
 	return 1;
 
 #else
-	(void) yyin.read( buf, max_size );
+	(void) yyin->read( buf, max_size );
 
-	if ( yyin.bad() )
+	if ( yyin->bad() )
 		return -1;
 	else
-		return yyin.gcount();
+		return yyin->gcount();
 #endif
 }
 
 void yyFlexLexer::LexerOutput( const char* buf, int size )
 {
-	(void) yyout.write( buf, size );
+	(void) yyout->write( buf, size );
 }
 /* %ok-for-header */
 
@@ -1229,9 +1254,9 @@ void yyFlexLexer::LexerOutput( const char* buf, int size )
 int yyFlexLexer::yy_get_next_buffer()
 /* %endif */
 {
-    	char *dest = YY_CURRENT_BUFFER_LVALUE->yy_ch_buf;
-	char *source = (yytext_ptr);
-	yy_size_t number_to_move, i;
+    	register char *dest = YY_CURRENT_BUFFER_LVALUE->yy_ch_buf;
+	register char *source = (yytext_ptr);
+	register int number_to_move, i;
 	int ret_val;
 
 	if ( (yy_c_buf_p) > &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars) + 1] )
@@ -1260,7 +1285,7 @@ int yyFlexLexer::yy_get_next_buffer()
 	/* Try to read more data. */
 
 	/* First move last chars to start of buffer. */
-	number_to_move = (yy_size_t) ((yy_c_buf_p) - (yytext_ptr)) - 1;
+	number_to_move = (int) ((yy_c_buf_p) - (yytext_ptr)) - 1;
 
 	for ( i = 0; i < number_to_move; ++i )
 		*(dest++) = *(source++);
@@ -1342,9 +1367,9 @@ int yyFlexLexer::yy_get_next_buffer()
 	else
 		ret_val = EOB_ACT_CONTINUE_SCAN;
 
-	if ((int) ((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
+	if ((yy_size_t) ((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
 		/* Extend the array by 50%, plus the number we really need. */
-		int new_size = (yy_n_chars) + number_to_move + ((yy_n_chars) >> 1);
+		yy_size_t new_size = (yy_n_chars) + number_to_move + ((yy_n_chars) >> 1);
 		YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) scale_lexer_realloc((void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf,new_size  );
 		if ( ! YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
 			YY_FATAL_ERROR( "out of dynamic memory in yy_get_next_buffer()" );
@@ -1369,8 +1394,8 @@ int yyFlexLexer::yy_get_next_buffer()
     yy_state_type yyFlexLexer::yy_get_previous_state()
 /* %endif */
 {
-	yy_state_type yy_current_state;
-	char *yy_cp;
+	register yy_state_type yy_current_state;
+	register char *yy_cp;
     
 /* %% [15.0] code to get the start state into yy_current_state goes here */
 	yy_current_state = (yy_start);
@@ -1378,7 +1403,7 @@ int yyFlexLexer::yy_get_next_buffer()
 	for ( yy_cp = (yytext_ptr) + YY_MORE_ADJ; yy_cp < (yy_c_buf_p); ++yy_cp )
 		{
 /* %% [16.0] code to find the next state goes here */
-		YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 1);
+		register YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 1);
 		if ( yy_accept[yy_current_state] )
 			{
 			(yy_last_accepting_state) = yy_current_state;
@@ -1387,7 +1412,7 @@ int yyFlexLexer::yy_get_next_buffer()
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 26 )
+			if ( yy_current_state >= 48 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1407,11 +1432,11 @@ int yyFlexLexer::yy_get_next_buffer()
     yy_state_type yyFlexLexer::yy_try_NUL_trans( yy_state_type yy_current_state )
 /* %endif */
 {
-	int yy_is_jam;
+	register int yy_is_jam;
     /* %% [17.0] code to find the next state, and perhaps do backing up, goes here */
-	char *yy_cp = (yy_c_buf_p);
+	register char *yy_cp = (yy_c_buf_p);
 
-	YY_CHAR yy_c = 1;
+	register YY_CHAR yy_c = 1;
 	if ( yy_accept[yy_current_state] )
 		{
 		(yy_last_accepting_state) = yy_current_state;
@@ -1420,23 +1445,22 @@ int yyFlexLexer::yy_get_next_buffer()
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 26 )
+		if ( yy_current_state >= 48 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 25);
+	yy_is_jam = (yy_current_state == 47);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
 
-#ifndef YY_NO_UNPUT
 /* %if-c-only */
 /* %endif */
 /* %if-c++-only */
-    void yyFlexLexer::yyunput( int c, char* yy_bp)
+    void yyFlexLexer::yyunput( int c, register char* yy_bp)
 /* %endif */
 {
-	char *yy_cp;
+	register char *yy_cp;
     
     yy_cp = (yy_c_buf_p);
 
@@ -1446,10 +1470,10 @@ int yyFlexLexer::yy_get_next_buffer()
 	if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
 		{ /* need to shift things up to make room */
 		/* +2 for EOB chars. */
-		yy_size_t number_to_move = (yy_n_chars) + 2;
-		char *dest = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[
+		register yy_size_t number_to_move = (yy_n_chars) + 2;
+		register char *dest = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[
 					YY_CURRENT_BUFFER_LVALUE->yy_buf_size + 2];
-		char *source =
+		register char *source =
 				&YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[number_to_move];
 
 		while ( source > YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
@@ -1478,7 +1502,6 @@ int yyFlexLexer::yy_get_next_buffer()
 }
 /* %if-c-only */
 /* %endif */
-#endif
 
 /* %if-c-only */
 /* %endif */
@@ -1567,7 +1590,7 @@ int yyFlexLexer::yy_get_next_buffer()
 /* %if-c-only */
 /* %endif */
 /* %if-c++-only */
-    void yyFlexLexer::yyrestart( std::istream& input_file )
+    void yyFlexLexer::yyrestart( std::istream* input_file )
 /* %endif */
 {
     
@@ -1580,18 +1603,6 @@ int yyFlexLexer::yy_get_next_buffer()
 	yy_init_buffer( YY_CURRENT_BUFFER, input_file );
 	yy_load_buffer_state(  );
 }
-
-/* %if-c++-only */
-/** Delegate to the new version that takes an istream reference.
- * @param input_file A readable stream.
- * 
- * @note This function does not reset the start condition to @c INITIAL .
- */
-void yyFlexLexer::yyrestart( std::istream* input_file )
-{
-	yyrestart( *input_file );
-}
-/* %endif */
 
 /** Switch to a different input buffer.
  * @param new_buffer The new input buffer.
@@ -1640,11 +1651,7 @@ void yyFlexLexer::yyrestart( std::istream* input_file )
 {
     	(yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
 	(yytext_ptr) = (yy_c_buf_p) = YY_CURRENT_BUFFER_LVALUE->yy_buf_pos;
-/* %if-c-only */
-/* %endif */
-/* %if-c++-only */
-	yyin.rdbuf(YY_CURRENT_BUFFER_LVALUE->yy_input_file);
-/* %endif */
+	yyin = YY_CURRENT_BUFFER_LVALUE->yy_input_file;
 	(yy_hold_char) = *(yy_c_buf_p);
 }
 
@@ -1657,7 +1664,7 @@ void yyFlexLexer::yyrestart( std::istream* input_file )
 /* %if-c-only */
 /* %endif */
 /* %if-c++-only */
-    YY_BUFFER_STATE yyFlexLexer::yy_create_buffer( std::istream& file, int size )
+    YY_BUFFER_STATE yyFlexLexer::yy_create_buffer( std::istream* file, int size )
 /* %endif */
 {
 	YY_BUFFER_STATE b;
@@ -1666,7 +1673,7 @@ void yyFlexLexer::yyrestart( std::istream* input_file )
 	if ( ! b )
 		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer()" );
 
-	b->yy_buf_size = (yy_size_t)size;
+	b->yy_buf_size = size;
 
 	/* yy_ch_buf has to be 2 characters longer than the size given because
 	 * we need to put in 2 end-of-buffer characters.
@@ -1681,19 +1688,6 @@ void yyFlexLexer::yyrestart( std::istream* input_file )
 
 	return b;
 }
-
-/* %if-c++-only */
-/** Delegate creation of buffers to the new version that takes an istream reference.
- * @param file A readable stream.
- * @param size The character buffer size in bytes. When in doubt, use @c YY_BUF_SIZE.
- * 
- * @return the allocated buffer state.
- */
-	YY_BUFFER_STATE yyFlexLexer::yy_create_buffer( std::istream* file, int size )
-{
-	return yy_create_buffer( *file, size );
-}
-/* %endif */
 
 /** Destroy the buffer.
  * @param b a buffer created with yy_create_buffer()
@@ -1725,7 +1719,7 @@ void yyFlexLexer::yyrestart( std::istream* input_file )
 /* %if-c-only */
 /* %endif */
 /* %if-c++-only */
-    void yyFlexLexer::yy_init_buffer( YY_BUFFER_STATE b, std::istream& file )
+    void yyFlexLexer::yy_init_buffer( YY_BUFFER_STATE b, std::istream* file )
 /* %endif */
 
 {
@@ -1733,11 +1727,7 @@ void yyFlexLexer::yyrestart( std::istream* input_file )
     
 	yy_flush_buffer( b );
 
-/* %if-c-only */
-/* %endif */
-/* %if-c++-only */
-	b->yy_input_file = file.rdbuf();
-/* %endif */
+	b->yy_input_file = file;
 	b->yy_fill_buffer = 1;
 
     /* If b is the current buffer, then yy_init_buffer was _probably_
@@ -1870,7 +1860,7 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 		 * scanner will even need a stack. We use 2 instead of 1 to avoid an
 		 * immediate realloc on the next call.
          */
-		num_to_alloc = 1; /* After all that talk, this was set to 1 anyways... */
+		num_to_alloc = 1;
 		(yy_buffer_stack) = (struct yy_buffer_state**)scale_lexer_alloc
 								(num_to_alloc * sizeof(struct yy_buffer_state*)
 								);
@@ -1887,7 +1877,7 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 	if ((yy_buffer_stack_top) >= ((yy_buffer_stack_max)) - 1){
 
 		/* Increase the buffer to prepare for a possible push. */
-		yy_size_t grow_size = 8 /* arbitrary grow size */;
+		int grow_size = 8 /* arbitrary grow size */;
 
 		num_to_alloc = (yy_buffer_stack_max) + grow_size;
 		(yy_buffer_stack) = (struct yy_buffer_state**)scale_lexer_realloc
@@ -1916,7 +1906,7 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 /* %if-c-only */
 /* %endif */
 /* %if-c++-only */
-    void yyFlexLexer::yy_push_state( int _new_state )
+    void yyFlexLexer::yy_push_state( int new_state )
 /* %endif */
 {
     	if ( (yy_start_stack_ptr) >= (yy_start_stack_depth) )
@@ -1938,7 +1928,7 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 
 	(yy_start_stack)[(yy_start_stack_ptr)++] = YY_START;
 
-	BEGIN(_new_state);
+	BEGIN(new_state);
 }
 
 /* %if-c-only */
@@ -2022,8 +2012,7 @@ void yyFlexLexer::LexerError( yyconst char msg[] )
 #ifndef yytext_ptr
 static void yy_flex_strncpy (char* s1, yyconst char * s2, int n )
 {
-		
-	int i;
+	register int i;
 	for ( i = 0; i < n; ++i )
 		s1[i] = s2[i];
 }
@@ -2032,7 +2021,7 @@ static void yy_flex_strncpy (char* s1, yyconst char * s2, int n )
 #ifdef YY_NEED_STRLEN
 static int yy_flex_strlen (yyconst char * s )
 {
-	int n;
+	register int n;
 	for ( n = 0; s[n]; ++n )
 		;
 
@@ -2042,12 +2031,11 @@ static int yy_flex_strlen (yyconst char * s )
 
 void *scale_lexer_alloc (yy_size_t  size )
 {
-			return (void *) malloc( size );
+	return (void *) malloc( size );
 }
 
 void *scale_lexer_realloc  (void * ptr, yy_size_t  size )
 {
-		
 	/* The cast to (char *) in the following accommodates both
 	 * implementations that use char* generic pointers, and those
 	 * that use void* generic pointers.  It works with the latter
@@ -2060,7 +2048,7 @@ void *scale_lexer_realloc  (void * ptr, yy_size_t  size )
 
 void scale_lexer_free (void * ptr )
 {
-			free( (char *) ptr );	/* see scale_lexer_realloc() for (char *) cast */
+	free( (char *) ptr );	/* see scale_lexer_realloc() for (char *) cast */
 }
 
 /* %if-tables-serialization definitions */
@@ -2070,16 +2058,20 @@ void scale_lexer_free (void * ptr )
 
 /* %ok-for-header */
 
-#line 93 "../../../mutabor-git/src/kernel/parsers/scala/scale_lexer.ll"
+#line 128 "../../mutabor/src/kernel/parsers/scala/scale_lexer.ll"
 
 
 int scale_lexer::LexerInput( char* buf, int max_size ) {
+	if (!buffer)
+		return yyFlexLexer::LexerInput(buf, max_size);
 	if (buflen <= position || max_size <= 0) return 0;
 	size_t  size = std::min((size_t)max_size, buflen - position);
 	std::memcpy(buf,buffer+position,size);
 	position += size;
 	return size;
 }
+int scale_lexer::yy_start_mode[] =
+	{ INITIAL, string, sclname, integer, interval, garbage };
 }
  }
 /** \} */

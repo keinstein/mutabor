@@ -16,6 +16,7 @@ int main ()
 {
 	mutwxInitializer initializer;
 	interval_pattern cmp("Constant tone system",0);
+	isDebugFlag(sclparser) =true;
 	test_parser p("\
 Constant tone system\n\
 0","test1");
@@ -24,6 +25,46 @@ Constant tone system\n\
 		  << "cmp" << std::endl
 		  << cmp << std::endl << std::flush;
 	mutASSERT(p.get_intervals() == cmp);
+
+
+	p.load_keymap("\
+0\n\
+0\n\
+127\n\
+60\n\
+69\n\
+440.0\n\
+12\n\
+","testmap1");
+	keymap kcmp;
+	kcmp.count = 0;
+	kcmp.first_key = 0;
+	kcmp.last_key = 127;
+	kcmp.reference = 60;
+	kcmp.anchor = 69;
+	kcmp.reference_frequency = 440.0;
+	kcmp.repetition_interval = 12;
+
+	std::cout << "p" << std::endl
+		  << p.get_keys() << std::endl
+		  << "kcmp" << std::endl
+		  << kcmp << std::endl << std::flush;
+	mutASSERT(p.get_keys() == kcmp);
+
+	p.load_keymap("\
+0\n\
+0\n\
+127\n\
+60\n\
+69\n\
+440.0\n\
+12","testmap1");
+
+	std::cout << "p" << std::endl
+		  << p.get_keys() << std::endl
+		  << "kcmp" << std::endl
+		  << kcmp << std::endl << std::flush;
+	mutASSERT(p.get_keys() == kcmp);
 
 	return 0;
 }

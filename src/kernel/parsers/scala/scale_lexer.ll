@@ -78,9 +78,15 @@ MUTABOR_NAMESPACE(scala_parser)
 %x sclname
 %x integer
 %x interval
+%x key
 %x garbage
 %%
 %{
+	if (start_token) {
+		scale_parser::token_type t = start_token;
+		start_token = scale_parser::token::SCALA_TOKEN_END;
+		return scale_parser::symbol_type(t,loc);
+	}
 	/*
 	switch (start_mode) {
 	case top_mode:BEGIN(INITIAL); break;
@@ -93,14 +99,21 @@ MUTABOR_NAMESPACE(scala_parser)
 	*/
 	DEBUGLOG(sclparser,
 		 "yy_start: %d",
-		 yy_start);
+		 (int)yy_start);
 	// Code run each time yylex is called.
 	loc.step ();
 	loc.begin.filename = loc.end.filename = &file;
 
 	DEBUGLOG(sclparser,
-		 "location: %1",
-		 loc);
+		 "location: %s:%d.%d-",
+		 loc.begin.filename->c_str(),
+		 loc.begin.line,
+		 loc.begin.column);
+	DEBUGLOG(sclparser,
+		 "          %s:%d.%d",
+		 loc.end.filename->c_str(),
+		 loc.end.line,
+		 loc.end.column);
 %}
 
 <*>\n                 {
@@ -109,12 +122,18 @@ MUTABOR_NAMESPACE(scala_parser)
 }
 <garbage>.*                        return scale_parser::make_GARBAGE(yytext,loc);
 <string>[^\n]*                     return scale_parser::make_STRING(yytext,loc);
-<interval,integer>{number}?{blank}*"."{number}?    return scale_parser::make_F_NUMBER(yytext,loc);
-<interval,integer>{number}          return scale_parser::make_INTEGER(yytext,loc);
-<interval,integer>[!/]             {
+<interval,integer,key>{number}?{blank}*"."{number}?    return scale_parser::make_F_NUMBER(yytext,loc);
+<interval,integer,key>{number}          return scale_parser::make_INTEGER(yytext,loc);
+<interval,integer,key>[!/]             {
+	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
+ }
+<key>[Xx]                               {
 	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
  }
 <interval,integer>[^ \t\n/!.]{-}[[:digit:]][^\n]* {
+	return scale_parser::make_STRING(yytext,loc);
+				}
+<key>[^x \t\n/!.]{-}[[:digit:]][^\n]* {
 	return scale_parser::make_STRING(yytext,loc);
 				}
 
@@ -137,7 +156,7 @@ int scale_lexer::LexerInput( char* buf, int max_size ) {
 	return size;
 }
 int scale_lexer::yy_start_mode[] =
-	{ INITIAL, string, sclname, integer, interval, garbage };
+	{ INITIAL, string, sclname, integer, interval, key, garbage };
 }
  }
 /** \} */

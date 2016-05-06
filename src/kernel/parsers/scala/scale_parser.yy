@@ -48,6 +48,7 @@ namespace mutabor {
 }
 %param { scale_lexer & lexer }
 %param { interval_pattern & result }
+%param { keymap & keys }
 %locations
 %initial-action
 {
@@ -71,7 +72,7 @@ namespace mutabor {
 #ifdef yylex
 #undef yylex
 #endif
-#define yylex(x,y) lexer.get_token()
+#define yylex(x,y,z) lexer.get_token()
 
 #if 0
 #ifdef DEBUG
@@ -94,6 +95,8 @@ namespace mutabor {
 */
 %token
 	END 0        "end of file"
+	SCL_START "Start token of a .scl file"
+	KBM_START "Start token of a .kbm file"
 
 %token <std::string>  STRING     "string token"
 %token <std::string>  GARBAGE    "text after the last interval"
@@ -114,6 +117,12 @@ namespace mutabor {
 %type  <scala_parser::interval> interval "interval"
 %type  <scala_parser::interval> interval1 "bare interval"
 %type  <scala_parser::interval> interval2 "bare interval with description"
+%type <scala_parser::scala_value<int32_t> > scala_int "scala int value"
+%type <scala_parser::scala_value<int32_t> > scala_int1 "scala int value without comment"
+%type <scala_parser::scala_value<double> > scala_float "scala double value"
+%type <scala_parser::scala_value<double> > scala_float1 "scala double value without comment"
+%type <scala_parser::key> key "key"
+%type <scala_parser::key> key1 "key without comment"
 %type <std::string> garbage
 
 %printer { yyoutput << $$; } <*>
@@ -126,17 +135,38 @@ namespace mutabor {
 
 
 %% /* Grammar rules and actions */
-%start sclfile;
+%start scala_file;
 
-sclfile :       scl_data END
+scala_file: 	SCL_START sclfile
+	|	KBM_START kbmfile
+		;
+
+kbmfile: 	kbm_data
                 {
-                   if (result.count != result.intervals.size()) {
-			   error(@2,_mut("Too few intervals have been provided."));
+                   if (keys.count.value != keys.keys.size()) {
+			   error(@1,_mut("Too few keys have been provided."));
                            YYERROR;
                    }
                    lexer.pop_state(scale_lexer::in_garbage);
                 }
-	|	scl_data garbage END { lexer.pop_state(scale_lexer::in_garbage); }
+	|	kbm_data garbage END {
+		std::swap(keys.garbage,$2);
+		lexer.pop_state(scale_lexer::in_garbage);
+		}
+		;
+
+sclfile:       	scl_data
+                {
+                   if (result.count != result.intervals.size()) {
+			   error(@1,_mut("Too few intervals have been provided."));
+                           YYERROR;
+                   }
+                   lexer.pop_state(scale_lexer::in_garbage);
+                }
+	|	scl_data garbage END {
+		std::swap(result.garbage,$2);
+		lexer.pop_state(scale_lexer::in_garbage);
+		}
 ;
 scl_data_start:	start_comment
 		{ lexer.push_state(scale_lexer::in_string); } lazy_string {
@@ -153,6 +183,51 @@ scl_data_start:	start_comment
 		}
 		}
 	;
+
+kbm_data_start: {
+			lexer.push_state(scale_lexer::in_integer);
+                }
+		scala_int /* key count */
+		scala_int /* lower MIDI boundary */
+		scala_int /* upper MIDI boundary */
+		scala_int /* reference key */
+		scala_int /* anchor key */
+		scala_float /* reference key frequency */
+		scala_int /* repetition interval number */
+		{
+			lexer.pop_state(scale_lexer::in_integer);
+			std::swap(keys.count,$2);
+		        std::swap(keys.first_key,$3);
+                        std::swap(keys.last_key,$4);
+		        std::swap(keys.reference,$5);
+                        std::swap(keys.anchor,$6);
+                        std::swap(keys.reference_frequency,$7);
+                        std::swap(keys.repetition_interval,$8);
+			if (!keys.count.value) {
+				lexer.push_state(scale_lexer::in_garbage);
+		        }
+ 		        else {
+			       keys.keys.reserve(keys.count.value);
+		               lexer.push_state(scale_lexer::in_key);
+		       }
+		}
+	;
+
+kbm_data:	kbm_data_start
+	|	kbm_data key {
+	                keys.keys.push_back($2);
+			DEBUGLOG(sclparser,"count: %d, size: %d",
+		                 keys.count.value,
+                                 keys.keys.size());
+	                if (keys.count.value == keys.keys.size()) {
+			       lexer.pop_state(scale_lexer::in_key);
+		               lexer.push_state(scale_lexer::in_garbage);
+		        }
+		}
+		;
+
+
+
 start_comment : /* empty */
 	| 	comment { std::swap(result.comment1,$1); }
 count_comment : /* empty */
@@ -242,6 +317,79 @@ interval1:	ratio_start integer {
 		}
 		;
 
+
+key: 		key1 {
+		$$.type = $1.type;
+		$$.value = $1.value;
+                std::swap($$.description,$1.description);
+		lexer.pop_state(scale_lexer::in_string);
+		}
+	|	comment key1 {
+		$$.type = $2.type;
+		$$.value = $2.value;
+                std::swap($$.description,$2.description);
+		std::swap($$.comment,$1);
+		lexer.pop_state(scale_lexer::in_string);
+		}
+		;
+
+key1:		integer {
+			lexer.push_state(scale_lexer::in_string);
+		} lazy_string {
+		$$.type = scala_parser::key::numeric;
+	        $$.value = $1;
+                std::swap($$.description,$3);
+		}
+	|	x {
+			lexer.push_state(scale_lexer::in_string);
+		} lazy_string {
+		$$.type = scala_parser::key::empty;
+                std::swap($$.description,$3);
+		}
+		;
+x:		'x' | 'X';
+
+scala_int: 	scala_int1 {
+		$$.value = $1.value;
+                std::swap($$.description,$1.description);
+		lexer.pop_state(scale_lexer::in_string);
+		}
+	|	comment scala_int1 {
+		$$.value = $2.value;
+                std::swap($$.description,$2.description);
+		std::swap($$.comment,$1);
+		lexer.pop_state(scale_lexer::in_string);
+		}
+		;
+
+scala_int1:	integer lazy_string {
+	        $$.value = $1;
+                std::swap($$.description,$2);
+                lexer.push_state(scale_lexer::in_string);
+		}
+		;
+
+scala_float: 	scala_float1 {
+		$$.value = $1.value;
+                std::swap($$.description,$1.description);
+		lexer.pop_state(scale_lexer::in_string);
+		}
+	|	comment scala_float1 {
+		$$.value = $2.value;
+                std::swap($$.description,$2.description);
+		std::swap($$.comment,$1);
+		lexer.pop_state(scale_lexer::in_string);
+		}
+		;
+
+scala_float1:	float lazy_string {
+	        $$.value = $1;
+                std::swap($$.description,$2);
+                lexer.push_state(scale_lexer::in_string);
+		}
+		;
+
+
 lazy_string:	string_end { $$.clear(); }
 	|	space string_end { std::swap($$,$1); }
 	|	string { std::swap($$,$1); }
@@ -311,8 +459,8 @@ space: 		space SPACE { std::swap($$,$1); $$ += $2; }
 	|	SPACE { std::swap($$,$1); }
 		;
 
-garbage: 	GARBAGE { std::swap(result.garbage,$1); }
-	|	garbage GARBAGE { result.garbage += $1; }
+garbage: 	GARBAGE { std::swap($$,$1); }
+	|	garbage GARBAGE { std::swap($$,$1); $$ += $1; }
 		;
 
 %%

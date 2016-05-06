@@ -52,6 +52,7 @@
 
 namespace mutabor {
 	namespace scala_parser {
+
 		parser::~parser() {
 			delete bison_parser;
 			bison_parser = NULL;
@@ -71,14 +72,49 @@ namespace mutabor {
 #endif
 				lexer -> set_error_handler(handler);
 			}
+			else lexer->set_string(s.c_str(),
+					       filename.c_str(),
+					       s.length());
 			if (!bison_parser) {
-				bison_parser = new scale_parser(*lexer,intervals);
+				bison_parser = new scale_parser(*lexer,intervals,keys);
 #ifdef DEBUG
 				if (isDebugFlag(sclparser))
 					bison_parser->set_debug_level(7);
 #endif
 			}
-			bison_parser -> parse();
+			if (lexer && bison_parser) {
+				lexer -> set_start_token(scale_parser::token::SCALA_TOKEN_SCL_START);
+				bison_parser -> parse();
+			}
+		}
+
+		void parser::load_keymap(const std::string & s,
+				   const std::string & filename) {
+			if (!lexer) {
+				lexer = new scale_lexer(s.c_str(),
+							filename.c_str(),
+							s.length());
+#ifdef DEBUG
+				if (isDebugFlag(sclparser))
+					lexer -> set_debug(7);
+#endif
+				lexer -> set_error_handler(handler);
+			}
+			else lexer->set_string(s.c_str(),
+					       filename.c_str(),
+					       s.length());
+			if (!bison_parser) {
+				bison_parser = new scale_parser(*lexer,intervals,keys);
+#ifdef DEBUG
+				if (isDebugFlag(sclparser))
+					bison_parser->set_debug_level(7);
+#endif
+			}
+
+			if (lexer && bison_parser) {
+				lexer -> set_start_token(scale_parser::token::SCALA_TOKEN_KBM_START);
+				bison_parser -> parse();
+			}
 		}
 
 		void parser::error(const location & loc, const char *  message) {

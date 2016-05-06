@@ -294,47 +294,65 @@ namespace mutabor { namespace scala_parser {
     /// An auxiliary type to compute the largest semantic type.
     union union_type
     {
+      // "double (with leadig white space)"
       // "double"
+      // nospace_float
       // float
       char dummy1[sizeof(double)];
 
+      // "integer (with leadig white space)"
       // "integer"
+      // "integer /"
+      // ratio_start
+      // nospace_integer
       // integer
       char dummy2[sizeof(int32_t)];
 
       // "interval"
       // "bare interval"
       // "bare interval with description"
-      // "interval with leading space and description"
       // interval
-      // interval3
       // interval2
       // interval1
       char dummy3[sizeof(scala_parser::interval)];
 
+      // "key"
+      // "key without comment"
+      // key
+      // key1
+      char dummy4[sizeof(scala_parser::key)];
+
+      // "scala double value"
+      // "scala double value without comment"
+      // scala_float
+      // scala_float1
+      char dummy5[sizeof(scala_parser::scala_value<double> )];
+
+      // "scala int value"
+      // "scala int value without comment"
+      // scala_int
+      // scala_int1
+      char dummy6[sizeof(scala_parser::scala_value<int32_t> )];
+
       // "string token"
+      // "text after the last interval"
       // "floating point number"
       // "integer number"
-      // "white space token"
+      // "white space"
       // "comment"
       // "single comment line"
-      // "single space"
       // "whitespace"
-      // "description"
-      // "first element of description"
       // "character string with newline"
+      // "(non)empty character string with newline"
       // "one of several tokens that can be in a string"
-      // "character string"
       // comment
-      // comment1
-      // name
-      // name_start
+      // comment_line
+      // lazy_string
       // string_element
-      // string1
       // string
-      // single_space
       // space
-      char dummy4[sizeof(std::string)];
+      // garbage
+      char dummy7[sizeof(std::string)];
 };
 
     /// Symbol semantic values.
@@ -358,16 +376,16 @@ namespace mutabor { namespace scala_parser {
       enum yytokentype
       {
         SCALA_TOKEN_END = 0,
-        SCALA_TOKEN_INTERVAL_END = 258,
-        SCALA_TOKEN_NEWLINE = 259,
-        SCALA_TOKEN_COMMENT_SIGN = 260,
-        SCALA_TOKEN_SLASH = 261,
-        SCALA_TOKEN_TAB = 262,
-        SCALA_TOKEN_BLANK = 263,
-        SCALA_TOKEN_STRING = 264,
-        SCALA_TOKEN_F_NUMBER = 265,
-        SCALA_TOKEN_INTEGER = 266,
-        SCALA_TOKEN_SPACE = 267
+        SCALA_TOKEN_SCL_START = 258,
+        SCALA_TOKEN_KBM_START = 259,
+        SCALA_TOKEN_STRING = 260,
+        SCALA_TOKEN_GARBAGE = 261,
+        SCALA_TOKEN_F_NUMBER = 262,
+        SCALA_TOKEN_INTEGER = 263,
+        SCALA_TOKEN_SPACE = 264,
+        SCALA_TOKEN_COMMENT_SIGN = 285,
+        SCALA_TOKEN_SLASH = 286,
+        SCALA_TOKEN_NEWLINE = 287
       };
     };
 
@@ -407,6 +425,12 @@ namespace mutabor { namespace scala_parser {
   basic_symbol (typename Base::kind_type t, const int32_t v, const location_type& l);
 
   basic_symbol (typename Base::kind_type t, const scala_parser::interval v, const location_type& l);
+
+  basic_symbol (typename Base::kind_type t, const scala_parser::key v, const location_type& l);
+
+  basic_symbol (typename Base::kind_type t, const scala_parser::scala_value<double>  v, const location_type& l);
+
+  basic_symbol (typename Base::kind_type t, const scala_parser::scala_value<int32_t>  v, const location_type& l);
 
   basic_symbol (typename Base::kind_type t, const std::string v, const location_type& l);
 
@@ -474,31 +498,19 @@ namespace mutabor { namespace scala_parser {
 
     static inline
     symbol_type
-    make_INTERVAL_END (const location_type& l);
+    make_SCL_START (const location_type& l);
 
     static inline
     symbol_type
-    make_NEWLINE (const location_type& l);
-
-    static inline
-    symbol_type
-    make_COMMENT_SIGN (const location_type& l);
-
-    static inline
-    symbol_type
-    make_SLASH (const location_type& l);
-
-    static inline
-    symbol_type
-    make_TAB (const location_type& l);
-
-    static inline
-    symbol_type
-    make_BLANK (const location_type& l);
+    make_KBM_START (const location_type& l);
 
     static inline
     symbol_type
     make_STRING (const std::string& v, const location_type& l);
+
+    static inline
+    symbol_type
+    make_GARBAGE (const std::string& v, const location_type& l);
 
     static inline
     symbol_type
@@ -512,9 +524,21 @@ namespace mutabor { namespace scala_parser {
     symbol_type
     make_SPACE (const std::string& v, const location_type& l);
 
+    static inline
+    symbol_type
+    make_COMMENT_SIGN (const location_type& l);
+
+    static inline
+    symbol_type
+    make_SLASH (const location_type& l);
+
+    static inline
+    symbol_type
+    make_NEWLINE (const location_type& l);
+
 
     /// Build a parser object.
-    scale_parser (scale_lexer & lexer_yyarg, interval_pattern & result_yyarg);
+    scale_parser (scale_lexer & lexer_yyarg, interval_pattern & result_yyarg, keymap & keys_yyarg);
     virtual ~scale_parser ();
 
     /// Parse.
@@ -712,19 +736,20 @@ namespace mutabor { namespace scala_parser {
     enum
     {
       yyeof_ = 0,
-      yylast_ = 174,     ///< Last index in yytable_.
-      yynnts_ = 23,  ///< Number of nonterminal symbols.
+      yylast_ = 171,     ///< Last index in yytable_.
+      yynnts_ = 41,  ///< Number of nonterminal symbols.
       yyempty_ = -2,
-      yyfinal_ = 28, ///< Termination state number.
+      yyfinal_ = 15, ///< Termination state number.
       yyterror_ = 1,
       yyerrcode_ = 256,
-      yyntokens_ = 33  ///< Number of tokens.
+      yyntokens_ = 38  ///< Number of tokens.
     };
 
 
     // User arguments.
     scale_lexer & lexer;
     interval_pattern & result;
+    keymap & keys;
   };
 
   // Symbol number corresponding to token number t.
@@ -736,19 +761,19 @@ namespace mutabor { namespace scala_parser {
     const token_number_type
     translate_table[] =
     {
-     0,     2,     2,     2,     2,     2,     2,     2,     2,    32,
-      30,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+     0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+      34,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,    31,    28,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,    29,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,    30,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,    36,    32,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+      37,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -764,9 +789,9 @@ namespace mutabor { namespace scala_parser {
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
-      25,    26,    27
+      25,    26,    27,    28,    29,    31,    33,    35
     };
-    const unsigned int user_token_number_max_ = 282;
+    const unsigned int user_token_number_max_ = 287;
     const token_number_type undef_token_ = 2;
 
     if (static_cast<int>(t) <= yyeof_)
@@ -799,49 +824,70 @@ namespace mutabor { namespace scala_parser {
   {
       switch (other.type_get ())
     {
+      case 15: // "double (with leadig white space)"
       case 16: // "double"
-      case 53: // float
+      case 75: // nospace_float
+      case 76: // float
         value.copy< double > (other.value);
         break;
 
-      case 15: // "integer"
-      case 52: // integer
+      case 12: // "integer (with leadig white space)"
+      case 13: // "integer"
+      case 14: // "integer /"
+      case 69: // ratio_start
+      case 73: // nospace_integer
+      case 74: // integer
         value.copy< int32_t > (other.value);
         break;
 
-      case 24: // "interval"
-      case 25: // "bare interval"
-      case 26: // "bare interval with description"
-      case 27: // "interval with leading space and description"
-      case 41: // interval
-      case 42: // interval3
-      case 43: // interval2
-      case 44: // interval1
+      case 21: // "interval"
+      case 22: // "bare interval"
+      case 23: // "bare interval with description"
+      case 58: // interval
+      case 59: // interval2
+      case 60: // interval1
         value.copy< scala_parser::interval > (other.value);
         break;
 
-      case 9: // "string token"
-      case 10: // "floating point number"
-      case 11: // "integer number"
-      case 12: // "white space token"
-      case 13: // "comment"
-      case 14: // "single comment line"
-      case 17: // "single space"
-      case 18: // "whitespace"
-      case 19: // "description"
-      case 20: // "first element of description"
-      case 21: // "character string with newline"
-      case 22: // "one of several tokens that can be in a string"
-      case 23: // "character string"
-      case 39: // comment
-      case 40: // comment1
-      case 46: // name
-      case 47: // name_start
-      case 48: // string_element
-      case 49: // string1
-      case 51: // string
-      case 54: // single_space
-      case 55: // space
+      case 28: // "key"
+      case 29: // "key without comment"
+      case 61: // key
+      case 62: // key1
+        value.copy< scala_parser::key > (other.value);
+        break;
+
+      case 26: // "scala double value"
+      case 27: // "scala double value without comment"
+      case 65: // scala_float
+      case 66: // scala_float1
+        value.copy< scala_parser::scala_value<double>  > (other.value);
+        break;
+
+      case 24: // "scala int value"
+      case 25: // "scala int value without comment"
+      case 63: // scala_int
+      case 64: // scala_int1
+        value.copy< scala_parser::scala_value<int32_t>  > (other.value);
+        break;
+
+      case 5: // "string token"
+      case 6: // "text after the last interval"
+      case 7: // "floating point number"
+      case 8: // "integer number"
+      case 9: // "white space"
+      case 10: // "comment"
+      case 11: // "single comment line"
+      case 17: // "whitespace"
+      case 18: // "character string with newline"
+      case 19: // "(non)empty character string with newline"
+      case 20: // "one of several tokens that can be in a string"
+      case 55: // comment
+      case 56: // comment_line
+      case 67: // lazy_string
+      case 70: // string_element
+      case 72: // string
+      case 77: // space
+      case 78: // garbage
         value.copy< std::string > (other.value);
         break;
 
@@ -862,49 +908,70 @@ namespace mutabor { namespace scala_parser {
     (void) v;
       switch (this->type_get ())
     {
+      case 15: // "double (with leadig white space)"
       case 16: // "double"
-      case 53: // float
+      case 75: // nospace_float
+      case 76: // float
         value.copy< double > (v);
         break;
 
-      case 15: // "integer"
-      case 52: // integer
+      case 12: // "integer (with leadig white space)"
+      case 13: // "integer"
+      case 14: // "integer /"
+      case 69: // ratio_start
+      case 73: // nospace_integer
+      case 74: // integer
         value.copy< int32_t > (v);
         break;
 
-      case 24: // "interval"
-      case 25: // "bare interval"
-      case 26: // "bare interval with description"
-      case 27: // "interval with leading space and description"
-      case 41: // interval
-      case 42: // interval3
-      case 43: // interval2
-      case 44: // interval1
+      case 21: // "interval"
+      case 22: // "bare interval"
+      case 23: // "bare interval with description"
+      case 58: // interval
+      case 59: // interval2
+      case 60: // interval1
         value.copy< scala_parser::interval > (v);
         break;
 
-      case 9: // "string token"
-      case 10: // "floating point number"
-      case 11: // "integer number"
-      case 12: // "white space token"
-      case 13: // "comment"
-      case 14: // "single comment line"
-      case 17: // "single space"
-      case 18: // "whitespace"
-      case 19: // "description"
-      case 20: // "first element of description"
-      case 21: // "character string with newline"
-      case 22: // "one of several tokens that can be in a string"
-      case 23: // "character string"
-      case 39: // comment
-      case 40: // comment1
-      case 46: // name
-      case 47: // name_start
-      case 48: // string_element
-      case 49: // string1
-      case 51: // string
-      case 54: // single_space
-      case 55: // space
+      case 28: // "key"
+      case 29: // "key without comment"
+      case 61: // key
+      case 62: // key1
+        value.copy< scala_parser::key > (v);
+        break;
+
+      case 26: // "scala double value"
+      case 27: // "scala double value without comment"
+      case 65: // scala_float
+      case 66: // scala_float1
+        value.copy< scala_parser::scala_value<double>  > (v);
+        break;
+
+      case 24: // "scala int value"
+      case 25: // "scala int value without comment"
+      case 63: // scala_int
+      case 64: // scala_int1
+        value.copy< scala_parser::scala_value<int32_t>  > (v);
+        break;
+
+      case 5: // "string token"
+      case 6: // "text after the last interval"
+      case 7: // "floating point number"
+      case 8: // "integer number"
+      case 9: // "white space"
+      case 10: // "comment"
+      case 11: // "single comment line"
+      case 17: // "whitespace"
+      case 18: // "character string with newline"
+      case 19: // "(non)empty character string with newline"
+      case 20: // "one of several tokens that can be in a string"
+      case 55: // comment
+      case 56: // comment_line
+      case 67: // lazy_string
+      case 70: // string_element
+      case 72: // string
+      case 77: // space
+      case 78: // garbage
         value.copy< std::string > (v);
         break;
 
@@ -945,6 +1012,27 @@ namespace mutabor { namespace scala_parser {
   {}
 
   template <typename Base>
+  scale_parser::basic_symbol<Base>::basic_symbol (typename Base::kind_type t, const scala_parser::key v, const location_type& l)
+    : Base (t)
+    , value (v)
+    , location (l)
+  {}
+
+  template <typename Base>
+  scale_parser::basic_symbol<Base>::basic_symbol (typename Base::kind_type t, const scala_parser::scala_value<double>  v, const location_type& l)
+    : Base (t)
+    , value (v)
+    , location (l)
+  {}
+
+  template <typename Base>
+  scale_parser::basic_symbol<Base>::basic_symbol (typename Base::kind_type t, const scala_parser::scala_value<int32_t>  v, const location_type& l)
+    : Base (t)
+    , value (v)
+    , location (l)
+  {}
+
+  template <typename Base>
   scale_parser::basic_symbol<Base>::basic_symbol (typename Base::kind_type t, const std::string v, const location_type& l)
     : Base (t)
     , value (v)
@@ -967,49 +1055,70 @@ namespace mutabor { namespace scala_parser {
     // Type destructor.
     switch (yytype)
     {
+      case 15: // "double (with leadig white space)"
       case 16: // "double"
-      case 53: // float
+      case 75: // nospace_float
+      case 76: // float
         value.template destroy< double > ();
         break;
 
-      case 15: // "integer"
-      case 52: // integer
+      case 12: // "integer (with leadig white space)"
+      case 13: // "integer"
+      case 14: // "integer /"
+      case 69: // ratio_start
+      case 73: // nospace_integer
+      case 74: // integer
         value.template destroy< int32_t > ();
         break;
 
-      case 24: // "interval"
-      case 25: // "bare interval"
-      case 26: // "bare interval with description"
-      case 27: // "interval with leading space and description"
-      case 41: // interval
-      case 42: // interval3
-      case 43: // interval2
-      case 44: // interval1
+      case 21: // "interval"
+      case 22: // "bare interval"
+      case 23: // "bare interval with description"
+      case 58: // interval
+      case 59: // interval2
+      case 60: // interval1
         value.template destroy< scala_parser::interval > ();
         break;
 
-      case 9: // "string token"
-      case 10: // "floating point number"
-      case 11: // "integer number"
-      case 12: // "white space token"
-      case 13: // "comment"
-      case 14: // "single comment line"
-      case 17: // "single space"
-      case 18: // "whitespace"
-      case 19: // "description"
-      case 20: // "first element of description"
-      case 21: // "character string with newline"
-      case 22: // "one of several tokens that can be in a string"
-      case 23: // "character string"
-      case 39: // comment
-      case 40: // comment1
-      case 46: // name
-      case 47: // name_start
-      case 48: // string_element
-      case 49: // string1
-      case 51: // string
-      case 54: // single_space
-      case 55: // space
+      case 28: // "key"
+      case 29: // "key without comment"
+      case 61: // key
+      case 62: // key1
+        value.template destroy< scala_parser::key > ();
+        break;
+
+      case 26: // "scala double value"
+      case 27: // "scala double value without comment"
+      case 65: // scala_float
+      case 66: // scala_float1
+        value.template destroy< scala_parser::scala_value<double>  > ();
+        break;
+
+      case 24: // "scala int value"
+      case 25: // "scala int value without comment"
+      case 63: // scala_int
+      case 64: // scala_int1
+        value.template destroy< scala_parser::scala_value<int32_t>  > ();
+        break;
+
+      case 5: // "string token"
+      case 6: // "text after the last interval"
+      case 7: // "floating point number"
+      case 8: // "integer number"
+      case 9: // "white space"
+      case 10: // "comment"
+      case 11: // "single comment line"
+      case 17: // "whitespace"
+      case 18: // "character string with newline"
+      case 19: // "(non)empty character string with newline"
+      case 20: // "one of several tokens that can be in a string"
+      case 55: // comment
+      case 56: // comment_line
+      case 67: // lazy_string
+      case 70: // string_element
+      case 72: // string
+      case 77: // space
+      case 78: // garbage
         value.template destroy< std::string > ();
         break;
 
@@ -1027,49 +1136,70 @@ namespace mutabor { namespace scala_parser {
     super_type::move(s);
       switch (this->type_get ())
     {
+      case 15: // "double (with leadig white space)"
       case 16: // "double"
-      case 53: // float
+      case 75: // nospace_float
+      case 76: // float
         value.move< double > (s.value);
         break;
 
-      case 15: // "integer"
-      case 52: // integer
+      case 12: // "integer (with leadig white space)"
+      case 13: // "integer"
+      case 14: // "integer /"
+      case 69: // ratio_start
+      case 73: // nospace_integer
+      case 74: // integer
         value.move< int32_t > (s.value);
         break;
 
-      case 24: // "interval"
-      case 25: // "bare interval"
-      case 26: // "bare interval with description"
-      case 27: // "interval with leading space and description"
-      case 41: // interval
-      case 42: // interval3
-      case 43: // interval2
-      case 44: // interval1
+      case 21: // "interval"
+      case 22: // "bare interval"
+      case 23: // "bare interval with description"
+      case 58: // interval
+      case 59: // interval2
+      case 60: // interval1
         value.move< scala_parser::interval > (s.value);
         break;
 
-      case 9: // "string token"
-      case 10: // "floating point number"
-      case 11: // "integer number"
-      case 12: // "white space token"
-      case 13: // "comment"
-      case 14: // "single comment line"
-      case 17: // "single space"
-      case 18: // "whitespace"
-      case 19: // "description"
-      case 20: // "first element of description"
-      case 21: // "character string with newline"
-      case 22: // "one of several tokens that can be in a string"
-      case 23: // "character string"
-      case 39: // comment
-      case 40: // comment1
-      case 46: // name
-      case 47: // name_start
-      case 48: // string_element
-      case 49: // string1
-      case 51: // string
-      case 54: // single_space
-      case 55: // space
+      case 28: // "key"
+      case 29: // "key without comment"
+      case 61: // key
+      case 62: // key1
+        value.move< scala_parser::key > (s.value);
+        break;
+
+      case 26: // "scala double value"
+      case 27: // "scala double value without comment"
+      case 65: // scala_float
+      case 66: // scala_float1
+        value.move< scala_parser::scala_value<double>  > (s.value);
+        break;
+
+      case 24: // "scala int value"
+      case 25: // "scala int value without comment"
+      case 63: // scala_int
+      case 64: // scala_int1
+        value.move< scala_parser::scala_value<int32_t>  > (s.value);
+        break;
+
+      case 5: // "string token"
+      case 6: // "text after the last interval"
+      case 7: // "floating point number"
+      case 8: // "integer number"
+      case 9: // "white space"
+      case 10: // "comment"
+      case 11: // "single comment line"
+      case 17: // "whitespace"
+      case 18: // "character string with newline"
+      case 19: // "(non)empty character string with newline"
+      case 20: // "one of several tokens that can be in a string"
+      case 55: // comment
+      case 56: // comment_line
+      case 67: // lazy_string
+      case 70: // string_element
+      case 72: // string
+      case 77: // space
+      case 78: // garbage
         value.move< std::string > (s.value);
         break;
 
@@ -1123,8 +1253,8 @@ namespace mutabor { namespace scala_parser {
     {
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
      265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
-     275,   276,   277,   278,   279,   280,   281,   282,    33,    47,
-      10,    32,     9
+     275,   276,   277,   278,   279,   280,   281,   282,   283,   284,
+      33,   285,    47,   286,    10,   287,    46,   120
     };
     return static_cast<token_type> (yytoken_number_[type]);
   }
@@ -1136,45 +1266,27 @@ namespace mutabor { namespace scala_parser {
   }
 
   scale_parser::symbol_type
-  scale_parser::make_INTERVAL_END (const location_type& l)
+  scale_parser::make_SCL_START (const location_type& l)
   {
-    return symbol_type (token::SCALA_TOKEN_INTERVAL_END, l);
+    return symbol_type (token::SCALA_TOKEN_SCL_START, l);
   }
 
   scale_parser::symbol_type
-  scale_parser::make_NEWLINE (const location_type& l)
+  scale_parser::make_KBM_START (const location_type& l)
   {
-    return symbol_type (token::SCALA_TOKEN_NEWLINE, l);
-  }
-
-  scale_parser::symbol_type
-  scale_parser::make_COMMENT_SIGN (const location_type& l)
-  {
-    return symbol_type (token::SCALA_TOKEN_COMMENT_SIGN, l);
-  }
-
-  scale_parser::symbol_type
-  scale_parser::make_SLASH (const location_type& l)
-  {
-    return symbol_type (token::SCALA_TOKEN_SLASH, l);
-  }
-
-  scale_parser::symbol_type
-  scale_parser::make_TAB (const location_type& l)
-  {
-    return symbol_type (token::SCALA_TOKEN_TAB, l);
-  }
-
-  scale_parser::symbol_type
-  scale_parser::make_BLANK (const location_type& l)
-  {
-    return symbol_type (token::SCALA_TOKEN_BLANK, l);
+    return symbol_type (token::SCALA_TOKEN_KBM_START, l);
   }
 
   scale_parser::symbol_type
   scale_parser::make_STRING (const std::string& v, const location_type& l)
   {
     return symbol_type (token::SCALA_TOKEN_STRING, v, l);
+  }
+
+  scale_parser::symbol_type
+  scale_parser::make_GARBAGE (const std::string& v, const location_type& l)
+  {
+    return symbol_type (token::SCALA_TOKEN_GARBAGE, v, l);
   }
 
   scale_parser::symbol_type
@@ -1195,10 +1307,28 @@ namespace mutabor { namespace scala_parser {
     return symbol_type (token::SCALA_TOKEN_SPACE, v, l);
   }
 
+  scale_parser::symbol_type
+  scale_parser::make_COMMENT_SIGN (const location_type& l)
+  {
+    return symbol_type (token::SCALA_TOKEN_COMMENT_SIGN, l);
+  }
+
+  scale_parser::symbol_type
+  scale_parser::make_SLASH (const location_type& l)
+  {
+    return symbol_type (token::SCALA_TOKEN_SLASH, l);
+  }
+
+  scale_parser::symbol_type
+  scale_parser::make_NEWLINE (const location_type& l)
+  {
+    return symbol_type (token::SCALA_TOKEN_NEWLINE, l);
+  }
+
 
 #line 33 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:372
 } } // mutabor::scala_parser
-#line 1202 "../../mutabor/src/kernel/parsers/scala/scale_parser.hh" // lalr1.cc:372
+#line 1332 "../../mutabor/src/kernel/parsers/scala/scale_parser.hh" // lalr1.cc:372
 
 
 

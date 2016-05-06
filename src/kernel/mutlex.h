@@ -101,7 +101,7 @@ namespace mutabor {
 		size_t buflen;
 		size_t position;
 		bool report_parameters;
-		mutabor::hidden::YYSTYPE * yylval;
+		::mutabor::hidden::YYSTYPE * yylval;
 	};
 }
 

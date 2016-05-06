@@ -78,6 +78,7 @@ namespace mutabor {
 				in_sclname,
 				in_integer,
 				in_interval,
+				in_key,
 				in_garbage
 			};
 			typedef scale_parser::symbol_type symbol_type;
@@ -90,7 +91,8 @@ namespace mutabor {
 				buffer(strdup(string)),
 				buflen(len),
 				position(0),
-				report_parameters(true)
+				report_parameters(true),
+				start_token(scale_parser::token::SCALA_TOKEN_END)
 				//			  yylval(new mutabor::hidden::YYSTYPE)
 			{}
 			~scale_lexer() {
@@ -99,11 +101,31 @@ namespace mutabor {
 					free(buffer);
 			}
 
+
 			error_handler * get_error_handler() const {
 				return handler;
 			}
 			void set_error_handler(error_handler * h) {
 				handler = h;
+			}
+
+			scale_parser::token_type get_start_token() const {
+				return start_token;
+			}
+
+			void set_start_token(scale_parser::token_type  t) {
+				start_token = t;
+			}
+
+			void set_string(const char * string,
+					const char * f,
+					size_t len) {
+				file = f;
+				if (buffer) free(buffer);
+				buffer = strdup(string);
+				buflen = len;
+				position = 0;
+				yyrestart(yyin);
 			}
 
 			void error (const location & loc,
@@ -181,6 +203,7 @@ namespace mutabor {
 			bool report_parameters;
 			// The location of the current token.
 			location loc;
+			scale_parser::token_type start_token;
 
 			virtual int LexerInput( char* buf, int max_size );
 		};

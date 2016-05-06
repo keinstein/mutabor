@@ -52,6 +52,29 @@
 
 namespace mutabor {
 	namespace scala_parser {
+		template<class T>
+		inline scala_value<T> & scala_value<T>::swap(scala_value<T> & o) {
+			std::swap(comment,o.comment);
+			std::swap(value,o.value);
+			std::swap(description,o.description);
+		}
+		template<class T>
+		inline std::ostream & scala_value<T>::print(std::ostream & o) const
+		{
+			if (!comment.empty())
+				o << "!" << comment << std::endl;
+			o << std::showpoint << value << description;
+			return o;
+
+		}
+		template<class T>
+		inline std::ostream & operator << (std::ostream & o,
+					    const scala_value<T> & v)
+		{
+			return v.print(o);
+		}
+
+
 		inline std::ostream & interval::print (std::ostream & o) const {
 			if (!comment.empty())
 				o << "!" << comment << std::endl;
@@ -113,12 +136,97 @@ namespace mutabor {
 			}
 			return o << garbage;
 		}
-	
+
 		inline std::ostream & operator << (std::ostream & o,
 						   const interval_pattern & i) {
 			return (i.print(o)) << std::endl;
 		}
 
+
+		inline std::ostream & key::print (std::ostream & o) const {
+			if (!comment.empty())
+				o << "!" << comment << std::endl;
+			switch (type) {
+			case key::empty:
+				o << "x";
+				break;
+			case key::numeric:
+				o << value;
+				break;
+			default:
+				o << "<unknown key>";
+			}
+			o << description;
+			return o;
+		}
+
+		inline std::ostream & operator<< (std::ostream & o,
+						  const key & k) {
+			return k.print(o);
+		}
+
+#ifdef DEBUG
+		inline bool keymap::compare(const keymap & o) const {
+			bool retval = (count == o.count);
+			DEBUGLOG(sclparser,"count : %s", (retval ? "ok" : "fail"));
+			mutASSERT(retval);
+			retval = retval &&  (first_key == o.first_key);
+			DEBUGLOG(sclparser,"first_key : %s", (retval ? "ok" : "fail"));
+			mutASSERT(retval);
+			retval = retval &&  (last_key == o.last_key);
+			DEBUGLOG(sclparser,"last_key : %s", (retval ? "ok" : "fail"));
+			mutASSERT(retval);
+			retval = retval &&  (reference == o.reference);
+			DEBUGLOG(sclparser,"reference : %s", (retval ? "ok" : "fail"));
+			mutASSERT(retval);
+			retval = retval &&  (anchor == o.anchor);
+			DEBUGLOG(sclparser,"anchor : %s", (retval ? "ok" : "fail"));
+			mutASSERT(retval);
+			retval = retval &&  (reference_frequency == o.reference_frequency);
+			DEBUGLOG(sclparser,"reference_frequency : %s", (retval ? "ok" : "fail"));
+			mutASSERT(retval);
+			retval = retval &&  (repetition_interval == o.repetition_interval);
+			DEBUGLOG(sclparser,"repetition_interval : %s", (retval ? "ok" : "fail"));
+			mutASSERT(retval);
+			retval = retval &&  (keys == o.keys);
+			DEBUGLOG(sclparser,"keys : %s", (retval ? "ok" : "fail"));
+			mutASSERT(retval);
+			retval = retval &&  (garbage == o.garbage);
+			DEBUGLOG(sclparser,"garbage : %s", (retval ? "ok" : "fail"));
+			mutASSERT(retval);
+			return retval;
+		}
+#endif
+
+		inline std::ostream & keymap::print (std::ostream & o) const {
+			o << count << std::endl
+			  << first_key << std::endl
+			  << last_key << std::endl
+			  << reference << std::endl;
+			o << anchor << std::endl;
+			o << reference_frequency << std::endl;
+			o << repetition_interval << std::endl;
+			for (key_list::const_iterator i = keys.begin();
+			     i != keys.end();
+			     ++i) {
+				o << *i << std::endl;
+			}
+			return o << garbage;
+		}
+
+		inline std::ostream & operator << (std::ostream & o,
+						   const keymap & k) {
+			return (k.print(o)) << std::endl;
+		}
+
+		inline bool key::operator == (const key & o) const {
+			if (type != o.type) return false;
+			switch (type) {
+			case numeric: return value == o.value;
+			case empty: return true;
+			default: return false;
+			}
+		}
 
 		inline error_handler * parser::get_error_handler() const {
 			error_handler * retval = NULL;
