@@ -30,10 +30,10 @@
 /* we guard a little bit complicated to ensure the references are set right
  */
 
-#if (!defined(HEADERFILENAME) && !defined(PRECOMPILE)) \
-	|| (!defined(HEADERFILENAME_PRECOMPILED))
+#if (!defined(SRC_PARSERS_SCALA_SCALA_H) && !defined(PRECOMPILE)) \
+	|| (!defined(SRC_PARSERS_SCALA_SCALA_H_PRECOMPILED))
 #ifndef PRECOMPILE
-#define HEADERFILENAME
+#define SRC_PARSERS_SCALA_SCALA_H
 #endif
 
 /* ---------------------------------------------------------------------------
@@ -42,8 +42,8 @@
 
 #include "src/kernel/Defs.h"
 
-#ifndef HEADERFILENAME_PRECOMPILED
-#define HEADERFILENAME_PRECOMPILED
+#ifndef SRC_PARSERS_SCALA_SCALA_H_PRECOMPILED
+#define SRC_PARSERS_SCALA_SCALA_H_PRECOMPILED
 
 /* system headers which do seldom change */
 #include <vector>
