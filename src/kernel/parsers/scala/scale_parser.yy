@@ -143,9 +143,8 @@ scala_file: 	SCL_START sclfile
 
 kbmfile: 	kbm_data
                 {
-                   if ((size_t)keys.count.value != keys.keys.size()) {
-			   error(@1,_mut("Too few keys have been provided."));
-                           YYERROR;
+                   while (keys.keys.size() < (size_t)keys.count.value) {
+			   keys.keys.push_back(scala_parser::key());
                    }
                    lexer.pop_state(scale_lexer::in_garbage);
                 }
