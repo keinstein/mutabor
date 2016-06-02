@@ -37,6 +37,7 @@
 #include "src/kernel/Defs.h"
 #include <cstdarg>
 #include <cmath>
+#include <sstream>
 #include "src/kernel/parsers/scala/scala.h"
 #include "src/kernel/parsers/scala/scale_lexer.h"
 #include "src/kernel/parsers/scala/scale_parser.hh"
@@ -123,55 +124,171 @@ namespace mutabor {
 				  << message << std::endl;
 		}
 
-		std::ostream & parser::write_mutabor(std::ostream & o, const mutabor_writer_options & w) {
-			o << "\" converted from scala to -*- MUTABOR -*- \"" << std::endl;
-			o << "\"       " << intervals.comment1 << std::endl;
-			o << " Name:  " << intervals.name << std::endl;
-			o << "        " << intervals.comment2 << std::endl;
-			o << " Tones: " << intervals.count << " " << intervals.count_comment  << "\"" << std::endl;
+		template<class T>
+		std::ostream & scala_value<T>::print_mutabor(std::ostream & o,
+							  const std::string & name,
+							  bool in_comment) const {
+			std::string quote = in_comment?"":"\"";
+			if (!comment.empty())
+				o << quote << comment << quote << std::endl;
+			o << name << value;
+			if (!description.empty())
+				o << " " << quote << description << quote;
 			o << std::endl;
-			o << _mut("TONESYSTEM") << std::endl;
-			o << "\t" << w.prefix << "T" << " = 60 [ " << w.prefix << "0";
+			return o;
+		}
 
-			for (size_t i = 1; i < intervals.intervals.size() ; i++) {
-				o << ", " << w.prefix << i;
+		std::ostream & interval::print_mutabor_interval (std::ostream & o,
+								 int i,
+								const mutabor_writer_options & w) const {
+			if (!(comment.empty()))
+				o << "\"" << comment << "\"" << std::endl;
+			o << "\t" << w.prefix << i+1 << " = " ;
+			switch (type) {
+			case interval::cent_value:
+				o << data.cents << " " << w.prefix << _mut("CENT");
+				break;
+			case interval::ratio:
+				o << data.f.numerator << ":" << data.f.denominator;
+				break;
+			case interval::cent_ratio:
+				{
+					double cents =  data.df.numerator/data.df.denominator;
+					cents = 1200 * log2(cents);
+					o << cents << " " << w.prefix << _mut("CENT");
+				}
 			}
-			o << " ] " << w.prefix << intervals.intervals.size() << std::endl;
+			if (!description.empty())
+				o << " \"" << description << "\"";
+			o << std::endl;
+			return o;
+		}
+
+		std::ostream & interval_pattern::print_mutabor (std::ostream & o,
+								const mutabor_writer_options & w) const {
+			if (!(comment1.empty()))
+				o << "\"       " << comment1 << std::endl;
+			o << " Name:  " << name << std::endl;
+			if (!(comment2.empty()))
+				o << "        " << comment2 << std::endl;
+			o << " Intervals: " << count << " " << count_comment  << "\"" << std::endl;
 			o << std::endl;
 			o << _mut("INTERVAL") << std::endl;
 			o << "\t" << w.prefix << _mut("OCTAVE") << " = 2:1" << std::endl;
 			o << "\t" << w.prefix << _mut("CENT") << " = "
-			  << w.prefix << "OCTAVE / 1200" << std::endl;
+			  << w.prefix << _mut("OCTAVE") << " / 1200" << std::endl;
 			o << "\t" << w.prefix << "0 = 1:1" << std::endl;
-			for (size_t i = 0 ; i < intervals.intervals.size() ; i++) {
-				interval &interv = intervals.intervals[i];
-				o << "\"" << interv.comment << "\"" << std::endl;
-				o << "\t" << w.prefix << i+1 << " = " ;
-				switch (interv.type) {
-				case interval::cent_value:
-					o << interv.data.cents << " " << w.prefix << "CENT";
-					break;
-				case interval::ratio:
-					o << interv.data.f.numerator << ":" << interv.data.f.denominator;
-					break;
-				case interval::cent_ratio:
-					{
-						double cents =  interv.data.df.numerator/interv.data.df.denominator;
-						cents = 1200 * log2(cents);
-						o << cents << " " << w.prefix << "CENT";
-					}
-				}
-				o << " \"" << interv.description << "\"" << std::endl;
+			for (size_t i = 0 ; i < intervals.size() ; i++) {
+				intervals[i].print_mutabor_interval(o,i,w);
 			}
+			if (!(garbage.empty())) {
+				o << "\"" << garbage << "\"";
+			}
+			return o;
+		}
+
+		std::ostream & key::print_mutabor_tone (std::ostream & o,
+							int i,
+							const mutabor_writer_options & w) const
+		{
+			if (type == empty)
+				return o;
+
+			std::ostringstream s;
+			s << "\t" << w.prefix << i
+			  << " = " << w.prefix << _mut("_anchor")
+			  << " + " << w.prefix;
+			return print_mutabor(o,
+					     s.str(),
+					     false);
+ 		}
+		std::ostream & keymap::print_mutabor (std::ostream & o,
+								const mutabor_writer_options & w) const {
+			
+			o << "\"" << std::endl;
+			count.print_mutabor(o, " Tonesystem size: ", true);
+			first_key.print_mutabor(o, " First key: ", true);
+			last_key.print_mutabor(o, " Last key: ", true);
+			o << " Note: The key range must be configured using the route system. " << std::endl;
+			reference.print_mutabor(o, " Reference key: ",true);
+			o << "\"" << std::endl;
+			
+			o << std::endl;
+			repetition_interval.print_mutabor(o,
+							       "\t" + w.prefix +
+							       _mut("_repetition") + " = "
+							       + w.prefix,
+							       true);
+
+			o << std::endl << std::endl;
 			o << _mut("TONE") << std::endl;
-			o << "\t" << w.prefix << "0 = 440" << std::endl;
-			for (size_t i = 1 ; i < intervals.intervals.size() ; i++) {
-				o << "\t" << w.prefix << i << " = "
-				  << w.prefix << "0 + " << w.prefix << i << std::endl;
+			reference_frequency.print_mutabor(o,
+							       "\t" + w.prefix + _mut("_reference") + " = ",
+							       true);
+			int distance = anchor.value - reference.value;
+			std::cerr << "Distance: " << anchor.value
+				  << " - " << reference.value
+				  << " = " << distance << std::endl;
+			int divisor = std::max(count.value,1);
+			int octaves =  distance / divisor;
+			int offset = octaves*divisor - distance ;
+			if (offset < 0) {
+				offset += divisor;
+				octaves += 1;
 			}
+			
+			o << "\t" << w.prefix << _mut("_anchor") << " = "
+			  << w.prefix << _mut("_reference");
+			if (octaves)
+				o << ((octaves < 0) ? " - ":" + ")
+				  << std::abs(octaves) << " " << w.prefix << _mut("_repetition");
+			
+			if ((size_t)(offset) < keys.size() &&
+				 keys[offset].type != key::empty)
+				o << " - "  << w.prefix
+				  << keys[offset].value;
+			else 
+				o <<" \" "
+				  << " - "  << w.prefix << "_" << offset
+				  << " \"" ;
+			o << std::endl;
+
+			for (size_t i = 0 ; i < keys.size() ; i++) {
+				keys[i].print_mutabor_tone(o,i,w);
+			}
+
+			o << std::endl << std::endl;
+			
+			o << _mut("TONESYSTEM") << std::endl;
+			o << "\t" << w.prefix << "T" << " = ";
+			anchor.print_mutabor(o,"", false)
+				<< "\t\t[ ";
+			if (keys.empty() || keys[0].type != key::empty)
+				o << w.prefix << "0";
+
+			for (size_t i = 1; i < keys.size() ; i++) {
+				o << ", ";
+				if (keys[i].type != key::empty)
+					o << w.prefix << i;
+			}
+			o << " ] " << std::endl
+			  << "\t\t  " <<  w.prefix << _mut("_repetition") << std::endl;
+			o << std::endl << std::endl;
+			
 			o << _mut("LOGIC") << std::endl;
-			o << "\t" << w.prefix << " KEY " << w.prefix[0]
+			o << "\t" << w.prefix << " " << _mut("KEY") << " " << w.prefix[0]
 			  << " = " << w.prefix << "T []" << std::endl;
+			if (!garbage.empty()) {
+				o << "\"" << garbage << "\"";
+			}
+			return o;
+		}		
+
+		std::ostream & parser::write_mutabor(std::ostream & o,
+						     const mutabor_writer_options & w) {
+			o << "\" converted from scala to -*- MUTABOR -*- \"" << std::endl;
+			intervals.print_mutabor(o,w) << std::endl;
+			keys.print_mutabor(o,w) << std::endl;
 			return o;
 		}
 	}

@@ -53,7 +53,7 @@ namespace mutabor {
 
 
 #define STR_too_many_positional_options_error				\
-	_mut("too many positional options have been specified on the command line") 
+	_mut("too many positional options have been specified on the command line")
 #define STR_reading_file					\
 	_mut("can not read options configuration file '%s'")
 #define STR_multiple_values						\
@@ -85,8 +85,11 @@ namespace mutabor {
 /* global variables that may be filled by the command line */
 std::string outputfile;
 std::string inputfile;
-std::string krbfile;
+std::string kbmfile;
 std::string prefix;
+ostream * output = NULL;
+istream * input = NULL, *keymapinput = NULL;
+
 
 
 void do_help(po::options_description & desc, const char * name)
@@ -108,36 +111,40 @@ std::ostream & operator << (std::ostream & o,
 	return o;
 }
 
-void run(std::istream & i,
-	 std::ostream & o,
-	 const std::string & filename) {
+void run() {
 	std::string s;
 
-	i.seekg(0, std::ios::end);
-	streampos pos = i.tellg();
+	input->seekg(0, std::ios::end);
+	streampos pos = input->tellg();
 	if (pos > 0)
 		s.reserve(pos);
-	i.seekg(0, std::ios::beg);
+	input->seekg(0, std::ios::beg);
 
-	s.assign((std::istreambuf_iterator<char>(i)),
+	s.assign((std::istreambuf_iterator<char>(*input)),
 		   std::istreambuf_iterator<char>());
 
-	mutabor::scala_parser::parser scparser(s,filename);
-	mutabor::scala_parser::parser::mutabor_writer_options w;
+	mutabor::scala_parser::parser scparser(s,inputfile);
+	if (keymapinput) {
+		s.clear();
+		keymapinput->seekg(0, std::ios::end);
+		streampos pos = keymapinput->tellg();
+		if (pos > 0)
+			s.reserve(pos);
+		keymapinput->seekg(0, std::ios::beg);
+
+		s.assign((std::istreambuf_iterator<char>(*keymapinput)),
+			 std::istreambuf_iterator<char>());
+		scparser.load_keymap(s,kbmfile);
+	} else {
+		scparser.make_keymap();
+	}
+
+	mutabor::scala_parser::mutabor_writer_options w;
 	w.prefix = prefix;
-	scparser.write_mutabor(o,w);
-}
 
-void openout_and_run(std::istream & i, const std::string & filename) {
-		if (!outputfile.empty()) {
-			fs::path p(outputfile);
-			fs::ofstream os(p, std::ios::out);
-			run(i,os,filename);
-		} else {
-			run(i,cout,filename);
-		}
-}
 
+	scparser.write_mutabor(*output,w);
+}
 int main(int ac, char* av[])
 {
 	try {
@@ -151,7 +158,8 @@ int main(int ac, char* av[])
 
 		desc.add_options()
 			("help", _mut("produce this help message"))
-			("krb-file,k", po::value<std::string>(&krbfile), _mut("Use .krb file instead of the on with the same name as the input"))
+			("kbm-file,k", po::value<std::string>(&kbmfile),
+			 _mut("Use .kbm file"))
 			("prefix,p", po::value<std::string>(&prefix)->default_value(std::string("scala")),
 			 _mut("Prefix identifiers with arg"))
 			//			("input-file,i", po::value<std::vector<std::string> >()->required(),  "files to compile")
@@ -160,14 +168,14 @@ int main(int ac, char* av[])
 #ifdef DEBUG
 #define N_
 #define DEBUGFLAG(flag,description) \
-			("debug-"#flag, po::value<bool>()->notifier(::mutabor::debugFlags::set ## flag()), _mut(description))
+			("debug-"#flag, po::bool_switch()->implicit_value(true)->notifier(::mutabor::debugFlags::set ## flag()), _mut(description))
 #include "src/kernel/debugFlags.h"
 #undef DEBUGFLAG
 #endif
 			;
-		
+
 		p.add("input-file", 1).add("output-file",1);
-		
+
 		try {
 			po::store(po::command_line_parser(ac, av).
 				  options(desc).positional(p).run(), vm);
@@ -196,13 +204,27 @@ int main(int ac, char* av[])
 			return 0;
 		}
 
-		if (!inputfile.empty()) {
-			fs::path p(inputfile);
-			fs::ifstream is(p, std::ios::in);
-			openout_and_run(is,inputfile);
+		if (inputfile.empty()) {
+			input = &cin;
+			inputfile = "<stdin>";
 		} else {
-			openout_and_run(cin,"<stdin>");
+			fs::path p(inputfile);
+			input = new fs::ifstream(p, std::ios::in);
 		}
+
+		if (!kbmfile.empty()) {
+			fs::path p(kbmfile);
+			keymapinput = new fs::ifstream(p, std::ios::in);
+		}
+
+		if (outputfile.empty()) {
+			output = &cout;
+			outputfile = "<stdout>";
+		} else {
+			fs::path p(outputfile);
+			output = new fs::ofstream(p, std::ios::out);
+		}
+		run();
 	}
 	catch(exception& e) {
 		cerr << "error: " << e.what() << "\n";

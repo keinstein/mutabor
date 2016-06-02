@@ -40,8 +40,8 @@ Constant tone system\n\
 	kcmp.count = 0;
 	kcmp.first_key = 0;
 	kcmp.last_key = 127;
-	kcmp.reference = 60;
-	kcmp.anchor = 69;
+	kcmp.reference = 69;
+	kcmp.anchor = 60;
 	kcmp.reference_frequency = 440.0;
 	kcmp.repetition_interval = 12;
 

@@ -345,6 +345,7 @@ namespace mutabor { namespace scala_parser {
       // "character string with newline"
       // "(non)empty character string with newline"
       // "one of several tokens that can be in a string"
+      // "The whole text after the file end"
       // comment
       // comment_line
       // lazy_string
@@ -383,9 +384,9 @@ namespace mutabor { namespace scala_parser {
         SCALA_TOKEN_F_NUMBER = 262,
         SCALA_TOKEN_INTEGER = 263,
         SCALA_TOKEN_SPACE = 264,
-        SCALA_TOKEN_COMMENT_SIGN = 285,
-        SCALA_TOKEN_SLASH = 286,
-        SCALA_TOKEN_NEWLINE = 287
+        SCALA_TOKEN_COMMENT_SIGN = 286,
+        SCALA_TOKEN_SLASH = 287,
+        SCALA_TOKEN_NEWLINE = 288
       };
     };
 
@@ -736,13 +737,13 @@ namespace mutabor { namespace scala_parser {
     enum
     {
       yyeof_ = 0,
-      yylast_ = 171,     ///< Last index in yytable_.
-      yynnts_ = 41,  ///< Number of nonterminal symbols.
+      yylast_ = 161,     ///< Last index in yytable_.
+      yynnts_ = 44,  ///< Number of nonterminal symbols.
       yyempty_ = -2,
       yyfinal_ = 15, ///< Termination state number.
       yyterror_ = 1,
       yyerrcode_ = 256,
-      yyntokens_ = 38  ///< Number of tokens.
+      yyntokens_ = 40  ///< Number of tokens.
     };
 
 
@@ -762,18 +763,18 @@ namespace mutabor { namespace scala_parser {
     translate_table[] =
     {
      0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-      34,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+      35,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,    30,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,    36,    32,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,    31,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,    37,    33,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,    39,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-      37,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+      38,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -789,9 +790,9 @@ namespace mutabor { namespace scala_parser {
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
-      25,    26,    27,    28,    29,    31,    33,    35
+      25,    26,    27,    28,    29,    30,    32,    34,    36
     };
-    const unsigned int user_token_number_max_ = 287;
+    const unsigned int user_token_number_max_ = 288;
     const token_number_type undef_token_ = 2;
 
     if (static_cast<int>(t) <= yyeof_)
@@ -826,47 +827,47 @@ namespace mutabor { namespace scala_parser {
     {
       case 15: // "double (with leadig white space)"
       case 16: // "double"
-      case 75: // nospace_float
-      case 76: // float
+      case 80: // nospace_float
+      case 81: // float
         value.copy< double > (other.value);
         break;
 
       case 12: // "integer (with leadig white space)"
       case 13: // "integer"
       case 14: // "integer /"
-      case 69: // ratio_start
-      case 73: // nospace_integer
-      case 74: // integer
+      case 74: // ratio_start
+      case 78: // nospace_integer
+      case 79: // integer
         value.copy< int32_t > (other.value);
         break;
 
       case 21: // "interval"
       case 22: // "bare interval"
       case 23: // "bare interval with description"
-      case 58: // interval
-      case 59: // interval2
-      case 60: // interval1
+      case 60: // interval
+      case 61: // interval2
+      case 62: // interval1
         value.copy< scala_parser::interval > (other.value);
         break;
 
       case 28: // "key"
       case 29: // "key without comment"
-      case 61: // key
-      case 62: // key1
+      case 63: // key
+      case 64: // key1
         value.copy< scala_parser::key > (other.value);
         break;
 
       case 26: // "scala double value"
       case 27: // "scala double value without comment"
-      case 65: // scala_float
-      case 66: // scala_float1
+      case 70: // scala_float
+      case 71: // scala_float1
         value.copy< scala_parser::scala_value<double>  > (other.value);
         break;
 
       case 24: // "scala int value"
       case 25: // "scala int value without comment"
-      case 63: // scala_int
-      case 64: // scala_int1
+      case 68: // scala_int
+      case 69: // scala_int1
         value.copy< scala_parser::scala_value<int32_t>  > (other.value);
         break;
 
@@ -881,13 +882,14 @@ namespace mutabor { namespace scala_parser {
       case 18: // "character string with newline"
       case 19: // "(non)empty character string with newline"
       case 20: // "one of several tokens that can be in a string"
-      case 55: // comment
-      case 56: // comment_line
-      case 67: // lazy_string
-      case 70: // string_element
-      case 72: // string
-      case 77: // space
-      case 78: // garbage
+      case 30: // "The whole text after the file end"
+      case 57: // comment
+      case 58: // comment_line
+      case 72: // lazy_string
+      case 75: // string_element
+      case 77: // string
+      case 82: // space
+      case 83: // garbage
         value.copy< std::string > (other.value);
         break;
 
@@ -910,47 +912,47 @@ namespace mutabor { namespace scala_parser {
     {
       case 15: // "double (with leadig white space)"
       case 16: // "double"
-      case 75: // nospace_float
-      case 76: // float
+      case 80: // nospace_float
+      case 81: // float
         value.copy< double > (v);
         break;
 
       case 12: // "integer (with leadig white space)"
       case 13: // "integer"
       case 14: // "integer /"
-      case 69: // ratio_start
-      case 73: // nospace_integer
-      case 74: // integer
+      case 74: // ratio_start
+      case 78: // nospace_integer
+      case 79: // integer
         value.copy< int32_t > (v);
         break;
 
       case 21: // "interval"
       case 22: // "bare interval"
       case 23: // "bare interval with description"
-      case 58: // interval
-      case 59: // interval2
-      case 60: // interval1
+      case 60: // interval
+      case 61: // interval2
+      case 62: // interval1
         value.copy< scala_parser::interval > (v);
         break;
 
       case 28: // "key"
       case 29: // "key without comment"
-      case 61: // key
-      case 62: // key1
+      case 63: // key
+      case 64: // key1
         value.copy< scala_parser::key > (v);
         break;
 
       case 26: // "scala double value"
       case 27: // "scala double value without comment"
-      case 65: // scala_float
-      case 66: // scala_float1
+      case 70: // scala_float
+      case 71: // scala_float1
         value.copy< scala_parser::scala_value<double>  > (v);
         break;
 
       case 24: // "scala int value"
       case 25: // "scala int value without comment"
-      case 63: // scala_int
-      case 64: // scala_int1
+      case 68: // scala_int
+      case 69: // scala_int1
         value.copy< scala_parser::scala_value<int32_t>  > (v);
         break;
 
@@ -965,13 +967,14 @@ namespace mutabor { namespace scala_parser {
       case 18: // "character string with newline"
       case 19: // "(non)empty character string with newline"
       case 20: // "one of several tokens that can be in a string"
-      case 55: // comment
-      case 56: // comment_line
-      case 67: // lazy_string
-      case 70: // string_element
-      case 72: // string
-      case 77: // space
-      case 78: // garbage
+      case 30: // "The whole text after the file end"
+      case 57: // comment
+      case 58: // comment_line
+      case 72: // lazy_string
+      case 75: // string_element
+      case 77: // string
+      case 82: // space
+      case 83: // garbage
         value.copy< std::string > (v);
         break;
 
@@ -1057,47 +1060,47 @@ namespace mutabor { namespace scala_parser {
     {
       case 15: // "double (with leadig white space)"
       case 16: // "double"
-      case 75: // nospace_float
-      case 76: // float
+      case 80: // nospace_float
+      case 81: // float
         value.template destroy< double > ();
         break;
 
       case 12: // "integer (with leadig white space)"
       case 13: // "integer"
       case 14: // "integer /"
-      case 69: // ratio_start
-      case 73: // nospace_integer
-      case 74: // integer
+      case 74: // ratio_start
+      case 78: // nospace_integer
+      case 79: // integer
         value.template destroy< int32_t > ();
         break;
 
       case 21: // "interval"
       case 22: // "bare interval"
       case 23: // "bare interval with description"
-      case 58: // interval
-      case 59: // interval2
-      case 60: // interval1
+      case 60: // interval
+      case 61: // interval2
+      case 62: // interval1
         value.template destroy< scala_parser::interval > ();
         break;
 
       case 28: // "key"
       case 29: // "key without comment"
-      case 61: // key
-      case 62: // key1
+      case 63: // key
+      case 64: // key1
         value.template destroy< scala_parser::key > ();
         break;
 
       case 26: // "scala double value"
       case 27: // "scala double value without comment"
-      case 65: // scala_float
-      case 66: // scala_float1
+      case 70: // scala_float
+      case 71: // scala_float1
         value.template destroy< scala_parser::scala_value<double>  > ();
         break;
 
       case 24: // "scala int value"
       case 25: // "scala int value without comment"
-      case 63: // scala_int
-      case 64: // scala_int1
+      case 68: // scala_int
+      case 69: // scala_int1
         value.template destroy< scala_parser::scala_value<int32_t>  > ();
         break;
 
@@ -1112,13 +1115,14 @@ namespace mutabor { namespace scala_parser {
       case 18: // "character string with newline"
       case 19: // "(non)empty character string with newline"
       case 20: // "one of several tokens that can be in a string"
-      case 55: // comment
-      case 56: // comment_line
-      case 67: // lazy_string
-      case 70: // string_element
-      case 72: // string
-      case 77: // space
-      case 78: // garbage
+      case 30: // "The whole text after the file end"
+      case 57: // comment
+      case 58: // comment_line
+      case 72: // lazy_string
+      case 75: // string_element
+      case 77: // string
+      case 82: // space
+      case 83: // garbage
         value.template destroy< std::string > ();
         break;
 
@@ -1138,47 +1142,47 @@ namespace mutabor { namespace scala_parser {
     {
       case 15: // "double (with leadig white space)"
       case 16: // "double"
-      case 75: // nospace_float
-      case 76: // float
+      case 80: // nospace_float
+      case 81: // float
         value.move< double > (s.value);
         break;
 
       case 12: // "integer (with leadig white space)"
       case 13: // "integer"
       case 14: // "integer /"
-      case 69: // ratio_start
-      case 73: // nospace_integer
-      case 74: // integer
+      case 74: // ratio_start
+      case 78: // nospace_integer
+      case 79: // integer
         value.move< int32_t > (s.value);
         break;
 
       case 21: // "interval"
       case 22: // "bare interval"
       case 23: // "bare interval with description"
-      case 58: // interval
-      case 59: // interval2
-      case 60: // interval1
+      case 60: // interval
+      case 61: // interval2
+      case 62: // interval1
         value.move< scala_parser::interval > (s.value);
         break;
 
       case 28: // "key"
       case 29: // "key without comment"
-      case 61: // key
-      case 62: // key1
+      case 63: // key
+      case 64: // key1
         value.move< scala_parser::key > (s.value);
         break;
 
       case 26: // "scala double value"
       case 27: // "scala double value without comment"
-      case 65: // scala_float
-      case 66: // scala_float1
+      case 70: // scala_float
+      case 71: // scala_float1
         value.move< scala_parser::scala_value<double>  > (s.value);
         break;
 
       case 24: // "scala int value"
       case 25: // "scala int value without comment"
-      case 63: // scala_int
-      case 64: // scala_int1
+      case 68: // scala_int
+      case 69: // scala_int1
         value.move< scala_parser::scala_value<int32_t>  > (s.value);
         break;
 
@@ -1193,13 +1197,14 @@ namespace mutabor { namespace scala_parser {
       case 18: // "character string with newline"
       case 19: // "(non)empty character string with newline"
       case 20: // "one of several tokens that can be in a string"
-      case 55: // comment
-      case 56: // comment_line
-      case 67: // lazy_string
-      case 70: // string_element
-      case 72: // string
-      case 77: // space
-      case 78: // garbage
+      case 30: // "The whole text after the file end"
+      case 57: // comment
+      case 58: // comment_line
+      case 72: // lazy_string
+      case 75: // string_element
+      case 77: // string
+      case 82: // space
+      case 83: // garbage
         value.move< std::string > (s.value);
         break;
 
@@ -1254,7 +1259,7 @@ namespace mutabor { namespace scala_parser {
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
      265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
      275,   276,   277,   278,   279,   280,   281,   282,   283,   284,
-      33,   285,    47,   286,    10,   287,    46,   120
+     285,    33,   286,    47,   287,    10,   288,    46,   120,    88
     };
     return static_cast<token_type> (yytoken_number_[type]);
   }
@@ -1328,7 +1333,7 @@ namespace mutabor { namespace scala_parser {
 
 #line 33 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:372
 } } // mutabor::scala_parser
-#line 1332 "../../mutabor/src/kernel/parsers/scala/scale_parser.hh" // lalr1.cc:372
+#line 1337 "../../mutabor/src/kernel/parsers/scala/scale_parser.hh" // lalr1.cc:372
 
 
 

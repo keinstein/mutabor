@@ -2,10 +2,7 @@
 "        At the beginning of the file
  Name:  My name is allowed009.scl
          Between description and count
- Tones: 1 "
-
-TONESYSTEM
-	scalaT = 60 [ scala0 ] scala1
+ Intervals: 1 "
 
 INTERVAL
 	scalaOCTAVE = 2:1
@@ -13,7 +10,30 @@ INTERVAL
 	scala0 = 1:1
 " after count"
 	scala1 = 1.1 scalaCENT ".3 two points are allowed this line reads as 1.1 cents"
+
+"
+ Tonesystem size: 1
+ First key: 0
+ Last key: 127
+ Note: The key range must be configured using the route system. 
+ Reference key: 60
+"
+
+	scala_repetition = scala1
+
+
 TONE
-	scala0 = 440
+	scala_reference = 261.626
+	scala_anchor = scala_reference - scala0
+	scala0 = scala_anchor + scala0
+
+
+TONESYSTEM
+	scalaT = 60
+		[ scala0 ] 
+		  scala_repetition
+
+
 LOGIC
 	scala KEY s = scalaT []
+

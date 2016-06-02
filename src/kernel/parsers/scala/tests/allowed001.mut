@@ -1,17 +1,35 @@
 " converted from scala to -*- MUTABOR -*- "
 "        This file should not fail!
  Name:   ! this is a valid scale description. The first space is part of it.
-        
- Tones: 0 "
-
-TONESYSTEM
-	scalaT = 60 [ scala0 ] scala0
+ Intervals: 0 "
 
 INTERVAL
 	scalaOCTAVE = 2:1
 	scalaCENT = scalaOCTAVE / 1200
 	scala0 = 1:1
+
+"
+ Tonesystem size: 0
+ First key: 0
+ Last key: 127
+ Note: The key range must be configured using the route system. 
+ Reference key: 60
+"
+
+	scala_repetition = scala0
+
+
 TONE
-	scala0 = 440
+	scala_reference = 261.626
+	scala_anchor = scala_reference "  - scala_0 "
+
+
+TONESYSTEM
+	scalaT = 60
+		[ scala0 ] 
+		  scala_repetition
+
+
 LOGIC
 	scala KEY s = scalaT []
+

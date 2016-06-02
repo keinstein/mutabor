@@ -201,9 +201,9 @@ namespace mutabor {
 		inline std::ostream & keymap::print (std::ostream & o) const {
 			o << count << std::endl
 			  << first_key << std::endl
-			  << last_key << std::endl
-			  << reference << std::endl;
+			  << last_key << std::endl;
 			o << anchor << std::endl;
+			o << reference << std::endl;
 			o << reference_frequency << std::endl;
 			o << repetition_interval << std::endl;
 			for (key_list::const_iterator i = keys.begin();

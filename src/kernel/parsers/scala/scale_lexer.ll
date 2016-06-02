@@ -116,11 +116,13 @@ MUTABOR_NAMESPACE(scala_parser)
 		 loc.end.column);
 %}
 
-<*>\n                 {
+<INITIAL,string,sclname,integer,interval,key>\n                 {
 	loc.lines();
 	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
 }
-<garbage>.*                        return scale_parser::make_GARBAGE(yytext,loc);
+<garbage>\n                        { loc.lines(); return scale_parser::make_GARBAGE(yytext,loc); }
+<garbage>[^\n]+                    return scale_parser::make_GARBAGE(yytext,loc);
+
 <string>[^\n]*                     return scale_parser::make_STRING(yytext,loc);
 <interval,integer,key>{number}?{blank}*"."{number}?    return scale_parser::make_F_NUMBER(yytext,loc);
 <interval,integer,key>{number}          return scale_parser::make_INTEGER(yytext,loc);

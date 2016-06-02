@@ -54,6 +54,10 @@ namespace mutabor {
 		class scale_lexer;
 		class scale_parser;
 		class location;
+		
+		struct mutabor_writer_options {
+			std::string prefix;
+		};
 
 		template<class T>
 		struct scala_value {
@@ -70,6 +74,9 @@ namespace mutabor {
 			}
 
 			std::ostream & print(std::ostream & o) const;
+			std::ostream & print_mutabor(std::ostream & o,
+						     const std::string & name,
+						     bool in_comment = false) const;
 			scala_value & operator = (const T & v) {
 				value = v;
 				return *this;
@@ -117,6 +124,9 @@ namespace mutabor {
 				data.df.denominator = d;
 			}
 			std::ostream & print (std::ostream & o) const;
+			std::ostream & print_mutabor_interval(std::ostream & o,
+								 int i,
+								const mutabor_writer_options & w) const;
 			bool operator == (const interval & o) const;
 		};
 		inline std::ostream & operator<< (std::ostream & o, const interval & i);
@@ -143,6 +153,8 @@ namespace mutabor {
 					garbage == o.garbage;
 			}
 			std::ostream & print (std::ostream & o) const;
+			std::ostream & print_mutabor (std::ostream & o,
+						      const mutabor_writer_options & w) const;
 		};
 
 		std::ostream & operator << (std::ostream & o,
@@ -159,6 +171,9 @@ namespace mutabor {
 			key ():base(-1),type(empty) {}
 			key (int32_t i):base(i),type(numeric) {}
 			std::ostream & print (std::ostream & o) const;
+			std::ostream & print_mutabor_tone (std::ostream & o,
+							   int i,
+							   const mutabor_writer_options & w) const;
 			bool operator == (const key & o) const;
 		};
 		typedef typename std::vector<key> key_list;
@@ -170,13 +185,30 @@ namespace mutabor {
 			scala_value <int32_t> count;
 			scala_value <int32_t> first_key;
 			scala_value <int32_t> last_key;
-			scala_value <int32_t> reference;
 			scala_value <int32_t> anchor;
+			scala_value <int32_t> reference;
 			scala_value <double> reference_frequency;
 			scala_value <int32_t> repetition_interval;
 			key_list keys;
 			std::string garbage;
 			keymap() {}
+
+			/// create a default keymap with n tones
+			/** \param n number of tones to generate
+			 */
+			keymap(size_t n): count(n),
+					  first_key(0),
+					  last_key(127),
+					  anchor(60),
+					  reference(60),
+					  reference_frequency(261.625565),
+					  repetition_interval(n)
+			{
+				keys.reserve(n);
+				for (size_t i = 0; i < n ; i++) {
+					keys.push_back(key(i));
+				}
+			}
 #ifdef DEBUG
 			bool compare(const keymap & o) const;
 #endif
@@ -196,6 +228,8 @@ namespace mutabor {
 #endif
 			}
 			std::ostream & print (std::ostream & o) const;
+			std::ostream & print_mutabor (std::ostream & o,
+						     const mutabor_writer_options & w) const;
 		};
 
 		std::ostream & operator << (std::ostream & o,
@@ -208,9 +242,6 @@ namespace mutabor {
 
 		class parser: public error_handler {
 		public:
-			struct mutabor_writer_options {
-				std::string prefix;
-			};
 			parser (const std::string & s,
 				const std::string & f): handler(this),
 							intervals(),
@@ -227,6 +258,14 @@ namespace mutabor {
 			void load_keymap(const std::string & s,
 					 const std::string & filename);
 
+			void make_keymap() {
+				keys = keymap (intervals.count);
+			}
+
+			void make_keymap(size_t s) {
+				keys = keymap(s);
+			}
+
 			error_handler * get_error_handler() const;
 			void set_error_handler(error_handler * h);
 
@@ -236,7 +275,8 @@ namespace mutabor {
 			const keymap & get_keys () { return keys; }
 
 
-			std::ostream & write_mutabor(std::ostream & o, const mutabor_writer_options & w);
+			std::ostream & write_mutabor(std::ostream & o,
+						     const mutabor_writer_options & w);
 		protected:
 			error_handler * handler;
 			interval_pattern intervals;

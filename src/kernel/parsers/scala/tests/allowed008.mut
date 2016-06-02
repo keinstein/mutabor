@@ -2,10 +2,7 @@
 "        At the beginning of the file
  Name:  My name is ambiguity008.scl
          Between description and count
- Tones: 5 "
-
-TONESYSTEM
-	scalaT = 60 [ scala0, scala1, scala2, scala3, scala4 ] scala5
+ Intervals: 5 "
 
 INTERVAL
 	scalaOCTAVE = 2:1
@@ -16,17 +13,38 @@ INTERVAL
 " after first interval
  spaces in ratios are ignored"
 	scala2 = -498.478 scalaCENT " a ratio containing a a float number  is converted into cents afterwards !!"
-""
 	scala3 = 3:4 " the ratio without anything"
-""
 	scala4 = -498.045 scalaCENT " the ratio converted into cents"
 " after second interval"
 	scala5 = 5.6 scalaCENT "./2 just 5.6 cents!!!! The dot is allowed, here"
+
+"
+ Tonesystem size: 5
+ First key: 0
+ Last key: 127
+ Note: The key range must be configured using the route system. 
+ Reference key: 60
+"
+
+	scala_repetition = scala5
+
+
 TONE
-	scala0 = 440
-	scala1 = scala0 + scala1
-	scala2 = scala0 + scala2
-	scala3 = scala0 + scala3
-	scala4 = scala0 + scala4
+	scala_reference = 261.626
+	scala_anchor = scala_reference - scala0
+	scala0 = scala_anchor + scala0
+	scala1 = scala_anchor + scala1
+	scala2 = scala_anchor + scala2
+	scala3 = scala_anchor + scala3
+	scala4 = scala_anchor + scala4
+
+
+TONESYSTEM
+	scalaT = 60
+		[ scala0, scala1, scala2, scala3, scala4 ] 
+		  scala_repetition
+
+
 LOGIC
 	scala KEY s = scalaT []
+

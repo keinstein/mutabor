@@ -1,0 +1,56 @@
+" converted from scala to -*- MUTABOR -*- "
+"        This file should not fail!
+ Name:   ! this is a valid scale description. The first space is part of it.
+ Intervals: 12 "
+
+INTERVAL
+	scalaOCTAVE = 2:1
+	scalaCENT = scalaOCTAVE / 1200
+	scala0 = 1:1
+	scala1 = 100 scalaCENT
+	scala2 = 200 scalaCENT
+	scala3 = 300 scalaCENT
+	scala4 = 400 scalaCENT
+	scala5 = 500 scalaCENT
+	scala6 = 600 scalaCENT
+	scala7 = 700 scalaCENT
+	scala8 = 800 scalaCENT
+	scala9 = 900 scalaCENT
+	scala10 = 1000 scalaCENT
+	scala11 = 1100 scalaCENT
+	scala12 = 1200 scalaCENT
+
+"
+ allowed
+ Constant tone system 
+ Tonesystem size: 7  
+ First key: 0  a 
+ Last key: 127  
+ Note: The key range must be configured using the route system. 
+ Reference key: 9  
+"
+
+	scala_repetition = scala12  
+
+
+TONE
+	scala_reference = 440  
+	scala_anchor = scala_reference + 8 scala_repetition - scala2
+	scala0 = scala_anchor + scala1 " c1"
+	scala2 = scala_anchor + scala5 " itiraseit"
+" Auto"
+	scala3 = scala_anchor + scala2 " idaternid"
+	scala4 = scala_anchor + scala0
+	scala5 = scala_anchor + scala2 " / 3"
+	scala6 = scala_anchor + scala3
+
+
+TONESYSTEM
+	scalaT = 60 " "
+		[ scala0, , scala2, scala3, scala4, scala5, scala6 ] 
+		  scala_repetition
+
+
+LOGIC
+	scala KEY s = scalaT []
+"ditarenditaen"

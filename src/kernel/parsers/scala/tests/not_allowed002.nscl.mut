@@ -1,20 +1,19 @@
 " converted from scala to -*- MUTABOR -*- "
-"        At the beginning of the file
- Name:  My name is ambigutiy010.scl
+"        Failing because of 3/ as count is inavid
+ At the beginning of the file
+ Name:  My name is ambigutiy005.scl
          Between description and count
- Intervals: 3 "
+ Intervals: 3  a slash after a number is an error"
 
 INTERVAL
 	scalaOCTAVE = 2:1
 	scalaCENT = scalaOCTAVE / 1200
 	scala0 = 1:1
 " after count"
-	scala1 = 2.4 scalaCENT " a dot separated by spaces is not ignored. CAUTION: this line reads as 2.0 cents !!!"
+	scala1 = 2:1 " "
 " after first interval"
-	scala2 = 3:4
-" after second interval"
+	scala2 = 3:4" after second interval"
 	scala3 = 5.6 scalaCENT
-
 "
  Tonesystem size: 3
  First key: 0
@@ -28,16 +27,17 @@ INTERVAL
 
 TONE
 	scala_reference = 261.626
-	scala_anchor = scala_reference - scala0
+	scala_anchor = scala_reference
 	scala0 = scala_anchor + scala0
 	scala1 = scala_anchor + scala1
 	scala2 = scala_anchor + scala2
 
 
 TONESYSTEM
-	scalaT = 60
-		[ scala0, scala1, scala2 ] 
-		  scala_repetition
+	scalaT = 
+		60
+		 [ scala0, scala1, scala2 ] 
+		scala_repetition
 
 
 LOGIC

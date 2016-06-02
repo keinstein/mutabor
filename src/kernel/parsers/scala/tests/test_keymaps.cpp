@@ -40,8 +40,8 @@ int main ()
 	cmp.count = 1;
 	cmp.first_key = 0;
 	cmp.last_key = 127;
-	cmp.reference = 60;
-	cmp.anchor = 69;
+	cmp.anchor = 60;
+	cmp.reference = 69;
 	cmp.reference_frequency = 440.0;
 	cmp.repetition_interval = 12;
 	cmp.keys.push_back(key(1));

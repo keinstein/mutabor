@@ -1,0 +1,47 @@
+" converted from scala to -*- MUTABOR -*- "
+"        This file should not fail!
+ Name:   ! this is a valid scale description. The first space is part of it.
+        
+ Intervals: 12 
+ Tonesystem size: 3  NOT allowed
+ Constant tone system "
+
+INTERVAL
+	scalaOCTAVE = 2:1
+	scalaCENT = scalaOCTAVE / 1200
+	scala0 = 1:1
+""
+	scala1 = 100 scalaCENT ""
+""
+	scala2 = 200 scalaCENT ""
+""
+	scala3 = 300 scalaCENT ""
+""
+	scala4 = 400 scalaCENT ""
+""
+	scala5 = 500 scalaCENT ""
+""
+	scala6 = 600 scalaCENT ""
+""
+	scala7 = 700 scalaCENT ""
+""
+	scala8 = 800 scalaCENT ""
+""
+	scala9 = 900 scalaCENT ""
+""
+	scala10 = 1000 scalaCENT ""
+""
+	scala11 = 1100 scalaCENT ""
+""
+	scala12 = 1200 scalaCENT ""
+	scala_repetition = scala12
+TONE
+	scala_reference = 440
+	scala0 = scala_reference + 3scala12 - scala1
+	scala1 = scala0 + scala-1
+	scala2 = scala0 + scala5
+TONESYSTEM
+	scalaT = 69 [ scala0, scala1, scala2, scala3, scala4, scala5, scala6, scala7, scala8, scala9, scala10, scala11 ] scala_repetition
+
+LOGIC
+	scala KEY s = scalaT []

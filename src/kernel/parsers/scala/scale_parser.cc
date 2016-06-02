@@ -264,47 +264,47 @@ namespace mutabor { namespace scala_parser {
     {
       case 15: // "double (with leadig white space)"
       case 16: // "double"
-      case 75: // nospace_float
-      case 76: // float
+      case 80: // nospace_float
+      case 81: // float
         value.move< double > (that.value);
         break;
 
       case 12: // "integer (with leadig white space)"
       case 13: // "integer"
       case 14: // "integer /"
-      case 69: // ratio_start
-      case 73: // nospace_integer
-      case 74: // integer
+      case 74: // ratio_start
+      case 78: // nospace_integer
+      case 79: // integer
         value.move< int32_t > (that.value);
         break;
 
       case 21: // "interval"
       case 22: // "bare interval"
       case 23: // "bare interval with description"
-      case 58: // interval
-      case 59: // interval2
-      case 60: // interval1
+      case 60: // interval
+      case 61: // interval2
+      case 62: // interval1
         value.move< scala_parser::interval > (that.value);
         break;
 
       case 28: // "key"
       case 29: // "key without comment"
-      case 61: // key
-      case 62: // key1
+      case 63: // key
+      case 64: // key1
         value.move< scala_parser::key > (that.value);
         break;
 
       case 26: // "scala double value"
       case 27: // "scala double value without comment"
-      case 65: // scala_float
-      case 66: // scala_float1
+      case 70: // scala_float
+      case 71: // scala_float1
         value.move< scala_parser::scala_value<double>  > (that.value);
         break;
 
       case 24: // "scala int value"
       case 25: // "scala int value without comment"
-      case 63: // scala_int
-      case 64: // scala_int1
+      case 68: // scala_int
+      case 69: // scala_int1
         value.move< scala_parser::scala_value<int32_t>  > (that.value);
         break;
 
@@ -319,13 +319,14 @@ namespace mutabor { namespace scala_parser {
       case 18: // "character string with newline"
       case 19: // "(non)empty character string with newline"
       case 20: // "one of several tokens that can be in a string"
-      case 55: // comment
-      case 56: // comment_line
-      case 67: // lazy_string
-      case 70: // string_element
-      case 72: // string
-      case 77: // space
-      case 78: // garbage
+      case 30: // "The whole text after the file end"
+      case 57: // comment
+      case 58: // comment_line
+      case 72: // lazy_string
+      case 75: // string_element
+      case 77: // string
+      case 82: // space
+      case 83: // garbage
         value.move< std::string > (that.value);
         break;
 
@@ -346,47 +347,47 @@ namespace mutabor { namespace scala_parser {
     {
       case 15: // "double (with leadig white space)"
       case 16: // "double"
-      case 75: // nospace_float
-      case 76: // float
+      case 80: // nospace_float
+      case 81: // float
         value.copy< double > (that.value);
         break;
 
       case 12: // "integer (with leadig white space)"
       case 13: // "integer"
       case 14: // "integer /"
-      case 69: // ratio_start
-      case 73: // nospace_integer
-      case 74: // integer
+      case 74: // ratio_start
+      case 78: // nospace_integer
+      case 79: // integer
         value.copy< int32_t > (that.value);
         break;
 
       case 21: // "interval"
       case 22: // "bare interval"
       case 23: // "bare interval with description"
-      case 58: // interval
-      case 59: // interval2
-      case 60: // interval1
+      case 60: // interval
+      case 61: // interval2
+      case 62: // interval1
         value.copy< scala_parser::interval > (that.value);
         break;
 
       case 28: // "key"
       case 29: // "key without comment"
-      case 61: // key
-      case 62: // key1
+      case 63: // key
+      case 64: // key1
         value.copy< scala_parser::key > (that.value);
         break;
 
       case 26: // "scala double value"
       case 27: // "scala double value without comment"
-      case 65: // scala_float
-      case 66: // scala_float1
+      case 70: // scala_float
+      case 71: // scala_float1
         value.copy< scala_parser::scala_value<double>  > (that.value);
         break;
 
       case 24: // "scala int value"
       case 25: // "scala int value without comment"
-      case 63: // scala_int
-      case 64: // scala_int1
+      case 68: // scala_int
+      case 69: // scala_int1
         value.copy< scala_parser::scala_value<int32_t>  > (that.value);
         break;
 
@@ -401,13 +402,14 @@ namespace mutabor { namespace scala_parser {
       case 18: // "character string with newline"
       case 19: // "(non)empty character string with newline"
       case 20: // "one of several tokens that can be in a string"
-      case 55: // comment
-      case 56: // comment_line
-      case 67: // lazy_string
-      case 70: // string_element
-      case 72: // string
-      case 77: // space
-      case 78: // garbage
+      case 30: // "The whole text after the file end"
+      case 57: // comment
+      case 58: // comment_line
+      case 72: // lazy_string
+      case 75: // string_element
+      case 77: // string
+      case 82: // space
+      case 83: // garbage
         value.copy< std::string > (that.value);
         break;
 
@@ -447,322 +449,329 @@ namespace mutabor { namespace scala_parser {
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 451 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 453 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 6: // "text after the last interval"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 458 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 460 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 7: // "floating point number"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 465 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 467 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 8: // "integer number"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 472 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 474 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 9: // "white space"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 479 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 481 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 10: // "comment"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 486 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 488 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 11: // "single comment line"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 493 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 495 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 12: // "integer (with leadig white space)"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< int32_t > (); }
-#line 500 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 502 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 13: // "integer"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< int32_t > (); }
-#line 507 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 509 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 14: // "integer /"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< int32_t > (); }
-#line 514 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 516 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 15: // "double (with leadig white space)"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< double > (); }
-#line 521 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 523 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 16: // "double"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< double > (); }
-#line 528 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 530 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 17: // "whitespace"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 535 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 537 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 18: // "character string with newline"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 542 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 544 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 19: // "(non)empty character string with newline"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 549 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 551 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 20: // "one of several tokens that can be in a string"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 556 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 558 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 21: // "interval"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::interval > (); }
-#line 563 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 565 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 22: // "bare interval"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::interval > (); }
-#line 570 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 572 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 23: // "bare interval with description"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::interval > (); }
-#line 577 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 579 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 24: // "scala int value"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::scala_value<int32_t>  > (); }
-#line 584 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 586 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 25: // "scala int value without comment"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::scala_value<int32_t>  > (); }
-#line 591 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 593 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 26: // "scala double value"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::scala_value<double>  > (); }
-#line 598 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 600 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 27: // "scala double value without comment"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::scala_value<double>  > (); }
-#line 605 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 607 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 28: // "key"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::key > (); }
-#line 612 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 614 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
       case 29: // "key without comment"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::key > (); }
-#line 619 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 621 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 55: // comment
+      case 30: // "The whole text after the file end"
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 626 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 628 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 56: // comment_line
+      case 57: // comment
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 633 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 635 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 58: // interval
+      case 58: // comment_line
+
+#line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
+        { yyoutput << yysym.value.template as< std::string > (); }
+#line 642 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+        break;
+
+      case 60: // interval
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::interval > (); }
-#line 640 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 649 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 59: // interval2
+      case 61: // interval2
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::interval > (); }
-#line 647 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 656 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 60: // interval1
+      case 62: // interval1
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::interval > (); }
-#line 654 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 663 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 61: // key
+      case 63: // key
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::key > (); }
-#line 661 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 670 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 62: // key1
+      case 64: // key1
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::key > (); }
-#line 668 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 677 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 63: // scala_int
+      case 68: // scala_int
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::scala_value<int32_t>  > (); }
-#line 675 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 684 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 64: // scala_int1
+      case 69: // scala_int1
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::scala_value<int32_t>  > (); }
-#line 682 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 691 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 65: // scala_float
+      case 70: // scala_float
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::scala_value<double>  > (); }
-#line 689 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 698 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 66: // scala_float1
+      case 71: // scala_float1
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< scala_parser::scala_value<double>  > (); }
-#line 696 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 705 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 67: // lazy_string
+      case 72: // lazy_string
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 703 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 712 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 69: // ratio_start
+      case 74: // ratio_start
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< int32_t > (); }
-#line 710 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 719 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 70: // string_element
+      case 75: // string_element
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 717 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 726 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 72: // string
+      case 77: // string
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 724 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 733 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 73: // nospace_integer
+      case 78: // nospace_integer
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< int32_t > (); }
-#line 731 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 740 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 74: // integer
+      case 79: // integer
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< int32_t > (); }
-#line 738 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 747 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 75: // nospace_float
+      case 80: // nospace_float
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< double > (); }
-#line 745 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 754 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 76: // float
+      case 81: // float
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< double > (); }
-#line 752 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 761 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 77: // space
+      case 82: // space
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 759 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 768 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
-      case 78: // garbage
+      case 83: // garbage
 
 #line 128 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:617
         { yyoutput << yysym.value.template as< std::string > (); }
-#line 766 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
+#line 775 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:617
         break;
 
 
@@ -884,7 +893,7 @@ namespace mutabor { namespace scala_parser {
 	yyla.location.begin.filename = yyla.location.end.filename = &lexer.get_filename();
 }
 
-#line 888 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:725
+#line 897 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:725
 
     /* Initialize the stack.  The initial state will be set in
        yynewstate, since the latter expects the semantical and the
@@ -980,47 +989,47 @@ namespace mutabor { namespace scala_parser {
     {
       case 15: // "double (with leadig white space)"
       case 16: // "double"
-      case 75: // nospace_float
-      case 76: // float
+      case 80: // nospace_float
+      case 81: // float
         yylhs.value.build< double > ();
         break;
 
       case 12: // "integer (with leadig white space)"
       case 13: // "integer"
       case 14: // "integer /"
-      case 69: // ratio_start
-      case 73: // nospace_integer
-      case 74: // integer
+      case 74: // ratio_start
+      case 78: // nospace_integer
+      case 79: // integer
         yylhs.value.build< int32_t > ();
         break;
 
       case 21: // "interval"
       case 22: // "bare interval"
       case 23: // "bare interval with description"
-      case 58: // interval
-      case 59: // interval2
-      case 60: // interval1
+      case 60: // interval
+      case 61: // interval2
+      case 62: // interval1
         yylhs.value.build< scala_parser::interval > ();
         break;
 
       case 28: // "key"
       case 29: // "key without comment"
-      case 61: // key
-      case 62: // key1
+      case 63: // key
+      case 64: // key1
         yylhs.value.build< scala_parser::key > ();
         break;
 
       case 26: // "scala double value"
       case 27: // "scala double value without comment"
-      case 65: // scala_float
-      case 66: // scala_float1
+      case 70: // scala_float
+      case 71: // scala_float1
         yylhs.value.build< scala_parser::scala_value<double>  > ();
         break;
 
       case 24: // "scala int value"
       case 25: // "scala int value without comment"
-      case 63: // scala_int
-      case 64: // scala_int1
+      case 68: // scala_int
+      case 69: // scala_int1
         yylhs.value.build< scala_parser::scala_value<int32_t>  > ();
         break;
 
@@ -1035,13 +1044,14 @@ namespace mutabor { namespace scala_parser {
       case 18: // "character string with newline"
       case 19: // "(non)empty character string with newline"
       case 20: // "one of several tokens that can be in a string"
-      case 55: // comment
-      case 56: // comment_line
-      case 67: // lazy_string
-      case 70: // string_element
-      case 72: // string
-      case 77: // space
-      case 78: // garbage
+      case 30: // "The whole text after the file end"
+      case 57: // comment
+      case 58: // comment_line
+      case 72: // lazy_string
+      case 75: // string_element
+      case 77: // string
+      case 82: // space
+      case 83: // garbage
         yylhs.value.build< std::string > ();
         break;
 
@@ -1065,23 +1075,26 @@ namespace mutabor { namespace scala_parser {
   case 4:
 #line 145 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
-                   if (result.count != keys.keys.size()) {
+                   if ((size_t)keys.count.value != keys.keys.size()) {
 			   error(yystack_[0].location,_mut("Too few keys have been provided."));
                            YYERROR;
                    }
                    lexer.pop_state(scale_lexer::in_garbage);
                 }
-#line 1075 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1085 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 5:
 #line 152 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    { lexer.pop_state(scale_lexer::in_garbage); }
-#line 1081 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+    {
+		std::swap(keys.garbage,yystack_[1].value.as< std::string > ());
+		lexer.pop_state(scale_lexer::in_garbage);
+		}
+#line 1094 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 6:
-#line 156 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 159 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
                    if (result.count != result.intervals.size()) {
 			   error(yystack_[0].location,_mut("Too few intervals have been provided."));
@@ -1089,32 +1102,35 @@ namespace mutabor { namespace scala_parser {
                    }
                    lexer.pop_state(scale_lexer::in_garbage);
                 }
-#line 1093 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1106 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 7:
-#line 163 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    { lexer.pop_state(scale_lexer::in_garbage); }
-#line 1099 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 166 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    {
+		std::swap(result.garbage,yystack_[1].value.as< std::string > ());
+		lexer.pop_state(scale_lexer::in_garbage);
+		}
+#line 1115 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 8:
-#line 166 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 172 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     { lexer.push_state(scale_lexer::in_string); }
-#line 1105 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1121 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 9:
-#line 166 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 172 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 	                std::swap(result.name,yystack_[0].value.as< std::string > ());
 		        lexer.push_state(scale_lexer::in_integer);
 		}
-#line 1114 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1130 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 10:
-#line 172 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 178 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		if (!result.count) {  lexer.push_state(scale_lexer::in_garbage); }
 		else {
@@ -1122,113 +1138,118 @@ namespace mutabor { namespace scala_parser {
                         lexer.push_state(scale_lexer::in_interval);
 		}
 		}
-#line 1126 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1142 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 11:
-#line 181 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 187 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 			lexer.push_state(scale_lexer::in_integer);
                 }
-#line 1134 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1150 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 12:
-#line 191 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 197 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 			lexer.pop_state(scale_lexer::in_integer);
 			std::swap(keys.count,yystack_[6].value.as< scala_parser::scala_value<int32_t>  > ());
 		        std::swap(keys.first_key,yystack_[5].value.as< scala_parser::scala_value<int32_t>  > ());
                         std::swap(keys.last_key,yystack_[4].value.as< scala_parser::scala_value<int32_t>  > ());
-		        std::swap(keys.reference,yystack_[3].value.as< scala_parser::scala_value<int32_t>  > ());
-                        std::swap(keys.anchor,yystack_[2].value.as< scala_parser::scala_value<int32_t>  > ());
+                        std::swap(keys.anchor,yystack_[3].value.as< scala_parser::scala_value<int32_t>  > ());
+		        std::swap(keys.reference,yystack_[2].value.as< scala_parser::scala_value<int32_t>  > ());
                         std::swap(keys.reference_frequency,yystack_[1].value.as< scala_parser::scala_value<double>  > ());
                         std::swap(keys.repetition_interval,yystack_[0].value.as< scala_parser::scala_value<int32_t>  > ());
-			if (!keys.count.value) {  lexer.push_state(scale_lexer::in_garbage); }
+			if (!keys.count.value) {
+				lexer.push_state(scale_lexer::in_garbage);
+		        }
  		        else {
 			       keys.keys.reserve(keys.count.value);
 		               lexer.push_state(scale_lexer::in_key);
 		       }
 		}
-#line 1154 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
-    break;
-
-  case 14:
-#line 209 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    {
-	        keys.keys.push_back(yystack_[0].value.as< scala_parser::key > ());
-	        if (keys.count == keys.keys.size()) {
-			lexer.pop_state(scale_lexer::in_key);
-			lexer.push_state(scale_lexer::in_garbage);
-		}
-		}
-#line 1166 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
-    break;
-
-  case 16:
-#line 221 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    { std::swap(result.comment1,yystack_[0].value.as< std::string > ()); }
 #line 1172 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
+  case 14:
+#line 217 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    {
+	                keys.keys.push_back(yystack_[0].value.as< scala_parser::key > ());
+			DEBUGLOG(sclparser,"count: %d, size: %d",
+		                 keys.count.value,
+                                 keys.keys.size());
+	                if ((size_t)keys.count.value == keys.keys.size()) {
+			       lexer.pop_state(scale_lexer::in_key);
+		               lexer.push_state(scale_lexer::in_garbage);
+		        }
+		}
+#line 1187 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+    break;
+
+  case 16:
+#line 232 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    { std::swap(result.comment1,yystack_[0].value.as< std::string > ()); }
+#line 1193 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+    break;
+
   case 18:
-#line 223 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 234 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     { std::swap(result.comment2,yystack_[0].value.as< std::string > ()); }
-#line 1178 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1199 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 19:
-#line 225 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 236 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     { lexer.pop_state(scale_lexer::in_integer); }
-#line 1184 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1205 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 20:
-#line 227 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 238 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     { result.count = yystack_[1].value.as< int32_t > (); }
-#line 1190 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1211 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 21:
-#line 228 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 239 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     { result.count = yystack_[1].value.as< int32_t > (); std::swap(result.count_comment,yystack_[0].value.as< std::string > ()); }
-#line 1196 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1217 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 22:
-#line 229 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 240 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {  lexer.push_state(scale_lexer::in_string); }
-#line 1202 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1223 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 23:
-#line 229 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 240 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		result.count = yystack_[3].value.as< int32_t > ();
 		std::swap(result.count_comment,yystack_[0].value.as< std::string > ());
 		error(yystack_[1].location,_mut("The interval count must be an integer number, not a float."));
 		}
-#line 1212 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1233 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 24:
-#line 234 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 245 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {  lexer.push_state(scale_lexer::in_string); }
-#line 1218 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1239 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 25:
-#line 234 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 245 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		result.count = yystack_[3].value.as< int32_t > ();
 		std::swap(result.count_comment,yystack_[0].value.as< std::string > ());
 		error(yystack_[1].location,_mut("The interval count must be an integer number, not a ratio."));
 		}
-#line 1228 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1249 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 27:
-#line 242 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 253 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 	        result.intervals.push_back(yystack_[0].value.as< scala_parser::interval > ());
 	        if (result.count == result.intervals.size()) {
@@ -1236,52 +1257,52 @@ namespace mutabor { namespace scala_parser {
 			lexer.push_state(scale_lexer::in_garbage);
 		}
 		}
-#line 1240 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1261 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 28:
-#line 251 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 262 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     { std::swap(yylhs.value.as< std::string > (),yystack_[0].value.as< std::string > ()); }
-#line 1246 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1267 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 29:
-#line 252 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 263 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
  	        std::swap(yylhs.value.as< std::string > (),yystack_[1].value.as< std::string > ());
 		yylhs.value.as< std::string > () += "\n" + yystack_[0].value.as< std::string > ();
 		}
-#line 1255 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1276 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 30:
-#line 257 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 268 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     { lexer.push_state(scale_lexer::in_string); }
-#line 1261 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1282 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 31:
-#line 257 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 268 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 			std::swap(yylhs.value.as< std::string > (),yystack_[0].value.as< std::string > ());
 		        lexer.pop_state(scale_lexer::in_string);
 		}
-#line 1270 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1291 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 32:
-#line 263 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 274 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 	        yylhs.value.as< scala_parser::interval > ().type = yystack_[0].value.as< scala_parser::interval > ().type;
 		yylhs.value.as< scala_parser::interval > ().data = yystack_[0].value.as< scala_parser::interval > ().data;
                 std::swap(yylhs.value.as< scala_parser::interval > ().description,yystack_[0].value.as< scala_parser::interval > ().description);
 		lexer.pop_state(scale_lexer::in_string);
 			}
-#line 1281 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1302 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 33:
-#line 269 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 280 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		yylhs.value.as< scala_parser::interval > ().type = yystack_[0].value.as< scala_parser::interval > ().type;
 		yylhs.value.as< scala_parser::interval > ().data = yystack_[0].value.as< scala_parser::interval > ().data;
@@ -1289,219 +1310,236 @@ namespace mutabor { namespace scala_parser {
 		std::swap(yylhs.value.as< scala_parser::interval > ().comment,yystack_[1].value.as< std::string > ());
 		lexer.pop_state(scale_lexer::in_string);
 			}
-#line 1293 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1314 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 34:
-#line 278 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 289 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		yylhs.value.as< scala_parser::interval > ().type = yystack_[1].value.as< scala_parser::interval > ().type;
 		yylhs.value.as< scala_parser::interval > ().data = yystack_[1].value.as< scala_parser::interval > ().data;
                 std::swap(yylhs.value.as< scala_parser::interval > ().description,yystack_[0].value.as< std::string > ());
 		}
-#line 1303 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1324 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 35:
-#line 283 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 294 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 	        yylhs.value.as< scala_parser::interval > () = scala_parser::interval(yystack_[1].value.as< int32_t > ());
                 std::swap(yylhs.value.as< scala_parser::interval > ().description,yystack_[0].value.as< std::string > ());
                 lexer.push_state(scale_lexer::in_string);
 		}
-#line 1313 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1334 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 36:
-#line 288 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 299 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		lexer.error(yystack_[0].location, _mut("An incomplete ratio has been detected, and descriptions must not start with '/'."));
 		yylhs.value.as< scala_parser::interval > () = scala_parser::interval(yystack_[1].value.as< int32_t > ());
                 std::swap(yylhs.value.as< scala_parser::interval > ().description,yystack_[0].value.as< std::string > ());
 		}
-#line 1323 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1344 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 37:
-#line 295 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 306 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		yylhs.value.as< scala_parser::interval > () = scala_parser::interval(yystack_[1].value.as< int32_t > (),yystack_[0].value.as< int32_t > ());
                 lexer.push_state(scale_lexer::in_string);
 		}
-#line 1332 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1353 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 38:
-#line 299 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 310 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		yylhs.value.as< scala_parser::interval > () = scala_parser::interval(yystack_[1].value.as< int32_t > (),yystack_[0].value.as< double > ());
                 lexer.push_state(scale_lexer::in_string);
 		}
-#line 1341 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1362 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 39:
-#line 303 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 314 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		yylhs.value.as< scala_parser::interval > () = scala_parser::interval(yystack_[0].value.as< double > ());
                 lexer.push_state(scale_lexer::in_string);
 		}
-#line 1350 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1371 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 40:
-#line 310 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 321 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		yylhs.value.as< scala_parser::key > ().type = yystack_[0].value.as< scala_parser::key > ().type;
 		yylhs.value.as< scala_parser::key > ().value = yystack_[0].value.as< scala_parser::key > ().value;
                 std::swap(yylhs.value.as< scala_parser::key > ().description,yystack_[0].value.as< scala_parser::key > ().description);
 		lexer.pop_state(scale_lexer::in_string);
 		}
-#line 1361 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1382 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 41:
-#line 316 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 327 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
+		yylhs.value.as< scala_parser::key > ().type = yystack_[0].value.as< scala_parser::key > ().type;
 		yylhs.value.as< scala_parser::key > ().value = yystack_[0].value.as< scala_parser::key > ().value;
                 std::swap(yylhs.value.as< scala_parser::key > ().description,yystack_[0].value.as< scala_parser::key > ().description);
 		std::swap(yylhs.value.as< scala_parser::key > ().comment,yystack_[1].value.as< std::string > ());
 		lexer.pop_state(scale_lexer::in_string);
 		}
-#line 1372 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1394 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 42:
-#line 324 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 336 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
-	        yylhs.value.as< scala_parser::key > ().value = yystack_[1].value.as< int32_t > ();
-                std::swap(yylhs.value.as< scala_parser::key > ().description,yystack_[0].value.as< std::string > ());
-                lexer.push_state(scale_lexer::in_string);
+			lexer.push_state(scale_lexer::in_string);
 		}
-#line 1382 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1402 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 43:
-#line 329 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 338 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    {
+		yylhs.value.as< scala_parser::key > ().type = scala_parser::key::numeric;
+	        yylhs.value.as< scala_parser::key > ().value = yystack_[2].value.as< int32_t > ();
+                std::swap(yylhs.value.as< scala_parser::key > ().description,yystack_[0].value.as< std::string > ());
+		}
+#line 1412 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+    break;
+
+  case 44:
+#line 343 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    {
+			lexer.push_state(scale_lexer::in_string);
+		}
+#line 1420 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+    break;
+
+  case 45:
+#line 345 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		yylhs.value.as< scala_parser::key > ().type = scala_parser::key::empty;
                 std::swap(yylhs.value.as< scala_parser::key > ().description,yystack_[0].value.as< std::string > ());
 		}
-#line 1391 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1429 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
-  case 44:
-#line 335 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+  case 48:
+#line 352 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		yylhs.value.as< scala_parser::scala_value<int32_t>  > ().value = yystack_[0].value.as< scala_parser::scala_value<int32_t>  > ().value;
                 std::swap(yylhs.value.as< scala_parser::scala_value<int32_t>  > ().description,yystack_[0].value.as< scala_parser::scala_value<int32_t>  > ().description);
 		lexer.pop_state(scale_lexer::in_string);
 		}
-#line 1401 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1439 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
-  case 45:
-#line 340 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+  case 49:
+#line 357 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		yylhs.value.as< scala_parser::scala_value<int32_t>  > ().value = yystack_[0].value.as< scala_parser::scala_value<int32_t>  > ().value;
                 std::swap(yylhs.value.as< scala_parser::scala_value<int32_t>  > ().description,yystack_[0].value.as< scala_parser::scala_value<int32_t>  > ().description);
 		std::swap(yylhs.value.as< scala_parser::scala_value<int32_t>  > ().comment,yystack_[1].value.as< std::string > ());
 		lexer.pop_state(scale_lexer::in_string);
 		}
-#line 1412 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1450 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
-  case 46:
-#line 348 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+  case 50:
+#line 365 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 	        yylhs.value.as< scala_parser::scala_value<int32_t>  > ().value = yystack_[1].value.as< int32_t > ();
                 std::swap(yylhs.value.as< scala_parser::scala_value<int32_t>  > ().description,yystack_[0].value.as< std::string > ());
                 lexer.push_state(scale_lexer::in_string);
 		}
-#line 1422 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1460 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
-  case 47:
-#line 355 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+  case 51:
+#line 372 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		yylhs.value.as< scala_parser::scala_value<double>  > ().value = yystack_[0].value.as< scala_parser::scala_value<double>  > ().value;
                 std::swap(yylhs.value.as< scala_parser::scala_value<double>  > ().description,yystack_[0].value.as< scala_parser::scala_value<double>  > ().description);
 		lexer.pop_state(scale_lexer::in_string);
 		}
-#line 1432 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1470 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
-  case 48:
-#line 360 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+  case 52:
+#line 377 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		yylhs.value.as< scala_parser::scala_value<double>  > ().value = yystack_[0].value.as< scala_parser::scala_value<double>  > ().value;
                 std::swap(yylhs.value.as< scala_parser::scala_value<double>  > ().description,yystack_[0].value.as< scala_parser::scala_value<double>  > ().description);
 		std::swap(yylhs.value.as< scala_parser::scala_value<double>  > ().comment,yystack_[1].value.as< std::string > ());
 		lexer.pop_state(scale_lexer::in_string);
 		}
-#line 1443 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1481 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
-  case 49:
-#line 368 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+  case 53:
+#line 385 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 	        yylhs.value.as< scala_parser::scala_value<double>  > ().value = yystack_[1].value.as< double > ();
                 std::swap(yylhs.value.as< scala_parser::scala_value<double>  > ().description,yystack_[0].value.as< std::string > ());
                 lexer.push_state(scale_lexer::in_string);
 		}
-#line 1453 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1491 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
-  case 50:
-#line 376 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+  case 54:
+#line 393 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     { yylhs.value.as< std::string > ().clear(); }
-#line 1459 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1497 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
-  case 51:
-#line 377 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+  case 55:
+#line 394 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     { std::swap(yylhs.value.as< std::string > (),yystack_[1].value.as< std::string > ()); }
-#line 1465 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
-    break;
-
-  case 52:
-#line 378 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    { std::swap(yylhs.value.as< std::string > (),yystack_[0].value.as< std::string > ()); }
-#line 1471 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
-    break;
-
-  case 53:
-#line 379 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    { std::swap(yylhs.value.as< std::string > (),yystack_[1].value.as< std::string > ()); yylhs.value.as< std::string > () += yystack_[0].value.as< std::string > (); }
-#line 1477 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1503 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 56:
-#line 386 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    { yylhs.value.as< int32_t > () = yystack_[1].value.as< int32_t > (); }
-#line 1483 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 395 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    { std::swap(yylhs.value.as< std::string > (),yystack_[0].value.as< std::string > ()); }
+#line 1509 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 57:
-#line 389 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    { std::swap(yylhs.value.as< std::string > (),yystack_[0].value.as< std::string > ()); lexer.push_state(scale_lexer::in_string);  }
-#line 1489 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 396 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    { std::swap(yylhs.value.as< std::string > (),yystack_[1].value.as< std::string > ()); yylhs.value.as< std::string > () += yystack_[0].value.as< std::string > (); }
+#line 1515 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
-  case 58:
-#line 390 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    { std::swap(yylhs.value.as< std::string > (),yystack_[1].value.as< std::string > ()); yylhs.value.as< std::string > () += yystack_[0].value.as< std::string > (); }
-#line 1495 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+  case 60:
+#line 403 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    { yylhs.value.as< int32_t > () = yystack_[1].value.as< int32_t > (); }
+#line 1521 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 61:
-#line 397 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    { std::swap(yylhs.value.as< std::string > (),yystack_[1].value.as< std::string > ()); lexer.pop_state(scale_lexer::in_string); }
-#line 1501 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 406 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    { std::swap(yylhs.value.as< std::string > (),yystack_[0].value.as< std::string > ()); lexer.push_state(scale_lexer::in_string);  }
+#line 1527 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 62:
-#line 403 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+#line 407 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    { std::swap(yylhs.value.as< std::string > (),yystack_[1].value.as< std::string > ()); yylhs.value.as< std::string > () += yystack_[0].value.as< std::string > (); }
+#line 1533 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+    break;
+
+  case 65:
+#line 414 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    { std::swap(yylhs.value.as< std::string > (),yystack_[1].value.as< std::string > ()); lexer.pop_state(scale_lexer::in_string); }
+#line 1539 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+    break;
+
+  case 66:
+#line 420 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		errno = 0;
 		long n = strtol (yystack_[0].value.as< std::string > ().c_str(), NULL, 10);
@@ -1509,23 +1547,23 @@ namespace mutabor { namespace scala_parser {
 		lexer.error (yystack_[0].location, _mut("integer is out of range"));
 		yylhs.value.as< int32_t > () = n;
 		}
-#line 1513 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1551 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
-  case 63:
-#line 411 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+  case 67:
+#line 428 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     { yylhs.value.as< int32_t > () = yystack_[0].value.as< int32_t > (); }
-#line 1519 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1557 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
-  case 64:
-#line 412 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+  case 68:
+#line 429 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     { yylhs.value.as< int32_t > () = yystack_[0].value.as< int32_t > (); }
-#line 1525 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1563 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
-  case 65:
-#line 415 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+  case 69:
+#line 432 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
     {
 		errno = 0;
                 std::string tmp;
@@ -1547,47 +1585,47 @@ namespace mutabor { namespace scala_parser {
 		lexer.error (yystack_[0].location, _mut("float is out of range"));
 		yylhs.value.as< double > () = value;
 		}
-#line 1551 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
-    break;
-
-  case 66:
-#line 437 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    { yylhs.value.as< double > () = yystack_[0].value.as< double > (); }
-#line 1557 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
-    break;
-
-  case 67:
-#line 438 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    { yylhs.value.as< double > () = yystack_[0].value.as< double > (); }
-#line 1563 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
-    break;
-
-  case 68:
-#line 441 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    { std::swap(yylhs.value.as< std::string > (),yystack_[1].value.as< std::string > ()); yylhs.value.as< std::string > () += yystack_[0].value.as< std::string > (); }
-#line 1569 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
-    break;
-
-  case 69:
-#line 442 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    { std::swap(yylhs.value.as< std::string > (),yystack_[0].value.as< std::string > ()); }
-#line 1575 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1589 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 70:
-#line 445 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    { std::swap(result.garbage,yystack_[0].value.as< std::string > ()); }
-#line 1581 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 454 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    { yylhs.value.as< double > () = yystack_[0].value.as< double > (); }
+#line 1595 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
   case 71:
-#line 446 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
-    { result.garbage += yystack_[1].value.as< std::string > (); }
-#line 1587 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 455 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    { yylhs.value.as< double > () = yystack_[0].value.as< double > (); }
+#line 1601 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+    break;
+
+  case 72:
+#line 458 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    { std::swap(yylhs.value.as< std::string > (),yystack_[1].value.as< std::string > ()); yylhs.value.as< std::string > () += yystack_[0].value.as< std::string > (); }
+#line 1607 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+    break;
+
+  case 73:
+#line 459 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    { std::swap(yylhs.value.as< std::string > (),yystack_[0].value.as< std::string > ()); }
+#line 1613 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+    break;
+
+  case 74:
+#line 462 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    { std::swap(yylhs.value.as< std::string > (),yystack_[0].value.as< std::string > ()); }
+#line 1619 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+    break;
+
+  case 75:
+#line 463 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:847
+    { std::swap(yylhs.value.as< std::string > (),yystack_[1].value.as< std::string > ()); yylhs.value.as< std::string > () += yystack_[1].value.as< std::string > (); }
+#line 1625 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
     break;
 
 
-#line 1591 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
+#line 1629 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:847
             default:
               break;
             }
@@ -1842,148 +1880,146 @@ namespace mutabor { namespace scala_parser {
   }
 
 
-  const signed char scale_parser::yypact_ninf_ = -53;
+  const signed char scale_parser::yypact_ninf_ = -29;
 
   const signed char scale_parser::yytable_ninf_ = -1;
 
   const short int
   scale_parser::yypact_[] =
   {
-       0,    -6,   -53,     8,   -53,   -53,   -53,   -53,   132,    -6,
-     -53,   -53,   -53,   141,    90,   -53,    22,    76,   -53,   -53,
-     -53,   -53,   -53,   137,   -53,   -53,    76,   108,   -53,   124,
-     -53,   -53,   144,    11,   -53,   141,   141,   -53,    76,     4,
-     -53,    76,    17,   -53,   -53,    76,    62,   -53,    58,   -53,
-     -53,   -53,   -53,   -53,   -53,   126,   -53,   -53,   -53,   -53,
-     -53,   114,   -53,   -53,   -53,   125,   -53,   -53,   -53,   -53,
-     -53,   -53,   141,   -53,   -53,   -53,   -53,   -53,   -53,   -53,
-      -6,   -53,   -53,   -53,   141,    40,    -6,   141,   -53,   -53,
-      69,    52,   -53,   -53,   -53,   -53,    52,   141,   -53,    76,
-     102,    76,    76,   -53,   -53,   -53,   -53,   -53
+      30,   -19,   -29,    43,   -29,   -29,   -29,   -29,   121,   -19,
+     -29,   -29,   -29,   128,   111,   -29,    25,    37,   -29,   -29,
+     -29,   -29,   126,   -29,   -29,    37,    97,   -29,    53,   -29,
+     -29,   132,    41,   -29,   128,   128,   -29,    37,   145,   -29,
+     -29,   117,   -29,   -29,   -29,   -29,    54,   -29,    31,   -29,
+     -29,   -29,   -29,   -29,   -29,   109,   -29,   -29,   -29,   -29,
+     -29,   103,   -29,   -29,   -29,    89,   -29,   -29,   -29,   -29,
+     -29,   -29,   128,   -29,   -29,    37,    37,   -29,   -29,   -29,
+     -19,   -29,   -29,   -29,   128,   -29,   -29,   152,   -19,   128,
+     -29,   -29,    22,    17,   -29,   -29,   -29,   -29,    17,   128,
+     -29,    37,    56,    37,    37,   -29,   -29,   -29,   -29,   -29
   };
 
   const unsigned char
   scale_parser::yydefact_[] =
   {
-       0,    15,    11,     0,    30,     2,    26,     8,     0,    16,
-      28,     3,    13,     0,     0,     1,     0,     0,     6,    70,
-      65,    62,    69,     0,    27,    32,     0,     0,    63,     0,
-      66,    39,     0,     0,    29,     0,     0,    44,     0,     0,
-       4,     0,     0,    14,    40,     0,     0,    57,     0,    31,
-      60,    59,     9,    50,    52,     0,    33,    34,    36,    37,
-      38,     0,    54,    35,    56,     0,    68,    64,    67,     7,
-      71,    45,     0,    46,    43,    41,    42,     5,    58,    61,
-      17,    51,    53,    55,     0,     0,    18,     0,    10,    19,
-       0,     0,    24,    22,    20,    21,     0,     0,    47,     0,
-       0,     0,     0,    48,    12,    49,    25,    23
+       0,    15,    11,     0,    30,     2,    26,     8,     6,    16,
+      28,     3,    13,     0,     4,     1,     0,     0,    74,    69,
+      66,    73,     0,    27,    32,     0,     0,    67,     0,    70,
+      39,     0,     0,    29,     0,     0,    48,     0,     0,    46,
+      47,     0,    14,    40,    44,    42,     0,    61,     0,    31,
+      64,    63,     9,    54,    56,     0,    33,    34,    36,    37,
+      38,     0,    58,    35,    60,     0,    72,    68,    71,     7,
+      75,    49,     0,    50,    41,     0,     0,     5,    62,    65,
+      17,    55,    57,    59,     0,    45,    43,     0,    18,     0,
+      10,    19,     0,     0,    24,    22,    20,    21,     0,     0,
+      51,     0,     0,     0,     0,    52,    12,    53,    25,    23
   };
 
   const signed char
   scale_parser::yypgoto_[] =
   {
-     -53,   -53,   -53,   -53,   -53,   -53,   -53,   -53,   -53,   -53,
-     -53,   -53,   -53,   -53,   -53,   -53,   -53,     6,    -7,   -53,
-     -53,    -1,   -53,   -53,    -2,   -31,     1,   -53,   -52,     5,
-     -53,   -53,   -53,    12,   -10,   104,    15,   -22,   -26,    -8,
-      38
+     -29,   -29,   -29,   -29,   -29,   -29,   -29,   -29,   -29,   -29,
+     -29,   -29,   -29,   -29,   -29,   -29,   -29,     7,    -6,   -29,
+     -29,    28,   -29,   -29,    34,   -29,   -29,   -29,   -28,    35,
+     -29,   -15,   -24,   -29,   -29,   -29,   -16,     9,    85,    -3,
+     -21,   -20,    -8,    77
   };
 
   const signed char
   scale_parser::yydefgoto_[] =
   {
       -1,     3,    11,     5,     6,    17,    80,    12,    13,    14,
-       7,    85,    88,    89,   102,   101,     8,    35,    10,    16,
-      24,    25,    26,    43,    44,    36,    37,    97,    98,    52,
-      64,    27,    48,    53,    54,    28,    38,    30,    31,    39,
-      33
+       7,    87,    90,    91,   104,   103,     8,    34,    10,    16,
+      23,    24,    25,    42,    43,    76,    75,    44,    35,    36,
+      99,   100,    52,    64,    26,    48,    53,    54,    27,    37,
+      29,    30,    38,    32
   };
 
   const unsigned char
   scale_parser::yytable_[] =
   {
-      32,    60,    34,     1,     2,    72,    49,     9,    15,    55,
-      68,    69,    21,    66,    23,    32,    34,    70,    55,    61,
-      42,    65,    56,    29,     4,    21,    22,    47,    34,    45,
-      55,    57,    58,    55,    63,    34,    71,    55,    29,    68,
-      75,    84,    59,    73,   103,    82,    74,     4,    21,    22,
-      76,    82,    46,    87,    41,    82,    91,    45,    50,    20,
-      79,    22,    77,    78,     0,    99,   104,    81,    70,    50,
-      99,     0,     0,    81,    47,     0,    50,    81,    68,    34,
-      95,    47,     4,   100,     0,    22,    86,     0,   100,    34,
-      40,    55,    51,    55,    55,     0,    19,    96,    21,    22,
-      90,    92,    94,    51,   105,    93,   106,   107,    50,    20,
-      51,    66,     0,    47,    50,    20,    21,    22,     0,    47,
-       4,    20,    21,    66,    50,    50,    50,    41,     0,    47,
-      47,    47,    18,    22,    66,    66,    67,     0,    19,    20,
-      21,    22,    51,    67,    20,    21,    22,     0,    51,    21,
-      22,    20,    21,    66,     0,     0,    62,    83,    51,    51,
-      51,     0,     4,     0,     0,    67,     0,     4,     0,     0,
-       0,     4
+      31,    57,    58,    33,    63,    28,    60,    72,     9,    55,
+      68,    45,     4,    73,    31,    22,    33,    55,    61,    28,
+      65,    41,    50,    59,    19,    49,    21,    47,    33,    55,
+      47,    50,    79,     1,     2,    33,    78,    50,    45,    81,
+      68,    69,    47,    15,    84,    81,    21,    70,     4,    81,
+      56,    85,    86,    50,    77,    94,    89,    51,    47,    95,
+      70,    93,    21,    19,    82,    66,    51,    55,    55,    71,
+      82,   106,    51,   101,    82,    74,    96,   107,   101,   108,
+     109,    68,    33,   105,    92,   102,    62,    88,    51,    50,
+     102,    46,    33,    55,    47,    55,    55,    50,    66,     0,
+      98,    97,    47,    50,    19,    20,    21,     0,    47,    50,
+      19,    20,    66,     0,    47,     0,    67,    18,    66,    20,
+      21,     0,    83,    67,    51,    20,    21,    18,    19,    20,
+      21,     0,    51,    19,    20,    21,    20,    21,    51,    19,
+      20,    66,     4,     0,    51,     0,    67,     0,     4,    39,
+      40,     0,     4,    20,    66,    39,    40,     4,     0,     4,
+      20,    21
   };
 
   const signed char
   scale_parser::yycheck_[] =
   {
-       8,    27,     9,     3,     4,    36,    16,     1,     0,    17,
-      32,     0,     8,     9,     8,    23,    23,     6,    26,    27,
-      14,    29,    23,     8,    30,     8,     9,     5,    35,    14,
-      38,    26,    27,    41,    29,    42,    35,    45,    23,    61,
-      42,    72,    27,    38,    96,    55,    41,    30,     8,     9,
-      45,    61,    14,    84,    37,    65,    87,    42,     0,     7,
-      48,     9,     0,     5,    -1,    91,    97,    55,     6,     0,
-      96,    -1,    -1,    61,     5,    -1,     0,    65,   100,    86,
-      90,     5,    30,    91,    -1,     9,    80,    -1,    96,    96,
-       0,    99,    34,   101,   102,    -1,     6,    91,     8,     9,
-      85,    32,    90,    34,    99,    36,   101,   102,     0,     7,
-      34,     9,    -1,     5,     0,     7,     8,     9,    -1,     5,
-      30,     7,     8,     9,     0,     0,     0,    37,    -1,     5,
-       5,     5,     0,     9,     9,     9,    32,    -1,     6,     7,
-       8,     9,    34,    39,     7,     8,     9,    -1,    34,     8,
-       9,     7,     8,     9,    -1,    -1,    32,    32,    34,    34,
-      34,    -1,    30,    -1,    -1,    61,    -1,    30,    -1,    -1,
-      -1,    30
+       8,    25,    26,     9,    28,     8,    26,    35,     1,    17,
+      31,    14,    31,    37,    22,     8,    22,    25,    26,    22,
+      28,    14,     0,    26,     7,    16,     9,     5,    34,    37,
+       5,     0,    48,     3,     4,    41,     5,     0,    41,    55,
+      61,     0,     5,     0,    72,    61,     9,     6,    31,    65,
+      22,    75,    76,     0,     0,    33,    84,    35,     5,    37,
+       6,    89,     9,     7,    55,     9,    35,    75,    76,    34,
+      61,    99,    35,    93,    65,    41,    92,   101,    98,   103,
+     104,   102,    88,    98,    87,    93,    33,    80,    35,     0,
+      98,    14,    98,   101,     5,   103,   104,     0,     9,    -1,
+      93,    92,     5,     0,     7,     8,     9,    -1,     5,     0,
+       7,     8,     9,    -1,     5,    -1,    31,     6,     9,     8,
+       9,    -1,    33,    38,    35,     8,     9,     6,     7,     8,
+       9,    -1,    35,     7,     8,     9,     8,     9,    35,     7,
+       8,     9,    31,    -1,    35,    -1,    61,    -1,    31,    38,
+      39,    -1,    31,     8,     9,    38,    39,    31,    -1,    31,
+       8,     9
   };
 
   const unsigned char
   scale_parser::yystos_[] =
   {
-       0,     3,     4,    39,    30,    41,    42,    48,    54,    55,
-      56,    40,    45,    46,    47,     0,    57,    43,     0,     6,
-       7,     8,     9,    55,    58,    59,    60,    69,    73,    74,
-      75,    76,    77,    78,    56,    55,    63,    64,    74,    77,
-       0,    37,    55,    61,    62,    74,    78,     5,    70,    72,
-       0,    34,    67,    71,    72,    77,    59,    67,    67,    74,
-      76,    77,    32,    67,    68,    77,     9,    73,    75,     0,
-       6,    64,    63,    67,    67,    62,    67,     0,     5,    71,
-      44,    71,    72,    32,    63,    49,    55,    63,    50,    51,
-      74,    63,    32,    36,    71,    72,    55,    65,    66,    76,
-      77,    53,    52,    66,    63,    67,    67,    67
+       0,     3,     4,    41,    31,    43,    44,    50,    56,    57,
+      58,    42,    47,    48,    49,     0,    59,    45,     6,     7,
+       8,     9,    57,    60,    61,    62,    74,    78,    79,    80,
+      81,    82,    83,    58,    57,    68,    69,    79,    82,    38,
+      39,    57,    63,    64,    67,    79,    83,     5,    75,    77,
+       0,    35,    72,    76,    77,    82,    61,    72,    72,    79,
+      81,    82,    33,    72,    73,    82,     9,    78,    80,     0,
+       6,    69,    68,    72,    64,    66,    65,     0,     5,    76,
+      46,    76,    77,    33,    68,    72,    72,    51,    57,    68,
+      52,    53,    79,    68,    33,    37,    76,    77,    57,    70,
+      71,    81,    82,    55,    54,    71,    68,    72,    72,    72
   };
 
   const unsigned char
   scale_parser::yyr1_[] =
   {
-       0,    38,    39,    39,    40,    40,    41,    41,    43,    44,
-      42,    46,    45,    47,    47,    48,    48,    49,    49,    50,
-      51,    51,    52,    51,    53,    51,    54,    54,    55,    55,
-      57,    56,    58,    58,    59,    59,    59,    60,    60,    60,
-      61,    61,    62,    62,    63,    63,    64,    65,    65,    66,
-      67,    67,    67,    67,    68,    68,    69,    70,    70,    71,
-      71,    72,    73,    74,    74,    75,    76,    76,    77,    77,
-      78,    78
+       0,    40,    41,    41,    42,    42,    43,    43,    45,    46,
+      44,    48,    47,    49,    49,    50,    50,    51,    51,    52,
+      53,    53,    54,    53,    55,    53,    56,    56,    57,    57,
+      59,    58,    60,    60,    61,    61,    61,    62,    62,    62,
+      63,    63,    65,    64,    66,    64,    67,    67,    68,    68,
+      69,    70,    70,    71,    72,    72,    72,    72,    73,    73,
+      74,    75,    75,    76,    76,    77,    78,    79,    79,    80,
+      81,    81,    82,    82,    83,    83
   };
 
   const unsigned char
   scale_parser::yyr2_[] =
   {
-       0,     2,     2,     2,     2,     3,     2,     3,     0,     0,
+       0,     2,     2,     2,     1,     3,     1,     3,     0,     0,
        6,     0,     8,     1,     2,     0,     1,     0,     1,     1,
        2,     2,     0,     4,     0,     4,     1,     2,     1,     2,
        0,     3,     1,     2,     2,     2,     2,     2,     2,     1,
-       1,     2,     2,     2,     1,     2,     2,     1,     2,     2,
-       1,     2,     1,     2,     1,     2,     2,     1,     2,     1,
-       1,     2,     1,     1,     2,     1,     1,     2,     2,     1,
-       1,     2
+       1,     2,     0,     3,     0,     3,     1,     1,     1,     2,
+       2,     1,     2,     2,     1,     2,     1,     2,     1,     2,
+       2,     1,     2,     1,     1,     2,     1,     1,     2,     1,
+       1,     2,     2,     1,     1,     2
   };
 
 
@@ -2006,30 +2042,31 @@ namespace mutabor { namespace scala_parser {
   "\"bare interval\"", "\"bare interval with description\"",
   "\"scala int value\"", "\"scala int value without comment\"",
   "\"scala double value\"", "\"scala double value without comment\"",
-  "\"key\"", "\"key without comment\"", "'!'", "COMMENT_SIGN", "'/'",
-  "SLASH", "'\\n'", "NEWLINE", "'.'", "'x'", "$accept", "scala_file",
-  "kbmfile", "sclfile", "scl_data_start", "$@1", "$@2", "kbm_data_start",
-  "$@3", "kbm_data", "start_comment", "count_comment", "interval_count",
-  "integer_number", "$@4", "$@5", "scl_data", "comment", "comment_line",
-  "$@6", "interval", "interval2", "interval1", "key", "key1", "scala_int",
-  "scala_int1", "scala_float", "scala_float1", "lazy_string", "ratio_sign",
-  "ratio_start", "string_element", "string_end", "string",
-  "nospace_integer", "integer", "nospace_float", "float", "space",
-  "garbage", YY_NULLPTR
+  "\"key\"", "\"key without comment\"",
+  "\"The whole text after the file end\"", "'!'", "COMMENT_SIGN", "'/'",
+  "SLASH", "'\\n'", "NEWLINE", "'.'", "'x'", "'X'", "$accept",
+  "scala_file", "kbmfile", "sclfile", "scl_data_start", "$@1", "$@2",
+  "kbm_data_start", "$@3", "kbm_data", "start_comment", "count_comment",
+  "interval_count", "integer_number", "$@4", "$@5", "scl_data", "comment",
+  "comment_line", "$@6", "interval", "interval2", "interval1", "key",
+  "key1", "$@7", "$@8", "x", "scala_int", "scala_int1", "scala_float",
+  "scala_float1", "lazy_string", "ratio_sign", "ratio_start",
+  "string_element", "string_end", "string", "nospace_integer", "integer",
+  "nospace_float", "float", "space", "garbage", YY_NULLPTR
   };
 
 #if YYDEBUG
   const unsigned short int
   scale_parser::yyrline_[] =
   {
-       0,   140,   140,   141,   144,   152,   155,   163,   166,   166,
-     165,   181,   181,   208,   209,   220,   221,   222,   223,   225,
-     227,   228,   229,   229,   234,   234,   241,   242,   251,   252,
-     257,   257,   263,   269,   278,   283,   288,   295,   299,   303,
-     310,   316,   324,   329,   335,   340,   348,   355,   360,   368,
-     376,   377,   378,   379,   382,   383,   386,   389,   390,   393,
-     394,   397,   403,   411,   412,   415,   437,   438,   441,   442,
-     445,   446
+       0,   140,   140,   141,   144,   152,   158,   166,   172,   172,
+     171,   187,   187,   216,   217,   231,   232,   233,   234,   236,
+     238,   239,   240,   240,   245,   245,   252,   253,   262,   263,
+     268,   268,   274,   280,   289,   294,   299,   306,   310,   314,
+     321,   327,   336,   336,   343,   343,   350,   350,   352,   357,
+     365,   372,   377,   385,   393,   394,   395,   396,   399,   400,
+     403,   406,   407,   410,   411,   414,   420,   428,   429,   432,
+     454,   455,   458,   459,   462,   463
   };
 
   // Print the state stack on the debug stream.
@@ -2064,8 +2101,8 @@ namespace mutabor { namespace scala_parser {
 
 #line 33 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:1155
 } } // mutabor::scala_parser
-#line 2068 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:1155
-#line 449 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:1156
+#line 2105 "../../mutabor/src/kernel/parsers/scala/scale_parser.cc" // lalr1.cc:1155
+#line 467 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // lalr1.cc:1156
 
 /// \		todo check whether this function is necessary for any system but windows
 
