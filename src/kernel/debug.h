@@ -151,9 +151,24 @@ void mutabor_debug_unlock();
 #ifdef __cplusplus
 #ifdef __GNUC__
 #include <cxxabi.h>
-	inline std::string DEMANGLE(const std::string & x) {	\
-		int status;			      \
-		return abi::__cxa_demangle(x.c_str(), 0, 0, &status);	\
+	inline std::string DEMANGLE(const std::string & x) {
+		int status;
+		char * dem = abi::__cxa_demangle(x.c_str(), 0, 0, &status);
+		std::string retval;
+		switch (status) {
+		case 0: /* success */
+			if (dem) {
+				retval = dem;
+				free(dem);
+			}
+			break;
+		case -1: /* Memory allocation failiure */
+		case -2: /* not a valid C++ name */
+		case -3: /* invalid argument */
+			retval = x;
+			break;
+		}
+		return retval;
 	}
 #define DEMANGLED(x) (DEMANGLE(x).c_str())
 #else
