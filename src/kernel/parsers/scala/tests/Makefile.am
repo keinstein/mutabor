@@ -39,7 +39,8 @@ KBMTESTS = \
 	allowed004_kbm.kbm \
 	allowed005_kbm.kbm \
 	allowed006_kbm.kbm \
-	allowed007_kbm.kbm
+	allowed007_kbm.kbm \
+	allowed008_kbm.kbm
 
 TESTS = \
 	test_empty$(EXEEXT) \
@@ -184,7 +185,7 @@ test_keymaps_LDADD = \
 
 $(SCLTESTS:.scl=.log): ./run_scl2mut.sh
 $(NSCLTESTS:.nscl=.log): ./run_nscl2mut.sh
-$(NSCLTESTS:.kbm=.log): ./run_kbm2mut.sh
+$(KBMTESTS:.kbm=.log): ./run_kbm2mut.sh
 
 ./run_scl2mut.sh: $(top_builddir)/scl2mut Makefile
 	@echo '#!/bin/sh' > $@
