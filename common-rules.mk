@@ -266,7 +266,7 @@ debugPaths.cpp: Makefile
 	cmp $@ $@.tmp && rm -f $@.tmp || mv $@.tmp $@
 
 $(top_builddir)/src/wxintl/libwxintl.a:
-	$(MAKE) -C $(top_builddir)/src/wxintl libwxintl.a
+	$(MAKE) $(AM_MAKEFLAGS) -C $(top_builddir)/src/wxintl libwxintl.a
 
 #-------------------------------------------------------------------------------------
 # Installing DLLs
@@ -290,7 +290,7 @@ installdll:
 				case "$$f" in \
 				*.gz)  GZIP=$(GZIP_ENV) gzip -dc $(DLLEXEDIR)/`basename "$$f"` >$(DLLEXEDIR)/"$$d" ;; \
 				esac ; \
-				$(MAKE) DLLLINKFILE="$$d" DLLEXEDIR="$(DLLEXEDIR)" installdll ; \
+				$(MAKE) $(AM_MAKEFLAGS) DLLLINKFILE="$$d" DLLEXEDIR="$(DLLEXEDIR)" installdll ; \
 			else \
 				echo "not found." ; \
 			fi ; \
@@ -345,5 +345,5 @@ mf2txt txt2mf:
 
 SUFFIXES += .mid .txt
 .txt.mid:
-	$(MAKE) txt2mf
+	$(MAKE) $(AM_MAKEFLAGS) txt2mf
 	./txt2mf $< $@

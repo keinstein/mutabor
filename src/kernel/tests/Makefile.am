@@ -26,9 +26,9 @@ nodist_testcppunit_SOURCES = \
 
 testcppunit_LDADD = \
 	$(top_builddir)/libmutabormaincppunit.a \
+	$(top_builddir)/libmutaborkernel.a \
 	$(top_builddir)/libmutabordebugcppunit.a \
 	$(top_builddir)/libmutaborgui.a \
-	$(top_builddir)/libmutaborkernel.a \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/librtmidi.a \
 	$(top_builddir)/src/wxintl/libwxintl.a \

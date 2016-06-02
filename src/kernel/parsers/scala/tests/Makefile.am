@@ -201,7 +201,7 @@ $(NSCLTESTS:.nscl=.log): ./run_nscl2mut.sh
 .PHONY: $(top_builddir)/scl2mut
 
 $(top_builddir)/scl2mut:
-	$(MAKE) -C $(top_builddir) scl2mut
+	$(MAKE) $(AM_MAKEFLAGS) -C $(top_builddir) scl2mut
 
 
 if COPYDLLS
