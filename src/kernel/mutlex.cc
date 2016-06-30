@@ -1,7 +1,10 @@
-#line 2 "src/kernel/mutlex.cc"
+#line 2 "../../mutabor/src/kernel/mutlex.cc"
+#line 12 "../../mutabor/src/kernel/mutlex.ll"
 #include "src/kernel/Defs.h"
 
-#line 5 "src/kernel/mutlex.cc"
+
+
+#line 8 "../../mutabor/src/kernel/mutlex.cc"
 
 #define  YY_INT_ALIGNED short int
 
@@ -17,8 +20,8 @@
 
 #define FLEX_SCANNER
 #define YY_FLEX_MAJOR_VERSION 2
-#define YY_FLEX_MINOR_VERSION 6
-#define YY_FLEX_SUBMINOR_VERSION 0
+#define YY_FLEX_MINOR_VERSION 5
+#define YY_FLEX_SUBMINOR_VERSION 39
 #if YY_FLEX_SUBMINOR_VERSION > 0
 #define FLEX_BETA
 #endif
@@ -277,7 +280,7 @@ struct yy_buffer_state
 /* %endif */
 
 /* %if-c++-only */
-	std::streambuf* yy_input_file; 
+	std::istream* yy_input_file;
 /* %endif */
 
 	char *yy_ch_buf;		/* input buffer */
@@ -291,7 +294,7 @@ struct yy_buffer_state
 	/* Number of characters read into yy_ch_buf, not including EOB
 	 * characters.
 	 */
-	int yy_n_chars;
+	yy_size_t yy_n_chars;
 
 	/* Whether we "own" the buffer - i.e., we know we created it,
 	 * and can realloc() it to grow it, and should free() it to
@@ -473,7 +476,7 @@ static yyconst flex_int16_t yy_accept[190] =
        23,   23,   23,   23,   23,   15,   23,   15,    0
     } ;
 
-static yyconst YY_CHAR yy_ec[256] =
+static yyconst flex_int32_t yy_ec[256] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
         2,    2,    2,    1,    1,    1,    1,    1,    1,    1,
@@ -505,7 +508,7 @@ static yyconst YY_CHAR yy_ec[256] =
         7,    7,    7,    7,    7
     } ;
 
-static yyconst YY_CHAR yy_meta[60] =
+static yyconst flex_int32_t yy_meta[60] =
     {   0,
         1,    1,    1,    1,    2,    1,    3,    1,    1,    1,
         4,    1,    4,    4,    4,    4,    4,    4,    3,    3,
@@ -515,7 +518,7 @@ static yyconst YY_CHAR yy_meta[60] =
         3,    3,    3,    3,    3,    3,    3,    3,    3
     } ;
 
-static yyconst flex_uint16_t yy_base[194] =
+static yyconst flex_int16_t yy_base[194] =
     {   0,
         0,    0,  362,  361,  365,  394,   58,   61,  394,    0,
         0,  394,  352,  352,   56,   54,   52,   49,   48,   46,
@@ -567,7 +570,7 @@ static yyconst flex_int16_t yy_def[194] =
 
     } ;
 
-static yyconst flex_uint16_t yy_nxt[454] =
+static yyconst flex_int16_t yy_nxt[454] =
     {   0,
         6,    7,    8,    7,    9,   10,   11,   12,   13,   14,
        15,   12,   16,   11,   17,   18,   19,   20,   11,   21,
@@ -683,9 +686,9 @@ static yyconst flex_int32_t yy_rule_can_match_eol[29] =
 
 static yyconst flex_int16_t yy_rule_linenum[28] =
     {   0,
-       47,   48,   49,   51,   52,   53,   54,   55,   56,   57,
-       58,   59,   60,   61,   62,   63,   64,   65,   66,   67,
-       68,   69,   70,   74,   75,   76,   77
+       49,   50,   51,   53,   54,   55,   56,   57,   58,   59,
+       60,   61,   62,   63,   64,   65,   66,   67,   68,   69,
+       70,   71,   72,   76,   77,   78,   79
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -695,20 +698,22 @@ static yyconst flex_int16_t yy_rule_linenum[28] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 1 "../../mutabor/src/kernel/mutlex.ll"
 
-#line 16 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 16 "../../mutabor/src/kernel/mutlex.ll"
 #define YY_NO_UNISTD_H
 #include "src/kernel/box.h"
 using namespace mutabor;
 using namespace mutabor::hidden;
+/*
+#include "src/kernel/mut.hh"
 namespace mutabor {
 	  namespace hidden {
 	  	  extern "C" {
-#include "src/kernel/mut.hh"
 		}
 	}
 }
+*/
 #include "src/kernel/mutlex.h"
 
 extern "C" inline int dummyisatty (int fd) { return isatty(fd); }
@@ -722,7 +727,7 @@ extern "C" inline int dummyisatty (int fd) { return isatty(fd); }
 */
 #define BUMP
 
-#line 726 "src/kernel/mutlex.cc"
+#line 731 "../../mutabor/src/kernel/mutlex.cc"
 
 #define INITIAL 0
 #define comment 1
@@ -805,7 +810,7 @@ static int yy_flex_strlen (yyconst char * );
 /* %% [5.0] fread()/read() definition of YY_INPUT goes here unless we're doing C++ \ */\
 \
 /* %if-c++-only C++ definition \ */\
-	if ( (int)(result = LexerInput( (char *) buf, max_size )) < 0 ) \
+	if ( (result = LexerInput( (char *) buf, max_size )) < 0 ) \
 		YY_FATAL_ERROR( "input in flex scanner failed" );
 /* %endif */
 
@@ -867,7 +872,7 @@ static int yy_flex_strlen (yyconst char * );
 
 /* Code executed at the end of each rule. */
 #ifndef YY_BREAK
-#define YY_BREAK /*LINTED*/break;
+#define YY_BREAK break;
 #endif
 
 /* %% [6.0] YY_RULE_SETUP definition goes here */
@@ -880,9 +885,9 @@ static int yy_flex_strlen (yyconst char * );
  */
 YY_DECL
 {
-	yy_state_type yy_current_state;
-	char *yy_cp, *yy_bp;
-	int yy_act;
+	register yy_state_type yy_current_state;
+	register char *yy_cp, *yy_bp;
+	register int yy_act;
     
 	if ( !(yy_init) )
 		{
@@ -899,14 +904,14 @@ YY_DECL
 /* %if-c-only */
 /* %endif */
 /* %if-c++-only */
-			yyin.rdbuf(std::cin.rdbuf());
+			yyin = & std::cin;
 /* %endif */
 
 		if ( ! yyout )
 /* %if-c-only */
 /* %endif */
 /* %if-c++-only */
-			yyout.rdbuf(std::cout.rdbuf());
+			yyout = & std::cout;
 /* %endif */
 
 		if ( ! YY_CURRENT_BUFFER ) {
@@ -920,15 +925,15 @@ YY_DECL
 
 	{
 /* %% [7.0] user's declarations go here */
-#line 42 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 44 "../../mutabor/src/kernel/mutlex.ll"
 
 
 
 
 
-#line 930 "src/kernel/mutlex.cc"
+#line 935 "../../mutabor/src/kernel/mutlex.cc"
 
-	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
+	while ( 1 )		/* loops until end-of-file is reached */
 		{
 /* %% [8.0] yymore()-related code goes here */
 		yy_cp = (yy_c_buf_p);
@@ -946,7 +951,7 @@ YY_DECL
 yy_match:
 		do
 			{
-			YY_CHAR yy_c = yy_ec[YY_SC_TO_UI(*yy_cp)] ;
+			register YY_CHAR yy_c = yy_ec[YY_SC_TO_UI(*yy_cp)] ;
 			if ( yy_accept[yy_current_state] )
 				{
 				(yy_last_accepting_state) = yy_current_state;
@@ -1017,118 +1022,118 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 47 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 49 "../../mutabor/src/kernel/mutlex.ll"
 BUMP BEGIN(comment); return MUTABOR_TOKEN_COMMENT_START;
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 48 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 50 "../../mutabor/src/kernel/mutlex.ll"
 BUMP /* comment */   return MUTABOR_TOKEN_COMMENT;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 49 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 51 "../../mutabor/src/kernel/mutlex.ll"
 BUMP BEGIN(0);       return MUTABOR_TOKEN_COMMENT_END;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 51 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 53 "../../mutabor/src/kernel/mutlex.ll"
 BUMP yylval->f_value = atof(yytext); return MUTABOR_TOKEN_F_NUMBER;
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 52 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 54 "../../mutabor/src/kernel/mutlex.ll"
 BUMP yylval->integer = atoi(yytext); return MUTABOR_TOKEN_INTEGER;
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 53 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 55 "../../mutabor/src/kernel/mutlex.ll"
 BUMP sscanf(yytext+1,"%x",(unsigned int *) &(yylval->integer)); return MUTABOR_TOKEN_INTEGER;
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 54 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 56 "../../mutabor/src/kernel/mutlex.ll"
 BUMP return MUTABOR_TOKEN_INTERVAL;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 55 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 57 "../../mutabor/src/kernel/mutlex.ll"
 BUMP return MUTABOR_TOKEN_ROOT;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 56 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 58 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_TONE;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 57 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 59 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_TONESYSTEM;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 58 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 60 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_RETUNING;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 59 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 61 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_HARMONY;
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 60 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 62 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_LOGIC;
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 61 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 63 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_FORM;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 62 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 64 "../../mutabor/src/kernel/mutlex.ll"
 BUMP return MUTABOR_TOKEN_HARMONY_ANALYSIS;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 63 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 65 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_MIDICHANNEL;
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 64 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 66 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_KEY;
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 65 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 67 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_MIDI_IN;
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 66 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 68 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_MIDI_OUT;
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 67 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 69 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_ELSE;
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 68 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 70 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_ANCHOR;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 69 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 71 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_DISTANCE;
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 70 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 72 "../../mutabor/src/kernel/mutlex.ll"
 { 
                   BUMP yylval->identifier = strdup(yytext);
                   return MUTABOR_TOKEN_IDENTIFIER;
@@ -1136,31 +1141,31 @@ YY_RULE_SETUP
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 74 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 76 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_CALLS;
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 75 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 77 "../../mutabor/src/kernel/mutlex.ll"
 BUMP return yytext[0]; 
 	YY_BREAK
 case 26:
 /* rule 26 can match eol */
 YY_RULE_SETUP
-#line 76 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 78 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_SPACES;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 77 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 79 "../../mutabor/src/kernel/mutlex.ll"
 BUMP  return MUTABOR_TOKEN_OTHER; /* fatal error */
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 78 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 80 "../../mutabor/src/kernel/mutlex.ll"
 ECHO;
 	YY_BREAK
-#line 1164 "src/kernel/mutlex.cc"
+#line 1169 "../../mutabor/src/kernel/mutlex.cc"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(comment):
 	yyterminate();
@@ -1186,11 +1191,7 @@ case YY_STATE_EOF(comment):
 			 * back-up) that will match for the new input source.
 			 */
 			(yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
-/* %if-c-only */
-/* %endif */
-/* %if-c++-only */
-			YY_CURRENT_BUFFER_LVALUE->yy_input_file = yyin.rdbuf();
-/* %endif */
+			YY_CURRENT_BUFFER_LVALUE->yy_input_file = yyin;
 			YY_CURRENT_BUFFER_LVALUE->yy_buffer_status = YY_BUFFER_NORMAL;
 			}
 
@@ -1305,29 +1306,11 @@ case YY_STATE_EOF(comment):
 /* %not-for-header */
 
 /* The contents of this function are C++ specific, so the () macro is not used.
- * This constructor simply maintains backward compatibility.
- * DEPRECATED
  */
-yyFlexLexer::yyFlexLexer( FLEX_STD istream* arg_yyin, FLEX_STD ostream* arg_yyout ):
-	yyin(arg_yyin ? arg_yyin->rdbuf() : std::cin.rdbuf()),
-	yyout(arg_yyout ? arg_yyout->rdbuf() : std::cout.rdbuf())
+yyFlexLexer::yyFlexLexer( std::istream* arg_yyin, std::ostream* arg_yyout )
 {
-	ctor_common();
-}
-
-/* The contents of this function are C++ specific, so the () macro is not used.
- */
-yyFlexLexer::yyFlexLexer( std::istream& arg_yyin, std::ostream& arg_yyout ):
-	yyin(arg_yyin.rdbuf()),
-	yyout(arg_yyout.rdbuf())
-{
-	ctor_common();
-}
-
-/* The contents of this function are C++ specific, so the () macro is not used.
- */
-void yyFlexLexer::ctor_common()
-{
+	yyin = arg_yyin;
+	yyout = arg_yyout;
 	yy_c_buf_p = 0;
 	yy_init = 0;
 	yy_start = 0;
@@ -1364,29 +1347,16 @@ yyFlexLexer::~yyFlexLexer()
 
 /* The contents of this function are C++ specific, so the () macro is not used.
  */
-void yyFlexLexer::switch_streams( std::istream& new_in, std::ostream& new_out )
-{
-	// was if( new_in )
-	yy_delete_buffer( YY_CURRENT_BUFFER );
-	yy_switch_to_buffer( yy_create_buffer( new_in, YY_BUF_SIZE  ) );
-
-	// was if( new_out )
-	yyout.rdbuf(new_out.rdbuf());
-}
-
-/* The contents of this function are C++ specific, so the () macro is not used.
- */
 void yyFlexLexer::switch_streams( std::istream* new_in, std::ostream* new_out )
 {
-	if( ! new_in ) {
-		new_in = &yyin;
-	}
+	if ( new_in )
+		{
+		yy_delete_buffer( YY_CURRENT_BUFFER );
+		yy_switch_to_buffer( yy_create_buffer( new_in, YY_BUF_SIZE  ) );
+		}
 
-	if ( ! new_out ) {
-		new_out = &yyout;
-	}
-
-	switch_streams(*new_in, *new_out);
+	if ( new_out )
+		yyout = new_out;
 }
 
 #ifdef YY_INTERACTIVE
@@ -1395,33 +1365,33 @@ int yyFlexLexer::LexerInput( char* buf, int /* max_size */ )
 int yyFlexLexer::LexerInput( char* buf, int max_size )
 #endif
 {
-	if ( yyin.eof() || yyin.fail() )
+	if ( yyin->eof() || yyin->fail() )
 		return 0;
 
 #ifdef YY_INTERACTIVE
-	yyin.get( buf[0] );
+	yyin->get( buf[0] );
 
-	if ( yyin.eof() )
+	if ( yyin->eof() )
 		return 0;
 
-	if ( yyin.bad() )
+	if ( yyin->bad() )
 		return -1;
 
 	return 1;
 
 #else
-	(void) yyin.read( buf, max_size );
+	(void) yyin->read( buf, max_size );
 
-	if ( yyin.bad() )
+	if ( yyin->bad() )
 		return -1;
 	else
-		return yyin.gcount();
+		return yyin->gcount();
 #endif
 }
 
 void yyFlexLexer::LexerOutput( const char* buf, int size )
 {
-	(void) yyout.write( buf, size );
+	(void) yyout->write( buf, size );
 }
 /* %ok-for-header */
 
@@ -1440,9 +1410,9 @@ void yyFlexLexer::LexerOutput( const char* buf, int size )
 int yyFlexLexer::yy_get_next_buffer()
 /* %endif */
 {
-    	char *dest = YY_CURRENT_BUFFER_LVALUE->yy_ch_buf;
-	char *source = (yytext_ptr);
-	yy_size_t number_to_move, i;
+    	register char *dest = YY_CURRENT_BUFFER_LVALUE->yy_ch_buf;
+	register char *source = (yytext_ptr);
+	register int number_to_move, i;
 	int ret_val;
 
 	if ( (yy_c_buf_p) > &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars) + 1] )
@@ -1471,7 +1441,7 @@ int yyFlexLexer::yy_get_next_buffer()
 	/* Try to read more data. */
 
 	/* First move last chars to start of buffer. */
-	number_to_move = (yy_size_t) ((yy_c_buf_p) - (yytext_ptr)) - 1;
+	number_to_move = (int) ((yy_c_buf_p) - (yytext_ptr)) - 1;
 
 	for ( i = 0; i < number_to_move; ++i )
 		*(dest++) = *(source++);
@@ -1553,9 +1523,9 @@ int yyFlexLexer::yy_get_next_buffer()
 	else
 		ret_val = EOB_ACT_CONTINUE_SCAN;
 
-	if ((int) ((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
+	if ((yy_size_t) ((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
 		/* Extend the array by 50%, plus the number we really need. */
-		int new_size = (yy_n_chars) + number_to_move + ((yy_n_chars) >> 1);
+		yy_size_t new_size = (yy_n_chars) + number_to_move + ((yy_n_chars) >> 1);
 		YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) mutabor_lexer_realloc((void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf,new_size  );
 		if ( ! YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
 			YY_FATAL_ERROR( "out of dynamic memory in yy_get_next_buffer()" );
@@ -1580,8 +1550,8 @@ int yyFlexLexer::yy_get_next_buffer()
     yy_state_type yyFlexLexer::yy_get_previous_state()
 /* %endif */
 {
-	yy_state_type yy_current_state;
-	char *yy_cp;
+	register yy_state_type yy_current_state;
+	register char *yy_cp;
     
 /* %% [15.0] code to get the start state into yy_current_state goes here */
 	yy_current_state = (yy_start);
@@ -1589,7 +1559,7 @@ int yyFlexLexer::yy_get_next_buffer()
 	for ( yy_cp = (yytext_ptr) + YY_MORE_ADJ; yy_cp < (yy_c_buf_p); ++yy_cp )
 		{
 /* %% [16.0] code to find the next state goes here */
-		YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 1);
+		register YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 1);
 		if ( yy_accept[yy_current_state] )
 			{
 			(yy_last_accepting_state) = yy_current_state;
@@ -1618,11 +1588,11 @@ int yyFlexLexer::yy_get_next_buffer()
     yy_state_type yyFlexLexer::yy_try_NUL_trans( yy_state_type yy_current_state )
 /* %endif */
 {
-	int yy_is_jam;
+	register int yy_is_jam;
     /* %% [17.0] code to find the next state, and perhaps do backing up, goes here */
-	char *yy_cp = (yy_c_buf_p);
+	register char *yy_cp = (yy_c_buf_p);
 
-	YY_CHAR yy_c = 1;
+	register YY_CHAR yy_c = 1;
 	if ( yy_accept[yy_current_state] )
 		{
 		(yy_last_accepting_state) = yy_current_state;
@@ -1640,14 +1610,13 @@ int yyFlexLexer::yy_get_next_buffer()
 		return yy_is_jam ? 0 : yy_current_state;
 }
 
-#ifndef YY_NO_UNPUT
 /* %if-c-only */
 /* %endif */
 /* %if-c++-only */
-    void yyFlexLexer::yyunput( int c, char* yy_bp)
+    void yyFlexLexer::yyunput( int c, register char* yy_bp)
 /* %endif */
 {
-	char *yy_cp;
+	register char *yy_cp;
     
     yy_cp = (yy_c_buf_p);
 
@@ -1657,10 +1626,10 @@ int yyFlexLexer::yy_get_next_buffer()
 	if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
 		{ /* need to shift things up to make room */
 		/* +2 for EOB chars. */
-		yy_size_t number_to_move = (yy_n_chars) + 2;
-		char *dest = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[
+		register yy_size_t number_to_move = (yy_n_chars) + 2;
+		register char *dest = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[
 					YY_CURRENT_BUFFER_LVALUE->yy_buf_size + 2];
-		char *source =
+		register char *source =
 				&YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[number_to_move];
 
 		while ( source > YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
@@ -1689,7 +1658,6 @@ int yyFlexLexer::yy_get_next_buffer()
 }
 /* %if-c-only */
 /* %endif */
-#endif
 
 /* %if-c-only */
 /* %endif */
@@ -1778,7 +1746,7 @@ int yyFlexLexer::yy_get_next_buffer()
 /* %if-c-only */
 /* %endif */
 /* %if-c++-only */
-    void yyFlexLexer::yyrestart( std::istream& input_file )
+    void yyFlexLexer::yyrestart( std::istream* input_file )
 /* %endif */
 {
     
@@ -1791,18 +1759,6 @@ int yyFlexLexer::yy_get_next_buffer()
 	yy_init_buffer( YY_CURRENT_BUFFER, input_file );
 	yy_load_buffer_state(  );
 }
-
-/* %if-c++-only */
-/** Delegate to the new version that takes an istream reference.
- * @param input_file A readable stream.
- * 
- * @note This function does not reset the start condition to @c INITIAL .
- */
-void yyFlexLexer::yyrestart( std::istream* input_file )
-{
-	yyrestart( *input_file );
-}
-/* %endif */
 
 /** Switch to a different input buffer.
  * @param new_buffer The new input buffer.
@@ -1851,11 +1807,7 @@ void yyFlexLexer::yyrestart( std::istream* input_file )
 {
     	(yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
 	(yytext_ptr) = (yy_c_buf_p) = YY_CURRENT_BUFFER_LVALUE->yy_buf_pos;
-/* %if-c-only */
-/* %endif */
-/* %if-c++-only */
-	yyin.rdbuf(YY_CURRENT_BUFFER_LVALUE->yy_input_file);
-/* %endif */
+	yyin = YY_CURRENT_BUFFER_LVALUE->yy_input_file;
 	(yy_hold_char) = *(yy_c_buf_p);
 }
 
@@ -1868,7 +1820,7 @@ void yyFlexLexer::yyrestart( std::istream* input_file )
 /* %if-c-only */
 /* %endif */
 /* %if-c++-only */
-    YY_BUFFER_STATE yyFlexLexer::yy_create_buffer( std::istream& file, int size )
+    YY_BUFFER_STATE yyFlexLexer::yy_create_buffer( std::istream* file, int size )
 /* %endif */
 {
 	YY_BUFFER_STATE b;
@@ -1877,7 +1829,7 @@ void yyFlexLexer::yyrestart( std::istream* input_file )
 	if ( ! b )
 		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer()" );
 
-	b->yy_buf_size = (yy_size_t)size;
+	b->yy_buf_size = size;
 
 	/* yy_ch_buf has to be 2 characters longer than the size given because
 	 * we need to put in 2 end-of-buffer characters.
@@ -1892,19 +1844,6 @@ void yyFlexLexer::yyrestart( std::istream* input_file )
 
 	return b;
 }
-
-/* %if-c++-only */
-/** Delegate creation of buffers to the new version that takes an istream reference.
- * @param file A readable stream.
- * @param size The character buffer size in bytes. When in doubt, use @c YY_BUF_SIZE.
- * 
- * @return the allocated buffer state.
- */
-	YY_BUFFER_STATE yyFlexLexer::yy_create_buffer( std::istream* file, int size )
-{
-	return yy_create_buffer( *file, size );
-}
-/* %endif */
 
 /** Destroy the buffer.
  * @param b a buffer created with yy_create_buffer()
@@ -1936,7 +1875,7 @@ void yyFlexLexer::yyrestart( std::istream* input_file )
 /* %if-c-only */
 /* %endif */
 /* %if-c++-only */
-    void yyFlexLexer::yy_init_buffer( YY_BUFFER_STATE b, std::istream& file )
+    void yyFlexLexer::yy_init_buffer( YY_BUFFER_STATE b, std::istream* file )
 /* %endif */
 
 {
@@ -1944,11 +1883,7 @@ void yyFlexLexer::yyrestart( std::istream* input_file )
     
 	yy_flush_buffer( b );
 
-/* %if-c-only */
-/* %endif */
-/* %if-c++-only */
-	b->yy_input_file = file.rdbuf();
-/* %endif */
+	b->yy_input_file = file;
 	b->yy_fill_buffer = 1;
 
     /* If b is the current buffer, then yy_init_buffer was _probably_
@@ -2081,7 +2016,7 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 		 * scanner will even need a stack. We use 2 instead of 1 to avoid an
 		 * immediate realloc on the next call.
          */
-		num_to_alloc = 1; /* After all that talk, this was set to 1 anyways... */
+		num_to_alloc = 1;
 		(yy_buffer_stack) = (struct yy_buffer_state**)mutabor_lexer_alloc
 								(num_to_alloc * sizeof(struct yy_buffer_state*)
 								);
@@ -2098,7 +2033,7 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 	if ((yy_buffer_stack_top) >= ((yy_buffer_stack_max)) - 1){
 
 		/* Increase the buffer to prepare for a possible push. */
-		yy_size_t grow_size = 8 /* arbitrary grow size */;
+		int grow_size = 8 /* arbitrary grow size */;
 
 		num_to_alloc = (yy_buffer_stack_max) + grow_size;
 		(yy_buffer_stack) = (struct yy_buffer_state**)mutabor_lexer_realloc
@@ -2127,7 +2062,7 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 /* %if-c-only */
 /* %endif */
 /* %if-c++-only */
-    void yyFlexLexer::yy_push_state( int _new_state )
+    void yyFlexLexer::yy_push_state( int new_state )
 /* %endif */
 {
     	if ( (yy_start_stack_ptr) >= (yy_start_stack_depth) )
@@ -2149,7 +2084,7 @@ void yyFlexLexer::yyensure_buffer_stack(void)
 
 	(yy_start_stack)[(yy_start_stack_ptr)++] = YY_START;
 
-	BEGIN(_new_state);
+	BEGIN(new_state);
 }
 
 /* %if-c-only */
@@ -2233,8 +2168,7 @@ void yyFlexLexer::LexerError( yyconst char msg[] )
 #ifndef yytext_ptr
 static void yy_flex_strncpy (char* s1, yyconst char * s2, int n )
 {
-		
-	int i;
+	register int i;
 	for ( i = 0; i < n; ++i )
 		s1[i] = s2[i];
 }
@@ -2243,7 +2177,7 @@ static void yy_flex_strncpy (char* s1, yyconst char * s2, int n )
 #ifdef YY_NEED_STRLEN
 static int yy_flex_strlen (yyconst char * s )
 {
-	int n;
+	register int n;
 	for ( n = 0; s[n]; ++n )
 		;
 
@@ -2253,12 +2187,11 @@ static int yy_flex_strlen (yyconst char * s )
 
 void *mutabor_lexer_alloc (yy_size_t  size )
 {
-			return (void *) malloc( size );
+	return (void *) malloc( size );
 }
 
 void *mutabor_lexer_realloc  (void * ptr, yy_size_t  size )
 {
-		
 	/* The cast to (char *) in the following accommodates both
 	 * implementations that use char* generic pointers, and those
 	 * that use void* generic pointers.  It works with the latter
@@ -2271,7 +2204,7 @@ void *mutabor_lexer_realloc  (void * ptr, yy_size_t  size )
 
 void mutabor_lexer_free (void * ptr )
 {
-			free( (char *) ptr );	/* see mutabor_lexer_realloc() for (char *) cast */
+	free( (char *) ptr );	/* see mutabor_lexer_realloc() for (char *) cast */
 }
 
 /* %if-tables-serialization definitions */
@@ -2281,7 +2214,7 @@ void mutabor_lexer_free (void * ptr )
 
 /* %ok-for-header */
 
-#line 78 "../../../mutabor-git/src/kernel/mutlex.ll"
+#line 79 "../../mutabor/src/kernel/mutlex.ll"
 
 
 

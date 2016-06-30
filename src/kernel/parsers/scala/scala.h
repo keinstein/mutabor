@@ -54,9 +54,13 @@ namespace mutabor {
 		class scale_lexer;
 		class scale_parser;
 		class location;
+
 		
 		struct mutabor_writer_options {
-			std::string prefix;
+			std::string prefix; //< Interval prefix
+			std::string tone_prefix; 
+			std::string tonesystem_name; 
+			std::string logic_name;
 		};
 
 		template<class T>
@@ -125,8 +129,8 @@ namespace mutabor {
 			}
 			std::ostream & print (std::ostream & o) const;
 			std::ostream & print_mutabor_interval(std::ostream & o,
-								 int i,
-								const mutabor_writer_options & w) const;
+							      int i,
+							      const mutabor_writer_options & w) const;
 			bool operator == (const interval & o) const;
 		};
 		inline std::ostream & operator<< (std::ostream & o, const interval & i);

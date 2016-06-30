@@ -86,7 +86,8 @@ namespace mutabor {
 std::string outputfile;
 std::string inputfile;
 std::string kbmfile;
-std::string prefix;
+mutabor::scala_parser::mutabor_writer_options options;
+
 ostream * output = NULL;
 istream * input = NULL, *keymapinput = NULL;
 
@@ -139,11 +140,7 @@ void run() {
 		scparser.make_keymap();
 	}
 
-	mutabor::scala_parser::mutabor_writer_options w;
-	w.prefix = prefix;
-
-
-	scparser.write_mutabor(*output,w);
+	scparser.write_mutabor(*output,options);
 }
 int main(int ac, char* av[])
 {
@@ -160,8 +157,22 @@ int main(int ac, char* av[])
 			("help", _mut("produce this help message"))
 			("kbm-file,k", po::value<std::string>(&kbmfile),
 			 _mut("Use .kbm file"))
-			("prefix,p", po::value<std::string>(&prefix)->default_value(std::string("scala")),
-			 _mut("Prefix identifiers with arg"))
+			("prefix,p",
+			 po::value<std::string>(&options.prefix)
+			 ->default_value(std::string(_mut("scala"))),
+			 _mut("Prefix interval identifiers with arg"))
+			("tone-prefix,t",
+			 po::value<std::string>(&options.tone_prefix)
+			 ->default_value(std::string(_mut("scala_tone"))),
+			 _mut("Prefix tone identifiers with arg"))
+			("tonesystem,n",
+			 po::value<std::string>(&options.tonesystem_name)
+			 ->default_value(std::string(_mut("scala_tonesystem"))),
+			 _mut("Set the name of the generated tone system to arg"))
+			("logic,l",
+			 po::value<std::string>(&options.logic_name)
+			 ->default_value(std::string(_mut("scala_logic"))),
+			 _mut("Set the name of the generated logic to arg"))
 			//			("input-file,i", po::value<std::vector<std::string> >()->required(),  "files to compile")
 			("input-file,i", po::value<std::string>(&inputfile),  _mut(".scl file that shall be converted"))
 			("output-file,o", po::value<std::string>(&outputfile),  _mut("filename of the mutabor logic"))

@@ -34,22 +34,22 @@ INTERVAL
 
 
 TONE
-	scala_reference = 440  
-	scala_anchor = scala_reference + 5 scala_repetition "  - scala_9 "
-	scala0 = scala_anchor + scala1 " c1"
-	scala2 = scala_anchor + scala5 " itiraseit"
+	scala_tone_reference = 440  
+	scala_tone_anchor = scala_tone_reference + 5 scala_repetition "  - scala_9 "
+	scala_tone0 = scala_tone_anchor + scala1 " c1"
+	scala_tone2 = scala_tone_anchor + scala5 " itiraseit"
 " Auto"
-	scala3 = scala_anchor + scala2 " idaternid"
-	scala4 = scala_anchor + scala0
-	scala5 = scala_anchor + scala2 " / 3"
+	scala_tone3 = scala_tone_anchor + scala2 " idaternid"
+	scala_tone4 = scala_tone_anchor + scala0
+	scala_tone5 = scala_tone_anchor + scala2 " / 3"
 
 
 TONESYSTEM
-	scalaT = 60 " "
-		[ scala0, , scala2, scala3, scala4, scala5, , , , , ,  ] 
+	scala_tonesystem = 60 " "
+		[ scala_tone0, , scala_tone2, scala_tone3, scala_tone4, scala_tone5, , , , , ,  ] 
 		  scala_repetition
 
 
 LOGIC
-	scala KEY s = scalaT []
+	scala_logic KEY s = scala_tonesystem []
 

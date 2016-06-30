@@ -27,19 +27,19 @@ INTERVAL
 
 
 TONE
-	scala_reference = 261.626
-	scala_anchor = scala_reference - scala0
-	scala0 = scala_anchor + scala0
-	scala1 = scala_anchor + scala1
-	scala2 = scala_anchor + scala2
+	scala_tone_reference = 261.626
+	scala_tone_anchor = scala_tone_reference - scala0
+	scala_tone0 = scala_tone_anchor + scala0
+	scala_tone1 = scala_tone_anchor + scala1
+	scala_tone2 = scala_tone_anchor + scala2
 
 
 TONESYSTEM
-	scalaT = 60
-		[ scala0, scala1, scala2 ] 
+	scala_tonesystem = 60
+		[ scala_tone0, scala_tone1, scala_tone2 ] 
 		  scala_repetition
 
 
 LOGIC
-	scala KEY s = scalaT []
+	scala_logic KEY s = scala_tonesystem []
 

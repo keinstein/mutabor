@@ -140,7 +140,7 @@ namespace mutabor {
 
 		std::ostream & interval::print_mutabor_interval (std::ostream & o,
 								 int i,
-								const mutabor_writer_options & w) const {
+								 const mutabor_writer_options & w) const {
 			if (!(comment.empty()))
 				o << "\"" << comment << "\"" << std::endl;
 			o << "\t" << w.prefix << i+1 << " = " ;
@@ -195,15 +195,15 @@ namespace mutabor {
 				return o;
 
 			std::ostringstream s;
-			s << "\t" << w.prefix << i
-			  << " = " << w.prefix << _mut("_anchor")
+			s << "\t" << w.tone_prefix << i
+			  << " = " << w.tone_prefix << _mut("_anchor")
 			  << " + " << w.prefix;
 			return print_mutabor(o,
 					     s.str(),
 					     false);
  		}
 		std::ostream & keymap::print_mutabor (std::ostream & o,
-								const mutabor_writer_options & w) const {
+						      const mutabor_writer_options & w) const {
 			
 			o << "\"" << std::endl;
 			count.print_mutabor(o, " Tonesystem size: ", true);
@@ -215,16 +215,16 @@ namespace mutabor {
 			
 			o << std::endl;
 			repetition_interval.print_mutabor(o,
-							       "\t" + w.prefix +
-							       _mut("_repetition") + " = "
-							       + w.prefix,
-							       true);
+							  "\t" + w.prefix +
+							  _mut("_repetition") + " = "
+							  + w.prefix,
+							  true);
 
 			o << std::endl << std::endl;
 			o << _mut("TONE") << std::endl;
 			reference_frequency.print_mutabor(o,
-							       "\t" + w.prefix + _mut("_reference") + " = ",
-							       true);
+							  "\t" + w.tone_prefix + _mut("_reference") + " = ",
+							  true);
 			int distance = anchor.value - reference.value;
 			std::cerr << "Distance: " << anchor.value
 				  << " - " << reference.value
@@ -237,8 +237,8 @@ namespace mutabor {
 				octaves += 1;
 			}
 			
-			o << "\t" << w.prefix << _mut("_anchor") << " = "
-			  << w.prefix << _mut("_reference");
+			o << "\t" << w.tone_prefix << _mut("_anchor") << " = "
+			  << w.tone_prefix << _mut("_reference");
 			if (octaves)
 				o << ((octaves < 0) ? " - ":" + ")
 				  << std::abs(octaves) << " " << w.prefix << _mut("_repetition");
@@ -260,24 +260,24 @@ namespace mutabor {
 			o << std::endl << std::endl;
 			
 			o << _mut("TONESYSTEM") << std::endl;
-			o << "\t" << w.prefix << "T" << " = ";
+			o << "\t" << w.tonesystem_name << " = ";
 			anchor.print_mutabor(o,"", false)
 				<< "\t\t[ ";
 			if (keys.empty() || keys[0].type != key::empty)
-				o << w.prefix << "0";
+				o << w.tone_prefix << "0";
 
 			for (size_t i = 1; i < keys.size() ; i++) {
 				o << ", ";
 				if (keys[i].type != key::empty)
-					o << w.prefix << i;
+					o << w.tone_prefix << i;
 			}
 			o << " ] " << std::endl
 			  << "\t\t  " <<  w.prefix << _mut("_repetition") << std::endl;
 			o << std::endl << std::endl;
 			
 			o << _mut("LOGIC") << std::endl;
-			o << "\t" << w.prefix << " " << _mut("KEY") << " " << w.prefix[0]
-			  << " = " << w.prefix << "T []" << std::endl;
+			o << "\t" << w.logic_name << " " << _mut("KEY") << " " << w.logic_name[0]
+			  << " = " << w.tonesystem_name << " []" << std::endl;
 			if (!garbage.empty()) {
 				o << "\"" << garbage << "\"";
 			}
