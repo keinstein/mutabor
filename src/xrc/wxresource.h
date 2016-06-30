@@ -46,14 +46,22 @@ AboutDlg(wxWindow *parent=NULL){
 };
 class CompileDlg : public wxDialog {
 protected:
+ wxStaticText* m_staticText1;
  wxStaticText* filename;
+ wxStaticText* m_staticText3;
  wxStaticText* line;
+ wxStaticText* m_staticText5;
  wxStaticText* logic;
  wxStaticText* tonelabel;
  wxStaticText* tones;
+ wxStaticText* m_staticText9;
  wxStaticText* tunes;
+ wxStaticLine* m_staticline1;
+ wxStaticText* m_staticText11;
  wxStaticText* tone_system;
+ wxStaticText* m_staticText13;
  wxStaticText* intervals;
+ wxStaticText* m_staticText15;
  wxStaticText* chars;
  wxStaticText* message;
  wxButton* wxID_OK;
@@ -61,14 +69,22 @@ protected:
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
   wxXmlResource::Get()->LoadObject(this,parent,wxT("CompileDlg"), wxT("wxDialog"));
+  m_staticText1 = XRCCTRL(*this,"m_staticText1",wxStaticText);
   filename = XRCCTRL(*this,"filename",wxStaticText);
+  m_staticText3 = XRCCTRL(*this,"m_staticText3",wxStaticText);
   line = XRCCTRL(*this,"line",wxStaticText);
+  m_staticText5 = XRCCTRL(*this,"m_staticText5",wxStaticText);
   logic = XRCCTRL(*this,"logic",wxStaticText);
   tonelabel = XRCCTRL(*this,"tonelabel",wxStaticText);
   tones = XRCCTRL(*this,"tones",wxStaticText);
+  m_staticText9 = XRCCTRL(*this,"m_staticText9",wxStaticText);
   tunes = XRCCTRL(*this,"tunes",wxStaticText);
+  m_staticline1 = XRCCTRL(*this,"m_staticline1",wxStaticLine);
+  m_staticText11 = XRCCTRL(*this,"m_staticText11",wxStaticText);
   tone_system = XRCCTRL(*this,"tone_system",wxStaticText);
+  m_staticText13 = XRCCTRL(*this,"m_staticText13",wxStaticText);
   intervals = XRCCTRL(*this,"intervals",wxStaticText);
+  m_staticText15 = XRCCTRL(*this,"m_staticText15",wxStaticText);
   chars = XRCCTRL(*this,"chars",wxStaticText);
   message = XRCCTRL(*this,"message",wxStaticText);
   wxID_OK = XRCCTRL(*this,"wxID_OK",wxButton);
@@ -170,9 +186,11 @@ protected:
  wxChoice* PortChoice;
  wxStaticText* MidiBendingRangeLabel;
  wxSpinCtrl* MidiBendingRange;
+ wxStaticText* m_staticText21;
  wxFilePickerCtrl* MidiFilePicker;
  wxStaticText* MidiFileBendingRangeLabel;
  wxSpinCtrl* MidiFileBendingRange;
+ wxStaticText* m_staticText23;
  wxFilePickerCtrl* GuidoFilePicker;
  wxButton* wxID_OK;
  wxButton* wxID_CANCEL;
@@ -186,9 +204,11 @@ private:
   PortChoice = XRCCTRL(*this,"PortChoice",wxChoice);
   MidiBendingRangeLabel = XRCCTRL(*this,"MidiBendingRangeLabel",wxStaticText);
   MidiBendingRange = XRCCTRL(*this,"MidiBendingRange",wxSpinCtrl);
+  m_staticText21 = XRCCTRL(*this,"m_staticText21",wxStaticText);
   MidiFilePicker = XRCCTRL(*this,"MidiFilePicker",wxFilePickerCtrl);
   MidiFileBendingRangeLabel = XRCCTRL(*this,"MidiFileBendingRangeLabel",wxStaticText);
   MidiFileBendingRange = XRCCTRL(*this,"MidiFileBendingRange",wxSpinCtrl);
+  m_staticText23 = XRCCTRL(*this,"m_staticText23",wxStaticText);
   GuidoFilePicker = XRCCTRL(*this,"GuidoFilePicker",wxFilePickerCtrl);
   wxID_OK = XRCCTRL(*this,"wxID_OK",wxButton);
   wxID_CANCEL = XRCCTRL(*this,"wxID_CANCEL",wxButton);
@@ -296,6 +316,7 @@ OutputFilterPanelBase(wxWindow *parent=NULL){
 };
 class RoutePanelBase : public wxPanel {
 protected:
+ wxStaticText* m_staticText25;
  wxChoice* box;
  wxRadioButton* active;
  wxRadioButton* passive;
@@ -303,6 +324,7 @@ protected:
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
   wxXmlResource::Get()->LoadObject(this,parent,wxT("RoutePanelBase"), wxT("wxPanel"));
+  m_staticText25 = XRCCTRL(*this,"m_staticText25",wxStaticText);
   box = XRCCTRL(*this,"box",wxChoice);
   active = XRCCTRL(*this,"active",wxRadioButton);
   passive = XRCCTRL(*this,"passive",wxRadioButton);
@@ -317,10 +339,14 @@ protected:
  wxChoicebook* type;
  wxPanel* all_panel;
  wxPanel* box_tag_panel;
+ wxStaticText* m_staticText26;
  wxSpinCtrl* from_box;
+ wxStaticText* m_staticText27;
  wxSpinCtrl* to_box;
  wxPanel* staves_panel;
+ wxStaticText* m_staticText28;
  wxSpinCtrl* from_staff;
+ wxStaticText* m_staticText29;
  wxSpinCtrl* to_staff;
  wxPanel* else_panel;
 
@@ -330,10 +356,14 @@ private:
   type = XRCCTRL(*this,"type",wxChoicebook);
   all_panel = XRCCTRL(*this,"all_panel",wxPanel);
   box_tag_panel = XRCCTRL(*this,"box_tag_panel",wxPanel);
+  m_staticText26 = XRCCTRL(*this,"m_staticText26",wxStaticText);
   from_box = XRCCTRL(*this,"from_box",wxSpinCtrl);
+  m_staticText27 = XRCCTRL(*this,"m_staticText27",wxStaticText);
   to_box = XRCCTRL(*this,"to_box",wxSpinCtrl);
   staves_panel = XRCCTRL(*this,"staves_panel",wxPanel);
+  m_staticText28 = XRCCTRL(*this,"m_staticText28",wxStaticText);
   from_staff = XRCCTRL(*this,"from_staff",wxSpinCtrl);
+  m_staticText29 = XRCCTRL(*this,"m_staticText29",wxStaticText);
   to_staff = XRCCTRL(*this,"to_staff",wxSpinCtrl);
   else_panel = XRCCTRL(*this,"else_panel",wxPanel);
  }
@@ -359,10 +389,14 @@ protected:
  wxChoicebook* type;
  wxPanel* all_panel;
  wxPanel* channel_panel;
+ wxStaticText* m_staticText30;
  wxSpinCtrl* from_channel;
+ wxStaticText* m_staticText31;
  wxSpinCtrl* to_channel;
  wxPanel* key_panel;
+ wxStaticText* m_staticText32;
  wxSpinCtrl* from_key;
+ wxStaticText* m_staticText33;
  wxSpinCtrl* to_key;
  wxPanel* else_panel;
 
@@ -372,10 +406,14 @@ private:
   type = XRCCTRL(*this,"type",wxChoicebook);
   all_panel = XRCCTRL(*this,"all_panel",wxPanel);
   channel_panel = XRCCTRL(*this,"channel_panel",wxPanel);
+  m_staticText30 = XRCCTRL(*this,"m_staticText30",wxStaticText);
   from_channel = XRCCTRL(*this,"from_channel",wxSpinCtrl);
+  m_staticText31 = XRCCTRL(*this,"m_staticText31",wxStaticText);
   to_channel = XRCCTRL(*this,"to_channel",wxSpinCtrl);
   key_panel = XRCCTRL(*this,"key_panel",wxPanel);
+  m_staticText32 = XRCCTRL(*this,"m_staticText32",wxStaticText);
   from_key = XRCCTRL(*this,"from_key",wxSpinCtrl);
+  m_staticText33 = XRCCTRL(*this,"m_staticText33",wxStaticText);
   to_key = XRCCTRL(*this,"to_key",wxSpinCtrl);
   else_panel = XRCCTRL(*this,"else_panel",wxPanel);
  }
@@ -386,14 +424,18 @@ MidiInputFilterPanelBase(wxWindow *parent=NULL){
 };
 class MidiOutputFilterPanelBase : public wxPanel {
 protected:
+ wxStaticText* m_staticText34;
  wxSpinCtrl* from_channel;
+ wxStaticText* m_staticText35;
  wxSpinCtrl* to_channel;
  wxCheckBox* avoid_drum_channel;
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
   wxXmlResource::Get()->LoadObject(this,parent,wxT("MidiOutputFilterPanelBase"), wxT("wxPanel"));
+  m_staticText34 = XRCCTRL(*this,"m_staticText34",wxStaticText);
   from_channel = XRCCTRL(*this,"from_channel",wxSpinCtrl);
+  m_staticText35 = XRCCTRL(*this,"m_staticText35",wxStaticText);
   to_channel = XRCCTRL(*this,"to_channel",wxSpinCtrl);
   avoid_drum_channel = XRCCTRL(*this,"avoid_drum_channel",wxCheckBox);
  }
@@ -407,10 +449,14 @@ protected:
  wxChoicebook* type;
  wxPanel* all_panel;
  wxPanel* channel_panel;
+ wxStaticText* m_staticText36;
  wxSpinCtrl* from_channel;
+ wxStaticText* m_staticText37;
  wxSpinCtrl* to_channel;
  wxPanel* track_panel;
+ wxStaticText* m_staticText38;
  wxSpinCtrl* from_track;
+ wxStaticText* m_staticText39;
  wxSpinCtrl* to_track;
  wxPanel* else_panel;
 
@@ -420,10 +466,14 @@ private:
   type = XRCCTRL(*this,"type",wxChoicebook);
   all_panel = XRCCTRL(*this,"all_panel",wxPanel);
   channel_panel = XRCCTRL(*this,"channel_panel",wxPanel);
+  m_staticText36 = XRCCTRL(*this,"m_staticText36",wxStaticText);
   from_channel = XRCCTRL(*this,"from_channel",wxSpinCtrl);
+  m_staticText37 = XRCCTRL(*this,"m_staticText37",wxStaticText);
   to_channel = XRCCTRL(*this,"to_channel",wxSpinCtrl);
   track_panel = XRCCTRL(*this,"track_panel",wxPanel);
+  m_staticText38 = XRCCTRL(*this,"m_staticText38",wxStaticText);
   from_track = XRCCTRL(*this,"from_track",wxSpinCtrl);
+  m_staticText39 = XRCCTRL(*this,"m_staticText39",wxStaticText);
   to_track = XRCCTRL(*this,"to_track",wxSpinCtrl);
   else_panel = XRCCTRL(*this,"else_panel",wxPanel);
  }
@@ -434,14 +484,18 @@ MidiFileInputFilterPanelBase(wxWindow *parent=NULL){
 };
 class MidiFileOutputFilterPanelBase : public wxPanel {
 protected:
+ wxStaticText* m_staticText40;
  wxSpinCtrl* from_channel;
+ wxStaticText* m_staticText41;
  wxSpinCtrl* to_channel;
  wxCheckBox* avoid_drum_channel;
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
   wxXmlResource::Get()->LoadObject(this,parent,wxT("MidiFileOutputFilterPanelBase"), wxT("wxPanel"));
+  m_staticText40 = XRCCTRL(*this,"m_staticText40",wxStaticText);
   from_channel = XRCCTRL(*this,"from_channel",wxSpinCtrl);
+  m_staticText41 = XRCCTRL(*this,"m_staticText41",wxStaticText);
   to_channel = XRCCTRL(*this,"to_channel",wxSpinCtrl);
   avoid_drum_channel = XRCCTRL(*this,"avoid_drum_channel",wxCheckBox);
  }
@@ -471,6 +525,46 @@ private:
  }
 public:
 UnknownOutputFilterPanelBase(wxWindow *parent=NULL){
+  InitWidgetsFromXRC((wxWindow *)parent);
+ }
+};
+class ScalaImportDialog : public wxDialog {
+protected:
+ wxStaticText* IntervalPrefixLabel;
+ wxTextCtrl* IntervalPrefix;
+ wxStaticText* TonePrevfixLabel;
+ wxTextCtrl* TonePrefix;
+ wxStaticText* ToneSystemLabel;
+ wxTextCtrl* ToneSystem;
+ wxStaticText* LogicLabel;
+ wxTextCtrl* Logic;
+ wxStaticText* ScalaLabel;
+ wxFilePickerCtrl* ScalaFile;
+ wxStaticText* KeyMapLabel;
+ wxFilePickerCtrl* KeyMap;
+ wxButton* wxID_OK;
+ wxButton* wxID_CANCEL;
+
+private:
+ void InitWidgetsFromXRC(wxWindow *parent){
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("ScalaImportDialog"), wxT("wxDialog"));
+  IntervalPrefixLabel = XRCCTRL(*this,"IntervalPrefixLabel",wxStaticText);
+  IntervalPrefix = XRCCTRL(*this,"IntervalPrefix",wxTextCtrl);
+  TonePrevfixLabel = XRCCTRL(*this,"TonePrevfixLabel",wxStaticText);
+  TonePrefix = XRCCTRL(*this,"TonePrefix",wxTextCtrl);
+  ToneSystemLabel = XRCCTRL(*this,"ToneSystemLabel",wxStaticText);
+  ToneSystem = XRCCTRL(*this,"ToneSystem",wxTextCtrl);
+  LogicLabel = XRCCTRL(*this,"LogicLabel",wxStaticText);
+  Logic = XRCCTRL(*this,"Logic",wxTextCtrl);
+  ScalaLabel = XRCCTRL(*this,"ScalaLabel",wxStaticText);
+  ScalaFile = XRCCTRL(*this,"ScalaFile",wxFilePickerCtrl);
+  KeyMapLabel = XRCCTRL(*this,"KeyMapLabel",wxStaticText);
+  KeyMap = XRCCTRL(*this,"KeyMap",wxFilePickerCtrl);
+  wxID_OK = XRCCTRL(*this,"wxID_OK",wxButton);
+  wxID_CANCEL = XRCCTRL(*this,"wxID_CANCEL",wxButton);
+ }
+public:
+ScalaImportDialog(wxWindow *parent=NULL){
   InitWidgetsFromXRC((wxWindow *)parent);
  }
 };

@@ -55,6 +55,7 @@
 #include "wx/spinctrl.h"
 #include "wx/stattext.h"
 #include "wx/textctrl.h"
+#include "wx/statline.h"
 #include "wx/window.h"
 #include "wx/xrc/xmlres.h"
 
