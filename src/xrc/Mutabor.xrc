@@ -1072,7 +1072,8 @@
 		</object>
 	</object>
 	<object class="wxDialog" name="BoxDlgBase">
-		<style>wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxMAXIMIZE_BOX|wxMINIMIZE_BOX</style>
+		<style platform="mac">wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxMAXIMIZE_BOX|wxMINIMIZE_BOX</style>
+		<style platform="unix|win">wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER|wxMAXIMIZE_BOX</style>
 		<exstyle>wxDIALOG_EX_CONTEXTHELP</exstyle>
 		<title>Box settings</title>
 		<centered>1</centered>
