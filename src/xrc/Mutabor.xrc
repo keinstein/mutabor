@@ -156,7 +156,7 @@
 		</object>
 	</object>
 	<object class="wxDialog" name="CompileDlg">
-		<style>wxSIMPLE_BORDER</style>
+		<style>wxDEFAULT_DIALOG_STYLE|wxSIMPLE_BORDER</style>
 		<title>Compiling</title>
 		<object class="wxBoxSizer">
 			<orient>wxVERTICAL</orient>
@@ -182,9 +182,10 @@
 								<option>0</option>
 								<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
 								<border>5</border>
-								<object class="wxStaticText">
+								<object class="wxStaticText" name="m_staticText1">
 									<style>wxALIGN_LEFT</style>
 									<label>File:</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 							<object class="sizeritem">
@@ -194,15 +195,17 @@
 								<object class="wxStaticText" name="filename">
 									<style>wxALIGN_LEFT|wxSUNKEN_BORDER</style>
 									<label>No file.</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 							<object class="sizeritem">
 								<option>0</option>
 								<flag>wxALIGN_RIGHT|wxALL</flag>
 								<border>5</border>
-								<object class="wxStaticText">
+								<object class="wxStaticText" name="m_staticText3">
 									<style>wxALIGN_RIGHT</style>
 									<label>Line:</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 							<object class="sizeritem">
@@ -212,6 +215,7 @@
 								<object class="wxStaticText" name="line">
 									<style>wxALIGN_RIGHT|wxSUNKEN_BORDER</style>
 									<label>00000000</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 						</object>
@@ -240,9 +244,10 @@
 								<option>0</option>
 								<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL|wxLEFT|wxRIGHT</flag>
 								<border>5</border>
-								<object class="wxStaticText">
+								<object class="wxStaticText" name="m_staticText5">
 									<style>wxALIGN_LEFT</style>
 									<label>Logics:</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 							<object class="sizeritem">
@@ -252,6 +257,7 @@
 								<object class="wxStaticText" name="logic">
 									<style>wxALIGN_RIGHT|wxSUNKEN_BORDER</style>
 									<label>000000</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 							<object class="sizeritem">
@@ -260,6 +266,7 @@
 								<border>5</border>
 								<object class="wxStaticText" name="tonelabel">
 									<label>Tones:</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 							<object class="sizeritem">
@@ -269,14 +276,16 @@
 								<object class="wxStaticText" name="tones">
 									<style>wxALIGN_RIGHT|wxSUNKEN_BORDER</style>
 									<label>000000</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 							<object class="sizeritem">
 								<option>0</option>
 								<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
 								<border>5</border>
-								<object class="wxStaticText">
+								<object class="wxStaticText" name="m_staticText9">
 									<label>Tunes:</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 							<object class="sizeritem">
@@ -286,15 +295,16 @@
 								<object class="wxStaticText" name="tunes">
 									<style>wxALIGN_RIGHT|wxSUNKEN_BORDER</style>
 									<label>000000</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 						</object>
 					</object>
 					<object class="sizeritem">
 						<option>0</option>
-						<flag>wxEXPAND | wxALL</flag>
+						<flag>wxEXPAND|wxALL</flag>
 						<border>5</border>
-						<object class="wxStaticLine">
+						<object class="wxStaticLine" name="m_staticline1">
 							<style>wxLI_VERTICAL</style>
 						</object>
 					</object>
@@ -313,8 +323,9 @@
 								<option>0</option>
 								<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
 								<border>5</border>
-								<object class="wxStaticText">
+								<object class="wxStaticText" name="m_staticText11">
 									<label>Tone systems:</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 							<object class="sizeritem">
@@ -324,14 +335,16 @@
 								<object class="wxStaticText" name="tone_system">
 									<style>wxALIGN_RIGHT|wxSUNKEN_BORDER</style>
 									<label>000000</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 							<object class="sizeritem">
 								<option>0</option>
 								<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
 								<border>5</border>
-								<object class="wxStaticText">
+								<object class="wxStaticText" name="m_staticText13">
 									<label>Intervals:</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 							<object class="sizeritem">
@@ -341,14 +354,16 @@
 								<object class="wxStaticText" name="intervals">
 									<style>wxALIGN_RIGHT|wxSUNKEN_BORDER</style>
 									<label>000000</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 							<object class="sizeritem">
 								<option>0</option>
 								<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
 								<border>5</border>
-								<object class="wxStaticText">
+								<object class="wxStaticText" name="m_staticText15">
 									<label>Read chars:</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 							<object class="sizeritem">
@@ -358,6 +373,7 @@
 								<object class="wxStaticText" name="chars">
 									<style>wxALIGN_RIGHT|wxSUNKEN_BORDER</style>
 									<label>000000</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 						</object>
@@ -377,6 +393,7 @@
 						<border>5</border>
 						<object class="wxStaticText" name="message">
 							<label>Reading source ...</label>
+							<wrap>0</wrap>
 						</object>
 					</object>
 				</object>
@@ -455,7 +472,7 @@
 								<flag></flag>
 								<border>5</border>
 								<object class="wxFilePickerCtrl" name="m_filePicker1">
-									<value></value>
+									<value>,90,90,-1,70,0</value>
 									<message>Select a GUIDO file</message>
 									<wildcard>GUIDO files|*.gmn</wildcard>
 									<style>wxFLP_DEFAULT_STYLE|wxFLP_FILE_MUST_EXIST|wxFLP_OPEN</style>
@@ -560,6 +577,7 @@
 											<pos>-1,-1</pos>
 											<enabled>0</enabled>
 											<label>from</label>
+											<wrap>0</wrap>
 										</object>
 									</object>
 									<object class="sizeritem">
@@ -579,6 +597,7 @@
 										<object class="wxStaticText" name="tolabel">
 											<enabled>0</enabled>
 											<label>to</label>
+											<wrap>0</wrap>
 										</object>
 									</object>
 									<object class="sizeritem">
@@ -725,7 +744,7 @@
 								<flag>wxALL|wxEXPAND</flag>
 								<border>5</border>
 								<object class="wxFilePickerCtrl" name="MidiFilePicker">
-									<value></value>
+									<value>,90,90,-1,70,0</value>
 									<message>Select a MIDI input file</message>
 									<wildcard>MIDI Files|*.mid;*.midi|All files|*.*</wildcard>
 									<style>wxFLP_CHANGE_DIR|wxFLP_FILE_MUST_EXIST|wxFLP_OPEN|wxFLP_USE_TEXTCTRL</style>
@@ -746,7 +765,7 @@
 								<flag>wxALL|wxEXPAND</flag>
 								<border>5</border>
 								<object class="wxFilePickerCtrl" name="GuidoFilePicker">
-									<value></value>
+									<value>,90,90,-1,70,0</value>
 									<message>Select a GUIDO input file</message>
 									<wildcard>GUIDO Files|*.gmn|All files|*.*</wildcard>
 									<style>wxFLP_CHANGE_DIR|wxFLP_FILE_MUST_EXIST|wxFLP_OPEN|wxFLP_USE_TEXTCTRL</style>
@@ -883,6 +902,7 @@
 										<object class="wxStaticText" name="MidiBendingRangeLabel">
 											<style>wxALIGN_LEFT</style>
 											<label>Bending range:</label>
+											<wrap>0</wrap>
 										</object>
 									</object>
 									<object class="sizeritem">
@@ -900,9 +920,10 @@
 										<option>0</option>
 										<flag>wxEXPAND</flag>
 										<border>5</border>
-										<object class="wxStaticText">
+										<object class="wxStaticText" name="m_staticText21">
 											<style>wxALIGN_LEFT</style>
 											<label>half tones</label>
+											<wrap>0</wrap>
 										</object>
 									</object>
 								</object>
@@ -921,7 +942,7 @@
 								<flag>wxALL|wxEXPAND</flag>
 								<border>5</border>
 								<object class="wxFilePickerCtrl" name="MidiFilePicker">
-									<value></value>
+									<value>,90,90,-1,70,0</value>
 									<message>Select a MIDI output file</message>
 									<wildcard>MIDI Files|*.mid;*.midi|All files|*.*</wildcard>
 									<style>wxFLP_CHANGE_DIR|wxFLP_OVERWRITE_PROMPT|wxFLP_SAVE|wxFLP_USE_TEXTCTRL</style>
@@ -941,6 +962,7 @@
 										<object class="wxStaticText" name="MidiFileBendingRangeLabel">
 											<style>wxALIGN_LEFT</style>
 											<label>Bending range:</label>
+											<wrap>0</wrap>
 										</object>
 									</object>
 									<object class="sizeritem">
@@ -958,9 +980,10 @@
 										<option>0</option>
 										<flag>wxEXPAND</flag>
 										<border>5</border>
-										<object class="wxStaticText">
+										<object class="wxStaticText" name="m_staticText23">
 											<style>wxALIGN_LEFT</style>
 											<label>half tones</label>
+											<wrap>0</wrap>
 										</object>
 									</object>
 								</object>
@@ -979,7 +1002,7 @@
 								<flag>wxALL|wxEXPAND</flag>
 								<border>5</border>
 								<object class="wxFilePickerCtrl" name="GuidoFilePicker">
-									<value></value>
+									<value>,90,90,-1,70,0</value>
 									<message>Select a GUIDO output file</message>
 									<wildcard>GUIDO Files|*.gmn|All files|*.*</wildcard>
 									<style>wxFLP_CHANGE_DIR|wxFLP_OVERWRITE_PROMPT|wxFLP_SAVE|wxFLP_USE_TEXTCTRL</style>
@@ -1049,8 +1072,7 @@
 		</object>
 	</object>
 	<object class="wxDialog" name="BoxDlgBase">
-		<style platform="mac">wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxMAXIMIZE_BOX|wxMINIMIZE_BOX</style>
-		<style platform="unix|win">wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER|wxMAXIMIZE_BOX</style>
+		<style>wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxMAXIMIZE_BOX|wxMINIMIZE_BOX</style>
 		<exstyle>wxDIALOG_EX_CONTEXTHELP</exstyle>
 		<title>Box settings</title>
 		<centered>1</centered>
@@ -1069,7 +1091,7 @@
 					<orient>wxHORIZONTAL</orient>
 					<object class="sizeritem">
 						<option>0</option>
-						<flag>wxEXPAND | wxALL</flag>
+						<flag>wxEXPAND|wxALL</flag>
 						<border>5</border>
 						<object class="wxChoicebook" name="boxType">
 							<style>wxCHB_LEFT</style>
@@ -1077,7 +1099,7 @@
 					</object>
 					<object class="sizeritem">
 						<option>0</option>
-						<flag>wxEXPAND | wxALIGN_RIGHT | wxALL</flag>
+						<flag>wxEXPAND|wxALIGN_RIGHT|wxALL</flag>
 						<border>5</border>
 						<object class="wxButton" name="wxID_REMOVE">
 							<tooltip>Press this button to delete the box and all attached routes.</tooltip>
@@ -1089,11 +1111,11 @@
 			</object>
 			<object class="sizeritem">
 				<option>0</option>
-				<flag>wxEXPAND | wxALL </flag>
+				<flag>wxEXPAND|wxALL</flag>
 				<border>5</border>
 				<object class="wxScrolledWindow" name="routeWindow">
 					<style>wxHSCROLL|wxVSCROLL</style>
-					<scrollrate>1</scrollrate>
+					<scrollrate>1,0</scrollrate>
 					<object class="wxFlexGridSizer">
 						<rows>0</rows>
 						<cols>4</cols>
@@ -1154,6 +1176,7 @@
 				<object class="wxStaticText" name="boxNumberLabel">
 					<style>wxALIGN_RIGHT</style>
 					<label>Box number</label>
+					<wrap>0</wrap>
 				</object>
 			</object>
 			<object class="sizeritem">
@@ -1233,8 +1256,9 @@
 								<option>0</option>
 								<flag>wxALIGN_CENTER_VERTICAL|wxRIGHT</flag>
 								<border>5</border>
-								<object class="wxStaticText">
+								<object class="wxStaticText" name="m_staticText25">
 									<label>Box</label>
+									<wrap>0</wrap>
 								</object>
 							</object>
 							<object class="sizeritem">
@@ -1315,9 +1339,10 @@
 									<option>0</option>
 									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
 									<border>5</border>
-									<object class="wxStaticText">
+									<object class="wxStaticText" name="m_staticText26">
 										<style>wxALIGN_RIGHT</style>
 										<label>from</label>
+										<wrap>0</wrap>
 									</object>
 								</object>
 								<object class="sizeritem">
@@ -1336,8 +1361,9 @@
 									<option>0</option>
 									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
 									<border>5</border>
-									<object class="wxStaticText">
+									<object class="wxStaticText" name="m_staticText27">
 										<label>to</label>
+										<wrap>0</wrap>
 									</object>
 								</object>
 								<object class="sizeritem">
@@ -1367,9 +1393,10 @@
 									<option>0</option>
 									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
 									<border>5</border>
-									<object class="wxStaticText">
+									<object class="wxStaticText" name="m_staticText28">
 										<style>wxALIGN_RIGHT</style>
 										<label>from</label>
+										<wrap>0</wrap>
 									</object>
 								</object>
 								<object class="sizeritem">
@@ -1387,8 +1414,9 @@
 									<option>0</option>
 									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
 									<border>5</border>
-									<object class="wxStaticText">
+									<object class="wxStaticText" name="m_staticText29">
 										<label>to</label>
+										<wrap>0</wrap>
 									</object>
 								</object>
 								<object class="sizeritem">
@@ -1448,9 +1476,10 @@
 									<option>0</option>
 									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
 									<border>5</border>
-									<object class="wxStaticText">
+									<object class="wxStaticText" name="m_staticText30">
 										<style>wxALIGN_RIGHT</style>
 										<label>from</label>
+										<wrap>0</wrap>
 									</object>
 								</object>
 								<object class="sizeritem">
@@ -1468,8 +1497,9 @@
 									<option>0</option>
 									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
 									<border>5</border>
-									<object class="wxStaticText">
+									<object class="wxStaticText" name="m_staticText31">
 										<label>to</label>
+										<wrap>0</wrap>
 									</object>
 								</object>
 								<object class="sizeritem">
@@ -1498,9 +1528,10 @@
 									<option>0</option>
 									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
 									<border>5</border>
-									<object class="wxStaticText">
+									<object class="wxStaticText" name="m_staticText32">
 										<style>wxALIGN_RIGHT</style>
 										<label>from</label>
+										<wrap>0</wrap>
 									</object>
 								</object>
 								<object class="sizeritem">
@@ -1518,8 +1549,9 @@
 									<option>0</option>
 									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
 									<border>5</border>
-									<object class="wxStaticText">
+									<object class="wxStaticText" name="m_staticText33">
 										<label>to</label>
+										<wrap>0</wrap>
 									</object>
 								</object>
 								<object class="sizeritem">
@@ -1562,8 +1594,9 @@
 						<option>0</option>
 						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
 						<border>5</border>
-						<object class="wxStaticText">
+						<object class="wxStaticText" name="m_staticText34">
 							<label>from</label>
+							<wrap>0</wrap>
 						</object>
 					</object>
 					<object class="sizeritem">
@@ -1581,8 +1614,9 @@
 						<option>0</option>
 						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
 						<border>5</border>
-						<object class="wxStaticText">
+						<object class="wxStaticText" name="m_staticText35">
 							<label>to</label>
+							<wrap>0</wrap>
 						</object>
 					</object>
 					<object class="sizeritem">
@@ -1638,9 +1672,10 @@
 									<option>0</option>
 									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
 									<border>5</border>
-									<object class="wxStaticText">
+									<object class="wxStaticText" name="m_staticText36">
 										<style>wxALIGN_RIGHT</style>
 										<label>from</label>
+										<wrap>0</wrap>
 									</object>
 								</object>
 								<object class="sizeritem">
@@ -1658,8 +1693,9 @@
 									<option>0</option>
 									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
 									<border>5</border>
-									<object class="wxStaticText">
+									<object class="wxStaticText" name="m_staticText37">
 										<label>to</label>
+										<wrap>0</wrap>
 									</object>
 								</object>
 								<object class="sizeritem">
@@ -1688,9 +1724,10 @@
 									<option>0</option>
 									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
 									<border>5</border>
-									<object class="wxStaticText">
+									<object class="wxStaticText" name="m_staticText38">
 										<style>wxALIGN_RIGHT</style>
 										<label>from</label>
+										<wrap>0</wrap>
 									</object>
 								</object>
 								<object class="sizeritem">
@@ -1708,8 +1745,9 @@
 									<option>0</option>
 									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
 									<border>5</border>
-									<object class="wxStaticText">
+									<object class="wxStaticText" name="m_staticText39">
 										<label>to</label>
+										<wrap>0</wrap>
 									</object>
 								</object>
 								<object class="sizeritem">
@@ -1752,8 +1790,9 @@
 						<option>0</option>
 						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
 						<border>5</border>
-						<object class="wxStaticText">
+						<object class="wxStaticText" name="m_staticText40">
 							<label>from</label>
+							<wrap>0</wrap>
 						</object>
 					</object>
 					<object class="sizeritem">
@@ -1771,8 +1810,9 @@
 						<option>0</option>
 						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
 						<border>5</border>
-						<object class="wxStaticText">
+						<object class="wxStaticText" name="m_staticText41">
 							<label>to</label>
+							<wrap>0</wrap>
 						</object>
 					</object>
 					<object class="sizeritem">
@@ -1804,5 +1844,155 @@
 	</object>
 	<object class="wxPanel" name="UnknownOutputFilterPanelBase">
 		<style>wxTAB_TRAVERSAL</style>
+	</object>
+	<object class="wxDialog" name="ScalaImportDialog">
+		<style>wxCAPTION|wxCLOSE_BOX|wxDEFAULT_DIALOG_STYLE</style>
+		<title>Import a  Scala Tuning</title>
+		<centered>1</centered>
+		<object class="wxBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<object class="sizeritem">
+				<option>6</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxFlexGridSizer">
+					<rows>0</rows>
+					<cols>2</cols>
+					<vgap>0</vgap>
+					<hgap>0</hgap>
+					<growablecols></growablecols>
+					<growablerows></growablerows>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
+						<border>5</border>
+						<object class="wxStaticText" name="IntervalPrefixLabel">
+							<label>interval prefix</label>
+							<wrap>-1</wrap>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL</flag>
+						<border>5</border>
+						<object class="wxTextCtrl" name="IntervalPrefix">
+							<value>scala</value>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
+						<border>5</border>
+						<object class="wxStaticText" name="TonePrevfixLabel">
+							<label>tone prefix</label>
+							<wrap>-1</wrap>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL</flag>
+						<border>5</border>
+						<object class="wxTextCtrl" name="TonePrefix">
+							<value>scala__tone</value>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
+						<border>5</border>
+						<object class="wxStaticText" name="ToneSystemLabel">
+							<label>tone system</label>
+							<wrap>-1</wrap>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL</flag>
+						<border>5</border>
+						<object class="wxTextCtrl" name="ToneSystem">
+							<value>scala__tonesystem</value>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
+						<border>5</border>
+						<object class="wxStaticText" name="LogicLabel">
+							<label>logic</label>
+							<wrap>-1</wrap>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL</flag>
+						<border>5</border>
+						<object class="wxTextCtrl" name="Logic">
+							<value>scala__logic</value>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
+						<border>5</border>
+						<object class="wxStaticText" name="ScalaLabel">
+							<label>scala file</label>
+							<wrap>-1</wrap>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL</flag>
+						<border>5</border>
+						<object class="wxFilePickerCtrl" name="ScalaFile">
+							<value></value>
+							<message>Select the scala file</message>
+							<wildcard>Scala file (*.scl)|*.scl</wildcard>
+							<style>wxFLP_CHANGE_DIR|wxFLP_DEFAULT_STYLE|wxFLP_FILE_MUST_EXIST|wxFLP_OPEN</style>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
+						<border>5</border>
+						<object class="wxStaticText" name="KeyMapLabel">
+							<label>keyboard mapping</label>
+							<wrap>-1</wrap>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL</flag>
+						<border>5</border>
+						<object class="wxFilePickerCtrl" name="KeyMap">
+							<value></value>
+							<message>Select a scala keyboard mapping</message>
+							<wildcard>Scala keyboard mapping (*.kbm)|*.kbm</wildcard>
+							<style>wxFLP_CHANGE_DIR|wxFLP_DEFAULT_STYLE|wxFLP_FILE_MUST_EXIST|wxFLP_OPEN</style>
+						</object>
+					</object>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxStdDialogButtonSizer">
+					<object class="button">
+						<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_OK">
+							<label>&amp;OK</label>
+						</object>
+					</object>
+					<object class="button">
+						<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_CANCEL">
+							<label>&amp;Cancel</label>
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
 	</object>
 </resource>
