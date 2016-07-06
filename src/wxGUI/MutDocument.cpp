@@ -209,6 +209,9 @@ namespace mutaborGUI {
 			MutFrame * frame = view -> GetMutFrame();
 			if (frame)
 				frame -> SetTitle(GetDocumentManager()->MakeFrameTitle(this));
+			if (MutEditFile * editor =  view->GetTextsw()) {
+				editor->InitializePrefs(editor->DeterminePrefs(_T(".mut")));
+			}
 		} 
 		return true;
 	}
