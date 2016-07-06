@@ -53,6 +53,8 @@ EXTRA_LOCALE_CATEGORIES =
 
 SED = @SED@
 
+all:
+
 .SUFFIXES: .h .H
 .SUFFIXES: .h .H
 
@@ -64,9 +66,16 @@ SED = @SED@
 $(srcdir)/macrotrans.H: $(srcdir)/macrotrans.h
 #	$(CPP) $(CPPFLAGS) -o $@ $<
 
-$(top_srcdir)/xrc/reslocale.cpp: 
+.PHONY: reslocale.cpp
+$(DOMAIN).pot-update: reslocale.cpp
+
+reslocale.cpp:
 	$(MAKE) -C .. reslocale.cpp
 
 mac:
 
 potfilechk:
+
+# Local Variables:
+# mode: makefile
+# End:
