@@ -3,7 +3,7 @@
 * Header file for the mutabor lexer class.
 *
 * Copyright:   (c) 2013 Tobias Schlemmer
-* \author  Tobias Schlemmer <keinstein@users.berlios.de>
+* \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
 * \version $Version$
 * \license GPL
 *

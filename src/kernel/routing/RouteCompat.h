@@ -6,7 +6,7 @@
  *
  * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/RouteCompat.h,v 1.5 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
- * Tobias Schlemmer <keinstein@users.berlios.de>
+ * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date 1998
  * $Date: 2011/11/02 14:31:57 $
  * \version $Revision: 1.5 $

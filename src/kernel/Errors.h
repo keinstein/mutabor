@@ -3,7 +3,7 @@
  * Error descriptions for Mutabor.
  *
  * \author R. Krauße <krausze@users.berlios.de>
- * T. Schlemmer <keinstein@users.berlios.de>
+ * T. Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

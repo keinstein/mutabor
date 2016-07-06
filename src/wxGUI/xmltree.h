@@ -3,7 +3,7 @@
 * implementation class for tree like storage using wxConfigBase based
 * classes.
 *
-* \author T. Schlemmer <keinstein@users.berlios.de>
+* \author T. Schlemmer <keinstein@users.sourceforge.net>
 * \license GPL
 *
 *    This program is free software; you can redistribute it and/or modify

@@ -3,7 +3,7 @@
  * Configuration dialog
  *
  * Copyright:   (c) 2008 TU Dresden
- * \author Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author Tobias Schlemmer <keinstein@users.sourceforge.net>
  *
  *    This program is free software; you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by

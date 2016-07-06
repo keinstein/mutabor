@@ -5,7 +5,7 @@
  * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/CompDlg.cpp,v 1.7 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2005, 2008 TU Dresden
  * \author R. Krauße
- * Tobias Schlemmer <keinstein@users.berlios.de>
+ * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date 2005/08/14
  * $Date: 2011/11/02 14:31:58 $
  * \version $Revision: 1.7 $

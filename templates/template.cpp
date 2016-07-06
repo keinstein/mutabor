@@ -3,7 +3,7 @@
  * Description
  *
  * Copyright:   (c) 2016 Tobias Schlemmer
- * \author  Tobias Schlemmer <keinstein@users.sf.net>
+ * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

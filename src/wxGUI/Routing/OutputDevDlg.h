@@ -5,7 +5,7 @@
  * Copyright:   (c) R. Krauße, TU Dresden,
  *              2013 Tobias Schlemmer
  * \author R. Krauße <krausze@users.berlios.de>
- *         Tobias Schlemmer <keinstein@users.berlios.de>
+ *         Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license: GPL
  *
  *    This program is free software; you can redistribute it and/or modify

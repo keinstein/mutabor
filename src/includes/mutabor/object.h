@@ -4,7 +4,7 @@
  * \c #object.
  *
  * $Id: object.h,v 1.5 2008/10/10 08:45:28 keinstein Exp $
- * \author Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date $Date: 2008/10/10 08:45:28 $
  * \version $Revision: 1.5 $
  *

@@ -4,7 +4,7 @@
  *
  * Copyright:   (c) 2008-2012 TU Dresden
  *              (c) 2012 Tobias Schlemmer        
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date 2008/08/05
  * $Date: 2011/11/02 14:31:59 $
  * \version $Version$

@@ -4,7 +4,7 @@
  * Box shape for route window.
  *
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
- * Tobias Schlemmer <keinstein@users.berlios.de>
+ * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date 1998
  * \license GPL
  *

@@ -4,7 +4,7 @@
  *
  * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/Frac.cpp,v 1.6 2011/02/20 22:35:55 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date 
  * $Date: 2011/02/20 22:35:55 $
  * \version $Revision: 1.6 $

@@ -4,7 +4,7 @@
  * Guido/Salieri file input device class.
  *
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
- * Tobias Schlemmer <keinstein@users.berlios.de>
+ * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *
  *

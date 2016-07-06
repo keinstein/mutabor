@@ -3,7 +3,7 @@
  * Alles zu Argumenten.
  *
  * $Id: argument.h,v 1.3 2005/11/03 14:24:30 keinstein Exp $
- * \author Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date $Date: 2005/11/03 14:24:30 $
  * \version $Revision: 1.3 $
  *

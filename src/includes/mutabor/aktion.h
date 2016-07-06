@@ -3,7 +3,7 @@
  * Alles zu Aktionen.
  *
  * $Id: aktion.h,v 1.4 2005/11/03 14:22:44 keinstein Exp $
- * \author Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date $Date: 2005/11/03 14:22:44 $
  * \version $Revision: 1.4 $
  *

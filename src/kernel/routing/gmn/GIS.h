@@ -4,7 +4,7 @@
  *
  * Copyright:   (c) 2008 Tobias Schlemmer
  * \author  Volker Abel
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

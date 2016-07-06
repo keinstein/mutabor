@@ -4,7 +4,7 @@
  *
  * Copyright:   (c) 2008 TU Dresden
  *              changes after 2011-11 (c) by the authors
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

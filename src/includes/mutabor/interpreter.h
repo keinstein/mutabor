@@ -3,7 +3,7 @@
  * Interpretation der Logiken zur Laufzeit 
  *
  * $Id: interpreter.h,v 1.2 2006/03/27 16:54:05 keinstein Exp $
- * \author R.Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author R.Krauße, Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date $Date: 2006/03/27 16:54:05 $
  * \version $Revision: 1.2 $
  * \todo Auskommentierten Kram überprüfen

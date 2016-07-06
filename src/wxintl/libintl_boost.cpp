@@ -3,7 +3,7 @@
 * Glue code to use boost translation mechanism
 *
 * Copyright:   (c) 2013 Tobias Schlemmer
-* \author  Tobias Schlemmer <keinstein@users.berlios.de>
+* \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
 * \license GPL
 *
 *    This program is free software; you can redistribute it and/or modify

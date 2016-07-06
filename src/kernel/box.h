@@ -3,7 +3,7 @@
  * Description: Collect all properties, which are used by boxes
  *
  * Copyright:   (c) 2008 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date
  * $Date: 2011/09/27 20:13:21 $
  * \version $Revision: 1.6 $

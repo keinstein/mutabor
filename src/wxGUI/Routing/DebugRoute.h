@@ -3,7 +3,7 @@
  * Debug functions for routing system
  *
  * Copyright:   (c) 2010 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

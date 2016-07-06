@@ -3,7 +3,7 @@
  * Main debugging functions
  *
  * Copyright:   (c) 2008 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *
  *

@@ -7,7 +7,7 @@
  * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
  *
  * Copyright:   (c) 2008 TU Dresden
- * \author Julian Smart,  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author Julian Smart,  Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

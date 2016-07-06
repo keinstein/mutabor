@@ -4,7 +4,7 @@
  *
  * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/Interval.h,v 1.6 2011/09/27 20:13:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

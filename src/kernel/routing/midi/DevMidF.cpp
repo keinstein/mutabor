@@ -3,7 +3,7 @@
  * MIDI-File as device.
  *
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- *         Tobias Schlemmer <keinstein@users.berlios.de>
+ *         Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date $Date: 2011/11/02 14:31:57 $
  * \version $Revision: 1.13 $
  * \license GPL

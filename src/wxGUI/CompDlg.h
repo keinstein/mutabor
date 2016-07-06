@@ -4,7 +4,7 @@
  * Compilation dialog box.
  *
  * \author R. Krauße <krausze@users.berlios.de>
- *         Tobias Schlemmer <keinstein@users.berlios.de>
+ *         Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \version $Revision: 1.11 $
  *
  *

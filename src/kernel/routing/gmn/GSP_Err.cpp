@@ -4,7 +4,7 @@
  *
  * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/gmn/GSP_Err.cpp,v 1.5 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date
  * $Date: 2011/11/02 14:31:57 $
  * \version $Revision: 1.5 $

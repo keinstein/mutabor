@@ -3,7 +3,7 @@
  * Inv objects for not yet specified identifiers.
  *
  * $Id: intervalInv.h,v 1.6 2008/10/10 08:45:28 keinstein Exp $
- * \author Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date $Date: 2008/10/10 08:45:28 $
  * \version $Revision: 1.6 $
  * 

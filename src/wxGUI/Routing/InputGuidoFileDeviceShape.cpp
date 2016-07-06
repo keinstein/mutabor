@@ -4,7 +4,7 @@
  * Input device shape for reading GUIDO files in the route window.
  *
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
- * Tobias Schlemmer <keinstein@users.berlios.de>
+ * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

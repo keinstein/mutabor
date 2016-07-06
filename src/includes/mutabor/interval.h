@@ -4,7 +4,7 @@
  *
  * $Id: interval.h,v 1.7 2005/11/14 14:35:49 keinstein Exp $
  * \author R.Krauße
- *         Tobias Schlemmer <keinstein@users.berlios.de>
+ *         Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date $Date: 2005/11/14 14:35:49 $
  * \version $Revision: 1.7 $
  * 

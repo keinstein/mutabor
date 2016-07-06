@@ -3,7 +3,7 @@
 * Test for file device timer
 *
 * Copyright:   (c) 2012 TU Dresden
-* \author  Tobias Schlemmer <keinstein@users.berlios.de>
+* \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
 * \date 
 * $Date: 2011/09/27 20:13:26 $
 * \version $Revision: 1.5 $

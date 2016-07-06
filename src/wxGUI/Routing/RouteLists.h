@@ -3,7 +3,7 @@
  * Forward declarations for several lists used in the code base.
  *
  * Copyright:   (c) 2011 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

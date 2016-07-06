@@ -4,7 +4,7 @@
  * such as MIDI file players.
  *
  * Copyright:   (c) 2012 Tobias Schlemmer
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *
  *
