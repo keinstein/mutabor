@@ -528,7 +528,7 @@ UnknownOutputFilterPanelBase(wxWindow *parent=NULL){
   InitWidgetsFromXRC((wxWindow *)parent);
  }
 };
-class ScalaImportDialog : public wxDialog {
+class ScalaImportDialogBase : public wxDialog {
 protected:
  wxStaticText* IntervalPrefixLabel;
  wxTextCtrl* IntervalPrefix;
@@ -547,7 +547,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,wxT("ScalaImportDialog"), wxT("wxDialog"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("ScalaImportDialogBase"), wxT("wxDialog"));
   IntervalPrefixLabel = XRCCTRL(*this,"IntervalPrefixLabel",wxStaticText);
   IntervalPrefix = XRCCTRL(*this,"IntervalPrefix",wxTextCtrl);
   TonePrevfixLabel = XRCCTRL(*this,"TonePrevfixLabel",wxStaticText);
@@ -564,7 +564,7 @@ private:
   wxID_CANCEL = XRCCTRL(*this,"wxID_CANCEL",wxButton);
  }
 public:
-ScalaImportDialog(wxWindow *parent=NULL){
+ScalaImportDialogBase(wxWindow *parent=NULL){
   InitWidgetsFromXRC((wxWindow *)parent);
  }
 };

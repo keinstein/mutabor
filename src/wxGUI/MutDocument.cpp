@@ -1,4 +1,4 @@
-/** \file 
+/** \file
 ********************************************************************
 * Document/View Document class for Mutabor source files.
 *
@@ -37,9 +37,9 @@
 #include "src/wxGUI/MutDocument.h"
 #include "src/wxGUI/MutView.h"
 #include "src/wxGUI/MutApp.h"
-#include <wx/debug.h>
 #include "src/kernel/routing/Route-inlines.h"
 
+#include <wx/debug.h>
 #include <cstdio>
 #include <iostream>
 
@@ -53,6 +53,7 @@ IMPLEMENT_DYNAMIC_CLASS(MutCommandProcessor, wxCommandProcessor)
 IMPLEMENT_DYNAMIC_CLASS(MutDocument, wxDocument)
 
 BEGIN_EVENT_TABLE(MutDocument, wxDocument)
+EVT_MENU(CM_IMPORT_SCALA, MutDocument::CmImportScala)
 //	EVT_MENU(ID_NewViewFrame, MutDocument::CmdNewView)
 //	EVT_UPDATE_UI(ID_NewViewFrame, MutDocument::OnNewViewUpdateUI)
 //	EVT_MENU(ID_UpdateAllViews, MutDocument::CmdUpdateAllViews)
@@ -197,13 +198,13 @@ namespace mutaborGUI {
 		return true;
 	}
 
-	bool MutDocument::OnNewDocument() 
+	bool MutDocument::OnNewDocument()
 	{
-		if (!wxDocument::OnNewDocument()) 
+		if (!wxDocument::OnNewDocument())
 			return false;
 		DEBUGLOG (docview, "New title: %s", GetDocumentManager()->MakeFrameTitle(this));
-		
-		
+
+
 		MutView *view = (MutView *)GetFirstView();
 		if (view) {
 			MutFrame * frame = view -> GetMutFrame();
@@ -212,7 +213,7 @@ namespace mutaborGUI {
 			if (MutEditFile * editor =  view->GetTextsw()) {
 				editor->InitializePrefs(editor->DeterminePrefs(_T(".mut")));
 			}
-		} 
+		}
 		return true;
 	}
 
@@ -319,13 +320,29 @@ namespace mutaborGUI {
 			view->GetTextsw()->SetSavePoint();
 	}
 
+	void MutDocument::CmImportScala(wxCommandEvent & event) {
+		MutDocManager *manager = dynamic_cast<MutDocManager *>(GetDocumentManager());
+		if (!manager) {
+			wxGetApp().PrintError(mutabor::error,
+					      _("Interrnal error: Could not get the document manager."),
+					      NULL);
+			return;
+		}
+		MutView * view = dynamic_cast<MutView *> (GetFirstView());
+		if (!view)
+			manager->ImportScala(NULL);
+		else
+			manager->ImportScala(view->GetTextsw());
+	}
+
+
 	void MutDocument::CmdNewView(wxCommandEvent& event)
 	{
 		mutUnused(event);
 		//wxMessageBox(wxT("doc newview 1"), _T("dialog"), wxOK | wxICON_INFORMATION, NULL);
 
 		//  we manually create a view, and register it with the document.
-		// the view needs to create a window for itself, which 
+		// the view needs to create a window for itself, which
 		//  it can do in OnCreate
 		MutView* pview = new MutView();
 		bool bKeep = pview->OnCreate(NULL, 0);
@@ -342,7 +359,7 @@ namespace mutaborGUI {
 			pview->Close(TRUE);
 			// I don't think the Close function works
 			wxFAIL;
-		}	
+		}
 
 		// wxMessageBox(wxT("doc newview 2"), _T("dialog"), wxOK | wxICON_INFORMATION, NULL);
 
@@ -366,7 +383,7 @@ namespace mutaborGUI {
 	{
 		mutUnused(event);
 		DEBUGLOG (eventqueue, "." );
-		// if we must pass some events to the Application, 
+		// if we must pass some events to the Application,
 		// they must be handled here somehow replacing false
 		return false;
 #if 0
@@ -387,7 +404,7 @@ namespace mutaborGUI {
 
 	}
 
-	
+
 }
 
 

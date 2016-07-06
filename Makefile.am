@@ -15,7 +15,7 @@ TSBUILTSOURCES += \
 	src/kernel/parsers/scala/location.hh \
 	src/kernel/parsers/scala/position.hh \
 	src/kernel/parsers/scala/stack.hh \
-	src/kernel/parsers/scala/scale_lexer.cc
+	src/kernel/parsers/scala/scale_lexer.cc 
 TAGS_DEPENDENCIES: generated_headers
 
 
@@ -36,6 +36,8 @@ NOCOMPSOURCES= \
 	src/xrc/wxresource.cpp \
 	src/xrc/wxresource.h \
 	src/xrc/reslocale.cpp
+
+BUILT_SOURCES += $(NOCOMPSOURCES)
 
 
 EXTRA_DIST = config.rpath \
@@ -573,7 +575,13 @@ endif
 
 mutabor_CXXLD=$(CXX)
 mutabor_SHORTNAME = mutabor
-mutabor_LDADD = libmutaborgui.a libmutaborrouting.a libmutaborkernel.a libmutabordebug.a librtmidi.a \
+mutabor_LDADD = \
+	libmutaborgui.a \
+	libmutaborrouting.a \
+	libmutaborkernel.a \
+	libmutaborscala.a \
+	libmutabordebug.a \
+	librtmidi.a \
 	$(WXINTLLDADD) \
 	$(LDADD) \
 	$(AM_LDFLAGS) \

@@ -49,6 +49,7 @@
 #include "wx/event.h"
 
 namespace mutaborGUI {
+	class MutEditFile;
 	class MutDocManager:public wxDocManager {
 	public:
 		/// Extend event processing to search the view's event table
@@ -57,6 +58,22 @@ namespace mutaborGUI {
 		/// calculate the frame title
 		virtual wxString MakeFrameTitle(wxDocument* doc);
 		void CmExecuteLogic(wxCommandEvent& event);
+
+		/// Import a scala tuning and keybord map file
+		/**
+		 * This function handles the menu event in case there is no
+		 * Document associated with it.
+		 *
+		 * \param event the event that triggers the command
+		 */
+		void CmImportScala(wxCommandEvent & event);
+
+		/// Import a scala tuning and keybord map file
+		/**
+		 * This function handles the menu event in case there is no
+		 * Document associated with it.
+		 */
+		void ImportScala(MutEditFile * editor);
 
 		/**
 		 * Connect the event handling functions to the events.

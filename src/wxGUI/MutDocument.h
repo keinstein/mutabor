@@ -136,6 +136,7 @@ namespace mutaborGUI {
 
 		virtual bool OnCreate(const wxString& path, long flags);
 		// event handlers go here
+		void CmImportScala(wxCommandEvent & event);
 		void CmdNewView(wxCommandEvent& event);
 		void OnNewViewUpdateUI(wxUpdateUIEvent& event);
 		void CmdUpdateAllViews(wxCommandEvent& event);

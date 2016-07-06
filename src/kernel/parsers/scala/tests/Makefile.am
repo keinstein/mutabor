@@ -75,6 +75,7 @@ test_empty_LDADD = \
 	$(top_builddir)/libmutaborgui.a \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/libmutaborkernel.a \
+	$(top_builddir)/libmutaborscala.a \
 	$(top_builddir)/librtmidi.a \
 	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
@@ -96,6 +97,7 @@ test_empty_comments_LDADD = \
 	$(top_builddir)/libmutaborgui.a \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/libmutaborkernel.a \
+	$(top_builddir)/libmutaborscala.a \
 	$(top_builddir)/librtmidi.a \
 	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
@@ -117,6 +119,7 @@ test_intervals1_LDADD = \
 	$(top_builddir)/libmutaborgui.a \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/libmutaborkernel.a \
+	$(top_builddir)/libmutaborscala.a \
 	$(top_builddir)/librtmidi.a \
 	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
@@ -138,6 +141,7 @@ test_keymaps_LDADD = \
 	$(top_builddir)/libmutaborgui.a \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/libmutaborkernel.a \
+	$(top_builddir)/libmutaborscala.a \
 	$(top_builddir)/librtmidi.a \
 	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
@@ -215,6 +219,8 @@ $(KBMTESTS:.kbm=.log): ./run_kbm2mut.sh
 	@echo 'file="$$1"' >> $@
 	@echo 'dir="$(srcdir)"' >> $@
 	@echo 'basefile=`basename "$$file"`' >> $@
+	@echo 'LC_ALL=C' >> $@
+	@echo 'export LC_ALL' >> $@
 	@echo '$(top_builddir)/scl2mut --debug-sclparser -k $$file "$$dir/12tet.scl" "$${basefile%.kbm}.mut2" || exit 1' >> $@
 	@echo 'diff -u $${file%.kbm}.mut $${basefile%.kbm}.mut2 || exit 2' >> $@
 	@echo 'exit 0' >> $@

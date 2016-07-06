@@ -1011,7 +1011,7 @@ namespace mutaborGUI {
 		switch (type) {
 	case mutabor::compiler_warning:
 	case mutabor::runtime_warning:
-	case mutabor::warning: 
+	case mutabor::warning:
 		style |= wxICON_EXCLAMATION;
 		break;
 	case mutabor::error:
@@ -1020,13 +1020,13 @@ namespace mutaborGUI {
 	case mutabor::runtime_error:
 		style |= wxICON_ERROR;
 		break;
-	default: 
+	default:
 		style |= wxICON_INFORMATION;
 	}
 		wxMessageDialog * dialog  = new wxMessageDialog (parent?parent:GetTopWindow(), s, head, style);
 		dialog->ShowModal();
 		dialog->Destroy();
-			
+
 	}
 
 
@@ -1098,6 +1098,14 @@ namespace mutaborGUI {
 			menu->Append (wxID_SAVEAS);
 			menu->Append (wxID_CLOSE);
 		}
+
+		menu->AppendSeparator();
+		menu->Append( CM_IMPORT_SCALA,
+			     _("&Import from Scala"),
+			     _("Import a tuning logic from a Scala file and its keymap"));
+		menu->Append( CM_EXPORT_SCALA,
+			     _("E&xport to Scala"),
+			     _("Export the currently active logic to a Scala file with keymap"));
 
 		menu->AppendSeparator();
 

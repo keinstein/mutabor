@@ -38,7 +38,6 @@
 #include "src/kernel/Defs.h"
 //#include "src/kernel/Global.h"
 #include "src/wxGUI/MutChild.h"
-#include "src/wxGUI/MutEditFile.h"
 #include "src/wxGUI/MutRouteWnd.h"
 #include "src/wxGUI/StatusBar.h"
 

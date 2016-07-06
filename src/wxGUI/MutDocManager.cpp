@@ -36,10 +36,16 @@
 #include "src/wxGUI/MutDocManager.h"
 #include "src/wxGUI/MutView.h"
 #include "src/wxGUI/MutDocument.h"
+#include "src/wxGUI/MutEditFile.h"
+#include "src/wxGUI/MutApp.h"
+#include "src/wxGUI/ScalaGUI.h"
 #include "src/kernel/routing/Route-inlines.h"
 
+#include "wx/file.h"
+#include "wx/convauto.h"
+#include <sstream>
 #ifdef __BORLANDC__
-    #pragma hdrstop
+#pragma hdrstop
 #endif
 
 
@@ -47,6 +53,7 @@ using mutaborGUI::MutDocManager;
 
 BEGIN_EVENT_TABLE(MutDocManager, wxDocManager)
 EVT_MENU(CM_EXECUTE, MutDocManager::CmExecuteLogic)
+EVT_MENU(CM_IMPORT_SCALA, MutDocManager::CmImportScala)
 END_EVENT_TABLE()
 
 namespace mutaborGUI {
@@ -61,16 +68,16 @@ namespace mutaborGUI {
 #if 0
 		// Implementation in Event.cpp:
 		if ( wxTheApp && false )
-		{
-			// Special case: don't pass wxEVT_IDLE to wxApp, since it'll always
-			// swallow it. wxEVT_IDLE is sent explicitly to wxApp so it will be
-			// processed appropriately via SearchEventTable.
-			if ( event.GetEventType() != wxEVT_IDLE )
 			{
-				if ( wxTheApp->ProcessEvent(event) )
-					return true;
+				// Special case: don't pass wxEVT_IDLE to wxApp, since it'll always
+				// swallow it. wxEVT_IDLE is sent explicitly to wxApp so it will be
+				// processed appropriately via SearchEventTable.
+				if ( event.GetEventType() != wxEVT_IDLE )
+					{
+						if ( wxTheApp->ProcessEvent(event) )
+							return true;
+					}
 			}
-		}
 #endif
 
 		return true;
@@ -81,14 +88,14 @@ namespace mutaborGUI {
 	bool MutDocManager::ProcessEvent(wxEvent& event)
 	{
 		if (!wxEvtHandler::ProcessEvent(event))
-		{
-			wxView* view = GetCurrentView();
-			DEBUGLOG (eventqueue, "View: %p" ,
-				 (void*)(dynamic_cast<MutView *>(view)));
-			if (view && view->ProcessEvent(event))
-				return true;
-			else return false;
-		}
+			{
+				wxView* view = GetCurrentView();
+				DEBUGLOG (eventqueue, "View: %p" ,
+					  (void*)(dynamic_cast<MutView *>(view)));
+				if (view && view->ProcessEvent(event))
+					return true;
+				else return false;
+			}
 		return true;
 	}
 
@@ -102,15 +109,15 @@ namespace mutaborGUI {
 		if (!doc)
 			title = appName;
 		else
-		{
-			wxString docName;
+			{
+				wxString docName;
 #if wxCHECK_VERSION(2,9,0)
-			docName = doc->GetUserReadableName();
+				docName = doc->GetUserReadableName();
 #else
-			doc->GetPrintableName(docName);
+				doc->GetPrintableName(docName);
 #endif
-			title = docName + wxString(_(" - ")) + _T(PACKAGE_NAME);
-		}
+				title = docName + wxString(_(" - ")) + _T(PACKAGE_NAME);
+			}
 		return title;
 	}
 
@@ -119,10 +126,10 @@ namespace mutaborGUI {
 		mutUnused(event);
 		wxDocument * doc = CreateDocument( wxEmptyString, 0);
 		if ( !doc )
-		{
-			OnOpenFileFailure();
-			return;
-		}
+			{
+				OnOpenFileFailure();
+				return;
+			}
 
 		/** \todo correct command processing */
 
@@ -135,11 +142,85 @@ namespace mutaborGUI {
 		wxWindow * f = view->GetFrame();
 		if (!f) {
 			UNREACHABLEC;
+			return;
 		}
 		mutASSERT(dynamic_cast<MutFrame *>(f));
 		wxCommandEvent ev(wxEVT_COMMAND_MENU_SELECTED,
 				  CM_ACTIVATE);
 		f->GetEventHandler()->ProcessEvent(ev);
+	}
+
+	void MutDocManager::CmImportScala(wxCommandEvent & event) {
+		ImportScala(NULL);
+	}
+
+	void MutDocManager::ImportScala(MutEditFile * editor) {
+		ScalaImportDialog * dialog = new ScalaImportDialog(editor);
+		if (!dialog) return;
+		mutabor::scala_parser::mutabor_writer_options options;
+		wxFileName ScalaFile, KeymapFile;
+		for (;;) {
+			if (dialog -> ShowModal() == wxID_CANCEL) {
+				dialog -> Destroy();
+				return;
+			}
+			ScalaFile = dialog -> GetScalaFile();
+			if (ScalaFile.IsFileReadable())
+				break;
+		}
+		dialog -> GetData(options);
+		KeymapFile = dialog -> GetKeymapFile();
+		dialog -> Destroy();
+		wxFile scala(ScalaFile.GetFullPath());
+		if (!scala.IsOpened())
+			return;
+
+		wxString scalaText;
+		wxConvAuto autoConverter(wxFONTENCODING_ISO8859_15);
+		if (!scala.ReadAll(&scalaText, autoConverter) ) {
+			wxGetApp().PrintError(mutabor::error,
+					      _("Could not load the scala file contents into memory."),
+					      editor);
+			return;
+		}
+		mutabor::scala_parser::parser scparser(std::string(scalaText.ToUTF8()),
+						       std::string(ScalaFile.GetFullName().ToUTF8()));
+		scalaText.Clear();
+
+		if (!KeymapFile.IsFileReadable())
+			scparser.make_keymap();
+		else {
+			wxFile kfile(KeymapFile.GetFullPath());
+			if (!kfile.IsOpened() ||
+			    !kfile.ReadAll(&scalaText, autoConverter))
+				scparser.make_keymap();
+			else {
+				scparser.load_keymap(std::string(scalaText.ToUTF8()),
+						     std::string(KeymapFile.GetFullName().ToUTF8()));
+			}
+		}
+
+		if (!editor) {
+			wxDocument * doc = CreateNewDocument();
+			if (!doc) return;
+			MutView * view = dynamic_cast<MutView *>(doc -> GetFirstView());
+			if (!view) {
+				CloseDocument(doc,true);
+				return;
+			}
+			editor = view -> GetTextsw();
+			if (!editor) {
+				CloseDocument(doc,true);
+				return;
+			}
+#if 0
+			editor->InitializePrefs(editor->DeterminePrefs(_T(".mut")));
+#endif
+		}
+
+		std::ostringstream s;
+		scparser.write_mutabor(s, options);
+		editor->AddText(wxString::FromUTF8(s.str().c_str()));
 	}
 
 	class MutDocManagerEventConnector {
@@ -321,6 +402,12 @@ namespace mutaborGUI {
 		Connect(CM_EXECUTE,
 			wxEVT_COMMAND_MENU_SELECTED,
 			wxCommandEventHandler(MutDocManager::CmExecuteLogic),
+			NULL,
+			this);
+
+		Connect(CM_IMPORT_SCALA,
+			wxEVT_COMMAND_MENU_SELECTED,
+			wxCommandEventHandler(MutDocManager::CmImportScala),
 			NULL,
 			this);
 	}

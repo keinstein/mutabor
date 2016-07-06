@@ -1846,7 +1846,7 @@
 	<object class="wxPanel" name="UnknownOutputFilterPanelBase">
 		<style>wxTAB_TRAVERSAL</style>
 	</object>
-	<object class="wxDialog" name="ScalaImportDialog">
+	<object class="wxDialog" name="ScalaImportDialogBase">
 		<style>wxCAPTION|wxCLOSE_BOX|wxDEFAULT_DIALOG_STYLE</style>
 		<title>Import a  Scala Tuning</title>
 		<centered>1</centered>
@@ -1864,7 +1864,7 @@
 					<growablecols></growablecols>
 					<growablerows></growablerows>
 					<object class="sizeritem">
-						<option>0</option>
+						<option>1</option>
 						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
 						<border>5</border>
 						<object class="wxStaticText" name="IntervalPrefixLabel">
@@ -1873,15 +1873,15 @@
 						</object>
 					</object>
 					<object class="sizeritem">
-						<option>0</option>
-						<flag>wxALL</flag>
+						<option>4</option>
+						<flag>wxALL|wxEXPAND</flag>
 						<border>5</border>
 						<object class="wxTextCtrl" name="IntervalPrefix">
 							<value>scala</value>
 						</object>
 					</object>
 					<object class="sizeritem">
-						<option>0</option>
+						<option>1</option>
 						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
 						<border>5</border>
 						<object class="wxStaticText" name="TonePrevfixLabel">
@@ -1890,15 +1890,15 @@
 						</object>
 					</object>
 					<object class="sizeritem">
-						<option>0</option>
-						<flag>wxALL</flag>
+						<option>4</option>
+						<flag>wxALL|wxEXPAND</flag>
 						<border>5</border>
 						<object class="wxTextCtrl" name="TonePrefix">
 							<value>scala__tone</value>
 						</object>
 					</object>
 					<object class="sizeritem">
-						<option>0</option>
+						<option>1</option>
 						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
 						<border>5</border>
 						<object class="wxStaticText" name="ToneSystemLabel">
@@ -1907,15 +1907,15 @@
 						</object>
 					</object>
 					<object class="sizeritem">
-						<option>0</option>
-						<flag>wxALL</flag>
+						<option>4</option>
+						<flag>wxALL|wxEXPAND</flag>
 						<border>5</border>
 						<object class="wxTextCtrl" name="ToneSystem">
 							<value>scala__tonesystem</value>
 						</object>
 					</object>
 					<object class="sizeritem">
-						<option>0</option>
+						<option>1</option>
 						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
 						<border>5</border>
 						<object class="wxStaticText" name="LogicLabel">
@@ -1924,15 +1924,15 @@
 						</object>
 					</object>
 					<object class="sizeritem">
-						<option>0</option>
-						<flag>wxALL</flag>
+						<option>4</option>
+						<flag>wxALL|wxEXPAND</flag>
 						<border>5</border>
 						<object class="wxTextCtrl" name="Logic">
 							<value>scala__logic</value>
 						</object>
 					</object>
 					<object class="sizeritem">
-						<option>0</option>
+						<option>1</option>
 						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
 						<border>5</border>
 						<object class="wxStaticText" name="ScalaLabel">
@@ -1941,8 +1941,8 @@
 						</object>
 					</object>
 					<object class="sizeritem">
-						<option>0</option>
-						<flag>wxALL</flag>
+						<option>4</option>
+						<flag>wxALL|wxEXPAND</flag>
 						<border>5</border>
 						<object class="wxFilePickerCtrl" name="ScalaFile">
 							<value></value>
@@ -1952,7 +1952,7 @@
 						</object>
 					</object>
 					<object class="sizeritem">
-						<option>0</option>
+						<option>1</option>
 						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
 						<border>5</border>
 						<object class="wxStaticText" name="KeyMapLabel">
@@ -1961,8 +1961,8 @@
 						</object>
 					</object>
 					<object class="sizeritem">
-						<option>0</option>
-						<flag>wxALL</flag>
+						<option>4</option>
+						<flag>wxALL|wxEXPAND</flag>
 						<border>5</border>
 						<object class="wxFilePickerCtrl" name="KeyMap">
 							<value></value>

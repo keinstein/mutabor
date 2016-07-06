@@ -12,6 +12,7 @@ wxlinktest_LDADD= \
 	$(top_builddir)/libmutaborgui.a \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/libmutaborkernel.a \
+	$(top_builddir)/libmutaborscala.a \
 	$(top_builddir)/librtmidi.a \
 	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
@@ -31,6 +32,7 @@ wxlinktest2_LDADD= \
 	$(top_builddir)/libmutaborgui.a \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/libmutaborkernel.a \
+	$(top_builddir)/libmutaborscala.a \
 	$(top_builddir)/librtmidi.a \
 	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
@@ -60,6 +62,7 @@ cppunitlinktest_LDADD = \
 	$(top_builddir)/libmutaborgui.a \
 	$(top_builddir)/libmutaborkernel.a \
 	$(top_builddir)/libmutaborrouting.a \
+	$(top_builddir)/libmutaborscala.a \
 	$(top_builddir)/librtmidi.a \
 	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \

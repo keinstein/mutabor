@@ -52,6 +52,7 @@
 
 
 namespace mutaborGUI {
+	class MutEditFile;
 /** What are the important qualities of a view? A view is registered with 
  * its document, and when the view becomes active (ie the user clicks on it)
  * then it will set its document to be the active/current document.
