@@ -1,33 +1,34 @@
-include $(top_srcdir)/common-rules.mk
-include $(top_srcdir)/common-linklibs.mk
+#include $(top_srcdir)/common-rules.mk
+#include $(top_srcdir)/common-linklibs.mk
 
 BUILT_SOURCES +=  \
 	debugPaths.cpp
 
-CLEANFILES += playgmn1.gmn
+CLEANFILES += %D%/playgmn1.gmn
 
-AM_CPPFLAGS += -DSRCDIR="\"$(srcdir)\""
-EXTRA_DIST = gmn1_source.gmn
+EXTRA_DIST += %D%/gmn1_source.gmn
 
-check_PROGRAMS = \
-	playgmn1 \
-	gmnopenfail1
+check_PROGRAMS += \
+	%D%/playgmn1 \
+	%D%/gmnopenfail1
 
-check_SCRIPTS = playgmn1.gmn
+check_SCRIPTS = %D%/playgmn1.gmn
 
-TESTS = \
-	playgmn1$(EXEEXT) \
-	gmnopenfail1$(EXEEXT)
+TESTS += \
+	%D%/playgmn1$(EXEEXT) \
+	%D%/gmnopenfail1$(EXEEXT)
 
-playgmn1_SOURCES = \
-	playgmn1.cpp
+%C%_playgmn1_CPPFLAGS = $(CPPFLAGS) \
+	-DSRCDIR="\"$(srcdir)/%D%/\""
+%C%_playgmn1_SOURCES = \
+	%D%/playgmn1.cpp
 
-nodist_playgmn1_SOURCES = \
+nodist_%C%_playgmn1_SOURCES = \
 	debugPaths.cpp
 
-playgmn1_LDADD = \
-	$(top_builddir)/libmutabormaintest.a \
-	$(top_builddir)/src/wxintl/libwxintl.a \
+%C%_playgmn1_LDADD = \
+	libmutabormaintest.a \
+	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
@@ -35,9 +36,9 @@ playgmn1_LDADD = \
 	$(BOOST_FILESYSTEM_LIBS) \
 	$(BOOST_SYSTEM_LIBS)
 
-gmnopenfail1_LDADD = \
-	$(top_builddir)/libmutabormaintest.a \
-	$(top_builddir)/src/wxintl/libwxintl.a \
+%C%_gmnopenfail1_LDADD = \
+	libmutabormaintest.a \
+	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
@@ -45,14 +46,14 @@ gmnopenfail1_LDADD = \
 	$(BOOST_FILESYSTEM_LIBS) \
 	$(BOOST_SYSTEM_LIBS)
 
-gmnopenfail1_SOURCES = \
-	gmnopenfail1.cpp
+%C%_gmnopenfail1_SOURCES = \
+	%D%/gmnopenfail1.cpp
 
-nodist_gmnopenfail1_SOURCES = \
+nodist_%C%_gmnopenfail1_SOURCES = \
 	debugPaths.cpp
 
 
-playgmn1.gmn: gmn1_source.gmn
+%D%/playgmn1.gmn: %D%/gmn1_source.gmn
 	cp `(if test -f '$<' ; then  echo '$<' ; else echo '$(top_srcdir)/$<' ; fi )` $@
 
 

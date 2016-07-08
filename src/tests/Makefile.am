@@ -1,20 +1,25 @@
-include $(top_srcdir)/common-rules.mk
-include $(top_srcdir)/common-linklibs.mk
+#include $(top_srcdir)/common-rules.mk
+#include $(top_srcdir)/common-linklibs.mk
 
-TESTS = wxlinktest$(EXEEXT) wxlinktest2$(EXEEXT)
+TESTS += \
+	%D%/wxlinktest$(EXEEXT) \
+	%D%/wxlinktest2$(EXEEXT)
 
-check_PROGRAMS = wxlinktest wxlinktest2
+check_PROGRAMS += \
+	%D%/wxlinktest \
+	%D%/wxlinktest2
 
-wxlinktest_SOURCES = wxlinktest.cpp
+%C%_wxlinktest_SOURCES = \
+	%D%/wxlinktest.cpp
 
-wxlinktest_LDADD= \
-	$(top_builddir)/libmutabordebugtest.a \
-	$(top_builddir)/libmutaborgui.a \
-	$(top_builddir)/libmutaborrouting.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutaborscala.a \
-	$(top_builddir)/librtmidi.a \
-	$(top_builddir)/src/wxintl/libwxintl.a \
+%C%_wxlinktest_LDADD= \
+	libmutabordebugtest.a \
+	libmutaborgui.a \
+	libmutaborrouting.a \
+	src/kernel/libmutaborkernel.a \
+	libmutaborscala.a \
+	librtmidi.a \
+	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
@@ -22,19 +27,19 @@ wxlinktest_LDADD= \
 	$(BOOST_FILESYSTEM_LIBS) \
 	$(BOOST_SYSTEM_LIBS)
 
-wxlinktest2_SOURCES = wxlinktest2.cpp
+%C%_wxlinktest2_SOURCES = %D%/wxlinktest2.cpp
 
-nodist_wxlinktest2_SOURCES = \
+nodist_%C%_wxlinktest2_SOURCES = \
 	debugPaths.cpp
 
-wxlinktest2_LDADD= \
-	$(top_builddir)/libmutabordebugtest.a \
-	$(top_builddir)/libmutaborgui.a \
-	$(top_builddir)/libmutaborrouting.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutaborscala.a \
-	$(top_builddir)/librtmidi.a \
-	$(top_builddir)/src/wxintl/libwxintl.a \
+%C%_wxlinktest2_LDADD= \
+	libmutabordebugtest.a \
+	libmutaborgui.a \
+	libmutaborrouting.a \
+	src/kernel/libmutaborkernel.a \
+	libmutaborscala.a \
+	librtmidi.a \
+	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
@@ -44,27 +49,27 @@ wxlinktest2_LDADD= \
 
 if HAVE_CPPUNIT
 TESTS += \
-	cppunitlinktest$(EXEEXT)
+	%D%/cppunitlinktest$(EXEEXT)
 
-check_PROGRAMS += cppunitlinktest
+check_PROGRAMS += %D%/cppunitlinktest
 
-cppunitlinktest_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
+%C%_cppunitlinktest_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
 
-cppunitlinktest_SOURCES = \
-	cppunitlinktest.cpp
+%C%_cppunitlinktest_SOURCES = \
+	%D%/cppunitlinktest.cpp
 
-nodist_cppunitlinktest_SOURCES = \
+nodist_%C%_cppunitlinktest_SOURCES = \
 	debugPaths.cpp
 
-cppunitlinktest_LDADD = \
-	$(top_builddir)/libmutabormaincppunit.a \
-	$(top_builddir)/libmutabordebugcppunit.a \
-	$(top_builddir)/libmutaborgui.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutaborrouting.a \
-	$(top_builddir)/libmutaborscala.a \
-	$(top_builddir)/librtmidi.a \
-	$(top_builddir)/src/wxintl/libwxintl.a \
+%C%_cppunitlinktest_LDADD = \
+	libmutabormaincppunit.a \
+	libmutabordebugcppunit.a \
+	libmutaborgui.a \
+	src/kernel/libmutaborkernel.a \
+	libmutaborrouting.a \
+	libmutaborscala.a \
+	librtmidi.a \
+	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(CPPUNIT_LIBS) \

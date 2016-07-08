@@ -1,30 +1,30 @@
-include $(top_srcdir)/common-rules.mk
-include $(top_srcdir)/common-linklibs.mk
+#include $(top_srcdir)/common-rules.mk
+#include $(top_srcdir)/common-linklibs.mk
 
-TESTS =
-check_PROGRAMS = 
+#TESTS =
+#check_PROGRAMS = 
 
 if HAVE_CPPUNIT
 TESTS += \
-	testcppunit$(EXEEXT)
+	%D%/testcppunit$(EXEEXT)
 
-check_PROGRAMS += testcppunit
+check_PROGRAMS += %D%/testcppunit
 
-testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
+%C%_testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
 
-testcppunit_SOURCES = \
-	main.cpp \
-	GUIRouteTest.h \
-	GUIRouteTest.cpp
+%C%_testcppunit_SOURCES = \
+	%D%/main.cpp \
+	%D%/GUIRouteTest.h \
+	%D%/GUIRouteTest.cpp
 
 
-nodist_testcppunit_SOURCES = \
+nodist_%C%_testcppunit_SOURCES = \
 	debugPaths.cpp
 
-testcppunit_LDADD = \
-	$(top_builddir)/libmutabormaincppunit.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/src/wxintl/libwxintl.a \
+%C%_testcppunit_LDADD = \
+	libmutabormaincppunit.a \
+	src/kernel/libmutaborkernel.a \
+	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(CPPUNIT_LIBS) \

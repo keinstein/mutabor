@@ -1,2 +1,1 @@
-include $(top_srcdir)/common-rules.mk
-SUBDIRS=tests
+include %D%/tests/Makefile.am

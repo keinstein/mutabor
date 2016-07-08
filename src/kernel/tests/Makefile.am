@@ -1,38 +1,38 @@
-include $(top_srcdir)/common-rules.mk
-include $(top_srcdir)/common-linklibs.mk
+#include $(top_srcdir)/common-rules.mk
+#include $(top_srcdir)/common-linklibs.mk
 
 BUILT_SOURCES +=  \
 	debugPaths.cpp
 
-EXTRA_DIST = \
-	all.mut
+EXTRA_DIST += \
+	%D%/all.mut
 
 
 if HAVE_CPPUNIT
-TESTS = \
-	testcppunit$(EXEEXT)
+TESTS += \
+	%D%/testcppunit$(EXEEXT)
 
-check_PROGRAMS = testcppunit
+check_PROGRAMS += %D%/testcppunit
 
-testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
+%C%_testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
 
-testcppunit_SOURCES = \
-	main.cpp \
-	boxTest.h \
-	boxTest.cpp
+%C%_testcppunit_SOURCES = \
+	%D%/main.cpp \
+	%D%/boxTest.h \
+	%D%/boxTest.cpp
 
-nodist_testcppunit_SOURCES = \
+nodist_%C%_testcppunit_SOURCES = \
 	debugPaths.cpp
 
-testcppunit_LDADD = \
-	$(top_builddir)/libmutabormaincppunit.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutabordebugcppunit.a \
-	$(top_builddir)/libmutaborgui.a \
-	$(top_builddir)/libmutaborrouting.a \
-	$(top_builddir)/libmutaborscala.a \
-	$(top_builddir)/librtmidi.a \
-	$(top_builddir)/src/wxintl/libwxintl.a \
+%C%_testcppunit_LDADD = \
+	libmutabormaincppunit.a \
+	src/kernel/libmutaborkernel.a \
+	libmutabordebugcppunit.a \
+	libmutaborgui.a \
+	libmutaborrouting.a \
+	libmutaborscala.a \
+	librtmidi.a \
+	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(CPPUNIT_LIBS) \

@@ -1,27 +1,27 @@
-include $(top_srcdir)/common-rules.mk
-include $(top_srcdir)/common-linklibs.mk
+#include $(top_srcdir)/common-rules.mk
+#include $(top_srcdir)/common-linklibs.mk
 
 BUILT_SOURCES +=  \
 	debugPaths.cpp
 
-check_PROGRAMS=timer1
+check_PROGRAMS += %D%/timer1
 
-TESTS=timer1$(EXEEXT)
+TESTS += %D%/timer1$(EXEEXT)
 
-timer1_SOURCES = \
-	timer1.cpp
+%C%_timer1_SOURCES = \
+	%D%/timer1.cpp
 
-nodist_timer1_SOURCES = \
+nodist_%C%_timer1_SOURCES = \
 	debugPaths.cpp
 
-timer1_LDADD= \
-	$(top_builddir)/libmutabordebugtest.a \
-	$(top_builddir)/libmutaborgui.a \
-	$(top_builddir)/libmutaborrouting.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutaborscala.a \
-	$(top_builddir)/librtmidi.a \
-	$(top_builddir)/src/wxintl/libwxintl.a \
+%C%_timer1_LDADD= \
+	libmutabordebugtest.a \
+	libmutaborgui.a \
+	libmutaborrouting.a \
+	src/kernel/libmutaborkernel.a \
+	libmutaborscala.a \
+	librtmidi.a \
+	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
@@ -31,34 +31,34 @@ timer1_LDADD= \
 
 if HAVE_CPPUNIT
 TESTS += \
-	testcppunit$(EXEEXT)
+	%D%/testcppunit$(EXEEXT)
 
-check_PROGRAMS += testcppunit
+check_PROGRAMS += %D%/testcppunit
 
-testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
+%C%_testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
 
-testcppunit_SOURCES = \
-	main.cpp \
-	timing.h \
-	RouteTest.h \
-	RouteTest.cpp \
-	BoxTest.h \
-	BoxTest.cpp \
-	CommonFileDeviceTest.h \
-	CommonFileDeviceTest.cpp
+%C%_testcppunit_SOURCES = \
+	%D%/main.cpp \
+	%D%/timing.h \
+	%D%/RouteTest.h \
+	%D%/RouteTest.cpp \
+	%D%/BoxTest.h \
+	%D%/BoxTest.cpp \
+	%D%/CommonFileDeviceTest.h \
+	%D%/CommonFileDeviceTest.cpp
 
-nodist_testcppunit_SOURCES = \
+nodist_%C%_testcppunit_SOURCES = \
 	debugPaths.cpp
 
-testcppunit_LDADD = \
-	$(top_builddir)/libmutabormaincppunit.a \
-	$(top_builddir)/libmutabordebugcppunit.a \
-	$(top_builddir)/libmutaborgui.a \
-	$(top_builddir)/libmutaborrouting.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutaborscala.a \
-	$(top_builddir)/librtmidi.a \
-	$(top_builddir)/src/wxintl/libwxintl.a \
+%C%_testcppunit_LDADD = \
+	libmutabormaincppunit.a \
+	libmutabordebugcppunit.a \
+	libmutaborgui.a \
+	libmutaborrouting.a \
+	src/kernel/libmutaborkernel.a \
+	libmutaborscala.a \
+	librtmidi.a \
+	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(CPPUNIT_LIBS) \

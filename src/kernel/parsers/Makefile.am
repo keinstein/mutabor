@@ -1,2 +1,1 @@
-SUBDIRS=. scala
-include $(top_srcdir)/common-rules.mk
+include %D%/scala/Makefile.am

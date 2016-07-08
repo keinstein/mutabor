@@ -1,17 +1,16 @@
-SUBDIRS=tests
-include $(top_srcdir)/common-rules.mk
+SUBDIRS += %D%/tests
 
-noinst_LIBRARIES = libwxintl.a
-libwxintl_a_HEADRES = libintl.h
+noinst_LIBRARIES += %D%/libwxintl.a
+libwxintl_a_HEADRES = %D%/libintl.h
 #BUILT_SOURCES = $(top_builddir)/intl/libintl.h
-libwxintl_a_SOURCES = \
-	libintl.cpp \
-	libintl.h
+%C%_libwxintl_a_SOURCES = \
+	%D%/libintl.cpp \
+	%D%/libintl.h
 
-all: all-@USE_INCLUDED_LIBWXINTL@
-all-yes: $(BUILT_SOURCES) all-am #libintl.h charset.alias ref-add.sed ref-del.sed
-all-no: all-no-@BUILD_INCLUDED_LIBWXINTL@
-all-no-yes: libwxintl.a
-all-no-no:
+all: all-wxintl@USE_INCLUDED_LIBWXINTL@
+all-wxintlyes: %D%/libwxintl.a
+all-wxintlno: all-wxintlno-@BUILD_INCLUDED_LIBWXINTL@
+all-wxintlno-yes: %D%/libwxintl.a
+all-wxintlno-no:
 
 mac:

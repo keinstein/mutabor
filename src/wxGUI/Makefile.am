@@ -1,2 +1,3 @@
-SUBDIRS=Routing generic tests
-include $(top_srcdir)/common-rules.mk
+include %D%/tests/Makefile.am
+include %D%/Routing/Makefile.am
+include %D%/generic/Makefile.am

@@ -1,23 +1,9 @@
 ACLOCAL_AMFLAGS = -I m4 --install
 #AUTOMAKE_OPTIONS = dejagnu
 # intl must be before any source directories
-SUBDIRS = po intl lib src . Images doc tools/midi2text #libmutabor .
+SUBDIRS = po intl lib . doc tools/midi2text #libmutabor .
 #DIST_SUBDIRS = $(SUBDIRS)
 precompCOMPILESOURCES=$(mutabor_COMPILESOURCES)
-include common-rules.mk
-
-TSBUILTSOURCES += \
-	src/kernel/mut.hh \
-	src/kernel/mut.cc \
-	src/kernel/mutlex.cc \
-	src/kernel/parsers/scala/scale_parser.hh \
-	src/kernel/parsers/scala/scale_parser.cc \
-	src/kernel/parsers/scala/location.hh \
-	src/kernel/parsers/scala/position.hh \
-	src/kernel/parsers/scala/stack.hh \
-	src/kernel/parsers/scala/scale_lexer.cc 
-TAGS_DEPENDENCIES: generated_headers
-
 
 RCCOMPILE = $(RC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) $(RCFLAGS)
 CVS = cvs
@@ -26,28 +12,44 @@ REPOSITORY = http://git.berlios.de/mutabor
 REPOSITORY_PATH = .
 AM_LFLAGS = --c++ -o lex.yy.c
 
+EXTRA_DIST =
+TEST_EXTENSIONS =
+TESTS =
+check_PROGRAMS =
+NOCOMPSOURCES =
+noinst_LIBRARIES =
+dist_pkgdata_DATA =
+bin_PROGRAMS =
+check_LIBRARIES =
+
+include common-rules.mk
+include %D%/src/Makefile.am
+include %D%/Images/Makefile.am
+
+TAGS_DEPENDENCIES: generated_headers
+
+
+
 CLEANFILES += POTFILES.tmp2 \
 	Mutabor.xrc
 
 BUILT_SOURCES += TAGS
 
-
-NOCOMPSOURCES= \
+NOCOMPSOURCES += \
 	src/xrc/wxresource.cpp \
 	src/xrc/wxresource.h \
 	src/xrc/reslocale.cpp
 
+
 BUILT_SOURCES += $(NOCOMPSOURCES)
 
 
-EXTRA_DIST = config.rpath \
+EXTRA_DIST += config.rpath \
 	README.md \
 	m4/ChangeLog  \
 	debian \
 	lib/libasprintf \
 	Images \
-	src/kernel/mut.yy \
-	src/kernel/mutlex.ll \
 	src/kernel/parsers/scala/scale_parser.yy \
 	src/kernel/parsers/scala/scale_lexer.ll \
 	osdep/macosx/Application_Code.txt \
@@ -85,7 +87,7 @@ EXTRA_DIST = config.rpath \
 
 # Please use Tango names for new files
 # http://tango.freedesktop.org/Tango_Desktop_Project
-dist_pkgdata_DATA = src/xrc/Mutabor.xrc \
+dist_pkgdata_DATA += src/xrc/Mutabor.xrc \
 	Images/about.png \
 	Images/about.xpm \
 	Images/Icons/png/NewInputDevice.png \
@@ -120,15 +122,14 @@ dist_pkgdata_DATA = src/xrc/Mutabor.xrc \
 #RECURSIVE_TARGETS += mac-recursive
 
 
-bin_PROGRAMS = mutabor scl2mut
-noinst_LIBRARIES = \
+bin_PROGRAMS += mutabor scl2mut
+noinst_LIBRARIES += \
 	libmutaborgui.a \
 	libmutaborrouting.a \
-	libmutaborkernel.a \
 	libmutaborscala.a \
 	libmutabordebug.a \
 	librtmidi.a #libmutaborGUIrouting.a libmutaborGUI.a
-check_LIBRARIES = \
+check_LIBRARIES += \
 	libmutabordebugtest.a \
 	libmutabormaintest.a
 
@@ -303,57 +304,6 @@ libmutaborrouting_a_POTSOURCES = $(libmutaborrouting_a_INLINEHEADERS) $(libmutab
 libmutaborrouting_a_SOURCES = $(libmutaborrouting_a_INDENTS)
 
 #-------------------------------------------------------------
-# libmutaborkernel.a
-#-------------------------------------------------------------
-
-libmutaborkernel_a_INLINEHEADERS = \
-		src/kernel/mut.cc \
-		src/kernel/mut.hh \
-		src/kernel/mutlex.cc
-
-libmutaborkernel_a_INDENTHEADERS = \
-		src/kernel/Defs.h \
-		src/kernel/box.h \
-		src/kernel/Errors.h \
-		src/kernel/Execute.h \
-		src/kernel/Frac.h \
-		src/kernel/Global.h \
-		src/kernel/Hilfs.h \
-		src/kernel/Interpre.h \
-		src/kernel/Interval.h \
-		src/kernel/Parser.h \
-		src/kernel/MidiKern.h \
-		src/kernel/Runtime.h \
-		src/kernel/TabGen.h \
-		src/kernel/treestorage.h \
-		src/kernel/mutlex.h \
-		src/kernel/debug.h \
-		src/kernel/interface_deps.h
-
-
-libmutaborkernel_a_INDENTS = \
-		src/kernel/box.cpp \
-		src/kernel/Errors.cpp \
-		src/kernel/Execute.cpp \
-		src/kernel/Frac.cpp \
-		src/kernel/Hilfs.cpp \
-		src/kernel/Interval.c \
-		src/kernel/Parser.cpp \
-		src/kernel/Runtime.cpp \
-		src/kernel/TabGen.cpp \
-		src/kernel/debug.cpp 
-
-noinst_HEADERS += $(libmutaborkernel_a_INLINEHEADERS) $(libmutaborkernel_a_INDENTHEADERS)
-
-libmutaborkernel_a_POTSOURCES = $(libmutaborkernel_a_INLINEHEADERS) $(libmutaborkernel_a_INDENTHEADERS) $(libmutaborkernel_a_INDENTS)
-
-libmutaborkernel_a_SOURCES = $(libmutaborkernel_a_INDENTS) \
-			src/kernel/mut.yy \
-			src/kernel/mutlex.ll \
-			src/kernel/parsers/scala/scale_parser.yy \
-			src/kernel/parsers/scala/scale_lexer.ll
-
-#-------------------------------------------------------------
 # libmutaborscala.a
 #-------------------------------------------------------------
 
@@ -436,7 +386,7 @@ libmutabormaincppunit_a_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS) -DMUTABOR_TE
 					"-DSRCDIR=\"$(srcdir)\""
 libmutabormaincppunit_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
 				$(libmutaborrouting_a_OBJECTS) \
-				$(libmutaborkernel_a_OBJECTS) \
+				$(src_kernel_libmutaborkernel_a_OBJECTS) \
 				$(libmutaborscala_a_OBJECTS) \
 				$(libmutabordebugcppunit_a_OBJECTS) \
 				$(librtmidi_a_OBJECTS)
@@ -487,7 +437,7 @@ libmutabormaintest_a_SOURCES = $(libmutabormaintest_a_INDENTS)
 libmutabormaintest_a_CXXFLAGS = $(AM_CXXFLAGS) $(TEST_CFLAGS) -DMUTABOR_TEST
 libmutabormaintest_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
 				$(libmutaborrouting_a_OBJECTS) \
-				$(libmutaborkernel_a_OBJECTS) \
+				$(src_kernel_libmutaborkernel_a_OBJECTS) \
 				$(libmutaborscala_a_OBJECTS) \
 				$(libmutabordebugtest_a_OBJECTS) \
 				$(librtmidi_a_OBJECTS)
@@ -520,7 +470,7 @@ librtmidi_a_POTSOURCES = $(librtmidi_a_SOURCES)
 
 INLINEHEADERS = \
 		$(libmutaborrouting_a_INLINEHEADERS) \
-		$(libmutaborkernel_a_INLINEHEADERS) \
+		$(src_kernel_libmutaborkernel_a_INLINEHEADERS) \
 		$(libmutaborscala_a_INLINEHEADERS) \
 		$(libmutabordebug_a_INLINEHEADERS) \
 		$(librtmidi_a_INLINEHEADERS) \
@@ -528,7 +478,7 @@ INLINEHEADERS = \
 
 INDENTHEADERS = \
 		$(libmutaborrouting_a_INDENTHEADERS) \
-		$(libmutaborkernel_a_INDENTHEADERS) \
+		$(src_kernel_libmutaborkernel_a_INDENTHEADERS) \
 		$(libmutaborscala_a_INDENTHEADERS) \
 		$(libmutabordebug_a_INDENTHEADERS) \
 		$(libmutaborgui_a_INDENTHEADERS)
@@ -545,7 +495,7 @@ mutabor_INDENTS = \
 INDENTSOURCES = \
 	$(mutabor_INDENTS) \
 	$(libmutaborrouting_a_INDENTS) \
-	$(libmutaborkernel_a_INDENTS) \
+	$(src_kernel_libmutaborkernel_a_INDENTS) \
 	$(libmutaborscala_a_INDENTS) \
 	$(librtmidi_a_INDENTS) \
 	$(libmutabordebug_a_INDENTS) \
@@ -557,13 +507,12 @@ mutabor_COMPILESOURCES = $(mutabor_INDENTS)
 
 mutabor_SOURCES = $(mutabor_COMPILESOURCES)
 
-POTSOURCES=$(INDENTSOURCES) \
+POTSOURCES += $(INDENTSOURCES) \
 	$(noinst_HEADERS) \
 	$(mutabor_COMPILESOURCES) \
 	$(scl2mut_POTSOURCES) \
 	$(NOCOMPSOURCES) \
 	$(libmutaborrouting_a_POTSOURCES) \
-	$(libmutaborkernel_a_POTSOURCES) \
 	$(libmutaborscala_a_POTSOURCES) \
 	$(librtmidi_a_POTSOURCES) \
 	$(libmutabordebug_a_POTSOURCES) \
@@ -578,7 +527,7 @@ mutabor_SHORTNAME = mutabor
 mutabor_LDADD = \
 	libmutaborgui.a \
 	libmutaborrouting.a \
-	libmutaborkernel.a \
+	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
 	libmutabordebug.a \
 	librtmidi.a \

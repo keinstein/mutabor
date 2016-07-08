@@ -890,39 +890,11 @@ AC_CONFIG_FILES([
 po/Makefile.in
 Makefile
 intl/Makefile
-src/Makefile
-src/gmut/Makefile
-src/gmut/tests/Makefile
-src/includes/Makefile
 src/includes/mutabor/Makefile
 src/includes/mutabor/tests/Makefile
-src/includes/netinet/Makefile
-src/includes/tests/Makefile
-src/kernel/Makefile
-src/kernel/parsers/Makefile
-src/kernel/parsers/scala/Makefile
-src/kernel/parsers/scala/tests/Makefile
-src/kernel/routing/gmn/Makefile
-src/kernel/routing/gmn/tests/Makefile
-src/kernel/routing/Makefile
-src/kernel/routing/midi/Makefile
-src/kernel/routing/midi/tests/Makefile
-src/kernel/routing/tests/Makefile
-src/kernel/tests/Makefile
-src/tests/Makefile
-src/wxGUI/generic/Makefile
-src/wxGUI/generic/tests/Makefile
-src/wxGUI/Makefile
-src/wxGUI/Routing/Makefile
-src/wxGUI/Routing/tests/Makefile
-src/wxGUI/tests/Makefile
-src/wxintl/Makefile
 src/wxintl/tests/Makefile
-src/xrc/Makefile
-src/xrc/tests/Makefile
 lib/Makefile
 lib/missfunc/Makefile
-Images/Makefile
 Images/Icons/png/16x16/Makefile
 Images/Icons/png/20x20/Makefile
 osdep/macosx/Info.plist
@@ -936,6 +908,34 @@ Doxyfile
 osdep/linux/OpenSuse.spec
 tools/midi2text/Makefile
 ])
+dnl src/wxintl/Makefile
+dnl src/kernel/routing/midi/tests/Makefile
+dnl src/kernel/routing/gmn/tests/Makefile
+dnl src/kernel/routing/tests/Makefile
+dnl src/tests/Makefile
+dnl src/wxGUI/tests/Makefile
+dnl src/kernel/tests/Makefile
+dnl src/wxGUI/Routing/tests/Makefile
+dnl Images/Makefile
+dnl src/Makefile
+dnl src/xrc/Makefile
+dnl src/xrc/tests/Makefile
+dnl src/wxGUI/Makefile
+dnl src/wxGUI/generic/Makefile
+dnl src/wxGUI/generic/tests/Makefile
+dnl src/wxGUI/Routing/Makefile
+dnl src/gmut/Makefile
+dnl src/gmut/tests/Makefile
+dnl src/includes/Makefile
+dnl src/includes/netinet/Makefile
+dnl src/includes/tests/Makefile
+dnl src/kernel/Makefile
+dnl src/kernel/routing/Makefile
+dnl src/kernel/routing/midi/Makefile
+dnl osrc/kernel/routing/gmn/Makefile
+dnl src/kernel/parsers/Makefile
+dnl src/kernel/parsers/scala/Makefile
+dnl src/kernel/parsers/scala/tests/Makefile
 dnl  src/libmutabor/lextables/Makefile
 dnl  src/libmutabor/lextables/tests/Makefile
 dnl  src/libmutabor/Makefile

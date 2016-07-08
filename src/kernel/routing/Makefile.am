@@ -1,4 +1,3 @@
-SUBDIRS=. tests gmn midi
-
-include $(top_srcdir)/common-rules.mk
-
+include %D%/tests/Makefile.am
+include %D%/gmn/Makefile.am
+include %D%/midi/Makefile.am

@@ -39,6 +39,8 @@ if COND_INTERNAL_FLEXLEXER
 AM_CXXFLAGS += -I$(top_srcdir)/lib/includes/flex
 endif
 
+POTSOURCES = 
+
 TSBUILTSOURCES = \
 	$(top_srcdir)/src/xrc/wxresource.h \
 	$(top_srcdir)/osdep/win/Mutabor.nsi
@@ -265,8 +267,6 @@ debugPaths.cpp: Makefile
 	echo 'const char * top_builddir = "$(top_builddir)";' >> $@.tmp
 	cmp $@ $@.tmp && rm -f $@.tmp || mv $@.tmp $@
 
-$(top_builddir)/src/wxintl/libwxintl.a:
-	$(MAKE) $(AM_MAKEFLAGS) -C $(top_builddir)/src/wxintl libwxintl.a
 
 #-------------------------------------------------------------------------------------
 # Installing DLLs

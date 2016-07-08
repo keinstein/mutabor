@@ -1,67 +1,69 @@
-include $(top_srcdir)/common-rules.mk
-include $(top_srcdir)/common-linklibs.mk
+#include $(top_srcdir)/common-rules.mk
+#include $(top_srcdir)/common-linklibs.mk
 
 BUILT_SOURCES +=  \
 	debugPaths.cpp
 
 CLEANFILES += \
-	playmidi1.mid \
-	test_output.mid \
-	test_output2.mid
+	%D%/playmidi1.mid \
+	%D%/test_output.mid \
+	%D%/test_output2.mid
 
 AM_CPPFLAGS += -DSRCDIR="\"$(srcdir)\""
-check_PROGRAMS = \
-	playmidi1 \
-	midiopenfail1 \
-	genmidirnd \
-	genmidilinear
+check_PROGRAMS += \
+	%D%/playmidi1 \
+	%D%/midiopenfail1 \
+	%D%/genmidirnd \
+	%D%/genmidilinear
 
-EXTRA_DIST = \
-	midi1_source.mid \
-	midi1_source.txt \
-	bug019010.mid \
-	bug019010.txt \
-	controller.txt \
-	controller.mid \
-	bank_select.txt \
-	bank_select.mid \
-	all_controller_off.txt \
-	all_controller_off.mid \
-	rpn_nrpn.txt \
-	rpn_nrpn.mid \
-	controller.txt \
-	controller.mid \
-	midiin.txt \
-	midiin.mid \
-	midiin.mut \
-	aftertouch.txt \
-	aftertouch.mid \
-	sysex.txt \
-	sysex.mid
+EXTRA_DIST += \
+	%D%/midi1_source.mid \
+	%D%/midi1_source.txt \
+	%D%/bug019010.mid \
+	%D%/bug019010.txt \
+	%D%/controller.txt \
+	%D%/controller.mid \
+	%D%/bank_select.txt \
+	%D%/bank_select.mid \
+	%D%/all_controller_off.txt \
+	%D%/all_controller_off.mid \
+	%D%/rpn_nrpn.txt \
+	%D%/rpn_nrpn.mid \
+	%D%/controller.txt \
+	%D%/controller.mid \
+	%D%/midiin.txt \
+	%D%/midiin.mid \
+	%D%/midiin.mut \
+	%D%/aftertouch.txt \
+	%D%/aftertouch.mid \
+	%D%/sysex.txt \
+	%D%/sysex.mid
 
 
-check_SCRIPTS = playmidi1.mid
+check_SCRIPTS += %D%/playmidi1.mid
 
-TESTS = \
-	playmidi1$(EXEEXT) \
-	midiopenfail1$(EXEEXT) \
-	genmidirnd$(EXEEXT) \
-	genmidilinear$(EXEEXT)
+TESTS += \
+	%D%/playmidi1$(EXEEXT) \
+	%D%/midiopenfail1$(EXEEXT) \
+	%D%/genmidirnd$(EXEEXT) \
+	%D%/genmidilinear$(EXEEXT)
 
-playmidi1_SOURCES = \
-	playmidi1.cpp
+%C%_playmidi1_CPPFLAGS = $(CPPFLAGS) \
+	-DSRCDIR="\"$(srcdir)/%D%/\""
+%C%_playmidi1_SOURCES = \
+	%D%/playmidi1.cpp
 
-nodist_playmidi1_SOURCES = \
+nodist_%C%_playmidi1_SOURCES = \
 	debugPaths.cpp
 
-playmidi1_LDADD = \
-	$(top_builddir)/libmutabordebugtest.a \
-	$(top_builddir)/libmutaborgui.a \
-	$(top_builddir)/libmutaborrouting.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutaborscala.a \
-	$(top_builddir)/librtmidi.a \
-	$(top_builddir)/src/wxintl/libwxintl.a \
+%C%_playmidi1_LDADD = \
+	libmutabordebugtest.a \
+	libmutaborgui.a \
+	libmutaborrouting.a \
+	src/kernel/libmutaborkernel.a \
+	libmutaborscala.a \
+	librtmidi.a \
+	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
@@ -69,14 +71,14 @@ playmidi1_LDADD = \
 	$(BOOST_FILESYSTEM_LIBS) \
 	$(BOOST_SYSTEM_LIBS)
 
-midiopenfail1_LDADD = \
-	$(top_builddir)/libmutabordebugtest.a \
-	$(top_builddir)/libmutaborgui.a \
-	$(top_builddir)/libmutaborrouting.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutaborscala.a \
-	$(top_builddir)/librtmidi.a \
-	$(top_builddir)/src/wxintl/libwxintl.a \
+%C%_midiopenfail1_LDADD = \
+	libmutabordebugtest.a \
+	libmutaborgui.a \
+	libmutaborrouting.a \
+	src/kernel/libmutaborkernel.a \
+	libmutaborscala.a \
+	librtmidi.a \
+	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
@@ -84,26 +86,26 @@ midiopenfail1_LDADD = \
 	$(BOOST_FILESYSTEM_LIBS) \
 	$(BOOST_SYSTEM_LIBS)
 
-midiopenfail1_SOURCES = \
-	midiopenfail1.cpp
+%C%_midiopenfail1_SOURCES = \
+	%D%/midiopenfail1.cpp
 
-nodist_midiopenfail1_SOURCES = \
+nodist_%C%_midiopenfail1_SOURCES = \
 	debugPaths.cpp
 
-genmidirnd_SOURCES = \
-	genmidirnd.cpp
+%C%_genmidirnd_SOURCES = \
+	%D%/genmidirnd.cpp
 
-nodist_genmidirnd_SOURCES = \
+nodist_%C%_genmidirnd_SOURCES = \
 	debugPaths.cpp
 
-genmidirnd_LDADD = \
-	$(top_builddir)/libmutabordebugtest.a \
-	$(top_builddir)/libmutaborgui.a \
-	$(top_builddir)/libmutaborrouting.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutaborscala.a \
-	$(top_builddir)/librtmidi.a \
-	$(top_builddir)/src/wxintl/libwxintl.a \
+%C%_genmidirnd_LDADD = \
+	libmutabordebugtest.a \
+	libmutaborgui.a \
+	libmutaborrouting.a \
+	src/kernel/libmutaborkernel.a \
+	libmutaborscala.a \
+	librtmidi.a \
+	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
@@ -112,20 +114,20 @@ genmidirnd_LDADD = \
 	$(BOOST_SYSTEM_LIBS)
 
 
-genmidilinear_SOURCES = \
-	genmidilinear.cpp
+%C%_genmidilinear_SOURCES = \
+	%D%/genmidilinear.cpp
 
-nodist_genmidilinear_SOURCES = \
+nodist_%C%_genmidilinear_SOURCES = \
 	debugPaths.cpp
 
-genmidilinear_LDADD = \
-	$(top_builddir)/libmutabordebugtest.a \
-	$(top_builddir)/libmutaborgui.a \
-	$(top_builddir)/libmutaborrouting.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutaborscala.a \
-	$(top_builddir)/librtmidi.a \
-	$(top_builddir)/src/wxintl/libwxintl.a \
+%C%_genmidilinear_LDADD = \
+	libmutabordebugtest.a \
+	libmutaborgui.a \
+	libmutaborrouting.a \
+	src/kernel/libmutaborkernel.a \
+	libmutaborscala.a \
+	librtmidi.a \
+	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
@@ -136,37 +138,42 @@ genmidilinear_LDADD = \
 
 if HAVE_CPPUNIT
 check_SCRIPTS += \
-	$(srcdir)/midi1_source.mid \
-	$(srcdir)/bug019010.mid \
-	$(srcdir)/bank_select.mid \
-	$(srcdir)/all_controller_off.mid \
-	$(srcdir)/rpn_nrpn.mid \
-	$(srcdir)/controller.mid \
-	$(srcdir)/midiin.mid \
-	$(srcdir)/aftertouch.mid \
-	$(srcdir)/sysex.mid
+	$(srcdir)/%D%/midi1_source.mid \
+	$(srcdir)/%D%/bug019010.mid \
+	$(srcdir)/%D%/bank_select.mid \
+	$(srcdir)/%D%/all_controller_off.mid \
+	$(srcdir)/%D%/rpn_nrpn.mid \
+	$(srcdir)/%D%/controller.mid \
+	$(srcdir)/%D%/midiin.mid \
+	$(srcdir)/%D%/aftertouch.mid \
+	$(srcdir)/%D%/sysex.mid
 
 TESTS += \
-	testcppunit$(EXEEXT)
+	%D%/testcppunit$(EXEEXT)
 
-check_PROGRAMS += testcppunit
+check_PROGRAMS += %D%/testcppunit
 
-testcppunit_CXXFLAGS =  $(CPPUNIT_CFLAGS) $(AM_CXXFLAGS)
+%C%_testcppunit_CPPFLAGS = $(CPPFLAGS) \
+	-DSRCDIR="\"$(srcdir)/%D%/\""
+%C%_testcppunit_CXXFLAGS = \
+	$(CPPUNIT_CFLAGS) \
+	$(AM_CXXFLAGS)
 
-testcppunit_SOURCES = \
-	main.cpp \
-	DevMidFTest.h \
-	DevMidFTest.cpp \
-	midicmnTest.h \
-	midicmnTest.cpp
 
-nodist_testcppunit_SOURCES = \
+%C%_testcppunit_SOURCES = \
+	%D%/main.cpp \
+	%D%/DevMidFTest.h \
+	%D%/DevMidFTest.cpp \
+	%D%/midicmnTest.h \
+	%D%/midicmnTest.cpp
+
+nodist_%C%_testcppunit_SOURCES = \
 	debugPaths.cpp
 
-testcppunit_LDADD = \
-	$(top_builddir)/libmutabormaincppunit.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/src/wxintl/libwxintl.a \
+%C%_testcppunit_LDADD = \
+	libmutabormaincppunit.a \
+	src/kernel/libmutaborkernel.a \
+	src/wxintl/libwxintl.a \
 	$(CPPUNIT_LIBS) \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
@@ -177,7 +184,7 @@ testcppunit_LDADD = \
 endif
 
 
-playmidi1.mid: midi1_source.mid
+%D%/playmidi1.mid: %D%/midi1_source.mid
 	cp `(if test -f '$<' ; then  echo '$<' ; else echo '$(top_srcdir)/$<' ; fi )` $@
 
 
