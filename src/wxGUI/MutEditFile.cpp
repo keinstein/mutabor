@@ -244,7 +244,7 @@ namespace mutaborGUI {
 		//		wxString TmpFile = wxFileName::CreateTempFileName(wxT(PACKAGE));
 
 		if ( SaveEditor )
-			SaveFile(m_filename);
+			SaveFile();
 
 		bool result=true;
 
