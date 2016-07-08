@@ -160,7 +160,7 @@ namespace mutaborGUI {
 
 		/// Get a file name to open
 		///    static wxString FileNameDialog(wxWindow * parent);
-
+		void CmExportScala(wxCommandEvent& event);
 		void CmDoActivate(wxCommandEvent& event);
 
 		void RaiseLogic(wxCommandEvent& event);

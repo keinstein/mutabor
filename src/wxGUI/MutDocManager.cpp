@@ -167,6 +167,9 @@ namespace mutaborGUI {
 			ScalaFile = dialog -> GetScalaFile();
 			if (ScalaFile.IsFileReadable())
 				break;
+			wxGetApp().PrintError(mutabor::error,
+					      _("Cannot read the Scala file. This file must exist."),
+					      editor);
 		}
 		dialog -> GetData(options);
 		KeymapFile = dialog -> GetKeymapFile();

@@ -319,7 +319,7 @@ _("to");
 #line 1837 "Mutabor.xrc"
 _("avoid drum channel");
 #line 1851 "Mutabor.xrc"
-_("Import a  Scala Tuning");
+_("Import a  Scala tuning");
 #line 1871 "Mutabor.xrc"
 _("interval prefix");
 #line 1880 "Mutabor.xrc"
@@ -347,4 +347,20 @@ _("Select a scala keyboard mapping");
 #line 1985 "Mutabor.xrc"
 _("&OK");
 #line 1992 "Mutabor.xrc"
+_("&Cancel");
+#line 2001 "Mutabor.xrc"
+_("Export the current tuning to Scala");
+#line 2016 "Mutabor.xrc"
+_("Scala file");
+#line 2026 "Mutabor.xrc"
+_("Select a Scala file for export");
+#line 2039 "Mutabor.xrc"
+_("Generate keyboard mapping");
+#line 2054 "Mutabor.xrc"
+_("Keymap file");
+#line 2064 "Mutabor.xrc"
+_("Select a file");
+#line 2080 "Mutabor.xrc"
+_("&OK");
+#line 2087 "Mutabor.xrc"
 _("&Cancel");

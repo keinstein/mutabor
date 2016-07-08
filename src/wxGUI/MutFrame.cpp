@@ -37,9 +37,6 @@
 
 #include "src/kernel/Defs.h"
 
-#ifdef __BORLANDC__
-#pragma hdrstop
-#endif
 
 #include "wx/toolbar.h"
 #include "wx/image.h"
@@ -70,7 +67,12 @@
 #include "src/wxGUI/MutBitmaps.h"
 #include "src/wxGUI/GUIBoxData.h"
 #include "src/wxGUI/Routing/DebugRoute.h"
+#include "src/wxGUI/ScalaGUI.h"
 #include "src/kernel/routing/Route-inlines.h"
+
+#ifdef __BORLANDC__
+#pragma hdrstop
+#endif
 
 using namespace mutabor;
 using namespace mutaborGUI;
@@ -143,6 +145,7 @@ namespace mutaborGUI {
 	//        EVT_MENU(CM_EXECUTE, MutFrame::CmFileOpen)
 	//	EVT_MENU(CM_FILESAVE, MutFrame::PassEventToEditor)
 	//    EVT_MENU(CM_FILESAVEAS, MutFrame::CmFileOpen)
+	EVT_MENU(CM_EXPORT_SCALA, MutFrame::CmExportScala)
 	EVT_MENU(CM_DOACTIVATE, MutFrame::CmDoActivate)
 	EVT_MENU(CM_STOP, MutFrame::CmStop)
 	EVT_MENU(CM_PANIC, MutFrame::CmPanic)
@@ -152,6 +155,7 @@ namespace mutaborGUI {
 	EVT_UPDATE_UI(CM_DOACTIVATE, MutFrame::CeActivate)
 	EVT_UPDATE_UI(CM_STOP, MutFrame::CeStop)
 	EVT_UPDATE_UI(CM_PANIC, MutFrame::CeStop)
+	EVT_UPDATE_UI(CM_EXPORT_SCALA, MutFrame::CeStop)
 	EVT_UPDATE_UI(wxID_UNDO, MutFrame::PassEventToEditorUI)
 	EVT_UPDATE_UI(wxID_REDO, MutFrame::PassEventToEditorUI)
 	EVT_MENU(CM_COMPILE, MutFrame::PassEventToEditor)
@@ -707,6 +711,26 @@ namespace mutaborGUI {
 	}
 #endif
 
+	void MutFrame::CmExportScala(wxCommandEvent& event) {
+		if (!LogicOn) return;
+
+		wxFileName ScalaFile, KeymapFile;
+		ScalaExportDialog * dialog = new ScalaExportDialog(this);
+
+		if (!dialog) return;
+		for (;;) {
+			if (dialog -> ShowModal() == wxID_CANCEL) {
+				dialog -> Destroy();
+				return;
+			}
+			ScalaFile = dialog -> GetScalaFile();
+			if (ScalaFile.IsFileWritable())
+				break;
+			wxGetApp().PrintError(mutabor::error,
+					      _("Cannot open the Scala file. This file must be writable."),
+					      this);
+		}
+	}
 
 	void MutFrame::CmDoActivate(wxCommandEvent& event)
 	{

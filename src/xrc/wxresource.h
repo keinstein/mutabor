@@ -568,6 +568,32 @@ ScalaImportDialogBase(wxWindow *parent=NULL){
   InitWidgetsFromXRC((wxWindow *)parent);
  }
 };
+class ScalaExportDialogBase : public wxDialog {
+protected:
+ wxStaticText* ScalaFileLabel;
+ wxFilePickerCtrl* ScalaFile;
+ wxCheckBox* Genkeymap;
+ wxStaticText* KeyMapLabel;
+ wxFilePickerCtrl* KeyMap;
+ wxButton* wxID_OK;
+ wxButton* wxID_CANCEL;
+
+private:
+ void InitWidgetsFromXRC(wxWindow *parent){
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("ScalaExportDialogBase"), wxT("wxDialog"));
+  ScalaFileLabel = XRCCTRL(*this,"ScalaFileLabel",wxStaticText);
+  ScalaFile = XRCCTRL(*this,"ScalaFile",wxFilePickerCtrl);
+  Genkeymap = XRCCTRL(*this,"Genkeymap",wxCheckBox);
+  KeyMapLabel = XRCCTRL(*this,"KeyMapLabel",wxStaticText);
+  KeyMap = XRCCTRL(*this,"KeyMap",wxFilePickerCtrl);
+  wxID_OK = XRCCTRL(*this,"wxID_OK",wxButton);
+  wxID_CANCEL = XRCCTRL(*this,"wxID_CANCEL",wxButton);
+ }
+public:
+ScalaExportDialogBase(wxWindow *parent=NULL){
+  InitWidgetsFromXRC((wxWindow *)parent);
+ }
+};
 
 void 
 InitXmlResource();

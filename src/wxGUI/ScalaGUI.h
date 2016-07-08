@@ -79,6 +79,43 @@ namespace mutaborGUI {
 			return KeyMap->GetFileName();
 		}
 	};
+
+	/// Scala export dialog with enhanced logic
+	/**
+	 * This class provides the real interface to the Scala export dialog.
+	 */
+	class ScalaExportDialog: public ScalaExportDialogBase
+	{
+	public:
+		ScalaExportDialog(wxWindow * parent):ScalaExportDialogBase(parent) {
+			Genkeymap->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED,
+					    wxCommandEventHandler( ScalaExportDialog::CheckBoxToggle ),
+					    NULL,
+					    this );
+			KeyMap->Enable(Genkeymap->GetValue());
+		}
+		virtual ~ScalaExportDialog() {
+			Genkeymap->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED,
+					       wxCommandEventHandler( ScalaExportDialog::CheckBoxToggle ),
+					       NULL,
+					       this );
+		}
+
+
+		void CheckBoxToggle( wxCommandEvent& event ) {
+			if (!KeyMap || !Genkeymap) return;
+			KeyMap->Enable(Genkeymap->GetValue());
+		}
+
+		wxFileName GetScalaFile() {
+			if (!ScalaFile) return wxFileName("");
+			return ScalaFile->GetFileName();
+		}
+		wxFileName GetKeymapFile() {
+			if (!KeyMap) return wxFileName("");
+			return KeyMap->GetFileName();
+		}
+	};
 }
 
 #endif /* precompiled */
