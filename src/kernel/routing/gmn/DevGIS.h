@@ -173,7 +173,7 @@ virtual void SetName(const std::string & s)
 
 		virtual void do_UpdateTones(RouteClass * route) {};
 
-		virtual void do_Controller(int,int,int,size_t) {}
+		virtual void do_Controller(size_t,int,int,size_t) {}
 /*
 		virtual void Sustain(int channel, const ChannelData & cd)
 			{};

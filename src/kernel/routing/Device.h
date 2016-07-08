@@ -872,7 +872,7 @@ namespace mutabor {
 			ScopedLock lock(write_lock);
 			do_UpdateTones(route);
 		}
-		void Controller(int mutabor_channel,
+		void Controller(size_t mutabor_channel,
 				int controller,
 				int value,
 				size_t id) {
@@ -996,7 +996,7 @@ namespace mutabor {
 				     size_t id,
 				     bool is_note_on) = 0;
 		virtual void do_UpdateTones(RouteClass * route) = 0;
-		virtual void do_Controller(int mutabor_channel,
+		virtual void do_Controller(size_t mutabor_channel,
 					   int controller,
 					   int value,
 					   size_t id) = 0;

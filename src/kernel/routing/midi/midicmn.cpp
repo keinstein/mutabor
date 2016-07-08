@@ -499,7 +499,7 @@ namespace mutabor {
 	}
 
 	template<class T, class D>
-	void  CommonMidiOutput<T,D>::do_Controller(int mutabor_channel,
+	void  CommonMidiOutput<T,D>::do_Controller(size_t mutabor_channel,
 						   int ctrl,
 						   int value,
 						   size_t id)
@@ -648,6 +648,7 @@ namespace mutabor {
 			break;
 		default:
 			UNREACHABLEC;
+			return;
 		}
 		int tmpctrl = data.get_index(midi::DATA_ENTRY_COARSE);
 		if(minctrl > tmpctrl
@@ -675,7 +676,7 @@ namespace mutabor {
 
 
 	/*
-	  void CommonMidiOutput<T,D>::Sustain(int channel, const ChannelData & cd)
+	  void CommonMidiOutput<T,D>::Sustain(size_t channel, const ChannelData & cd)
 	  {
 	  mutASSERT(this->isOpen);
 	  for (int i = 0; i < 16; i++)

@@ -292,7 +292,7 @@ namespace mutabor {
 		int inkey;        //< internal key id. provided by input device
 		int velocity;     //< attack velocity or note volume
 		pitch_bend_type outkey;
-		int channel;      //< route that broght the note to this device
+		size_t channel;      //< route that broght the note to this device
 		int midi_channel; //< MIDI channel (unsused)
 		size_t unique_id; //< unique id defined by input device
 		BoxClass::tone tuned_key;   //< tuned key
@@ -609,7 +609,7 @@ namespace mutabor {
 			     bool is_note_on /* = false */
 			);
 		void do_UpdateTones(RouteClass * route);
-		void do_Controller(int mutabor_channel,
+		void do_Controller(size_t mutabor_channel,
 				   int controller,
 				   int value,
 				   size_t id);
