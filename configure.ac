@@ -242,6 +242,22 @@ AC_ARG_ENABLE(address-sanitizer,
 			          AC_MSG_RESULT([no])])
 			AC_LANG_POP(C)
 	       done
+	       tmpcxxflags="$CXXFLAGS"
+	       CXXFLAGS="$CXXFLAGS -fsanitize-blacklist"
+	       AC_MSG_CHECKING([whether $CXX supports $flag])
+	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+	                         [AC_MSG_RESULT([yes])],
+				 [CXXFLAGS="$tmpcxxflags"
+		         AC_MSG_RESULT([no])])
+		AC_LANG_PUSH(C)
+		tmpcflags="$CFLAGS"
+		CFLAGS="$CFLAGS $flag"
+		AC_MSG_CHECKING([whether $CC supports $flag])
+		AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+	                          [AC_MSG_RESULT([yes])],
+				  [CFLAGS="$tmpcflags"
+		          AC_MSG_RESULT([no])])
+		AC_LANG_POP(C)
 	       AC_LANG_POP(C++)
 	       )
 	]

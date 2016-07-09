@@ -1,15 +1,13 @@
 #include $(top_srcdir)/common-rules.mk
 #include $(top_srcdir)/common-linklibs.mk
-
-BUILT_SOURCES +=  \
-	debugPaths.cpp
+DEBUGPATHS +=  \
+	%D%/debugPaths.cpp
 
 CLEANFILES += \
 	%D%/playmidi1.mid \
 	%D%/test_output.mid \
 	%D%/test_output2.mid
 
-AM_CPPFLAGS += -DSRCDIR="\"$(srcdir)\""
 check_PROGRAMS += \
 	%D%/playmidi1 \
 	%D%/midiopenfail1 \
@@ -54,7 +52,7 @@ TESTS += \
 	%D%/playmidi1.cpp
 
 nodist_%C%_playmidi1_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_playmidi1_LDADD = \
 	libmutabordebugtest.a \
@@ -90,13 +88,13 @@ nodist_%C%_playmidi1_SOURCES = \
 	%D%/midiopenfail1.cpp
 
 nodist_%C%_midiopenfail1_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_genmidirnd_SOURCES = \
 	%D%/genmidirnd.cpp
 
 nodist_%C%_genmidirnd_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_genmidirnd_LDADD = \
 	libmutabordebugtest.a \
@@ -118,7 +116,7 @@ nodist_%C%_genmidirnd_SOURCES = \
 	%D%/genmidilinear.cpp
 
 nodist_%C%_genmidilinear_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_genmidilinear_LDADD = \
 	libmutabordebugtest.a \
@@ -168,7 +166,7 @@ check_PROGRAMS += %D%/testcppunit
 	%D%/midicmnTest.cpp
 
 nodist_%C%_testcppunit_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_testcppunit_LDADD = \
 	libmutabormaincppunit.a \

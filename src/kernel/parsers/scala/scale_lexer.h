@@ -190,7 +190,7 @@ namespace mutabor {
 				DEBUGLOG(sclparser,
 					 "popping mode3: (%d) %d.",
 					 yy_start_mode[mode],
-					 yy_top_state());
+					 ((yy_start_stack_ptr>0)?yy_top_state():-1));
 
 			}
 		protected:

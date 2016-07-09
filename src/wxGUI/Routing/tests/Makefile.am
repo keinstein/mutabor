@@ -2,7 +2,11 @@
 #include $(top_srcdir)/common-linklibs.mk
 
 #TESTS =
-#check_PROGRAMS = 
+#check_PROGRAMS =
+
+DEBUGPATHS += \
+	%D%/debugPaths.cpp
+
 
 if HAVE_CPPUNIT
 TESTS += \
@@ -15,11 +19,12 @@ check_PROGRAMS += %D%/testcppunit
 %C%_testcppunit_SOURCES = \
 	%D%/main.cpp \
 	%D%/GUIRouteTest.h \
-	%D%/GUIRouteTest.cpp
+	%D%/GUIRouteTest.cpp \
+	%D%/asan_options.cpp
 
 
 nodist_%C%_testcppunit_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_testcppunit_LDADD = \
 	libmutabormaincppunit.a \
@@ -33,6 +38,21 @@ nodist_%C%_testcppunit_SOURCES = \
 	$(BOOST_FILESYSTEM_LIBS) \
 	$(BOOST_SYSTEM_LIBS)
 endif
+
+BUILT_SOURCES += \
+	%D%/asan_options.cpp
+CLEANFILES += \
+	%D%/asan_options.cpp
+
+%D%/asan_options.cpp: Makefile
+	echo '#ifdef __cplusplus' > "$@.tmp"
+	echo 'extern "C"' >> "$@.tmp"
+	echo '#endif' >> "$@.tmp"
+	echo '__attribute__((no_sanitize_address))' >> "$@.tmp"
+	echo 'const char *__asan_default_options() {' >> "$@.tmp"
+	echo '  return "fast_unwind_on_malloc=0:report_globals=1:print_full_thread_history=1:suppressions=$(top_srcdir)/%D%/lsan_suppressions.txt";' >> "$@.tmp" ;
+	echo '}' >> "$@.tmp" ; \
+	cmp $@ $@.tmp && rm -f $@.tmp || ( mv "$@.tmp" "$@" ; echo "created $@")
 
 if COPYDLLS
 check-am: check-dll

@@ -1,18 +1,4 @@
-AM_TESTS_ENVIRONMENT= \
-	LSAN_OPTIONS="fast_unwind_on_malloc=0" ; \
-	if [ -f $(srcdir)/lsan_suppressions.txt ] ; \
-	then \
-		LSAN_OPTIONS="suppressions=$(srcdir)/lsan_suppressions.txt $$LSAN_OPTIONS" ; \
-	fi; \
-	export LSAN_OPTIONS; \
-	TSAN_OPTIONS="second_deadlock_stack=1 symbolize=1" ; \
-	if [ -f $(srcdir)/tsan_suppressions.txt ] ; \
-	then \
-		TSAN_OPTIONS="$$TSAN_OPTIONS suppressions=$(srcdir)/tsan_suppressions.txt" ; \
-	fi ; \
-	export TSAN_OPTIONS; \
-	ASAN_SYMBOLIZER_PATH=/usr/bin/llvm_symbolize-3.6 ; \
-	export BASAN_SYMBOLIZER_PATH ; 
+#AM_TESTS_ENVIRONMENT= $(top_srcdir)/run-test.sh
 buildincludedir=$(top_builddir)
 AM_CPPFLAGS = -I$(buildincludedir)  \
 	-I$(top_srcdir)/includes \
@@ -260,12 +246,17 @@ $(top_srcdir)/src/xrc/reslocale.cpp : $(top_srcdir)/src/xrc/Mutabor.xrc
 	(cd $(top_srcdir)/src/xrc; \
 	wxrc -g -o reslocale.cpp Mutabor.xrc)
 
-debugPaths.cpp: Makefile
-	echo '#include "src/kernel/Defs.h"' >$@.tmp
-	echo 'const char * srcdir = "$(srcdir)";' >> $@.tmp
-	echo 'const char * top_srcdir = "$(top_srcdir)";' >> $@.tmp
-	echo 'const char * top_builddir = "$(top_builddir)";' >> $@.tmp
-	cmp $@ $@.tmp && rm -f $@.tmp || mv $@.tmp $@
+DEBUGPATHS =
+BUILT_SOURCES += $(DEBUGPATHS)
+$(DEBUGPATHS): Makefile
+	@localpath=`dirname "$@"`; \
+	echo '#include "src/kernel/Defs.h"' >"$@.tmp" ; \
+	echo 'const char * srcdir = "$(top_srcdir)/'"$$localpath"'";' >> "$@.tmp" ; \
+	echo 'const char * builddir = "'"$$localpath"'";' >> "$@.tmp" ; \
+	echo 'const char * top_srcdir = "$(top_srcdir)";' >> "$@.tmp" ; \
+	echo 'const char * top_builddir = "$(top_builddir)";' >> "$@.tmp" ; \
+	cmp $@ $@.tmp && rm -f $@.tmp || ( mv "$@.tmp" "$@" ; echo "created $@")
+
 
 
 #-------------------------------------------------------------------------------------
@@ -303,7 +294,7 @@ installdll:
 # Recursive generation of potfiles.chk
 #-------------------------------------------------------------------------------------
 
-CLEANFILES += POTFILES.tmp POTFILES.tmp.local debugPaths.cpp
+CLEANFILES += POTFILES.tmp POTFILES.tmp.local $(DEBUGPATHS)
 
 potfilechk-recursive:potfilechk-makerecursive
 

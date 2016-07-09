@@ -1,8 +1,8 @@
 #include $(top_srcdir)/common-rules.mk
 #include $(top_srcdir)/common-linklibs.mk
 
-BUILT_SOURCES +=  \
-	debugPaths.cpp
+DEBUGPATHS +=  \
+	%D%/debugPaths.cpp
 
 check_PROGRAMS += %D%/timer1
 
@@ -12,7 +12,7 @@ TESTS += %D%/timer1$(EXEEXT)
 	%D%/timer1.cpp
 
 nodist_%C%_timer1_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_timer1_LDADD= \
 	libmutabordebugtest.a \
