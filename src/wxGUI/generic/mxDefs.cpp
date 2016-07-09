@@ -35,7 +35,9 @@
 #include "wx/sizer.h"
 
 #if defined(WX) && (wxUSE_UNICODE || wxUSE_WCHAR_T)
+#if 0
 wxCSConv muCSConv(wxT("ISO-8859-1"));
+#endif
 
 #endif
 

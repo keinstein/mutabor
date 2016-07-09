@@ -89,8 +89,10 @@ inline wxString muT(const std::string & s) {
 }
 
 #if defined(WX) && (defined(UNICODE) || wxUSE_WCHAR_T)
+#if 0
 #include "wx/strconv.h"
 extern wxCSConv muCSConv;
+#endif
 
 #define mumT(x) _T(x)
 #else
