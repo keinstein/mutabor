@@ -44,11 +44,11 @@
 #include "src/kernel/Defs.h"
 #include "src/kernel/cow_container.h"
 #include "src/kernel/routing/gmn/GIS.h"
-#if 0
-#endif
 #include "src/kernel/routing/Route.h"
 #include "src/kernel/routing/timing.h"
+#include "src/kernel/routing/thread.h"
 #include "src/kernel/MidiKern.h"
+
 
 #ifndef MU32_ROUTING_DEVICE_H_PRECOMPILED
 #define MU32_ROUTING_DEVICE_H_PRECOMPILED
@@ -61,8 +61,8 @@
 #include <algorithm>
 #include <sstream>
 #include <stdarg.h>
-#include "wx/thread.h"
-#include "wx/stopwatch.h"
+//#include "wx/thread.h"
+//#include "wx/stopwatch.h"
 #include <boost/unordered_set.hpp>
 
 #define DRUMCHANNEL 9  // Schlagzeugkanal bei General Midi (Kanal 9, bzw. 10)

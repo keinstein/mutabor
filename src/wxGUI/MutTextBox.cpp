@@ -262,7 +262,7 @@ void MutTextBox::GetKeys(bool asTS)
 	mutabor::BoxClass::current_tone_list tones = box->GetCurrentTones();
 	for (size_t i = 0; i < tones.size(); i++) {
 		switch (tones[i].flag) {
-		case mutabor::BoxClass::tone_entry::sounding:
+		case mutabor::box_support::tone_entry::sounding:
 #if 0
 			/* we cant use %z for now. See http://trac.wxwidgets.org/ticket/14311 for details */
 			keys.Printf(_("%2z : %8.1lf Hz (%6.2lf HT) [ch: %d, id: %z]"),
@@ -281,10 +281,10 @@ void MutTextBox::GetKeys(bool asTS)
 				(unsigned long)tones[i].id);
 #endif
 			break;
-		case mutabor::BoxClass::tone_entry::silent:
+		case mutabor::box_support::tone_entry::silent:
 			keys.Printf(_("%3d : empty"),tones[i].index);
 			break;
-		case mutabor::BoxClass::tone_entry::invalid:
+		case mutabor::box_support::tone_entry::invalid:
 			keys.Printf(_("%3d : invalid tone"),tones[i].index);
 			break;
 		default:
@@ -300,7 +300,7 @@ void MutTextBox::GetToneSystem(bool asTS)
 {
 	wxString keys;
 
-	mutabor::BoxClass::tone_system tonesys = box->GetToneSystem();
+	mutabor::box_support::tone_system tonesys = box->GetToneSystem();
 	Freeze();
 
 	Clear();
@@ -323,7 +323,7 @@ void MutTextBox::GetToneSystem(bool asTS)
 	if (!asTS) {
 		for (i = 0 ; i < tonesys.tones.size(); i++) {
 			if (tonesys.tones[i].flag ==
-			    mutabor::BoxClass::tone_entry::sounding) {
+			    mutabor::box_support::tone_entry::sounding) {
 				reference = tonesys.tones[i].pitch;
 				break;
 			}
@@ -335,7 +335,7 @@ void MutTextBox::GetToneSystem(bool asTS)
 	for (i = 0 ; i < tonesys.tones.size(); i++) {
 		double pitch, frequency;
 		switch(tonesys.tones[i].flag) {
-		case mutabor::BoxClass::tone_entry::sounding:
+		case mutabor::box_support::tone_entry::sounding:
 			pitch = tonesys.tones[i].pitch;
 			frequency =
 				mutabor_convert_pitch_to_frequency(pitch);
@@ -345,11 +345,11 @@ void MutTextBox::GetToneSystem(bool asTS)
 				    frequency,
 				    pitch );
 			break;
-		case mutabor::BoxClass::tone_entry::silent:
+		case mutabor::box_support::tone_entry::silent:
 			keys.Printf(_("%2lu : empty"),
 				    (unsigned long)i);
 			break;
-		case mutabor::BoxClass::tone_entry::invalid:
+		case mutabor::box_support::tone_entry::invalid:
 			keys.Printf(_("%2lu : invalid tone"),
 				    (unsigned long)i);
 			break;

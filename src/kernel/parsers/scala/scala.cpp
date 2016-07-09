@@ -34,15 +34,18 @@
  * headers
  * --------------------------------------------------------------------------- */
 
-#include "src/kernel/Defs.h"
+/* system headers which do seldom change */
 #include <cstdarg>
 #include <cmath>
 #include <sstream>
+
+#include "src/kernel/Defs.h"
 #include "src/kernel/parsers/scala/scala.h"
+#include "src/kernel/parsers/scala/scala-inlines.h"
 #include "src/kernel/parsers/scala/scale_lexer.h"
 #include "src/kernel/parsers/scala/scale_parser.hh"
 
-/* system headers which do seldom change */
+
 
 /** not for headers */
 #ifdef __BORLANDC__
@@ -53,6 +56,86 @@
 
 namespace mutabor {
 	namespace scala_parser {
+
+		interval_pattern::interval_pattern(const mutabor::box_support::tone_system & t,
+						   const std::string & n):
+			comment1(),
+			name(n),
+			comment2(),
+			count(0),
+			count_comment(),
+			intervals(),
+			garbage()
+		{
+			mutabor::box_support::tone_list::const_iterator current
+				= t.tones.begin();
+			for (; current != t.tones.end()
+				     && current->flag != mutabor::box_support::tone_entry::sounding;
+			     ++current) {}
+
+			if (current != t.tones.end()) {
+
+				intervals.reserve(t.tones.size()
+						  - (current - t.tones.begin()+1));
+
+				double reference = current -> pitch;
+				for(++current; current != t.tones.end(); ++current) {
+					if (current->flag != mutabor::box_support::tone_entry::sounding)
+						continue;
+					intervals.push_back((current->pitch - reference)*100.0);
+				}
+			}
+
+			intervals.push_back(t.period*100.0);
+			count = intervals.size();
+		}
+
+		keymap::keymap(const mutabor::box_support::tone_system & t):
+			count(0),
+			first_key(0),
+			last_key(127),
+			anchor(t.anchor),
+			reference(t.anchor),
+			reference_frequency(440),
+			repetition_interval(0),
+			keys(),
+			garbage()
+		{
+			mutabor::box_support::tone_list::const_iterator current
+				= t.tones.begin();
+			keys.reserve(t.tones.size());
+
+			for (; current != t.tones.end()
+				     && current->flag != mutabor::box_support::tone_entry::sounding;
+			     ++current) {
+				++reference;
+				keys.push_back(key());
+			}
+
+			if (current == t.tones.end()) return;
+
+			reference_frequency = std::exp((current->pitch - 69.0)/12.0*log(2.0l)) * 440;
+
+			int interval = 0;
+			for(; current != t.tones.end(); ++current) {
+				if (current->flag != mutabor::box_support::tone_entry::sounding) {
+					keys.push_back(key());
+				} else {
+					keys.push_back(interval++);
+				}
+			}
+			count = keys.size();
+			repetition_interval = interval;
+
+		}
+
+		parser::parser(const mutabor::box_support::tone_system & t):
+			handler(this),
+			intervals(t),
+			keys(t),
+			lexer(NULL),
+			bison_parser(NULL)
+		{}
 
 		parser::~parser() {
 			delete bison_parser;
@@ -204,7 +287,7 @@ namespace mutabor {
  		}
 		std::ostream & keymap::print_mutabor (std::ostream & o,
 						      const mutabor_writer_options & w) const {
-			
+
 			o << "\"" << std::endl;
 			count.print_mutabor(o, " Tonesystem size: ", true);
 			first_key.print_mutabor(o, " First key: ", true);
@@ -212,7 +295,7 @@ namespace mutabor {
 			o << " Note: The key range must be configured using the route system. " << std::endl;
 			reference.print_mutabor(o, " Reference key: ",true);
 			o << "\"" << std::endl;
-			
+
 			o << std::endl;
 			repetition_interval.print_mutabor(o,
 							  "\t" + w.prefix +
@@ -236,18 +319,18 @@ namespace mutabor {
 				offset += divisor;
 				octaves += 1;
 			}
-			
+
 			o << "\t" << w.tone_prefix << _mut("_anchor") << " = "
 			  << w.tone_prefix << _mut("_reference");
 			if (octaves)
 				o << ((octaves < 0) ? " - ":" + ")
 				  << std::abs(octaves) << " " << w.prefix << _mut("_repetition");
-			
+
 			if ((size_t)(offset) < keys.size() &&
 				 keys[offset].type != key::empty)
 				o << " - "  << w.prefix
 				  << keys[offset].value;
-			else 
+			else
 				o <<" \" "
 				  << " - "  << w.prefix << "_" << offset
 				  << " \"" ;
@@ -258,7 +341,7 @@ namespace mutabor {
 			}
 
 			o << std::endl << std::endl;
-			
+
 			o << _mut("TONESYSTEM") << std::endl;
 			o << "\t" << w.tonesystem_name << " = ";
 			anchor.print_mutabor(o,"", false)
@@ -274,7 +357,7 @@ namespace mutabor {
 			o << " ] " << std::endl
 			  << "\t\t  " <<  w.prefix << _mut("_repetition") << std::endl;
 			o << std::endl << std::endl;
-			
+
 			o << _mut("LOGIC") << std::endl;
 			o << "\t" << w.logic_name << " " << _mut("KEY") << " " << w.logic_name[0]
 			  << " = " << w.tonesystem_name << " []" << std::endl;
@@ -282,7 +365,7 @@ namespace mutabor {
 				o << "\"" << garbage << "\"";
 			}
 			return o;
-		}		
+		}
 
 		std::ostream & parser::write_mutabor(std::ostream & o,
 						     const mutabor_writer_options & w) {

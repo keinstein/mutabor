@@ -80,7 +80,7 @@ namespace mutabor {
 				o << "!" << comment << std::endl;
 			switch (type) {
 			case interval::cent_value:
-				o << data.cents;
+				o << std::showpoint << data.cents;
 				break;
 			case interval::ratio:
 				o << data.f.numerator
@@ -90,7 +90,7 @@ namespace mutabor {
 			case interval::cent_ratio:
 				o << data.df.numerator
 				  << "/"
-				  << data.df.denominator;
+				  << std::showpoint << data.df.denominator;
 				break;
 			default:
 				o << "<unknown interval>";

@@ -935,7 +935,7 @@ ausloeser :
           MUTABOR_TOKEN_ELSE { get_ausloeser_default (box); }
         | harmoniebezeichner  { get_ausloeser_harmonie (box); }
         | MUTABOR_TOKEN_FORM harmoniebezeichner { get_ausloeser_harmonie_form (box); }
-| MUTABOR_TOKEN_KEY MUTABOR_TOKEN_IDENTIFIER { get_ausloeser_taste (box,$2); }
+	| MUTABOR_TOKEN_KEY MUTABOR_TOKEN_IDENTIFIER { get_ausloeser_taste (box,$2); }
         | MUTABOR_TOKEN_MIDI_IN '(' { init_integersequenz (box); }
               integersequenz ')'
                       { get_ausloeser_midi_in (box); }

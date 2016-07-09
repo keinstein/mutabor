@@ -39,13 +39,15 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
-#include "thread.h"
+#include "wx/thread.h"
+//#include "thread.h"
 #include "timing.h"
 
 #ifndef SRC_KERNEL_ROUTING_WATCHDOG_H_PRECOMPILED
 #define SRC_KERNEL_ROUTING_WATCHDOG_H_PRECOMPILED
 
 // system headers which do seldom change
+#include <wx/version.h>
 
 namespace mutabor {
 	/**

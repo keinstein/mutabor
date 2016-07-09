@@ -41,6 +41,7 @@
  * --------------------------------------------------------------------------- */
 
 #include "src/kernel/Defs.h"
+#include "src/kernel/routing/box_support.h"
 
 #ifndef SRC_PARSERS_SCALA_SCALA_H_PRECOMPILED
 #define SRC_PARSERS_SCALA_SCALA_H_PRECOMPILED
@@ -55,11 +56,11 @@ namespace mutabor {
 		class scale_parser;
 		class location;
 
-		
+
 		struct mutabor_writer_options {
 			std::string prefix; //< Interval prefix
-			std::string tone_prefix; 
-			std::string tonesystem_name; 
+			std::string tone_prefix;
+			std::string tonesystem_name;
 			std::string logic_name;
 		};
 
@@ -75,6 +76,11 @@ namespace mutabor {
 				return value == o.value &&
 					description == o.description &&
 					comment == o.comment;
+			}
+
+			scala_value & operator ++ () {
+				++value;
+				return *this;
 			}
 
 			std::ostream & print(std::ostream & o) const;
@@ -145,6 +151,15 @@ namespace mutabor {
 			interval_list intervals;
 			std::string garbage;
 			interval_pattern() {}
+
+			/// Create a scala interval pattern from a mutabor tone system
+			/** This a kind of a “copy contructor”.
+			 *
+			 * \param t The tone system from which the interval pattern is extracted.
+			 */
+			interval_pattern(const mutabor::box_support::tone_system & t,
+					 const std::string & n = _mut("Mutabor tuning"));
+
 			interval_pattern(const std::string & n,
 					 size_t c):name(n),count(c) {}
 			bool operator == (const interval_pattern & o) const {
@@ -163,6 +178,7 @@ namespace mutabor {
 
 		std::ostream & operator << (std::ostream & o,
 					    const interval_pattern & i);
+
 
 
 		struct key:public scala_value<int32_t> {
@@ -196,6 +212,13 @@ namespace mutabor {
 			key_list keys;
 			std::string garbage;
 			keymap() {}
+
+			/// Create a scala keyboard mapping from a mutabor tone system
+			/** This a kind of a “copy contructor”.
+			 *
+			 * \param t The tone system from which the keyboard mapping is extracted.
+			 */
+			keymap(const mutabor::box_support::tone_system & t);
 
 			/// create a default keymap with n tones
 			/** \param n number of tones to generate
@@ -238,6 +261,7 @@ namespace mutabor {
 
 		std::ostream & operator << (std::ostream & o,
 					    const keymap & i);
+
 		struct error_handler {
 			virtual ~error_handler() {}
 			virtual void error(const location & loc,
@@ -246,9 +270,18 @@ namespace mutabor {
 
 		class parser: public error_handler {
 		public:
+			/// Create a scala “parser” from a mutabor tone system
+			/** This a kind of a “copy contructor”. We are abusing the
+			 * scala parser container for writing scala files at the moment.
+			 *
+			 * \param t The tone system from which the interval pattern is extracted.
+			 */
+			parser(const mutabor::box_support::tone_system & t);
+
 			parser (const std::string & s,
 				const std::string & f): handler(this),
 							intervals(),
+							keys(),
 							lexer(NULL),
 							bison_parser(NULL)
 			{
@@ -281,6 +314,13 @@ namespace mutabor {
 
 			std::ostream & write_mutabor(std::ostream & o,
 						     const mutabor_writer_options & w);
+			std::ostream & write_scala(std::ostream & o) {
+				return o << intervals;
+			}
+
+			std::ostream & write_keymaps(std::ostream & o) {
+				return o << keys;
+			}
 		protected:
 			error_handler * handler;
 			interval_pattern intervals;
@@ -289,6 +329,14 @@ namespace mutabor {
 			scale_parser * bison_parser;
 			//			keymap_parser * key_parser;
 		};
+
+		/// Define the scala writer class
+		/** Due to lack of originality we can simply reuse the
+		 * parser class. But such things tend to change in the
+		 * future.  so we give the writer a unique name in
+		 * order to be somewhat upwards compatible.
+		 */
+		 typedef parser writer;
 	}
 }
 

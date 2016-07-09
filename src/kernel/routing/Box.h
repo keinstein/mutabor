@@ -44,12 +44,13 @@
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/treestorage.h"
-#include "src/kernel/routing/thread.h"
+//#include "src/kernel/routing/thread.h"
 #include "src/kernel/boost-interface.h"
-#include "src/kernel/routing/watchdog.h"
+//#include "src/kernel/routing/watchdog.h"
 #include "src/kernel/routing/Route.h"
 #include "src/kernel/Execute.h"
 #include "src/kernel/box.h"
+#include "src/kernel/routing/box_support.h"
 
 #ifndef ROUTING_BOX_H_PRECOMPILED
 #define ROUTING_BOX_H_PRECOMPILED
@@ -57,6 +58,7 @@
 // system headers which do seldom change
 //#include <boost/intrusive_ptr.hpp>
 #include <vector>
+#include <list>
 #include <algorithm>
 #include <sstream>
 #include <stdarg.h>
@@ -69,6 +71,7 @@ namespace mutaborGUI {
 }
 
 namespace mutabor {
+	template <class T> class watchdog;
 	namespace hidden {
 		extern "C" {
 			// struct mutabor_box_type;
@@ -475,37 +478,21 @@ namespace mutabor {
 		 */
 		logic_list GetLogics();
 
-		struct tone_entry {
-			double pitch;
-			enum {sounding, silent, invalid} flag;
-			tone_entry(double p):pitch(p),
-					     flag(sounding) {}
-			tone_entry():pitch(0.0),
-				     flag(silent) {}
-		};
-		typedef std::vector<tone_entry> tone_list;
-
-		struct tone_system {
-			int anchor;
-			double period;
-			tone_list tones;
-		};
-
-		tone_system GetToneSystem();
+		box_support::tone_system GetToneSystem();
 
 
-		struct current_tone_entry: public tone_entry {
+		struct current_tone_entry: public box_support::tone_entry {
 			int index;
 			size_t id;
 			int channel;
-			current_tone_entry():tone_entry(),
+			current_tone_entry():box_support::tone_entry(),
 					     index(-1),
 					     id(0),
 					     channel(-7) {}
 			current_tone_entry(int ind,
 					   double p,
 					   size_t i,
-					   int c):tone_entry(p),
+					   int c):box_support::tone_entry(p),
 						  index(ind),
 						  id (i),
 						  channel(c) {}

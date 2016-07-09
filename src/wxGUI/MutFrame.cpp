@@ -52,6 +52,8 @@
 #  include <wx/msw/regconf.h>
 #endif
 #include "wx/ffile.h"
+#include "wx/wfstream.h"
+#include "wx/stdstream.h"
 #include "src/wxGUI/GUIBoxData.h"
 #include "src/wxGUI/MutFrame.h"
 #include "src/wxGUI/MutDocument.h"
@@ -68,6 +70,7 @@
 #include "src/wxGUI/GUIBoxData.h"
 #include "src/wxGUI/Routing/DebugRoute.h"
 #include "src/wxGUI/ScalaGUI.h"
+#include "src/kernel/parsers/scala/scala-inlines.h"
 #include "src/kernel/routing/Route-inlines.h"
 
 #ifdef __BORLANDC__
@@ -715,6 +718,7 @@ namespace mutaborGUI {
 		if (!LogicOn) return;
 
 		wxFileName ScalaFile, KeymapFile;
+		bool haskeymap;
 		ScalaExportDialog * dialog = new ScalaExportDialog(this);
 
 		if (!dialog) return;
@@ -724,12 +728,57 @@ namespace mutaborGUI {
 				return;
 			}
 			ScalaFile = dialog -> GetScalaFile();
-			if (ScalaFile.IsFileWritable())
+			if (ScalaFile.IsOk() &&
+			    (ScalaFile.IsFileWritable() ||
+			     (ScalaFile.IsDirWritable() &&
+			      !ScalaFile.FileExists())
+			     )
+			    ) {
+				if ((haskeymap = dialog -> HasKeymap())) {
+					KeymapFile = dialog -> GetKeymapFile();
+					if (!(KeymapFile.IsOk() &&
+					     (KeymapFile.IsFileWritable() ||
+					      (KeymapFile.IsDirWritable() &&
+					       !KeymapFile.FileExists())
+					      )
+					     )
+					    ) {
+						int result = wxMessageBox(_("The keyboard mapping file is not writable.\n\
+ Shall I proceed without creating a keyboard mapping?"),
+									  _("Rethink your choice, please."),
+							     wxYES_NO | wxCANCEL, this);
+						switch (result) {
+						case wxID_YES:
+							haskeymap = false;
+							break;
+						case wxID_CANCEL:
+							dialog->Destroy();
+							return;
+						case wxID_NO:
+						default:
+							continue;
+						}
+					}
+				}
+
 				break;
-			wxGetApp().PrintError(mutabor::error,
-					      _("Cannot open the Scala file. This file must be writable."),
-					      this);
+			} else
+				 wxGetApp().PrintError(mutabor::error,
+						       _("Cannot open the Scala file. This file must be writable."),
+						       this);
 		}
+		mutabor::scala_parser::writer scala(GetCurrentBox()->GetToneSystem());
+		{
+			wxFileOutputStream scalaStream(ScalaFile.GetFullPath());
+			wxStdOutputStream out(scalaStream);
+			scala.write_scala(out);
+		}
+		if (haskeymap) {
+			wxFileOutputStream keymapStream(KeymapFile.GetFullPath());
+			wxStdOutputStream out(keymapStream);
+			scala.write_keymaps(out);
+		}
+
 	}
 
 	void MutFrame::CmDoActivate(wxCommandEvent& event)

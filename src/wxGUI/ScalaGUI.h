@@ -111,6 +111,9 @@ namespace mutaborGUI {
 			if (!ScalaFile) return wxFileName("");
 			return ScalaFile->GetFileName();
 		}
+		bool HasKeymap() {
+			return Genkeymap->GetValue();
+		}
 		wxFileName GetKeymapFile() {
 			if (!KeyMap) return wxFileName("");
 			return KeyMap->GetFileName();

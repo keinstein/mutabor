@@ -42,7 +42,7 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
-#include "src/kernel/routing/thread.h"
+//#include "src/kernel/routing/thread.h"
 // boost/intrusive_ptr.hpp can be included only after the refcounting is defined
 
 #ifndef SRC_KERNEL_BOOST_INTERFACE_H_PRECOMPILED

@@ -46,7 +46,7 @@
 #include "src/kernel/Interpre.h"
 #include "src/kernel/Hilfs.h"
 #include "src/kernel/Interval.h"
-
+#include "src/kernel/routing/watchdog.h"
 
 namespace mutabor {
 	using namespace hidden;
@@ -609,9 +609,9 @@ namespace mutabor {
 		return retval;
 	}
 
-	BoxClass::tone_system BoxClass::GetToneSystem () {
+	box_support::tone_system BoxClass::GetToneSystem () {
 		ScopedLock lock(mutex);
-		tone_system retval;
+		box_support::tone_system retval;
 		retval.anchor = 60;
 		retval.period = 1;
 		if (!box) return retval;
@@ -636,12 +636,12 @@ namespace mutabor {
 			case mutabor_empty_tone:
 				break;
 			case mutabor_invalid_tone:
-				retval.tones[i].flag = tone_entry::invalid;
+				retval.tones[i].flag = box_support::tone_entry::invalid;
 				break;
 			case mutabor_active_tone:
 			default:
 				retval.tones[i] =
-					tone_entry(mutabor_get_pitch_from_tone(t));
+					box_support::tone_entry(mutabor_get_pitch_from_tone(t));
 			}
 		}
 		return retval;
@@ -673,7 +673,7 @@ namespace mutabor {
 				retval[i].index = index;
 				break;
 			case mutabor_invalid_tone:
-				retval[i].flag=tone_entry::invalid;
+				retval[i].flag=box_support::tone_entry::invalid;
 				break;
 			default:
 				retval[i] = current_tone_entry(index,

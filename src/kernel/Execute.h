@@ -49,6 +49,7 @@
 
 /* system headers which do seldom change */
 #include <stdio.h>
+#include <stdarg.h>
 
 #ifdef __cplusplus
 namespace mutabor {
