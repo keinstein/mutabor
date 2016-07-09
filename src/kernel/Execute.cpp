@@ -1114,7 +1114,7 @@ Please, report this error to the MUTABOR team."),
 	{
 		for (struct keyboard_ereignis *help = event;
 		     help ; help=help->next) {
-			if ( toupper(key) == help->taste
+			if ( key == help->taste
 			     && (is_simple
 				 || is_logic == (help->the_logik_to_expand != NULL))) {
 				box->last_trigger.type        = any_trigger::key;
