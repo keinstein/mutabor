@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.0.2.  */
+/* A Bison parser, made by GNU Bison 3.0.4.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2013 Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_YY__MUTABOR_SRC_KERNEL_MUT_HH_INCLUDED
-# define YY_YY__MUTABOR_SRC_KERNEL_MUT_HH_INCLUDED
+#ifndef YY_YY_SRC_KERNEL_MUT_HH_INCLUDED
+# define YY_YY_SRC_KERNEL_MUT_HH_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -107,10 +107,10 @@ extern int yydebug;
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE YYSTYPE;
+
 union YYSTYPE
 {
-#line 91 "../../mutabor/src/kernel/mut.yy" /* yacc.c:1909  */
+#line 91 "../../../mutabor-git/src/kernel/mut.yy" /* yacc.c:1909  */
 
 			double      f_value;        /* floating point numbers */
 			int         integer;        /* integers */
@@ -118,8 +118,10 @@ union YYSTYPE
 			struct argument_list * arguments;  /* argument list */
 			struct parameter_list * parameters; /* parameter list */
 
-#line 122 "../../mutabor/src/kernel/mut.hh" /* yacc.c:1909  */
+#line 122 "src/kernel/mut.hh" /* yacc.c:1909  */
 };
+
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif
@@ -142,4 +144,4 @@ struct YYLTYPE
 
 int yyparse (mutabor_box_type * box);
 
-#endif /* !YY_YY__MUTABOR_SRC_KERNEL_MUT_HH_INCLUDED  */
+#endif /* !YY_YY_SRC_KERNEL_MUT_HH_INCLUDED  */
