@@ -71,7 +71,7 @@
 extern "C" {
 #include <stdlib.h>
 }
-//#include <cstdlib>
+/* #include <cstdlib> */
 #define _GLIBCXX_CSTDLIB 1
 namespace std {
 	using ::free;
