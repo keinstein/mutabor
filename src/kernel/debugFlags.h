@@ -51,6 +51,7 @@ DEBUGFLAG(smartptr,       N_("Debug smart pointer related functionality"))
 DEBUGFLAG(trace,          N_("Output some tracepoints"))
 DEBUGFLAG(timer,          N_("Trace thread timer problems"))
 DEBUGFLAG(thread,         N_("Trace thread problems"))
+DEBUGFLAG(window_positions, N_("Window positioning issues"))
 DEBUGFLAG(always,         N_("Show messages that are always shown ;-). (for internal use only)"))
 
 /* \} */

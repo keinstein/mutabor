@@ -209,8 +209,8 @@ namespace mutaborGUI {
 
 
 		virtual void DrawLines(wxGraphicsContext & dc,
-				       wxWindow * paintingWindow,
-				       const wxPoint & origin);
+				       wxWindow * paintingWindow/*,
+								  const wxPoint & origin*/);
 
 		virtual bool Detach( wxWindow *window );
 		virtual bool Detach( wxSizer *sizer )

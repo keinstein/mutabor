@@ -250,7 +250,7 @@ END_EVENT_TABLE()
 
 
 template<typename T>
-bool MutIconShapeClass<T>::Create (wxWindow * parent, wxWindowID id)
+bool MutIconShapeClass<T>::Create (wxWindow * parent, wxWindowID id, long style)
 {
 	TRACEC;
 	//    Enable(true);
@@ -261,20 +261,22 @@ bool MutIconShapeClass<T>::Create (wxWindow * parent, wxWindowID id)
 			      id,
 			      wxDefaultPosition,
 			      wxDefaultSize,
-			      wxBORDER_RAISED)) return false;
+			      style)) return false;
 
 	maxBorderSize = this->GetWindowBorderSize()/2;
-	this->SetWindowStyle(
-		(this->GetWindowStyle() & ~ wxBORDER_MASK)| wxBORDER_SUNKEN);
-	wxSize tmpBorderSize = this->GetWindowBorderSize()/2;
-	maxBorderSize.IncTo(tmpBorderSize);
+	if (style && (wxBORDER_RAISED | wxBORDER_SUNKEN)) {
+		this->SetWindowStyle(
+				     (this->GetWindowStyle() & ~ wxBORDER_MASK)| wxBORDER_SUNKEN);
+		wxSize tmpBorderSize = this->GetWindowBorderSize()/2;
+		maxBorderSize.IncTo(tmpBorderSize);
 
-	this->SetWindowStyle(
-		(this->GetWindowStyle() & ~ wxBORDER_MASK)| wxBORDER_NONE);
-	tmpBorderSize = this->GetWindowBorderSize()/2;
-	maxBorderSize.IncTo(tmpBorderSize);
-	maxBorderSize.IncTo(wxSize(0,0));
-	maxBorderSize.IncBy(wxSize(1,1));
+		this->SetWindowStyle(
+				     (this->GetWindowStyle() & ~ wxBORDER_MASK)| wxBORDER_NONE);
+		tmpBorderSize = this->GetWindowBorderSize()/2;
+		maxBorderSize.IncTo(tmpBorderSize);
+		maxBorderSize.IncTo(wxSize(0,0));
+		maxBorderSize.IncBy(wxSize(1,1));
+	}
 #if __WXGTK__
 	borderOffset = wxSize(0,0);
 #else
@@ -498,7 +500,7 @@ void MutIconShapeClass<T>::OnPaint( wxPaintEvent& WXUNUSED(event) )
 template<typename T>
 void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 {
-	wxRect size = this->GetRect();
+	wxRect size = this->GetClientSize();
 #if __WXMSW__
 	if (wxWindow::FindFocus() == this) {
 		// MSW doesn't allow to change the border
@@ -524,8 +526,22 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 
 	int y = borderOffset.y;
 	wxPoint center(size.width/2,y + GetIcon().GetHeight()/2);
+#ifdef DEBUG
+	if (isDebugFlag(window_positions)) {
+		wxRect r = this->GetScreenRect();
+		wxPoint o = this->GetClientAreaOrigin();
+		DEBUGLOG(window_positions,
+			 ("Origin: (%d,%d), ScreenRect: +(%d,%d),%dx%d"),
+			 o.x,
+			 o.y,
+			 r.x,
+			 r.y,
+			 r.width,
+			 r.height);
+	}
+#endif
 
-	
+
 	wxGraphicsContext * gc = NULL;
 	{
 		wxGCDC * d = dynamic_cast<wxGCDC *>(&dc);
@@ -546,8 +562,8 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 	if (!gc) {
 		gc = wxGraphicsContext::Create(this);
 	}
-			
-	else {
+
+	if (gc) {
 		wxPen pen(*wxBLACK,2);
 		gc->SetPen(pen);
 
@@ -563,7 +579,7 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 		DEBUGLOG (other, "Size: %dx%d" ,GetIcon().GetHeight(),
 			 GetIcon().GetWidth());
 		x = (size.width-GetIcon().GetWidth())/2;
-#if __WXMAC__ || __WXGTK__
+#if __WXMAC__
 		x -= maxBorderSize.x - borderOffset.x;
 #endif
 		dc.DrawIcon(GetIcon(), x, y);
@@ -574,16 +590,22 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 }
 
 template<typename T>
-wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &o, wxWindow * paintingWindow) const {
-//	wxPoint inner = ScreenToClient(i); unused
-	wxPoint myoffset = GetPositionInWindow(paintingWindow);
-	wxPoint outer = o - myoffset;
-	DEBUGLOG (routinggui, "outer (%d,%d) is in device (%d,%d)" ,o.x,o.y,outer.x,outer.y);
+wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &direction) const {
 	wxRect iconRect = this->GetIconRect();
 	DEBUGLOG (routinggui, "Icon rect: x=%d, y=%d, w=%d, h=%d" ,iconRect.x,iconRect.y,iconRect.width,iconRect.height);
 	wxPoint iconCenter(iconRect.x+iconRect.width/2,
 			   iconRect.y+iconRect.height/2);
 	DEBUGLOG (routinggui, "center = (%d,%d)" , iconCenter.x, iconCenter.y);
+	wxSize bordersize = (this->GetSize()-this->GetClientSize()).Scale(0.5,0.5);
+
+	wxPoint upperLeft = - this->GetClientAreaOrigin() - bordersize;
+	wxPoint lowerRight = upperLeft + this->GetSize();
+	wxPoint dir2 = direction + this->GetClientSize()/2;
+#if 0
+	//	wxPoint inner = ScreenToClient(i); unused
+	wxPoint myoffset = this->GetPositionInWindow(paintingWindow);
+	wxPoint outer = o - myoffset;
+	DEBUGLOG (routinggui, "outer (%d,%d) is in device (%d,%d)" ,o.x,o.y,outer.x,outer.y);
 /*
 	wxRect screenRect = this->GetScreenRect();
 	// transform Screen rect to upper left and
@@ -594,21 +616,23 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 	wxPoint upperLeft(screenRect.x,screenRect.y);
 	wxPoint lowerRight(screenRect.x+screenRect.width,screenRect.y+screenRect.height);
 	DEBUGLOG (routinggui, "Rectangle: (%d,%d) -- (%d,%d)" ,upperLeft.x, upperLeft.y, lowerRight.x, lowerRight.y);
+#endif
 
 	wxPoint perimeterpoint(0,0);
-	if (lowerRight.x <= outer.x) {
+	if (lowerRight.x <= dir2.x) {
 		perimeterpoint.x = lowerRight.x;
 		perimeterpoint.y = iconCenter.y;
-	} else if (outer.x <= upperLeft.x) {
+	} else if (dir2.x <= upperLeft.x) {
 		perimeterpoint.x = upperLeft.x;
 		perimeterpoint.y = iconCenter.y;
-	} else if (outer.y <= upperLeft.y) {
+	} else if (dir2.y <= upperLeft.y) {
 		perimeterpoint.x = iconCenter.x;
 		perimeterpoint.y = upperLeft.y;
-	} else if (lowerRight.y <= outer.y) {
+	} else if (lowerRight.y <= dir2.y) {
 		perimeterpoint.x = iconCenter.x;
 		perimeterpoint.y = lowerRight.y;
 	} else {
+		/* inside our area */
 		perimeterpoint = iconCenter;
 	}
 
@@ -618,13 +642,17 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 	if (pos == usedperimeterpoints.end())
 		usedperimeterpoints.push_back(perimeterpoint);
 
+	return perimeterpoint;
+
+
+#if 0
 	wxPoint retval = perimeterpoint + myoffset;
 
 	DEBUGLOG (routinggui, "perimeter point (%d,%d), returning (%d,%d)" ,
 		 perimeterpoint.x,perimeterpoint.y,retval.x,retval.y);
 
 	return retval;
-
+#endif
 
 #if 0
 	wxRect r = this->GetRect();
@@ -679,6 +707,7 @@ void MutIconShapeClass<T>::DrawPerimeterPoint(wxGraphicsContext & gc,
 					      const wxPoint & center,
 					      wxPoint p) const
 {
+	DEBUGLOG(window_positions,"DrawPerimeterPoint (%d,%d)",p.x,p.y);
 	wxGraphicsPath path = gc.CreatePath();
 	path.MoveToPoint(center);
 	path.AddLineToPoint(p);
@@ -691,13 +720,108 @@ template<typename T>
 wxPoint MutIconShapeClass<T>::GetPositionInWindow(const wxWindow * win) const {
 	wxPoint p(0,0);
 	const wxWindow * tmp = this;
+	DEBUGLOG(window_positions,
+		 ("============================================"));
 	while (tmp && tmp != win) {
-		p += tmp->GetPosition();
+#if 0
+		p += tmp->GetClientAreaOrigin();
 		wxSize border = (tmp->GetSize() - tmp->GetClientSize());
 		p += border.Scale(0.5,0.5);
+#endif
+		p += tmp->GetPosition();
+		p += tmp->ClientToWindowSize(wxSize(0,0)).Scale(0.5,0.5);
+
+
+#ifdef DEBUG
+		if (isDebugFlag(window_positions)) {
+			wxRect r = tmp->GetScreenRect();
+			wxPoint o = tmp->GetClientAreaOrigin();
+			wxSize b = tmp->GetWindowBorderSize();
+			DEBUGLOG(window_positions,
+				 ("Origin: (%d,%d), p: (%d,%d), border: (%d,%d)"),
+				 o.x,
+				 o.y,
+				 p.x,
+				 p.y,
+				 b.GetWidth(),
+				 b.GetHeight());
+			DEBUGLOG(window_positions,
+				 "Screen Rect: +(%d,%d),%dx%d",
+				 r.x,
+				 r.y,
+				 r.width,
+				 r.height);
+			r = tmp->GetClientRect();
+			DEBUGLOG(window_positions,
+				 "Client Rect: +(%d,%d),%dx%d",
+				 r.x,
+				 r.y,
+				 r.width,
+				 r.height);
+			r = tmp->GetRect();
+			DEBUGLOG(window_positions,
+				 "Window Rect: +(%d,%d),%dx%d",
+				 r.x,
+				 r.y,
+				 r.width,
+				 r.height);
+			b = tmp->ClientToWindowSize(wxSize(0,0));
+			DEBUGLOG(window_positions,
+				 "Delta Size: +(%d,%d)",
+				 b.GetWidth(),
+				 b.GetHeight());
+		DEBUGLOG(window_positions,
+				 ("--------------------------------------------"));
+		}
+#endif
+
 
 		tmp = tmp->GetParent();
 	}
+
+#ifdef DEBUG
+		if (isDebugFlag(window_positions)) {
+			wxRect r = tmp->GetScreenRect();
+			wxPoint o = tmp->GetClientAreaOrigin();
+			wxSize b = tmp->GetWindowBorderSize();
+			DEBUGLOG(window_positions,
+				 ("Origin: (%d,%d), p: (%d,%d), border: (%d,%d)"),
+				 o.x,
+				 o.y,
+				 p.x,
+				 p.y,
+				 b.GetWidth(),
+				 b.GetHeight());
+			DEBUGLOG(window_positions,
+				 "Screen Rect: +(%d,%d),%dx%d",
+				 r.x,
+				 r.y,
+				 r.width,
+				 r.height);
+			r = tmp->GetClientRect();
+			DEBUGLOG(window_positions,
+				 "Client Rect: +(%d,%d),%dx%d",
+				 r.x,
+				 r.y,
+				 r.width,
+				 r.height);
+			r = tmp->GetRect();
+			DEBUGLOG(window_positions,
+				 "Window Rect: +(%d,%d),%dx%d",
+				 r.x,
+				 r.y,
+				 r.width,
+				 r.height);
+			b = tmp->ClientToWindowSize(wxSize(0,0));
+			DEBUGLOG(window_positions,
+				 "Delta Size: +(%d,%d)",
+				 b.GetWidth(),
+				 b.GetHeight());
+		DEBUGLOG(window_positions,
+				 ("============================================"));
+		}
+#endif
+
 	return tmp ? p:wxPoint(0,0);
 }
 
@@ -710,7 +834,7 @@ bool MutIconShapeClass<T>::Recompute()
 
 template<typename T>
 bool MutIconShapeClass<T>::Layout() {
-	//ClearPerimeterPoints();
+	ClearPerimeterPoints();
 	wxRect rect = this->GetClientRect();
 	int w = rect.width, h = rect.height,
 		y = Icon.GetHeight() +	borderOffset.y;

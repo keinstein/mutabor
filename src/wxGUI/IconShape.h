@@ -88,7 +88,9 @@ public:
 		Create(parent, id);
 	}
 
-	bool Create (wxWindow * parent, wxWindowID id = wxID_ANY);
+	bool Create (wxWindow * parent,
+		     wxWindowID id = wxID_ANY,
+		     long style = wxBORDER_RAISED);
 
 	virtual ~MutIconShapeClass() {}
 
@@ -129,9 +131,7 @@ public:
 	void         OnPaint (wxPaintEvent &event ) ;
 	void OnMove(wxMoveEvent &event);
 	virtual void OnDraw (wxDC & dc);
-	virtual wxPoint GetPerimeterPoint( const wxPoint &i,
-					   const wxPoint &o,
-					   wxWindow * paintingWindow ) const;
+	virtual wxPoint GetPerimeterPoint( const wxPoint &direction) const;
 	virtual void DrawPerimeterPoint(wxGraphicsContext & gc,
 					const wxPoint & center,
 					wxPoint p) const;
@@ -178,8 +178,11 @@ public:
 		this->Destroy();
 	}
 
-	void ClearPerimeterPoints() {
+	virtual void ClearPerimeterPoints() {
 		usedperimeterpoints.clear();
+		wxWindow * parent = this->GetParent();
+		if (parent) parent -> Refresh();
+		DEBUGLOG(window_positions,"cleared");
 	}
 private:
 	DECLARE_DYNAMIC_CLASS_NO_COPY(MutIconShapeClass)
