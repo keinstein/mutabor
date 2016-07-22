@@ -1,13 +1,45 @@
 #       -*- Makefile-automake -*-
-top_docdir = $(srcdir)/$(rel_docdir)
+top_docdir = $(srcdir)/%D%
 macdocdir = $(top_builddir)/Mutabor.app/Contents/Resources
 override pkgdatadir:=$(pkgdatadir)/$(DOCLOCALE)
 override docdir:=$(docdir)/$(DOCLOCALE)
 installidirs=$(docdir)
 #pkgdatadir := $(localpkgdatadir)
+COMMON_TEXDEPS = \
+	%D%/addbookm.png \
+	%D%/back.png \
+	%D%/delbookm.png \
+	%D%/dir_up.png \
+	%D%/down.png \
+	%D%/tsemlines.sty \
+	%D%/fixhhp.cpp \
+	%D%/forward.png \
+	%D%/helptoolbar.png \
+	%D%/htmbook.png \
+	%D%/htmfoldr.png \
+	%D%/htmldecode.cpp \
+	%D%/htmoptns.png \
+	%D%/htmpage.png \
+	%D%/htmsidep.png \
+	%D%/Mutabor-Logo.png \
+	%D%/keystroke.4ht \
+	%D%/Makefile.am \
+	%D%/Makefile.cmn \
+	%D%/Makefile.in \
+	%D%/mkhtml \
+	%D%/mutabor.cfg \
+	%D%/preamble.tex \
+	%D%/htmlpreamble.tex \
+	%D%/mutaborlst.tex \
+	%D%/print.png \
+	%D%/toparent.png \
+	%D%/up.png \
+	%D%/wxdin.ist \
+	%D%/xr-hyper.4ht
+
 
 .PHONY: mac copymac install-data-mutabor zipfile
-.tex.pdf: $(TEX_DEPS)
+.tex.pdf:
 	rm *.out *.aux *.ind; \
 	for i in 0 1 2 ; \
 	do \
@@ -26,13 +58,14 @@ installidirs=$(docdir)
 		fi ; \
 	fi
 
-$(PDFFILES): $(TEXSOURCES) $(top_docdir)/preamble.tex
+$(PDFFILES): $(TEXSOURCES) $(TEX_DEPS) $(COMMON_TEXDEPS)
 
 html-local: $(srcdir)/$(ZIPFILE)
 $(srcdir)/$(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
 			$(top_docdir)/preamble.tex \
 			$(top_docdir)/htmlpreamble.tex \
-			$(TEX_DEPS)
+			$(TEX_DEPS) \
+			$(COMMON_TEXDEPS)
 	$(MAKE) -C '$(rel_docdir)' htmldecode$(EXEEXT) fixhhp$(EXEEXT)
 	TEXINPUTS=".:$(srcdir):$(top_docdir):$$TEXINPUTS" \
 	htmldecode='$(rel_docdir)/htmldecode' \
