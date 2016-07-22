@@ -742,7 +742,23 @@ void MutRouteWnd::OnDraw(wxDC& dc)
 
 	if (!gc) return;
 
+#if 0
 	wxPoint origin(dc.DeviceToLogicalX(0), dc.DeviceToLogicalY(0));
+#endif
+#ifdef DEBUG
+	if (isDebugFlag(window_positions)) {
+		wxRect r = GetScreenRect();
+		wxPoint o = GetClientAreaOrigin();
+		DEBUGLOG(window_positions,
+			 ("Origin: (%d,%d), ScreenRect: +(%d,%d),%dx%d"),
+			 o.x,
+			 o.y,
+			 r.x,
+			 r.y,
+			 r.width,
+			 r.height);
+	}
+#endif
 
         wxSizerItemList & list = BoxSizer->GetChildren();
         for (wxSizerItemList::const_iterator i = list.begin(); i != list.end(); i++) {
@@ -750,7 +766,11 @@ void MutRouteWnd::OnDraw(wxDC& dc)
 		mutASSERT(dynamic_cast<MutBoxShape *> ((*i)->GetWindow()));
 		DEBUGLOG (routinggui, "Redrawing box %p" ,box);
 		if (box)
-			box->DrawLines(*gc,this, origin);
+			box->DrawLines(*gc,this
+#if 0
+				       ,origin
+#endif
+				       );
         }
 	delete gc;
 }

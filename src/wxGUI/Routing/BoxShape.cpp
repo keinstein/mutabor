@@ -260,8 +260,9 @@ namespace mutaborGUI {
 
 
 	void MutBoxShape::DrawLines(wxGraphicsContext & gc,
-				    wxWindow * paintingWindow,
-				    const wxPoint & origin)
+				    wxWindow * paintingWindow /*,
+								const wxPoint & origin*/
+				    )
 	{
 		mutASSERT(paintingWindow);
 #if 0
@@ -302,7 +303,7 @@ namespace mutaborGUI {
 				mutASSERT(dynamic_cast<
 					  MutBoxChannelShape *
 					  >((*i)->GetWindow()));
-				channel->DrawLines(gc, paintingWindow, origin);
+				channel->DrawLines(gc, paintingWindow/* , origin */);
 #if 0
 				wxPoint pos = GetPosition();
 #if __WXMAC__

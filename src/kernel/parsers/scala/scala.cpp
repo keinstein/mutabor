@@ -76,7 +76,7 @@ namespace mutabor {
 			if (current != t.tones.end()) {
 
 				intervals.reserve(t.tones.size()
-						  - (current - t.tones.begin()+1));
+						  - (current - t.tones.begin())+1);
 
 				double reference = current -> pitch;
 				for(++current; current != t.tones.end(); ++current) {

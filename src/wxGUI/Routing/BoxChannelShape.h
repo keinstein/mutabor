@@ -86,6 +86,7 @@ namespace mutaborGUI {
 		{
 			// to satisfy attatch route mus be NULL for now
 			Create (p, id, r);
+			//			maxBorderSize = wxSize();
 			//				borderOffset = maxBorderSize;
 		}
 
@@ -111,7 +112,8 @@ namespace mutaborGUI {
 		    \retval true if everything is ok
 		    \retval false if an error has occured
 		*/
-		bool Create (wxWindow * p = NULL, wxWindowID id = wxID_ANY,
+		bool Create (wxWindow * p = NULL,
+			     wxWindowID id = wxID_ANY,
 			     mutabor::Route r=NULL);
 
 		/*****************************************/
@@ -284,15 +286,24 @@ namespace mutaborGUI {
 		virtual void ReadPanel(RoutePanel * panel);
 
 		virtual void DrawLines(wxGraphicsContext & dc,
-				       wxWindow * paintingWindow,
-				       const wxPoint & origin) const;
-		virtual wxPoint GetPerimeterPoint(const wxPoint &i,
-						  const wxPoint &o,
-						  wxWindow * paintingWindow) const;
+				       wxWindow * paintingWindow /*,
+								   const wxPoint & origin*/) const;
+		virtual wxPoint GetPerimeterPoint(const wxPoint &direction) const;
 		virtual void DrawPerimeterPoint(wxGraphicsContext & dc,
 						const wxPoint & center,
 						wxPoint p) const;
 		virtual void Refresh(bool eraseBackground = true, const wxRect* rect = NULL);
+
+		virtual void ClearPerimeterPoints() {
+			usedperimeterpoints.clear();
+			wxWindow * parent = GetParent();
+			if (parent) {
+				parent = parent -> GetParent();
+				parent -> Refresh();
+			}
+			DEBUGLOG(window_positions,"cleared");
+		}
+
 		/// Detaches the channel from a box shape.
 		/**
 		 * This function detaches a channel from its containing Box. The shape is not deteted.
