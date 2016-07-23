@@ -53,40 +53,41 @@
    \ifx\hyperrefLabel\:UnDef #3\else \hyperrefLabel\fi \b:xr}
 \NewConfigure{xr}{2}
 \Configure{xr}{\Link}{\EndLink}
-\def\XR:rEfLiNK#1#2{{\xr:rEfLiNK#1}{\xr:rEfLiNK#2}}
+\def\XR:rEfLiNk@true#1\XR:ts@rEfLiNK:End#2\XR:ts@rEfLiNK:End{%
+  {\xr:rEfLiNK#2}%
+}
+\def\XR:rEfLiNk@false#1\XR:ts@rEfLiNK:End#2\XR:ts@rEfLiNK:End{%
+  {#2}%
+}
+\def\XR:rEfLiNk#1{%
+  \ifx#1\rEfLiNK
+  \expandafter\XR:rEfLiNk@true
+  \else
+  \expandafter\XR:rEfLiNk@false
+  \fi
+}
+\def\XR:ts@rEfLiNK:End{\PackageError{xr-hyper}{End found}{}}
+\def\XR:rEfLiNK#1{%
+  \ifx\XR:ts@rEfLiNK:End#1\relax
+  \else
+    \XR:rEfLiNk#1\empty\XR:ts@rEfLiNK:End#1\XR:ts@rEfLiNK:End
+    \expandafter\XR:rEfLiNK
+  \fi
+}
 \def\xr:rEfLiNK#1#2{\noexpand\XRrEfLiNK[\Get:HFile#2-]{#2}}
 \def\Get:HFile#1-#2-{\:LikeRef{)F\:gobble #1F-}}
-
-\def\protected:autoref{\protect\:autoref}
-
-\iffalse
 \long\def\XR@test#1#2#3#4\XR@{%
+%  \tracingall
   \ifx#1\newlabel
-     \expandafter\xdef\csname r@\XR@prefix#2\endcsname{\XR:rEfLiNK #3}%
+     \expandafter\xdef\csname r@\XR@prefix#2\endcsname{%
+       \show\let
+       \XR:rEfLiNK #3\XR:ts@rEfLiNK:End}%
 %
   \else\ifx#1\@input
      \edef\XR@list{\XR@list#2\relax}%
   \fi\fi
   \ifeof\@inputcheck\expandafter\XR@aux
   \else\expandafter\XR@read\fi}
-\fi
-
-\let\XR:test\XR@test
-\long\def\XR@test{%
-  \let\:autoref\protected:autoref
-  \XR:test%
-}
-
-%\def\XR:placeholder{XR:placeholder}
-\def\XR@addURL#1{\XR@@dURL#1\XR:placeholder{}{}{}\\}
-
-\def\XR@@dURL#1#2#3#4#5\\{%
-  {\xr:rEfLiNK#1}{\xr:rEfLiNK#2}%
-  \ifx#3\XR:placeholder\relax%
-  \else
-    {\xr:rEfLiNK#3}{#4}{\XR@URL}%
-  \fi
-}
 
 \Hinput{xr}
 \endinput

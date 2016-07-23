@@ -63,6 +63,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{babel}
+\usepackage{etoolbox}
 % Some mathematics
 \usepackage{amsmath}
 % Exteren Referenzen und Hyperref laden. 
@@ -216,6 +217,7 @@
 % so dass man sie nicht wirklich neu parsen muss.
 \newcommand\ts@reflink[2]{%
 \begingroup%\tracingall
+%\@gobbletwo{#1}{#2}%
   \def\ts@tmp{{\@safe@activesfalse #2}}%
   \@ifundefined{r@#1}{%
     \textcolor{red}{%
@@ -296,7 +298,7 @@
 %
 % Der Name unseres Programmes
 %
-\newcommand\mutabor[1][]{\texorpdfstring{\textsc{Mutabor#1}}{MUTABOR#1}}
+\newrobustcmd\mutabor[1][]{\texorpdfstring{\textsc{Mutabor#1}}{MUTABOR#1}}
 %
 % Vorbereitung zur Verwendung des Pakets keystroke. Damit werden
 % Tasten als Piktogramme angezeigt.
@@ -330,6 +332,7 @@
 \newcommand\translate[1]{\textcolor{red}{#1}}
 \newcommand\textat{@}
 \newcommand\textapostrophe{'}
+
 
 % define some names:
 \AtBeginDocument{%

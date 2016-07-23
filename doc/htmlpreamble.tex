@@ -4,7 +4,9 @@
 mutabor,
 % Es folgt das Hauptformat: hier xhtml
             html,
-            utf-8,
+%            UTF-8,
+            html32,
+            uni-html4,
 % CSS2 verwenden
 %            css2,
 % in der Log-Datei Informationen zur Konfiguration von tex4ht ausgeben
@@ -21,7 +23,7 @@ mutabor,
             index=2,
             Gin-dim+,
 % HTML-Zeichensatz: UTF-8
-            charset=utf-8,
+            charset=UTF-8,
             hyperref,
             NoFonts,
 %            fonts+
@@ -39,6 +41,7 @@ mutabor,
 % \relax #1\relax \NOHREF: {#2}\else \HREF: "\get:hfile {#1}\:sharp #1"\fi \if \
 %relax #2\relax \else \space \NAME: "#2"\fi \:attr \empty:lnk >}.
 %<insert>    \show\:::HRefTag
+%
 
 \expandafter\def\expandafter\mut@sharp\expandafter{\csname :sharp\endcsname}
 
@@ -264,6 +267,7 @@ Charset=UTF-8^^J}%
     \HCode{<ul>^^J}%
     \loadwxindex 
 %    \catcode`\#11
+    \makeatletter
     \InputIfFileExists{\jobname.4ct}{}{}%
     \HCode{</ul>^^J}%
     \EndFileStream{\jobname.hhk}%
@@ -298,11 +302,13 @@ Charset=UTF-8^^J}%
     \FileStream+{\jobname.hhc}%
     \HCode{<ul>^^J}%
 %    \catcode`\#11
+    \makeatletter
     \InputIfFileExists{\jobname.4ct}{}{}%
     \HCode{</ul>^^J}%
     \EndFileStream{\jobname.hhc}%
   }%
   \relax
 }
+
 \endinput
 
