@@ -2,7 +2,7 @@
 
 /** \file
 ********************************************************************
-* Routing. Mutoabor Core.
+* Copy on write container
 *
 * \author Tobias Schlemmer <keinstein@users.sourceforge.net>
 * \license GPL
