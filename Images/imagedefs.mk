@@ -56,8 +56,6 @@ iconuninstallfromdir = { \
          $(am__cd) "$$dir" && rm -f $$files; }; \
   }
 
-CLEANFILES =
-
 
 all-local: icons
 install-data-local: install-icons
@@ -65,24 +63,30 @@ install-data-local: install-icons
 uninstall-local: uninstall-icons
 #icons: $(ICONDATA)
 
+EXTRA_DIST = $(PNGSIZEICONDIR)/Makefile.inkscape
 if COND_INKSCAPE
-CLEANFILES += Makefile.dep
-Makefile.dep: Makefile
+$(PNGSIZEICONDIR)/Makefile.inkscape: $(PNGSIZEICONDIR)/Makefile.in
 	@echo PNG icons: $(PNGICONS)
 	@echo icon data: $(ICONDATA)
-	@echo '# -*- Makefile -*-' > "$@"
+	@echo "$(PNGSIZEICONDIR)"
+	@echo "making file $@"
+	@echo '# -*- Makefile -*-' > "Makefile.tmp"
 	@for d in `echo $(PNGICONS:.png=)|tr ' ' '\n' |sort -u`; \
 	do \
-		( echo -e "icons: $(PNGSIZEICONDIR)/@DST@" ; \
-		echo -e "$(PNGSIZEICONDIR)/@DST@: $@" ; \
-		echo -e "$(PNGSIZEICONDIR)/@DST@: $(SVGICONDIR)/@SRC@\n\t\$$(INKSCAPE) -e \"\$$@\" -w $(XSIZE) -h $(YSIZE) \"\$$<\"" ) | \
+		( echo -e "icons: @DST@" ; \
+		echo -e "#@DST@: Makefile.inkscape" ; \
+		echo -e "@DST@: ../../svg/@SRC@\n\t\$$(INKSCAPE) -e \"\$$@\" -w $(XSIZE) -h $(YSIZE) \"\$$<\"" ) | \
 		sed \
 -e 's&@DST@&'"$$d.png"'&g' \
 -e 's&@DSTDIR@&$(PNGSIZEICONDIR)&g' \
 -e 's&@SRC@&'"$$d.svg"'&g' \
-		  >> "$@" ; \
+		  >> "Makefile.tmp" ; \
 	done
+	cmp "Makefile.tmp" "$@" >/dev/null || cp "Makefile.tmp" "$@"
 #< $(top_srcdir)/Images/depfilerule.prototype
+
+icons: $(PNGSIZEICONDIR)/Makefile.inkscape
+	$(MAKE) $(AM_MAKEFLAGS) -C  $(PNGSIZEICONDIR) -f Makefile.inkscape icons
 else
 icons:
 endif
@@ -108,5 +112,4 @@ uninstall-icons:
 	cd '$(DESTDIR)$(icondatadir)' && rm -rf $(PNGICONS)
 
 
--include Makefile.dep
 
