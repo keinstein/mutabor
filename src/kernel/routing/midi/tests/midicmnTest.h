@@ -85,7 +85,9 @@ public:
 	void do_AddTime(mutabor::frac time) {}
 	int GetMaxChannel() const { return 15; }
 	int GetMinChannel() const { return 0; }
-	bool Check(std::string s,int line = -1, std::string filename = (__FILE__)) {
+	bool Check(const std::string & s,
+		   int line = -1,
+		   const std::string & filename = (__FILE__)) {
 		bool retval = (s == (std::string)Out);
 		if (!retval) {
 			DEBUGLOG (always, "Check failed:\n%s:%d:" ,filename.c_str(),line);
@@ -96,6 +98,9 @@ public:
 //		retval = true;
 		return retval;
 	}
+	bool unsortedCheck(const std::string & s,
+			   int line = -1,
+			   const std::string & filename = (__FILE__));
 };
 
 class CommonMidiOutputTest : public CPPUNIT_NS::TestFixture

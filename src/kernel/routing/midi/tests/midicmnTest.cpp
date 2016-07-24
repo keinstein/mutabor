@@ -25,6 +25,8 @@
  * \addtogroup route
  * \{
  ********************************************************************/
+#include <sstream>
+#include <set>
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/midi/tests/midicmnTest.h"
 #include "src/kernel/routing/midi/midicmn-inlines.h"
@@ -33,9 +35,59 @@
 
 template class mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider,mutabor::OutputDeviceClass>;
 
-  
-void CommonMidiOutputTest::setUp() 
-{ 
+
+bool midicmnOutputDevice::unsortedCheck(const std::string & s,
+					int line,
+					const std::string & filename)
+{
+	std::multiset<std::string> left, right;
+	std::stringstream str;
+	std::string cmd;
+	str.str(s);
+	while (getline(str, cmd)) {
+		left.insert(cmd);
+	}
+
+	cmd = Out;
+	str.str(cmd);
+	str.clear();
+	str.seekg(0);
+	while (getline(str, cmd)) {
+		right.insert(cmd);
+	}
+
+	bool retval = (left == right);
+	if (!retval) {
+		DEBUGLOG (always, "Check failed:\n%s:%d:" ,filename.c_str(),line);
+		str.str("");
+		std::multiset<std::string>::iterator
+			lit = left.begin(),
+			rit = right.begin();
+		while (lit != left.end() && rit != right.end()) {
+			if (lit == left.end()) {
+				str << "-" << *(rit++) << std::endl;
+			} else if (rit == right.end()) {
+				str << "+" << *(lit++) << std::endl;
+			} else if (*lit < *rit) {
+				str << "+" << *(lit++) << std::endl;
+			} else if (*rit < *lit) {
+				str << "-" << *(rit++) << std::endl;
+			} else {
+				str << " " << *(lit++) << std::endl;
+				rit++;
+			}
+		}
+
+		DEBUGLOG (always, "Diff:\n%s" ,str.str().c_str());
+	}
+	Out.ClearData();
+	//		retval = true;
+	return retval;
+}
+
+
+void CommonMidiOutputTest::setUp()
+{
 // change DEBUGA to DEBUG in case you need the debug output
 #ifdef DEBUG
 //	debugFlags::flags.timer = true;
@@ -60,7 +112,7 @@ void CommonMidiOutputTest::setUp()
 }
 
 void CommonMidiOutputTest::tearDown()
-{ 
+{
 	guard->Destroy();
 	route->Destroy();
 	out = NULL;
@@ -295,7 +347,7 @@ void CommonMidiOutputTest::testNoteOnOff()
 
 	out->NoteOff(box,63,55,route.get(),0,false);
 	CPPUNIT_ASSERT( out->Check((" 15: 8f 3f 37\n"), __LINE__, (__FILE__)) );
-	// check sending note on with velocity = 0 
+	// check sending note on with velocity = 0
 	out->NoteOff(box,56,53,route.get(),0,true);
 	CPPUNIT_ASSERT( out->Check((" 13: 9d 38 00\n"), __LINE__, (__FILE__)) );
 	out->NoteOff(box,60,54,route.get(),0,false);
@@ -541,8 +593,8 @@ void CommonMidiOutputTest::testMoreNotesThanChannels()
 }
 
 
-void CommonMidiInputTest::setUp() 
-{ 
+void CommonMidiInputTest::setUp()
+{
 // change DEBUGA to DEBUG in case you need the debug input
 #ifdef DEBUG
 //	mutabor::mutabor_debug_flags.timer = true;
@@ -573,7 +625,7 @@ void CommonMidiInputTest::setUp()
 }
 
 void CommonMidiInputTest::tearDown()
-{ 
+{
 
 	if (in) {
 		in->Destroy();
@@ -809,7 +861,7 @@ void CommonMidiInputTest::testPanic()
 
 	in->NoteOff(0,63,55);
 	CPPUNIT_ASSERT( out->Check((" 15: 8f 3f 37\n"), __LINE__, (__FILE__) ) );
-	// check sending note on with velocity = 0 
+	// check sending note on with velocity = 0
 	in->NoteOff(0,56,53);
 	CPPUNIT_ASSERT( out->Check((" 13: 8d 38 35\n"), __LINE__, (__FILE__) ) );
 	in->NoteOff(0,60,54);
@@ -895,7 +947,7 @@ void CommonMidiInputTest::testPanic()
 	CPPUNIT_ASSERT( out->Check(("  0: 80 3f 37\n"), __LINE__, (__FILE__) ) );
 
 	in->Panic(mutabor::midi::DEFAULT_PANIC);
-	CPPUNIT_ASSERT( out->Check(("\
+	CPPUNIT_ASSERT( out->unsortedCheck(("\
   2: b2 40 00\n\
   3: b3 40 00\n\
   4: b4 40 00\n\
@@ -956,8 +1008,8 @@ void CommonMidiInputTest::testPanic()
  13: 8d 3c 61\n\
  11: 8b 38 60\n\
  15: 8f 38 60\n\
-"), 
-				   __LINE__, 
+"),
+				   __LINE__,
 				   (__FILE__) ) );
 
 	in->NoteOff(0,56,53);
@@ -983,7 +1035,7 @@ void CommonMidiInputTest::testPanic()
 
 	in->NoteOff(0,63,55);
 	CPPUNIT_ASSERT( out->Check((""), __LINE__, (__FILE__) ) );
-	// check sending note on with velocity = 0 
+	// check sending note on with velocity = 0
 	in->NoteOff(0,56,53);
 	CPPUNIT_ASSERT( out->Check((""), __LINE__, (__FILE__) ) );
 	in->NoteOff(0,60,54);
@@ -1215,7 +1267,7 @@ void CommonMidiInputTest::testGlobalPanic()
 
 	in->NoteOff(0,63,55);
 	CPPUNIT_ASSERT( out->Check((" 15: 8f 3f 37\n"), __LINE__, (__FILE__) ) );
-	// check sending note on with velocity = 0 
+	// check sending note on with velocity = 0
 	in->NoteOff(0,56,53);
 	CPPUNIT_ASSERT( out->Check((" 13: 8d 38 35\n"), __LINE__, (__FILE__) ) );
 	in->NoteOff(0,60,54);
@@ -1301,7 +1353,7 @@ void CommonMidiInputTest::testGlobalPanic()
 	CPPUNIT_ASSERT( out->Check(("  0: 80 3f 37\n"), __LINE__, (__FILE__) ) );
 
 	mutabor::Panic(mutabor::midi::DEFAULT_PANIC);
-	CPPUNIT_ASSERT( out->Check(("\
+	CPPUNIT_ASSERT( out->unsortedCheck(("\
   2: b2 40 00\n\
   3: b3 40 00\n\
   4: b4 40 00\n\
@@ -1377,8 +1429,8 @@ void CommonMidiInputTest::testGlobalPanic()
  12: bc 78 00\n\
  13: bd 78 00\n\
  14: be 78 00\n\
-"), 
-				   __LINE__, 
+"),
+				   __LINE__,
 				   (__FILE__) ) );
 
 	in->NoteOff(0,56,53);
@@ -1404,7 +1456,7 @@ void CommonMidiInputTest::testGlobalPanic()
 
 	in->NoteOff(0,63,55);
 	CPPUNIT_ASSERT( out->Check((""), __LINE__, (__FILE__) ) );
-	// check sending note on with velocity = 0 
+	// check sending note on with velocity = 0
 	in->NoteOff(0,56,53);
 	CPPUNIT_ASSERT( out->Check((""), __LINE__, (__FILE__) ) );
 	in->NoteOff(0,60,54);
