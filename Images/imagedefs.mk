@@ -63,8 +63,11 @@ install-data-local: install-icons
 uninstall-local: uninstall-icons
 #icons: $(ICONDATA)
 
+CLEANFILES = 
+
 EXTRA_DIST = $(PNGSIZEICONDIR)/Makefile.inkscape
 if COND_INKSCAPE
+CLEANFILES += Makefile.tmp
 $(PNGSIZEICONDIR)/Makefile.inkscape: $(PNGSIZEICONDIR)/Makefile.in
 	@echo PNG icons: $(PNGICONS)
 	@echo icon data: $(ICONDATA)
