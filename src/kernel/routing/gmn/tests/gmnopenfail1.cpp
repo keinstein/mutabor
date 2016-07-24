@@ -39,6 +39,7 @@
 #include "src/kernel/routing/CommonFileDevice-inlines.h"
 #include "src/kernel/routing/timing.h"
 #include <cstdlib>
+#include <iostream>
 #include <wx/app.h>
 
 // Skip the GUI related checks from DebugRoute.cpp

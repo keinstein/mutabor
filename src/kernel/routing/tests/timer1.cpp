@@ -39,7 +39,7 @@
 #include "src/kernel/routing/CommonFileDevice-inlines.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include <cstdlib>
-
+#include <iostream>
 
 // Skip the GUI related checks from DebugRoute.cpp
 #define no_wxGUI 1
@@ -48,17 +48,20 @@
 #include "src/wxGUI/TestInitializer.h"
 
 
-/// not for headers
-#ifdef __BORLANDC__
-#pragma hdrstop
-#endif
 
 #ifdef __WXMSW__
 #define sleep(x) Sleep(1000*x)
 #endif
 
-#include <wx/app.h>
 
+#include <wx/app.h>
+#include <wx/stopwatch.h>
+#include <wx/time.h>
+
+/// not for headers
+#ifdef __BORLANDC__
+#pragma hdrstop
+#endif
 
 class testCommonFileDeviceTimer: public mutabor::CommonFileInputDevice {
 public:

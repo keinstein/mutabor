@@ -28,6 +28,7 @@
  ********************************************************************/
 #include "src/kernel/tests/boxTest.h"
 #include "src/wxGUI/TestInitializer.h"
+#include <iostream>
 #include <cppunit/ui/text/TestRunner.h>
 #include <cppunit/TestResult.h>
 #include <cppunit/BriefTestProgressListener.h>

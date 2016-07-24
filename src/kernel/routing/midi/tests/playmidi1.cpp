@@ -34,6 +34,7 @@
 #include "src/kernel/routing/midi/DevMidF.h"
 #include "src/kernel/routing/CommonFileDevice-inlines.h"
 #include <cstdlib>
+#include <iostream>
 #include "src/wxGUI/TestInitializer.h"
 
 // Skip the GUI related checks from DebugRoute.cpp

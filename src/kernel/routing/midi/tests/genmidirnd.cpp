@@ -37,6 +37,7 @@
 #include "src/kernel/routing/midi/midicmn-inlines.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include <cstdlib>
+#include <iostream>
 #include <time.h>
 #include "src/wxGUI/TestInitializer.h"
 

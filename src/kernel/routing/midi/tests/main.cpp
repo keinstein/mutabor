@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "src/kernel/routing/midi/tests/DevMidFTest.h"
 #include "src/kernel/routing/midi/tests/midicmnTest.h"
 #include "src/wxGUI/TestInitializer.h"

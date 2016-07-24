@@ -34,7 +34,9 @@ bool check_keymaps (const keymap & o,
 
 int main ()
 {
+#ifdef DEBUG
 	isDebugFlag(sclparser) =true;
+#endif
 	mutwxInitializer initializer;
 	keymap cmp;
 	cmp.count = 1;

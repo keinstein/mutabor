@@ -54,7 +54,7 @@ CLEANFILES += \
 	echo '#endif' >> "$@.tmp"
 	echo '__attribute__((no_sanitize_address))' >> "$@.tmp"
 	echo 'const char *__asan_default_options() {' >> "$@.tmp"
-	echo '  return "fast_unwind_on_malloc=0:report_globals=1:print_full_thread_history=1:suppressions=$(top_srcdir)/%D%/lsan_suppressions.txt";' >> "$@.tmp" ;
+	echo '  return "fast_unwind_on_malloc=0:report_globals=1:print_full_thread_history=1:suppressions=$(srcdir)/%D%/lsan_suppressions.txt";' >> "$@.tmp" ;
 	echo '}' >> "$@.tmp" ; \
 	cmp $@ $@.tmp && rm -f $@.tmp || ( mv "$@.tmp" "$@" ; echo "created $@")
 

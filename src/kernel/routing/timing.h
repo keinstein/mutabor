@@ -342,7 +342,10 @@ namespace mutabor {
 				     ("sleeping time: %d s, %ld ns"),
 				     (int)data.tv_sec,
 				     data.tv_nsec);
-			int status = clock_nanosleep(CLOCK_MONOTONIC,0,&data,&remain);
+#ifdef DEBUG
+			int status =
+#endif
+				clock_nanosleep(CLOCK_MONOTONIC,0,&data,&remain);
 			DEBUGLOGTYPE(timer,
 				     CurrentTimerBase,
 				     ("Remaining time: %d s, %ld ns"),

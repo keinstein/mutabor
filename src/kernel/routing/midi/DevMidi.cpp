@@ -102,7 +102,7 @@ namespace mutabor {
 #ifdef DEBUG
 		std::string oldpath = config.GetPath();
 #endif
-		std::string idstring = config.Read("Device Id", _mut(""));
+		std::string idstring = config.Read("Device Id", "");
 		Name = config.Read("Device Name", _mut("no device"));
 		if (rtmidiout) {
 			rtmidi::PortList list = rtmidiout->getPortList(rtmidi::PortDescriptor::OUTPUT);
@@ -306,7 +306,7 @@ OutputMidiPort:\n\
 #ifdef DEBUG
 		std::string oldpath = config.GetPath();
 #endif
-		std::string idstring = config.Read("Device Id", _mut(""));
+		std::string idstring = config.Read("Device Id", "");
 		Name = config.Read("Device Name", _mut("no device"));
 		if (rtmidiin) {
 			rtmidi::PortList list = rtmidiin->getPortList(rtmidi::PortDescriptor::INPUT);

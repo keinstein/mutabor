@@ -32,6 +32,7 @@
 #include "src/kernel/routing/tests/timing.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/TestInitializer.h"
+#include <iostream>
 #include <cppunit/ui/text/TestRunner.h>
 #include <cppunit/TestResult.h>
 #include <cppunit/BriefTestProgressListener.h>

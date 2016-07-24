@@ -16,7 +16,9 @@ int main ()
 {
 	mutwxInitializer initializer;
 	interval_pattern cmp("Constant tone system",0);
+#ifdef DEBUG
 	isDebugFlag(sclparser) =true;
+#endif
 	test_parser p("\
 Constant tone system\n\
 0","test1");
