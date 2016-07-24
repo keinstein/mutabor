@@ -1,6 +1,6 @@
 ; Our name
 !define PACKAGE_NAME "Mutabor"
-!define PACKAGE_VERSION "4.0.0beta4+sm"
+!define PACKAGE_VERSION "4.0.0rc1"
 !define NAME_VERSION "${PACKAGE_NAME} ${PACKAGE_VERSION}"
 !define NAME_VERSION_BUNDLE "${PACKAGE_NAME}-${PACKAGE_VERSION}"
 !define EXENAME "mutabor.exe"

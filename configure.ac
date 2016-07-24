@@ -3,7 +3,7 @@
 
 
 AC_PREREQ([2.67])
-AC_INIT([Mutabor],[4.0.0beta4+sm],[mutabor@mailbox.tu-dresden.de])
+AC_INIT([Mutabor],[4.0.0rc1],[mutabor@mailbox.tu-dresden.de])
 
 # we don't want to debug leaks while configuring.
 # some checks trigger errors
