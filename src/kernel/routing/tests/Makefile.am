@@ -1,6 +1,8 @@
 #include $(top_srcdir)/common-rules.mk
 #include $(top_srcdir)/common-linklibs.mk
 
+CLEANFILES += %D%/*.class
+
 DEBUGPATHS +=  \
 	%D%/debugPaths.cpp
 
@@ -48,7 +50,7 @@ check_PROGRAMS += %D%/testcppunit
 	%D%/CommonFileDeviceTest.cpp
 
 nodist_%C%_testcppunit_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_testcppunit_LDADD = \
 	libmutabormaincppunit.a \

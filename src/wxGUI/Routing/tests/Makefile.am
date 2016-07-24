@@ -39,10 +39,14 @@ nodist_%C%_testcppunit_SOURCES = \
 	$(BOOST_SYSTEM_LIBS)
 endif
 
+EXTRA_DIST += \
+	$(srcdir)/%D%/lsan_suppressions.txt
+
 BUILT_SOURCES += \
 	%D%/asan_options.cpp
 CLEANFILES += \
-	%D%/asan_options.cpp
+	%D%/asan_options.cpp \
+	%D%/*.class
 
 %D%/asan_options.cpp: Makefile
 	echo '#ifdef __cplusplus' > "$@.tmp"

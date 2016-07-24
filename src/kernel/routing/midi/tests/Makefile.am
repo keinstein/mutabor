@@ -1,5 +1,16 @@
 #include $(top_srcdir)/common-rules.mk
 #include $(top_srcdir)/common-linklibs.mk
+
+EXTRA_DIST += \
+	$(srcdir)/%D%/lsan_suppressions.txt
+
+CLEANFILES += \
+	%D%/*.class \
+	test_rnd.mid \
+	test_output.mid \
+	test_linear.mid \
+	test_output2.mid
+
 DEBUGPATHS +=  \
 	%D%/debugPaths.cpp
 
@@ -134,6 +145,23 @@ nodist_%C%_genmidilinear_SOURCES = \
 	$(BOOST_SYSTEM_LIBS)
 
 
+BUILT_SOURCES += \
+	%D%/asan_options.cpp
+CLEANFILES += \
+	%D%/asan_options.cpp
+
+
+%D%/asan_options.cpp: Makefile
+	echo '#ifdef __cplusplus' > "$@.tmp"
+	echo 'extern "C"' >> "$@.tmp"
+	echo '#endif' >> "$@.tmp"
+	echo '__attribute__((no_sanitize_address))' >> "$@.tmp"
+	echo 'const char *__asan_default_options() {' >> "$@.tmp"
+	echo '  return "fast_unwind_on_malloc=0:report_globals=1:print_full_thread_history=1:suppressions=$(srcdir)/%D%/lsan_suppressions.txt";' >> "$@.tmp"
+	echo '}' >> "$@.tmp"
+	cmp $@ $@.tmp && rm -f $@.tmp || ( mv "$@.tmp" "$@" ; echo "created $@")
+
+
 if HAVE_CPPUNIT
 check_SCRIPTS += \
 	$(srcdir)/%D%/midi1_source.mid \
@@ -159,6 +187,7 @@ check_PROGRAMS += %D%/testcppunit
 
 
 %C%_testcppunit_SOURCES = \
+	%D%/asan_options.cpp \
 	%D%/main.cpp \
 	%D%/DevMidFTest.h \
 	%D%/DevMidFTest.cpp \

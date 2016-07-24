@@ -1,4 +1,5 @@
 SUBDIRS += %D%/tests
+CLEANFILES += %D%/*.class
 
 noinst_LIBRARIES += %D%/libwxintl.a
 libwxintl_a_HEADRES = %D%/libintl.h

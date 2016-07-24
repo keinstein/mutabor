@@ -1,10 +1,11 @@
 #include $(top_srcdir)/common-rules.mk
 #include $(top_srcdir)/common-linklibs.mk
 
-BUILT_SOURCES +=  \
-	debugPaths.cpp
+DEBUGPATHS +=  \
+	%D%/debugPaths.cpp
 
-CLEANFILES += %D%/playgmn1.gmn
+CLEANFILES += %D%/playgmn1.gmn \
+	%D%/*.class
 
 EXTRA_DIST += %D%/gmn1_source.gmn
 
@@ -24,7 +25,7 @@ TESTS += \
 	%D%/playgmn1.cpp
 
 nodist_%C%_playgmn1_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_playgmn1_LDADD = \
 	libmutabormaintest.a \
@@ -50,7 +51,7 @@ nodist_%C%_playgmn1_SOURCES = \
 	%D%/gmnopenfail1.cpp
 
 nodist_%C%_gmnopenfail1_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 
 %D%/playgmn1.gmn: %D%/gmn1_source.gmn

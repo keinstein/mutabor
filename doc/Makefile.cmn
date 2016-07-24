@@ -6,37 +6,37 @@ override docdir:=$(docdir)/$(DOCLOCALE)
 installidirs=$(docdir)
 #pkgdatadir := $(localpkgdatadir)
 COMMON_TEXDEPS = \
-	%D%/addbookm.png \
-	%D%/back.png \
-	%D%/delbookm.png \
-	%D%/dir_up.png \
-	%D%/down.png \
-	%D%/tsemlines.sty \
-	%D%/forward.png \
-	%D%/helptoolbar.png \
-	%D%/htmbook.png \
-	%D%/htmfoldr.png \
-	%D%/htmldecode.cpp \
-	%D%/htmoptns.png \
-	%D%/htmpage.png \
-	%D%/htmsidep.png \
-	%D%/Mutabor-Logo.png \
-	%D%/Makefile.am \
-	%D%/Makefile.cmn \
-	%D%/Makefile.in \
-	%D%/preamble.tex \
-	%D%/mutaborlst.tex \
-	%D%/print.png \
-	%D%/toparent.png \
-	%D%/up.png \
-	%D%/wxdin.ist
+	$(srcdir)/%D%/addbookm.png \
+	$(srcdir)/%D%/back.png \
+	$(srcdir)/%D%/delbookm.png \
+	$(srcdir)/%D%/dir_up.png \
+	$(srcdir)/%D%/down.png \
+	$(srcdir)/%D%/tsemlines.sty \
+	$(srcdir)/%D%/forward.png \
+	$(srcdir)/%D%/helptoolbar.png \
+	$(srcdir)/%D%/htmbook.png \
+	$(srcdir)/%D%/htmfoldr.png \
+	$(srcdir)/%D%/htmldecode.cpp \
+	$(srcdir)/%D%/htmoptns.png \
+	$(srcdir)/%D%/htmpage.png \
+	$(srcdir)/%D%/htmsidep.png \
+	$(srcdir)/%D%/Mutabor-Logo.png \
+	$(srcdir)/%D%/Makefile.am \
+	$(srcdir)/%D%/Makefile.cmn \
+	$(srcdir)/%D%/Makefile.in \
+	$(srcdir)/%D%/preamble.tex \
+	$(srcdir)/%D%/mutaborlst.tex \
+	$(srcdir)/%D%/print.png \
+	$(srcdir)/%D%/toparent.png \
+	$(srcdir)/%D%/up.png \
+	$(srcdir)/%D%/wxdin.ist
 
 HTML_TEXDEPS = \
-	%D%/keystroke.4ht \
-	%D%/mkhtml \
-	%D%/mutabor.cfg \
-	%D%/fixhhp.cpp \
-	%D%/xr-hyper.4ht
+	$(srcdir)/%D%/keystroke.4ht \
+	$(srcdir)/%D%/mkhtml \
+	$(srcdir)/%D%/mutabor.cfg \
+	$(srcdir)/%D%/fixhhp.cpp \
+	$(srcdir)/%D%/xr-hyper.4ht
 
 
 .PHONY: mac copymac install-data-mutabor zipfile
@@ -67,7 +67,7 @@ $(srcdir)/$(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
 			$(top_docdir)/preamble.tex \
 			$(top_docdir)/htmlpreamble.tex \
 			$(TEX_DEPS) \
-			$(COMMON_TEXDEPS)
+			$(COMMON_TEXDEPS) \
 			$(HTML_TEXDEPS)
 	$(MAKE) -C '$(rel_docdir)' htmldecode$(EXEEXT) fixhhp$(EXEEXT)
 	TEXINPUTS=".:$(srcdir):$(top_docdir):$$TEXINPUTS" \

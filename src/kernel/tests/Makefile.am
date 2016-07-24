@@ -1,11 +1,14 @@
 #include $(top_srcdir)/common-rules.mk
 #include $(top_srcdir)/common-linklibs.mk
 
-BUILT_SOURCES +=  \
-	debugPaths.cpp
+DEBUGPATHS +=  \
+	%D%/debugPaths.cpp
 
 EXTRA_DIST += \
 	%D%/all.mut
+
+CLEANFILES += \
+	%D%/*.class
 
 
 if HAVE_CPPUNIT
@@ -22,7 +25,7 @@ check_PROGRAMS += %D%/testcppunit
 	%D%/boxTest.cpp
 
 nodist_%C%_testcppunit_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_testcppunit_LDADD = \
 	libmutabormaincppunit.a \

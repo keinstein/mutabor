@@ -1,19 +1,38 @@
 #include $(top_srcdir)/common-rules.mk
 #include $(top_srcdir)/common-linklibs.mk
 
-BUILT_SOURCES +=  \
-	debugPaths.cpp
+CLEANFILES += %D%/*.class
 
-EXTRA_DIST +=
+DEBUGPATHS +=  \
+	%D%/debugPaths.cpp
+
+EXTRA_DIST += \
+	$(SCLTESTS) \
+	$(SCLTESTS:.scl=.mut) \
+	$(NSCLTESTS) \
+	$(NSCLTESTS:.nscl=.err) \
+	$(KBMTESTS) \
+	$(KBMTESTS:.kbm=.mut) \
+	$(srcdir)/%D%/12tet.scl
 #	all.mut
+
+CLEANFILES += \
+	$(SCLTESTS:.scl=.mut2) \
+	$(NSCLTESTS:.nscl=.nscl.mut2) \
+	$(KBMTESTS:.kbm=.mut2) \
+	$(NSCLTESTS:.nscl=.log2) \
+	%D%/run_scl2mut.sh \
+	%D%/run_nscl2mut.sh \
+	%D%/run_kbm2mut.sh
+
 
 # .nscl is a .scl file that should be rejected
 TEST_EXTENSIONS += .scl .nscl .kbm
 
 
-SCL_LOG_COMPILER = ./run_scl2mut.sh
-NSCL_LOG_COMPILER = ./run_nscl2mut.sh
-KBM_LOG_COMPILER = ./run_kbm2mut.sh
+SCL_LOG_COMPILER = %D%/run_scl2mut.sh
+NSCL_LOG_COMPILER = %D%/run_nscl2mut.sh
+KBM_LOG_COMPILER = %D%/run_kbm2mut.sh
 
 SCLTESTS = \
 	%D%/allowed001.scl \
@@ -52,7 +71,10 @@ TESTS += \
 	$(KBMTESTS)
 
 
-
+BUILT_SOURCES += \
+	%D%/run_scl2mut.sh \
+	%D%/run_nscl2mut.sh \
+	%D%/run_kbm2mut.sh
 
 
 
@@ -64,7 +86,7 @@ check_PROGRAMS += \
 	%D%/test_keymaps
 
 nodist_%C%_test_empty_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_test_empty_SOURCES = \
 	%D%/test_empty.cpp
@@ -86,7 +108,7 @@ nodist_%C%_test_empty_SOURCES = \
 	$(BOOST_SYSTEM_LIBS)
 
 nodist_%C%_test_empty_comments_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_test_empty_comments_SOURCES = \
 	%D%/test_empty_comments.cpp
@@ -108,7 +130,7 @@ nodist_%C%_test_empty_comments_SOURCES = \
 	$(BOOST_SYSTEM_LIBS)
 
 nodist_%C%_test_intervals1_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_test_intervals1_SOURCES = \
 	%D%/test_intervals1.cpp
@@ -130,7 +152,7 @@ nodist_%C%_test_intervals1_SOURCES = \
 	$(BOOST_SYSTEM_LIBS)
 
 nodist_%C%_test_keymaps_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_test_keymaps_SOURCES = \
 	%D%/test_keymaps.cpp
@@ -187,42 +209,45 @@ nodist_%C%_test_keymaps_SOURCES = \
 #
 # endif
 
-$(SCLTESTS:.scl=.log): ./run_scl2mut.sh
-$(NSCLTESTS:.nscl=.log): ./run_nscl2mut.sh
-$(KBMTESTS:.kbm=.log): ./run_kbm2mut.sh
+$(SCLTESTS:.scl=.log): %D%/run_scl2mut.sh
+$(NSCLTESTS:.nscl=.log): %D%/run_nscl2mut.sh
+$(KBMTESTS:.kbm=.log): %D%/run_kbm2mut.sh
 
-./run_scl2mut.sh: scl2mut$(EXEEXT) Makefile
+%D%/run_scl2mut.sh: scl2mut$(EXEEXT) Makefile
 	@echo '#!/bin/sh' > $@
 	@echo 'file="$$1"' >> $@
 	@echo 'basefile=`basename "$$file"`' >> $@
+	@echo "outputdir='%D%/'" >> $@
 	@echo 'LC_ALL=C' >> $@
 	@echo 'export LC_ALL' >> $@
-	@echo '"./scl2mut" "$$file" "$${basefile%.scl}.mut2" || exit 1' >> $@
-	@echo 'diff -u "$${file%.scl}.mut" "$${basefile%.scl}.mut2" || exit 2' >> $@
+	@echo '"./scl2mut" "$$file" "$$outputdir$${basefile%.scl}.mut2" || exit 1' >> $@
+	@echo 'diff -u "$${file%.scl}.mut" "$$outputdir$${basefile%.scl}.mut2" || exit 2' >> $@
 	@echo 'exit 0' >> $@
 	@chmod u+x $@
 
-./run_nscl2mut.sh: scl2mut$(EXEEXT) Makefile
+%D%/run_nscl2mut.sh: scl2mut$(EXEEXT) Makefile
 	@echo '#!/bin/sh' > $@
 	@echo 'file="$$1"' >> $@
 	@echo 'basefile=`basename "$$file"`' >> $@
+	@echo "outputdir='%D%/'" >> $@
 	@echo 'LC_ALL=C' >> $@
 	@echo 'export LC_ALL' >> $@
-	@echo '"./scl2mut" "$$file" "$${basefile%.scl}.mut2" 2>&1 | tee $${basefile%.nscl}.log2 || exit 1' >> $@
+	@echo '"./scl2mut" "$$file" "$$outputdir$${basefile%.scl}.mut2" 2>&1 | tee $$outputdir$${basefile%.nscl}.log2 || exit 1' >> $@
 	@echo 'echo "starting grep..."' >> $@
-	@echo 'grep -Pzo -f $${file%.nscl}.err $${basefile%.nscl}.log2 || exit 2' >> $@
+	@echo 'grep -Pzo -f $${file%.nscl}.err $$outputdir$${basefile%.nscl}.log2 || exit 2' >> $@
 	@echo 'exit 0' >> $@
 	@chmod u+x $@
 
-./run_kbm2mut.sh: scl2mut$(EXEEXT) Makefile
+%D%/run_kbm2mut.sh: scl2mut$(EXEEXT) Makefile
 	@echo '#!/bin/sh' > $@
 	@echo 'file="$$1"' >> $@
 	@echo 'dir="`dirname $$file`"' >> $@
 	@echo 'basefile=`basename "$$file"`' >> $@
+	@echo "outputdir='%D%/'" >> $@
 	@echo 'LC_ALL=C' >> $@
 	@echo 'export LC_ALL' >> $@
-	@echo './scl2mut --debug-sclparser -k $$file "$$dir/12tet.scl" "$${basefile%.kbm}.mut2" || exit 1' >> $@
-	@echo 'diff -u $${file%.kbm}.mut $${basefile%.kbm}.mut2 || exit 2' >> $@
+	@echo './scl2mut -k $$file "$$dir/12tet.scl" "$$outputdir$${basefile%.kbm}.mut2" || exit 1' >> $@
+	@echo 'diff -u $${file%.kbm}.mut $$outputdir$${basefile%.kbm}.mut2 || exit 2' >> $@
 	@echo 'exit 0' >> $@
 	@chmod u+x $@
 

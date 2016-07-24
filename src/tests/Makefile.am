@@ -1,6 +1,9 @@
 #include $(top_srcdir)/common-rules.mk
 #include $(top_srcdir)/common-linklibs.mk
 
+CLEANFILES += %D%/*.class
+
+
 TESTS += \
 	%D%/wxlinktest$(EXEEXT) \
 	%D%/wxlinktest2$(EXEEXT)
@@ -29,8 +32,11 @@ check_PROGRAMS += \
 
 %C%_wxlinktest2_SOURCES = %D%/wxlinktest2.cpp
 
+DEBUGPATHS += \
+	%D%/debugPaths.cpp
+
 nodist_%C%_wxlinktest2_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_wxlinktest2_LDADD= \
 	libmutabordebugtest.a \
@@ -59,7 +65,7 @@ check_PROGRAMS += %D%/cppunitlinktest
 	%D%/cppunitlinktest.cpp
 
 nodist_%C%_cppunitlinktest_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_cppunitlinktest_LDADD = \
 	libmutabormaincppunit.a \

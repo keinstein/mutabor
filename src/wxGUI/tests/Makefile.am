@@ -5,7 +5,11 @@
 #check_PROGRAMS = 
 
 CLEANFILES += \
-	texidlist.tex
+	texidlist.tex \
+	%D%/*.class
+
+DEBUGPATHS += \
+	%D%/debugPaths.cpp
 
 if HAVE_CPPUNIT
 TESTS += \
@@ -20,7 +24,7 @@ check_PROGRAMS += %D%/testcppunit
 	%D%/MkIDlist.h
 
 nodist_%C%_testcppunit_SOURCES = \
-	debugPaths.cpp
+	%D%/debugPaths.cpp
 
 %C%_testcppunit_LDADD = \
 	libmutabormaincppunit.a \

@@ -2,6 +2,8 @@ include %D%/tests/Makefile.am
 include %D%/routing/Makefile.am
 include %D%/parsers/Makefile.am
 
+CLEANFILES += %D%/*.class
+
 
 TSBUILTSOURCES += \
 	%D%/mut.hh \
@@ -16,7 +18,16 @@ TSBUILTSOURCES += \
 
 EXTRA_DIST += \
 	%D%/mut.yy \
-	%D%/mutlex.ll
+	%D%/mutlex.ll \
+	%D%/mut.hh \
+	%D%/mut.cc \
+	%D%/mutlex.cc \
+	%D%/parsers/scala/scale_parser.hh \
+	%D%/parsers/scala/scale_parser.cc \
+	%D%/parsers/scala/location.hh \
+	%D%/parsers/scala/position.hh \
+	%D%/parsers/scala/stack.hh \
+	%D%/parsers/scala/scale_lexer.cc 
 
 noinst_LIBRARIES += \
 	%D%/libmutaborkernel.a
@@ -47,7 +58,8 @@ noinst_LIBRARIES += \
 		%D%/treestorage.h \
 		%D%/mutlex.h \
 		%D%/debug.h \
-		%D%/interface_deps.h
+		%D%/interface_deps.h \
+		%D%/cow_container.h
 
 
 %C%_libmutaborkernel_a_INDENTS = \

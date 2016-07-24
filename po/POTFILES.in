@@ -25,6 +25,7 @@ src/kernel/TabGen.h
 src/kernel/boost-interface.h
 src/kernel/box.cpp
 src/kernel/box.h
+src/kernel/cow_container.h
 src/kernel/debug.cpp
 src/kernel/debug.h
 src/kernel/debugFlags.h
@@ -37,7 +38,9 @@ src/kernel/parsers/scala/location.hh
 src/kernel/parsers/scala/position.hh
 src/kernel/parsers/scala/scala.cpp
 src/kernel/parsers/scala/scala.h
+src/kernel/parsers/scala/scala-inlines.h
 src/kernel/parsers/scala/scale_lexer.cc
+src/kernel/parsers/scala/scale_lexer.h
 src/kernel/parsers/scala/scale_parser.cc
 src/kernel/parsers/scala/scale_parser.hh
 src/kernel/parsers/scala/stack.hh
@@ -55,6 +58,7 @@ src/kernel/routing/Route.cpp
 src/kernel/routing/Route.h
 src/kernel/routing/RouteCompat.cpp
 src/kernel/routing/RouteCompat.h
+src/kernel/routing/box_support.h
 src/kernel/routing/event.h
 src/kernel/routing/gmn/DevGIS.cpp
 src/kernel/routing/gmn/DevGIS.h
@@ -154,8 +158,10 @@ src/wxGUI/Routing/OutputMidiFileDeviceShape.h
 src/wxGUI/Routing/RouteIcons.cpp
 src/wxGUI/Routing/RouteIcons.h
 src/wxGUI/Routing/RouteLists.h
+src/wxGUI/ScalaGUI.h
 src/wxGUI/StatusBar.cpp
 src/wxGUI/StatusBar.h
+src/wxGUI/TestInitializer.h
 src/wxGUI/configtree.cpp
 src/wxGUI/configtree.h
 src/wxGUI/generic/mhArray.h

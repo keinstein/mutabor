@@ -20,7 +20,6 @@ EXTRA_DIST = \
 	htmpage.png \
 	htmsidep.png \
 	Mutabor-Logo.png \
-	keystroke.4ht \
 	Makefile.am \
 	Makefile.cmn \
 	Makefile.in \
@@ -33,6 +32,7 @@ EXTRA_DIST = \
 	toparent.png \
 	up.png \
 	wxdin.ist \
+	keystroke.4ht \
 	xr-hyper.4ht
 
 htmldecode_SOURCES = htmldecode.cpp

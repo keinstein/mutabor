@@ -169,6 +169,7 @@ libmutaborgui_a_INDENTHEADERS = \
 		src/wxGUI/Routing/OutputMidiFileDeviceShape.h \
 		src/wxGUI/Routing/RouteIcons.h \
 		src/wxGUI/Routing/RouteLists.h \
+		src/wxGUI/ScalaGUI.h \
 		src/wxGUI/GUIBoxData.h \
 		src/wxGUI/MutBitmaps.h \
 		src/wxGUI/Mutabor.rh \
@@ -275,6 +276,7 @@ libmutaborrouting_a_INDENTHEADERS = \
 		src/kernel/routing/Device.h \
 		src/kernel/routing/Route.h \
 		src/kernel/routing/Box.h \
+		src/kernel/routing/box_support.h \
 		src/kernel/routing/event.h \
 		src/kernel/routing/RouteCompat.h \
 		src/kernel/routing/timing.h \
@@ -313,10 +315,14 @@ libmutaborscala_a_INLINEHEADERS = \
 		src/kernel/parsers/scala/position.hh \
 		src/kernel/parsers/scala/location.hh \
 		src/kernel/parsers/scala/stack.hh \
-		src/kernel/parsers/scala/scale_lexer.cc
+		src/kernel/parsers/scala/scale_lexer.cc \
+		src/kernel/parsers/scala/scala-inlines.h
+
+EXTRA_DIST += $(libmutaborscala_a_INLINEHEADERS)
 
 libmutaborscala_a_INDENTHEADERS = \
-		src/kernel/parsers/scala/scala.h
+		src/kernel/parsers/scala/scala.h \
+		src/kernel/parsers/scala/scale_lexer.h
 
 
 libmutaborscala_a_INDENTS = \
@@ -327,6 +333,7 @@ noinst_HEADERS += $(libmutaborscala_a_INLINEHEADERS) $(libmutaborscala_a_INDENTH
 libmutaborscala_a_POTSOURCES = $(libmutaborscala_a_INLINEHEADERS) $(libmutaborscala_a_INDENTHEADERS) $(libmutaborscala_a_INDENTS)
 
 libmutaborscala_a_SOURCES = $(libmutaborscala_a_INDENTS) \
+			$(libmutaborscala_a_INDENTHEADERS) \
 			src/kernel/parsers/scala/scale_parser.yy \
 			src/kernel/parsers/scala/scale_lexer.ll
 
@@ -392,6 +399,8 @@ libmutabormaincppunit_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
 				$(librtmidi_a_OBJECTS)
 
 libmutabormaincppunit_a_DEPENDENCIES = $(libmutabormaincppunit_a_LIBADD)
+
+noinst_HEADERS += $(libmutabormaincppunit_a_INDENTHEADERS)
 endif
 
 #-------------------------------------------------------------
@@ -875,16 +884,6 @@ generated_headers:
 endif
 
 
-
-#	rm -f $(srcdir)/src/kernel/mut.cc
-#	$(MAKE) $(srcdir)/src/kernel/mut.cc
-#src/kernel/mut.cc: src/kernel/mut.yy
-$(top_srcdir)/src/kernel/parsers/scala/location.hh \
-$(top_srcdir)/src/kernel/parsers/scala/position.hh \
-$(top_srcdir)/src/kernel/parsers/scala/stack.hh: $(top_srcdir)/src/kernel/parsers/scala/scale_parser.yy
-	rm -rf scale_parser.cc $(top_srcdir)/src/kernel/parsers/scala/scale_parser.cc
-	$(MAKE) $(top_srcdir)/src/kernel/parsers/scala/scale_parser.cc
-	cmp `basename "$@"` "$@" || cp `basename "$@"` "$@"
 
 
 all-local:
