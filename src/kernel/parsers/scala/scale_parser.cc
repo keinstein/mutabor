@@ -43,7 +43,7 @@
 #  endif
 # endif
 
-#include "../../../mutabor-git/src/kernel/parsers/scala/scale_parser.hh"
+#include "scale_parser.hh"
 
 // User implementation prologue.
 

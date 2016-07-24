@@ -1,8 +1,8 @@
-// A Bison parser, made by GNU Bison 3.0.2.
+// A Bison parser, made by GNU Bison 3.0.4.
 
 // Stack handling for Bison parsers in C++
 
-// Copyright (C) 2002-2013 Free Software Foundation, Inc.
+// Copyright (C) 2002-2015 Free Software Foundation, Inc.
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -40,9 +40,9 @@
 
 # include <vector>
 
-#line 33 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // stack.hh:133
+#line 33 "../../../mutabor-git/src/kernel/parsers/scala/scale_parser.yy" // stack.hh:132
 namespace mutabor { namespace scala_parser {
-#line 46 "stack.hh" // stack.hh:133
+#line 46 "stack.hh" // stack.hh:132
   template <class T, class S = std::vector<T> >
   class stack
   {
@@ -54,12 +54,12 @@ namespace mutabor { namespace scala_parser {
     stack ()
       : seq_ ()
     {
+      seq_.reserve (200);
     }
 
     stack (unsigned int n)
       : seq_ (n)
-    {
-    }
+    {}
 
     inline
     T&
@@ -136,8 +136,7 @@ namespace mutabor { namespace scala_parser {
     slice (const S& stack, unsigned int range)
       : stack_ (stack)
       , range_ (range)
-    {
-    }
+    {}
 
     inline
     const T&
@@ -151,8 +150,8 @@ namespace mutabor { namespace scala_parser {
     unsigned int range_;
   };
 
-#line 33 "../../mutabor/src/kernel/parsers/scala/scale_parser.yy" // stack.hh:133
+#line 33 "../../../mutabor-git/src/kernel/parsers/scala/scale_parser.yy" // stack.hh:132
 } } // mutabor::scala_parser
-#line 157 "stack.hh" // stack.hh:133
+#line 156 "stack.hh" // stack.hh:132
 
 #endif // !YY_YY_STACK_HH_INCLUDED

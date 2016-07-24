@@ -1,4 +1,4 @@
-/** \file                             -*- bison -*-
+/** \file                -*- bison -*-
  ********************************************************************
  * Scala parser gerneator file
  *
@@ -28,7 +28,7 @@
 /* Muta */
 %skeleton "lalr1.cc"
 %require "3.0.2"
-%defines
+/*			 %defines */
 %define parser_class_name {scale_parser}
 %define api.namespace {mutabor::scala_parser}
 %define api.token.constructor
