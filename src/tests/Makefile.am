@@ -1,5 +1,7 @@
 #include $(top_srcdir)/common-rules.mk
 #include $(top_srcdir)/common-linklibs.mk
+DEBUGPATHS +=  \
+	%D%/debugPaths.cpp
 
 CLEANFILES += %D%/*.class
 
