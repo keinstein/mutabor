@@ -3,6 +3,8 @@
 
 #TESTS =
 #check_PROGRAMS = 
+DEBUGPATHS +=  \
+	%D%/debugPaths.cpp
 
 CLEANFILES += \
 	texidlist.tex \
