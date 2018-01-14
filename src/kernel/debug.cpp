@@ -60,6 +60,9 @@
 #if __LINUX__ && !(__clang__)
 #include "backtrace.h"
 #endif
+#if __WXMSW__
+#include <windows.h>
+#endif
 #endif
 
 
@@ -252,6 +255,13 @@ extern "C" {
 	void MutInitConsole()
 	{
 #if __WXMSW__
+#if 1
+		freopen("CONOUT$", "wt", stdout);
+		freopen("CONOUT$", "wt", stderr);
+
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
+					FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED);
+#else
 		// taken from http://www.halcyon.com/~ast/dload/guicon.htm
 		static const WORD MAX_CONSOLE_LINES = 500;
 
@@ -291,8 +301,9 @@ extern "C" {
 		fp = _fdopen( hConHandle, "w" );
 		*stderr = *fp;
 		setvbuf( stderr, NULL, _IONBF, 0 );
+#endif
 
-		// make cout, wcout, cin, wcin, wcerr, cerr, wclog and clog
+		// make cout, wcout, cin, wcin, wcerr, cerr, wclog and clo
 		// point to console as well
 		std::ios::sync_with_stdio();
 #endif
@@ -341,6 +352,7 @@ mutabor_backtrace::~mutabor_backtrace() {
 	if (!(print && global_print))
 		return;
 
+#if __LINUX__ && !(__clang__)
 	fprintf(stderr,"Stack trace:");
 	for (base::iterator i = begin();
 	     i!= end(); ++i) {
@@ -350,6 +362,7 @@ mutabor_backtrace::~mutabor_backtrace() {
 				  mutabor_backtrace_error_callback,
 				  NULL);
 	}
+#endif
 }
 
 #endif
