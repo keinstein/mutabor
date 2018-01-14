@@ -23,7 +23,7 @@ check_PROGRAMS += \
 	libmutaborrouting.a \
 	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
-	librtmidi.a \
+	lib/rtmidi/librtmidi-ts.la \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
@@ -46,7 +46,7 @@ nodist_%C%_wxlinktest2_SOURCES = \
 	libmutaborrouting.a \
 	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
-	librtmidi.a \
+	lib/rtmidi/librtmidi-ts.la \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
@@ -76,7 +76,7 @@ nodist_%C%_cppunitlinktest_SOURCES = \
 	src/kernel/libmutaborkernel.a \
 	libmutaborrouting.a \
 	libmutaborscala.a \
-	librtmidi.a \
+	lib/rtmidi/librtmidi-ts.la \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
