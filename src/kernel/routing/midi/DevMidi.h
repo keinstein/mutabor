@@ -327,7 +327,7 @@ namespace mutabor {
 				try {
 					Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
 							      rtmidi::PortDescriptor::SHORT_NAME |
-							      rtmidi::PortDescriptor::UNIQUE_NAME).c_str();
+							      rtmidi::PortDescriptor::UNIQUE_PORT_NAME).c_str();
 				} catch (rtmidi::Error &error) {
 					runtime_error(false,
 						      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))
@@ -475,7 +475,7 @@ namespace mutabor {
 				try {
 					Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
 							      rtmidi::PortDescriptor::SHORT_NAME |
-							      rtmidi::PortDescriptor::UNIQUE_NAME).c_str();
+							      rtmidi::PortDescriptor::UNIQUE_PORT_NAME).c_str();
 				} catch (rtmidi::Error &error) {
 					runtime_error(false,
 						      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))
