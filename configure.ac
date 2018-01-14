@@ -77,9 +77,6 @@ AH_BOTTOM([
 #ifdef DEBUG
 /* #  define __WXDEBUG__ */
 #  define YYDEBUG 1
-#  ifndef _GLIBCXX_DEBUG
-#    define _GLIBCXX_DEBUG
-#  endif
 #endif
 
 #ifdef MUST_REUSE_C
@@ -133,27 +130,27 @@ AC_ARG_ENABLE(debug,
 	       AC_DEFINE(DEBUG,1,[Define to 1 for compiling in debug mode.]),
                AC_DEFINE_UNQUOTED(DEBUG,[$enableval]))
 	       CFLAGS="$CFLAGS -g"
-	       CXXFLAGS="$CXXFLAGS -g -D_GLIBCXX_DEBUG -D__RTMIDI_DEBUG__"
+	       CXXFLAGS="$CXXFLAGS -g -D__RTMIDI_DEBUG__"
 	       AC_LANG_PUSH(C++)
 	       for flag in -Wall  -Wno-unused-local-typedefs  -fdump-class-hierarchy \
 		    -fbounds-check  -pedantic  -fdiagnostics-show-option  -Wno-long-long \
 		     -Wno-variadic-macros -Wno-nested-anon-types -Wno-c++11-extensions -ggdb3 -g3 -fipa-icf
 	       do
-	       	       tmpcxxflags="$CXXFLAGS"
-	       	       CXXFLAGS="$CXXFLAGS $flag"
+		       tmpcxxflags="$CXXFLAGS"
+		       CXXFLAGS="$CXXFLAGS $flag"
 		       AC_MSG_CHECKING([whether $CXX supports $flag])
-      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-	      	                         [AC_MSG_RESULT([yes])],
+		       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+		                         [AC_MSG_RESULT([yes])],
 					 [CXXFLAGS="$tmpcxxflags"
-              			         AC_MSG_RESULT([no])])
+			         AC_MSG_RESULT([no])])
 		       AC_LANG_PUSH(C)
-	       	       tmpcflags="$CFLAGS"
-	       	       CFLAGS="$CFLAGS $flag"
+		       tmpcflags="$CFLAGS"
+		       CFLAGS="$CFLAGS $flag"
 		       AC_MSG_CHECKING([whether $CC supports $flag])
-      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-	      	                         [AC_MSG_RESULT([yes])],
+		       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+		                         [AC_MSG_RESULT([yes])],
 					 [CFLAGS="$tmpcflags"
-              			         AC_MSG_RESULT([no])])
+			         AC_MSG_RESULT([no])])
 		       AC_LANG_POP(C)
 	       done
 dnl mudflap is not possible with g++ 4.7.1 and wxWidgets 2.8
@@ -162,33 +159,33 @@ dnl	       tmplibs="$LIBS"
 dnl	       CXXFLAGS="$CXXFLAGS -fmudflapth"
 dnl	       LIBS="-lmudflapth"
 dnl	       AC_MSG_CHECKING([whether $CXX supports  -fmudflapth -lmudflapth])
-dnl      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-dnl	       			[AC_MSG_RESULT([yes])],
+dnl	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+dnl				[AC_MSG_RESULT([yes])],
 dnl				[CXXFLAGS="$tmpcxxflags"
 dnl				LIBS="$tmplibs"]
-dnl	       			[AC_MSG_RESULT([no])])
+dnl				[AC_MSG_RESULT([no])])
 dnl
 	       case "$host_os" in
 	       darwin*)
-	       	       tmpcxxflags="$CXXFLAGS"
-	       	       CXXFLAGS="$CXXFLAGS -ggdb"
-		       	       AC_MSG_CHECKING([whether $CXX supports -ggdb])
+		       tmpcxxflags="$CXXFLAGS"
+		       CXXFLAGS="$CXXFLAGS -ggdb"
+			       AC_MSG_CHECKING([whether $CXX supports -ggdb])
 			       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-					       	 [AC_MSG_RESULT([yes])],
+						 [AC_MSG_RESULT([yes])],
 						 [CXXFLAGS="$tmpcxxflags"]
-	       					 [AC_MSG_RESULT([no])])
+						 [AC_MSG_RESULT([no])])
 		       AC_LANG_PUSH(C)
-	       	       tmpcxxflags="$CFLAGS"
-	       	       CXXFLAGS="$CFLAGS -ggdb"
-		       	       AC_MSG_CHECKING([whether $CC supports -ggdb])
+		       tmpcxxflags="$CFLAGS"
+		       CXXFLAGS="$CFLAGS -ggdb"
+			       AC_MSG_CHECKING([whether $CC supports -ggdb])
 			       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-					       	 [AC_MSG_RESULT([yes])],
+						 [AC_MSG_RESULT([yes])],
 						 [CFLAGS="$tmpcflags"]
-	       					 [AC_MSG_RESULT([no])])
+						 [AC_MSG_RESULT([no])])
                        AC_LANG_POP(C)
 			;;
 	       esac
-      	       AC_LANG_POP(C++)
+	       AC_LANG_POP(C++)
 	       wxflags="--debug"
 ])
 
@@ -199,24 +196,24 @@ AC_ARG_ENABLE(oink-support,
 	       AC_LANG_PUSH(C++)
 	       for flag in -save-temps
 	       do
-	       	       tmpcxxflags="$CXXFLAGS"
-	       	       CXXFLAGS="$CXXFLAGS $flag"
+		       tmpcxxflags="$CXXFLAGS"
+		       CXXFLAGS="$CXXFLAGS $flag"
 		       AC_MSG_CHECKING([whether $CXX supports $flag])
-      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-	      	                         [AC_MSG_RESULT([yes])],
+		       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+		                         [AC_MSG_RESULT([yes])],
 					 [CXXFLAGS="$tmpcxxflags"
-              			         AC_MSG_RESULT([no])])
+			         AC_MSG_RESULT([no])])
 		       AC_LANG_PUSH(C)
-	       	       tmpcflags="$CFLAGS"
-	       	       CFLAGS="$CFLAGS $flag"
+		       tmpcflags="$CFLAGS"
+		       CFLAGS="$CFLAGS $flag"
 		       AC_MSG_CHECKING([whether $CC supports $flag])
-      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-	      	                         [AC_MSG_RESULT([yes])],
+		       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+		                         [AC_MSG_RESULT([yes])],
 					 [CFLAGS="$tmpcflags"
-              			         AC_MSG_RESULT([no])])
+			         AC_MSG_RESULT([no])])
 		       AC_LANG_POP(C)
 	       done
-      	       AC_LANG_POP(C++)
+	       AC_LANG_POP(C++)
 	  )
 ])
 
@@ -880,7 +877,7 @@ abspath () {
 	if [[ -d "$1" ]]
 	then
 		pushd "$1" >/dev/null
-		pwd
+			pwd
 		popd >/dev/null
 	elif [[ -e $1 ]]
 	then
