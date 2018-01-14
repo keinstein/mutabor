@@ -16,6 +16,10 @@ TESTS += %D%/timer1$(EXEEXT)
 nodist_%C%_timer1_SOURCES = \
 	%D%/debugPaths.cpp
 
+%C%_timer1_CXXFLAGS = \
+	$(AM_CXXFLGAS) \
+	$(WXINTLCXXFLAGS)
+
 %C%_timer1_LDADD= \
 	libmutabordebugtest.a \
 	libmutaborgui.a \
@@ -37,7 +41,10 @@ TESTS += \
 
 check_PROGRAMS += %D%/testcppunit
 
-%C%_testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
+%C%_testcppunit_CXXFLAGS = \
+	$(AM_CXXFLAGS) \
+	$(CPPUNIT_CFLAGS) \
+	$(WXINTLCXXFLAGS)
 
 %C%_testcppunit_SOURCES = \
 	%D%/main.cpp \

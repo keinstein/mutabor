@@ -45,6 +45,10 @@
 #pragma hdrstop
 #endif
 
+#undef STUB;
+#define STUB \
+	assert(false);
+
 extern "C" {
 
 	const char * wxwidgets_sgettext(const char * msgid)

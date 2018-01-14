@@ -601,8 +601,8 @@ else
 	AC_SUBST(WXINTLDIR,src/wxintl)
 	AC_SUBST(USE_INCLUDED_LIBWXINTL,yes)
 	AC_SUBST(BUILD_INCLUDED_LIBWXINTL,yes)
-	AC_SUBST(WXINTLLDADD,[\$\(WXINTLDIR\)/libwxintl.a])
-	AC_SUBST(WXINTLCFLAGS,[-I\$\(top_srcdir\)/$\(WXINTLDIR\)])
+	AC_SUBST(WXINTLLDADD,["\$(WXINTLDIR)/libwxintl.la \$(WX_LIBS)"])
+	AC_SUBST(WXINTLCXXFLAGS,["-I\$(top_srcdir)/\$(WXINTLDIR) \$(WX_CXXFLAGS)" ])
 	AC_SUBST(USE_INCLUDED_LIBINTL,no)
 	AC_SUBST(BUILD_INCLUDED_LIBINTL,no)
 	CXXFLAGS="$CXXFLAGS -DRTMIDI_GETTEXT"
@@ -610,14 +610,19 @@ else
 	enable_nls="no"
 fi
 
-case "`basename "$WX_CONFIG_PATH"`" in
-inplace-*)
-	wx_is_inplace=yes
-	;;
-*)
-	wx_is_inplace=no
-esac
-AM_CONDITIONAL(WX_INPLACE,test "$wx_is_inplace")
+AC_CACHE_CHECK([whether wxWidges is uninstalled],
+	       [ac_cv_wx_is_inplace],
+	       [
+		case "`basename "$WX_CONFIG_PATH"`" in
+		inplace-*)
+			ac_cv_wx_is_inplace=yes
+				;;
+		*)
+			wx_is_inplace=no
+			;;
+		esac
+		])
+AM_CONDITIONAL(WX_INPLACE,test "x$ac_cv_wx_is_inplace" = "xyes")
 
 AS_IF(test "$wx_is_inplace" = yes,
 	   AC_CACHE_CHECK([for wxWidgets locale directories], [ac_cv_wx_locale_dirs],

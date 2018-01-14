@@ -84,4 +84,7 @@ noinst_HEADERS += $(%C%_libmutaborkernel_a_INLINEHEADERS) $(%C%_libmutaborkernel
 			%D%/parsers/scala/scale_parser.yy \
 			%D%/parsers/scala/scale_lexer.ll
 
+
+%C%_libmutaborkernel_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS)
+
 POTSOURCES += %C%_libmutaborkernel_a_POTSOURCES
