@@ -66,7 +66,7 @@ namespace mutabor {
 		std::string oldpath = config.GetPath();
 #endif
 		config.Write("Device Id",DevId->getName(rtmidi::PortDescriptor::STORAGE_PATH |
-							rtmidi::PortDescriptor::UNIQUE_NAME |
+							rtmidi::PortDescriptor::UNIQUE_PORT_NAME |
 							rtmidi::PortDescriptor::INCLUDE_API));
 		config.Write("Device Name",Name);
 		config.Write("Bending Range",GetBendingRange());
@@ -113,12 +113,12 @@ namespace mutabor {
 				     ++i) {
 					try {
 						if ((*i)->getName(rtmidi::PortDescriptor::STORAGE_PATH |
-								  rtmidi::PortDescriptor::UNIQUE_NAME |
+								  rtmidi::PortDescriptor::UNIQUE_PORT_NAME |
 								  rtmidi::PortDescriptor::INCLUDE_API) == idstring) {
 							DevId = *i;
 							Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
 									      rtmidi::PortDescriptor::SHORT_NAME |
-									      rtmidi::PortDescriptor::UNIQUE_NAME).c_str();
+									      rtmidi::PortDescriptor::UNIQUE_PORT_NAME).c_str();
 						}
 					} catch (rtmidi::Error &error) {
 						runtime_error(false,
@@ -261,7 +261,7 @@ OutputMidiPort:\n\
 		std::string oldpath = config.GetPath();
 #endif
 		config.Write("Device Id",DevId->getName(rtmidi::PortDescriptor::STORAGE_PATH |
-							rtmidi::PortDescriptor::UNIQUE_NAME |
+							rtmidi::PortDescriptor::UNIQUE_PORT_NAME |
 							rtmidi::PortDescriptor::INCLUDE_API));
 		config.Write("Device Name", Name);
 		mutASSERT(oldpath == config.GetPath());
@@ -317,12 +317,12 @@ OutputMidiPort:\n\
 				     ++i) {
 					try {
 						if ((*i)->getName(rtmidi::PortDescriptor::STORAGE_PATH |
-								  rtmidi::PortDescriptor::UNIQUE_NAME |
+								  rtmidi::PortDescriptor::UNIQUE_PORT_NAME |
 								  rtmidi::PortDescriptor::INCLUDE_API) == idstring) {
 							DevId = *i;
 							Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
 									      rtmidi::PortDescriptor::SHORT_NAME |
-									      rtmidi::PortDescriptor::UNIQUE_NAME).c_str();
+									      rtmidi::PortDescriptor::UNIQUE_PORT_NAME).c_str();
 						}
 					} catch (rtmidi::Error &error) {
 						runtime_error(false,

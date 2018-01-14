@@ -451,12 +451,12 @@ namespace compat30 {
 					rtmidi::PortList list = rtmidiin->getPortList();
 					std::string port = static_cast<InputMidiPort *>((*In).get())->GetDevId()
 						-> getName( rtmidi::PortDescriptor::INCLUDE_API |
-							    rtmidi::PortDescriptor::UNIQUE_NAME |
+							    rtmidi::PortDescriptor::UNIQUE_PORT_NAME |
 							    rtmidi::PortDescriptor::SESSION_PATH );
 					for (rtmidi::PortList::iterator i = list.begin();
 					     i != list.end(); ++i) {
 						if ((*i)-> getName( rtmidi::PortDescriptor::INCLUDE_API |
-								    rtmidi::PortDescriptor::UNIQUE_NAME |
+								    rtmidi::PortDescriptor::UNIQUE_PORT_NAME |
 								    rtmidi::PortDescriptor::SESSION_PATH ) == port)
 							break;
 						++nr;
