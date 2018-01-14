@@ -28,8 +28,10 @@ namespace mutabor {
 */
 #include "src/kernel/mutlex.h"
 
+#if 0
 extern "C" inline int dummyisatty (int fd) { return isatty(fd); }
 #define isatty dummyisatty
+#endif
 /*
 #define BUMP \
   yylloc->first_line = yylloc->last_line; \
