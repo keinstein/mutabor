@@ -343,8 +343,8 @@ namespace boost {
 				return base::operator->();
 			}
 
-			operator bool() {
-				return *static_cast<base *>(this);
+			explicit operator bool() const BOOST_SP_NOEXCEPT{
+				return base::operator bool();
 			}
 
 			void swap(intrusive_ptr & rhs) BOOST_NOEXCEPT
