@@ -53,4 +53,4 @@ mac-recursive:
 
 potfilechk:
 
-tags:
+#tags:
