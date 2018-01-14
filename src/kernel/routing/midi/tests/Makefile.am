@@ -71,7 +71,7 @@ nodist_%C%_playmidi1_SOURCES = \
 	libmutaborrouting.a \
 	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
-	librtmidi.a \
+	lib/rtmidi/librtmidi-ts.la \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
@@ -86,7 +86,7 @@ nodist_%C%_playmidi1_SOURCES = \
 	libmutaborrouting.a \
 	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
-	librtmidi.a \
+	lib/rtmidi/librtmidi-ts.la \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
@@ -113,7 +113,7 @@ nodist_%C%_genmidirnd_SOURCES = \
 	libmutaborrouting.a \
 	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
-	librtmidi.a \
+	lib/rtmidi/librtmidi-ts.la \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
@@ -135,7 +135,7 @@ nodist_%C%_genmidilinear_SOURCES = \
 	libmutaborrouting.a \
 	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
-	librtmidi.a \
+	lib/rtmidi/librtmidi-ts.la \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \

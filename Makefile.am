@@ -12,6 +12,8 @@ GIT = git
 REPOSITORY = http://git.berlios.de/mutabor
 REPOSITORY_PATH = .
 AM_LFLAGS = --c++ -o lex.yy.c
+lib_LTLIBRARIES =
+noinst_PROGRAMS =
 
 EXTRA_DIST =
 TEST_EXTENSIONS =
@@ -19,17 +21,34 @@ TESTS =
 check_PROGRAMS =
 NOCOMPSOURCES =
 noinst_LIBRARIES =
+noinst_LTLIBRARIES =
 dist_pkgdata_DATA =
 bin_PROGRAMS =
 check_LIBRARIES =
+RTMIDITESTLDFLAGS = \
+	$(WXINTLLDFLAGS) \
+	$(WXINTLLDADD)
+RTMIDITESTCXXFLAGS = \
+	$(AM_CXXFLAGS) \
+	$(WXINTLCXXFLAGS) \
+	"-DLOCALEDIR=\"$(LOCALEDIR)\""
 
 include common-rules.mk
 include %D%/src/Makefile.am
 include %D%/Images/Makefile.am
+include %D%/lib/rtmidi/Makefile.am
 
-TAGS_DEPENDENCIES: generated_headers
+lib_rtmidi_librtmidi_ts_la_CXXFLAGS += \
+	$(WXINTLCXXFLAGS) \
+	"-DLOCALEDIR=\"$(LOCALEDIR)\""
+lib_rtmidi_librtmidi_ts_la_LDFLAGS  += \
+	$(WXINTLLDFLAGS) \
+	$(WXINTLLDADD) 
+
+lib/rtmidi/librtmidi-ts.a:lib/rtmidi/librtmidi-ts.la
 
 
+configure: lib/rtmidi/configure.library
 
 CLEANFILES += POTFILES.tmp2 \
 	Mutabor.xrc
@@ -128,8 +147,7 @@ noinst_LIBRARIES += \
 	libmutaborgui.a \
 	libmutaborrouting.a \
 	libmutaborscala.a \
-	libmutabordebug.a \
-	librtmidi.a #libmutaborGUIrouting.a libmutaborGUI.a
+	libmutabordebug.a  #libmutaborGUIrouting.a libmutaborGUI.a
 check_LIBRARIES += \
 	libmutabordebugtest.a \
 	libmutabormaintest.a
@@ -149,7 +167,7 @@ libmutaborgui_a_INLINEHEADERS = \
 		src/wxGUI/Routing/GUIRoute-inlines.h 
 
 
-libmutaborgui_a_INDENTHEADERS = \
+ libmutaborgui_a_INDENTHEADERS = \
 		src/wxGUI/Routing/BoxChannelShape.h \
 		src/wxGUI/Routing/BoxDlg.h \
 		src/wxGUI/Routing/BoxIconShape.h \
@@ -397,7 +415,7 @@ libmutabormaincppunit_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
 				$(src_kernel_libmutaborkernel_a_OBJECTS) \
 				$(libmutaborscala_a_OBJECTS) \
 				$(libmutabordebugcppunit_a_OBJECTS) \
-				$(librtmidi_a_OBJECTS)
+				lib/rtmidi/librtmidi-ts.la
 
 libmutabormaincppunit_a_DEPENDENCIES = $(libmutabormaincppunit_a_LIBADD)
 
@@ -450,29 +468,25 @@ libmutabormaintest_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
 				$(src_kernel_libmutaborkernel_a_OBJECTS) \
 				$(libmutaborscala_a_OBJECTS) \
 				$(libmutabordebugtest_a_OBJECTS) \
-				$(librtmidi_a_OBJECTS)
+				lib/rtmidi/librtmidi-ts.la
 
 libmutabormaintest_a_DEPENDENCIES = $(libmutabormaintest_a_LIBADD)
 
 #-------------------------------------------------------------
-# librtmidi.a
+# librtmidi-ts.la
 #-------------------------------------------------------------
 
 CLEANFILES += lib/rtmidi/*.class
 
-librtmidi_a_INLINEHEADERS = \
-		lib/rtmidi/RtMidi.h
+rtmidi_INLINEHEADERS = \
+	lib/rtmidi/RtMidi.h
 
-librtmidi_a_INDENTHEADERS =
-librtmidi_a_INDENTS =
+rtmidi_INDENTHEADERS =
+rtmidi_INDENTS = $(lib_rtmdidi_librtmidi_ts_la_SOURCES)
 
-noinst_HEADERS += $(librtmidi_a_INLINEHEADERS)
+noinst_HEADERS += $(rtmidi_INLINEHEADERS)
 
-
-librtmidi_a_SOURCES = \
-		lib/rtmidi/RtMidi.cpp
-
-librtmidi_a_POTSOURCES = $(librtmidi_a_SOURCES)
+librtmidi_ts_la_POTSOURCES = $(lib_rtmidi_librtmidi_ts_la_SOURCES)
 
 #-------------------------------------------------------------
 # Other files
@@ -483,7 +497,7 @@ INLINEHEADERS = \
 		$(src_kernel_libmutaborkernel_a_INLINEHEADERS) \
 		$(libmutaborscala_a_INLINEHEADERS) \
 		$(libmutabordebug_a_INLINEHEADERS) \
-		$(librtmidi_a_INLINEHEADERS) \
+		$(librtmidi_ts_la_INLINEHEADERS) \
 		$(libmutaborgui_a_INLINEHEADERS)
 
 INDENTHEADERS = \
@@ -507,7 +521,7 @@ INDENTSOURCES = \
 	$(libmutaborrouting_a_INDENTS) \
 	$(src_kernel_libmutaborkernel_a_INDENTS) \
 	$(libmutaborscala_a_INDENTS) \
-	$(librtmidi_a_INDENTS) \
+	$(librtmidi_ts_la_INDENTS) \
 	$(libmutabordebug_a_INDENTS) \
 	$(libmutaborgui_a_INDENTS)
 
@@ -524,7 +538,7 @@ POTSOURCES += $(INDENTSOURCES) \
 	$(NOCOMPSOURCES) \
 	$(libmutaborrouting_a_POTSOURCES) \
 	$(libmutaborscala_a_POTSOURCES) \
-	$(librtmidi_a_POTSOURCES) \
+	$(librtmidi_ts_la_POTSOURCES) \
 	$(libmutabordebug_a_POTSOURCES) \
 	$(libmutaborgui_a_POTSOURCES)
 
@@ -540,7 +554,7 @@ mutabor_LDADD = \
 	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
 	libmutabordebug.a \
-	librtmidi.a \
+	lib/rtmidi/librtmidi-ts.la \
 	$(WXINTLLDADD) \
 	$(LDADD) \
 	$(AM_LDFLAGS) \

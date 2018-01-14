@@ -34,7 +34,7 @@ nodist_%C%_testcppunit_SOURCES = \
 	libmutaborgui.a \
 	libmutaborrouting.a \
 	libmutaborscala.a \
-	librtmidi.a \
+	lib/rtmidi/librtmidi-ts.la \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
