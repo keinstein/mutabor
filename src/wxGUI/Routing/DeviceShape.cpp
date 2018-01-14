@@ -40,6 +40,7 @@
 #include <algorithm>
 #include "wx/defs.h"
 #include "wx/bmpbuttn.h"
+#include "wx/msgdlg.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"
@@ -596,6 +597,7 @@ namespace mutaborGUI {
 						out->AppendPortChoice(*i);
 					}
 			} catch (RtMidiError &error) {
+				wxMessageBox(error.getMessage());
 				error.printMessage();
 				out->AppendPortChoiceNoDevice();
 			}
