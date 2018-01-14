@@ -35,8 +35,7 @@ echo target_os: $target_os
 AC_CONFIG_SRCDIR([README.md])
 AC_CONFIG_MACRO_DIR([m4])
 
-
-AM_INIT_AUTOMAKE([dist-bzip2 silent-rules subdir-objects -Wall])
+AM_INIT_AUTOMAKE([dist-bzip2 silent-rules foreign subdir-objects -Wall])
 AS_IF(test "${enable_silent_rules+set}" != set,
    enable_silent_rules=yes
    AM_DEFAULT_VERBOSITY=0)
