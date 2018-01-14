@@ -58,7 +58,9 @@ TESTS += \
 	%D%/genmidilinear$(EXEEXT)
 
 %C%_playmidi1_CPPFLAGS = $(CPPFLAGS) \
-	-DSRCDIR="\"$(srcdir)/%D%/\""
+	-DSRCDIR="\"$(srcdir)/%D%/\"" \
+	$(WXINTLCXXFLAGS)
+
 %C%_playmidi1_SOURCES = \
 	%D%/playmidi1.cpp
 
@@ -95,11 +97,17 @@ nodist_%C%_playmidi1_SOURCES = \
 	$(BOOST_FILESYSTEM_LIBS) \
 	$(BOOST_SYSTEM_LIBS)
 
+%C%_midiopenfail1_CXXFLAGS = \
+	$(WXINTLCXXFLAGS)
+
 %C%_midiopenfail1_SOURCES = \
 	%D%/midiopenfail1.cpp
 
 nodist_%C%_midiopenfail1_SOURCES = \
 	%D%/debugPaths.cpp
+
+%C%_genmidirnd_CXXFLAGS = \
+	$(WXINTLCXXFLAGS)
 
 %C%_genmidirnd_SOURCES = \
 	%D%/genmidirnd.cpp
@@ -125,6 +133,9 @@ nodist_%C%_genmidirnd_SOURCES = \
 
 %C%_genmidilinear_SOURCES = \
 	%D%/genmidilinear.cpp
+
+%C%_genmidilinear_CXXFLAGS = \
+	$(WXINTLCXXFLAGS)
 
 nodist_%C%_genmidilinear_SOURCES = \
 	%D%/debugPaths.cpp

@@ -17,6 +17,11 @@ check_PROGRAMS += \
 %C%_wxlinktest_SOURCES = \
 	%D%/wxlinktest.cpp
 
+%C%_wxlinktest_CXXFLAGS = \
+	$(AM_CXXFLAGS) \
+	$(WXINTLCXXFLAGS)
+
+
 %C%_wxlinktest_LDADD= \
 	libmutabordebugtest.a \
 	libmutaborgui.a \
@@ -34,11 +39,12 @@ check_PROGRAMS += \
 
 %C%_wxlinktest2_SOURCES = %D%/wxlinktest2.cpp
 
-DEBUGPATHS += \
-	%D%/debugPaths.cpp
-
 nodist_%C%_wxlinktest2_SOURCES = \
 	%D%/debugPaths.cpp
+
+%C%_wxlinktest2_CXXFLAGS = \
+	$(AM_CXXFLAGS) \
+	$(WXINTLCXXFLAGS)
 
 %C%_wxlinktest2_LDADD= \
 	libmutabordebugtest.a \
@@ -61,7 +67,10 @@ TESTS += \
 
 check_PROGRAMS += %D%/cppunitlinktest
 
-%C%_cppunitlinktest_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
+%C%_cppunitlinktest_CXXFLAGS = \
+	$(AM_CXXFLAGS) \
+	$(CPPUNIT_CFLAGS) \
+	$(WXINTLCXXFLAGS)
 
 %C%_cppunitlinktest_SOURCES = \
 	%D%/cppunitlinktest.cpp

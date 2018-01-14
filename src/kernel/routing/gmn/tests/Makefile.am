@@ -20,7 +20,8 @@ TESTS += \
 	%D%/gmnopenfail1$(EXEEXT)
 
 %C%_playgmn1_CPPFLAGS = $(CPPFLAGS) \
-	-DSRCDIR="\"$(srcdir)/%D%/\""
+	-DSRCDIR="\"$(srcdir)/%D%/\"" \
+	$(WXINTLCXXFLAGS)
 %C%_playgmn1_SOURCES = \
 	%D%/playgmn1.cpp
 
@@ -51,6 +52,11 @@ nodist_%C%_playgmn1_SOURCES = \
 
 %C%_gmnopenfail1_SOURCES = \
 	%D%/gmnopenfail1.cpp
+
+%C%_gmnopenfail1_CXXFLAGS = \
+	$(AM_CXXFLAGS) \
+	$(WXINTLCXXFLAGS)
+
 
 nodist_%C%_gmnopenfail1_SOURCES = \
 	%D%/debugPaths.cpp
