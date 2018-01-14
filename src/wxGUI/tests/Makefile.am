@@ -10,9 +10,6 @@ CLEANFILES += \
 	texidlist.tex \
 	%D%/*.class
 
-DEBUGPATHS += \
-	%D%/debugPaths.cpp
-
 if HAVE_CPPUNIT
 TESTS += \
 	%D%/testcppunit$(EXEEXT)
@@ -41,19 +38,3 @@ nodist_%C%_testcppunit_SOURCES = \
 	$(BOOST_SYSTEM_LIBS)
 endif
 
-if COPYDLLS
-check-am: check-dll
-
-check-dll: all-am
-	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS)
-	$(MAKE) $(AM_MAKEFLAGS)	linkchecks
-
-linkchecks:
-	for d in `echo $(TESTS)| tr ' ' '\n' | grep -i -e '$(EXEEXT)$$'` ; \
-	do \
-		ls -l "$$d" ; \
-		$(MAKE) $(AM_MAKEFLAGS) DLLLINKFILE="$$d" DLLEXEDIR="." installdll ; \
-		test -f ".libs/$$d" && \
-			$(MAKE) $(AM_MAKEFLAGS) DLLLINKFILE=".libs/$$d" DLLEXEDIR="." installdll ; \
-	done
-endif

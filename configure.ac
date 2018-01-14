@@ -654,12 +654,30 @@ AC_SUBST(WX_LOCALE_DIRS,$ac_cv_wx_locale_dirs)
 
 AC_CACHE_CHECK([where to find support dlls], [ac_cv_mingw_dll_dirs],
 [
-       wxsearchdirs=`$WX_CONFIG_PATH --exec-prefix`/lib
+       wxsearchdirs="`$WX_CONFIG_PATH --exec-prefix`"
+       wxsearchdirs="$wxsearchdirs/lib $wxsearchdirs/bin"
        gccsearchdirs=`$CXX $CXXFLAGS -print-search-dirs|\
 			sed -e '/^libraries:/ { s/^libraries: *=\?//;s/:/ /g; p } ; d'`
-       SEARCHDIRS=""
-       for d in $wxsearchdirs $gccsearchdirs /usr/share/doc/mingw32-runtime /mingw/lib /mingw/bin  /usr/lib /lib /usr/bin /bin
+       SEARCHDIRS="$DLLSEARCHPATH"
+       for d in $wxsearchdirs \
+	     $gccsearchdirs \
+	     /usr/share/doc/mingw32-runtime \
+	     /usr/$host/bin \
+	     /usr/$host/lib \
+	     /usr/bin/$host/ \
+	     /usr/lib/$host/ \
+	     /usr/lib/$host/lib \
+	     /usr/lib/$host/bin \
+	     /usr/bin/$host/lib \
+	     /usr/bin/$host/bin \
+	     /mingw/lib \
+	     /mingw/bin  \
+	     /usr/lib \
+	     /lib \
+	     /usr/bin \
+	     /bin
        do
+	  AC_MSG_NOTICE(["checking $d..."])
 	  AS_IF(test -d $d,
 	  [ SEARCHDIRS="$SEARCHDIRS $d" ])
        done

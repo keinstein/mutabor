@@ -65,6 +65,12 @@ DISTCLEANFILES = \
 
 DLLCOPYPATTERN = \(wx\|mingw\)
 DLLEXEDIR = Mutabor
+DLLSEARCHPATH += \
+	$(top_builddir)/lib/rtmidi \
+	$(top_builddir)/lib/rtmidi/.libs \
+	$(top_builddir)/src/wxintl \
+	$(top_builddir)/src/wxintl/.libs
+
 
 
 
@@ -261,13 +267,13 @@ $(DEBUGPATHS): Makefile
 
 #-------------------------------------------------------------------------------------
 # Installing DLLs
-#-------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------	
 
 
 installdll:
 	@echo 'solving references for $(DLLLINKFILE)... '
 	DLLSEARCHPATH="$(DLLSEARCHPATH)" ; \
-	for d in `LANG=C $(OBJDUMP) -p  $(DLLEXEDIR)/$(DLLLINKFILE) |sed '/^\s*DLL Name:.*\(lib\|thread\|wx\|mingw\|gcc\|stdc++\)/ { s/^\s*DLL Name:\s*//; p } ; d '` ; \
+	for d in `LANG=C $(OBJDUMP) -p  $(DLLEXEDIR)/$(DLLLINKFILE) |sed '/^\s*DLL Name:.*\(lib\|thread\|wx\|mingw\|gcc\|stdc++\|rtmidi\)/ { s/^\s*DLL Name:\s*//; p } ; d '` ; \
 	do \
 		echo -n checking "$$d ... " ; \
 		if [ ! -f $(DLLEXEDIR)/$$d ] ; then \
@@ -276,8 +282,8 @@ installdll:
 			find $$DLLSEARCHPATH -name "$$d.*")|head -n 1` ; \
 			if test -f "$$f" ; \
 			then \
-				echo "installing $$f " ; \
-				$(INSTALL_PROGRAM_ENV) $(INSTALL_DATA) "$$f" "`pwd`/$(DLLEXEDIR)" ; \
+				echo "installing $$f to `pwd`/$(DLLEXEDIR)" ; \
+				$(INSTALL_PROGRAM_ENV) $(INSTALL_DATA) "$$f" "$(DLLEXEDIR)" ; \
 				case "$$f" in \
 				*.gz)  GZIP=$(GZIP_ENV) gzip -dc $(DLLEXEDIR)/`basename "$$f"` >$(DLLEXEDIR)/"$$d" ;; \
 				esac ; \

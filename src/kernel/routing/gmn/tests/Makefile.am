@@ -65,20 +65,3 @@ nodist_%C%_gmnopenfail1_SOURCES = \
 %D%/playgmn1.gmn: %D%/gmn1_source.gmn
 	cp `(if test -f '$<' ; then  echo '$<' ; else echo '$(top_srcdir)/$<' ; fi )` $@
 
-
-if COPYDLLS
-check-am: check-dll
-
-check-dll: all-am
-	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS)
-	$(MAKE) $(AM_MAKEFLAGS)	linkchecks
-
-linkchecks:
-	for d in `echo $(TESTS)| tr ' ' '\n' | grep -i -e '$(EXEEXT)$$'` ; \
-	do \
-		ls -l "$$d" ; \
-		$(MAKE) $(AM_MAKEFLAGS) DLLLINKFILE="$$d" DLLEXEDIR="." installdll ; \
-		test -f ".libs/$$d" && \
-			$(MAKE) $(AM_MAKEFLAGS) DLLLINKFILE=".libs/$$d" DLLEXEDIR="." installdll ; \
-	done
-endif

@@ -795,7 +795,10 @@ installwin:
 		'pkgdatadir=$$(prefix)' \
 		'mutabordir=$$(prefix)' \
 		install installwxlocale
-	$(MAKE) DLLLINKFILE="mutabor.exe" installdll
+	for d in mutabor.exe scl2mut.exe ; \
+	do \
+		$(MAKE) DLLLINKFILE="$$d" DLLEXEDIR="`pwd`/Mutabor" installdll ; \
+	done
 	for d in GPL-2 LGPL-2.1 ChangeLog; do \
 		cp $(top_srcdir)/$$d Mutabor/$$d.txt ; \
 	done
@@ -805,6 +808,26 @@ installwin:
 #-------------------------------------------------------------------------------------
 # Certain fixed files
 #-------------------------------------------------------------------------------------
+
+
+if COPYDLLS
+check-am: check-dll
+
+check-dll: all-am
+	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS)
+	$(MAKE) $(AM_MAKEFLAGS)	linkchecks
+
+linkchecks:
+	for d in `echo $(DLLPROGRAMS)| tr ' ' '\n' | grep -i -e '$(EXEEXT)$$'` ; \
+	do \
+		ls -l "$$d" ; \
+		file=`basename "$$d"` ; \
+		dir=`dirname "$$d"` ; \
+		$(MAKE) $(AM_MAKEFLAGS) DLLLINKFILE="$$file" DLLEXEDIR="$$dir" installdll ; \
+		test -f "$$dir/.libs/$$file" && \
+			$(MAKE) $(AM_MAKEFLAGS) DLLLINKFILE="$$file" DLLEXEDIR="$$dir/.libs" installdll ; \
+	done
+endif
 
 
 if MAINTAINER_MODE
