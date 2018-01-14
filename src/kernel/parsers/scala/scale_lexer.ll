@@ -1,7 +1,8 @@
 
 %{/* -*- C++ -*- */
 %}
-%option   noyywrap nounput batch debug noinput
+%option   noyywrap
+%option   nounput batch debug noinput
 %option   8bit
 %option   warn
 %option   verbose

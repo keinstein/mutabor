@@ -46,7 +46,9 @@
 //#pragma warn -sig
 //#pragma warn -par
 
-
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE 1
+#endif
 #include <ctype.h>
 #include <limits.h>
 #include <errno.h>

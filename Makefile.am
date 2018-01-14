@@ -11,7 +11,10 @@ CVS = cvs
 GIT = git
 REPOSITORY = http://git.berlios.de/mutabor
 REPOSITORY_PATH = .
-AM_LFLAGS = --c++ -o lex.yy.c
+AM_LFLAGS = --c++
+DLLPROGRAMS = $(TESTS) $(noinst_PROGRAMS) $(bin_PROGRAMS)
+#-o lex.yy.c
+
 lib_LTLIBRARIES =
 noinst_PROGRAMS =
 
@@ -47,6 +50,8 @@ lib_rtmidi_librtmidi_ts_la_LDFLAGS  += \
 
 lib/rtmidi/librtmidi-ts.a:lib/rtmidi/librtmidi-ts.la
 
+
+TAGS_DEPENDENCIES: generated_headers
 
 configure: lib/rtmidi/configure.library
 
