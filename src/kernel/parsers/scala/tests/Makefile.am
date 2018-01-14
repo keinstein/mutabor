@@ -220,8 +220,8 @@ $(KBMTESTS:.kbm=.log): %D%/run_kbm2mut.sh
 	@echo "outputdir='%D%/'" >> $@
 	@echo 'LC_ALL=C' >> $@
 	@echo 'export LC_ALL' >> $@
-	@echo '"./scl2mut" "$$file" "$$outputdir$${basefile%.scl}.mut2" || exit 1' >> $@
-	@echo 'diff -u "$${file%.scl}.mut" "$$outputdir$${basefile%.scl}.mut2" || exit 2' >> $@
+	@echo '"./scl2mut$(EXEEXT)" "$$file" "$$outputdir$${basefile%.scl}.mut2" || exit 1' >> $@
+	echo 'sed "s/\$$//" "$$outputdir$${basefile%.scl}.mut2" | diff -u "$${file%.scl}.mut" - || exit 2' >> $@
 	@echo 'exit 0' >> $@
 	@chmod u+x $@
 
@@ -232,7 +232,7 @@ $(KBMTESTS:.kbm=.log): %D%/run_kbm2mut.sh
 	@echo "outputdir='%D%/'" >> $@
 	@echo 'LC_ALL=C' >> $@
 	@echo 'export LC_ALL' >> $@
-	@echo '"./scl2mut" "$$file" "$$outputdir$${basefile%.scl}.mut2" 2>&1 | tee $$outputdir$${basefile%.nscl}.log2 || exit 1' >> $@
+	@echo '"./scl2mut$(EXEEXT)" "$$file" "$$outputdir$${basefile%.scl}.mut2" 2>&1 | tee $$outputdir$${basefile%.nscl}.log2 || exit 1' >> $@
 	@echo 'echo "starting grep..."' >> $@
 	@echo 'grep -Pzo -f $${file%.nscl}.err $$outputdir$${basefile%.nscl}.log2 || exit 2' >> $@
 	@echo 'exit 0' >> $@
@@ -246,8 +246,8 @@ $(KBMTESTS:.kbm=.log): %D%/run_kbm2mut.sh
 	@echo "outputdir='%D%/'" >> $@
 	@echo 'LC_ALL=C' >> $@
 	@echo 'export LC_ALL' >> $@
-	@echo './scl2mut -k $$file "$$dir/12tet.scl" "$$outputdir$${basefile%.kbm}.mut2" || exit 1' >> $@
-	@echo 'diff -u $${file%.kbm}.mut $$outputdir$${basefile%.kbm}.mut2 || exit 2' >> $@
+	@echo './scl2mut$(EXEEXT) -k $$file "$$dir/12tet.scl" "$$outputdir$${basefile%.kbm}.mut2" || exit 1' >> $@
+	@echo 'sed "s/\$$//" "$$outputdir$${basefile%.kbm}.mut2" | diff -u "$${file%.kbm}.mut" - || exit 2' >> $@
 	@echo 'exit 0' >> $@
 	@chmod u+x $@
 
