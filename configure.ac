@@ -134,7 +134,7 @@ AC_ARG_ENABLE(debug,
 	       CXXFLAGS="$CXXFLAGS -g -D_GLIBCXX_DEBUG -D__RTMIDI_DEBUG__"
 	       AC_LANG_PUSH(C++)
 	       for flag in -Wall  -Wno-unused-local-typedefs  -fdump-class-hierarchy \
-	       	    -fbounds-check  -pedantic  -fdiagnostics-show-option  -Wno-long-long \
+		    -fbounds-check  -pedantic  -fdiagnostics-show-option  -Wno-long-long \
 		     -Wno-variadic-macros -Wno-nested-anon-types -Wno-c++11-extensions -ggdb3 -g3 -fipa-icf
 	       do
 	       	       tmpcxxflags="$CXXFLAGS"
@@ -577,8 +577,8 @@ CPPFLAGS="$CPPFLAGS $midiapi"
 AM_CONDITIONAL(COPYDLLS,$copydlls)
 
 AM_GNU_GETTEXT([external])
-AM_GNU_GETTEXT_VERSION([0.18])
-AM_GNU_GETTEXT_INTL_SUBDIR
+AM_GNU_GETTEXT_VERSION([0.19.8])
+dnl AM_GNU_GETTEXT_INTL_SUBDIR
 BISON_I18N
 dnl wxMenuItem::GetItemLabel is implemented from 2.8.5
 AM_PATH_WXCONFIG(2.8.5, wxWin=1, wxWin=0, [aui,adv,html,xrc,stc,xml,core],[$wxflags])
@@ -905,7 +905,6 @@ AC_SUBST(LIBS)
 AC_CONFIG_FILES([
 po/Makefile.in
 Makefile
-intl/Makefile
 src/includes/mutabor/Makefile
 src/includes/mutabor/tests/Makefile
 src/wxintl/tests/Makefile

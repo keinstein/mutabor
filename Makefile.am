@@ -1,7 +1,8 @@
 ACLOCAL_AMFLAGS = -I m4 --install
 #AUTOMAKE_OPTIONS = dejagnu
 # intl must be before any source directories
-SUBDIRS = po intl lib . doc tools/midi2text #libmutabor .
+
+SUBDIRS = po lib . doc tools/midi2text #libmutabor . #intl
 #DIST_SUBDIRS = $(SUBDIRS)
 precompCOMPILESOURCES=$(mutabor_COMPILESOURCES)
 
