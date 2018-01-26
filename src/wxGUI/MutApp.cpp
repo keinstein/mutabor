@@ -273,22 +273,6 @@ namespace mutaborGUI {
 		// init global wx objects
 		// -------------------
 
-		g_printData = new wxPrintData;
-
-		// You could set an initial paper size here
-#if 0
-		g_printData->SetPaperId(wxPAPER_LETTER); // for Americans
-		g_printData->SetPaperId(wxPAPER_A4);    // for everyone else
-#endif
-
-		g_pageSetupData = new wxPageSetupDialogData;
-
-		// copy over initial paper size from print record
-		(*g_pageSetupData) = *g_printData;
-
-		// Set some initial page margins in mm.
-		g_pageSetupData->SetMarginTopLeft(wxPoint(15, 15));
-		g_pageSetupData->SetMarginBottomRight(wxPoint(15, 15));
 
 		// We are using .png files for some extra bitmaps.
 		wxImageHandler * pnghandler = new wxPNGHandler;
@@ -316,8 +300,9 @@ namespace mutaborGUI {
 		// initialize Mutabor before the doc manager
 		mutabor::initialize_box_data();
 
-		if (!(document_manager=new MutDocManager()))
+		if (!(document_manager=new MutDocManager())) {
 			return false;
+		}
 		//  restrict to having <= 1 doc open at any time
 //	document_manager->SetMaxDocsOpen(5);
 		//  establish a doc template for the doc,view pair
@@ -374,12 +359,26 @@ namespace mutaborGUI {
 			frame->Show(true);
 		}
 
+
 #if wxUSE_PRINTING_ARCHITECTURE
 		// initialize print data and setup
 		g_printData = new wxPrintData;
-		g_pageSetupData = new wxPageSetupDialogData;
-#endif // wxUSE_PRINTING_ARCHITECTURE
 
+		// You could set an initial paper size here
+#if 0
+		g_printData->SetPaperId(wxPAPER_LETTER); // for Americans
+		g_printData->SetPaperId(wxPAPER_A4);    // for everyone else
+#endif
+
+		g_pageSetupData = new wxPageSetupDialogData;
+
+		// copy over initial paper size from print record
+		(*g_pageSetupData) = *g_printData;
+
+		// Set some initial page margins in mm.
+		g_pageSetupData->SetMarginTopLeft(wxPoint(15, 15));
+		g_pageSetupData->SetMarginBottomRight(wxPoint(15, 15));
+#endif // wxUSE_PRINTING_ARCHITECTURE
 
 		return true;
 	}
@@ -1405,19 +1404,30 @@ namespace mutaborGUI {
 
 		MidiUninit();
 
+		if (g_pageSetupData)
+			delete g_pageSetupData;
+		g_pageSetupData = NULL;
+
+		if (g_printData)
+			delete g_printData;
+		g_printData = NULL;
+
 		document_manager->DisconnectFromApp(this);
-		delete document_manager;
+		if (document_manager)
+			delete document_manager;
 		document_manager = NULL;
 #if defined(__WXMAC__)
 		wxMenuBar::MacSetCommonMenuBar(NULL);
 #endif
-		delete HelpController;
+		if (HelpController)
+			delete HelpController;
 		HelpController = NULL;
 		wxXmlResource::Get()->ClearHandlers();
 
 		mutabor_backtrace::set_global_print();
 		debug_print_pointers();
 		wxASSERT(debug_is_all_deleted());
+
 
 		return wxApp::OnExit();
 	}
