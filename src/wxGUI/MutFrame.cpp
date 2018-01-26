@@ -41,7 +41,9 @@
 #include "wx/toolbar.h"
 #include "wx/image.h"
 
+#ifndef __WXMSW__
 #include "Images/Icons/xpm/Route.xpm"
+#endif
 
 #include "wx/filename.h"
 #include "wx/config.h"
