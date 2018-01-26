@@ -805,8 +805,54 @@ AS_IF(test "$ac_cv_format_arg" != __attribute_format_arg,
 
 AC_LANG_POP(C++)
 
+AC_CACHE_CHECK([fallthrough syntax in the C language], ac_cv_c_fallthrough,
+[
+AC_COMPILE_IFELSE([
+	AC_LANG_PROGRAM([
+	int j;
+	void test(int i) { switch (i) { case 1: j = 3; [[[fallthrough]]] ; case 2: j++; }}
+	],[])],[ac_cv_c_fallthrough="[[fallthrough]]"],[
+	AC_COMPILE_IFELSE([
+		AC_LANG_PROGRAM([
+		int j;
+		void test(int i) { switch (i) { case 1: j = 3; [[[gnu::fallthrough]]] ; case 2: j++; }}
+		],[])],[ac_cv_c_fallthrough="[[[gnu::fallthrough]]]"],[
+		AC_COMPILE_IFELSE([
+			AC_LANG_PROGRAM([
+			int j;
+			void test(int i) { switch (i) { case 1: j = 3; __attribute__((fallthrough)) ; case 2: j++; }}
+			],[])],[ac_cv_c_fallthrough="__attribute__((fallthrough))"],[
+			ac_cv_c_fallthrough=""
+		]);
+	]);
+]);
+])
+AC_DEFINE_UNQUOTED(mutCfallthrough,[$ac_cv_c_fallthrough],[syntax for swtich case fallthrough attributes in C])
 
 AC_LANG(C++)
+AC_CACHE_CHECK([fallthrough syntax in the C++ language], ac_cv_cxx_fallthrough,
+[
+AC_COMPILE_IFELSE([
+	AC_LANG_PROGRAM([
+	int j;
+	void test(int i) { switch (i) { case 1: j = 3; [[[fallthrough]]] ; case 2: j++; }}
+	],[])],[ac_cv_cxx_fallthrough="[[[fallthrough]]]"],[
+	AC_COMPILE_IFELSE([
+		AC_LANG_PROGRAM([
+		int j;
+		void test(int i) { switch (i) { case 1: j = 3; [[[gnu::fallthrough]]] ; case 2: j++; }}
+		],[])],[ac_cv_cxx_fallthrough="[[[gnu::fallthrough]]]"],[
+		AC_COMPILE_IFELSE([
+			AC_LANG_PROGRAM([
+			int j;
+			void test(int i) { switch (i) { case 1: j = 3; __attribute__((fallthrough)) ; case 2: j++; }}
+			],[])],[ac_cv_cxx_fallthrough="__attribute__((fallthrough))"],[
+			ac_cv_cxx_fallthrough=""
+		]);
+	]);
+]);
+])
+AC_DEFINE_UNQUOTED(mutfallthrough,[$ac_cv_cxx_fallthrough],[syntax for swtich case fallthrough attributes in C++])
 
 dnl AC_CACHE_CHECK([for variable scope in for loops in C++ mode], ac_cv_cxx_scope_reuse,
 dnl [

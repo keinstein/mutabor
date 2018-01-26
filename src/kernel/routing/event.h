@@ -633,27 +633,31 @@ namespace mutabor {
 	inline event_class * create_event(const std::vector<unsigned char> &code,
 				   size_t unique_id) {
 		unsigned char midiStatus = code.at(0) & 0xF0;
+		/* invalid midi messsages are handled by the default branch */
 		switch (midiStatus) {
-		case midi::KEY_PRESSURE:
-			if (code.size() > 2)
-				return new key_pressure_event(code.at(0) & 0x0f,
-							      unique_id,
-							      code.at(1),
-							      code.at(2));
-		case midi::CONTROLLER:
-			if (code.size() > 2)
-				return new controller_event(code.at(0) & 0x0f,
-							    unique_id,
-							    code.at(1),
-							    code.at(2));
+		case midi::SYSTEM:
+			return create_system_event(code,unique_id);
 		case midi::CHANNEL_PRESSURE:
 			if (code.size() > 1)
 				return new controller_event(code.at(0) & 0x0f,
 							    unique_id,
 							    midi::CHANNEL_PRESSURE_VAL,
 							    code.at(1));
-		case midi::SYSTEM:
-			return create_system_event(code,unique_id);
+			FALLTHROUGH;
+		case midi::KEY_PRESSURE:
+			if (code.size() > 2)
+				return new key_pressure_event(code.at(0) & 0x0f,
+							      unique_id,
+							      code.at(1),
+							      code.at(2));
+			FALLTHROUGH;
+		case midi::CONTROLLER:
+			if (code.size() > 2)
+				return new controller_event(code.at(0) & 0x0f,
+							    unique_id,
+							    code.at(1),
+							    code.at(2));
+			FALLTHROUGH;
 		default:
 			return new event_class;
 		}

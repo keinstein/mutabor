@@ -742,7 +742,9 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 
 				switch (lauf -> umstimmung_typ) {
 				case umstimmung_midi_out:
+					printf ("        umstimmung_midi_out : ");
 					STUB;
+					break;
 
 				case umstimmung_taste_abs :
 					printf ("        umstimmung_taste_abs : ");
@@ -3654,6 +3656,7 @@ static void print_action (struct aktions_liste * action)
 	}
 	case aktion_harmony_analysis: {
 		printf("                Harmony analysis");
+		break;
 	}
 	default:
 		UNREACHABLE;

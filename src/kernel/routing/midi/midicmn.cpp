@@ -803,9 +803,11 @@ namespace mutabor {
 				case midi::ACTIVE_SENSE:
 				case midi::RESET:
 					Out.RawMsg(channel, p[pos]);
+					FALLTHROUGH;
 				default:
 					pos++;
 				}
+				break;
 			default:
 				command = last_command & midi::TYPE_MASK;
 				channel = last_command & midi::CHANNEL_MASK;
@@ -989,6 +991,7 @@ namespace mutabor {
 					     NULL);
 				break;
 			}
+			FALLTHROUGH; // Note On with velocity = 0 means Note Off
 
 		case midi::NOTE_OFF: // Note Off
 			this->NoteOff(route,
@@ -1011,6 +1014,7 @@ namespace mutabor {
 			switch (midiCode.at(1)) {
 			case midi::ALL_CONTROLLERS_OFF:
 				reset = true;
+				FALLTHROUGH;
 			case midi::ALL_SOUND_OFF:
 			case midi::ALL_NOTES_OFF:
 			case midi::OMNI_OFF:
@@ -1046,6 +1050,7 @@ namespace mutabor {
 			channel_data[MidiChannel].set_controller(midi::CHANNEL_PRESSURE_VAL,
 								 midiCode.at(1));
 			// … and create a proper event.
+			FALLTHROUGH;
 		case midi::KEY_PRESSURE: {
 			event e = create_event(midiCode,
 					       MidiChannel);
@@ -1077,6 +1082,7 @@ namespace mutabor {
 			case midi::META:
 				if (midiCode.size() == 1)
 					break;
+				FALLTHROUGH;
 			case midi::SYSEX_START: {
 				event e = create_event(midiCode,
 						       MidiChannel);
@@ -1137,6 +1143,7 @@ namespace mutabor {
 				// this is the position where we must reset Mutabor
 				return;
 			} // otherwise we pass the event to the output devices
+			FALLTHROUGH;
 		case midi::SYSEX_START: {
 			event e = create_event(midiCode,
 						 MidiChannel);

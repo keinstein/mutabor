@@ -551,6 +551,7 @@ InputMidiPort:\n\
 			return;
 		case midi::START_PLAY:
 			InputDeviceClass::StopAll();
+			FALLTHROUGH;
 		case midi::CONTINUE_PLAY: {
 			event e = create_event(midiCode, MidiChannel);
 			OutputDeviceClass::all_handle_event(e);

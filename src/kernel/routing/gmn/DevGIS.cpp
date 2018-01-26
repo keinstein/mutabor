@@ -487,6 +487,7 @@ namespace mutabor {
 				break;
 			case 2:
 				box->DeleteNote(Key, 0, route->get_session_id());
+				FALLTHROUGH;
 			default:
 				route->NoteOff(Key,
 					       h->GetIntensity(turn),
@@ -541,7 +542,7 @@ namespace mutabor {
 			case RTelse:
 				if ( DidOut )
 					break;
-
+				FALLTHROUGH;
 			case RTall:
 				Proceed(h, turn, *R);
 			}

@@ -100,6 +100,11 @@ _ISEMPTY(                                                               \
 #define mutUnused(expr) do { (void)(expr); } while (0)
 
 
+#ifdef __cplusplus
+#define FALLTHROUGH mutfallthrough
+#else
+#define FALLTHROUGH mutCfallthrough
+#endif
 
 #ifdef __cplusplus
 namespace mutabor {
