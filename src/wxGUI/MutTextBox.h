@@ -116,10 +116,8 @@ public:
 	 * Get the string describing the current key configuration of our box.
 	 *
 	 * This function collects key data from the box of the object and updates the corresponding list.
-	 *
-	 * \param asTS bool if true frequencies will be shown as absolute cents otherwise relative to the previous key.
 	 */
-	void GetKeys(bool asTS);
+	void GetKeys();
 
 	/**
 	 * Update data to match the current tone system.

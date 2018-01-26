@@ -153,7 +153,7 @@ void MutTextBox::UpdateUI(wxCommandEvent& event)
 	Ok = true;
 	switch (winKind) {
 	case WK_KEY:
-		GetKeys(asTS);
+		GetKeys();
 		break;
 	case WK_TS:
 		GetToneSystem(asTS);
@@ -251,7 +251,7 @@ static inline long get_frequency (long key, tone_system * tonesys) {
 }
 #endif
 
-void MutTextBox::GetKeys(bool asTS)
+void MutTextBox::GetKeys()
 {
 	wxString keys;
 
