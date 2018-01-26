@@ -65,7 +65,8 @@ namespace mutaborGUI {
 	InputDevDlg::InputDevDlg( wxWindow* parent):InputDevDlgBase(parent)
 	{
 		DeviceChoice->Clear();
-		DeviceChoice->Append(_("MIDI Device"),new TypeData(DTMidiPort));
+		DeviceChoice->Append(_("MIDI Device"),
+				     static_cast<wxClientData *>(new TypeData(DTMidiPort)));
 		DeviceChoice->Append(_("MIDI file"),new TypeData(DTMidiFile));
 		DeviceChoice->Append(_("GUIDO file"),new TypeData(DTGis));
 
