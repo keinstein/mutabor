@@ -323,7 +323,7 @@ inline static void call_actions (mutabor_box_type * box,
 #ifdef NOTES_CORRECT_SOFORT
 					NotesCorrect(box);
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
+					mutabor_update(box, mutabor_keys_changed | mutabor_box_changed);
 					break;
 
 				case aufruf_umst_taste_abs:
@@ -346,7 +346,7 @@ inline static void call_actions (mutabor_box_type * box,
 #ifdef NOTES_CORRECT_SOFORT
 					NotesCorrect(box);
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
+					mutabor_update(box, mutabor_keys_changed | mutabor_box_changed);
 					break;
 
 				case aufruf_umst_breite_abs:
@@ -368,7 +368,7 @@ inline static void call_actions (mutabor_box_type * box,
 #ifdef NOTES_CORRECT_SOFORT
 					NotesCorrect(box);
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
+					mutabor_update(box, mutabor_keys_changed | mutabor_box_changed);
 					break;
 
 				case aufruf_umst_wiederholung_abs: {
@@ -384,7 +384,7 @@ inline static void call_actions (mutabor_box_type * box,
 					NotesCorrect(box);
 
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
+					mutabor_update(box, mutabor_keys_changed | mutabor_box_changed);
 				}
 					break;
 
@@ -404,7 +404,7 @@ inline static void call_actions (mutabor_box_type * box,
 					NotesCorrect(box);
 
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
+					mutabor_update(box, mutabor_keys_changed | mutabor_box_changed);
 				}
 					break;
 
@@ -444,7 +444,7 @@ inline static void call_actions (mutabor_box_type * box,
 #ifdef NOTES_CORRECT_SOFORT
 					NotesCorrect(box);
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
+					mutabor_update(box, mutabor_keys_changed | mutabor_box_changed);
 				}
 
 					break;
@@ -490,7 +490,7 @@ inline static void call_actions (mutabor_box_type * box,
 #ifdef NOTES_CORRECT_SOFORT
 					NotesCorrect(box);
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
+					mutabor_update(box, mutabor_keys_changed | mutabor_box_changed);
 				}
 					break;
 
@@ -539,7 +539,7 @@ inline static void call_actions (mutabor_box_type * box,
 					NotesCorrect(box);
 
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
+					mutabor_update(box, mutabor_keys_changed | mutabor_box_changed);
 				}
 					break;
 
