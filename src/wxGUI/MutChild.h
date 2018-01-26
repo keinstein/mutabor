@@ -118,9 +118,9 @@ namespace mutaborGUI {
 			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 			MutTextBox::GetClientSize(width,height);
 
-			if ((width += 2) < 0) width = 0;
+			if ((*width += 2) < 0) *width = 0;
 
-			if ((height +=2) < 0) height =0;
+			if ((*height +=3) < 0) *height =0;
 		}
 
 		void SetClientSize(int width, int height)
