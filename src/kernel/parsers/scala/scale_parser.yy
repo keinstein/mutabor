@@ -37,7 +37,9 @@
 
 %code requires
 {
-#define _GNU_SOURCE
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE 1
+#endif
 #include <string>
 #include <cerrno>
 #include "src/kernel/parsers/scala/scala.h"

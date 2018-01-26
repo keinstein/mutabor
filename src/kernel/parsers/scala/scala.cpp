@@ -35,7 +35,9 @@
  * --------------------------------------------------------------------------- */
 
 /* system headers which do seldom change */
+#ifndef _GNU_SOURCE
 #define _GNU_SOURCE
+#endif
 #include <cstdarg>
 #include <cmath>
 #include <sstream>
