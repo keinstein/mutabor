@@ -453,9 +453,9 @@ namespace mutaborGUI {
 							      + _T("]")
 							      );
 #endif
-			} else
+			} else {
 				//				guibox->SetTonesystem(sText);
-				;
+			}
 			bool isLogic = isOpen||i->flags == mutabor::BoxClass::logic_entry::Logic;
 			MutTag * tag = new MutTag(this, 
 						  wxDefaultPosition, 
