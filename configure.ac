@@ -134,7 +134,7 @@ AC_ARG_ENABLE(debug,
 	       AC_LANG_PUSH(C++)
 	       for flag in -Wall  -Wno-unused-local-typedefs  -fdump-class-hierarchy \
 		    -fbounds-check  -pedantic  -fdiagnostics-show-option  -Wno-long-long \
-		     -Wno-variadic-macros -Wno-nested-anon-types -Wno-c++11-extensions -ggdb3 -g3 -fipa-icf
+		     -Wno-variadic-macros -Wno-nested-anon-types -Wno-c++11-extensions -g -fipa-icf
 	       do
 		       tmpcxxflags="$CXXFLAGS"
 		       CXXFLAGS="$CXXFLAGS $flag"
@@ -166,6 +166,24 @@ dnl				LIBS="$tmplibs"]
 dnl				[AC_MSG_RESULT([no])])
 dnl
 	       case "$host_os" in
+	       *mingw*)
+		       tmpcxxflags="$CXXFLAGS"
+		       CXXFLAGS="$CXXFLAGS -gstabs"
+			       AC_MSG_CHECKING([whether $CXX supports -gstabs])
+			       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+						 [AC_MSG_RESULT([yes])],
+						 [CXXFLAGS="$tmpcxxflags"]
+						 [AC_MSG_RESULT([no])])
+		       AC_LANG_PUSH(C)
+		       tmpcxxflags="$CFLAGS"
+		       CXXFLAGS="$CFLAGS -gstabs"
+			       AC_MSG_CHECKING([whether $CC supports -gstabs])
+			       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+						 [AC_MSG_RESULT([yes])],
+						 [CFLAGS="$tmpcflags"]
+						 [AC_MSG_RESULT([no])])
+                       AC_LANG_POP(C)
+			;;
 	       darwin*)
 		       tmpcxxflags="$CXXFLAGS"
 		       CXXFLAGS="$CXXFLAGS -ggdb"
