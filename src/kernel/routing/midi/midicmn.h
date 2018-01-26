@@ -655,7 +655,8 @@ namespace mutabor {
 		void do_MidiOut(uint8_t *p, size_t n) {
 			do_SplitOut(p,n);
 		}
-		void do_MidiOut(mutabor::Box box, midi_string data) {
+		void do_MidiOut(mutabor::Box mutUNUSED(box),
+				midi_string data) {
 			do_SplitOut(data.data(),data.size());
 		}
 		void do_UpdateControllers(int channel, const ChannelData & input_channel_data);

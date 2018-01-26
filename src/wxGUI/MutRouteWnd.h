@@ -211,7 +211,9 @@ namespace mutaborGUI {
 			return true;
 		}
 
-		bool AddRoute(MutBoxChannelShape * channel, const wxSizerFlags & flags) {
+		bool AddRoute(MutBoxChannelShape * channel,
+			      const wxSizerFlags & flags) {
+			mutUnused(flags);
 			mutASSERT(BoxSizer);
 			mutabor::Route r = channel->GetRoute();
 			mutabor::Box b = r->GetBox();

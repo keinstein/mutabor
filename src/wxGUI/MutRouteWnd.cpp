@@ -658,6 +658,7 @@ void MutRouteWnd::FitInside() {
 
 void MutRouteWnd::OnSize(wxSizeEvent& event)
 {
+	mutUnused(event);
 	FitInside();
 	Layout();
 	Refresh(); // we must repaint the entire window on resizing.
@@ -701,6 +702,7 @@ void MutRouteWnd::OnSize(wxSizeEvent& event)
 
 void MutRouteWnd::OnPaint(wxPaintEvent & event)
 {
+	mutUnused(event);
 	wxPaintDC dc(this);
 	DoPrepareDC(dc);
 	dc.DestroyClippingRegion();

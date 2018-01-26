@@ -503,8 +503,11 @@ InputMidiPort:\n\
 	}
 
 
-	InputMidiPort::proceed_bool InputMidiPort::shouldProceed(Route R, const std::vector<unsigned char > &midiCode, int data)
+	InputMidiPort::proceed_bool InputMidiPort::shouldProceed(Route R,
+								 const std::vector<unsigned char > &midiCode,
+								 int data)
 	{
+		mutUnused(data);
 		switch ( R->GetType() ) {
 		case RTchannel:
 			if (R->Check(midiCode.at(0) & 0x0F))

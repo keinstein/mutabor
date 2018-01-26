@@ -102,7 +102,7 @@ namespace mutaborGUI {
 		}
 
 
-		void CheckBoxToggle( wxCommandEvent& event ) {
+		void CheckBoxToggle( wxCommandEvent& mutUNUSED(event) ) {
 			if (!KeyMap || !Genkeymap) return;
 			KeyMap->Enable(Genkeymap->GetValue());
 		}

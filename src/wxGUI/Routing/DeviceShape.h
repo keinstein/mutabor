@@ -278,7 +278,7 @@ namespace mutaborGUI {
 		    when the object is deleted during processing of mouse
 		    events, we send us a new event using the event queue.
 		*/
-		void LeftDblClickEvent (wxMouseEvent & event) {
+		void LeftDblClickEvent (wxMouseEvent & mutUNUSED(event)) {
 			wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
 					       CM_LEFT_DOUBLE_CLICK);
 			wxPostEvent(this,command);
@@ -288,7 +288,7 @@ namespace mutaborGUI {
 		    when the object is deleted during processing of mouse
 		    events, we send us a new event using the event queue.
 		*/
-		void CmLeftDblClick (wxCommandEvent& event) {
+		void CmLeftDblClick (wxCommandEvent& mutUNUSED(event)) {
 			DoLeftDblClick();
 		}
 
@@ -350,7 +350,9 @@ namespace mutaborGUI {
 		virtual void DoLeftDblClick();
 		DeviceDialog * ShowDeviceDialog();
 
-		virtual void InitializeDialog(DeviceDialog * in) const { }
+		virtual void InitializeDialog(DeviceDialog * in) const {
+			mutUnused(in);
+		}
 		/// Initialize device data from a dialog
 		/** Transfers the data from a dialog window into the corresponding
 		 *  device object.
@@ -359,6 +361,7 @@ namespace mutaborGUI {
 		 * \retval false otherwise
 		 */
 		virtual bool readDialog (DeviceDialog * dlg) {
+			mutUnused(dlg);
 			mutASSERT (false);
 			return false;
 		}
@@ -368,7 +371,7 @@ namespace mutaborGUI {
 		 */
 		virtual bool DetachDevice ();
 		virtual bool replaceSelfBy (thistype  * newshape);
-		virtual bool CanHandleType (mutabor::DevType  type) { return false; }
+		virtual bool CanHandleType (mutabor::DevType  mutUNUSED(type)) { return false; }
 
 		virtual void createPlayButtons();
 		virtual void createPauseButton();

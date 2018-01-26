@@ -127,6 +127,7 @@ namespace mutaborGUI {
 		    events, we send us a new event using the event queue.
 		*/
 		void LeftDblClickEvent (wxMouseEvent & event) {
+			mutUnused(event);
 			wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
 					       CM_LEFT_DOUBLE_CLICK);
 			wxPostEvent(this,command);
@@ -231,7 +232,10 @@ namespace mutaborGUI {
 		virtual bool DeleteBox ();
 
 		virtual bool readDialog (BoxDlg * boxdlg);
-		virtual bool CanHandleType (int  type) { return true; }
+		virtual bool CanHandleType (int  type) {
+			mutUnused(type);
+			return true;
+		}
 		mutabor::Box GetBox() const { return box; }
 
 		wxSizer * GetChannels() const { return channels; }

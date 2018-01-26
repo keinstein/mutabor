@@ -168,6 +168,7 @@ namespace mutabor {
 						  uint8_t byte1,
 						  uint8_t byte2,
 						  uint8_t byte3) {
+			mutUnused(channel);
 			std::vector<unsigned char> message(3);
 			message[0] = byte1;
 			message[1] = byte2;
@@ -212,12 +213,13 @@ namespace mutabor {
 		 MidiPortOutputProvider & RawMsg (int channel,
 						  uint8_t byte1,
 						  uint8_t byte2) {
-			std::vector<unsigned char> message(2);
-			message[0] = byte1;
-			message[1] = byte2;
+			 mutUnused(channel);
+			 std::vector<unsigned char> message(2);
+			 message[0] = byte1;
+			 message[1] = byte2;
 
-			port->sendMessage(message);
-			return *this;
+			 port->sendMessage(message);
+			 return *this;
 		}
 
 		/**
@@ -249,6 +251,7 @@ namespace mutabor {
 		MidiPortOutputProvider & SendSysEx (int channel,
 						    iterator from,
 						    iterator to) {
+			mutUnused(channel);
 			if (from == to) return * this;
 			if ((*from) & midi::STARTBYTE_MASK) {
 				UNREACHABLEC;
@@ -387,11 +390,12 @@ namespace mutabor {
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
 #endif
 
-		void do_Gis(GisToken *token, char turn)
-			{};
+		void do_Gis(GisToken * mutUNUSED(token),
+			    char mutUNUSED(turn)) {
+		}
 
-		void do_AddTime(frac time)
-			{};
+		void do_AddTime(frac mutUNUSED(time)) {
+		}
 
 //		virtual void MidiOut(DWORD data, size_t n);
 #if defined(_MSC_VER)
@@ -450,7 +454,7 @@ namespace mutabor {
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
 #endif
 
-		virtual frac ReadOn(frac time)
+		virtual frac ReadOn(frac mutUNUSED(time))
 		{
 			return frac(0,1);
 		};
@@ -510,6 +514,7 @@ namespace mutabor {
 
 		virtual void SetName(const std::string & s)
 		{
+			mutUnused(s);
 			assert (false);
 			//Name = s;
 		}

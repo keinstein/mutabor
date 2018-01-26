@@ -286,7 +286,7 @@ static struct parameter_liste * get_last_parameter_liste (mutabor_box_type * box
 
 
 static struct parameter_list *
-get_parameter_by_name (mutabor_box_type * box,
+get_parameter_by_name (mutabor_box_type * mutUNUSED(box),
 		       const char * search_name,
 		       struct parameter_list * node)
 {
@@ -1436,7 +1436,7 @@ void get_new_umstimmung (mutabor_box_type * box)
 
 
 
-void eintrage_parameterliste_in_umstimmung (mutabor_box_type * box,
+void eintrage_parameterliste_in_umstimmung (mutabor_box_type * mutUNUSED(box),
 					    struct umstimmung * ret,
 					    parameter_list * list)
 {

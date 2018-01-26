@@ -133,12 +133,12 @@ protected:
 };
 
 template <class intrusive_ptr_T>
-inline void intrusive_ptr_atomic_fence(intrusive_ptr_T * obj) {
+inline void intrusive_ptr_atomic_fence(intrusive_ptr_T * mutUNUSED(obj)) {
 	boost::atomic_thread_fence(boost::memory_order_acquire);
 }
 
 template <>
-inline void intrusive_ptr_atomic_fence<nonatomic_refcount_type <int> >(nonatomic_refcount_type <int> * obj) {}
+inline void intrusive_ptr_atomic_fence<nonatomic_refcount_type <int> >(nonatomic_refcount_type <int> * mutUNUSED(obj)) {}
 
 template <class intrusive_ptr_T>
 inline size_t intrusive_ptr_get_refcount(intrusive_ptr_T * obj)

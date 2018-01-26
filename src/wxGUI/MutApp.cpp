@@ -705,6 +705,7 @@ namespace mutaborGUI {
 
 	MutFrame* MutApp::CreateMainFrame(MenuType type, wxWindowID id)
 	{
+		mutUnused(id);
 		MutFrame* frame = new MutFrame((wxFrame *)NULL, wxID_ANY, _T("Mutabor"),
 					       wxDefaultPosition, wxDefaultSize, //wxSize(500, 400),
 					       wxDEFAULT_FRAME_STYLE | wxHSCROLL | wxVSCROLL);
@@ -744,6 +745,7 @@ namespace mutaborGUI {
 
 	void MutApp::CmFileNew (wxCommandEvent& event)
 	{
+		mutUnused(event);
 		STUBC;
 		return;
 # if 0
@@ -773,6 +775,7 @@ namespace mutaborGUI {
 
 	void MutApp::CmFileOpen (wxCommandEvent& event)
 	{
+		mutUnused(event);
 
 		STUBC;
 		return;

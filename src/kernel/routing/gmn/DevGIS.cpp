@@ -251,6 +251,7 @@ namespace mutabor {
  */
 	void InputGis::Save (tree_storage & config, const RouteClass * route)
 	{
+		mutUnused(route);
 #ifdef DEBUG
 		std::string oldpath = config.GetPath();
 #endif
@@ -268,6 +269,7 @@ namespace mutabor {
  */
 	void InputGis::Load (tree_storage & config, RouteClass * route)
 	{
+		mutUnused(route);
 #ifdef DEBUG
 		std::string oldpath = config.GetPath();
 #endif

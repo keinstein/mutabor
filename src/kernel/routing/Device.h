@@ -1009,7 +1009,7 @@ namespace mutabor {
 		virtual void do_handle_event(event e) = 0;
 		virtual void do_Quiet(Route r, int type) = 0;
 		virtual void do_Quiet(Route r, int type, size_t id) = 0;
-		virtual void do_Panic(int type) { STUBC; };
+		virtual void do_Panic(int mutUNUSED(type)) { STUBC; };
 		virtual bool do_Open() { return true; }
 		virtual void do_Close(bool sync = false) = 0;
 
@@ -1206,7 +1206,10 @@ namespace mutabor {
 		 *
 		 * \return exit code from the thread after it has ended. Non-threaded devices will return NULL.
 		 */
-		virtual wxThread::ExitCode WaitForDeviceFinish(wxThreadWait flags=wxTHREAD_WAIT_BLOCK) { return NULL; }
+		virtual wxThread::ExitCode WaitForDeviceFinish(wxThreadWait flags=wxTHREAD_WAIT_BLOCK) {
+			mutUnused(flags);
+			return NULL;
+		}
 
 		virtual void Pause() {
 			Mode = DevicePause;
@@ -1377,6 +1380,7 @@ namespace mutabor {
 						  const std::string& name = "",
 						  MutaborModeType mode = DeviceStop,
 						  int id = -1) {
+			mutUnused(mode);
 			/* \todo implement output device record/pause */
 			mutASSERT(type >= 0);
 			if (factories.size() <=(size_t) type) {

@@ -279,7 +279,7 @@ namespace mutaborGUI {
 	}
 
 	template <class T>
-	void MutDeviceShape<T>::DoDeviceNotification(wxCommandEvent & event)
+	void MutDeviceShape<T>::DoDeviceNotification(wxCommandEvent & mutUNUSED(event))
 	{
 		if (!device || !playbuttons) return;
 		MutaborModeType mode = device->GetMode();

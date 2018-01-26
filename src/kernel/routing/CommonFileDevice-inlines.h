@@ -87,7 +87,7 @@ namespace mutabor {
 		return isOpen;
 	}
 
-	inline void CommonFileOutputDevice::do_Close(bool sync)
+	inline void CommonFileOutputDevice::do_Close(bool mutUNUSED(sync))
 	{
 		mutASSERT(isOpen);
 		isOpen = false;

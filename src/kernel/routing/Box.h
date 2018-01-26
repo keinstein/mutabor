@@ -234,7 +234,7 @@ namespace mutabor {
 					box->Register(this);
 			}
 			virtual void BoxChangedAction(int flags) = 0;
-			virtual void BoxChangedAction(const char * action) {}
+			virtual void BoxChangedAction(const char * mutUNUSED(action)) {}
 		};
 
 		typedef BoxListType listtype;

@@ -564,6 +564,7 @@ namespace mutaborGUI {
 
 	void MutFrame::CmFileNew(wxCommandEvent& event)
 	{
+		mutUnused(event);
 		STUBC;
 		return;
 #if 0
@@ -585,6 +586,7 @@ namespace mutaborGUI {
 
 	void MutFrame::CmFileOpen(wxCommandEvent& event)
 	{
+		mutUnused(event);
 		STUBC;
 		return;
 #if 0
@@ -638,8 +640,10 @@ namespace mutaborGUI {
  * \todo file loading fails silently if it is not in the systems encoding.
  * */
 
-	bool MutFrame::OpenFile (wxString path, bool newfile)
+	bool MutFrame::OpenFile (wxString path,
+				 bool newfile)
 	{
+		mutUnused(path);
 		STUBC;
 		mutUnused(newfile);
 		return false;
@@ -715,6 +719,7 @@ namespace mutaborGUI {
 #endif
 
 	void MutFrame::CmExportScala(wxCommandEvent& event) {
+		mutUnused(event);
 		if (!LogicOn) return;
 
 		wxFileName ScalaFile, KeymapFile;
@@ -783,6 +788,7 @@ namespace mutaborGUI {
 
 	void MutFrame::CmDoActivate(wxCommandEvent& event)
 	{
+		mutUnused(event);
 		if (LogicOn) return;
 
 		TRACEC;

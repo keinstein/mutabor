@@ -103,8 +103,7 @@ _ISEMPTY(                                                               \
 
 #define mutint64 int_fast64_t
 #define mutUnused(expr) do { (void)(expr); } while (0)
-
-
+#define mutUNUSED(expr)
 #ifdef __cplusplus
 #define FALLTHROUGH mutfallthrough
 #else

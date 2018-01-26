@@ -70,55 +70,58 @@ const char * mutabor_error_type_to_string(mutabor_error_type type)
 }
 
 
-	static void mutabor_default_update(mutabor_box_type * box, unsigned int flags) {
+static void mutabor_default_update(mutabor_box_type * mutUNUSED(box),
+				   unsigned int mutUNUSED(flags)) {
 		/* do nothing */
-	}
-	static void mutabor_default_midi_out(mutabor_box_type * box, struct midiliste * outliste) {
-		/* do nothing */
-	}
-	static void mutabor_default_error_message(mutabor_box_type * box,
-						  mutabor_error_type type,
-						  const char * message)
-	{
-		fprintf(stderr,
-			"%s: %s\n",
-			mutabor_error_type_to_string(type),
-			message);
-	}
-	static void mutabor_default_update_display(mutabor_box_type * box, int line_number) {
-		/* do nothing */
-	}
-	static void mutabor_default_log_action(mutabor_box_type * box,
-					       const char * action) {
-		/* do nothing */
-	}
+}
+static void mutabor_default_midi_out(mutabor_box_type * mutUNUSED(box),
+				     struct midiliste * mutUNUSED(outliste)) {
+	/* do nothing */
+}
+static void mutabor_default_error_message(mutabor_box_type * mutUNUSED(box),
+					  mutabor_error_type type,
+					  const char * message)
+{
+	fprintf(stderr,
+		"%s: %s\n",
+		mutabor_error_type_to_string(type),
+		message);
+}
+static void mutabor_default_update_display(mutabor_box_type * mutUNUSED(box),
+					   int mutUNUSED(line_number)) {
+	/* do nothing */
+}
+static void mutabor_default_log_action(mutabor_box_type * mutUNUSED(box),
+				       const char * mutUNUSED(action)) {
+	/* do nothing */
+}
 
-	static void mutabor_default_lock(mutabor_logic_parsed * logic) {
-		/* do nothing */
-	}
+static void mutabor_default_lock(mutabor_logic_parsed * mutUNUSED(logic)) {
+	/* do nothing */
+}
 
 
-	static struct mutabor_callback_type default_callbacks = {
-		mutabor_default_update,
-		mutabor_default_midi_out,
-		mutabor_default_error_message,
-		mutabor_default_update_display,
-		mutabor_default_log_action,
-		mutabor_default_lock,
-		mutabor_default_lock,          /* default unlock is empty if lock is empty */
-		mutabor_default_lock
-	};
+static struct mutabor_callback_type default_callbacks = {
+	mutabor_default_update,
+	mutabor_default_midi_out,
+	mutabor_default_error_message,
+	mutabor_default_update_display,
+	mutabor_default_log_action,
+	mutabor_default_lock,
+	mutabor_default_lock,          /* default unlock is empty if lock is empty */
+	mutabor_default_lock
+};
 
-	mutabor_callback_type * mutabor_callbacks = & default_callbacks;
+mutabor_callback_type * mutabor_callbacks = & default_callbacks;
 
-	mutabor_callback_type * mutabor_set_callbacks(mutabor_callback_type * callbacks) {
-		mutabor_callback_type * old = mutabor_callbacks;
-		mutabor_callbacks = callbacks;
-		return old;
-	}
-	mutabor_callback_type * mutabor_get_callbacks() {
-		return mutabor_callbacks;
-	}
+mutabor_callback_type * mutabor_set_callbacks(mutabor_callback_type * callbacks) {
+	mutabor_callback_type * old = mutabor_callbacks;
+	mutabor_callbacks = callbacks;
+	return old;
+}
+mutabor_callback_type * mutabor_get_callbacks() {
+	return mutabor_callbacks;
+}
 
 
 #if 0

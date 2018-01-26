@@ -1,4 +1,4 @@
-/** \file 
+/** \file
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
@@ -163,17 +163,17 @@ namespace mutaborGUI {
 
 // Editorfenster
 
-	MutEditFile::MutEditFile(wxWindow* parent, 
-				 const wxPoint& pos, 
-				 const wxSize& size, 
-				 const wxString& value, 
+	MutEditFile::MutEditFile(wxWindow* parent,
+				 const wxPoint& pos,
+				 const wxSize& size,
+				 const wxString& mutUNUSED(value),
 				 const wxString& name)
-		: wxStyledTextCtrl(parent, 
-				   wxID_ANY, 
-				   pos, 
-				   size, 
-				   wxHSCROLL | wxVSCROLL | wxBORDER_SUNKEN 
-				   | wxWANTS_CHARS, 
+		: wxStyledTextCtrl(parent,
+				   wxID_ANY,
+				   pos,
+				   size,
+				   wxHSCROLL | wxVSCROLL | wxBORDER_SUNKEN
+				   | wxWANTS_CHARS,
 				   name),
 		  m_filename(_T("")),
 		  m_language(NULL),
@@ -191,24 +191,24 @@ namespace mutaborGUI {
 		lexer(this)
 	{
 	        Init();
-	        if (parent) 
+	        if (parent)
 			StatusBar::SetInsert(this,!GetOvertype());
-	
-	
+
+
         }
-	
+
 	MutEditFile::MutEditFile(MutView * v,
-				 wxWindow* parent, 
-				 const wxPoint& pos, 
-				 const wxSize& size, 
-				 const wxString& value, 
+				 wxWindow* parent,
+				 const wxPoint& pos,
+				 const wxSize& size,
+				 const wxString& mutUNUSED(value),
 				 const wxString& name)
-		: wxStyledTextCtrl(parent, 
-				   wxID_ANY, 
-				   pos, 
-				   size, 
-				   wxHSCROLL | wxVSCROLL | wxBORDER_SUNKEN  
-				   | wxWANTS_CHARS, 
+		: wxStyledTextCtrl(parent,
+				   wxID_ANY,
+				   pos,
+				   size,
+				   wxHSCROLL | wxVSCROLL | wxBORDER_SUNKEN
+				   | wxWANTS_CHARS,
 				   name),
 		  m_filename(_T("")),
 		  m_language(NULL),
@@ -226,7 +226,7 @@ namespace mutaborGUI {
 		lexer(this)
 	{
 		Init();
-		if (parent) 
+		if (parent)
 			StatusBar::SetInsert(this,!GetOvertype());
 	}
 
@@ -252,7 +252,7 @@ namespace mutaborGUI {
 			wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
 			GetParent()->GetEventHandler()->ProcessEvent(event);
 		}
-		
+
 #if 0
 
 		wxFile file(TmpFile,wxFile::write);
@@ -261,19 +261,19 @@ namespace mutaborGUI {
 				     _("Error"), wxOK | wxICON_HAND);
 			CompiledFile = wxEmptyString;
 			return false;
-		} 
+		}
 
 		if (!file.Write(GetText(), wxConvUTF8) ) {
 			wxMessageBox(_("Can't write temporary file."),
 				     _("Error"), wxOK | wxICON_ERROR);
 			CompiledFile = wxEmptyString;
-			if (file.IsOpened()) 
+			if (file.IsOpened())
 				file.Close();
 			if (wxFile::Exists(TmpFile)) {
 				wxRemoveFile(TmpFile);
 			}
 			return false;
-		} 
+		}
 #endif
 
 #ifdef DEBUG
@@ -316,7 +316,7 @@ namespace mutaborGUI {
 			}
 
 			if (activate) {
-				wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, 
+				wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED,
 						      CM_DOACTIVATE);
 				wxPostEvent(GetParent(),event);
 				CompDia->Destroy();
@@ -331,12 +331,12 @@ namespace mutaborGUI {
 		}
 
 		//wxRemoveFile(TmpFile);
-			
+
 		return result;
-		
+
 	}
 
-	bool MutEditFile::DoLoadFile(const wxString &filename, 
+	bool MutEditFile::DoLoadFile(const wxString &filename,
 				     int WXUNUSED(fileType))
 	{
 		TRACEC;
@@ -425,7 +425,7 @@ namespace mutaborGUI {
 	void MutEditFile::CmCompile(wxCommandEvent& event)
 	{
 
-		DEBUGLOG (other, 
+		DEBUGLOG (other,
 			  ("MutEditFile::CmCompile(Event(%d)); filename = %s"),
 			  event.GetId(),m_filename.c_str());
 		Compile(false);
@@ -503,9 +503,9 @@ namespace mutaborGUI {
 #endif
 
 
-	void MutEditFile::Init() 
+	void MutEditFile::Init()
 	{
-		
+
 		wxConfigBase *config = wxConfig::Get();
 		if (config) {
 			wxString old = config->GetPath();
@@ -575,7 +575,7 @@ namespace mutaborGUI {
 	}
 
 
-	void MutEditFile::SaveSearchData () 
+	void MutEditFile::SaveSearchData ()
 	{
 		wxConfigBase *config = wxConfig::Get();
 		if (config) {
@@ -701,27 +701,27 @@ namespace mutaborGUI {
 		SaveSearchData();
 
 		int flags = 0;
-		if (event.GetFlags() & wxFR_WHOLEWORD) 
+		if (event.GetFlags() & wxFR_WHOLEWORD)
 			flags |= wxSTC_FIND_WHOLEWORD;
-		if (event.GetFlags() & wxFR_MATCHCASE) 
+		if (event.GetFlags() & wxFR_MATCHCASE)
 			flags |=  wxSTC_FIND_WHOLEWORD;
 		SetSearchFlags(flags);
 
-		
-		
+
+
 		wxString findString = event.GetFindString();
-		if ( type == wxEVT_COMMAND_FIND_REPLACE && 
+		if ( type == wxEVT_COMMAND_FIND_REPLACE &&
 		     GetSelectionStart() == GetTargetStart()) {
 			int result = SearchInTarget(findString); // should not change anything
 			if (result < 0) {
 				return;
 			}
-			if (GetSelectionStart() != GetTargetStart() || 
+			if (GetSelectionStart() != GetTargetStart() ||
 			    GetSelectionEnd() != GetTargetEnd()) {
 				SetCurrentPos(GetTargetStart());
 				SetSelection(GetTargetStart(),
 					     GetTargetEnd());
-				return ; 
+				return ;
 			}
 			ReplaceTarget(event.GetReplaceString());
 		}
@@ -729,7 +729,7 @@ namespace mutaborGUI {
 		if ( type == wxEVT_COMMAND_FIND || type == wxEVT_COMMAND_FIND_NEXT ||
 			type == wxEVT_COMMAND_FIND_REPLACE)
 		{
-			
+
 #ifdef DEBUG
 			int result =
 #endif
@@ -740,20 +740,20 @@ namespace mutaborGUI {
 				 (const wxChar*)findString,result);
 		} else if (type == wxEVT_COMMAND_FIND_REPLACE_ALL )
 		{
-			// first search is treated different 
+			// first search is treated different
 			// (e.g. reuse current target)
 			if (event.GetFlags() & wxFR_DOWN) {
 				if (GetTargetEnd() < GetTargetStart())
 					SetTargetStart(GetTargetEnd());
 				SetTargetEnd(GetLength());
 			} else {
-				if (GetTargetEnd() > GetTargetStart()) 
+				if (GetTargetEnd() > GetTargetStart())
 					SetTargetStart(GetTargetEnd());
 				SetTargetEnd(0);
 			}
-			
+
 			int result = SearchInTarget(findString);
-			
+
 			if (result < 0) {
 				wxMessageBox(
 					_("The search string was not found."),
@@ -788,7 +788,7 @@ namespace mutaborGUI {
 		}
 	}
 
-	int MutEditFile::DoFind(const wxString & pattern, FindFlags flags) 
+	int MutEditFile::DoFind(const wxString & pattern, FindFlags flags)
 	{
 		if (flags.useCaret && GetCurrentPos() != GetTargetStart()) {
 			SetTargetStart(GetCurrentPos());
@@ -808,7 +808,7 @@ namespace mutaborGUI {
 		if (result < 0 && flags.askCircular) {
 			int dlgresult;
 			if (flags.down) {
-				dlgresult = 
+				dlgresult =
 					wxMessageBox(
 						_("Search reached the end of the file.\nProceed from the beginning?"),
 						_("Search"),
@@ -816,7 +816,7 @@ namespace mutaborGUI {
 				SetTargetEnd(GetLength());
 				SetTargetStart(0);
 			} else {
-				dlgresult = 
+				dlgresult =
 					wxMessageBox(
 						_("Search reached the beginning of the file.\nProceed from the end?"),
 						_("Search"),
@@ -838,10 +838,10 @@ namespace mutaborGUI {
 				SetSelection(GetTargetStart(),GetTargetEnd());
 			}
 		}
-			
+
 		TRACEC;
 		return result;
-		
+
 	}
 
 	void MutEditFile::OnReplace (wxCommandEvent & event) {
@@ -1021,7 +1021,7 @@ namespace mutaborGUI {
 		lexer.OnStyleNeeded(event);
 	}
 
-	void MutEditFile::OnUpdateStcUI(wxStyledTextEvent & event) {
+	void MutEditFile::OnUpdateStcUI(wxStyledTextEvent & mutUNUSED(event)) {
 		int line = GetCurrentLine();
 		int pos = GetCurrentPos();
 		pos -= PositionFromLine(line);
@@ -1243,7 +1243,7 @@ namespace mutaborGUI {
 
 #if 0 && wxUSE_TEXTCTRL
 		return wxStyledTextCtrl::SaveFile(filename);
-#else 
+#else
 		return DoSaveFile(filename,0);
 #endif
 
@@ -1383,7 +1383,7 @@ namespace mutaborGUI {
 
 		// scale DC
 		PrintScaling (dc);
-		
+
 		mutASSERT(0 < page);
 		mutASSERT(page <= (int)m_ranges.size());
 		std::pair <int,int> positions = m_ranges[page-1];
@@ -1404,8 +1404,8 @@ namespace mutaborGUI {
 	}
 
 	void MutEditPrint::GetPageInfo (int *minPage,
-					int *maxPage, 
-					int *selPageFrom, 
+					int *maxPage,
+					int *selPageFrom,
 					int *selPageTo) {
 
 		// initialize values
@@ -1509,11 +1509,11 @@ namespace mutaborGUI {
 		int maxpos = m_edit->GetLength();
                 *maxPage = 0;
 		while (currpos < maxpos) {
-			// print from oldpos to maxpos 
+			// print from oldpos to maxpos
 			// (returning the positon for next page)
 			int oldpos = currpos;
 			currpos = m_edit->FormatRange (0, oldpos, maxpos,
-						       dc, dc, 
+						       dc, dc,
 						       m_printRect, m_pageRect);
 			m_ranges.push_back(std::pair<int,int>(oldpos, currpos));
 			*maxPage += 1;
@@ -1576,7 +1576,7 @@ namespace mutaborGUI {
 	wxString MutEditFile::GetRange(long from, long to) const
 
 	{
-		
+
 		DEBUGLOG (other, "(from %ld, to %ld)" ,from,to);
 		wxString str;
 
