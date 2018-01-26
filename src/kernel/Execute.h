@@ -142,10 +142,10 @@ namespace mutabor {
 						   ...)  __attribute__ ((format(printf, 3, 4))) ;*/
 
 			
-			inline void mutabor_error_message(mutabor_box_type * box,
-							  enum mutabor_error_type type,
-							  const char * message,
-							  ...) {
+			static inline void mutabor_error_message(mutabor_box_type * box,
+								 enum mutabor_error_type type,
+								 const char * message,
+								 ...) {
 				char * formatted;
 				va_list args;
 				bool allocated = true;

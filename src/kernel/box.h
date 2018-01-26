@@ -238,7 +238,7 @@ inline size_t mutabor_find_key_in_box_by_key(mutabor_box_type * box, int key_num
  * \param box Box where the key shall be deleted.
  * \param index Index of the key in box->current_keys of the key that shall be deleted.
  */
-inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
+static inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
 	mutabor_note_type *last_key, *current_key;
 	size_t last_index;
 
@@ -297,7 +297,7 @@ inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
 }
 
 
-inline mutabor_note_type * mutabor_create_key_in_box (mutabor_box_type * box) {
+static inline mutabor_note_type * mutabor_create_key_in_box (mutabor_box_type * box) {
 	mutabor_note_type * last, *new_key = NULL;
 	mutabor_key_index_type *plane;
 	mutabor_key_index_type *oldplane;

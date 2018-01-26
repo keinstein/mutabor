@@ -240,7 +240,7 @@ void mutabor_debug_unlock();
 			    __FILE__,					\
                             __LINE__,					\
 			    DEMANGLED(type),				\
-			    __FUNCTION__);				\
+			    __func__);				\
 		    fprintf(stderr, __VA_ARGS__);			\
 		    fprintf(stderr, " (%s)\n", strlevel);		\
 		    fflush(stderr);					\
@@ -257,7 +257,7 @@ void mutabor_debug_unlock();
 				__FILE__,				\
 				__LINE__,				\
 				classtype,				\
-				__FUNCTION__,				\
+				__func__,				\
 				stubtype);				\
 			fflush(stderr);					\
 			mutabor_debug_unlock();				\
