@@ -37,6 +37,9 @@
 #define SRC_KERNEL_BOOST_INTERFACE_H
 #endif
 
+#ifndef BOOST_SP_NOEXCEPT
+#define BOOST_SP_NOEXCEPT
+#endif
 // ---------------------------------------------------------------------------
 // headers
 // ---------------------------------------------------------------------------
