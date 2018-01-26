@@ -363,6 +363,7 @@ AS_IF(test "$cxx_cv_iso_for_loop_scope" = yes,
 #./  AC_DEFINE_UNQUOTED(MUST_REUSE, [$cxx_iso_for_loop_scope]))
 
 # Checks for libraries.
+AC_CHECK_LIB(asan,__asan_default_options)
 AC_CHECK_LIB(m,pow)
 AC_CHECK_LIB(backtrace,backtrace_print)
 
