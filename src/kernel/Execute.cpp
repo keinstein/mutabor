@@ -51,25 +51,23 @@
 #include "src/kernel/routing/Route-inlines.h"
 #include "limits.h"
 
-#ifdef __cplusplus
-namespace mutabor {
-	namespace hidden {
-		extern "C" {
-#endif
+MUTABOR_NAMESPACE(mutabor)
+MUTABOR_NAMESPACE(hidden)
+MUTABOR_EXTERN_C
 
-		    const char * mutabor_error_type_to_string(mutabor_error_type type)
-		    {
-			switch (type) {
-			case warning: return _mut("Warning");
-			case compiler_warning: return _mut("Compiler warning");
-			case runtime_warning: return _mut("Runtime warning");
-			case error: return _mut("Error");
-			case internal_error: return ("Internal error");
-			case compiler_error: return ("Compiler error");
-			case runtime_error: return ("Runtime error");
-			default: return _mut("Unknown error");
-			}
-		    }
+const char * mutabor_error_type_to_string(mutabor_error_type type)
+{
+	switch (type) {
+	case warning: return _mut("Warning");
+	case compiler_warning: return _mut("Compiler warning");
+	case runtime_warning: return _mut("Runtime warning");
+	case error: return _mut("Error");
+	case internal_error: return ("Internal error");
+	case compiler_error: return ("Compiler error");
+	case runtime_error: return ("Runtime error");
+	default: return _mut("Unknown error");
+	}
+}
 
 
 	static void mutabor_default_update(mutabor_box_type * box, unsigned int flags) {
@@ -1312,10 +1310,8 @@ Please, report this error to the MUTABOR team."),
 	}
 #endif
 
-#ifdef __cplusplus
-		}
-	}
-}
-#endif
+MUTABOR_EXTERN_C_END
+MUTABOR_NAMESPACE_END(hidden)
+MUTABOR_NAMESPACE_END(mutabor)
 
 ///\}
