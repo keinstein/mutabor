@@ -431,8 +431,9 @@ namespace mutaborGUI {
 									       GetParent());
 
 					if (! newdev) {
-					  UNREACHABLEC;
-					  return;
+						dlg->Destroy();
+						UNREACHABLEC;
+						return;
 					}
 					mutASSERT(newdev->device);
 					TRACEC;
