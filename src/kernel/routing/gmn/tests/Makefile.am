@@ -33,22 +33,18 @@ nodist_%C%_playgmn1_SOURCES = \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LDFLAGS) \
-	$(BOOST_SYSTEM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LIBS) \
-	$(BOOST_SYSTEM_LIBS) \
-	$(RTMIDITESTLDFLAGS)
+	$(BOOST_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_SYSTEM_LIB)
 
 %C%_gmnopenfail1_LDADD = \
 	libmutabormaintest.a \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LDFLAGS) \
-	$(BOOST_SYSTEM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LIBS) \
-	$(BOOST_SYSTEM_LIBS) \
-	$(RTMIDITESTLDFLAGS)
+	$(BOOST_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_SYSTEM_LIB)
 
 %C%_gmnopenfail1_SOURCES = \
 	%D%/gmnopenfail1.cpp
