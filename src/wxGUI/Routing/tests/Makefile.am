@@ -29,7 +29,7 @@ nodist_%C%_testcppunit_SOURCES = \
 %C%_testcppunit_LDADD = \
 	libmutabormaincppunit.a \
 	src/kernel/libmutaborkernel.a \
-	src/wxintl/libwxintl.a \
+	src/wxintl/libwxintl.la \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(CPPUNIT_LIBS) \

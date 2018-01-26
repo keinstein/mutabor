@@ -159,7 +159,7 @@ extern "C" {
 	/* Set the current default message catalog to DOMAINNAME.
 	   If DOMAINNAME is null, return the current default.
 	   If DOMAINNAME is "", reset to the default of "messages".  */
-	char *wxwidgets_textdomain (const char *__domainname)
+	char *wxwidgets_textdomain (const char *mutUNUSED(__domainname)) throw()
 	{
 		STUB;
 #if 0
@@ -174,8 +174,8 @@ extern "C" {
 
 	/* Specify that the DOMAINNAME message catalog will be found
 	   in DIRNAME rather than in the system locale data base.  */
-	char *wxwidgets_bindtextdomain (const char *__domainname,
-					const char *__dirname)
+	char *wxwidgets_bindtextdomain (const char *mutUNUSED(__domainname),
+					const char *mutUNUSED(__dirname)) throw()
 	{
 		STUB;
 #if 0

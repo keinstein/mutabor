@@ -44,17 +44,17 @@
 
 #ifndef SRC_WXINTL_LIBINTL_PRECOMPILED
 #define SRC_WXINTL_LIBINTL_PRECOMPILED
-
-#define bindtextdomain wxwidgets_bindtextdomain
-#define textdomain wxwidgets_textdomain
-#define dgettext wxwidgets_dgettext
+/* prevent system libintl to be loaded */
+#define _LIBINTL_H	1
 
 /* system headers which do seldom change */
 
-#ifdef __cplusplus 
+#ifdef __cplusplus
+#define WXINTL_THROW(X) throw(X)
 extern "C" {
 #endif
 #ifndef __cplusplus
+#define WXINTL_THROW(X)	
 #define wxwidgets_gettext(msgid) wxwidgets_sgettext(msgid)
 #endif
 
@@ -99,12 +99,12 @@ extern "C" {
 /* Set the current default message catalog to DOMAINNAME.
    If DOMAINNAME is null, return the current default.
    If DOMAINNAME is "", reset to the default of "messages".  */
-extern char *wxwidgets_textdomain (const char *__domainname) ;
+	extern char *wxwidgets_textdomain (const char *__domainname) WXINTL_THROW();
 
 /* Specify that the DOMAINNAME message catalog will be found
    in DIRNAME rather than in the system locale data base.  */
 extern char *wxwidgets_bindtextdomain (const char *__domainname,
-			     const char *__dirname);
+				       const char *__dirname) WXINTL_THROW();
 
 #if 0
 /* Specify the character encoding in which the messages from the
@@ -237,8 +237,11 @@ extern const char *wxwidgets_gettext (const char * domainname,
 
 
 #endif
+#define bindtextdomain wxwidgets_bindtextdomain
+#define textdomain wxwidgets_textdomain
+#define dgettext wxwidgets_dgettext
+
 #endif /* precompiled */
 #endif /* header loaded */
-
 
 /** \} */

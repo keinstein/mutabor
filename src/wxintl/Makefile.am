@@ -1,6 +1,11 @@
 SUBDIRS += %D%/tests
 CLEANFILES += %D%/*.class
 
+WXBUILDDEPENDS_yes = %D%/libwxintl.la
+WXBUILDDEPENDS_no =
+WXBUILDDEPENDS = $(WXBUILDDEPENDS_@BUILD_INCLUDED_LIBWXINTL@)
+
+
 noinst_LTLIBRARIES += %D%/libwxintl.la
 #noinst_%C%_libwxintl_la_noinst_HEADERS = %D%/libintl.h
 #BUILT_SOURCES = $(top_builddir)/intl/libintl.h

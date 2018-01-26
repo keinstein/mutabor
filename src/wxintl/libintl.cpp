@@ -45,9 +45,9 @@
 #pragma hdrstop
 #endif
 
-#undef STUB;
+#undef STUB
 #define STUB \
-	assert(false);
+	assert(false)
 
 extern "C" {
 
@@ -76,8 +76,10 @@ extern "C" {
 		return wxwidgets_gettext(msgid1,msgid2,n);
 	}
 
-	const char *wxwidgets_dngettext (const char * domainname, const char * msgid1,
-					 const char * msgid2, unsigned long int n)
+	const char *wxwidgets_dngettext (const char * /* domainname */,
+					 const char * msgid1,
+					 const char * msgid2,
+					 unsigned long int n)
 	{
 		return wxwidgets_gettext(msgid1,msgid2,n);
 	}
@@ -93,7 +95,7 @@ extern "C" {
 	/* Set the current default message catalog to DOMAINNAME.
 	   If DOMAINNAME is null, return the current default.
 	   If DOMAINNAME is "", reset to the default of "messages".  */
-	char *wxwidgets_textdomain (const char *__domainname)
+	char *wxwidgets_textdomain (const char *__domainname) throw()
 	{
 		if (__domainname) {
 			wxGetLocale()->AddCatalog(muT(__domainname));
@@ -105,8 +107,8 @@ extern "C" {
 
 	/* Specify that the DOMAINNAME message catalog will be found
 	   in DIRNAME rather than in the system locale data base.  */
-	char *wxwidgets_bindtextdomain (const char *__domainname,
-			      const char *__dirname)
+	char *wxwidgets_bindtextdomain (const char * /*__domainname*/,
+					const char *__dirname) throw()
 	{
 		if (__dirname)
 			wxGetLocale()->AddCatalogLookupPathPrefix(muT(__dirname));

@@ -88,6 +88,7 @@ check_PROGRAMS += \
 nodist_%C%_test_empty_SOURCES = \
 	%D%/debugPaths.cpp
 
+
 %C%_test_empty_SOURCES = \
 	%D%/test_empty.cpp
 
@@ -98,8 +99,8 @@ nodist_%C%_test_empty_SOURCES = \
 	libmutaborrouting.a \
 	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
-	lib/rtmidi/librtmidi-ts.la \
-	src/wxintl/libwxintl.a \
+	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
+	src/wxintl/libwxintl.la \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
@@ -119,8 +120,8 @@ nodist_%C%_test_empty_comments_SOURCES = \
 	libmutaborrouting.a \
 	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
-	lib/rtmidi/librtmidi-ts.la \
-	src/wxintl/libwxintl.a \
+	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
+	src/wxintl/libwxintl.la \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
@@ -140,8 +141,8 @@ nodist_%C%_test_intervals1_SOURCES = \
 	libmutaborrouting.a \
 	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
-	lib/rtmidi/librtmidi-ts.la \
-	src/wxintl/libwxintl.a \
+	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
+	src/wxintl/libwxintl.la \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
@@ -161,8 +162,8 @@ nodist_%C%_test_keymaps_SOURCES = \
 	libmutaborrouting.a \
 	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
-	lib/rtmidi/librtmidi-ts.la \
-	src/wxintl/libwxintl.a \
+	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
+	src/wxintl/libwxintl.la \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
@@ -185,6 +186,7 @@ nodist_%C%_test_keymaps_SOURCES = \
 # 	boxTest.cpp
 #
 # nodist_testcppunit_SOURCES = \
+# 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
 # 	debugPaths.cpp
 #
 # testcppunit_LDADD = \
@@ -193,8 +195,7 @@ nodist_%C%_test_keymaps_SOURCES = \
 # 	libmutaborgui.a \
 # 	src/kernel/libmutaborkernel.a \
 # 	libmutaborrouting.a \
-# 	lib/rtmidi/librtmidi-ts.la \
-# 	src/wxintl/libwxintl.a \
+# 	src/wxintl/libwxintl.la \
 # 	$(LDADD) \
 # 	$(AM_LDFLAGS) \
 # 	$(CPPUNIT_LIBS) \

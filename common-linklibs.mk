@@ -1,7 +1,7 @@
 MAKE_MUTABOR_LIBRARY=$(MAKE) $(AM_MAKEFLAGS) -C "$(top_builddir)" "`basename '$<'`" || exit 1
 
 mutaborlibraries = \
-	$(top_builddir)/libwxintl.a \
+	$(top_builddir)/src/wxintl/libwxintl.la \
 	$(top_builddir)/libmutabormaintest.a \
 	$(top_builddir)/libmutabormaincppunit.a \
 	$(top_builddir)/libmutaborgui.a \
