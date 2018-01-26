@@ -23,3 +23,16 @@ fix_scale_parser.stamp: $(srcdir)/%D%/scale_parser.cc
 	sed -e 's,$(srcdir)/%D%/scale_parser.hh,scale_parser.hh,g' "$<" >"$@"
 	cmp "$@" "$<" || cp "$@" "$<"
 	touch "$@"
+
+# lex and yacc rules seem not to be very clear about parallel builds
+# since we rely on flex and beson, we can use their more "portable" features
+# to generate the desired files
+
+%D%/scale_parser.cc: %D%/scale_parser.yy
+	$(YACCCOMPILE) -o %D%/scale_parser.cc -b %D%/ $<
+
+%D%/keymap_parser.cc: %D%/scale_parser.yy
+	$(YACCCOMPILE) -o %D%/keymap_parser.cc -b %D%/ $<
+
+%D%/scale_lexer.cc: %D%/scale_lexer.ll
+	$(LEXCOMPILE) -o $@ $<
