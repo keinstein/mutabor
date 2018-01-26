@@ -92,7 +92,7 @@ AH_BOTTOM([
 ])
 
 wxflags=""
-AM_MAINTAINER_MODE
+AM_MAINTAINER_MODE([enable])
 
 
 # Checks for programs.
