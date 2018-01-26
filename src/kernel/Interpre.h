@@ -131,7 +131,7 @@ inline void mutabor_clear_tone(mutabor_tone *tone) {
  * \return a double value that represents the interval.
  *         a half tone is represented as 1.00, and an octave as 12.00.
  */
-inline double mutabor_convert_interval_to_factor(mutabor_interval interval)
+static inline double mutabor_convert_interval_to_factor(mutabor_interval interval)
 {
 	switch(mutabor_get_interval_type(interval)) {
 	case mutabor_empty_interval:
@@ -211,7 +211,7 @@ inline double mutabor_get_pitch_from_interval(mutabor_interval interval)
  *
  * \return a double value that represents the tone a' is represented as 69.00
  */
-inline double mutabor_convert_tone_to_factor(mutabor_tone tone)
+static inline double mutabor_convert_tone_to_factor(mutabor_tone tone)
 {
 	return 0.0 + mutabor_convert_interval_to_factor(tone /* - 0 */);
 }
