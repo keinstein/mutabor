@@ -88,3 +88,6 @@ noinst_HEADERS += $(%C%_libmutaborkernel_a_INLINEHEADERS) $(%C%_libmutaborkernel
 %C%_libmutaborkernel_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS)
 
 POTSOURCES += %C%_libmutaborkernel_a_POTSOURCES
+
+%D%/mut.cc: %D%/mut.yy
+	$(YACCCOMPILE) -o %D%/mut.cc -b %D%/ $<
