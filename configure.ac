@@ -68,7 +68,9 @@ AH_TOP([
 #define MUTABOR_CONFIG_H_INCLUDED
 /* We need this, because some autoconf tests rely on this (e.g. stpcpy)
     and it should be used for new programs anyway */
+#ifndef _GNU_SOURCE
 #define _GNU_SOURCE  1
+#endif
 ])
 
 AH_BOTTOM([
