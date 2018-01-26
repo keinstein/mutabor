@@ -148,6 +148,8 @@ namespace mutaborGUI {
 	 */
 
 
+# if 0
+	// according to the documentation this should be done by wxWidgets
 	RoutePanel::~RoutePanel() {
 		for (boxdatalisttype::iterator i = boxdatalist.begin();
 		     i != boxdatalist.end();
@@ -157,6 +159,7 @@ namespace mutaborGUI {
 			boxdatalist.erase(i);
 		}
 	}
+#endif
 
 #if 0
 	void RoutePanel::SetBox(mutabor Box & b) {
@@ -191,7 +194,8 @@ namespace mutaborGUI {
 	int RoutePanel::AddBox(mutabor::Box b, bool selected) {
 		int number;
 		BoxShapeData * shape = new BoxShapeData(b);
-		boxdatalist.push_back(shape);
+		// shall be deleted by wxWidgets
+		// boxdatalist.push_back(shape);
 		if (selected) {
 			number = box->Append(_("this box"), 
 					     shape);

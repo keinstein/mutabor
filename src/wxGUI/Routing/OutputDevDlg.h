@@ -80,6 +80,8 @@ namespace mutaborGUI {
 			{
                         }
 
+			virtual ~TypeData() {}
+
 			bool operator == (mutabor::DevType i)
 			{
 				return i == nr;
@@ -97,7 +99,12 @@ namespace mutaborGUI {
                         PortData(rtmidi::PortPointer &p):wxClientData(),
 							 port(p)
 			{
+				DEBUGLOG(routinggui,"Creating Port data");
                         }
+
+			virtual ~PortData() {
+				DEBUGLOG(routinggui,"Deleting PortData");
+			}
 
 			bool operator == (rtmidi::PortPointer p)
 			{
@@ -116,6 +123,9 @@ namespace mutaborGUI {
 		/// Constructors
 		OutputDevDlg( wxWindow* parent = NULL);
 
+		/// Destructor
+		virtual ~OutputDevDlg() {}
+
 		/// wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE
 		void OnChoiceSelected( wxCommandEvent& event );
 
@@ -130,7 +140,7 @@ namespace mutaborGUI {
 			PortChoice->SetSelection(n);
 		}
 
-                void SetMidiDevice(rtmidi::PortPointer value)
+                void SetMidiDevice(const rtmidi::PortPointer &value)
 
 		{
 			DEBUGLOG (other, "%p" ,&(*value));
@@ -161,9 +171,10 @@ namespace mutaborGUI {
 
 		}
 
-		void AppendPortChoice (rtmidi::PortPointer p)
+		void AppendPortChoice (rtmidi::PortPointer &p)
 		{
-			PortChoice->Append (p->getName(),new PortData(p));
+			PortChoice->Append (p->getName(),
+					    new PortData(p));
 		}
 		void AppendPortChoiceNoDevice()
 		{

@@ -64,9 +64,9 @@ namespace mutaborGUI {
 	OutputDevDlg::OutputDevDlg( wxWindow* parent):OutputDevDlgBase(parent)
 	{
 		DeviceChoice->Clear();
-		DeviceChoice->Append(_("MIDI Device"),new TypeData(DTMidiPort));
-		DeviceChoice->Append(_("MIDI file"),new TypeData(DTMidiFile));
-		DeviceChoice->Append(_("GUIDO file"),new TypeData(DTGis));
+		DeviceChoice->Append(_("MIDI Device"), new TypeData(DTMidiPort));
+		DeviceChoice->Append(_("MIDI file"),   new TypeData(DTMidiFile));
+		DeviceChoice->Append(_("GUIDO file"),  new TypeData(DTGis));
 
 		TypeBox = DeviceChoice->GetContainingSizer();
 		PortBox = PortChoice->GetContainingSizer();

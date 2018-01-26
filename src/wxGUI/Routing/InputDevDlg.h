@@ -93,6 +93,7 @@ namespace mutaborGUI {
 						      nr(i)
 			{
 			}
+			virtual ~TypeData() {}
 
 			bool operator == (mutabor::DevType i)
 			{
@@ -112,6 +113,8 @@ namespace mutaborGUI {
 							port(p)
 			{
                         }
+
+			virtual ~PortData() {}
 
 			bool operator == (rtmidi::PortPointer p)
 			{

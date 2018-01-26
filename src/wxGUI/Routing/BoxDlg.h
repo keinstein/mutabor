@@ -76,8 +76,9 @@ namespace mutaborGUI {
 		class InputShapeData: public wxClientData {
 			MutInputDeviceShape * device;
 		public:
-		InputShapeData(MutInputDeviceShape * b):wxClientData() { device = b; }
+			InputShapeData(MutInputDeviceShape * b):wxClientData() { device = b; }
 			MutInputDeviceShape * GetDevice() { return device; }
+			virtual ~InputShapeData() {}
 		};
 	
 	public:
@@ -92,8 +93,9 @@ namespace mutaborGUI {
 		class OutputShapeData: public wxClientData {
 			MutOutputDeviceShape * device;
 		public:
-		OutputShapeData(MutOutputDeviceShape * b):wxClientData() { device = b; }
+			OutputShapeData(MutOutputDeviceShape * b):wxClientData() { device = b; }
 			MutOutputDeviceShape * GetDevice() { return device; }
+			virtual ~OutputShapeData() {}
 		};
 	public:
 	OutputFilterPanel(wxWindow * parent):OutputFilterPanelBase(parent) {}
@@ -123,7 +125,7 @@ namespace mutaborGUI {
 			outPanel = NULL;
 			channel = NULL;
 		}
-		~RoutePanel();
+		~RoutePanel() {}
 	
 		bool GetActive() {
 			return active->GetValue();
@@ -158,13 +160,16 @@ namespace mutaborGUI {
 		public:
 			BoxShapeData(mutabor::Box b):wxClientData(),
 					      box(b) {}
+			virtual ~BoxShapeData() {}
 			mutabor::Box & GetBox() { return box; }
 		};
 		typedef std::list<BoxShapeData *> boxdatalisttype;
 		InputFilterPanel * inPanel;
 		OutputFilterPanel * outPanel;
 		MutBoxChannelShape * channel;
-		boxdatalisttype boxdatalist;
+		// this is not needed. The list should be
+		// cleared by wxWidgets
+		// boxdatalisttype boxdatalist;
 	
 	};
 

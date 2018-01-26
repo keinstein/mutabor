@@ -398,10 +398,12 @@ namespace mutaborGUI {
 			if (Res != wxID_OK) break;
 
 			type = dlg->GetBoxType();
+			DEBUGLOG(routinggui, "Dialog box type : %d", type);
 			boxid = (type == Box0) ?dlg->GetBoxNumber() : type;
-
+			DEBUGLOG(routinggui, "Dialog box id : %d", boxid);
 			b = mutabor::BoxClass::GetBox(boxid, mutabor::BoxClass::IDTypeFile);
 
+			DEBUGLOG(routinggui, "Dialog box pointers : %p = %p", b.get(), box.get());
 			if (!b || b == box)
 				break;
 
