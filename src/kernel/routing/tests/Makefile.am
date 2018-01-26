@@ -26,8 +26,9 @@ nodist_%C%_timer1_SOURCES = \
 	libmutaborrouting.a \
 	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
-	lib/rtmidi/librtmidi-ts.la \
 	src/wxintl/libwxintl.a \
+	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
+	$(RTMIDITESTLDFLAGS) \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
@@ -65,8 +66,8 @@ nodist_%C%_testcppunit_SOURCES = \
 	libmutaborrouting.a \
 	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
-	lib/rtmidi/librtmidi-ts.la \
 	src/wxintl/libwxintl.a \
+	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(CPPUNIT_LIBS) \

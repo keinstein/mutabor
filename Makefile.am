@@ -28,37 +28,33 @@ noinst_LTLIBRARIES =
 dist_pkgdata_DATA =
 bin_PROGRAMS =
 check_LIBRARIES =
-RTMIDITESTLDFLAGS = \
+EXTRA_RTMIDITESTLDFLAGS = \
 	$(WXINTLLDFLAGS) \
 	$(WXINTLLDADD)
-RTMIDITESTCXXFLAGS = \
+EXTRA_RTMIDITESTCXXFLAGS = \
 	$(AM_CXXFLAGS) \
 	$(WXINTLCXXFLAGS) \
 	"-DLOCALEDIR=\"$(LOCALEDIR)\""
+
+
 
 include common-rules.mk
 include %D%/src/Makefile.am
 include %D%/Images/Makefile.am
 include %D%/lib/rtmidi/Makefile.am
 
-lib_rtmidi_librtmidi_ts_la_CXXFLAGS += \
+lib_rtmidi_librtmidi@rtmidi_suffix@_la_CXXFLAGS += \
 	$(WXINTLCXXFLAGS) \
 	"-DLOCALEDIR=\"$(LOCALEDIR)\""
-lib_rtmidi_librtmidi_ts_la_LDFLAGS  += \
+lib_rtmidi_librtmidi@rtmidi_suffix@_la_LDFLAGS  += \
 	$(WXINTLLDFLAGS) \
-	$(WXINTLLDADD) 
-
-lib/rtmidi/librtmidi-ts.a:lib/rtmidi/librtmidi-ts.la
+	$(WXINTLLDADD)
 
 
-TAGS_DEPENDENCIES: generated_headers
 
-configure: lib/rtmidi/configure.library
 
-CLEANFILES += POTFILES.tmp2 \
-	Mutabor.xrc
-
-BUILT_SOURCES += TAGS
+lib/rtmidi/librtmidi@rtmidi_suffix@.a:lib/rtmidi/librtmidi@rtmidi_suffix.la
+lib_rtmidi_librtmidi@rtmidi_suffix@_la_DEPENDENCIES  = $(WXBUILDDEPENDS)
 
 NOCOMPSOURCES += \
 	src/xrc/wxresource.cpp \
@@ -484,7 +480,7 @@ libmutabormaintest_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
 libmutabormaintest_a_DEPENDENCIES = $(libmutabormaintest_a_LIBADD)
 
 #-------------------------------------------------------------
-# librtmidi-ts.la
+# librtmidi@rtmidi_suffix@.la
 #-------------------------------------------------------------
 
 CLEANFILES += lib/rtmidi/*.class
@@ -493,11 +489,11 @@ rtmidi_INLINEHEADERS = \
 	lib/rtmidi/RtMidi.h
 
 rtmidi_INDENTHEADERS =
-rtmidi_INDENTS = $(lib_rtmdidi_librtmidi_ts_la_SOURCES)
+rtmidi_INDENTS = $(lib_rtmdidi_librtmidi@rtmidi_suffix@_la_SOURCES)
 
 noinst_HEADERS += $(rtmidi_INLINEHEADERS)
 
-librtmidi_ts_la_POTSOURCES = $(lib_rtmidi_librtmidi_ts_la_SOURCES)
+librtmidi@rtmidi_suffix@_la_POTSOURCES = $(lib_rtmidi_librtmidi@rtmidi_suffix@_la_SOURCES)
 
 #-------------------------------------------------------------
 # Other files
@@ -508,7 +504,7 @@ INLINEHEADERS = \
 		$(src_kernel_libmutaborkernel_a_INLINEHEADERS) \
 		$(libmutaborscala_a_INLINEHEADERS) \
 		$(libmutabordebug_a_INLINEHEADERS) \
-		$(librtmidi_ts_la_INLINEHEADERS) \
+		$(librtmidi@rtmidi_suffix@_la_INLINEHEADERS) \
 		$(libmutaborgui_a_INLINEHEADERS)
 
 INDENTHEADERS = \
@@ -532,7 +528,7 @@ INDENTSOURCES = \
 	$(libmutaborrouting_a_INDENTS) \
 	$(src_kernel_libmutaborkernel_a_INDENTS) \
 	$(libmutaborscala_a_INDENTS) \
-	$(librtmidi_ts_la_INDENTS) \
+	$(librtmidi@rtmidi_suffix@_la_INDENTS) \
 	$(libmutabordebug_a_INDENTS) \
 	$(libmutaborgui_a_INDENTS)
 
@@ -549,7 +545,7 @@ POTSOURCES += $(INDENTSOURCES) \
 	$(NOCOMPSOURCES) \
 	$(libmutaborrouting_a_POTSOURCES) \
 	$(libmutaborscala_a_POTSOURCES) \
-	$(librtmidi_ts_la_POTSOURCES) \
+	$(librtmidi@rtmidi_suffix@_la_POTSOURCES) \
 	$(libmutabordebug_a_POTSOURCES) \
 	$(libmutaborgui_a_POTSOURCES)
 
@@ -566,7 +562,7 @@ mutabor_LDADD = \
 	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
 	libmutabordebug.a \
-	lib/rtmidi/librtmidi-ts.la \
+	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
 	$(WXINTLLDADD) \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
@@ -617,7 +613,6 @@ endif
 
 .PHONY: cvs_dist cvs_distcheck \
 	fixdependencies generated_headers
-
 
 
 src/wxGUI/resourceload.h:$(top_srcdir)/src/xrc/wxresource.h

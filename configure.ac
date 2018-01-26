@@ -101,6 +101,7 @@ AC_PROG_CXX
 AM_PROG_CC_C_O
 PKG_PROG_PKG_CONFIG([0.14.0])
 
+rtmidi_suffix="-mutabor"
 m4_include([lib/rtmidi/configure.library])
 
 AC_LANG_PUSH(C++)
@@ -930,6 +931,10 @@ src/includes/mutabor/Makefile
 src/includes/mutabor/tests/Makefile
 src/wxintl/tests/Makefile
 lib/Makefile
+lib/rtmidi/rtmidi-config
+lib/rtmidi/librtmidi.pc
+lib/rtmidi/Makefile
+lib/rtmidi/tests/Makefile
 lib/missfunc/Makefile
 Images/Icons/png/16x16/Makefile
 Images/Icons/png/20x20/Makefile
