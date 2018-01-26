@@ -300,12 +300,13 @@ inline mutabor_tone mutabor_add_interval_to_tone(const mutabor_tone tone,
 	case mutabor_empty_interval:
 		if (tone.active == mutabor_invalid_interval)
 			break;
+		FALLTHROUGH;
 	case mutabor_invalid_interval:
 		retval.active = interval.active;
 		break;
 	case mutabor_active_interval:
 		/* do nothing */
-		;
+		break;
 	}
 	return retval;
 }
@@ -319,6 +320,7 @@ inline mutabor_interval mutabor_tone_get_interval(const mutabor_tone t1,
 	case mutabor_empty_tone:
 		if (t1.active == mutabor_invalid_tone)
 			break;
+		FALLTHROUGH;
 	case mutabor_invalid_tone:
 		retval.active = t2.active;
 		break;
@@ -340,6 +342,7 @@ inline mutabor_interval mutabor_add_intervals(const mutabor_interval interval1,
 	case mutabor_empty_interval:
 		if (interval1.active == mutabor_invalid_interval)
 			break;
+		FALLTHROUGH;
 	case mutabor_invalid_interval:
 		retval.active = interval2.active;
 		break;

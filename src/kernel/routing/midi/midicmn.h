@@ -740,11 +740,13 @@ namespace mutabor {
 					switch (bank_mode) {
 					case lsb_first:
 						controller(channel,midi::BANK_FINE,lsb);
+						FALLTHROUGH;
 					case msb_only:
 						controller(channel,midi::BANK_COARSE,msb);
 						break;
 					case msb_first:
 						controller(channel,midi::BANK_COARSE,msb);
+						FALLTHROUGH;
 					case lsb_only:
 						controller(channel,midi::BANK_FINE,lsb);
 						break;
@@ -774,6 +776,7 @@ namespace mutabor {
 			switch (controller) {
 			case midi::CHANNEL_PRESSURE_VAL: {
 				Out(channel,midi::CHANNEL_PRESSURE, value);
+				break;
 			}
 			default:
 				if (controller >= 0 && controller < 0x80) {
