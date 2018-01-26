@@ -30,8 +30,8 @@ nodist_%C%_playgmn1_SOURCES = \
 
 %C%_playgmn1_LDADD = \
 	libmutabormaintest.a \
-	src/wxintl/libwxintl.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
+	src/wxintl/libwxintl.la \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
@@ -40,8 +40,8 @@ nodist_%C%_playgmn1_SOURCES = \
 
 %C%_gmnopenfail1_LDADD = \
 	libmutabormaintest.a \
-	src/wxintl/libwxintl.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
+	src/wxintl/libwxintl.la \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
