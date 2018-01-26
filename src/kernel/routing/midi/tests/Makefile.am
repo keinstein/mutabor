@@ -77,10 +77,11 @@ nodist_%C%_playmidi1_SOURCES = \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
+	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
 	$(BOOST_SYSTEM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LIBS) \
-	$(BOOST_SYSTEM_LIBS)
+	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_SYSTEM_LIB)
 
 %C%_midiopenfail1_LDADD = \
 	libmutabordebugtest.a \
@@ -92,10 +93,11 @@ nodist_%C%_playmidi1_SOURCES = \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
+	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
 	$(BOOST_SYSTEM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LIBS) \
-	$(BOOST_SYSTEM_LIBS)
+	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_SYSTEM_LIB)
 
 %C%_midiopenfail1_CXXFLAGS = \
 	$(WXINTLCXXFLAGS)
@@ -125,10 +127,11 @@ nodist_%C%_genmidirnd_SOURCES = \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
+	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
 	$(BOOST_SYSTEM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LIBS) \
-	$(BOOST_SYSTEM_LIBS)
+	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_SYSTEM_LIB)
 
 
 %C%_genmidilinear_SOURCES = \
@@ -150,10 +153,11 @@ nodist_%C%_genmidilinear_SOURCES = \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
+	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
 	$(BOOST_SYSTEM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LIBS) \
-	$(BOOST_SYSTEM_LIBS)
+	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_SYSTEM_LIB)
 
 
 BUILT_SOURCES += \
@@ -215,10 +219,11 @@ nodist_%C%_testcppunit_SOURCES = \
 	$(CPPUNIT_LIBS) \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
+	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
 	$(BOOST_SYSTEM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LIBS) \
-	$(BOOST_SYSTEM_LIBS)
+	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_SYSTEM_LIB)
 endif
 
 

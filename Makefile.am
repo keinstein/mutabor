@@ -273,7 +273,7 @@ libmutaborgui_a_POTSOURCES = $(libmutaborgui_a_INLINEHEADERS) $(libmutaborgui_a_
 
 libmutaborgui_a_SOURCES = $(libmutaborgui_a_INDENTS)
 
-libmutaborgui_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS)
+libmutaborgui_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(BOOST_CPPFLAGS)
 
 
 #-------------------------------------------------------------
@@ -332,7 +332,7 @@ libmutaborrouting_a_POTSOURCES = $(libmutaborrouting_a_INLINEHEADERS) $(libmutab
 
 libmutaborrouting_a_SOURCES = $(libmutaborrouting_a_INDENTS)
 
-libmutaborrouting_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS)
+libmutaborrouting_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(BOOST_CPPFLAGS)
 
 #-------------------------------------------------------------
 # libmutaborscala.a
@@ -384,7 +384,7 @@ noinst_HEADERS += $(libmutabordebug_a_INLINEHEADERS) $(libmutabordebug_a_INDENTH
 libmutabordebug_a_POTSOURCES = $(libmutabordebug_a_INLINEHEADERS) $(libmutabordebug_a_INDENTHEADERS) $(libmutabordebug_a_INDENTS)
 
 libmutabordebug_a_SOURCES = $(libmutabordebug_a_INDENTS)
-libmutabordebug_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS)
+libmutabordebug_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(BOOST_CPPFLAGS)
 
 
 if HAVE_CPPUNIT
@@ -401,7 +401,7 @@ libmutabordebugcppunit_a_INDENTS = \
 # no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
 
 libmutabordebugcppunit_a_SOURCES = $(libmutabordebugcppunit_a_INDENTS)
-libmutabordebugcppunit_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS) -DMUTABOR_TEST
+libmutabordebugcppunit_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS) -DMUTABOR_TEST  $(BOOST_CPPFLAGS)
 
 #-------------------------------------------------------------
 # libmutabordebugcppunit.a
@@ -420,13 +420,13 @@ libmutabormaincppunit_a_INDENTS = \
 
 libmutabormaincppunit_a_SOURCES = $(libmutabormaincppunit_a_INDENTS)
 libmutabormaincppunit_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS) -DMUTABOR_TEST \
-					"-DSRCDIR=\"$(srcdir)\""
+					"-DSRCDIR=\"$(srcdir)\""  $(BOOST_CPPFLAGS)
 libmutabormaincppunit_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
 				$(libmutaborrouting_a_OBJECTS) \
 				$(src_kernel_libmutaborkernel_a_OBJECTS) \
 				$(libmutaborscala_a_OBJECTS) \
 				$(libmutabordebugcppunit_a_OBJECTS) \
-				lib/rtmidi/librtmidi-ts.la
+				lib/rtmidi/librtmidi@rtmidi_suffix@.la
 
 libmutabormaincppunit_a_DEPENDENCIES = $(libmutabormaincppunit_a_LIBADD)
 
@@ -454,7 +454,7 @@ libmutabordebugtest_a_INDENTS = \
 # no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
 
 libmutabordebugtest_a_SOURCES = $(libmutabordebugtest_a_INDENTS)
-libmutabordebugtest_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) -DMUTABOR_TEST
+libmutabordebugtest_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) -DMUTABOR_TEST  $(BOOST_CPPFLAGS)
 
 
 #-------------------------------------------------------------
@@ -473,13 +473,13 @@ libmutabormaintest_a_INDENTS = \
 # no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
 
 libmutabormaintest_a_SOURCES = $(libmutabormaintest_a_INDENTS)
-libmutabormaintest_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(TEST_CFLAGS) -DMUTABOR_TEST
+libmutabormaintest_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(TEST_CFLAGS) -DMUTABOR_TEST $(BOOST_CPPFLAGS)
 libmutabormaintest_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
 				$(libmutaborrouting_a_OBJECTS) \
 				$(src_kernel_libmutaborkernel_a_OBJECTS) \
 				$(libmutaborscala_a_OBJECTS) \
 				$(libmutabordebugtest_a_OBJECTS) \
-				lib/rtmidi/librtmidi-ts.la
+				lib/rtmidi/librtmidi@rtmidi_suffix@.la
 
 libmutabormaintest_a_DEPENDENCIES = $(libmutabormaintest_a_LIBADD)
 
@@ -557,7 +557,7 @@ if COND_WINRC
 mutabor_COMPILESOURCES += src/wxGUI/Mutabor.rc
 endif
 
-mutabor_CXXFLAGS=$(WXINTLCXXFLAGS) $(AM_CXXFLAGS)
+mutabor_CXXFLAGS=$(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(BOOST_CPPFLAGS)
 mutabor_CXXLD=$(CXX)
 mutabor_SHORTNAME = mutabor
 mutabor_LDADD = \
@@ -570,10 +570,9 @@ mutabor_LDADD = \
 	$(WXINTLLDADD) \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LDFLAGS) \
-	$(BOOST_SYSTEM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LIBS) \
-	$(BOOST_SYSTEM_LIBS)
+	$(BOOST_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_SYSTEM_LIB)
 
 if COND_WINRC
 CLEANFILES +=  $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
@@ -594,14 +593,11 @@ scl2mut_POTSOURCES = $(scl2mut_SOURCES)
 
 scl2mut_LDADD = \
 	libmutaborscala.a \
-	$(BOOST_PROGRAM_OPTIONS_LDFLAGS) \
-	$(BOOST_LOCALE_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LDFLAGS) \
-	$(BOOST_SYSTEM_LDFLAGS) \
-	$(BOOST_LOCALE_LIBS) \
-	$(BOOST_FILESYSTEM_LIBS) \
-	$(BOOST_PROGRAM_OPTIONS_LIBS) \
-	$(BOOST_SYSTEM_LIBS)
+	$(BOOST_LDFLAGS) \
+	$(BOOST_PROGRAM_OPTIONS_LIB) \
+	$(BOOST_LOCALE_LIB) \
+	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_SYSTEM_LIB)
 
 if COND_PRECOMP_C
 #AM_CFLAGS += -include mutabor-precompiled.h # -fpch-deps

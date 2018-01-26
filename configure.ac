@@ -367,7 +367,7 @@ AC_CHECK_LIB(backtrace,backtrace_print)
 
 dnl check for boost earlier as it might correct the library path.
 dnl some systems don't set it correctly
-BOOST_REQUIRE([1.53.0])
+AX_BOOST_BASE([1.53.0],, [AC_MSG_ERROR([MUTABOR needs Boost >= 1.53, but it was not found in your system])])
 dnl AX_BOOST_BASE([1.53.0])
 PKG_PROG_PKG_CONFIG
 
@@ -803,18 +803,18 @@ dnl	AC_DEFINE(MUST_REUSE,1,[Define to x if the scope of C++ loop variables is in
 dnl fi
 
 dnl BOOST_REQUIRE([1.53.0])
-BOOST_LOCALE
-BOOST_FORMAT
+AX_BOOST_LOCALE
+dnl AX_BOOST_FORMAT
 dnl BOOST_INTRUSIVE_PTR
 dnl BOOST_RATIONAL
-BOOST_FOREACH
+dnl AX_BOOST_FOREACH
 dnl BOOST_SPIRIT
 dnl BOOST_ALGORITHM
-BOOST_SMART_PTR
-BOOST_FILESYSTEM
-BOOST_SYSTEM
-BOOST_THREADS
-BOOST_PROGRAM_OPTIONS
+dnl AX_BOOST_SMART_PTR
+AX_BOOST_FILESYSTEM
+AX_BOOST_SYSTEM
+AX_BOOST_THREAD
+AX_BOOST_PROGRAM_OPTIONS
 
 dnl AX_BOOST_FORMAT
 dnl AX_BOOST_BASE

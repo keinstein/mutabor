@@ -102,10 +102,9 @@ nodist_%C%_test_empty_SOURCES = \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LDFLAGS) \
-	$(BOOST_SYSTEM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LIBS) \
-	$(BOOST_SYSTEM_LIBS)
+	$(BOOST_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_SYSTEM_LIB)
 
 nodist_%C%_test_empty_comments_SOURCES = \
 	%D%/debugPaths.cpp
@@ -124,10 +123,9 @@ nodist_%C%_test_empty_comments_SOURCES = \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LDFLAGS) \
-	$(BOOST_SYSTEM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LIBS) \
-	$(BOOST_SYSTEM_LIBS)
+	$(BOOST_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_SYSTEM_LIB)
 
 nodist_%C%_test_intervals1_SOURCES = \
 	%D%/debugPaths.cpp
@@ -146,10 +144,9 @@ nodist_%C%_test_intervals1_SOURCES = \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LDFLAGS) \
-	$(BOOST_SYSTEM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LIBS) \
-	$(BOOST_SYSTEM_LIBS)
+	$(BOOST_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_SYSTEM_LIB)
 
 nodist_%C%_test_keymaps_SOURCES = \
 	%D%/debugPaths.cpp
@@ -168,10 +165,9 @@ nodist_%C%_test_keymaps_SOURCES = \
 	src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LDFLAGS) \
-	$(BOOST_SYSTEM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LIBS) \
-	$(BOOST_SYSTEM_LIBS)
+	$(BOOST_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_SYSTEM_LIB)
 
 
 # if HAVE_CPPUNIT
@@ -202,10 +198,9 @@ nodist_%C%_test_keymaps_SOURCES = \
 # 	$(LDADD) \
 # 	$(AM_LDFLAGS) \
 # 	$(CPPUNIT_LIBS) \
-# 	$(BOOST_FILESYSTEM_LDFLAGS) \
-# 	$(BOOST_SYSTEM_LDFLAGS) \
-# 	$(BOOST_FILESYSTEM_LIBS) \
-# 	$(BOOST_SYSTEM_LIBS)
+# 	$(BOOST_LDFLAGS) \
+# 	$(BOOST_FILESYSTEM_LIB) \
+# 	$(BOOST_SYSTEM_LIB)
 #
 # endif
 
