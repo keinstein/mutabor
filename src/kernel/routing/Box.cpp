@@ -110,17 +110,23 @@ namespace mutabor {
 	}
 
 	void BoxClass::Save (tree_storage & config) {
+		mutUnused(config);
 	}
 
 	void BoxClass::Save (tree_storage & config,
 		   const RouteClass * route) {
+		mutUnused(config);
+		mutUnused(route);
 	}
 
 	void BoxClass::Load (tree_storage & config) {
+		mutUnused(config);
 	}
 
 	void BoxClass::Load (tree_storage & config,
 			     RouteClass * route) {
+		mutUnused(config);
+		mutUnused(route);
 	}
 
 	void BoxClass::Add(Route & route) {
@@ -299,6 +305,7 @@ namespace mutabor {
 
 	void BoxClass::TruncateBoxList (Box dev)
 	{
+		mutUnused(dev);
 		STUB;
 		return;
 #if 0
@@ -322,6 +329,7 @@ namespace mutabor {
 
 	void BoxClass::Panic(Route r, int type, size_t unique_id)
 	{
+		mutUnused(type);
 		BoxLock lock(this);
 #ifdef DEBUG
 		size_t channel = r -> get_session_id();
@@ -343,6 +351,7 @@ namespace mutabor {
 
 	void BoxClass::Panic(Route r, int type)
 	{
+		mutUnused(type);
 		BoxLock lock(this);
 #ifdef DEBUG
 		size_t channel = r -> get_session_id();
@@ -369,6 +378,7 @@ namespace mutabor {
 	}
 
 	void BoxClass::Panic(int type) {
+		mutUnused(type);
 		BoxLock lock(this);
 		mutASSERT(open);
 		hidden::mutabor_reset_keys(box);
@@ -1017,11 +1027,13 @@ namespace mutabor {
 
 	void BoxFactory::DoLoadBoxes(tree_storage & config) const
 	{
+		mutUnused(config);
 		STUBC;
 	}
 
 	void BoxFactory::DoSaveBoxes(tree_storage & config) const
 	{
+		mutUnused(config);
 		STUBC;
 	}
 

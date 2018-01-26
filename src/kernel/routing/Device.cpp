@@ -312,6 +312,7 @@ CommonTypedDeviceAPI:\n\
 	template <class T, class P, class L>
 	void CommonTypedDeviceAPI<T,P,L>::TruncateDeviceList (DevicePtr dev)
 	{
+		mutUnused(dev);
 		STUB;
 		return;
 #if 0
@@ -640,21 +641,25 @@ InputDeviceClass:\n\
 
 	void DeviceFactory::DoLoadOutputDevices(tree_storage & config) const
 	{
+		mutUnused(config);
 		STUBC;
 	}
 
 	void DeviceFactory::DoSaveOutputDevices(tree_storage & config) const
 	{
+		mutUnused(config);
 		STUBC;
 	}
 
 	void DeviceFactory::DoLoadInputDevices(tree_storage & config) const
 	{
+		mutUnused(config);
 		STUBC;
 	}
 
 	void DeviceFactory::DoSaveInputDevices(tree_storage & config) const
 	{
+		mutUnused(config);
 		STUBC;
 	}
 

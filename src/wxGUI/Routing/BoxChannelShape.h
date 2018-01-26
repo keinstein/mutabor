@@ -166,7 +166,10 @@ namespace mutaborGUI {
 		/// add a new route
 		virtual void Add (mutabor::Route & r);
 		/// add a new box shape
-		virtual void Add (MutBoxShape * box) { /* handled by box */ }
+		virtual void Add (MutBoxShape * box) {
+			mutUnused(box);
+			/* handled by box */
+		}
 
 		/// replace an existing output device
 		virtual bool Replace (MutOutputDeviceShape * olddev,
@@ -180,6 +183,8 @@ namespace mutaborGUI {
 		/// replace a box shape
 		virtual bool Replace (MutBoxShape * oldbox,
 				      MutBoxShape * newbox) {
+			mutUnused(oldbox);
+			mutUnused(newbox);
 			/* handled by box */
 			return true;
 		}
@@ -192,6 +197,7 @@ namespace mutaborGUI {
 		virtual bool Remove (mutabor::Route & r);
 		/// remove a box from the route shape
 		virtual bool Remove (MutBoxShape * box) {
+			mutUnused(box);
 			/* handled by box */
 			return true;
 		}

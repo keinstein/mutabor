@@ -152,8 +152,10 @@ extern "C" {
 	}
 
 
-	static void
-	mutabor_backtrace_error_callback (void *data, const char *msg, int errnum)
+	static inline void
+	mutabor_backtrace_error_callback (void * mutUNUSED(data),
+					  const char *msg,
+					  int errnum)
 	{
 		fprintf (stderr, "backtrace: %s: (%d) %s\n",
 			 msg,
@@ -162,7 +164,7 @@ extern "C" {
 	}
 
 
-	static int mutabor_backtrace_print_callback (void *data,
+	static inline int mutabor_backtrace_print_callback (void *mutUNUSED(data),
 						     uintptr_t pc,
 						     const char *filename,
 						     int lineno,
@@ -175,7 +177,7 @@ extern "C" {
 			 function == NULL ? "???" : function);
 		return 0;
 	}
-	int mutabor_backtrace_simple_print_callback (void *data,
+	int mutabor_backtrace_simple_print_callback (void *mutUNUSED(data),
 						     uintptr_t pc)
 	{
 		fprintf (stderr, "%lx \n",
@@ -345,6 +347,8 @@ mutabor_backtrace::mutabor_backtrace(int omit_count):base(0),
 			 mutabor_save_backtrace_callback,
 			 mutabor_backtrace_error_callback,
 			 reinterpret_cast<void *>(this));
+#else
+	mutUnused(omit_count);
 #endif
 }
 

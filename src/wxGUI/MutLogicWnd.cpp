@@ -150,6 +150,7 @@ namespace mutaborGUI {
 		       int isLogic, int isOpen, int key)
 	: MutIconShape()
 	{
+		mutUnused(pos);
 		/*  int Types[4] = { IDI_TONSYST, IDI_LOGIC, IDI_TONSYSTOPEN, IDI_LOGICOPEN};
 		    Attr.Style |= BS_OWNERDRAW | WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS
 		    | WS_GROUP | WS_TABSTOP;
@@ -189,6 +190,7 @@ namespace mutaborGUI {
 
 	void MutTag::OnLeftDown(wxMouseEvent& event)
 	{
+		mutUnused(event);
 		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_MUTTAG);
 		event1.SetEventObject(this);
 		wxPostEvent(GetParent(),event1);
@@ -282,6 +284,7 @@ namespace mutaborGUI {
 
 	void MutLogicWnd::OnSize(wxSizeEvent& event)
 	{
+		mutUnused(event);
 		FixSizer();
 	}
 
@@ -503,6 +506,7 @@ namespace mutaborGUI {
 
 	void MutLogicWnd::CmUpdateUI(wxCommandEvent & event) 
 	{
+		mutUnused(event);
 		UpDate();
 	}
 

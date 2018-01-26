@@ -103,6 +103,7 @@ namespace mutabor {
 
 	template<class T, class D>
 	void CommonMidiOutput<T,D>::do_Close(bool sync) {
+		mutUnused(sync);
 		ScopedLock lock(this->write_lock);
 #ifdef DEBUG
 		if (mutabor::CurrentTime.isRealtime()) {
@@ -915,6 +916,7 @@ namespace mutabor {
 	template<class T, class D>
 	void CommonMidiOutput<T,D>::do_Quiet(Route r, int type)
 	{
+		mutUnused(type);
 		if (!this->isOpen) return;
 		TRACEC;
 #ifdef DEBUG
@@ -930,6 +932,8 @@ namespace mutabor {
 	template<class T, class D>
 	void CommonMidiOutput<T,D>::do_Quiet(Route r, int type, size_t id)
 	{
+		mutUnused(type);
+		mutUnused(id);
 		if (!this->isOpen) return;
 		TRACEC;
 

@@ -320,7 +320,7 @@ namespace mutaborGUI {
 			view->GetTextsw()->SetSavePoint();
 	}
 
-	void MutDocument::CmImportScala(wxCommandEvent & event) {
+	void MutDocument::CmImportScala(wxCommandEvent & mutUNUSED(event)) {
 		MutDocManager *manager = dynamic_cast<MutDocManager *>(GetDocumentManager());
 		if (!manager) {
 			wxGetApp().PrintError(mutabor::error,

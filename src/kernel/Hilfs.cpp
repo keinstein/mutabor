@@ -133,7 +133,7 @@ struct heap_element
 
 
 //#pragma warn -par
-void xfree (void * pointer)
+void xfree (void * mutUNUSED(pointer))
 {
 	/* Nichts, wenn eigene Speicherverwaltung */
 
@@ -319,7 +319,7 @@ struct mini_heap
 };
 
 //#pragma warn -par
-void yfree (void * pointer)
+void yfree (void * mutUNUSED(pointer))
 {
 	/* nix */
 }

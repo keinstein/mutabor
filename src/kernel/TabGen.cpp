@@ -198,7 +198,7 @@ static size_t get_constant_index (mutabor_box_type * box, int wert)
 }
 #endif
 
-static inline void reduce_argument(mutabor_box_type * box,
+static inline void reduce_argument(mutabor_box_type * mutUNUSED(box),
 				   struct interpreter_argument_list * list,
 				   size_t index,
 				   struct interpreter_argument_list * reference)
@@ -604,6 +604,7 @@ expand_aktions_liste (mutabor_box_type * box,
 		break;
 	case aktion_harmony_analysis:
 		current = expand_harmony_analysis(box);
+		break;
 	default:
 		mutabor_error_message(box,
 				      internal_error,
@@ -1097,7 +1098,7 @@ void insert_in_globale_liste (mutabor_box_type * box, struct logik * lauf)
 }
 
 void insert_in_lokale_liste (mutabor_box_type * box,
-			     struct do_aktion * action,
+			     struct do_aktion * mutUNUSED(action),
 			     struct anweisung * lauf,
                              struct logik * logic)
 {

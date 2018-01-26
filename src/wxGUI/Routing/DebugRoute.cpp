@@ -271,6 +271,9 @@ namespace mutaborGUI {
 		     i != routelist.end(); i++) {
 			Check(input, *i);
 		}
+#else
+		mutUnused(input);
+		mutUnused(route);
 #endif
 	}
 
@@ -385,6 +388,9 @@ namespace mutaborGUI {
 		     i != routelist.end(); i++) {
 			Check(output, *i);
 		}
+#else
+		mutUnused(route);
+		mutUnused(output);
 #endif
 	}
 
@@ -505,6 +511,9 @@ namespace mutaborGUI {
 		     i != routelist.end(); i++) {
 			Check(box, *i);
 		}
+#else
+		mutUnused(box);
+		mutUnused(route);
 #endif
 	}
 

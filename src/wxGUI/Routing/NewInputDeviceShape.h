@@ -82,11 +82,14 @@ namespace mutaborGUI {
 
 		virtual wxPanel * GetFilterPanel(wxWindow * parent, 
 						 mutabor::Route & route) const {
+			mutUnused(route);
 			UNREACHABLEC;
 			return new wxPanel(parent);
 		}
 		virtual void ReadFilterPanel(wxWindow * panel, 
 					     mutabor::Route & route) {
+			mutUnused(panel);
+			mutUnused(route);
 			UNREACHABLEC;
 		}
 	protected:

@@ -150,7 +150,7 @@ namespace mutaborGUI {
 		f->GetEventHandler()->ProcessEvent(ev);
 	}
 
-	void MutDocManager::CmImportScala(wxCommandEvent & event) {
+	void MutDocManager::CmImportScala(wxCommandEvent & mutUNUSED(event)) {
 		ImportScala(NULL);
 	}
 

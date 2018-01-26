@@ -239,6 +239,7 @@ namespace mutabor {
 
 
 		wxThread::ExitCode WaitForDeviceFinish(wxThreadWait flags=wxTHREAD_WAIT_BLOCK) {
+			mutUnused(flags);
 			mutASSERT(timer);
 			if (timer) {
 				mutASSERT(wxThread::This() != timer);

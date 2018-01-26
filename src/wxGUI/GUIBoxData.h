@@ -310,12 +310,14 @@ namespace mutaborGUI {
 		/** \param config conifiguration to be read from
 		 */
 		virtual void DoLoadBoxes(mutabor::tree_storage & config) const {
+			mutUnused(config);
 		}
 
 		/// write the routes to the configuration
 		/** \param config configuration to be written to
 		 */ 
 		virtual void DoSaveBoxes(mutabor::tree_storage & config) const {
+			mutUnused(config);
 		}
 	};
 

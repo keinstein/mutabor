@@ -451,6 +451,7 @@ namespace mutabor {
 						 uint8_t byte1,
 						 uint8_t byte2,
 						 uint8_t byte3) {
+			mutUnused(channel);
 			Tracks.MidiOut(byte1,byte2,byte3);
 			return *this;
 		}
@@ -490,8 +491,9 @@ namespace mutabor {
 		 MidiFileOutputProvider & RawMsg (int channel,
 						  uint8_t byte1,
 						  uint8_t byte2) {
-			Tracks.MidiOut(byte1,byte2);
-			return *this;
+			 mutUnused(channel);
+			 Tracks.MidiOut(byte1,byte2);
+			 return *this;
 		}
 
 		/**
@@ -503,6 +505,7 @@ namespace mutabor {
 		 * \param byte1 1st byte
 		 */
 		MidiFileOutputProvider & RawMsg (int channel, uint8_t byte1) {
+			mutUnused(channel);
 			Tracks.MidiOut(byte1);
 			return *this;
 		}
@@ -521,6 +524,7 @@ namespace mutabor {
 		MidiFileOutputProvider & SendSysEx (int channel,
 						    i from,
 						    i to) {
+			mutUnused(channel);
 			Tracks.SendSysEx(from,to);
 			return *this;
 		}
@@ -644,10 +648,15 @@ namespace mutabor {
 #endif
 
 		virtual void do_Gis(GisToken * token, char turn)
-		{};
+		{
+			mutUnused(token);
+			mutUnused(turn);
+		}
 
 		virtual void do_AddTime(frac time)
-		{};
+		{
+			mutUnused(time);
+		}
 
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
@@ -718,6 +727,7 @@ namespace mutabor {
 #endif
 
 		virtual frac ReadOn(frac time) {
+			mutUnused(time);
 			return frac(0, 1);
 		}
 

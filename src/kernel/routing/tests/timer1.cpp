@@ -121,12 +121,19 @@ public:
 	}
 
 	virtual void Save (mutabor::tree_storage & config,
-			   const mutabor::RouteClass * route) {}
+			   const mutabor::RouteClass * route) {
+		mutUnused(config);
+		mutUnused(route);
+	}
 	virtual void Load (mutabor::tree_storage & config,
-			   mutabor::RouteClass * route) {}
+			   mutabor::RouteClass * route) {
+		mutUnused(config);
+		mutUnused(route);
+	}
 
 	virtual mutabor::ChannelData & GetChannelData(const mutabor::InputDeviceClass::current_keys_type::entry & key) const
 	{
+		mutUnused(key);
 		return const_cast<mutabor::ChannelData & >(Cd);
 	}
 
@@ -138,7 +145,7 @@ protected:
 const mutabor::ChannelData testCommonFileDeviceTimer::Cd(0);
 
 
-int main(int argc, char **argv)
+int main(/* int argc, char **argv */)
 {
 #ifdef DEBUG
 //	debugFlags::flags.timer = true;

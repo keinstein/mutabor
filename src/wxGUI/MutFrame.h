@@ -328,7 +328,11 @@ namespace mutaborGUI {
 		wxMenu * editmenu;
 		wxMenu * filemenu;
 
-		virtual wxStatusBar* OnCreateStatusBar(int number, long style, wxWindowID id, const wxString& name) {
+		virtual wxStatusBar* OnCreateStatusBar(int number,
+						       long style,
+						       wxWindowID id,
+						       const wxString& name) {
+			mutUnused(number);
 			StatusBar * bar = new StatusBar(this, id, style, name);
 			if (!bar) return NULL;
 			bar->SetActive(LogicOn);
