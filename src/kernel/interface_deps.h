@@ -52,7 +52,7 @@
 	if (!(expr)) {							\
 		mutabor_assert_fail(__FILE__,				\
 				    __LINE__,				\
-				    __FUNCTION__,			\
+				    __func__,				\
 				    #expr,				\
 				    "");				\
 	}
