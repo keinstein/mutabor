@@ -373,7 +373,9 @@ namespace mutabor {
 		}
 
 		inline bool is_system_realtime(uint8_t status) {
-			return (0xF8 <= status) && (status <= 0xFF);
+			static_assert((uint8_t)0xFFFF == 0xFF,
+				      "uint8_t does not match 8 binary bits");
+			return (0xF8 <= status);
 		}
 
 		inline bool is_channel_message(uint8_t status) {
