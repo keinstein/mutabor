@@ -58,15 +58,20 @@ void InitDebugCommandLine(wxCmdLineParser&  parser)
 #  endif
 #  define N_(text) text
 #  define DEBUGFLAG(flag,description)					\
-        { wxCMD_LINE_SWITCH, "", ("debug-"#flag), (description) },
+        { wxCMD_LINE_SWITCH, "", ("debug-"#flag), (description),	\
+	  wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_MULTIPLE },
 #else
 #  define DEBUGFLAG(flag,description)					\
 	{ wxCMD_LINE_SWITCH, wxEmptyString, _T("debug-"#flag), description },
 #endif
 	static const wxCmdLineEntryDesc cmdLineDesc[] =	{
 #include "src/kernel/debugFlags.h"
-			{ wxCMD_LINE_NONE }
-		};
+#if wxCHECK_VERSION(2,9,0)
+		{ wxCMD_LINE_NONE, "", "", "", wxCMD_LINE_VAL_NONE, 0 }
+#else
+		{ wxCMD_LINE_NONE, wxEmptyString, wxEmptyString, wxEmptyString }
+#endif
+	};
 #undef DEBUGFLAG
 	parser.SetDesc(cmdLineDesc);
 }
