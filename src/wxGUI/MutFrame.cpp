@@ -1287,7 +1287,7 @@ To start the translation hit the play button or select “Play” from the “Se
 
 		switch ( kind ) {
 		case WK_KEY:
-			client->GetKeys(asTS);
+			client->GetKeys();
 			break;
 
 		case WK_TS:
