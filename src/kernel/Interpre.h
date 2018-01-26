@@ -53,11 +53,9 @@
 #include <limits.h>
 
 
-#ifdef __cplusplus
-namespace mutabor {
-	namespace hidden {
-		extern "C" {
-#endif
+MUTABOR_NAMESPACE(mutabor)
+MUTABOR_NAMESPACE(hidden)
+MUTABOR_EXTERN_C
 
 /* Zur Umrechnung in die Midi-Darstellung
    als Gleitpunktzahl in long.
@@ -697,11 +695,9 @@ int laufzeit_zentrum[MAX_BOX];
 #define SYNTHESIZER_TYP_GIS       3
 /* jedem Kanal seinen Synthesizer */
 
-#ifdef __cplusplus
-		}
-	}
-}
-#endif
+MUTABOR_EXTERN_C_END
+MUTABOR_NAMESPACE_END(hidden)
+MUTABOR_NAMESPACE_END(mutabor)
 
 #endif /* precompiled */
 #endif

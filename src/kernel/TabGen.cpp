@@ -44,11 +44,10 @@
 #endif
 #define _ _mut
 
-#ifdef __cplusplus
-namespace mutabor {
-	namespace hidden {
-		extern "C" {
-#endif
+
+MUTABOR_NAMESPACE(mutabor)
+MUTABOR_NAMESPACE(hidden)
+MUTABOR_EXTERN_C
 
 
 /***** Dies ist die Hauptprozedur um eine Aktion in die
@@ -1405,10 +1404,8 @@ void expand_decition_tree (mutabor_box_type * box)
 
 
 
-#ifdef __cplusplus
-		}
-	}
-}
-#endif
+MUTABOR_EXTERN_C_END
+MUTABOR_NAMESPACE_END(hidden)
+MUTABOR_NAMESPACE_END(mutabor)
 
 ///\}

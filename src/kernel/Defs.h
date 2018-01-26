@@ -39,13 +39,18 @@
 /*#define MUTMIDI */
 #endif
 
-/* workaround for inflexible Flex */
+/* don't confuse auto indentation with namespaces
+   workaround for inflexible Flex */
 #ifdef __cplusplus
 #define MUTABOR_NAMESPACE(X) namespace X {
 #define MUTABOR_NAMESPACE_END(X) }
+#define MUTABOR_EXTERN_C extern "C" {
+#define MUTABOR_EXTERN_C_END }
 #else
 #define MUTABOR_NAMESPACE(X)
 #define MUTABOR_NAMESPACE_END(X)
+#define MUTABOR_EXTERN_C
+#define MUTABOR_EXTERN_C_END
 #endif
 
 

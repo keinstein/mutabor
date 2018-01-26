@@ -35,11 +35,10 @@
 #include "box.h"
 #include <string.h>
 
-#ifdef __cplusplus
-namespace mutabor {
-	namespace hidden {
-		extern "C" {
-#endif
+MUTABOR_NAMESPACE(mutabor)
+MUTABOR_NAMESPACE(hidden)
+MUTABOR_EXTERN_C
+
 #undef ACS_VERSION
 
 #if 0
@@ -407,10 +406,8 @@ int loesche_laufzeit_speicher ( mutabor_box_type * box )
 	return 0; /* 0=ok, 1=fehler */
 }
 
-#ifdef __cplusplus
-		}
-	}
-}
-#endif
+MUTABOR_EXTERN_C_END
+MUTABOR_NAMESPACE_END(hidden)
+MUTABOR_NAMESPACE_END(mutabor)
 
 ///\}
