@@ -126,13 +126,13 @@ namespace mutaborGUI {
 
 			if ((*width += 2) < 0) *width = 0;
 
-			if ((*height +=3) < 0) *height =0;
+			if ((*height += 2) < 0) *height =0;
 		}
 
 		void SetClientSize(int width, int height)
 		{
 			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-			MutTextBox::SetClientSize(width-2, height-3);
+			MutTextBox::SetClientSize(width-2, height-2);
 		}
 
 		void SetClientSize(const wxSize& size)
