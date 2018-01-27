@@ -1332,6 +1332,11 @@ msgstr ""
 msgid "_reference"
 msgstr "Файл HTML (*.html)|*.html"
 
+#: src/kernel/Execute.cpp:377
+#, c-format
+msgid "Unexpected action type: %d"
+msgstr "Неизвестный тип действия: %d"
+
 #: src/kernel/parsers/scala/scala.cpp:345
 msgid "TONESYSTEM"
 msgstr ""
@@ -1517,8 +1522,27 @@ msgstr "Выходный GIS-файл"
 msgid "GIS input file"
 msgstr "Входный GIS-файл"
 
-#: src/kernel/routing/gmn/GSP_Err.cpp:34 src/wxGUI/MutApp.cpp:695
-#: src/wxGUI/MutEditFile.cpp:1359 Mutabor.xrc:89
+#: src/kernel/routing/RouteCompat.cpp:394
+#, fuzzy
+msgid "Device found, but device type not set."
+msgstr "распакован, но не настроен"
+
+
+#: src/kernel/routing/RouteCompat.cpp:436
+#, fuzzy
+msgid "Device found but device type not set."
+msgstr "распакован, но не настроен"
+
+#: src/kernel/routing/gmn/DevGIS.h:196
+msgid "GIS output file."
+msgstr "Выходный GIS-файл."
+
+#: src/kernel/routing/gmn/DevGIS.h:273
+msgid "GIS input file."
+msgstr "Входный GIS-файл."
+
+#: src/kernel/routing/gmn/GSP_Err.cpp:34 src/wxGUI/MutApp.cpp:706
+#: src/wxGUI/MutEditFile.cpp:1311 src/xrc/reslocale.cpp:13
 msgid "OK"
 msgstr "OK"
 
@@ -2019,6 +2043,11 @@ msgstr "_Искать: "
 #, fuzzy
 msgid "Search help for keyword"
 msgstr "искать точное совпадения каждого ключа"
+
+#: src/wxGUI/MutApp.cpp:970
+#, fuzzy, c-format
+msgid "Closing window of class %s"
+msgstr "При &закрытии последнего окна завершается работа с программой"
 
 #: src/wxGUI/MutApp.cpp:1091
 #, fuzzy
@@ -2527,6 +2556,11 @@ msgstr "Сохранить·настройки·эффект-процессор�
 #, fuzzy, c-format
 msgid "Error: The bitmap %s could not be found."
 msgstr "Указанный URL не может быть загружен."
+
+#: src/wxGUI/MutBitmaps.cpp:55 src/wxGUI/MutEditFile.cpp:239
+#: src/wxGUI/MutEditFile.cpp:246
+msgid "Error"
+msgstr "Ошибка"
 
 #: src/wxGUI/MutChild.cpp:131 src/wxGUI/MutChild.cpp:216
 #: src/wxGUI/MutChild.cpp:318 src/wxGUI/MutChild.cpp:356
