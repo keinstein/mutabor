@@ -47,6 +47,18 @@ LT_INIT
 
 AC_CONFIG_HEADER([config.h])
 
+AC_MSG_CHECKING([whether we are building off tree])
+absolute_builddir="`pwd`"
+pushd "${srcdir}" # top_srcdir is only defined in Makefiles
+absolute_srcdir="`pwd`"
+popd
+echo "test \"$absolute_builddir\" != \"$absolute_srcdir\""
+
+AM_CONDITIONAL(OFF_TREE,test "$absolute_builddir" != "$absolute_srcdir")
+AM_COND_IF(OFF_TREE,
+	[AC_MSG_RESULT(yes)],
+	[AC_MSG_RESULT(no)])
+
 
 dnl PACKAGE=$PACKAGE_NAME
 dnl VERSION=$PACKAGE_VERSION

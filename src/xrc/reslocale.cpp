@@ -210,157 +210,157 @@ _("Cancel");
 _("&Remove");
 #line 1060 "Mutabor.xrc"
 _("Help");
-#line 1077 "Mutabor.xrc"
+#line 1078 "Mutabor.xrc"
 _("Box settings");
-#line 1105 "Mutabor.xrc"
-_("Press this button to delete the box and all attached routes.");
 #line 1106 "Mutabor.xrc"
+_("Press this button to delete the box and all attached routes.");
+#line 1107 "Mutabor.xrc"
 _("Remove Box");
-#line 1134 "Mutabor.xrc"
+#line 1135 "Mutabor.xrc"
 _("&Add Route");
-#line 1147 "Mutabor.xrc"
+#line 1148 "Mutabor.xrc"
 _("&OK");
-#line 1154 "Mutabor.xrc"
+#line 1155 "Mutabor.xrc"
 _("&Cancel");
-#line 1161 "Mutabor.xrc"
+#line 1162 "Mutabor.xrc"
 _("&Help");
-#line 1178 "Mutabor.xrc"
+#line 1179 "Mutabor.xrc"
 _("Box number");
-#line 1206 "Mutabor.xrc"
+#line 1207 "Mutabor.xrc"
 _("Input device and filter");
-#line 1222 "Mutabor.xrc"
+#line 1223 "Mutabor.xrc"
 _("Output device and filter");
-#line 1237 "Mutabor.xrc"
+#line 1238 "Mutabor.xrc"
 _("Route settings");
-#line 1260 "Mutabor.xrc"
+#line 1261 "Mutabor.xrc"
 _("Box");
-#line 1292 "Mutabor.xrc"
+#line 1293 "Mutabor.xrc"
 _("&active");
-#line 1301 "Mutabor.xrc"
+#line 1302 "Mutabor.xrc"
 _("&passive");
-#line 1324 "Mutabor.xrc"
+#line 1325 "Mutabor.xrc"
 _("all");
-#line 1331 "Mutabor.xrc"
+#line 1332 "Mutabor.xrc"
 _("box tag");
-#line 1337 "Mutabor.xrc"
+#line 1338 "Mutabor.xrc"
 _("Range");
-#line 1344 "Mutabor.xrc"
+#line 1345 "Mutabor.xrc"
 _("from");
-#line 1354 "Mutabor.xrc"
+#line 1355 "Mutabor.xrc"
 _("The first box tag number, which will be processed according to this route");
-#line 1365 "Mutabor.xrc"
+#line 1366 "Mutabor.xrc"
 _("to");
-#line 1375 "Mutabor.xrc"
+#line 1376 "Mutabor.xrc"
 _("The last box tag number which will be processed according to this route");
-#line 1385 "Mutabor.xrc"
+#line 1386 "Mutabor.xrc"
 _("staves");
-#line 1391 "Mutabor.xrc"
+#line 1392 "Mutabor.xrc"
 _("Range");
-#line 1398 "Mutabor.xrc"
+#line 1399 "Mutabor.xrc"
 _("from");
-#line 1418 "Mutabor.xrc"
+#line 1419 "Mutabor.xrc"
 _("to");
-#line 1437 "Mutabor.xrc"
+#line 1438 "Mutabor.xrc"
 _("unhandled notes");
-#line 1461 "Mutabor.xrc"
+#line 1462 "Mutabor.xrc"
 _("all");
-#line 1468 "Mutabor.xrc"
+#line 1469 "Mutabor.xrc"
 _("channel");
-#line 1474 "Mutabor.xrc"
+#line 1475 "Mutabor.xrc"
 _("Range");
-#line 1481 "Mutabor.xrc"
+#line 1482 "Mutabor.xrc"
 _("from");
-#line 1501 "Mutabor.xrc"
+#line 1502 "Mutabor.xrc"
 _("to");
-#line 1520 "Mutabor.xrc"
+#line 1521 "Mutabor.xrc"
 _("key range");
-#line 1526 "Mutabor.xrc"
+#line 1527 "Mutabor.xrc"
 _("Range");
-#line 1533 "Mutabor.xrc"
+#line 1534 "Mutabor.xrc"
 _("from");
-#line 1553 "Mutabor.xrc"
+#line 1554 "Mutabor.xrc"
 _("to");
-#line 1572 "Mutabor.xrc"
+#line 1573 "Mutabor.xrc"
 _("unhandled notes");
-#line 1586 "Mutabor.xrc"
+#line 1587 "Mutabor.xrc"
 _("Channel");
-#line 1598 "Mutabor.xrc"
+#line 1599 "Mutabor.xrc"
 _("from");
-#line 1618 "Mutabor.xrc"
+#line 1619 "Mutabor.xrc"
 _("to");
-#line 1640 "Mutabor.xrc"
+#line 1641 "Mutabor.xrc"
 _("avoid drum channel");
-#line 1657 "Mutabor.xrc"
+#line 1658 "Mutabor.xrc"
 _("all");
-#line 1664 "Mutabor.xrc"
+#line 1665 "Mutabor.xrc"
 _("channel");
-#line 1670 "Mutabor.xrc"
+#line 1671 "Mutabor.xrc"
 _("Range");
-#line 1677 "Mutabor.xrc"
+#line 1678 "Mutabor.xrc"
 _("from");
-#line 1697 "Mutabor.xrc"
+#line 1698 "Mutabor.xrc"
 _("to");
-#line 1716 "Mutabor.xrc"
+#line 1717 "Mutabor.xrc"
 _("track");
-#line 1722 "Mutabor.xrc"
+#line 1723 "Mutabor.xrc"
 _("Range");
-#line 1729 "Mutabor.xrc"
+#line 1730 "Mutabor.xrc"
 _("from");
-#line 1749 "Mutabor.xrc"
+#line 1750 "Mutabor.xrc"
 _("to");
-#line 1768 "Mutabor.xrc"
+#line 1769 "Mutabor.xrc"
 _("unhandled notes");
-#line 1782 "Mutabor.xrc"
+#line 1783 "Mutabor.xrc"
 _("Channel");
-#line 1794 "Mutabor.xrc"
+#line 1795 "Mutabor.xrc"
 _("from");
-#line 1814 "Mutabor.xrc"
+#line 1815 "Mutabor.xrc"
 _("to");
-#line 1836 "Mutabor.xrc"
+#line 1837 "Mutabor.xrc"
 _("avoid drum channel");
-#line 1850 "Mutabor.xrc"
+#line 1851 "Mutabor.xrc"
 _("Import a  Scala tuning");
-#line 1870 "Mutabor.xrc"
+#line 1871 "Mutabor.xrc"
 _("interval prefix");
-#line 1879 "Mutabor.xrc"
+#line 1880 "Mutabor.xrc"
 _("scala");
-#line 1887 "Mutabor.xrc"
+#line 1888 "Mutabor.xrc"
 _("tone prefix");
-#line 1896 "Mutabor.xrc"
+#line 1897 "Mutabor.xrc"
 _("scala_tone");
-#line 1904 "Mutabor.xrc"
+#line 1905 "Mutabor.xrc"
 _("tone system");
-#line 1913 "Mutabor.xrc"
+#line 1914 "Mutabor.xrc"
 _("scala_tonesystem");
-#line 1921 "Mutabor.xrc"
+#line 1922 "Mutabor.xrc"
 _("logic");
-#line 1930 "Mutabor.xrc"
+#line 1931 "Mutabor.xrc"
 _("scala_logic");
-#line 1938 "Mutabor.xrc"
+#line 1939 "Mutabor.xrc"
 _("scala file");
-#line 1948 "Mutabor.xrc"
+#line 1949 "Mutabor.xrc"
 _("Select the scala file");
-#line 1958 "Mutabor.xrc"
+#line 1959 "Mutabor.xrc"
 _("keyboard mapping");
-#line 1968 "Mutabor.xrc"
+#line 1969 "Mutabor.xrc"
 _("Select a scala keyboard mapping");
-#line 1984 "Mutabor.xrc"
+#line 1985 "Mutabor.xrc"
 _("&OK");
-#line 1991 "Mutabor.xrc"
+#line 1992 "Mutabor.xrc"
 _("&Cancel");
-#line 2000 "Mutabor.xrc"
+#line 2001 "Mutabor.xrc"
 _("Export the current tuning to Scala");
-#line 2015 "Mutabor.xrc"
+#line 2016 "Mutabor.xrc"
 _("Scala file");
-#line 2025 "Mutabor.xrc"
+#line 2026 "Mutabor.xrc"
 _("Select a Scala file for export");
-#line 2038 "Mutabor.xrc"
+#line 2039 "Mutabor.xrc"
 _("Generate keyboard mapping");
-#line 2053 "Mutabor.xrc"
+#line 2054 "Mutabor.xrc"
 _("Keymap file");
-#line 2063 "Mutabor.xrc"
+#line 2064 "Mutabor.xrc"
 _("Select a file");
-#line 2079 "Mutabor.xrc"
+#line 2080 "Mutabor.xrc"
 _("&OK");
-#line 2086 "Mutabor.xrc"
+#line 2087 "Mutabor.xrc"
 _("&Cancel");

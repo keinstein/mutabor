@@ -91,3 +91,10 @@ POTSOURCES += %C%_libmutaborkernel_a_POTSOURCES
 
 %D%/mut.cc: %D%/mut.yy
 	$(YACCCOMPILE) -o %D%/mut.cc -b %D%/ $<
+	cmp %D%/mut.cc $(top_srcdir)/%D%/mut.cc || \
+		cp %D%/mut.cc $(top_srcdir)/%D%/mut.cc
+
+
+if OFF_TREE
+$(top_srcdir)/%D%/mut.cc: %D%/mut.cc
+endif

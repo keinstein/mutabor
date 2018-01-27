@@ -899,7 +899,7 @@ potfilechk-local: POTFILES.tmp $(top_srcdir)/po/POTFILES.in
 	sed -e 's,#.*$$,, ; /^$$/ d' $(top_srcdir)/po/POTFILES.in | LC_ALL=C sort -u >POTFILES.tmp2
 	diff -u POTFILES.tmp2 POTFILES.tmp 
 
-update-po: reslocale.cpp
+update-po: src/xrc/reslocale.cpp src/kernel/mut.cc
 	make -C po update-po
 
 update-gmo: update-po

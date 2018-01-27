@@ -422,8 +422,8 @@ string: string_element string_end { std::swap($$,$1); lexer.pop_state(scale_lexe
 nospace_integer:INTEGER {
 		errno = 0;
 		long n = strtol ($1.c_str(), NULL, 10);
-		if (! (0x80000000l+n >= 0 && n <= 0x7fFFffFFl && errno != ERANGE))
-		lexer.error (@1, _mut("integer is out of range"));
+		if (! (((long)0x80000000l+n) >= 0 && n <= 0x7fFFffFFl && errno != ERANGE))
+		    lexer.error (@1, _mut("integer is out of range"));
 		$$ = n;
 		}
 		;

@@ -31,8 +31,19 @@ fix_scale_parser.stamp: $(srcdir)/%D%/scale_parser.cc
 %D%/scale_parser.cc: %D%/scale_parser.yy
 	$(YACCCOMPILE) -o %D%/scale_parser.cc -b %D%/ $<
 
-%D%/keymap_parser.cc: %D%/scale_parser.yy
+%D%/keymap_parser.cc: %D%/keymap_parser.yy
 	$(YACCCOMPILE) -o %D%/keymap_parser.cc -b %D%/ $<
 
 %D%/scale_lexer.cc: %D%/scale_lexer.ll
 	$(LEXCOMPILE) -o $@ $<
+
+if OFF_TREE
+$(top_srcdir)/%D%/scale_parser.cc: %D%/scale_parser.cc
+		cp %D%/scale_parser.cc $(top_srcdir)/%D%/scale_parser.cc
+$(top_srcdir)/%D%/scale_parser.hh: %D%/scale_parser.hh
+		cp %D%/scale_parser.hh $(top_srcdir)/%D%/scale_parser.hh
+$(top_srcdir)/%D%/keymap_parser.cc: %D%/keymap_parser.cc
+		cp %D%/keymap_parser.cc $(top_srcdir)/%D%/keymap_parser.cc
+$(top_srcdir)/%D%/scale_lexer.cc: %D%/scale_lexer.cc
+		cp %D%/scale_lexer.cc $(top_srcdir)/%D%/scale_lexer.cc
+endif
