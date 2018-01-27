@@ -85,6 +85,9 @@ namespace mutaborGUI {
 
 		void OnClose(wxCloseEvent& event)
 		{
+			DEBUGLOG(aui, "OnClose Event Type %d  Id %d",
+				 event.GetEventType(),
+				 event.GetId());
 			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 			TRACEC;
 			deleteFromWinAttrs();
@@ -105,6 +108,9 @@ namespace mutaborGUI {
 		void OnAuiClose(wxAuiManagerEvent& event)
 
 		{
+			DEBUGLOG(aui, "OnClose Event Type %d  Id %d",
+				 event.GetEventType(),
+				 event.GetId());
 			mutUnused(event);
 			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 			TRACEC;
