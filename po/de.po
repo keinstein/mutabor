@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mutabor 4.0\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2016-07-24 23:09+0200\n"
+"POT-Creation-Date: 2018-01-28 00:15+0100\n"
 "PO-Revision-Date: 2016-07-24 17:12+0200\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.sourceforge.net>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -21,10 +21,6 @@ msgstr ""
 "X-Generator: Poedit 1.8.8\n"
 "X-Poedit-SearchPath-0: /home/tobias/macbookbackup/Entwicklung/mutabor/"
 "mutabor-git\n"
-
-#: lib/rtmidi/RtMidi.h:1639 lib/rtmidi/RtMidi.h:1663
-msgid "MidiInDummy: This class provides no functionality."
-msgstr "MidiInDummy: Diese Klasse stellt keine Funktionalität bereit."
 
 #: src/gmut/scl2mut.cpp:56
 msgid "too many positional options have been specified on the command line"
@@ -83,7 +79,7 @@ msgstr "erzeuge diese Hilfenachricht"
 msgid "Use .kbm file"
 msgstr "Benutze .kbm-Datei"
 
-#: src/gmut/scl2mut.cpp:162 Mutabor.xrc:1879
+#: src/gmut/scl2mut.cpp:162 Mutabor.xrc:1880
 msgid "scala"
 msgstr "scala"
 
@@ -91,7 +87,7 @@ msgstr "scala"
 msgid "Prefix interval identifiers with arg"
 msgstr "Beginne alle Intervallnamen mit „arg“"
 
-#: src/gmut/scl2mut.cpp:166 Mutabor.xrc:1896
+#: src/gmut/scl2mut.cpp:166 Mutabor.xrc:1897
 msgid "scala_tone"
 msgstr "Scala_Ton"
 
@@ -99,7 +95,7 @@ msgstr "Scala_Ton"
 msgid "Prefix tone identifiers with arg"
 msgstr "Beginne alle Tonnamen mit „arg“"
 
-#: src/gmut/scl2mut.cpp:170 Mutabor.xrc:1913
+#: src/gmut/scl2mut.cpp:170 Mutabor.xrc:1914
 msgid "scala_tonesystem"
 msgstr "Scala_Tonsystem"
 
@@ -107,7 +103,7 @@ msgstr "Scala_Tonsystem"
 msgid "Set the name of the generated tone system to arg"
 msgstr "Benenne das generierte Tonsystem mit arg"
 
-#: src/gmut/scl2mut.cpp:174 Mutabor.xrc:1930
+#: src/gmut/scl2mut.cpp:174 Mutabor.xrc:1931
 msgid "scala_logic"
 msgstr "Scala_Logik"
 
@@ -160,8 +156,8 @@ msgstr "Nicht genügend Speicher oder zu wenig Daten im Mutabor-Quelltext"
 msgid " "
 msgstr " "
 
-#: src/kernel/Errors.cpp:167 src/kernel/Parser.cpp:1091
-#: src/kernel/Parser.cpp:1120
+#: src/kernel/Errors.cpp:167 src/kernel/Parser.cpp:1093
+#: src/kernel/Parser.cpp:1122
 #, c-format
 msgid "The interval name %s was used twice"
 msgstr "Der Intervallname „%s“ wurde doppelt benutzt"
@@ -181,7 +177,7 @@ msgstr "Der Tonsystem-Name „%s“ wurde doppelt benutzt"
 msgid "The retuning name %s was used twice"
 msgstr "Der Umstimmungsname „%s“ wurde doppelt benutzt"
 
-#: src/kernel/Errors.cpp:171 src/kernel/Parser.cpp:2051
+#: src/kernel/Errors.cpp:171 src/kernel/Parser.cpp:2053
 #, c-format
 msgid "The pattern name %s was used twice"
 msgstr "Der Name „%s“ wurde doppelt für Harmonieformen benutzt"
@@ -200,7 +196,7 @@ msgstr "(unbenutzt)"
 msgid "The parameter name %s was used twice"
 msgstr "Der Parametername „%s“ wurde doppelt vergeben"
 
-#: src/kernel/Errors.cpp:175 src/kernel/Parser.cpp:2292
+#: src/kernel/Errors.cpp:175 src/kernel/Parser.cpp:2294
 #, c-format
 msgid "The MIDI-Instrument %d was used twice"
 msgstr "Das MIDI-Instrument %d wurde doppelt benutzt"
@@ -210,12 +206,12 @@ msgstr "Das MIDI-Instrument %d wurde doppelt benutzt"
 msgid "MIDI-Mapping: Channel %d was used twice"
 msgstr "MIDI-Zuordnung: Der Kanal %d wurde doppelt benutzt"
 
-#: src/kernel/Errors.cpp:177 src/kernel/Parser.cpp:3614
+#: src/kernel/Errors.cpp:177 src/kernel/Parser.cpp:3616
 #, c-format
 msgid "Logik %s contains more than one ELSE statement"
 msgstr "Die Logik %s enthält mehr als eine „ANSONSTEN“-Anweisung"
 
-#: src/kernel/Errors.cpp:178 src/kernel/Parser.cpp:3259
+#: src/kernel/Errors.cpp:178 src/kernel/Parser.cpp:3261
 #, c-format
 msgid "Retuning %s contains more than one ELSE statement"
 msgstr "Die Umstimmung „%s“ enthält mehr als eine „ANSONSTEN“-Anweisung"
@@ -235,7 +231,7 @@ msgstr "Unbekanntes Symbol: %s"
 msgid "Undefined interval: %s"
 msgstr "Unbekanntes Intervall: %s"
 
-#: src/kernel/Errors.cpp:186 src/kernel/Parser.cpp:2369
+#: src/kernel/Errors.cpp:186 src/kernel/Parser.cpp:2371
 #, c-format
 msgid "Undefined tone: %s"
 msgstr "Unbekannter Ton: %s"
@@ -245,7 +241,7 @@ msgstr "Unbekannter Ton: %s"
 msgid "Undefined tonesystem: %s"
 msgstr "Unbekanntes Tonsystem: %s"
 
-#: src/kernel/Errors.cpp:188 src/kernel/Parser.cpp:2965
+#: src/kernel/Errors.cpp:188 src/kernel/Parser.cpp:2967
 #, c-format
 msgid "Undefined retuning: %s"
 msgstr "Unbekannte Umstimmung: %s"
@@ -265,12 +261,12 @@ msgstr "Undefinierter Parametername: %s in „%s“"
 msgid "Undefined interval: %s (in %s)"
 msgstr "Unbekanntes Intervall: %s (in %s)\""
 
-#: src/kernel/Errors.cpp:192 src/kernel/Parser.cpp:3052
+#: src/kernel/Errors.cpp:192 src/kernel/Parser.cpp:3054
 #, c-format
 msgid "Undefined tone: %s (in tone system %s)"
 msgstr "Unbekannter Ton: %s (in Tonsystem „%s“)"
 
-#: src/kernel/Errors.cpp:193 src/kernel/Parser.cpp:3132
+#: src/kernel/Errors.cpp:193 src/kernel/Parser.cpp:3134
 #, c-format
 msgid "Undefined tone: %s (in retuning %s)"
 msgstr "Unbekannte Umstimmung: %s (in Umstimmung „%s“)"
@@ -279,17 +275,17 @@ msgstr "Unbekannte Umstimmung: %s (in Umstimmung „%s“)"
 msgid "(to be reused)"
 msgstr "(zur Wiederverwendung freigegeben)"
 
-#: src/kernel/Errors.cpp:195 src/kernel/Parser.cpp:3293
+#: src/kernel/Errors.cpp:195 src/kernel/Parser.cpp:3295
 #, c-format
 msgid "Undefined retuning: %s (in retuning %s)"
 msgstr "Undefinierte Umstimmung: „%s“ (in Umstimmung „%s“"
 
-#: src/kernel/Errors.cpp:196 src/kernel/Parser.cpp:3575
+#: src/kernel/Errors.cpp:196 src/kernel/Parser.cpp:3577
 #, c-format
 msgid "Undefined initial tuning: %s (in logic %s)"
 msgstr "Undefinierte Einstimmung: „%s“ (in Logik „%s“)"
 
-#: src/kernel/Errors.cpp:197 src/kernel/Parser.cpp:2835
+#: src/kernel/Errors.cpp:197 src/kernel/Parser.cpp:2837
 #, c-format
 msgid "Undefined action: %s (in logic %s)"
 msgstr "Undefinierte Aktion: „%s“ (in Logik „%s“)"
@@ -304,13 +300,13 @@ msgid "Bad MIDI channel (valid: 1...16)"
 msgstr "Ungültiger MIDI-Kanal (erlaubt: 1 bis 16)"
 
 #: src/kernel/Errors.cpp:208 src/kernel/Interval.c:104
-#: src/kernel/Parser.cpp:1099 ../../../mutabor-git/src/kernel/mut.yy:229
-#: ../../../mutabor-git/src/kernel/mut.yy:239
+#: src/kernel/Parser.cpp:1101 ../../mutabor/src/kernel/mut.yy:231
+#: ../../mutabor/src/kernel/mut.yy:241
 #, c-format
 msgid "Bad interval value in %s"
 msgstr "Ungültiger Intervallvert in „%s“"
 
-#: src/kernel/Errors.cpp:209 src/kernel/Parser.cpp:3038
+#: src/kernel/Errors.cpp:209 src/kernel/Parser.cpp:3040
 #, c-format
 msgid "Bad key %d (valid: %d...%d) in tonesystem %s"
 msgstr "Ungültige Taste %d (gültig: %d bis %d) im Tonsystem „%s“"
@@ -330,7 +326,7 @@ msgstr "Ungültiger Wert in „%s“"
 msgid "Bad MIDI-Code in logic %s (expecting %s )"
 msgstr "Falscher MIDI-Kod in der Logik „%s“ (erwarte „%s“)"
 
-#: src/kernel/Errors.cpp:213 src/kernel/Parser.cpp:3560
+#: src/kernel/Errors.cpp:213 src/kernel/Parser.cpp:3562
 #, c-format
 msgid "Logic %s must not be called by ELSE"
 msgstr "Die Logik „%s“ darf nicht im „ANSONSTEN“-Zweig aufgerufen werden"
@@ -345,8 +341,8 @@ msgstr "Eine Taste muss ein einzelnes Zeichen sein (%s)"
 msgid "Division by (nearly) 0 in line %d"
 msgstr "Division durch (fast) 0 in Zeile %d"
 
-#: src/kernel/Errors.cpp:224 src/kernel/Parser.cpp:3208
-#: src/kernel/Parser.cpp:3320
+#: src/kernel/Errors.cpp:224 src/kernel/Parser.cpp:3210
+#: src/kernel/Parser.cpp:3322
 #, c-format
 msgid "In retuning %s and %s : Bad parameters"
 msgstr "In der Umstimmung „%s“ und „%s“: Falsche Parameter"
@@ -356,19 +352,19 @@ msgstr "In der Umstimmung „%s“ und „%s“: Falsche Parameter"
 msgid "In logic %s : Bad number of parameters ( %s )"
 msgstr "In der Logik „%s“: Falsche Parameteranzahl („%s“)"
 
-#: src/kernel/Errors.cpp:226 src/kernel/Parser.cpp:3583
+#: src/kernel/Errors.cpp:226 src/kernel/Parser.cpp:3585
 #, c-format
 msgid "In logik %s : initial tuning %s mustn't have parameters"
 msgstr "In Logik „%s“: Einstimmung „%s“ darf keine Parameter haben"
 
-#: src/kernel/Errors.cpp:227 src/kernel/Parser.cpp:3198
+#: src/kernel/Errors.cpp:227 src/kernel/Parser.cpp:3200
 #, c-format
 msgid "In collection %s : call to %s mustn't have parameters"
 msgstr ""
 "In der Mehrfach-Anweisung „%s“: „%s“ muss ohne Parameter aufgerufen werden"
 
-#: src/kernel/Errors.cpp:228 src/kernel/Parser.cpp:3301
-#: src/kernel/Parser.cpp:3310
+#: src/kernel/Errors.cpp:228 src/kernel/Parser.cpp:3303
+#: src/kernel/Parser.cpp:3312
 #, c-format
 msgid "In case %s : call to %s mustn't have parameters"
 msgstr "Im Fall „%s“: „%s“ muss ohne Parameter aufgerufen werden"
@@ -429,12 +425,12 @@ msgstr "Ungültige Umstimmung in Zeile %d"
 msgid "bad pattern decl. at %s"
 msgstr "Ungültige Harmonieform-Definition bei „%s“"
 
-#: src/kernel/Errors.cpp:246 ../../../mutabor-git/src/kernel/mut.yy:952
+#: src/kernel/Errors.cpp:246 ../../mutabor/src/kernel/mut.yy:954
 #, c-format
 msgid "Bad MIDI list in line %d"
 msgstr "Ungültige MIDI-Daten-Liste in Zeile %d"
 
-#: src/kernel/Errors.cpp:247 ../../../mutabor-git/src/kernel/mut.yy:1081
+#: src/kernel/Errors.cpp:247 ../../mutabor/src/kernel/mut.yy:1083
 #, c-format
 msgid "No hex number after # (line %d)"
 msgstr "Fehlerhafte Hexadezimalzahl nach „#“ (Zeile %d)"
@@ -457,12 +453,12 @@ msgstr ""
 msgid "Non existent harmony event in logic %s"
 msgstr "Unbekanntes Harmonieereignis in Logik „%s“"
 
-#: src/kernel/Errors.cpp:257 src/kernel/Parser.cpp:2843
+#: src/kernel/Errors.cpp:257 src/kernel/Parser.cpp:2845
 #, c-format
 msgid "Non well defined event %s in logic %s"
 msgstr "Unsauber definiertes Ereignis „%s“ in Logik „%s“"
 
-#: src/kernel/Errors.cpp:258 src/kernel/Parser.cpp:3620
+#: src/kernel/Errors.cpp:258 src/kernel/Parser.cpp:3622
 #, c-format
 msgid "Event ELSE is last in %s"
 msgstr "Das Ereignis „ANSONSTEN“ ist das letzte in „%s“"
@@ -489,39 +485,39 @@ msgstr "Die MIDI-Kanäle %d und %d überschneiden sich"
 msgid "Error in GMN-File %s position(%d, %d): %s"
 msgstr "Fehler in der GMN-Datei „%s“ an der Position (%d, %d): %s"
 
-#: src/kernel/Execute.cpp:63
+#: src/kernel/Execute.cpp:61
 msgid "Warning"
 msgstr "Warnung"
 
-#: src/kernel/Execute.cpp:64
+#: src/kernel/Execute.cpp:62
 msgid "Compiler warning"
 msgstr "Warnung des Übersetzers"
 
-#: src/kernel/Execute.cpp:65
+#: src/kernel/Execute.cpp:63
 msgid "Runtime warning"
 msgstr "Laufzeitwarnung"
 
-#: src/kernel/Execute.cpp:66 src/wxGUI/MutBitmaps.cpp:68
+#: src/kernel/Execute.cpp:64 src/wxGUI/MutBitmaps.cpp:68
 #: src/wxGUI/MutEditFile.cpp:261 src/wxGUI/MutEditFile.cpp:268
-#: src/wxGUI/MutEditFile.cpp:295 src/wxGUI/Routing/BoxShape.cpp:409
+#: src/wxGUI/MutEditFile.cpp:295 src/wxGUI/Routing/BoxShape.cpp:411
 msgid "Error"
 msgstr "Fehler"
 
-#: src/kernel/Execute.cpp:70
+#: src/kernel/Execute.cpp:68
 msgid "Unknown error"
 msgstr "Unbekannter Fehler"
 
-#: src/kernel/Execute.cpp:288
+#: src/kernel/Execute.cpp:289
 #, c-format
 msgid "%s {logic}"
 msgstr "%s {Logik}"
 
-#: src/kernel/Execute.cpp:316
+#: src/kernel/Execute.cpp:317
 #, c-format
 msgid "%s {tone system}"
 msgstr "%s {Tonsystem}"
 
-#: src/kernel/Execute.cpp:335
+#: src/kernel/Execute.cpp:336
 msgid ""
 "Trying to set the anchor with incompatible parameters. Please report to the "
 "MUTABOR team."
@@ -529,12 +525,12 @@ msgstr ""
 "Versuche, den Ankerton mit inkompatiblen Parametern zu setzen. Melden Sie "
 "diesen Fehler bitte an das MUTABOR-Team."
 
-#: src/kernel/Execute.cpp:339
+#: src/kernel/Execute.cpp:340
 #, c-format
 msgid "%s:%d[]"
 msgstr "%s:%d[]"
 
-#: src/kernel/Execute.cpp:358
+#: src/kernel/Execute.cpp:359
 msgid ""
 "Setting tone system width with incompatible parameters. Please report to the "
 "MUTABOR team."
@@ -542,22 +538,22 @@ msgstr ""
 "Versuche, das Tonsystem mit inkompatiblen Parametern zu setzen. Bitte melden "
 "Sie diesen Fehler an das MUTABOR-Team."
 
-#: src/kernel/Execute.cpp:362
+#: src/kernel/Execute.cpp:363
 #, c-format
 msgid "%s:[<< %d >>]"
 msgstr "%s:[<< %d >>]"
 
-#: src/kernel/Execute.cpp:377
+#: src/kernel/Execute.cpp:378
 #, c-format
 msgid "%s:[]%f HT"
 msgstr "%s:[]%f HT"
 
-#: src/kernel/Execute.cpp:394
+#: src/kernel/Execute.cpp:395
 #, c-format
 msgid "%s:[]@+%f HT"
 msgstr "%s:[]@+%f HT"
 
-#: src/kernel/Execute.cpp:418
+#: src/kernel/Execute.cpp:419
 msgid ""
 "Changing anchor with incompatible parameters. Please report to the MUTABOR "
 "team."
@@ -565,12 +561,12 @@ msgstr ""
 "Versuche den Anker mit inkompatiblen Parametern zu ändern. Bitte "
 "benachrichtigen Sie das MUTABOR-Team über diesen Fehler."
 
-#: src/kernel/Execute.cpp:421
+#: src/kernel/Execute.cpp:422
 #, c-format
 msgid "%s:@%c%d[]"
 msgstr "%s:@%c%d[]"
 
-#: src/kernel/Execute.cpp:459
+#: src/kernel/Execute.cpp:460
 msgid ""
 "Changing tone system width with incompatible parameters. Please report to "
 "the MUTABOR team."
@@ -578,22 +574,22 @@ msgstr ""
 "Versuche das Tonsystem mit inkompatiblen Parametern zu ändern. Bitte "
 "benachrichtigen Sie das MUTABOR-Team über diesen Fehler."
 
-#: src/kernel/Execute.cpp:462
+#: src/kernel/Execute.cpp:463
 #, c-format
 msgid "%s:[<<@%c%d>>]"
 msgstr "%s:[<<@%c%d>>]"
 
-#: src/kernel/Execute.cpp:500
+#: src/kernel/Execute.cpp:501
 #, c-format
 msgid "%s:[.,.,.]"
 msgstr "%s:[.,.,.]"
 
-#: src/kernel/Execute.cpp:558
+#: src/kernel/Execute.cpp:559
 #, c-format
 msgid "%s,%d"
 msgstr "%s,%d"
 
-#: src/kernel/Execute.cpp:579
+#: src/kernel/Execute.cpp:580
 msgid ""
 "Switching cases with incompatible parameter list. Please report to the "
 "MUTABOR team."
@@ -601,17 +597,17 @@ msgstr ""
 "Versuche eine Mehrfachauswahl mit inkompatiblen Parametern zu ändern. Bitte "
 "benachrichtigen Sie das MUTABOR-Team über diesen Fehler."
 
-#: src/kernel/Execute.cpp:610
+#: src/kernel/Execute.cpp:611
 #, c-format
 msgid "%s %x"
 msgstr "%s %x"
 
-#: src/kernel/Execute.cpp:634
+#: src/kernel/Execute.cpp:635
 #, c-format
 msgid "Unexpected action type: %d"
 msgstr "Unerwarteter Aktionstyp: %d"
 
-#: src/kernel/Execute.cpp:887
+#: src/kernel/Execute.cpp:888
 #, c-format
 msgid ""
 "Undefined harmony class %d in HarmonyAnalysis().\n"
@@ -627,25 +623,25 @@ msgstr ""
 "Fehler in Fehlerausgabe: Konnte keinen Puffer für die Fehlermeldung "
 "erstellen."
 
-#: src/kernel/Hilfs.cpp:98
+#: src/kernel/Hilfs.cpp:97
 msgid "Not enough memory for the MUTABOR file"
 msgstr "Nicht genügend Speicher für die MUTABOR-Datei"
 
-#: src/kernel/Hilfs.cpp:152
+#: src/kernel/Hilfs.cpp:151
 #, c-format
 msgid "A chunk of memory has been requested that was too large (%d > %d)"
 msgstr "Es wurd eine Speicherbereich angefordert, der zu groß ist (%d > %d)"
 
-#: src/kernel/Hilfs.cpp:174 src/kernel/Hilfs.cpp:208
+#: src/kernel/Hilfs.cpp:173 src/kernel/Hilfs.cpp:207
 msgid "Could not allocate syntax heap chunk."
 msgstr ""
 "Konnte einen Speicherbereich für den Syntax-Speicher nicht reservieren."
 
-#: src/kernel/Hilfs.cpp:254
+#: src/kernel/Hilfs.cpp:253
 msgid "Reallocation of memory failed."
 msgstr "Die Änderung der Größe eines Speicherbereiches ist fehlgeschlagen."
 
-#: src/kernel/Hilfs.cpp:273 src/kernel/Hilfs.cpp:346
+#: src/kernel/Hilfs.cpp:272 src/kernel/Hilfs.cpp:345
 msgid "Not enough memory."
 msgstr "Nicht genügend Speicher."
 
@@ -680,11 +676,11 @@ msgstr ""
 msgid "The logic was not intialized. Found in %s, %d"
 msgstr "Die Logik wurde nicht initialisiert. Gefunden in %s, %d"
 
-#: src/kernel/Parser.cpp:317 src/kernel/TabGen.cpp:145
+#: src/kernel/Parser.cpp:317 src/kernel/TabGen.cpp:144
 msgid "DISTANCE"
 msgstr "ABSTAND"
 
-#: src/kernel/Parser.cpp:320 src/kernel/TabGen.cpp:148
+#: src/kernel/Parser.cpp:320 src/kernel/TabGen.cpp:147
 msgid "CENTER"
 msgstr "ZENTRUM"
 
@@ -697,7 +693,7 @@ msgstr ""
 "Ungültiger Argumenttyp %d gefunden auf\n"
 "%s:%d"
 
-#: src/kernel/Parser.cpp:1048
+#: src/kernel/Parser.cpp:1050
 #, c-format
 msgid ""
 "Invalid event type %d detected at\n"
@@ -706,13 +702,13 @@ msgstr ""
 "Ungültigen Ereignistyp %d gefunden auf\n"
 "%s:%d"
 
-#: src/kernel/Parser.cpp:1148 src/kernel/Parser.cpp:1173
-#: src/kernel/Parser.cpp:1198
+#: src/kernel/Parser.cpp:1150 src/kernel/Parser.cpp:1175
+#: src/kernel/Parser.cpp:1200
 #, c-format
 msgid "The tone name %s was used twice."
 msgstr "Der Tonname „%s“ wurde doppelt benutzt."
 
-#: src/kernel/Parser.cpp:1215 src/kernel/Parser.cpp:1335
+#: src/kernel/Parser.cpp:1217 src/kernel/Parser.cpp:1337
 #, c-format
 msgid ""
 "Internal error while creating interval “%s” at\n"
@@ -721,36 +717,36 @@ msgstr ""
 "Interner Fehler beim Erzeugen des Intervalles „%s“ auf\n"
 "%s:%d"
 
-#: src/kernel/Parser.cpp:1236 src/kernel/Parser.cpp:1248
+#: src/kernel/Parser.cpp:1238 src/kernel/Parser.cpp:1250
 msgid "There is already a logic with this name."
 msgstr "Es existiert schon eine Logik mit diesem Namen."
 
-#: src/kernel/Parser.cpp:1242
+#: src/kernel/Parser.cpp:1244
 msgid "There is already a retuning with this name."
 msgstr "Es existiert schon eine Umstimmung mit diesem Namen."
 
-#: src/kernel/Parser.cpp:1291
+#: src/kernel/Parser.cpp:1293
 #, c-format
 msgid "The tone system name %s was used twice. %s"
 msgstr "Der Tonsystem-Name „%s“ wurde doppelt benutzt. %s"
 
-#: src/kernel/Parser.cpp:1320
+#: src/kernel/Parser.cpp:1322
 #, c-format
 msgid "The tone system name “%s” was used twice."
 msgstr "Der Tonsystem-Name „%s“ wurde doppelt benutzt."
 
-#: src/kernel/Parser.cpp:1368
+#: src/kernel/Parser.cpp:1370
 #, c-format
 msgid "The retuning name %s was used twice. %s"
 msgstr "Der Umstimmungsname „%s“ wurde doppelt benutzt. %s"
 
-#: src/kernel/Parser.cpp:1397 src/kernel/Parser.cpp:1739
-#: src/kernel/Parser.cpp:1917 src/kernel/Parser.cpp:1984
+#: src/kernel/Parser.cpp:1399 src/kernel/Parser.cpp:1741
+#: src/kernel/Parser.cpp:1919 src/kernel/Parser.cpp:1986
 #, c-format
 msgid "Undefined parameter name “%s” in “%s”."
 msgstr "Undefinierter Parametername %s in „%s“."
 
-#: src/kernel/Parser.cpp:1410
+#: src/kernel/Parser.cpp:1412
 #, c-format
 msgid ""
 "Invalid parameter argument type %d in retuning “%s” while calling %s. "
@@ -759,7 +755,7 @@ msgstr ""
 "Ungültiger Parameter-Argumenttyp %d in Umstimmung „%s“ während %s aufgerufen "
 "wird. Bitte melden Sie diesen Fehler an das MUTABOR-Team."
 
-#: src/kernel/Parser.cpp:1611
+#: src/kernel/Parser.cpp:1613
 #, c-format
 msgid ""
 "Internal error at\n"
@@ -768,42 +764,42 @@ msgstr ""
 "Interner Fehler auf\n"
 "%s:%d"
 
-#: src/kernel/Parser.cpp:2177
+#: src/kernel/Parser.cpp:2179
 #, c-format
 msgid "A Key needs to be a single character (got “%s”)"
 msgstr "Eine Taste muss ein einzelnes Zeichen sein (bekam „%s“)"
 
-#: src/kernel/Parser.cpp:2240
+#: src/kernel/Parser.cpp:2242
 #, c-format
 msgid "The logic name %s was used twice. %s"
 msgstr "Der Logikname „%s“ wurde doppelt vergeben. %s"
 
-#: src/kernel/Parser.cpp:2310
+#: src/kernel/Parser.cpp:2312
 #, c-format
 msgid "Bad MIDI channel %d (valid: 1...16)"
 msgstr "Ungültiger MIDI-Kanal %d (erlaubt: 1 bis 16)"
 
-#: src/kernel/Parser.cpp:2319
+#: src/kernel/Parser.cpp:2321
 #, c-format
 msgid "Bad start %d of MIDI channel range (valid: 1...16)"
 msgstr "Ungültiger Anfang %d des MIDI-Kanalbereiches (erlaubt: 1 bis 16)"
 
-#: src/kernel/Parser.cpp:2325
+#: src/kernel/Parser.cpp:2327
 #, c-format
 msgid "Bad end %d of MIDI channel range (valid: 1...16)"
 msgstr "Ungültiges Ende %d des MIDI-Kanalkanalbereiches (erlaubt: 1 bis 16)"
 
-#: src/kernel/Parser.cpp:2333
+#: src/kernel/Parser.cpp:2335
 #, c-format
 msgid "Bad MIDI rerouting channel %d (valid: 1...16)"
 msgstr "Ungültiger Umleitungs-MIDI-Kanal %d (erlaubt: 1 bis 16)"
 
-#: src/kernel/Parser.cpp:2385
+#: src/kernel/Parser.cpp:2387
 #, c-format
 msgid "Tones %s and %s depend on each other."
 msgstr "Die Töne „%s“ und „%s“ hängen gegenseitig voneinander ab."
 
-#: src/kernel/Parser.cpp:2431 src/kernel/Parser.cpp:2477
+#: src/kernel/Parser.cpp:2433 src/kernel/Parser.cpp:2479
 #, c-format
 msgid ""
 "Invalid tone type %d detected at\n"
@@ -812,12 +808,12 @@ msgstr ""
 "Ungültiger Tontyp %d gefunden auf\n"
 "%s:%d"
 
-#: src/kernel/Parser.cpp:2603
+#: src/kernel/Parser.cpp:2605
 #, c-format
 msgid "Undefined harmony “%s” in logic %s."
 msgstr "Undefinierte Harmonie: „%s“ in Logik „%s“."
 
-#: src/kernel/Parser.cpp:2617
+#: src/kernel/Parser.cpp:2619
 #, c-format
 msgid ""
 "Lowest chroma %d of harmonic form %s in logic %s is not a member of that "
@@ -830,7 +826,7 @@ msgstr ""
 "\n"
 "Diese Harmonieform wird ignoriert."
 
-#: src/kernel/Parser.cpp:2635
+#: src/kernel/Parser.cpp:2637
 #, c-format
 msgid ""
 "The highest chroma %d of the harmonic form %s in logic %s is not a member of "
@@ -843,12 +839,12 @@ msgstr ""
 "\n"
 "Dieser Harmonieform-Auslöser wird ignoriert."
 
-#: src/kernel/Parser.cpp:2655
+#: src/kernel/Parser.cpp:2657
 #, c-format
 msgid "Undefined harmony: %s (in logic %s)"
 msgstr "Undefinierte Harmonie: „%s“ (in Logik „%s“)"
 
-#: src/kernel/Parser.cpp:2671 src/kernel/Parser.cpp:2689
+#: src/kernel/Parser.cpp:2673 src/kernel/Parser.cpp:2691
 #, c-format
 msgid ""
 "Lowest chroma %d of harmony %s in logic %s is not a member of that harmony. "
@@ -859,16 +855,16 @@ msgstr ""
 "\n"
 "Dieser Harmonie-Auslöser wird ignoriert."
 
-#: src/kernel/Parser.cpp:2709
+#: src/kernel/Parser.cpp:2711
 #, c-format
 msgid "Bad MIDI-Code %x in logic %s (expecting status byte %s )"
 msgstr "Falscher MIDI-Code %x in der Logik „%s“ (erwarte Statusbyte „%s“)"
 
-#: src/kernel/Parser.cpp:2712
+#: src/kernel/Parser.cpp:2714
 msgid "status byte"
 msgstr "Status-Byte"
 
-#: src/kernel/Parser.cpp:2720
+#: src/kernel/Parser.cpp:2722
 #, c-format
 msgid ""
 "MIDI event in logic %s does not start with channel 0 status byte.\n"
@@ -878,7 +874,7 @@ msgstr ""
 "Statusbyte.\n"
 "Ich bekam #%x. Der Wert wurde auf #%x korrigiert."
 
-#: src/kernel/Parser.cpp:2733
+#: src/kernel/Parser.cpp:2735
 #, c-format
 msgid ""
 "Bad MIDI-Code #%x in logic %s (expecting a data byte in the range #00...#7f )"
@@ -886,7 +882,7 @@ msgstr ""
 "Falscher MIDI-Code #%x in der Logik „%s“ (erwarte ein Datenbyte im Bereich "
 "#00 bis #7f)"
 
-#: src/kernel/Parser.cpp:2762
+#: src/kernel/Parser.cpp:2764
 #, c-format
 msgid ""
 "Bad MIDI-Code in logic %s, expecting a byte I got %d=#%x.\n"
@@ -898,7 +894,7 @@ msgstr ""
 "Hinweis: Jede Zahl kann maximal 3 Bytes enthalten.\n"
 "Versuche weiterzumachen…"
 
-#: src/kernel/Parser.cpp:2791
+#: src/kernel/Parser.cpp:2793
 #, c-format
 msgid ""
 "MIDI event in logic %s does not start with status byte.\n"
@@ -907,7 +903,7 @@ msgstr ""
 "Ein MIDI-Ereignis in der Logik „%s“ beginnt nicht mit einem Statusbyte.\n"
 "Ich bekam #%x. Dies wird vermutlich von Ihrem MIDI-Gerät ignoriert."
 
-#: src/kernel/Parser.cpp:2801
+#: src/kernel/Parser.cpp:2803
 #, c-format
 msgid ""
 "MIDI event in logic %s must be defined for channel 0, only.\n"
@@ -916,27 +912,27 @@ msgstr ""
 "Ein MIDI-Ereignis in der Logik „%s“ muss genau für Kanal 0 definiert sein.\n"
 "Ich bekam %x. Der Wert wurde korrigiert."
 
-#: src/kernel/Parser.cpp:2853
+#: src/kernel/Parser.cpp:2855
 #, c-format
 msgid "In logic %s: Too many parameters while calling retuning %s."
 msgstr "In Logik „%s“: Zu viele Parameter beim Aufruf der Umstimmung „%s“."
 
-#: src/kernel/Parser.cpp:2860
+#: src/kernel/Parser.cpp:2862
 #, c-format
 msgid "In logic %s: Too few parameters while calling retuning %s."
 msgstr "In Logik „%s“: Zu wenig Parameter beim Aufruf der Umstimmung „%s“."
 
-#: src/kernel/Parser.cpp:2871
+#: src/kernel/Parser.cpp:2873
 #, c-format
 msgid "In logic %s: Tonesystem %s must be called without parameters."
 msgstr "In Logik „%s“: Tonsystem „%s“ darf keine Parameter haben."
 
-#: src/kernel/Parser.cpp:2881
+#: src/kernel/Parser.cpp:2883
 #, c-format
 msgid "In logic %s: Logic %s must be called without parameters."
 msgstr "In Logik „%s“: Logik „%s“ darf keine Parameter haben."
 
-#: src/kernel/Parser.cpp:2893
+#: src/kernel/Parser.cpp:2895
 #, c-format
 msgid ""
 "In logic %s: Harmony analysis may be performed only after a logic or "
@@ -945,7 +941,7 @@ msgstr ""
 "In Logik „%s“: Eine Harmonieanalyse kann nur nach einer Änderung der Logik "
 "oder des Tonsystems ausgeführt werden."
 
-#: src/kernel/Parser.cpp:2901
+#: src/kernel/Parser.cpp:2903
 #, c-format
 msgid ""
 "Internal error in check_aktionen() while processing logic %s.\n"
@@ -957,17 +953,17 @@ msgstr ""
 "Unbekannter Aktionstyp %d.\n"
 "Bitte melden Sie diesen Fehler an das MUTABOR-Team."
 
-#: src/kernel/Parser.cpp:2981
+#: src/kernel/Parser.cpp:2983
 #, c-format
 msgid "Retunings/logics %s and %s depend on each other"
 msgstr "Die Umstimmungen bzw. Logiken „%s“ und „%s“ hängen voneinander ab"
 
-#: src/kernel/Parser.cpp:3111
+#: src/kernel/Parser.cpp:3113
 #, c-format
 msgid "Fixed tone %s in retuning %s"
 msgstr "Fester Ton „%s“ in Umstimmung „%s“"
 
-#: src/kernel/Parser.cpp:3121
+#: src/kernel/Parser.cpp:3123
 #, c-format
 msgid ""
 "Tone does %s not match its reference tone %s. Dectected in retuning code at "
@@ -977,23 +973,23 @@ msgstr ""
 "Umstimmungscode bei\n"
 "%s:%d"
 
-#: src/kernel/Parser.cpp:3181
+#: src/kernel/Parser.cpp:3183
 #, c-format
 msgid "Undefined retuning: %s (in retuning %s)."
 msgstr "Undefinierte Umstimmung: „%s“ (in Umstimmung „%s“)."
 
-#: src/kernel/Parser.cpp:3189
+#: src/kernel/Parser.cpp:3191
 #, c-format
 msgid "In collection %s : call to %s mustn't have parameters."
 msgstr ""
 "In der Mehrfach-Anweisung „%s“: „%s“ muss ohne Parameter aufgerufen werden."
 
-#: src/kernel/Parser.cpp:3241
+#: src/kernel/Parser.cpp:3243
 #, c-format
 msgid "The alternative %d is used twice in %s"
 msgstr "Die Alternative %d wurde in „%s“ doppelt vergeben"
 
-#: src/kernel/Parser.cpp:3335
+#: src/kernel/Parser.cpp:3337
 #, c-format
 msgid ""
 "Undefined returning type %d detected in\n"
@@ -1002,7 +998,7 @@ msgstr ""
 "Undefinierter Umstimmungstyp %d festgestellt in\n"
 "%s:%d"
 
-#: src/kernel/Parser.cpp:3602
+#: src/kernel/Parser.cpp:3604
 #, c-format
 msgid ""
 "No event defined for action %s. Detected at\n"
@@ -1011,7 +1007,7 @@ msgstr ""
 "Kein Ereignis für Aktion „%s“ definiert. Gefunden bei\n"
 "%s:%d"
 
-#: src/kernel/TabGen.cpp:109
+#: src/kernel/TabGen.cpp:108
 #, c-format
 msgid ""
 "Unknown interval type %d detected at\n"
@@ -1020,20 +1016,20 @@ msgstr ""
 "Unbekanntner Intervalltyp %d gefunden bei\n"
 "%s:%d"
 
-#: src/kernel/TabGen.cpp:115
+#: src/kernel/TabGen.cpp:114
 #, c-format
 msgid "Could not find interval %s."
 msgstr "Konnte das Intervall „%s“ nicht finden."
 
-#: src/kernel/TabGen.cpp:153
+#: src/kernel/TabGen.cpp:152
 #, c-format
 msgid "Unknown parameter type %d detected at %s:%d"
 msgstr ""
 "Unbekannter Parametertyp %d gefunden bei\n"
 "%s:%d"
 
-#: src/kernel/TabGen.cpp:277 src/kernel/TabGen.cpp:326
-#: src/kernel/TabGen.cpp:381
+#: src/kernel/TabGen.cpp:276 src/kernel/TabGen.cpp:325
+#: src/kernel/TabGen.cpp:380
 #, c-format
 msgid ""
 "Unknown argument type %d detected at \n"
@@ -1042,7 +1038,7 @@ msgstr ""
 "Unbekannter Argument-Typ %d gefunden bei\n"
 "%s:%d"
 
-#: src/kernel/TabGen.cpp:309
+#: src/kernel/TabGen.cpp:308
 #, c-format
 msgid ""
 "Argument number %d has nonexistent index %d at \n"
@@ -1051,7 +1047,7 @@ msgstr ""
 "Argument Nummer %d hat nichtexistierenden Index %d bei\n"
 "%s:%d"
 
-#: src/kernel/TabGen.cpp:368
+#: src/kernel/TabGen.cpp:367
 #, c-format
 msgid ""
 "Unknown parameter number %d detected at \n"
@@ -1060,7 +1056,7 @@ msgstr ""
 "Unbekannte Parameternummer %d gefunden bei\n"
 "%s:%d"
 
-#: src/kernel/TabGen.cpp:445
+#: src/kernel/TabGen.cpp:444
 #, c-format
 msgid ""
 "Unknown tone type %d detected at\n"
@@ -1143,172 +1139,166 @@ msgid "Other gui related debug information"
 msgstr "Sonstige Informationen der grafischen Oberfläche"
 
 #: src/kernel/debugFlags.h:37
+msgid "Information regarding AUI related debugging"
+msgstr ""
+
+#: src/kernel/debugFlags.h:38
 msgid "Debug configuration and postprocessing of dialogs"
 msgstr "Fehlersucheinstellung und Nachbearbeitung von Dialogen"
 
-#: src/kernel/debugFlags.h:38
+#: src/kernel/debugFlags.h:39
 msgid "Debug the routing system"
 msgstr "Routingsystem überwachen"
 
-#: src/kernel/debugFlags.h:39
+#: src/kernel/debugFlags.h:40
 msgid "Debug the routing system GUI"
 msgstr "Routingsystem-Oberfläche überwachen"
 
-#: src/kernel/debugFlags.h:40
+#: src/kernel/debugFlags.h:41
 msgid "Debug the menu handling and updating"
 msgstr "Debugmeldungen für Menübehandlung und -Aktualisierung"
 
-#: src/kernel/debugFlags.h:41
+#: src/kernel/debugFlags.h:42
 msgid "Debug the MIDI input/output system"
 msgstr "MIDI Ein- und Ausgabe überwachen"
 
-#: src/kernel/debugFlags.h:42
+#: src/kernel/debugFlags.h:43
 msgid "Debug the MIDI file devices"
 msgstr "Überwache Mutabor-Datei-Geräte"
 
-#: src/kernel/debugFlags.h:43
+#: src/kernel/debugFlags.h:44
 msgid "Debug the Mutabor file parser"
 msgstr "Einlesen von Mutabor-Dateien überwachen"
 
-#: src/kernel/debugFlags.h:44
+#: src/kernel/debugFlags.h:45
 msgid "Debug the config file parser"
 msgstr "Überwache das Einlesen der Konfigurationsdateien"
 
-#: src/kernel/debugFlags.h:45
+#: src/kernel/debugFlags.h:46
 msgid "Debug the Scala file paresr"
 msgstr "Überwache den Scala-Datei-Parser"
 
-#: src/kernel/debugFlags.h:46
+#: src/kernel/debugFlags.h:47
 msgid "Debug the Document/View framework"
 msgstr "Dokument/Ansicht-Baukasten debuggen"
 
-#: src/kernel/debugFlags.h:47
+#: src/kernel/debugFlags.h:48
 msgid "Print unhandled events in the queue"
 msgstr "Unbehandelte Ereignisse des Programmes anzeigen"
 
-#: src/kernel/debugFlags.h:48
+#: src/kernel/debugFlags.h:49
 msgid "Debug editor related functionality"
 msgstr "Fehler im Editor finden"
 
-#: src/kernel/debugFlags.h:49
+#: src/kernel/debugFlags.h:50
 msgid "Debug editor language lexer related functionality"
 msgstr "Fehler in der Sprachanalyse für den Editor finden"
 
-#: src/kernel/debugFlags.h:50
+#: src/kernel/debugFlags.h:51
 msgid "Debug smart pointer related functionality"
 msgstr "Funktionen der intelligenten Zeiger überwachen"
 
-#: src/kernel/debugFlags.h:51
+#: src/kernel/debugFlags.h:52
 msgid "Output some tracepoints"
 msgstr "Einige Ablaufpunkte loggen"
 
-#: src/kernel/debugFlags.h:52
+#: src/kernel/debugFlags.h:53
 msgid "Trace thread timer problems"
 msgstr "Verfolge Thread-Zeitgeber-Probleme"
 
-#: src/kernel/debugFlags.h:53
+#: src/kernel/debugFlags.h:54
 msgid "Trace thread problems"
 msgstr "Verfolge Probleme mit Threads"
 
-#: src/kernel/debugFlags.h:54
+#: src/kernel/debugFlags.h:55
 msgid "Window positioning issues"
 msgstr "Probleme mit der Positonierung der Subfenster"
 
-#: src/kernel/debugFlags.h:55
+#: src/kernel/debugFlags.h:56
 msgid "Show messages that are always shown ;-). (for internal use only)"
 msgstr ""
 "Zeige Nachrichten, die immer angezeigt werden ;-). (Nur für internen "
 "Gebrauch)"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:160
+#: ../../mutabor/src/kernel/mut.yy:162
 #, c-format
 msgid "%s at line %d"
 msgstr "%s bei Zeile %d"
 
-#: src/kernel/mut.cc:986
+#: src/kernel/mut.cc:988
 msgid "syntax error: cannot back up"
 msgstr "Syntaxfehler: Kann nicht weitermachen"
 
-#: src/kernel/mut.cc:1388 src/kernel/mut.cc:3077 src/kernel/mut.cc:3082
-#: ../../../mutabor-git/src/kernel/parsers/scala/scale_parser.cc:1865
+#: src/kernel/mut.cc:1390 src/kernel/mut.cc:3079 src/kernel/mut.cc:3084
+#: src/kernel/parsers/scala/scale_parser.cc:1865
 msgid "syntax error"
 msgstr "Syntaxfehler"
 
-#: src/kernel/mut.cc:1389
-#: ../../../mutabor-git/src/kernel/parsers/scala/scale_parser.cc:1866
+#: src/kernel/mut.cc:1391 src/kernel/parsers/scala/scale_parser.cc:1866
 #, c-format
 msgid "syntax error, unexpected %s"
 msgstr "Syntaxfehler, bekam unerwartet „%s“"
 
-#: src/kernel/mut.cc:1390
-#: ../../../mutabor-git/src/kernel/parsers/scala/scale_parser.cc:1867
+#: src/kernel/mut.cc:1392 src/kernel/parsers/scala/scale_parser.cc:1867
 #, c-format
 msgid "syntax error, unexpected %s, expecting %s"
 msgstr "Syntaxfehler, bekam unerwartet „%s“, erwartete „%s“"
 
-#: src/kernel/mut.cc:1391
-#: ../../../mutabor-git/src/kernel/parsers/scala/scale_parser.cc:1868
+#: src/kernel/mut.cc:1393 src/kernel/parsers/scala/scale_parser.cc:1868
 #, c-format
 msgid "syntax error, unexpected %s, expecting %s or %s"
 msgstr "Syntaxfehler, bekam unerwartet „%s“, erwartete „%s“ oder „%s\""
 
-#: src/kernel/mut.cc:1392
-#: ../../../mutabor-git/src/kernel/parsers/scala/scale_parser.cc:1869
+#: src/kernel/mut.cc:1394 src/kernel/parsers/scala/scale_parser.cc:1869
 #, c-format
 msgid "syntax error, unexpected %s, expecting %s or %s or %s"
 msgstr "Syntaxfehler, bekam unerwartet „%s“, erwartete „%s“, „%s“ oder „%s“"
 
-#: src/kernel/mut.cc:1393
-#: ../../../mutabor-git/src/kernel/parsers/scala/scale_parser.cc:1870
+#: src/kernel/mut.cc:1395 src/kernel/parsers/scala/scale_parser.cc:1870
 #, c-format
 msgid "syntax error, unexpected %s, expecting %s or %s or %s or %s"
 msgstr ""
 "Syntaxfehler, bekam unerwartet „%s“, erwartete „%s“, „%s“, „%s“ oder „%s“"
 
-#: src/kernel/mut.cc:1582 src/kernel/mut.cc:3227
+#: src/kernel/mut.cc:1584 src/kernel/mut.cc:3229
 msgid "memory exhausted"
 msgstr "Speicher aufgebraucht"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:177
+#: ../../mutabor/src/kernel/mut.yy:179
 #, c-format
 msgid "Syntax error in line %d."
 msgstr "Syntaxfehler in Zeile %d."
 
-#: ../../../mutabor-git/src/kernel/mut.yy:248
+#: ../../mutabor/src/kernel/mut.yy:250
 #, c-format
 msgid "Bad interval declaration of intervall %s in line %d."
 msgstr "Ungültige Intervall-Definition vom Intervall „%s“ in Zeile %d."
 
-#: ../../../mutabor-git/src/kernel/mut.yy:255
+#: ../../mutabor/src/kernel/mut.yy:257
 #, c-format
 msgid "Wrong character. Expecting %s in line %d."
 msgstr "Ungültiges Zeichen. Erwarte „%s“ in Zeile %d"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:296
+#: ../../mutabor/src/kernel/mut.yy:298
 #, c-format
 msgid "Bad tone declaration of tone %s in line %d."
 msgstr "Ungültige Tondefinition von „%s“ in Zeile %d."
 
-#: ../../../mutabor-git/src/kernel/mut.yy:330
-#: ../../../mutabor-git/src/kernel/mut.yy:340
-#: ../../../mutabor-git/src/kernel/mut.yy:349
-#: ../../../mutabor-git/src/kernel/mut.yy:359
-#: ../../../mutabor-git/src/kernel/mut.yy:369
-#: ../../../mutabor-git/src/kernel/mut.yy:379
-#: ../../../mutabor-git/src/kernel/mut.yy:418
-#: ../../../mutabor-git/src/kernel/mut.yy:428
-#: ../../../mutabor-git/src/kernel/mut.yy:439
+#: ../../mutabor/src/kernel/mut.yy:332 ../../mutabor/src/kernel/mut.yy:342
+#: ../../mutabor/src/kernel/mut.yy:351 ../../mutabor/src/kernel/mut.yy:361
+#: ../../mutabor/src/kernel/mut.yy:371 ../../mutabor/src/kernel/mut.yy:381
+#: ../../mutabor/src/kernel/mut.yy:420 ../../mutabor/src/kernel/mut.yy:430
+#: ../../mutabor/src/kernel/mut.yy:441
 #, c-format
 msgid "Division by (nearly) 0 in line %d."
 msgstr "Division durch (fast) 0 in Zeile %d."
 
-#: ../../../mutabor-git/src/kernel/mut.yy:492
+#: ../../mutabor/src/kernel/mut.yy:494
 #, c-format
 msgid "Bad tonesystem declaration in line %d."
 msgstr "Ungültige Tonsystem-Definition in Zeile %d."
 
-#: ../../../mutabor-git/src/kernel/mut.yy:524
-#: ../../../mutabor-git/src/kernel/mut.yy:531
+#: ../../mutabor/src/kernel/mut.yy:526 ../../mutabor/src/kernel/mut.yy:533
 #, c-format
 msgid ""
 "Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as "
@@ -1318,33 +1308,33 @@ msgstr ""
 "Bedeutung. Es wird nicht unterstützt, sie wie in Zeile %d als Parameter zu "
 "verwenden. Erwarten Sie ein unerwartetes Verhalten."
 
-#: ../../../mutabor-git/src/kernel/mut.yy:625
+#: ../../mutabor/src/kernel/mut.yy:627
 #, c-format
 msgid "Invalid parameter list in retuning %s line %d"
 msgstr "Fehlerhafte Parameter-Liste in Umstimmung „%s“ in Zeile %d"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:638
+#: ../../mutabor/src/kernel/mut.yy:640
 #, c-format
 msgid "Error while reading %s line %d"
 msgstr "Fehler beim Lesen von „%s“ Zeile %d"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:658
+#: ../../mutabor/src/kernel/mut.yy:660
 #, c-format
 msgid "Bad retuning in line %d."
 msgstr "Ungültige Umstimmung in Zeile %d."
 
-#: ../../../mutabor-git/src/kernel/mut.yy:776
+#: ../../mutabor/src/kernel/mut.yy:778
 #, c-format
 msgid "Invalid argument list for call to %s in line %d"
 msgstr "Fehlerhafte Argument-Liste im Aufruf von „%s“ in Zeile %d"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:839
+#: ../../mutabor/src/kernel/mut.yy:841
 #, c-format
 msgid "There is an error in the chroma list in harmony “%s” at line %d."
 msgstr ""
 "Es gibt einen Fehler in der Tonigkeitsliste in Harmonie „%s“ in Zeile %d"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:847
+#: ../../mutabor/src/kernel/mut.yy:849
 #, c-format
 msgid ""
 "The chroma list must be enclosed in braces '{' '}' in harmony “%s” at line "
@@ -1353,55 +1343,55 @@ msgstr ""
 "Die Tonigkeitsliste in Harmonie „%s“ muss in geschweifte Klammern „{“ „}“ "
 "eingeschlossen werden in Zeile %d"
 
-#: ../../../mutabor-git/src/kernel/mut.yy:1225
+#: ../../mutabor/src/kernel/mut.yy:1227
 #, c-format
 msgid "Invalid character: “%c” = %x at line %d."
 msgstr "Ungültiges Zeichen: „%c“=%x in Zeile %d."
 
-#: src/kernel/parsers/scala/scala.cpp:232
-#: src/kernel/parsers/scala/scala.cpp:241
-#: src/kernel/parsers/scala/scala.cpp:261
+#: src/kernel/parsers/scala/scala.cpp:235
+#: src/kernel/parsers/scala/scala.cpp:244
+#: src/kernel/parsers/scala/scala.cpp:264
 msgid "CENT"
 msgstr "CENT"
 
-#: src/kernel/parsers/scala/scala.cpp:259
+#: src/kernel/parsers/scala/scala.cpp:262
 msgid "INTERVAL"
 msgstr "INTERVALL"
 
-#: src/kernel/parsers/scala/scala.cpp:260
-#: src/kernel/parsers/scala/scala.cpp:262
+#: src/kernel/parsers/scala/scala.cpp:263
+#: src/kernel/parsers/scala/scala.cpp:265
 msgid "OCTAVE"
 msgstr "OKTAVE"
 
-#: src/kernel/parsers/scala/scala.cpp:282
-#: src/kernel/parsers/scala/scala.cpp:323
+#: src/kernel/parsers/scala/scala.cpp:285
+#: src/kernel/parsers/scala/scala.cpp:326
 msgid "_anchor"
 msgstr "_Anker"
 
-#: src/kernel/parsers/scala/scala.cpp:302
-#: src/kernel/parsers/scala/scala.cpp:327
-#: src/kernel/parsers/scala/scala.cpp:358
+#: src/kernel/parsers/scala/scala.cpp:305
+#: src/kernel/parsers/scala/scala.cpp:330
+#: src/kernel/parsers/scala/scala.cpp:361
 msgid "_repetition"
 msgstr "_Wiederholung"
 
-#: src/kernel/parsers/scala/scala.cpp:307
+#: src/kernel/parsers/scala/scala.cpp:310
 msgid "TONE"
 msgstr "TON"
 
-#: src/kernel/parsers/scala/scala.cpp:309
-#: src/kernel/parsers/scala/scala.cpp:324
+#: src/kernel/parsers/scala/scala.cpp:312
+#: src/kernel/parsers/scala/scala.cpp:327
 msgid "_reference"
 msgstr "_Referenz"
 
-#: src/kernel/parsers/scala/scala.cpp:345
+#: src/kernel/parsers/scala/scala.cpp:348
 msgid "TONESYSTEM"
 msgstr "TONSYSTEM"
 
-#: src/kernel/parsers/scala/scala.cpp:361
+#: src/kernel/parsers/scala/scala.cpp:364
 msgid "LOGIC"
 msgstr "LOGIK"
 
-#: src/kernel/parsers/scala/scala.cpp:362
+#: src/kernel/parsers/scala/scala.cpp:365
 msgid "KEY"
 msgstr "TASTE"
 
@@ -1412,19 +1402,19 @@ msgstr ""
 "Stimmungslogiken erstellt und in Verbindung mit MIDI-Instrumenten genutzt "
 "werden können."
 
-#: ../../../mutabor-git/src/kernel/parsers/scala/scale_parser.yy:160
+#: ../../mutabor/src/kernel/parsers/scala/scale_parser.yy:163
 msgid "Too few intervals have been provided."
 msgstr "Es wurden zu wenig intervalle bereitgestellt."
 
-#: ../../../mutabor-git/src/kernel/parsers/scala/scale_parser.yy:242
+#: ../../mutabor/src/kernel/parsers/scala/scale_parser.yy:245
 msgid "The interval count must be an integer number, not a float."
 msgstr "Die Intervall-Anzahl muss eine Ganzzahl sein, keine Komma-Zahl."
 
-#: ../../../mutabor-git/src/kernel/parsers/scala/scale_parser.yy:247
+#: ../../mutabor/src/kernel/parsers/scala/scale_parser.yy:250
 msgid "The interval count must be an integer number, not a ratio."
 msgstr "Die Intervall-Anzahl muss eine ganze Zahl sein, kein Verhältnis."
 
-#: ../../../mutabor-git/src/kernel/parsers/scala/scale_parser.yy:299
+#: ../../mutabor/src/kernel/parsers/scala/scale_parser.yy:302
 msgid ""
 "An incomplete ratio has been detected, and descriptions must not start with "
 "'/'."
@@ -1432,31 +1422,31 @@ msgstr ""
 "Es wurde eine unvollständige Verhältniszahl entdeckt. Und Beschreibungstexte "
 "dürfen nicht mit „/“ anfangen."
 
-#: ../../../mutabor-git/src/kernel/parsers/scala/scale_parser.yy:423
+#: ../../mutabor/src/kernel/parsers/scala/scale_parser.yy:426
 msgid "integer is out of range"
 msgstr "Ganzzahl ist außerhalb des zulässigen Bereiches"
 
-#: ../../../mutabor-git/src/kernel/parsers/scala/scale_parser.yy:449
+#: ../../mutabor/src/kernel/parsers/scala/scale_parser.yy:452
 msgid "float is out of range"
 msgstr "Fließkommazahl ist außerhalb des zulässigen Bereiches"
 
-#: src/kernel/routing/Box.cpp:465
+#: src/kernel/routing/Box.cpp:475
 msgid "Activation error"
 msgstr "Fehler beim Aktivieren"
 
-#: src/kernel/routing/Box.cpp:708
+#: src/kernel/routing/Box.cpp:718
 msgid "Generating tables"
 msgstr "Erzeuge Tabellen"
 
-#: src/kernel/routing/Box.cpp:718
+#: src/kernel/routing/Box.cpp:728
 msgid "Translation successful"
 msgstr "Erfolgreiche Übersetzung"
 
-#: src/kernel/routing/Box.cpp:719
+#: src/kernel/routing/Box.cpp:729
 msgid "No error occured."
 msgstr "Es tauchte kein Fehler auf."
 
-#: src/kernel/routing/Box.cpp:726
+#: src/kernel/routing/Box.cpp:736
 msgid "Translation interrupted."
 msgstr "Übersetzung wurde abgebrochen."
 
@@ -1472,7 +1462,7 @@ msgstr "Kein Kasten"
 msgid "GUIDO Music Notation box"
 msgstr "GUIDO Musik-Notations-Kasten"
 
-#: src/kernel/routing/Box.h:261 src/wxGUI/Routing/BoxDlg.cpp:295
+#: src/kernel/routing/Box.h:261 src/wxGUI/Routing/BoxDlg.cpp:299
 msgid "Mutabor box"
 msgstr "Mutabor-Kasten"
 
@@ -1514,7 +1504,7 @@ msgstr ""
 msgid "Generic output file"
 msgstr "Rudimentäre Ausgabedatei"
 
-#: src/kernel/routing/CommonFileDevice.h:275
+#: src/kernel/routing/CommonFileDevice.h:276
 msgid "Generic input file"
 msgstr "Rudimentäre Eingabedatei"
 
@@ -1526,7 +1516,7 @@ msgstr "Basistyp eines Gerätes"
 msgid "Undefined output device"
 msgstr "Undefiniertes Ausgabegerät"
 
-#: src/kernel/routing/Device.h:1249
+#: src/kernel/routing/Device.h:1252
 msgid "Undefined input device"
 msgstr "Unbekanntes Eingabegerät"
 
@@ -1562,19 +1552,12 @@ msgstr ""
 "Versuchte eine Route ohne die geeignete Routen-Fabrik (RouteFactory) zu "
 "erstellen. Du (der Programmierer) musst eine erstellen!"
 
-#: src/kernel/routing/RouteCompat.cpp:394
-msgid "Device found, but device type not set."
-msgstr "Gerät wurde gefunden, aber kein Typ gesetzt."
-
-#: src/kernel/routing/RouteCompat.cpp:436
-msgid "Device found but device type not set."
-msgstr "Gerät gefunden, aber Gerätetyp nicht gesetzt."
-
 #: src/kernel/routing/gmn/DevGIS.h:140
-msgid "GIS output file."
+#, fuzzy
+msgid "GIS output file"
 msgstr "GIS-Ausgabe-Datei."
 
-#: src/kernel/routing/gmn/DevGIS.h:278
+#: src/kernel/routing/gmn/DevGIS.h:304
 msgid "GIS input file"
 msgstr "GIS-Eingabedatei"
 
@@ -1761,24 +1744,24 @@ msgstr ""
 "Die Gerätekennung des Fortsetzungspaketes passt nicht zur Kennung der "
 "systemexklusiven Nachricht."
 
-#: src/kernel/routing/midi/DevMidF.h:625
+#: src/kernel/routing/midi/DevMidF.h:629
 msgid "MIDI output file"
 msgstr "MIDI-Ausgabedatei"
 
-#: src/kernel/routing/midi/DevMidF.h:751
+#: src/kernel/routing/midi/DevMidF.h:761
 msgid "MIDI input file"
 msgstr "MIDI-Eingabedatei"
 
 #: src/kernel/routing/midi/DevMidi.cpp:106
 #: src/kernel/routing/midi/DevMidi.cpp:310
-#: src/kernel/routing/midi/DevMidi.h:342 src/kernel/routing/midi/DevMidi.h:490
-#: src/wxGUI/Routing/InputDevDlg.h:185 src/wxGUI/Routing/OutputDevDlg.h:170
+#: src/kernel/routing/midi/DevMidi.h:345 src/kernel/routing/midi/DevMidi.h:494
+#: src/wxGUI/Routing/InputDevDlg.h:188 src/wxGUI/Routing/OutputDevDlg.h:181
 msgid "no device"
 msgstr "Kein Gerät"
 
 #: src/kernel/routing/midi/DevMidi.cpp:125
 #: src/kernel/routing/midi/DevMidi.cpp:329
-#: src/kernel/routing/midi/DevMidi.h:333 src/kernel/routing/midi/DevMidi.h:481
+#: src/kernel/routing/midi/DevMidi.h:336 src/kernel/routing/midi/DevMidi.h:485
 #, c-format
 msgid ""
 "Could not get the name of the MIDI device with id %d:\n"
@@ -1789,7 +1772,7 @@ msgstr ""
 
 #: src/kernel/routing/midi/DevMidi.cpp:128
 #: src/kernel/routing/midi/DevMidi.cpp:332
-#: src/kernel/routing/midi/DevMidi.h:337 src/kernel/routing/midi/DevMidi.h:485
+#: src/kernel/routing/midi/DevMidi.h:340 src/kernel/routing/midi/DevMidi.h:489
 msgid "invalid device"
 msgstr "ungültiges Gerät"
 
@@ -1838,11 +1821,11 @@ msgstr ""
 "Kann Midi-Gerät „%s“ (%s) nicht öffen:\n"
 "%s"
 
-#: src/kernel/routing/midi/DevMidi.h:356
+#: src/kernel/routing/midi/DevMidi.h:359
 msgid "Midi output device"
 msgstr "MIDI-Ausgabegerät"
 
-#: src/kernel/routing/midi/DevMidi.h:540
+#: src/kernel/routing/midi/DevMidi.h:545
 msgid "Midi input device"
 msgstr "MIDI-Eingabegerät"
 
@@ -1918,20 +1901,20 @@ msgstr "Meldung"
 msgid "Reading Source ..."
 msgstr "Lese Quelltext ..."
 
-#: src/wxGUI/GUIBoxData.cpp:149 src/wxGUI/MutLogicWnd.cpp:445
+#: src/wxGUI/GUIBoxData.cpp:149 src/wxGUI/MutLogicWnd.cpp:448
 msgid "(INITIAL)"
 msgstr "(INITIAL)"
 
-#: src/wxGUI/MutApp.cpp:310 src/wxGUI/MutApp.cpp:312
+#: src/wxGUI/MutApp.cpp:295 src/wxGUI/MutApp.cpp:297
 msgid "Help.zip"
 msgstr "Hilfe.zip"
 
-#: src/wxGUI/MutApp.cpp:325
+#: src/wxGUI/MutApp.cpp:311
 msgid "Mutabor logic file"
 msgstr "Mutabor-Logik-Datei"
 
-#: src/wxGUI/MutApp.cpp:346 src/wxGUI/MutApp.cpp:1384 Mutabor.xrc:518
-#: Mutabor.xrc:1161
+#: src/wxGUI/MutApp.cpp:332 src/wxGUI/MutApp.cpp:1406 Mutabor.xrc:518
+#: Mutabor.xrc:1162
 msgid "&Help"
 msgstr "&Hilfe"
 
@@ -2057,495 +2040,490 @@ msgstr "Rechte: "
 msgid "(c) 2007 TU Dresden, Institut fuer Algebra"
 msgstr "© 2007 TU Dresden, Institut für Algebra"
 
-#: src/wxGUI/MutApp.cpp:860
+#: src/wxGUI/MutApp.cpp:863
 msgid "help.html"
 msgstr "Bedienung.html"
 
-#: src/wxGUI/MutApp.cpp:865 src/wxGUI/MutConfDlg.h:73
+#: src/wxGUI/MutApp.cpp:868 src/wxGUI/MutConfDlg.h:73
 msgid "The setup dialog"
 msgstr "Der Einstellungsdialog"
 
-#: src/wxGUI/MutApp.cpp:870
+#: src/wxGUI/MutApp.cpp:873
 msgid "manual.html"
 msgstr "Handbuch.html"
 
-#: src/wxGUI/MutApp.cpp:875
+#: src/wxGUI/MutApp.cpp:878
 msgid "reference.html"
 msgstr "Referenz.html"
 
-#: src/wxGUI/MutApp.cpp:880
+#: src/wxGUI/MutApp.cpp:883
 msgid "Help window"
 msgstr "Das Hilfefenster"
 
-#: src/wxGUI/MutApp.cpp:890
+#: src/wxGUI/MutApp.cpp:893
 msgid "Search for?"
 msgstr "Suche nach?"
 
-#: src/wxGUI/MutApp.cpp:891
+#: src/wxGUI/MutApp.cpp:894
 msgid "Search help for keyword"
 msgstr "Hilfe nach einem Schlüsselwort durchsuchen"
 
-#: src/wxGUI/MutApp.cpp:970
-#, c-format
-msgid "Closing window of class %s"
-msgstr "Schließe Fenster der Klasse %s"
-
-#: src/wxGUI/MutApp.cpp:1091
+#: src/wxGUI/MutApp.cpp:1113
 msgid "&New\tCtrl+N"
 msgstr "&Neu\tCtrl+N"
 
-#: src/wxGUI/MutApp.cpp:1092
+#: src/wxGUI/MutApp.cpp:1114
 msgid "Create a new logic file."
 msgstr "Erzeuge eine neue Logikdatei."
 
-#: src/wxGUI/MutApp.cpp:1093
+#: src/wxGUI/MutApp.cpp:1115
 msgid "&Open...\tCtrl+O"
 msgstr "Ö&ffnen...\tCtrl+O"
 
-#: src/wxGUI/MutApp.cpp:1094
+#: src/wxGUI/MutApp.cpp:1116
 msgid "Open a logic file in editor window"
 msgstr "Öffnet eine Logikdatei im Editorfenster"
 
-#: src/wxGUI/MutApp.cpp:1104
+#: src/wxGUI/MutApp.cpp:1126
 msgid "&Import from Scala"
 msgstr "Scala-&Import"
 
-#: src/wxGUI/MutApp.cpp:1105
+#: src/wxGUI/MutApp.cpp:1127
 msgid "Import a tuning logic from a Scala file and its keymap"
 msgstr "Importiere eine Stimmungslogik aus einer Scala-Datei."
 
-#: src/wxGUI/MutApp.cpp:1107
+#: src/wxGUI/MutApp.cpp:1129
 msgid "E&xport to Scala"
 msgstr "Scala-E&xport"
 
-#: src/wxGUI/MutApp.cpp:1108
+#: src/wxGUI/MutApp.cpp:1130
 msgid "Export the currently active logic to a Scala file with keymap"
 msgstr ""
 "Exportiert die momentan aktive Logik als Scala-Datei mit entsprechender "
 "Tastenzuordnung"
 
-#: src/wxGUI/MutApp.cpp:1112
+#: src/wxGUI/MutApp.cpp:1134
 msgid "&Execute\tCtrl+F9"
 msgstr "S&tarten\tCtrl+F9"
 
-#: src/wxGUI/MutApp.cpp:1113
+#: src/wxGUI/MutApp.cpp:1135
 msgid "Load a logic file an immediately activate it"
 msgstr "Logikdatei laden und sofort aktivieren"
 
-#: src/wxGUI/MutApp.cpp:1122
+#: src/wxGUI/MutApp.cpp:1144
 msgid "Proper&ties ...\tCtrl+I"
 msgstr "Dokumenteigenschaften…\tCtrl+I"
 
-#: src/wxGUI/MutApp.cpp:1123
+#: src/wxGUI/MutApp.cpp:1145
 msgid "Get some information about the currently edited file"
 msgstr "Informationen über aktuell bearbeitete Datei anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1131
+#: src/wxGUI/MutApp.cpp:1153
 msgid "Print setup..."
 msgstr "Druckeinstellungen…"
 
-#: src/wxGUI/MutApp.cpp:1132
+#: src/wxGUI/MutApp.cpp:1154
 msgid "Configure how the pages will be printed"
 msgstr "Einstellen, wie Seiten gedruckt werden"
 
-#: src/wxGUI/MutApp.cpp:1152
+#: src/wxGUI/MutApp.cpp:1174
 msgid "&File"
 msgstr "&Datei"
 
-#: src/wxGUI/MutApp.cpp:1154
+#: src/wxGUI/MutApp.cpp:1176
 msgid "@MAC|&File"
 msgstr "&Ablage"
 
-#: src/wxGUI/MutApp.cpp:1174
+#: src/wxGUI/MutApp.cpp:1196
 msgid "Select &line\tCtrl+Shift+L"
 msgstr "&Zeile auswählen\tCtrl+Shift+L"
 
-#: src/wxGUI/MutApp.cpp:1175
+#: src/wxGUI/MutApp.cpp:1197
 msgid "Select the complete line at cursor position"
 msgstr "Gesamte Zeile an Cursorposition auswählen"
 
-#: src/wxGUI/MutApp.cpp:1179
+#: src/wxGUI/MutApp.cpp:1201
 msgid "Find &next\tCtrl+G"
 msgstr "&Weitersuchen\tCtrl+G"
 
-#: src/wxGUI/MutApp.cpp:1180
+#: src/wxGUI/MutApp.cpp:1202
 msgid "Continue last search"
 msgstr "Letzte Suche fortsetzen"
 
-#: src/wxGUI/MutApp.cpp:1183
+#: src/wxGUI/MutApp.cpp:1205
 msgid "Replace &again\tShift+F4"
 msgstr "&Nochmal ersetzen\tShift+F4"
 
-#: src/wxGUI/MutApp.cpp:1184
+#: src/wxGUI/MutApp.cpp:1206
 msgid "Go on with replacement"
 msgstr "Suchen/Ersetzen fortsetzen"
 
-#: src/wxGUI/MutApp.cpp:1187
+#: src/wxGUI/MutApp.cpp:1209
 msgid "&Match brace\tCtrl+M"
 msgstr "&Klammer finden\tCtrl+M"
 
-#: src/wxGUI/MutApp.cpp:1188
+#: src/wxGUI/MutApp.cpp:1210
 msgid "Find matching brace and select all contained characters"
 msgstr "Finde die passende Klammer und markiere den Text zwischen beiden"
 
-#: src/wxGUI/MutApp.cpp:1190
+#: src/wxGUI/MutApp.cpp:1212
 msgid "&Goto Line...\tCtrl+L"
 msgstr "Gehe zu &Zeile…\tCtrl+L"
 
-#: src/wxGUI/MutApp.cpp:1191
+#: src/wxGUI/MutApp.cpp:1213
 msgid "Jump to a specific line"
 msgstr "Gehe zu einer bestimmten Zeile"
 
-#: src/wxGUI/MutApp.cpp:1198
+#: src/wxGUI/MutApp.cpp:1220
 msgid "&Overwrite mode\tIns"
 msgstr "Übersch&reiben\tIns"
 
-#: src/wxGUI/MutApp.cpp:1199
+#: src/wxGUI/MutApp.cpp:1221
 msgid "Replace the caracters at the caret position by the ones you type in"
 msgstr "Überschreibe den Text an der Cursorposition mit der neuen Eingabe"
 
-#: src/wxGUI/MutApp.cpp:1201
+#: src/wxGUI/MutApp.cpp:1223
 msgid "&Wrap mode\tCtrl+U"
 msgstr "&Automatischer Zeilenumbruch\tCtrl+U"
 
-#: src/wxGUI/MutApp.cpp:1202
+#: src/wxGUI/MutApp.cpp:1224
 msgid "Automatic line breaking while inserting text"
 msgstr "Automatischer Zeilenumbruch beim Eingeben des textes"
 
-#: src/wxGUI/MutApp.cpp:1204
+#: src/wxGUI/MutApp.cpp:1226
 msgid "&Readonly mode"
 msgstr "Schreib&geschützt"
 
-#: src/wxGUI/MutApp.cpp:1205
+#: src/wxGUI/MutApp.cpp:1227
 msgid "Disallow changing the document"
 msgstr "Verbiete Änderungen am Dokument"
 
-#: src/wxGUI/MutApp.cpp:1210
+#: src/wxGUI/MutApp.cpp:1232
 msgid "&Upper case"
 msgstr "In &Großbuchstaben umwandeln"
 
-#: src/wxGUI/MutApp.cpp:1211
+#: src/wxGUI/MutApp.cpp:1233
 msgid "Change the current selection to upper case"
 msgstr "Aktuelle Auswahl in Großbuchstaben umwandeln"
 
-#: src/wxGUI/MutApp.cpp:1213
+#: src/wxGUI/MutApp.cpp:1235
 msgid "&Lower case"
 msgstr "In Klei&nbuchstaben umwandeln"
 
-#: src/wxGUI/MutApp.cpp:1214
+#: src/wxGUI/MutApp.cpp:1236
 msgid "Change the current selection to lower case"
 msgstr "Aktuelle Auswahl in Kleinbuchstaben umwandeln"
 
-#: src/wxGUI/MutApp.cpp:1219
+#: src/wxGUI/MutApp.cpp:1241
 msgid "CR (&Linux/MAC OS X)"
 msgstr "CR (&Linux/MAC OS X)"
 
-#: src/wxGUI/MutApp.cpp:1220
+#: src/wxGUI/MutApp.cpp:1242
 msgid "Change line endings to carrage return only (Unix style)"
 msgstr "Zeilenenden durch Wagenrücklauf-Zeichen markieren (Unix-Stil)"
 
-#: src/wxGUI/MutApp.cpp:1222
+#: src/wxGUI/MutApp.cpp:1244
 msgid "CR+LF (&Windows)"
 msgstr "CR+LF (&Windows)"
 
-#: src/wxGUI/MutApp.cpp:1223
+#: src/wxGUI/MutApp.cpp:1245
 msgid "Change line endigs to carrage return + line feed (DOS/Windows style)"
 msgstr ""
 "Zelenenden durch Wagenrücklauf/Zeilenschaltung markieren (DOS/Windows-Stil)"
 
-#: src/wxGUI/MutApp.cpp:1225
+#: src/wxGUI/MutApp.cpp:1247
 msgid "LF (&Macintosh)"
 msgstr "LF (&Macintosh)"
 
-#: src/wxGUI/MutApp.cpp:1226
+#: src/wxGUI/MutApp.cpp:1248
 msgid "Change line endings to line feed only (old Macintosh style)"
 msgstr ""
 "Zeilenenden durch Zeilenschaltungszeichen markieren (alter Macintosh-Stil)"
 
-#: src/wxGUI/MutApp.cpp:1228
+#: src/wxGUI/MutApp.cpp:1250
 msgid "Edit options ..."
 msgstr "Bearbeitungsoptionen"
 
-#: src/wxGUI/MutApp.cpp:1229
+#: src/wxGUI/MutApp.cpp:1251
 msgid "Change &case to ..."
 msgstr "Ändere Groß-/Kleinbuchstaben…"
 
-#: src/wxGUI/MutApp.cpp:1231
+#: src/wxGUI/MutApp.cpp:1253
 msgid "Convert line &endings to ..."
 msgstr "&Zeilenenden umwandeln…"
 
-#: src/wxGUI/MutApp.cpp:1234
+#: src/wxGUI/MutApp.cpp:1256
 msgid "&Edit"
 msgstr "&Bearbeiten"
 
-#: src/wxGUI/MutApp.cpp:1241
+#: src/wxGUI/MutApp.cpp:1263
 msgid "&Compile\tAlt+F9"
 msgstr "&Übersetzen\tAlt+F9"
 
-#: src/wxGUI/MutApp.cpp:1241
+#: src/wxGUI/MutApp.cpp:1263
 msgid "Load the actual file into the Mutabor Kernel."
 msgstr "Lädt die aktuelle Datei in den Mutabor-Kern."
 
-#: src/wxGUI/MutApp.cpp:1242
+#: src/wxGUI/MutApp.cpp:1264
 msgid "&Activate\tF9"
 msgstr "&Aktivieren\tF9"
 
-#: src/wxGUI/MutApp.cpp:1242
+#: src/wxGUI/MutApp.cpp:1264
 msgid "Activate the Mutabor Kernel."
 msgstr "Aktiviert den Mutabor-Kern."
 
-#: src/wxGUI/MutApp.cpp:1243
+#: src/wxGUI/MutApp.cpp:1265
 msgid "&Stop\tF8"
 msgstr "An&halten\tF8"
 
-#: src/wxGUI/MutApp.cpp:1243
+#: src/wxGUI/MutApp.cpp:1265
 msgid "Stop the Mutabor Kernel."
 msgstr "Hält den Mutaborkern an."
 
-#: src/wxGUI/MutApp.cpp:1245
+#: src/wxGUI/MutApp.cpp:1267
 msgid "&Panic\tF12"
 msgstr "&Panik\tF12"
 
-#: src/wxGUI/MutApp.cpp:1245
+#: src/wxGUI/MutApp.cpp:1267
 msgid "Send \"all notes off\" signal to on all MIDI Channels."
 msgstr ""
 "Sendet das Signal „all notes off (alle Noten aus)“ auf allen MIDI-Kanälen."
 
-#: src/wxGUI/MutApp.cpp:1246
+#: src/wxGUI/MutApp.cpp:1268
 msgid "&Logic"
 msgstr "&Logik"
 
-#: src/wxGUI/MutApp.cpp:1253
+#: src/wxGUI/MutApp.cpp:1275
 msgid "&Move icon up\tShift+Up"
 msgstr "&Symbol aufwärts verschieben\tShift+Up"
 
-#: src/wxGUI/MutApp.cpp:1254 src/wxGUI/MutFrame.cpp:414
+#: src/wxGUI/MutApp.cpp:1276 src/wxGUI/MutFrame.cpp:416
 msgid "Moves the device or box upwards in the window."
 msgstr "Bewegt das Gerät oder den Kasten im Fenster aufwärts."
 
-#: src/wxGUI/MutApp.cpp:1255
+#: src/wxGUI/MutApp.cpp:1277
 msgid "&Move icon down\tShift+Down"
 msgstr "Symbol &abwärts verschieben\tShift+Down"
 
-#: src/wxGUI/MutApp.cpp:1256 src/wxGUI/MutFrame.cpp:416
+#: src/wxGUI/MutApp.cpp:1278 src/wxGUI/MutFrame.cpp:418
 msgid "Moves the device or box downwards in the window."
 msgstr "Bewegt das Gerät oder den Kasten im Fenster abwärts."
 
-#: src/wxGUI/MutApp.cpp:1259 src/wxGUI/MutFrame.cpp:408
+#: src/wxGUI/MutApp.cpp:1281 src/wxGUI/MutFrame.cpp:410
 msgid "&Load routes"
 msgstr "Route laden"
 
-#: src/wxGUI/MutApp.cpp:1260 src/wxGUI/MutFrame.cpp:409
+#: src/wxGUI/MutApp.cpp:1282 src/wxGUI/MutFrame.cpp:411
 msgid "Load the current route configuration from a file"
 msgstr "Lädt die aktuellen Routeneinstellungen aus einer Datei."
 
-#: src/wxGUI/MutApp.cpp:1261 src/wxGUI/MutFrame.cpp:410
+#: src/wxGUI/MutApp.cpp:1283 src/wxGUI/MutFrame.cpp:412
 msgid "&Save routes"
 msgstr "Route &speichern"
 
-#: src/wxGUI/MutApp.cpp:1262 src/wxGUI/MutFrame.cpp:411
+#: src/wxGUI/MutApp.cpp:1284 src/wxGUI/MutFrame.cpp:413
 msgid "Save current route configuration to a file."
 msgstr "Speichert die aktuellen Routeneinstellungen."
 
-#: src/wxGUI/MutApp.cpp:1263
+#: src/wxGUI/MutApp.cpp:1285
 msgid "Save routes &as"
 msgstr "Speichere Routen &unter..."
 
-#: src/wxGUI/MutApp.cpp:1264
+#: src/wxGUI/MutApp.cpp:1286
 msgid "Save current route configuration to a file with a new name."
 msgstr ""
 "Speichert die aktuellen Routeneinstellungen in einer Datei unter einem neuen "
 "Namen."
 
-#: src/wxGUI/MutApp.cpp:1265
+#: src/wxGUI/MutApp.cpp:1287
 msgid "&Routes"
 msgstr "&Routen"
 
-#: src/wxGUI/MutApp.cpp:1284
+#: src/wxGUI/MutApp.cpp:1306
 msgid "&ANSI (Windows)"
 msgstr "&ANSI (Windows)"
 
-#: src/wxGUI/MutApp.cpp:1285
+#: src/wxGUI/MutApp.cpp:1307
 msgid "&MAC (Macintosh)"
 msgstr "&MAC (Macintosh)"
 
-#: src/wxGUI/MutApp.cpp:1286
+#: src/wxGUI/MutApp.cpp:1308
 msgid "&UTF-8 (International)"
 msgstr "&UTF-8 (International)"
 
-#: src/wxGUI/MutApp.cpp:1287
+#: src/wxGUI/MutApp.cpp:1309
 msgid "Uni&code (same as UTF-8)"
 msgstr "Uni&code (das gleiche wie UTF-8)"
 
-#: src/wxGUI/MutApp.cpp:1290
+#: src/wxGUI/MutApp.cpp:1312
 msgid "&Hilight language..."
 msgstr "Hervorhebungen für Sprache…"
 
-#: src/wxGUI/MutApp.cpp:1294
+#: src/wxGUI/MutApp.cpp:1316
 msgid "&Toggle current fold\tCtrl+T"
 msgstr "Umgebung &Falten/Entfalten\tCtrl+T"
 
-#: src/wxGUI/MutApp.cpp:1296
+#: src/wxGUI/MutApp.cpp:1318
 msgid "Show line &endings"
 msgstr "Zeilenenden &anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1297
+#: src/wxGUI/MutApp.cpp:1319
 msgid "Show &indent guides"
 msgstr "Einrückungs&hilfe anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1298
+#: src/wxGUI/MutApp.cpp:1320
 msgid "Show line &numbers"
 msgstr "Zeilen&nummern anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1299
+#: src/wxGUI/MutApp.cpp:1321
 msgid "Show &long line marker"
 msgstr "Text&breite anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1300
+#: src/wxGUI/MutApp.cpp:1322
 msgid "Show white&space"
 msgstr "&Leerzeichen anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1302
+#: src/wxGUI/MutApp.cpp:1324
 msgid "Use &code page of..."
 msgstr "Zeichen&kodierung…"
 
-#: src/wxGUI/MutApp.cpp:1316
+#: src/wxGUI/MutApp.cpp:1338
 msgid "Current ke&ys\tF5"
 msgstr "Aktuelle &Tasten\tF5"
 
-#: src/wxGUI/MutApp.cpp:1317
+#: src/wxGUI/MutApp.cpp:1339
 msgid "Show current keys window"
 msgstr "Zeige aktuelle Tasten"
 
-#: src/wxGUI/MutApp.cpp:1318
+#: src/wxGUI/MutApp.cpp:1340
 msgid "&Tone system\tF6"
 msgstr "Ton&system\tF6"
 
-#: src/wxGUI/MutApp.cpp:1319
+#: src/wxGUI/MutApp.cpp:1341
 msgid "Show tone system window"
 msgstr "Zeige Tonsystem-Fenster"
 
-#: src/wxGUI/MutApp.cpp:1320
+#: src/wxGUI/MutApp.cpp:1342
 msgid "&Actions\tF7"
 msgstr "&Aktionen\tF7"
 
-#: src/wxGUI/MutApp.cpp:1321
+#: src/wxGUI/MutApp.cpp:1343
 msgid "Show current actions window"
 msgstr "Zeigt das Fenster für aktuelle Aktionen"
 
-#: src/wxGUI/MutApp.cpp:1323
+#: src/wxGUI/MutApp.cpp:1345
 msgid "&Routes\tF11"
 msgstr "&Routen\tF11"
 
-#: src/wxGUI/MutApp.cpp:1324
+#: src/wxGUI/MutApp.cpp:1346
 msgid "Open route configuration window"
 msgstr "Öffne die Routeneinstellungen"
 
-#: src/wxGUI/MutApp.cpp:1334
+#: src/wxGUI/MutApp.cpp:1356
 msgid "Select &Box"
 msgstr "Kasten &Auswählen"
 
-#: src/wxGUI/MutApp.cpp:1335
+#: src/wxGUI/MutApp.cpp:1357
 msgid "Select current Box"
 msgstr "aktuellen Kasten &Auswählen"
 
-#: src/wxGUI/MutApp.cpp:1338
+#: src/wxGUI/MutApp.cpp:1360
 msgid "&View"
 msgstr "&Anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1344 src/wxGUI/MutFrame.cpp:418
+#: src/wxGUI/MutApp.cpp:1366 src/wxGUI/MutFrame.cpp:420
 msgid "&Play"
 msgstr "Ab&spielen"
 
-#: src/wxGUI/MutApp.cpp:1345 src/wxGUI/MutFrame.cpp:419
+#: src/wxGUI/MutApp.cpp:1367 src/wxGUI/MutFrame.cpp:421
 msgid "Start playing the music from input file devices"
 msgstr "Musik der Datei-Geräte starten"
 
-#: src/wxGUI/MutApp.cpp:1346 src/wxGUI/MutFrame.cpp:420
+#: src/wxGUI/MutApp.cpp:1368 src/wxGUI/MutFrame.cpp:422
 msgid "St&op"
 msgstr "St&op"
 
-#: src/wxGUI/MutApp.cpp:1347 src/wxGUI/MutFrame.cpp:421
+#: src/wxGUI/MutApp.cpp:1369 src/wxGUI/MutFrame.cpp:423
 msgid "Stop playing the music from input file devices"
 msgstr "Musik der Datei-Geräte stoppen"
 
-#: src/wxGUI/MutApp.cpp:1348 src/wxGUI/MutFrame.cpp:422
+#: src/wxGUI/MutApp.cpp:1370 src/wxGUI/MutFrame.cpp:424
 msgid "P&ause"
 msgstr "&Pause"
 
-#: src/wxGUI/MutApp.cpp:1349 src/wxGUI/MutFrame.cpp:423
+#: src/wxGUI/MutApp.cpp:1371 src/wxGUI/MutFrame.cpp:425
 msgid "Pause plaing the music from input file devices"
 msgstr "Musik der Datei-Geräte anhalten."
 
-#: src/wxGUI/MutApp.cpp:1350
+#: src/wxGUI/MutApp.cpp:1372
 msgid "&Sequencer"
 msgstr "&Sequencer"
 
-#: src/wxGUI/MutApp.cpp:1358
+#: src/wxGUI/MutApp.cpp:1380
 msgid "Online &Help\tF1"
 msgstr "Online-&Hilfe\tF1"
 
-#: src/wxGUI/MutApp.cpp:1359
+#: src/wxGUI/MutApp.cpp:1381
 msgid "Open the help Window"
 msgstr "Das Hilfefenster öffnen"
 
-#: src/wxGUI/MutApp.cpp:1360
+#: src/wxGUI/MutApp.cpp:1382
 msgid "&Manual"
 msgstr "&Handbuch"
 
-#: src/wxGUI/MutApp.cpp:1361
+#: src/wxGUI/MutApp.cpp:1383
 msgid "Open the manual"
 msgstr "Handbuch öffnen"
 
-#: src/wxGUI/MutApp.cpp:1362
+#: src/wxGUI/MutApp.cpp:1384
 msgid "Language &reference"
 msgstr "Sprach&referenz"
 
-#: src/wxGUI/MutApp.cpp:1363
+#: src/wxGUI/MutApp.cpp:1385
 msgid "Open the Mutabor language reference"
 msgstr "Mutabor-Sprachreferenz öffnen"
 
-#: src/wxGUI/MutApp.cpp:1365
+#: src/wxGUI/MutApp.cpp:1387
 msgid "&Index"
 msgstr "&Register"
 
-#: src/wxGUI/MutApp.cpp:1366
+#: src/wxGUI/MutApp.cpp:1388
 msgid "Open the help index"
 msgstr "Hilfeindex öffnen"
 
-#: src/wxGUI/MutApp.cpp:1367
+#: src/wxGUI/MutApp.cpp:1389
 msgid "&Search"
 msgstr "&Suchen"
 
-#: src/wxGUI/MutApp.cpp:1368
+#: src/wxGUI/MutApp.cpp:1390
 msgid "Search the help system for a specific keyword"
 msgstr "Hilfesystem nach einem speziellen Suchwort durchsuchen"
 
-#: src/wxGUI/MutApp.cpp:1370
+#: src/wxGUI/MutApp.cpp:1392
 msgid "Help &on help"
 msgstr "H&ilfe über Hilfe"
 
-#: src/wxGUI/MutApp.cpp:1371
+#: src/wxGUI/MutApp.cpp:1393
 msgid "Show Help about the help system"
 msgstr "Zeigt Hilfe über das Hilfesystem"
 
-#: src/wxGUI/MutApp.cpp:1377
+#: src/wxGUI/MutApp.cpp:1399
 msgid "&About"
 msgstr "Ü&ber"
 
-#: src/wxGUI/MutApp.cpp:1378
+#: src/wxGUI/MutApp.cpp:1400
 msgid "Show information about the program"
 msgstr "Informationen über das Programm anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1381 src/wxGUI/MutFrame.cpp:397
+#: src/wxGUI/MutApp.cpp:1403 src/wxGUI/MutFrame.cpp:399
 msgid "Stop"
 msgstr "An&halten"
 
-#: src/wxGUI/MutApp.cpp:1382
+#: src/wxGUI/MutApp.cpp:1404
 msgid "Stop the current program"
 msgstr "Programm verlassen, ohne es ordnungsgemäß zu beenden"
 
-#: src/wxGUI/MutApp.cpp:1452 src/wxGUI/MutApp.cpp:1477
+#: src/wxGUI/MutApp.cpp:1485 src/wxGUI/MutApp.cpp:1510
 msgid "Could not get configuration storage"
 msgstr "Konnte Konfigurationsspeicher nicht finden"
 
@@ -2556,7 +2534,7 @@ msgstr "Fehler: Die Bitmap „%s“ konnte nicht gefunden werden."
 
 #: src/wxGUI/MutChild.cpp:131 src/wxGUI/MutChild.cpp:216
 #: src/wxGUI/MutChild.cpp:318 src/wxGUI/MutChild.cpp:356
-#: src/wxGUI/MutFrame.cpp:1175 src/wxGUI/MutFrame.cpp:1302
+#: src/wxGUI/MutFrame.cpp:1183 src/wxGUI/MutFrame.cpp:1310
 #: src/wxGUI/MutTextBox.cpp:125 src/wxGUI/MutTextBox.cpp:219
 msgid "Unexpected value: WK_LOGIC"
 msgstr "Unerwarteter Wert: WK_LOGIC"
@@ -2564,8 +2542,8 @@ msgstr "Unerwarteter Wert: WK_LOGIC"
 #: src/wxGUI/MutChild.cpp:135 src/wxGUI/MutChild.cpp:220
 #: src/wxGUI/MutChild.cpp:285 src/wxGUI/MutChild.cpp:322
 #: src/wxGUI/MutChild.cpp:360 src/wxGUI/MutChild.cpp:413
-#: src/wxGUI/MutFrame.cpp:1179 src/wxGUI/MutFrame.cpp:1306
-#: src/wxGUI/MutFrame.cpp:1926 src/wxGUI/MutTextBox.cpp:129
+#: src/wxGUI/MutFrame.cpp:1187 src/wxGUI/MutFrame.cpp:1314
+#: src/wxGUI/MutFrame.cpp:1934 src/wxGUI/MutTextBox.cpp:129
 #: src/wxGUI/MutTextBox.cpp:170 src/wxGUI/MutTextBox.cpp:174
 #: src/wxGUI/MutTextBox.cpp:223
 msgid "Unexpected value: WK_ROUTE"
@@ -2574,8 +2552,8 @@ msgstr "Unerwarteter Wert: WK_ROUTE"
 #: src/wxGUI/MutChild.cpp:139 src/wxGUI/MutChild.cpp:224
 #: src/wxGUI/MutChild.cpp:289 src/wxGUI/MutChild.cpp:326
 #: src/wxGUI/MutChild.cpp:364 src/wxGUI/MutChild.cpp:417
-#: src/wxGUI/MutFrame.cpp:1183 src/wxGUI/MutFrame.cpp:1310
-#: src/wxGUI/MutFrame.cpp:1930 src/wxGUI/MutTextBox.cpp:133
+#: src/wxGUI/MutFrame.cpp:1191 src/wxGUI/MutFrame.cpp:1318
+#: src/wxGUI/MutFrame.cpp:1938 src/wxGUI/MutTextBox.cpp:133
 #: src/wxGUI/MutTextBox.cpp:178 src/wxGUI/MutTextBox.cpp:227
 msgid "Unexpected value: WK_EDIT"
 msgstr "Unerwarteter Wert: WK_EDIT"
@@ -2583,7 +2561,7 @@ msgstr "Unerwarteter Wert: WK_EDIT"
 #: src/wxGUI/MutChild.cpp:143 src/wxGUI/MutChild.cpp:228
 #: src/wxGUI/MutChild.cpp:293 src/wxGUI/MutChild.cpp:330
 #: src/wxGUI/MutChild.cpp:368 src/wxGUI/MutChild.cpp:421
-#: src/wxGUI/MutFrame.cpp:1187 src/wxGUI/MutFrame.cpp:1314
+#: src/wxGUI/MutFrame.cpp:1195 src/wxGUI/MutFrame.cpp:1322
 #: src/wxGUI/MutTextBox.cpp:137 src/wxGUI/MutTextBox.cpp:182
 #: src/wxGUI/MutTextBox.cpp:231
 msgid "Unexpected value: WK_NULL"
@@ -2592,8 +2570,8 @@ msgstr "Unerwarteter Wert: WK_NULL"
 #: src/wxGUI/MutChild.cpp:147 src/wxGUI/MutChild.cpp:232
 #: src/wxGUI/MutChild.cpp:297 src/wxGUI/MutChild.cpp:334
 #: src/wxGUI/MutChild.cpp:372 src/wxGUI/MutChild.cpp:425
-#: src/wxGUI/MutFrame.cpp:1191 src/wxGUI/MutFrame.cpp:1318
-#: src/wxGUI/MutFrame.cpp:1946 src/wxGUI/MutTextBox.cpp:141
+#: src/wxGUI/MutFrame.cpp:1199 src/wxGUI/MutFrame.cpp:1326
+#: src/wxGUI/MutFrame.cpp:1954 src/wxGUI/MutTextBox.cpp:141
 #: src/wxGUI/MutTextBox.cpp:186
 #, c-format
 msgid "Unexpected window kind: %d"
@@ -2757,126 +2735,126 @@ msgstr "Aktuelle Zeile"
 msgid "Current pos"
 msgstr "Aktuelle Position"
 
-#: src/wxGUI/MutFrame.cpp:297 src/wxGUI/MutFrame.cpp:347
+#: src/wxGUI/MutFrame.cpp:299 src/wxGUI/MutFrame.cpp:349
 msgid "Toolbar"
 msgstr "&Werkzeugleiste"
 
-#: src/wxGUI/MutFrame.cpp:390
+#: src/wxGUI/MutFrame.cpp:392
 msgid "New"
 msgstr "Neu"
 
-#: src/wxGUI/MutFrame.cpp:390
+#: src/wxGUI/MutFrame.cpp:392
 msgid "New file"
 msgstr "Neue Datei"
 
-#: src/wxGUI/MutFrame.cpp:391
+#: src/wxGUI/MutFrame.cpp:393
 msgid "Open"
 msgstr "Öffnen"
 
-#: src/wxGUI/MutFrame.cpp:391
+#: src/wxGUI/MutFrame.cpp:393
 msgid "Open file"
 msgstr "Datei öffnen"
 
-#: src/wxGUI/MutFrame.cpp:392
+#: src/wxGUI/MutFrame.cpp:394
 msgid "Save"
 msgstr "Speichern"
 
-#: src/wxGUI/MutFrame.cpp:392
+#: src/wxGUI/MutFrame.cpp:394
 msgid "Save file"
 msgstr "Datei speichern"
 
-#: src/wxGUI/MutFrame.cpp:393
+#: src/wxGUI/MutFrame.cpp:395
 msgid "Save as"
 msgstr "Speichern unter"
 
-#: src/wxGUI/MutFrame.cpp:393
+#: src/wxGUI/MutFrame.cpp:395
 msgid "Save file with new name"
 msgstr "Die aktuelle Datei unter einem neuen Namen speichern"
 
-#: src/wxGUI/MutFrame.cpp:394
+#: src/wxGUI/MutFrame.cpp:396
 msgid "Print"
 msgstr "Drucken"
 
-#: src/wxGUI/MutFrame.cpp:396
+#: src/wxGUI/MutFrame.cpp:398
 msgid "Activate"
 msgstr "Aktivieren"
 
-#: src/wxGUI/MutFrame.cpp:396
+#: src/wxGUI/MutFrame.cpp:398
 msgid "Activate the logic"
 msgstr "Aktiviert die Mutabor-Logik"
 
-#: src/wxGUI/MutFrame.cpp:397
+#: src/wxGUI/MutFrame.cpp:399
 msgid "Stop the logic"
 msgstr "Logik anhalten"
 
-#: src/wxGUI/MutFrame.cpp:398
+#: src/wxGUI/MutFrame.cpp:400
 msgid "Panic"
 msgstr "Panik"
 
-#: src/wxGUI/MutFrame.cpp:398
+#: src/wxGUI/MutFrame.cpp:400
 msgid "Panic: switch all notes off"
 msgstr "Panik: Alle Noten ausschalten"
 
-#: src/wxGUI/MutFrame.cpp:400
+#: src/wxGUI/MutFrame.cpp:402
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: src/wxGUI/MutFrame.cpp:400
+#: src/wxGUI/MutFrame.cpp:402
 msgid "Undo last changes"
 msgstr "Letzte Änderungen zurücknehmen"
 
-#: src/wxGUI/MutFrame.cpp:401
+#: src/wxGUI/MutFrame.cpp:403
 msgid "Redo"
 msgstr "Wiederholen"
 
-#: src/wxGUI/MutFrame.cpp:401
+#: src/wxGUI/MutFrame.cpp:403
 msgid "Redo last undone changes"
 msgstr "Rückgängiggemachte Änderungen doch vornehmen"
 
-#: src/wxGUI/MutFrame.cpp:402
+#: src/wxGUI/MutFrame.cpp:404
 msgid "Copy"
 msgstr "Kopieren"
 
-#: src/wxGUI/MutFrame.cpp:403
+#: src/wxGUI/MutFrame.cpp:405
 msgid "Cut"
 msgstr "Ausschneiden"
 
-#: src/wxGUI/MutFrame.cpp:404
+#: src/wxGUI/MutFrame.cpp:406
 msgid "Paste"
 msgstr "Einfügen"
 
-#: src/wxGUI/MutFrame.cpp:413
+#: src/wxGUI/MutFrame.cpp:415
 msgid "&Move Icon up"
 msgstr "Symbol au&fwärts verschieben"
 
-#: src/wxGUI/MutFrame.cpp:415
+#: src/wxGUI/MutFrame.cpp:417
 msgid "&Move Icon down"
 msgstr "Symbol a&bwärts verschieben"
 
-#: src/wxGUI/MutFrame.cpp:425
+#: src/wxGUI/MutFrame.cpp:427
 msgid "About"
 msgstr "Über"
 
-#: src/wxGUI/MutFrame.cpp:425 Mutabor.xrc:115 Mutabor.xrc:664 Mutabor.xrc:823
+#: src/wxGUI/MutFrame.cpp:427 Mutabor.xrc:115 Mutabor.xrc:664 Mutabor.xrc:823
 #: Mutabor.xrc:1060
 msgid "Help"
 msgstr "Hilfe"
 
-#: src/wxGUI/MutFrame.cpp:629
+#: src/wxGUI/MutFrame.cpp:633
 #, c-format
 msgid "Unexpected Event in MutFrame::CmFileOpen: %d"
 msgstr "Unerwartetes Ereignis in MutFrame::CmFileOpen: %d"
 
-#: src/wxGUI/MutFrame.cpp:649
+#: src/wxGUI/MutFrame.cpp:655
 msgid "noname.mut"
 msgstr "Unbenannt.mut"
 
-#: src/wxGUI/MutFrame.cpp:660 src/wxGUI/MutFrame.cpp:1818
+#: src/wxGUI/MutFrame.cpp:666 src/wxGUI/MutFrame.cpp:1826
 #, c-format
 msgid "%s -- %s"
 msgstr "%s – %s"
 
-#: src/wxGUI/MutFrame.cpp:746
+#: src/wxGUI/MutFrame.cpp:753
 msgid ""
 "The keyboard mapping file is not writable.\n"
 " Shall I proceed without creating a keyboard mapping?"
@@ -2884,15 +2862,15 @@ msgstr ""
 "Die Klaviertastenzuordnungs-Datei kann nicht geschrieben werden.\n"
 "Soll ich fortfahren ohne die Tastenzuordnung zu speichern?"
 
-#: src/wxGUI/MutFrame.cpp:748
+#: src/wxGUI/MutFrame.cpp:755
 msgid "Rethink your choice, please."
 msgstr "Überdenken Sie bitte Ihre Auswahl."
 
-#: src/wxGUI/MutFrame.cpp:767
+#: src/wxGUI/MutFrame.cpp:774
 msgid "Cannot open the Scala file. This file must be writable."
 msgstr "Konnte die Scala-Datei nicht öffnen. Diese Datei muss schreibbar sein."
 
-#: src/wxGUI/MutFrame.cpp:804
+#: src/wxGUI/MutFrame.cpp:812
 msgid ""
 "There are no realtime instruments in the routes.\n"
 "\tShall Mutabor translate the files in batch mode, to keep the MIDI files "
@@ -2906,11 +2884,11 @@ msgstr ""
 "(Das bedeutet auch, dass die Stimmungen während des Abspulens nicht geändert "
 "werden können.)"
 
-#: src/wxGUI/MutFrame.cpp:810
+#: src/wxGUI/MutFrame.cpp:818
 msgid "No realtime ⇒ batch mode?"
 msgstr "Keine Echtzeit ⇒ Stapelmodus?"
 
-#: src/wxGUI/MutFrame.cpp:911
+#: src/wxGUI/MutFrame.cpp:919
 msgid ""
 "Please, configure the initial tuning, now.\n"
 "To start the translation hit the play button or select “Play” from the "
@@ -2920,69 +2898,69 @@ msgstr ""
 "Zum Starten der Übersetzung klicken Sie bitte auf den Abspielen-Knopf oder "
 "wählen Sie „Abspielen“ aus dem „Sequenzer“-Menü.\n"
 
-#: src/wxGUI/MutFrame.cpp:913
+#: src/wxGUI/MutFrame.cpp:921
 msgid "Realtime play"
 msgstr "Abspielen in Echtzeit"
 
-#: src/wxGUI/MutFrame.cpp:1108
+#: src/wxGUI/MutFrame.cpp:1116
 msgid "Routes"
 msgstr "Routen"
 
-#: src/wxGUI/MutFrame.cpp:1133
+#: src/wxGUI/MutFrame.cpp:1141
 msgid "(unknown)"
 msgstr "(unbekannt)"
 
-#: src/wxGUI/MutFrame.cpp:1500
+#: src/wxGUI/MutFrame.cpp:1508
 msgid "MutFrame::WindowSize:  not implemented"
 msgstr "MutFrame::WindowSize: nicht implementiert"
 
-#: src/wxGUI/MutFrame.cpp:1696
+#: src/wxGUI/MutFrame.cpp:1704
 msgid "The conversion finished successfully."
 msgstr "Die Übersetzung wurde erfolgreich beendet."
 
-#: src/wxGUI/MutFrame.cpp:1697 src/wxGUI/MutFrame.cpp:1703
+#: src/wxGUI/MutFrame.cpp:1705 src/wxGUI/MutFrame.cpp:1711
 msgid "Conversion error"
 msgstr "Übersetzungsfehler"
 
-#: src/wxGUI/MutFrame.cpp:1995
+#: src/wxGUI/MutFrame.cpp:2003
 msgid "&Raise current box\tCtrl+B"
 msgstr "Aktuelle Box an&heben\tCtrl+B"
 
-#: src/wxGUI/MutFrame.cpp:1996
+#: src/wxGUI/MutFrame.cpp:2004
 msgid "This item activates the window of the currently selectcd box"
 msgstr "Dieser Punkt aktiviert das Fenster der aktuell aktiven Box"
 
-#: src/wxGUI/MutFrame.cpp:2040
+#: src/wxGUI/MutFrame.cpp:2048
 #, c-format
 msgid "Box %d got a new id %d"
 msgstr "Kasten %d bekam die Identifikationsnummer %d"
 
-#: src/wxGUI/MutFrame.cpp:2046
+#: src/wxGUI/MutFrame.cpp:2054
 #, c-format
 msgid "Currently %d items in box menu"
 msgstr "Momentan gibt es %d Punkte im Kastenmenü"
 
-#: src/wxGUI/MutFrame.cpp:2049
+#: src/wxGUI/MutFrame.cpp:2057
 #, c-format
 msgid "Appending menu for box %d with id %d"
 msgstr "Hänge Menü für Kasten %d mit Identifikationsnummer %d an."
 
-#: src/wxGUI/MutFrame.cpp:2051
+#: src/wxGUI/MutFrame.cpp:2059
 #, c-format
 msgid "Select box %d\tCtrl+%d"
 msgstr "Kasten %d auswählen\tCtrl+%d"
 
-#: src/wxGUI/MutFrame.cpp:2054
+#: src/wxGUI/MutFrame.cpp:2062
 #, c-format
 msgid "Select box %d as the active Box for box specific commands."
 msgstr "Kasten %d als aktiven Kasten für Kommandos auswählen."
 
-#: src/wxGUI/MutFrame.cpp:2069
+#: src/wxGUI/MutFrame.cpp:2077
 #, c-format
 msgid "Connecting command with id %d for box command %d"
 msgstr "Verbinde Kommando mit Identifikationsnummer %d für Kasten-Befehl %d"
 
-#: src/wxGUI/MutLogicWnd.cpp:266
+#: src/wxGUI/MutLogicWnd.cpp:268
 #, c-format
 msgid "Logic: %s - Box %d"
 msgstr "Logik: %s - Kasten %d"
@@ -3118,27 +3096,27 @@ msgstr "Kein Eingabegerät"
 msgid "No output device"
 msgstr "Kein Ausgabegerät"
 
-#: src/wxGUI/Routing/BoxDlg.cpp:196
+#: src/wxGUI/Routing/BoxDlg.cpp:200
 msgid "this box"
 msgstr "diese Box"
 
-#: src/wxGUI/Routing/BoxDlg.cpp:202
+#: src/wxGUI/Routing/BoxDlg.cpp:206
 msgid "new box"
 msgstr "neue Box"
 
-#: src/wxGUI/Routing/BoxDlg.cpp:254
+#: src/wxGUI/Routing/BoxDlg.cpp:258
 msgid "Remove Route"
 msgstr "Route Entfernen"
 
-#: src/wxGUI/Routing/BoxDlg.cpp:254
+#: src/wxGUI/Routing/BoxDlg.cpp:258
 msgid "Undelete Route"
 msgstr "Route wiederherstellen"
 
-#: src/wxGUI/Routing/BoxDlg.cpp:291
+#: src/wxGUI/Routing/BoxDlg.cpp:295
 msgid "No box / thru mode"
 msgstr "Kein Kasten / Durchschleifen"
 
-#: src/wxGUI/Routing/BoxDlg.cpp:299
+#: src/wxGUI/Routing/BoxDlg.cpp:303
 msgid "GUIDO file box"
 msgstr "GUIDO-Datei-Kasten"
 
@@ -3150,13 +3128,13 @@ msgstr "Neuer Kasten"
 msgid "GUIDO Box"
 msgstr "GUIDO-Datei-Kasten"
 
-#: src/wxGUI/Routing/BoxShape.cpp:408
+#: src/wxGUI/Routing/BoxShape.cpp:410
 msgid "You selected a box id that is already in use. Please, try another one."
 msgstr ""
 "Sie haben eine Boxnummer angegeben, die schon vorhanden ist. Wählen Sie "
 "bitte eine andere."
 
-#: src/wxGUI/Routing/BoxShape.h:267
+#: src/wxGUI/Routing/BoxShape.h:271
 msgid "No Box / Though mode"
 msgstr "Kein Kasten / Durchschleifen"
 
@@ -3164,21 +3142,21 @@ msgstr "Kein Kasten / Durchschleifen"
 msgid "MIDI Device"
 msgstr "MIDI-Gerät"
 
-#: src/wxGUI/Routing/InputDevDlg.cpp:69 src/wxGUI/Routing/OutputDevDlg.cpp:68
+#: src/wxGUI/Routing/InputDevDlg.cpp:70 src/wxGUI/Routing/OutputDevDlg.cpp:68
 #: Mutabor.xrc:710 Mutabor.xrc:741 Mutabor.xrc:869 Mutabor.xrc:939
 msgid "MIDI file"
 msgstr "MIDI-Datei"
 
-#: src/wxGUI/Routing/InputDevDlg.cpp:70 src/wxGUI/Routing/OutputDevDlg.cpp:69
+#: src/wxGUI/Routing/InputDevDlg.cpp:71 src/wxGUI/Routing/OutputDevDlg.cpp:69
 #: Mutabor.xrc:711 Mutabor.xrc:762 Mutabor.xrc:870 Mutabor.xrc:999
 msgid "GUIDO file"
 msgstr "GUIDO-Datei"
 
-#: src/wxGUI/Routing/InputDevDlg.cpp:135 src/wxGUI/Routing/OutputDevDlg.cpp:135
+#: src/wxGUI/Routing/InputDevDlg.cpp:136 src/wxGUI/Routing/OutputDevDlg.cpp:135
 msgid "Choose device type"
 msgstr "Gerätetyp auswählen"
 
-#: src/wxGUI/Routing/InputDevDlg.cpp:146 src/wxGUI/Routing/OutputDevDlg.cpp:146
+#: src/wxGUI/Routing/InputDevDlg.cpp:147 src/wxGUI/Routing/OutputDevDlg.cpp:146
 msgid "Unknown device type"
 msgstr "Unbekannter Gerätetyp"
 
@@ -3202,108 +3180,7 @@ msgstr "Neues Ausgabegerät"
 msgid "INS"
 msgstr "EINF"
 
-#: src/wxGUI/generic/mutDebug.cpp:241
-#, c-format
-msgid ""
-"%s:%d: An assert failed in %s().\n"
-"Condition: %s\n"
-"Message:%s\n"
-"Do you want to call the default assert handler?"
-msgstr ""
-"%s:%d: Eine Überprüfung in %s() ist fehlgeschlagen.\n"
-"Bedingung: %s\n"
-"Nachricht:%s\n"
-"Möchten Sie die Standardbehandlungsroutine aufrufen (im Zweifelsfall: ja)?"
-
-#: src/wxGUI/generic/mutDebugFlags.h:26
-msgid "Unspecified debug information"
-msgstr "Sonstige Ablauf-Daten"
-
-#: src/wxGUI/generic/mutDebugFlags.h:27
-msgid "Debug Execute.cpp"
-msgstr "Excute.cpp überwachen"
-
-#: src/wxGUI/generic/mutDebugFlags.h:28
-msgid "Debug table generator"
-msgstr "Tabellengenerator überwachen"
-
-#: src/wxGUI/generic/mutDebugFlags.h:30 src/wxGUI/generic/mutDebugFlags.h:31
-msgid "Debug the parser of the Mutabor kernel"
-msgstr "Statusinformationen des Mutabor-Kerns anzeigen"
-
-#: src/wxGUI/generic/mutDebugFlags.h:32
-msgid "Debug the GUIDO file devices"
-msgstr "Überwache GUIDO-Datei-Geräte "
-
-#: src/wxGUI/generic/mutDebugFlags.h:33
-msgid "Other gui related debug information"
-msgstr "Sonstige Informationen der grafischen Oberfläche"
-
-#: src/wxGUI/generic/mutDebugFlags.h:34
-msgid "Debug configuration and postprocessing of dialogs"
-msgstr "Execute.cpp "
-
-#: src/wxGUI/generic/mutDebugFlags.h:35
-msgid "Debug the routing system"
-msgstr "Routingsystem überwachen"
-
-#: src/wxGUI/generic/mutDebugFlags.h:36
-msgid "Debug the routing system GUI"
-msgstr "Routingsystem-Oberfläche überwachen"
-
-#: src/wxGUI/generic/mutDebugFlags.h:37
-msgid "Debug the MIDI input/output system"
-msgstr "MIDI Ein- und Ausgabe überwachen"
-
-#: src/wxGUI/generic/mutDebugFlags.h:38
-msgid "Debug the MIDI file devices"
-msgstr "Überwache Mutabor-Datei-Geräte "
-
-#: src/wxGUI/generic/mutDebugFlags.h:39
-msgid "Debug the Mutabor file parser"
-msgstr "Einlesen von Mutabor-Dateien überwachen"
-
-#: src/wxGUI/generic/mutDebugFlags.h:40
-msgid "Debug the config file parser"
-msgstr "Überwache das Einlesen der Konfigurationsdateien"
-
-#: src/wxGUI/generic/mutDebugFlags.h:41
-msgid "Debug the Document/View framework"
-msgstr "Dokument/Ansicht-Baukasten debuggen"
-
-#: src/wxGUI/generic/mutDebugFlags.h:42
-msgid "Print unhandled events in the queue"
-msgstr "Unbehandelte Ereignisse des Programmes anzeigen"
-
-#: src/wxGUI/generic/mutDebugFlags.h:43
-msgid "Debug editor related functionality"
-msgstr "Fehler im Editor finden"
-
-#: src/wxGUI/generic/mutDebugFlags.h:44
-#, fuzzy
-msgid "Debug editor language lexer related functionality"
-msgstr "Fehler im Editor finden"
-
-#: src/wxGUI/generic/mutDebugFlags.h:45
-msgid "Debug smart pointer related functionality"
-msgstr "Funktionen der intelligenten Zeiger überwachen"
-
-#: src/wxGUI/generic/mutDebugFlags.h:46
-msgid "Output some tracepoints"
-msgstr "Einige Ablaufpunkte loggen"
-
-#: src/wxGUI/generic/mutDebugFlags.h:47
-msgid "Trace thread timer problems"
-msgstr "Verfolge Zeitgeber-Probleme"
-
-#: src/wxGUI/generic/mutDebugFlags.h:48
-msgid "Show messages that are always shown ;-). (for internal use only)"
-msgstr ""
-"Zeige Nachrichten, die immer angezeigt werden ;-). (Nur für internen "
-"Gebrauch)"
-======= end
-
-#: src/wxGUI/generic/mxDefs.cpp:50
+#: src/wxGUI/generic/mxDefs.cpp:51
 msgid ""
 "Mutabor tuning file (*.mut)|*.mut|Old Mutabor tuning file (*.mus)|*.mus|All "
 "files (*.*)|*.*"
@@ -3311,7 +3188,7 @@ msgstr ""
 "Mutabor-Datei (*.mut)|*.mut|Alte Mutabor-Datei (*.mus)|*.mus|Alle Dateien (*."
 "*)|*.*"
 
-#: src/wxGUI/generic/mxDefs.cpp:52
+#: src/wxGUI/generic/mxDefs.cpp:53
 msgid ""
 "Mutabor routing file (*.murx)|*.murx|Old Mutabor routing file (*.mur)|*.mur|"
 "All files (*.*)|*.*"
@@ -3319,27 +3196,27 @@ msgstr ""
 "Mutabor-Routen-Datei (*.murx)|*.murx|Alte Mutabor-Routen-Datei (*.mur)|*.mur|"
 "Alle Dateien (*.*)|*.*"
 
-#: src/wxGUI/generic/mxDefs.cpp:63
+#: src/wxGUI/generic/mxDefs.cpp:64
 msgid "Which Mutabor file shall be loaded?"
 msgstr "Welche Mutabor-Datei soll geladen werden?"
 
-#: src/wxGUI/generic/mxDefs.cpp:69
+#: src/wxGUI/generic/mxDefs.cpp:70
 msgid "Which Mutabor file shall be executed?"
 msgstr "Welche Mutabor-Datei soll gestartet werden?"
 
-#: src/wxGUI/generic/mxDefs.cpp:75
+#: src/wxGUI/generic/mxDefs.cpp:76
 msgid "Enter the new Mutabor file name, please!"
 msgstr "Bitte geben Sie den neuen Mutabor-Dateinamen ein!"
 
-#: src/wxGUI/generic/mxDefs.cpp:81
+#: src/wxGUI/generic/mxDefs.cpp:82
 msgid "Which Mutabor route file shall be loaded?"
 msgstr "Welche Mutabor-Routendatei soll geladen werden?"
 
-#: src/wxGUI/generic/mxDefs.cpp:88
+#: src/wxGUI/generic/mxDefs.cpp:89
 msgid "Enter the new Mutabor route file name, please!"
 msgstr "Bitte geben Sie den neuen Mutabor-Routen-Dateinamen ein!"
 
-#: src/wxGUI/generic/mxDefs.cpp:94 src/wxGUI/generic/mxDefs.cpp:142
+#: src/wxGUI/generic/mxDefs.cpp:95 src/wxGUI/generic/mxDefs.cpp:143
 #, c-format
 msgid "Unexpected Command Id in FileNameDialog: %d"
 msgstr "Unerwarteter Kommando-identifikator in FileNameDialog: %d"
@@ -3373,7 +3250,7 @@ msgid ""
 msgstr ""
 "%s:%d: Eine Überprüfung in %s() ist fehlgeschlagen.\n"
 "Bedingung: %s\n"
-"Nachricht:%s\n"
+"Nachricht: %s\n"
 "Möchten Sie die Standardbehandlungsroutine aufrufen (im Zweifelsfall: ja)?"
 
 #: src/wxGUI/stclanguage.h:69
@@ -3452,8 +3329,8 @@ msgstr "Abbruch"
 msgid "About Mutabor"
 msgstr "Über Mutabor"
 
-#: Mutabor.xrc:151 Mutabor.xrc:504 Mutabor.xrc:1147 Mutabor.xrc:1984
-#: Mutabor.xrc:2079
+#: Mutabor.xrc:151 Mutabor.xrc:504 Mutabor.xrc:1148 Mutabor.xrc:1985
+#: Mutabor.xrc:2080
 msgid "&OK"
 msgstr "&OK"
 
@@ -3481,7 +3358,7 @@ msgstr "Lese Quelltext …"
 msgid "Mutabor-Box"
 msgstr "Mutabor-Box"
 
-#: Mutabor.xrc:429 Mutabor.xrc:1260
+#: Mutabor.xrc:429 Mutabor.xrc:1261
 msgid "Box"
 msgstr "Kasten"
 
@@ -3506,8 +3383,8 @@ msgstr "Wähle eine GUIDO-Datei"
 msgid "no Box / thru-mode"
 msgstr "Kein Kasten / Durchschleifen"
 
-#: Mutabor.xrc:511 Mutabor.xrc:639 Mutabor.xrc:1154 Mutabor.xrc:1991
-#: Mutabor.xrc:2086
+#: Mutabor.xrc:511 Mutabor.xrc:639 Mutabor.xrc:1155 Mutabor.xrc:1992
+#: Mutabor.xrc:2087
 msgid "&Cancel"
 msgstr "A&bbruch"
 
@@ -3539,20 +3416,20 @@ msgstr "&Kanal"
 msgid "&staff"
 msgstr "Noten&zeile"
 
-#: Mutabor.xrc:571 Mutabor.xrc:1337 Mutabor.xrc:1391 Mutabor.xrc:1474
-#: Mutabor.xrc:1526 Mutabor.xrc:1670 Mutabor.xrc:1722
+#: Mutabor.xrc:571 Mutabor.xrc:1338 Mutabor.xrc:1392 Mutabor.xrc:1475
+#: Mutabor.xrc:1527 Mutabor.xrc:1671 Mutabor.xrc:1723
 msgid "Range"
 msgstr "Bereich"
 
-#: Mutabor.xrc:579 Mutabor.xrc:1344 Mutabor.xrc:1398 Mutabor.xrc:1481
-#: Mutabor.xrc:1533 Mutabor.xrc:1598 Mutabor.xrc:1677 Mutabor.xrc:1729
-#: Mutabor.xrc:1794
+#: Mutabor.xrc:579 Mutabor.xrc:1345 Mutabor.xrc:1399 Mutabor.xrc:1482
+#: Mutabor.xrc:1534 Mutabor.xrc:1599 Mutabor.xrc:1678 Mutabor.xrc:1730
+#: Mutabor.xrc:1795
 msgid "from"
 msgstr "von"
 
-#: Mutabor.xrc:599 Mutabor.xrc:1365 Mutabor.xrc:1418 Mutabor.xrc:1501
-#: Mutabor.xrc:1553 Mutabor.xrc:1618 Mutabor.xrc:1697 Mutabor.xrc:1749
-#: Mutabor.xrc:1814
+#: Mutabor.xrc:599 Mutabor.xrc:1366 Mutabor.xrc:1419 Mutabor.xrc:1502
+#: Mutabor.xrc:1554 Mutabor.xrc:1619 Mutabor.xrc:1698 Mutabor.xrc:1750
+#: Mutabor.xrc:1815
 msgid "to"
 msgstr "bis"
 
@@ -3628,156 +3505,168 @@ msgstr "Wähle eine GUIDO-Ausgabe-Datei."
 msgid "Give a file Name for recording GUIDO data."
 msgstr "Geben Sie einen Dateinamen für die Aufnahme der GUIDO-Daten an."
 
-#: Mutabor.xrc:1077
+#: Mutabor.xrc:1078
 msgid "Box settings"
 msgstr "Boxeinstellungen"
 
-#: Mutabor.xrc:1105
+#: Mutabor.xrc:1106
 msgid "Press this button to delete the box and all attached routes."
 msgstr ""
 "Drücken sie diesen Knopf, um die Box mit allen angehängten Routen zu löschen."
 
-#: Mutabor.xrc:1106
+#: Mutabor.xrc:1107
 msgid "Remove Box"
 msgstr "Box Löschen"
 
-#: Mutabor.xrc:1134
+#: Mutabor.xrc:1135
 msgid "&Add Route"
 msgstr "Route &Hinzufügen"
 
-#: Mutabor.xrc:1178
+#: Mutabor.xrc:1179
 msgid "Box number"
 msgstr "Kastennummer"
 
-#: Mutabor.xrc:1206
+#: Mutabor.xrc:1207
 msgid "Input device and filter"
 msgstr "Eingabegerät und -Filter"
 
-#: Mutabor.xrc:1222
+#: Mutabor.xrc:1223
 msgid "Output device and filter"
 msgstr "Ausgabegerät und -filter"
 
-#: Mutabor.xrc:1237
+#: Mutabor.xrc:1238
 msgid "Route settings"
 msgstr "Routeneinstellungen"
 
-#: Mutabor.xrc:1292
+#: Mutabor.xrc:1293
 msgid "&active"
 msgstr "&aktiv"
 
-#: Mutabor.xrc:1301
+#: Mutabor.xrc:1302
 msgid "&passive"
 msgstr "&passiv"
 
-#: Mutabor.xrc:1324 Mutabor.xrc:1461 Mutabor.xrc:1657
+#: Mutabor.xrc:1325 Mutabor.xrc:1462 Mutabor.xrc:1658
 msgid "all"
 msgstr "alle"
 
-#: Mutabor.xrc:1331
+#: Mutabor.xrc:1332
 msgid "box tag"
 msgstr "Box-Tag"
 
-#: Mutabor.xrc:1354
+#: Mutabor.xrc:1355
 msgid ""
 "The first box tag number, which will be processed according to this route"
 msgstr ""
 "Die kleinste Nummer der Kasten-Tags, die über diese Route behandelt werden"
 
-#: Mutabor.xrc:1375
+#: Mutabor.xrc:1376
 msgid "The last box tag number which will be processed according to this route"
 msgstr ""
 "Die größte Nummer der größten Kasten-Tags, der über diese Route behandelt "
 "werden"
 
-#: Mutabor.xrc:1385
+#: Mutabor.xrc:1386
 msgid "staves"
 msgstr "Systeme"
 
-#: Mutabor.xrc:1437 Mutabor.xrc:1572 Mutabor.xrc:1768
+#: Mutabor.xrc:1438 Mutabor.xrc:1573 Mutabor.xrc:1769
 msgid "unhandled notes"
 msgstr "Noten, die noch nicht behandelt wurden"
 
-#: Mutabor.xrc:1468 Mutabor.xrc:1664
+#: Mutabor.xrc:1469 Mutabor.xrc:1665
 msgid "channel"
 msgstr "Kanal"
 
-#: Mutabor.xrc:1520
+#: Mutabor.xrc:1521
 msgid "key range"
 msgstr "Tastenbereich"
 
-#: Mutabor.xrc:1586 Mutabor.xrc:1782
+#: Mutabor.xrc:1587 Mutabor.xrc:1783
 msgid "Channel"
 msgstr "Kanal"
 
-#: Mutabor.xrc:1640 Mutabor.xrc:1836
+#: Mutabor.xrc:1641 Mutabor.xrc:1837
 msgid "avoid drum channel"
 msgstr "Schlagzeug-Kanal vermeiden"
 
-#: Mutabor.xrc:1716
+#: Mutabor.xrc:1717
 msgid "track"
 msgstr "Spur"
 
-#: Mutabor.xrc:1850
+#: Mutabor.xrc:1851
 msgid "Import a  Scala tuning"
 msgstr "Scala-Stimmung importieren"
 
-#: Mutabor.xrc:1870
+#: Mutabor.xrc:1871
 msgid "interval prefix"
 msgstr "Intervall-Präfix"
 
-#: Mutabor.xrc:1887
+#: Mutabor.xrc:1888
 msgid "tone prefix"
 msgstr "Ton-Präfix"
 
-#: Mutabor.xrc:1904
+#: Mutabor.xrc:1905
 msgid "tone system"
 msgstr "Tonsystem"
 
-#: Mutabor.xrc:1921
+#: Mutabor.xrc:1922
 msgid "logic"
 msgstr "Logik"
 
-#: Mutabor.xrc:1938
+#: Mutabor.xrc:1939
 msgid "scala file"
 msgstr "Scala-Datei"
 
-#: Mutabor.xrc:1948
+#: Mutabor.xrc:1949
 msgid "Select the scala file"
 msgstr "Wähle eine Scala-Datei"
 
-#: Mutabor.xrc:1958
+#: Mutabor.xrc:1959
 msgid "keyboard mapping"
 msgstr "Tastenzuordnung"
 
-#: Mutabor.xrc:1968
+#: Mutabor.xrc:1969
 msgid "Select a scala keyboard mapping"
 msgstr "Wähle eine Tastenzuordnung für die Scala-Stimmung"
 
-#: Mutabor.xrc:2000
+#: Mutabor.xrc:2001
 msgid "Export the current tuning to Scala"
 msgstr ""
 "Exportiert die momentan aktive Logik als Scala-Datei mit entsprechender "
 "Tastenzuordnung"
 
-#: Mutabor.xrc:2015
+#: Mutabor.xrc:2016
 msgid "Scala file"
 msgstr "Scala-Datei"
 
-#: Mutabor.xrc:2025
+#: Mutabor.xrc:2026
 msgid "Select a Scala file for export"
 msgstr "Wähle eine Scala-Datei für den Export"
 
-#: Mutabor.xrc:2038
+#: Mutabor.xrc:2039
 msgid "Generate keyboard mapping"
 msgstr "Erzeuge eine Klaviertasten-Zuordnung"
 
-#: Mutabor.xrc:2053
+#: Mutabor.xrc:2054
 msgid "Keymap file"
 msgstr "Tastenzuordnungs-Datei"
 
-#: Mutabor.xrc:2063
+#: Mutabor.xrc:2064
 msgid "Select a file"
 msgstr "Wähle eine Datei"
+
+#~ msgid "MidiInDummy: This class provides no functionality."
+#~ msgstr "MidiInDummy: Diese Klasse stellt keine Funktionalität bereit."
+
+#~ msgid "Device found, but device type not set."
+#~ msgstr "Gerät wurde gefunden, aber kein Typ gesetzt."
+
+#~ msgid "Device found but device type not set."
+#~ msgstr "Gerät gefunden, aber Gerätetyp nicht gesetzt."
+
+#~ msgid "Closing window of class %s"
+#~ msgstr "Schließe Fenster der Klasse %s"
 
 #~ msgid "Use .krb file instead of the on with the same name as the input"
 #~ msgstr ""
@@ -3795,15 +3684,6 @@ msgstr "Wähle eine Datei"
 
 #~ msgid "Bad MIDI to channel %d (valid: 1...16)"
 #~ msgstr "Ungültiges Ende %d des MIDI-Kanalkanalbereiches (erlaubt: 1 bis 16)"
-
-#~ msgid "Device found, but device type not set."
-#~ msgstr "Gerät wurde gefunden, aber kein Typ gesetzt."
-
-#~ msgid "Device found but device type not set."
-#~ msgstr "Gerät gefunden, aber Gerätetyp nicht gesetzt."
-
-#~ msgid "Closing window of class %s"
-#~ msgstr "Schließe Fenster der Klasse %s"
 
 #~ msgid "%2d : %8.1f Hz (%6.2lf HT)"
 #~ msgstr "%2d : %8.1f Hz (%6.2lf HT)"

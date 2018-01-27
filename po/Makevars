@@ -69,10 +69,20 @@ $(srcdir)/macrotrans.H: $(srcdir)/macrotrans.h
 .PHONY: reslocale.cpp
 $(DOMAIN).pot-update: reslocale.cpp
 
-reslocale.cpp:
-	$(MAKE) -C .. reslocale.cpp
+$(top_srcdir)/src/kernel/mut.cc \
+$(top_srcdir)/src/kernel/parsers/scale/scale_parser.cc \
+$(top_srcdir)/src/kernel/parsers/scala/scale_parser.cc \
+$(top_srcdir)/src/kernel/parsers/scala/scale_parser.hh \
+$(top_srcdir)/src/kernel/parsers/scala/position.hh \
+$(top_srcdir)/src/kernel/parsers/scala/location.hh \
+$(top_srcdir)/src/kernel/parsers/scala/stack.hh \
+$(top_srcdir)/src/kernel/parsers/scala/scale_lexer.cc \
+$(top_srcdir)/src/kernel/parsers/scala/scala-inlines.h \
+$(top_srcdir)/src/xrc/reslocale.cpp:
+	echo "$@" | sed -e 's,^\.\./,,'
+	$(MAKE) -C .. `echo "$@" | sed -e 's,^\.\./,,'`
 
-mac:
+gmac:
 
 potfilechk:
 
