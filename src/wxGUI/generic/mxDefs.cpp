@@ -29,6 +29,7 @@
  ********************************************************************/
 #include "src/kernel/Defs.h"
 #include "src/wxGUI/generic/mhDefs.h"
+#include "src/kernel/debug.h"
 
 #include "wx/filedlg.h"
 #include "wx/log.h"
@@ -159,15 +160,21 @@ void PRINTWINDOW (wxWindow * window, const wxString & offset = _T (""))
 #ifdef DEBUG
 void PRINTSIZER (wxSizer * sizer, const wxString & offset) 
 {
+	if (!(mutabor::mutabor_debug_flags.other))
+		return;
         if (!sizer) DEBUGLOG2 (other,("NULL Pointer."));
         DEBUGLOGTYPE (other, *sizer, ("%sSizer: %p to Window %p"),
                       offset.c_str (),
                       (void*)sizer,(void*)sizer->GetContainingWindow ());
         wxSizerItemList &childs = sizer -> GetChildren ();
+	wxSizerItem * item;
+	wxRect rect;
+	wxSize size;
+	wxWindow * window;
         for (wxSizerItemList::iterator i = childs.begin ();
              i!=childs.end (); ++i) {
-                wxSizerItem * item = *i;
-                wxRect rect = item->GetRect ();
+		item = *i;
+                rect = item->GetRect ();
                 if (item->IsSizer ()) {
                         DEBUGLOGTYPE (other, *sizer,
                                       ("%s%s sizer from (%d,%d) to (%d,%d):"),
@@ -178,7 +185,7 @@ void PRINTSIZER (wxSizer * sizer, const wxString & offset)
                                       rect.y+rect.height);
                         PRINTSIZER (item->GetSizer (), offset + _T (" | "));
                 } else if (item -> IsWindow ()) {
-                        wxWindow * window = item->GetWindow ();
+                        window = item->GetWindow ();
                         DEBUGLOGTYPE (other, *window, 
                                       ("%sWindow: %p with parent window %p (%s) from (%d,%d) to (%d,%d)"),
                                       offset.c_str (),
@@ -190,7 +197,7 @@ void PRINTSIZER (wxSizer * sizer, const wxString & offset)
 			if (window -> GetSizer()) 
 				PRINTSIZER(window -> GetSizer(), offset + _T(" [] "));
                 } else if (item -> IsSpacer ()) {
-                        wxSize size = item->GetSpacer ();
+                        size = item->GetSpacer ();
                         DEBUGLOGTYPE (other, size,
                                       ("%sSpacer: %d x %d (%s) from (%d,%d) to (%d,%d)"),
                                       offset.c_str (),
