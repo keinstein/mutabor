@@ -46,6 +46,7 @@
 #include "wx/file.h"
 #include "wx/event.h"
 #include "wx/strconv.h"
+#include "wx/aui/framemanager.h"
 
 #if !defined(__WXMSW__)
 #include "Images/Icons/xpm/Mutabor.xpm"
@@ -985,8 +986,27 @@ namespace mutaborGUI {
 		     i!= frames.end();
 		     i++) {
 			wxWindow * window = *i;
+			DEBUGLOG(aui,"Closing window with id %d\n",
+				 window->GetId());
 			if (wxTopLevelWindows.Find(window) == NULL)
 				continue;
+			{
+				// On Windows we get an SEGV when we delete panes directly without detaching.
+				// So we have two choices: find the panes and detach them or delete their
+				// managed frame instead, leaving the cleaning to wxAuiManager.
+				// We choose the latter.
+				wxAuiManager * manager = wxAuiManager::GetManager(window);
+				if (manager != NULL) {
+					DEBUGLOG(aui,"Not deleting window %d with title %s.",
+						 window->GetId(),
+						 (dynamic_cast<wxTopLevelWindow *>(window)?
+						  dynamic_cast<wxTopLevelWindow *>(window)->GetTitle().ToUTF8():
+						  "<not a toplevel window>"));
+					window = manager->GetManagedWindow();
+					if (!window)
+						continue;
+				}
+			}
 			if (! window->Close()) {
 //			wxIdleEvent::SetMode(imode);
 				quitting = false;
