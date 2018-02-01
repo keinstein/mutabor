@@ -118,7 +118,7 @@ namespace mutaborGUI {
 		}
 
 		// Override sizing for drawing the color
-
+#if colour_only_frameborder
 		void GetClientSize(int * width, int * height)
 		{
 			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
@@ -158,7 +158,7 @@ namespace mutaborGUI {
 			return MutTextBox::ClientToScreen(pt)+wxPoint(1,1);
 		}
 
-
+#endif
 		void OnChar(wxKeyEvent& event);
 
  		void OnGetFocus(wxFocusEvent& event);
