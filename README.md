@@ -8,11 +8,11 @@ The following libraries are known to work. Minimal versions (marked with â€œ>=â€
 versions that introduced new features that are used.
 
 - Boost (1.54)
-- wxWidgets (>=2.9)
+- wxWidgets (>=3.0)
 - autoconf (>=2.67)
 - automake (1.14.1)
 - gettext (0.18.3)
-- Realtime MIDI library (development files for) for:
+- For realtime MIDI input and output the following packages are used :
   - ALSA or Jack (Linux),
   - CoreMidi or Jack (Mac OS X)
   - WinMM (Windows)
