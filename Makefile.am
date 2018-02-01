@@ -927,14 +927,14 @@ endif
 
 
 
-all-local:
-	for file in src/kernel/mut{.cc,.hh,lex.cc} ; \
-	do if test -f "$$file" ; \
-		then \
-			cmp "$$file" "$(top_srcdir)/$$file" || \
-			cp "$$file" "$(top_srcdir)/$$file" ; \
-		fi \
-	done
+# all-local:
+# 	for file in src/kernel/mut{.cc,.hh,lex.cc} ; \
+# 	do if test -f "$$file" ; \
+# 		then \
+# 			cmp "$$file" "$(top_srcdir)/$$file" || \
+# 			cp "$$file" "$(top_srcdir)/$$file" ; \
+# 		fi \
+# 	done
 
 doxygen: Doxyfile
 	builddir=`pwd` ; \

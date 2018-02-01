@@ -89,12 +89,18 @@ noinst_HEADERS += $(%C%_libmutaborkernel_a_INLINEHEADERS) $(%C%_libmutaborkernel
 
 POTSOURCES += %C%_libmutaborkernel_a_POTSOURCES
 
-%D%/mut.cc: %D%/mut.yy
-	$(YACCCOMPILE) -o %D%/mut.cc -b %D%/ $<
-	cmp %D%/mut.cc $(top_srcdir)/%D%/mut.cc || \
-		cp %D%/mut.cc $(top_srcdir)/%D%/mut.cc
+$(top_srcdir)/%D%/mut.cc: $(top_srcdir)/%D%/mut.yy
+	rm -f $(top_srcdir)/%D%/mut.cc
+	$(YACCCOMPILE) -o $@ -b $(top_srcdir)/%D%/ $<
+
+$(top_srdir)/%D%/mutlex.cc: $(top_srcdir)/%D%/mutlex.ll
+	rm -f $(top_srcdir)/%D%/mutlex.cc
+	$(LEXCOMPILE) -o $@ $<
 
 
 if OFF_TREE
 $(top_srcdir)/%D%/mut.cc: %D%/mut.cc
+	cmp $< $@ || cp $< $@
+#$(top_srcdir)/%D%/mutlex.cc: %D%/mutlex.cc
+#	cmp $< $@ || cp $< $@
 endif
