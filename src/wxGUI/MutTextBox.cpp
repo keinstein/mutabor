@@ -43,6 +43,7 @@
 
 #include "wx/tokenzr.h"
 #include "wx/log.h"
+#include "wx/colour.h"
 
 #include "src/wxGUI/MutTextBox.h"
 #include "src/wxGUI/MutFrame.h"
@@ -65,7 +66,7 @@ const wxString TextBoxTitle[] = {
 	wxString(N_("Actions")) };
 // needs wxGetTranslation();
 
-BEGIN_EVENT_TABLE(MutTextBox, wxListBox)
+BEGIN_EVENT_TABLE(MutTextBox, wxTextCtrl)
         EVT_MENU(CM_UPDATEUI, MutTextBox::UpdateUI)
 	EVT_CLOSE(MutTextBox::OnClose)
 END_EVENT_TABLE()
@@ -75,27 +76,26 @@ MutTextBox::MutTextBox(WinKind k,
                        mutabor::Box & b,
                        wxWindow* parent,
                        wxWindowID id,
-
                        const wxPoint& pos,
-                       const wxSize& size):
-		wxListBox(),
-		ChangedCallback(b),
-		winKind(k),
-		box(b)
+                       const wxSize& size):wxTextCtrl(),
+	ChangedCallback(b),
+	winKind(k),
+	box(b)
 {
-	wxString initlist[] = { _("<init>")  };
-	Create(parent, id, pos, size, 1, initlist);
+	Create(parent, id, wxEmptyString, pos, size,
+	       wxTE_MULTILINE | wxTE_READONLY | wxHSCROLL | wxTE_LEFT | wxTE_DONTWRAP/*, 1, ini tlist*/);
 	TRACEC;
 #if wxCHECK_VERSION(2,9,0)
 	SetBackgroundStyle(wxBG_STYLE_ERASE);
 #else
 	SetBackgroundStyle(wxBG_STYLE_COLOUR);
 #endif
-//	SetBackgroundColour(*wxWHITE);
+	//	SetBackgroundColour(*wxWHITE);
 	if (box) {
 		BoxData * guibox = ToGUIBase(box);
 		SetForegroundColour(guibox->GetTextColour());
 		SetBackgroundColour(guibox->GetBackgroundColour());
+		SetOwnBackgroundColour(guibox->GetBackgroundColour());
 	}
 }
 
@@ -161,8 +161,8 @@ void MutTextBox::UpdateUI(wxCommandEvent& event)
 	case WK_ACT: {
 		wxString action = event.GetString();
 		if (!action.IsEmpty()) {
-			Append(action);
-			SetSelection(GetCount()-1);
+			AppendText("\n");
+			AppendText(action);
 		}
 	}
 		break;
@@ -291,7 +291,9 @@ void MutTextBox::GetKeys()
 			keys.Printf(_("%3d : (unknown type %d)"),
 				    tones[i].index,(int)(tones[i].flag));
 		}
-		Append(keys);
+		if (i) AppendText("\n");
+		AppendText(keys);
+		//Append(keys);
 	}
 	Thaw();
 }
@@ -306,15 +308,20 @@ void MutTextBox::GetToneSystem(bool asTS)
 	Clear();
 
 
-	keys.Printf(_("Anchor = %d"), tonesys.anchor);
-	Append(keys);
-	keys.Printf(_("Width = %u"), (unsigned)tonesys.tones.size());
-	Append(keys);
+	keys.Printf(_("Anchor = %d\n"), tonesys.anchor);
+	//Append(keys);
+	AppendText(keys);
+	keys.Printf(_("Width = %u\n"), (unsigned)tonesys.tones.size());
+	//Append(keys);
+	AppendText(keys);
 	keys.Printf(_("Period = %.1f HT"), tonesys.period);
-	Append(keys);
+	//Append(keys);
+	AppendText(keys);
 
 	if (tonesys.tones.size() < 1) {
-		Append(_("No tones."));
+		//Append(_("No tones."));
+		AppendText("\n");
+		AppendText(_("No tones."));
 		Thaw();
 		return;
 	}
@@ -329,7 +336,9 @@ void MutTextBox::GetToneSystem(bool asTS)
 			}
 		}
 		keys.Printf(_("Reference = %d HT"),i);
-		Append(keys);
+		AppendText("\n");
+		AppendText(keys);
+		//Append(keys);
 	}
 
 	for (i = 0 ; i < tonesys.tones.size(); i++) {
@@ -358,7 +367,9 @@ void MutTextBox::GetToneSystem(bool asTS)
 				    (unsigned long)i,
 				    (int) ( tonesys.tones[i].flag));
 		}
-		Append(keys);
+		AppendText("\n");
+		AppendText(keys);
+		//Append(keys);
 	}
 	Thaw();
 

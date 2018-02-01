@@ -46,7 +46,7 @@
 #ifndef MUWX_MUTTEXTBOX_H_PRECOMPILED
 #define MUWX_MUTTEXTBOX_H_PRECOMPILED
 
-#include "wx/listbox.h"
+#include "wx/listctrl.h"
 
 enum WinKind { WK_KEY = 0, WK_TS, WK_ACT, WK_LOGIC, WK_ROUTE, WK_EDIT, WK_NULL };
 
@@ -82,7 +82,7 @@ public:
 };
 */
 
-class MutTextBox : public wxListBox,
+class MutTextBox : public wxTextCtrl,
 		   public mutabor::BoxClass::ChangedCallback
 {
 
