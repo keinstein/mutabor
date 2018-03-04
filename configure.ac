@@ -1012,8 +1012,6 @@ src/wxintl/tests/Makefile
 lib/Makefile
 lib/rtmidi/rtmidi-config
 lib/rtmidi/librtmidi.pc
-lib/rtmidi/Makefile
-lib/rtmidi/tests/Makefile
 lib/missfunc/Makefile
 Images/Icons/png/16x16/Makefile
 Images/Icons/png/20x20/Makefile
