@@ -43,6 +43,8 @@ include %D%/src/Makefile.am
 include %D%/Images/Makefile.am
 include %D%/lib/rtmidi/Makefile.am
 
+RTMIDICONFIGRPATH := 
+
 lib_rtmidi_librtmidi@rtmidi_suffix@_la_CXXFLAGS += \
 	$(WXINTLCXXFLAGS) \
 	"-DLOCALEDIR=\"$(LOCALEDIR)\""

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mutabor 4.0\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2018-01-28 00:15+0100\n"
-"PO-Revision-Date: 2016-07-24 17:12+0200\n"
+"POT-Creation-Date: 2018-02-01 13:56+0100\n"
+"PO-Revision-Date: 2018-03-04 22:10+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.sourceforge.net>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-SearchPath-0: /home/tobias/macbookbackup/Entwicklung/mutabor/"
 "mutabor-git\n"
 
@@ -1140,7 +1140,7 @@ msgstr "Sonstige Informationen der grafischen Oberfläche"
 
 #: src/kernel/debugFlags.h:37
 msgid "Information regarding AUI related debugging"
-msgstr ""
+msgstr "Informationen zur Fehlersuche mit AUI-Bezug"
 
 #: src/kernel/debugFlags.h:38
 msgid "Debug configuration and postprocessing of dialogs"
@@ -1553,9 +1553,8 @@ msgstr ""
 "erstellen. Du (der Programmierer) musst eine erstellen!"
 
 #: src/kernel/routing/gmn/DevGIS.h:140
-#, fuzzy
 msgid "GIS output file"
-msgstr "GIS-Ausgabe-Datei."
+msgstr "GIS-Ausgabe-Datei"
 
 #: src/kernel/routing/gmn/DevGIS.h:304
 msgid "GIS input file"
@@ -2990,21 +2989,17 @@ msgstr "Kann Routendatei „%s“ nicht zum Schreiben öffnen."
 msgid "Error writing file '%s'."
 msgstr "Fehler beim Schreiben der Datei „%s“."
 
-#: src/wxGUI/MutTextBox.cpp:63
+#: src/wxGUI/MutTextBox.cpp:64
 msgid "Current keys"
 msgstr "Aktuelle Tasten"
 
-#: src/wxGUI/MutTextBox.cpp:64
+#: src/wxGUI/MutTextBox.cpp:65
 msgid "Tone system"
 msgstr "Tonsystem"
 
-#: src/wxGUI/MutTextBox.cpp:65
+#: src/wxGUI/MutTextBox.cpp:66
 msgid "Actions"
 msgstr "Aktionen"
-
-#: src/wxGUI/MutTextBox.cpp:86
-msgid "<init>"
-msgstr "<init>"
 
 #: src/wxGUI/MutTextBox.cpp:268
 msgid "%2z : %8.1lf Hz (%6.2lf HT) [ch: %d, id: %z]"
@@ -3030,61 +3025,61 @@ msgstr "%3d : ungültiger Ton"
 msgid "%3d : (unknown type %d)"
 msgstr "%3d : (ungültiger Typ %d)"
 
-#: src/wxGUI/MutTextBox.cpp:309
-#, c-format
-msgid "Anchor = %d"
-msgstr "Anker = %d"
-
 #: src/wxGUI/MutTextBox.cpp:311
 #, c-format
-msgid "Width = %u"
-msgstr "Breite = %u"
+msgid "Anchor = %d\n"
+msgstr "Anker = %d\n"
 
-#: src/wxGUI/MutTextBox.cpp:313
+#: src/wxGUI/MutTextBox.cpp:314
+#, c-format
+msgid "Width = %u\n"
+msgstr "Breite = %u\n"
+
+#: src/wxGUI/MutTextBox.cpp:317
 #, c-format
 msgid "Period = %.1f HT"
 msgstr "Periode = %.1f HT"
 
-#: src/wxGUI/MutTextBox.cpp:317
+#: src/wxGUI/MutTextBox.cpp:324
 msgid "No tones."
 msgstr "Keine Töne."
 
-#: src/wxGUI/MutTextBox.cpp:331
+#: src/wxGUI/MutTextBox.cpp:338
 #, c-format
 msgid "Reference = %d HT"
 msgstr "Bezugston = %d HT"
 
-#: src/wxGUI/MutTextBox.cpp:343
+#: src/wxGUI/MutTextBox.cpp:352
 #, c-format
 msgid "%2lu : %8.1lf Hz (%6.2lf HT)"
 msgstr "%2lu : %8.1lf Hz (%6.2lf HT)"
 
-#: src/wxGUI/MutTextBox.cpp:349
+#: src/wxGUI/MutTextBox.cpp:358
 #, c-format
 msgid "%2lu : empty"
 msgstr "%2lu : leer"
 
-#: src/wxGUI/MutTextBox.cpp:353
+#: src/wxGUI/MutTextBox.cpp:362
 #, c-format
 msgid "%2lu : invalid tone"
 msgstr "%2lu : ungültiger Ton"
 
-#: src/wxGUI/MutTextBox.cpp:357
+#: src/wxGUI/MutTextBox.cpp:366
 #, c-format
 msgid "%2lu : (unknown type %d)"
 msgstr "%2lu : (unbekannter Typ %d)"
 
-#: src/wxGUI/MutTextBox.cpp:451
+#: src/wxGUI/MutTextBox.cpp:462
 msgid "Actions - all boxes"
 msgstr "Aktionen – alle Kästen %d"
 
-#: src/wxGUI/MutTextBox.cpp:453
+#: src/wxGUI/MutTextBox.cpp:464
 #, c-format
 msgid "%s - %s"
 msgstr "%s – %s"
 
 #
-#: src/wxGUI/MutTextBox.cpp:455
+#: src/wxGUI/MutTextBox.cpp:466
 msgid "unknown"
 msgstr "unbekannt"
 
@@ -3655,6 +3650,9 @@ msgstr "Tastenzuordnungs-Datei"
 #: Mutabor.xrc:2064
 msgid "Select a file"
 msgstr "Wähle eine Datei"
+
+#~ msgid "<init>"
+#~ msgstr "<init>"
 
 #~ msgid "MidiInDummy: This class provides no functionality."
 #~ msgstr "MidiInDummy: Diese Klasse stellt keine Funktionalität bereit."
