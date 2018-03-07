@@ -165,12 +165,12 @@ namespace mutaborGUI {
 
 #ifdef DEBUG
 		std::cerr << "Starting Mutabor..." << std::endl;
-#endif
 
 		wxStandardPaths& sp = (wxStandardPaths &) wxStandardPaths::Get();
 
 #ifdef __LINUX__
 		sp.SetInstallPrefix(_T(PREFIX));
+#endif
 #endif
 
 		quitting = false;

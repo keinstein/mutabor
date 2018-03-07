@@ -403,8 +403,8 @@ protected:
 };
 #else
 extern "C" {
-inline void debug_destroy_class(void * ptr, std::string file, int l) {}
-inline void debug_destruct_class(void * ptr) {}
+inline void debug_destroy_class(void * , std::string , int ) {}
+inline void debug_destruct_class(void * ) {}
 inline void debug_print_pointers() {}
 inline bool debug_is_all_deleted() { return true; }
 inline void print_stacktrace (bool flag){}
@@ -414,8 +414,8 @@ class mutabor_backtrace {
 public:
 	typedef mutabor_backtrace base;
 	mutabor_backtrace(int omit_count = 0) {}
-	void set_print (bool p = true) {  }
-	static void set_global_print(bool p = true) {  }
+	void set_print (bool p = true) { mutUnused(p);  }
+	static void set_global_print(bool p = true) { mutUnused(p); }
 };
 
 #endif

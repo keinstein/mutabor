@@ -380,6 +380,7 @@ namespace mutabor {
 					       bool is_note_on /* = false */
 					       )
 	{
+		mutUnused(box);
 		mutASSERT(this->isOpen);
 		if (!r || r == NULL) {
 			UNREACHABLEC;
@@ -917,6 +918,7 @@ namespace mutabor {
 	void CommonMidiOutput<T,D>::do_Quiet(Route r, int type)
 	{
 		mutUnused(type);
+		mutUnused(r);
 		if (!this->isOpen) return;
 		TRACEC;
 #ifdef DEBUG

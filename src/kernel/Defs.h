@@ -98,9 +98,6 @@ _ISEMPTY(                                                               \
 
 /* end of cited code */
 
-#include "src/kernel/debug.h"
-
-
 #define mutint64 int_fast64_t
 #define mutUnused(expr) do { (void)(expr); } while (0)
 #define mutUNUSED(expr)
@@ -109,6 +106,8 @@ _ISEMPTY(                                                               \
 #else
 #define FALLTHROUGH mutCfallthrough
 #endif
+
+#include "src/kernel/debug.h"
 
 #ifdef __cplusplus
 namespace mutabor {
