@@ -261,8 +261,10 @@ extern "C" {
 		freopen("CONOUT$", "wt", stdout);
 		freopen("CONOUT$", "wt", stderr);
 
+#ifdef DEBUG
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
 					FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED);
+#endif
 #else
 		// taken from http://www.halcyon.com/~ast/dload/guicon.htm
 		static const WORD MAX_CONSOLE_LINES = 500;
@@ -311,7 +313,7 @@ extern "C" {
 #endif
 	}
 
-
+#ifdef DEBUG
 	// execute as early as possible
 	class consoleinit {
 	public:
@@ -319,8 +321,7 @@ extern "C" {
 			MutInitConsole();
 		}
 	} g_consoleinit;
-
-
+#endif
 }
 
 #ifdef DEBUG

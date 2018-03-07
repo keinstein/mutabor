@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mutabor 3.1.0alpha0\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2018-01-28 00:15+0100\n"
+"POT-Creation-Date: 2018-02-01 13:56+0100\n"
 "PO-Revision-Date: 2015-12-16 13:18+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.sourceforge.net>\n"
 "Language-Team: Russian\n"
@@ -2983,25 +2983,20 @@ msgstr ""
 "Ошибка сохранения файла '%s':\n"
 "%s"
 
-#: src/wxGUI/MutTextBox.cpp:63
+#: src/wxGUI/MutTextBox.cpp:64
 #, fuzzy
 msgid "Current keys"
 msgstr "Клавиши Emacs"
 
-#: src/wxGUI/MutTextBox.cpp:64
+#: src/wxGUI/MutTextBox.cpp:65
 #, fuzzy
 msgid "Tone system"
 msgstr "Файловая система"
 
-#: src/wxGUI/MutTextBox.cpp:65
+#: src/wxGUI/MutTextBox.cpp:66
 #, fuzzy
 msgid "Actions"
 msgstr "Действия"
-
-#: src/wxGUI/MutTextBox.cpp:86
-#, fuzzy
-msgid "<init>"
-msgstr "Холсты..."
 
 #: src/wxGUI/MutTextBox.cpp:268
 msgid "%2z : %8.1lf Hz (%6.2lf HT) [ch: %d, id: %z]"
@@ -3027,62 +3022,62 @@ msgstr ""
 msgid "%3d : (unknown type %d)"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:309
-#, c-format
-msgid "Anchor = %d"
-msgstr ""
-
 #: src/wxGUI/MutTextBox.cpp:311
 #, c-format
-msgid "Width = %u"
+msgid "Anchor = %d\n"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:313
+#: src/wxGUI/MutTextBox.cpp:314
+#, c-format
+msgid "Width = %u\n"
+msgstr ""
+
+#: src/wxGUI/MutTextBox.cpp:317
 #, c-format
 msgid "Period = %.1f HT"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:317
+#: src/wxGUI/MutTextBox.cpp:324
 #, fuzzy
 msgid "No tones."
 msgstr "Тоновые сигналы телефона..."
 
-#: src/wxGUI/MutTextBox.cpp:331
+#: src/wxGUI/MutTextBox.cpp:338
 #, fuzzy, c-format
 msgid "Reference = %d HT"
 msgstr "&Установки"
 
-#: src/wxGUI/MutTextBox.cpp:343
+#: src/wxGUI/MutTextBox.cpp:352
 #, c-format
 msgid "%2lu : %8.1lf Hz (%6.2lf HT)"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:349
+#: src/wxGUI/MutTextBox.cpp:358
 #, c-format
 msgid "%2lu : empty"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:353
+#: src/wxGUI/MutTextBox.cpp:362
 #, c-format
 msgid "%2lu : invalid tone"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:357
+#: src/wxGUI/MutTextBox.cpp:366
 #, c-format
 msgid "%2lu : (unknown type %d)"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:451
+#: src/wxGUI/MutTextBox.cpp:462
 #, fuzzy
 msgid "Actions - all boxes"
 msgstr "Группирующая рамка"
 
-#: src/wxGUI/MutTextBox.cpp:453
+#: src/wxGUI/MutTextBox.cpp:464
 #, fuzzy, c-format
 msgid "%s - %s"
 msgstr "Площадка (BB)"
 
-#: src/wxGUI/MutTextBox.cpp:455
+#: src/wxGUI/MutTextBox.cpp:466
 #, fuzzy
 msgid "unknown"
 msgstr "Неизвестен"
@@ -3718,6 +3713,10 @@ msgstr "Создать файл"
 #, fuzzy
 msgid "Select a file"
 msgstr "Файл HTML (*.html)|*.html"
+
+#, fuzzy
+#~ msgid "<init>"
+#~ msgstr "Холсты..."
 
 #~ msgid "GIS output file."
 #~ msgstr "Выходный GIS-файл."
