@@ -1,4 +1,505 @@
-mutabor (4.0.0beta3) testing; urgency=low
+mutabor (4.0.0~rc2) UNRELEASED; urgency=medium
+
+  [ Tobias Schlemmer ]
+  * Many build system fixes an dmodifications
+  * Don't fail if jack is not installed in default mode.
+  * Use full 200 bytes for MutTags as in class
+  * Rework error recovery in case an invalid keyrange is requested by the logic.
+  * Fix errors that prevented boxes > 0 from using the right constants.
+  * Add an extra element to the retuning list for compound retunings that have a name.
+  * Enable Emacs tags
+  * Provide some parameter information for action reports.
+  * Fix AUI pane titles.
+  * Fix scrolling of the logic window and use sizers for it.
+  * ignore *.mo in po as they are named *.gmo
+  * update translations
+  * Provide a Menu entry to change Editor encoding back to UTF-8.
+  * Enable the tabulator key in the editor
+  * Provdide a true lexer for the Mutabor language.
+  * Some white space fixes in Demo-UTF8.mut
+  * Improve Mutabor parser for wxStyledTextCtrl.
+  * Introduce a token for -> and fix harmony detection in mutlex.ll.
+  * Fix code folding in the editor.
+  * Some minor comment fixes for the Demo logic.
+  * Allow folding of comments in the editor.
+  * Some improvements for syntax highliting (Colors and Classes).
+  * Display Line:Column; Insert, Playback and Logic state in status bar.
+  * Make sure that tags does not interfere with normal compilation
+  * Implement mutabor_out_of_memory
+  * Check consistency of current_keys.
+  * Fix Panic implementation.
+  * Fix resetting of current keys in Mutabor box.
+  * Fix some printf format strings and their arguments.
+  * two additions to the statusBar changes.
+  * Move toolbar related Icons into a subdir containing the resolution.
+  * Fix icon installation for Windows and Mac OS  X
+  * Fix a constant that gets defined in VisualC++ 2005 and is very annoying.
+  * Distribute up and down arrows.
+  * Some steps towards sorting of devices and boxes in the routing window.
+  * Disable move up and move down menu items in the source code editor frames as they interfere with editing commands.
+  * Enable moving of devices in the device list (GUI is still not updated).
+  * Fix window deletion code while quitting.
+  * Implement new and more robust line drawing algorithm for connections between devices and boxes.
+  * Finish translation of demo.mut into English.
+  * Enable address sanitizer with a separate configuration flag.
+  * Fix the example logics.
+  * Create a new keyword HARMONY_ANALYSIS for the mutabor language.
+  * Implement moving device shapes up and down.
+  * Add a logic file that is dedicated for testing the language features.
+  * Add missing icon.
+  * Test for current_logic before doing the referenced trigger analysis.
+  * Some documentation fixes regarding UTF-8 and font shapes.
+  * fix tutorial example in order to avoid confusion about the reserved word “distance”.
+  * Some improvements of the English usability of the demo file.
+  * Save boxes in the same config path as the rest of the routing.
+  * Implement display of the current play state in the status bar.
+  * Destroy Route after its GUI counterpart to avoid dangling box channel shapes.
+  * Fix emptying the box and double click handling of box shapes and box channel shapes.
+  * Provide GUI based error messages for kernel Box errors.
+  * Copy compiled logic to all available boxes and handle route save checks on activation.
+  * Implement own system abstraction of timers in order to circumvent some system dependent timing issues.
+  * Rework GUI Code for logic windows and opening windows.
+  * Use generic parameter handling for retunings.
+  * Reorganize conversion from internal pitch representation to a human readable one.
+  * Reactivate the logging windows: current keys, actions, current tonesystem
+  * Fix an error that leads to errors while deleting AUI windows at the end.
+  * Implement manual sorting of boxes.
+  * Return the file type as well as the name from the file dialog and unify the corresponding type with MurFileDataType.
+  * Add an XML treestorage backend using wxXMLDocument & Co.
+  * Implement saving routes in XML file format.
+  * Fix device type name.
+  * Silence warning when GIS output device is loaded from a route configuration.
+  * Add Play/Pause/Stop Buttons to Midi Input device shapes when the device is opened.
+  * Activate Play/Pause/Stop button for input MIDI device.
+  * Provide playback control functions for Device class so that they can be used for per device playback.
+  * Ensure that the device play/pause buttons are also updated on display.
+  * Fix silencing and resuming notes on Stop/Pause and Panic.
+  * Fix call to status bar update to really use events.
+  * Separate notes on the same channel from different tracks in MIDI files.
+  * Issue an error message after throwing an unhandled exception in File playback.
+  * Build on Mingw. wxintl: implement textdomain
+  * The existence of a valid box was too late while preparing compilation.
+  * Fix crashes due to wrong MutDocManager deletion.
+  * Move the position of the debug route restore code in logic startup.
+  * Avoid passing 0 to std::string constructor in GUI logic list generation.
+  * Update box colour and title when the box id changes.
+  * Fix updating the menu when a status window of box is closed or activated(wx 2.9.4+).
+  * Focus the first box with logic window immediately after activation
+  * Reactivate update of the Box submenu.
+  * GUI boxes initialize logic and editor from the first box is the box list.
+  * Fix indentation and remove commented out example code for MutBoxShape::replaceSelfBy(…).
+  * Document the unability of combining the traffic light buttons due to wxWidgets restrictions.
+  * Make TexTBoxTitle[] a wxString array.
+  * Remove some unused code.
+  * Reimplement UpdateBoxMenu and RaiseLogic.
+  * Update the box menu when a box is renamed.
+  * Do not create box menu entries for boxes without a logic window.
+  * Reuse command ids in the box selection menu.
+  * Add a menu item that allows to raise the current box.
+  * remove some unused code
+  * Add some debug statements.
+  * Pass unused key strokes from a MutTag to the system.
+  * Enable tab navigation in the logic windows.
+  * Remove unused code and fix indention of some comments.
+  * Fix status byte detection.
+  * Use own format for backtrace printing.
+  * Provide a class to store the stack trace (Linux).
+  * Implement a debug version of intrusive_ptr on Linux.
+  * Avoid assigning NULL to an intrusive_ptr.
+  * Print stack trace only when debuging smart pointers
+  * Remove mutabor::NullRoute.
+  * enable backtrace printing after normal cleanup.
+  * Clear boxCommandIds in MutFrame::Destroy()
+  * Helper for printing code lines of construction of debug intrusive_ptr objects.
+  * Fix deletion of BoxShapeData objects.
+  * Make some debug messages conditional.
+  * Fix an endless loop in Panic()
+  * Overwrite the correct controller value if it has been previously changed.
+  * some white space and documentation fixes
+  * Add some warnings.
+  * Add a test case that tests controller propagation.
+  * Fix test cases for the debug smart pointer class.
+  * Activate minimal propagation of controllers.
+  * Activate resetting of controllers.
+  * honour the unique id of tones when controllers must be adjusted
+  * Fix some cases where the wrong functions have been used to send and set the controller value.
+  * Add a resetting pass for Channel data synchronization.
+  * Send only the received value if one of the register selection controllers are received.
+  * Add a missing constant that is used to signal that no unique id can be given for a certain reason.
+  * Also resend resetting and increment/decrement controllers. And handle updating of resetted controllers.
+  * Minor fixes: don't load wx/toolbar.h and fix MutFrame Documentation.
+  * Add some constants and query functions.
+  * Use the std::vector based API for all MIDI messages
+  * Fix aka rewrite controller handling for overlapping output channel ranges.
+  * Fix operator= to be used as for boost::intrusive_ptr
+  * Fix sending NRPs and save RPN/NRPN for future usage.
+  * Update test suite to the last changes.
+  * Update doxygen documentation.
+  * Add a test that checks the correct multiplexing of RPN/NRPN MIDI parameters.
+  * Fix iniitialisation of controller storage when the container must be resized.
+  * Check for array overflow when searching for changed controllers.
+  * Fix updating of controllers
+  * Restructure code for copying controllers from Input to output.
+  * Fix RPN/NRPN updating and unify controller output.
+  * remove unused code
+  * Add two missing header files to Makefile.am
+  * Remove some unused code.
+  * Make some forgotten global variables file local ones.
+  * Fix some tests that occationally crashed.
+  * Fix resetting GIS Head after Stopping the file device.
+  * fix OnExceptionInMainLoop and white space.
+  * Fix installation, uninstallation, distribution and cleaning of files.
+  * Update pot files (only automatic translation updates).
+  * Reorganize missfunc library, fixing a warning about non-standard symbol free compilation units.
+  * Revise MidiIn logic trigger code.
+  * Use boost macro to really generate diagnostic information when an exception is thrown.
+  * Fix some minor warnings.
+  * Implement basic event handling functions for Mutabor.
+  * Implement Key pressure events for MIDI devices.
+  * Add constants for providing META events and a channel pressure controller.
+  * Prepare devices for handling MIDI playback messages.
+  * Use generic panic routine for GUIDO file input.
+  * Add event classes for all MIDI events (except common SysEx).
+  * Add some missing MIDI output generators.
+  * First steps for MIDI system common, MIDI meta, and event based routing.
+  * Whitespace fixes and some unused code removed.
+  * Fix controller handling allowing channel pressure output.
+  * Test case for channel pressure
+  * Use __mutabor_attribute_format_arg for marking format arguments and check for boost/foreach.hpp
+  * Silence some C++ compiler warnings.
+  * Fix a compiler error.
+  * Use new generic event handling functions for GUI playback control.
+  * Fix some white space and remove unused code.
+  * Add event.h to POTFILES.in and update .pot files.
+  * Add a test case for system exclusive MIDI messages.
+  * Fix generic handling of SysEx MIDI messages.
+  * Fix crashing when an input midi file is played while logic is active.
+  * Implement logic locking.
+  * Update documentation to make clear that the else works only with respect to chords and harmonic forms in triggers.
+  * Implement locking of logics.
+  * Silence some compiler warnings.
+  * Some code cleanup and whitespace fixes.
+  * Silence most compiler warnings in the midi2text bundle.
+  * Implement individual play/pause buttons for GMN devices.
+  * Improve visibility of connections in the route window.
+  * Fix box label for new box button.
+  * Midi2Text: Unify duplicate files and remove unneccesary copies.
+  * Use structures for tones and intervals.
+  * Fix a printf format error when empty tones occur.
+  * Treat boxes interactively even if we are in batch mode.
+  * Remove some unused code.
+  * Prepare for Oink.
+  * Bugfix: Running batch play twice lead to unusable MIDI files.
+  * bison does not honour my coding style :-(
+  * Use actions as initial tunings.
+  * Produce more verbose output from bison.
+  * Use the same namespace for tunings, retunings and logics.
+  * Add a mutabor logic that triggers errors.
+  * Fix some minor crashes.
+  * Add a rudimentary test that checks the harmonic form parser.
+  * Revise code so that the data flow in compare_harmonie is better visible.
+  * Use perror to print get the error type from the system.
+  * Fix interval and tone calculations in various ways.
+  * Added a rudimentary emacs mode.
+  * Check in current version of mutabor-mode.
+  * 2nd check in of mutabor-mode.el
+  * Fix breaking endless loops in tuning logics.
+  * Fix a compilation error for LLVM thanks to Roman Vyjídáček for reporting.
+  * Prevent boxes from endless looping.
+  * Remove some unused code
+  * use default rules for bison.
+  * fix some white space
+  * Add an example of a circular logic.
+  * Add an empty Midi implementation chart example as provided by MMAA.
+  * Some improvements for emacs mode
+  * Some improvements to error messages from devices.
+  * Refactor kernel for toolkit-independence part 1.
+  * Fix format_arg references.
+  * Fix display of device and box error messages.
+  * Postpone opening of devices if they are created without a device name.
+  * move RtMidi out of the way to add a subproject
+  * Call base class DoClose() from GUI Box, so that the watchdog gets terminated correctly.
+  * Fix backtrace stuff.
+  * Fix some missing changes.
+  * Change the order when a device is going emergency stopped and print a backtrace.
+  * Add upstream RtMidi repositiory as submodule
+  * Upgrade to latest RtMidi release.
+  * Fix distcheck errors for stable builds
+  * Updated README for the git repository.
+  * Update the README to show better source code.
+  * Fix missing README file.
+  * Differentiate between struct and typedef for mutabor_box_type
+  * Fix stable build without libbacktrace on Linux.
+  * Fix make distcheck.
+  * Fix some problems with unitialized values reported by Coverity.
+  * Fix some problems with unitialized values reported by Coverity.
+  * Fix for Coverity 48425.
+  * Fix for Coverity 48423 and 48414.
+  * Fix some negative array indices found by Coverity.
+  * Fix freeing constant strings (found by Coverity).
+
+  [ Maximilian Marx ]
+  * Avoid a segfault in call_actions()
+
+  [ Tobias Schlemmer ]
+  * update doxygen
+  * Fix programming language selection in the configure script.
+  * Fix some initializations.
+  * Some whitespace fixes.
+  * Add a paramater to allow flushing the file output when a device is closed.
+  * Avoid initializing backtrace_state at runtime.
+  * update ax_boost_base.m4
+  * Add some clang specific command options for the C/C++ compiler
+  * Upgrade flex.
+  * Merge some old translations and some boot improvements.
+  * Upgrade translation files to current source code.
+  * Add two testcases that generate artificial MIDI files over the complete spectrum of MIDI tones.
+  * Update rtmidi
+  * Fix link order for wxWidgets
+  * Disable sanitizer during configuration.
+  * update ax_boost_base.m4
+  * Use C linkage in C++ mode for the compiler error jump mark.
+  * Separate struct and typedef for mutabor_box_type.
+  * Add some workaround for clang
+  * Fix debug output
+  * Rename Refresh() to RefreshDlg()
+  * GetType() is const.
+  * Fix some race condition when playing files.
+  * Fix some format error.
+  * Don't inline CommonFileOutputDevice::operator std::string()
+  * Some further race condition fixes for file device classes
+  * Make DeviceClass::Load and DeviceClass::Save visible for file devices
+  * Pass sync parameter of do_Close() to file devices.
+  * Fix some warnings.
+  * use std::abs from cmath
+  * Make negation clear to read.
+  * make CurrentTimerBase::Sleep() a static function
+  * rename Refresh() to RefreshDlg()
+  * Make non-GUI Add and Remove functions available.
+  * Fix some compiler warnings and bugs that have been found with clang.
+  * Correctly compute current path in GetPath()
+  * update some m4 files to current state
+  * Change Graphics Context handling
+  * Update po files
+  * diasable backtrace on clang
+  * add interface_deps_wxWidgets.cpp
+  * Use Keinsten's repository for RtMidi
+  * Several minor build fixes.
+  * build with internationalized RtMidi.
+  * Remove some unneccesary files from the debian subtree
+  * Intermediate data in order to debug at another computer.
+  * Fix some typo in the documentation
+  * Change OutputMidiDevice to use the port descriptor API for RtMidi.
+  * Fix crashing after device choice dialog.
+  * add missing libtool files.
+  * Make testsuite work with enabled LeakSanitizer
+  * Rename default tone system to give the interval and the tone a descriptive name.
+  * Update rtmidi.
+  * Refactor to use the new APIs from our own RtMidi fork.
+  * Update generated images
+  * Perform potfilechk even if it fails.
+  * Remove some generated object files
+  * Merging changes in RtMidi
+  * Use copy-on-write container to connect devices and boxes. This avoids possible crasces with invalid pointers when the logic is active and the connections are changed.
+  * remove generated debian files
+  * Make the test-suite compatible to ThreadSanitizer
+  * Rework the smart pointers to use atomic counters.
+  * Implement debug output for locking and unlocking of Mutexes.
+  * Rework thread timing.
+  * fix some warning in the parser file.
+  * Fix some tests.
+  * RtMidi: Fix the error detection in sendMessage.
+  * Fix several race conditions and possible deadlocks found by ThreadSanitizer in the testcppunit tests.
+  * Implement a scala .scl file parser.
+  * Update merge with upstream.
+  * Make scala .scl parseer test running for the most important cases.
+  * Make  a simple version of scl2mut.
+  * Update translations and fix some typos in the english language.
+  * The scala parser correctly rejects the cases that must not be accepted by a scala parser.
+  * Fix some email addresses.
+  * Ignore log files and bison debug output.
+  * Update build system.
+  * Fix inclusion guards.
+  * Move some functions properly to scala-inlines.h
+  * Demangle class names for GCC compiler.
+  * Converge converted scala logics and mutabor language.
+  * Implement a Scala keymap (.kbm) parser.
+  * Consistently use $(AM_MAKEFLAGS)
+  * Fix crashes in the test suite, when names cannot be demangled.
+  * Fisnish scl2mut.
+  * Fix loading of .kbm files in which the last empty tones are omitted.
+  * Fix build dependencies for the .kbm test suite
+  * Allow different names for intervals, tones, tone systems and logics during scala import
+  * Add a Scala file import dialog
+  * RtMidi latest state
+  * Remove backup tree of RtMidi
+  * Add config file for wxformbuilder.
+  * Fix lost platform dependent features in XRC.
+  * Update C++ part of the XRC classes
+  * Activate syntax highlighting for newly created files
+  * Allow Scala import from the GUI.
+  * Fix Makevars.
+  * Update C++ file template.
+  * Update my email address in the source file headers.
+  * Update translation files.
+  * Avoid warnings about signed/unsigned comparisons in internal channel fields.
+  * Some steps towards Scala file export from the gui.
+  * Improve test suite execution speed.
+  * Correct some coordinates.
+  * When we compile a file we should ask for a file name rather than fail.
+  * Regenerate flex and bison parsers.
+  * Fix testing with leak sanitizer.
+  * Remove unused converter variable.
+  * Make letter events case sensitive.
+  * Save the generated png Images for the last changes.
+  * Finish integration of scala writer into GUI and separate common classes from Box
+  * remove aux files from the repository. They can cause problems during the build process.
+  * Simplify NSIS file generation
+  * Silence some warnings which come from incompatibilities between C and C++.
+  * Correct estimation of necessary intervals for scala export
+  * Fix some drawing issues (at least) on wxGTK.
+  * Properly select the file mask for Scala save dialog elements.
+  * fix dependencies for LaTeX calls
+  * Fix building of the documentation with current KOMA script.
+  * Fix building of the help file in off-tree environments
+  * update wxresource.cpp
+  * Minor documentation changes
+  * Make distcheck happy. Part 1: add/remove files to/from several dependencies
+  * Make distcheck happy. Part 2: fix dependencies for generating images.
+  * Make distcheck happy. Part 3: fix scale_parser and lexer stuff.
+  * Make distcheck happy. Part 3: Minor source code fixes.
+  * Make distcheck happy. Part 4: Make some Midi check order independent
+  * Add ASAN suppressions to MIDI tests.
+  * Update Help and translations.
+  * Fix cleaning of temporary Makefile for images.
+  * Bump version number and check in generated documentation and locales.
+
+  [ R. Mattes ]
+  * Fixed typo in git submodule config
+
+  [ Tobias Schlemmer ]
+  * Fix some makefiles in order to execute tests.
+  * fix build dependencies.
+  * removed generated files by flex and bison
+  * Remove some generated files
+  * remove some further auto-generated files
+  * Sort .gitignere and add some further files
+  * Update FlexLexer.h
+  * remove stack.hh
+  * Upgrade Gettext
+  * Include rtmidi build system into mutabor
+  * Fix compiling of flex and bison sources
+  * Fix usage of wxIntl
+  * Fix copying DLLs
+  * Fix some issues with debug compilation. libstdc++ debugging has been disabled as it needs specially compiled libraries
+  * Mark source as non-GNU
+  * do not override tags:
+  * install emacs mutabor mode in the debian package
+  * Fix const and exceptions in debug intrusive_ptr::bool()
+  * fix scala parser test scripts
+  * Adopt new RtMidi constants
+  * Print RtMidi errors to the user when something is wrong.
+  * Upgrade boost detection to AX.
+  * Use rtmidi suffixsupport
+  * Fix wxWidgets gettext simulation as well as the boost gettext simulation
+  * Enable maintainer mode by default
+  * Link against libasan
+  * Use STABS debug information on Windows platforms
+  * Allow parallel bison runs.
+  * Fix warnings and bugs related to the new fallthrough warnings of GCC
+  * use macros for extern "C" scopes
+  * Fix lots of unused parameter warnings
+  * Properly define GNU_SOURCE
+  * properly or the changed mask
+  * Make some functions static
+  * define BOOST_SP_NOEXCEPT if it is not provided
+  * replace __FUNCTION__ by __func__
+  * Don't include icon in wxMSW to avoid warning
+  * Fix GetClientSize for box status windows.
+  * Remove AsTS from current kays window.
+  * Fix an else path
+  * Fix a crash on windows where it was not possible to create a route.
+  * Fix warnings about incomplete initialization of debug command line parameters
+  * Whitespace fixes
+  * Try to avoid a warning about always false path
+  * Fix object management problems.
+  * Delete dialog even when we get into an undefined state.
+  * Fix crash on Windows due to doubly deleted AUI panes.
+  * Unify scaling modes for different SetSize/GetSize functions.
+  * Configure the address sanitizer for mutabor.
+  * Reorganize some code in order to minimize stack allocations.
+  * Update help
+  * Merge old stashed translation changes
+  * update locale files and introduce OFF_TREE conditional for detecting off tree builds
+  * upgrade m4 files
+  * Fix some makefiles in order to execute tests.
+  * fix build dependencies.
+  * removed generated files by flex and bison
+  * Remove some generated files
+  * remove some further auto-generated files
+  * Sort .gitignere and add some further files
+  * Update FlexLexer.h
+  * remove stack.hh
+  * Upgrade Gettext
+  * Include rtmidi build system into mutabor
+  * Fix compiling of flex and bison sources
+  * Fix usage of wxIntl
+  * Fix copying DLLs
+  * Fix some issues with debug compilation. libstdc++ debugging has been disabled as it needs specially compiled libraries
+  * Mark source as non-GNU
+  * do not override tags:
+  * install emacs mutabor mode in the debian package
+  * Fix const and exceptions in debug intrusive_ptr::bool()
+  * fix scala parser test scripts
+  * Adopt new RtMidi constants
+  * Print RtMidi errors to the user when something is wrong.
+  * Upgrade boost detection to AX.
+  * Use rtmidi suffixsupport
+  * Fix wxWidgets gettext simulation as well as the boost gettext simulation
+  * Enable maintainer mode by default
+  * Link against libasan
+  * Use STABS debug information on Windows platforms
+  * Allow parallel bison runs.
+  * Fix warnings and bugs related to the new fallthrough warnings of GCC
+  * use macros for extern "C" scopes
+  * Fix lots of unused parameter warnings
+  * Properly define GNU_SOURCE
+  * properly or the changed mask
+  * Make some functions static
+  * define BOOST_SP_NOEXCEPT if it is not provided
+  * replace __FUNCTION__ by __func__
+  * Don't include icon in wxMSW to avoid warning
+  * Fix GetClientSize for box status windows.
+  * Remove AsTS from current kays window.
+  * Fix an else path
+  * Fix a crash on windows where it was not possible to create a route.
+  * Fix warnings about incomplete initialization of debug command line parameters
+  * Whitespace fixes
+  * Try to avoid a warning about always false path
+  * Fix object management problems.
+  * Delete dialog even when we get into an undefined state.
+  * Fix crash on Windows due to doubly deleted AUI panes.
+  * Unify scaling modes for different SetSize/GetSize functions.
+  * Configure the address sanitizer for mutabor.
+  * Reorganize some code in order to minimize stack allocations.
+  * Update help
+  * Merge old stashed translation changes
+  * update locale files and introduce OFF_TREE conditional for detecting off tree builds
+  * upgrade m4 files
+  * fix recreation of mutlex.cc
+  * Dissable unused functions that generate a 1 pixel gap around the TextBox.
+  * Use wxTextCtrl instead of wxListBox for status windows.
+  * update README.md to match the included RtMidi fork
+  * Compile flex files in build tree.
+  * remove depcomp
+  * fix RtMidi related issues.
+  * Update translations
+  * ignore depcomp
+  * compile on debian
+
+ -- Tobias Schlemmer <keinstein@users.berlios.de>  Wed, 07 Mar 2018 10:21:19 +0100
+
+mutabor (4.0.0~beta3) testing; urgency=low
 
   * Disable test suite as it needs a usable Display.
 
