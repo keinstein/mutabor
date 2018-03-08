@@ -147,7 +147,8 @@
 % Herausfiltern des Verlinkungsmakros aus Querverweis-Speichern
 %
 \def\ts@parse@ref@a#1#2\ts@end@parse{\ts@parse@ref@b#1\ts@end@parse}
-\def\ts@parse@ref@b#1#2#3\ts@end@parse{#1{#2}}
+\def\ts@parse@ref@b#1#2\ts@end@parse{\expandafter#1\expandafter{\ts@parse@ref@c#2\ts@end@parse}}
+\def\ts@parse@ref@c#1#2\ts@end@parse{#2}
 %
 % Setzen des Verweises.
 % Das erste Argument mus zunächst expandiert werden, bevor es
