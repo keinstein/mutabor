@@ -69,20 +69,24 @@ $(srcdir)/macrotrans.H: $(srcdir)/macrotrans.h
 .PHONY: reslocale.cpp
 $(DOMAIN).pot-update: reslocale.cpp
 
-$(top_srcdir)/src/kernel/mut.cc \
-$(top_srcdir)/src/kernel/parsers/scale/scale_parser.cc \
-$(top_srcdir)/src/kernel/parsers/scala/scale_parser.cc \
-$(top_srcdir)/src/kernel/parsers/scala/scale_parser.hh \
-$(top_srcdir)/src/kernel/parsers/scala/position.hh \
-$(top_srcdir)/src/kernel/parsers/scala/location.hh \
-$(top_srcdir)/src/kernel/parsers/scala/stack.hh \
-$(top_srcdir)/src/kernel/parsers/scala/scale_lexer.cc \
-$(top_srcdir)/src/kernel/parsers/scala/scala-inlines.h \
-$(top_srcdir)/src/xrc/reslocale.cpp:
+
+# src/kernel/mut.cc \
+# src/kernel/mutlex.cc \
+# src/kernel/parsers/scale/scale_parser.cc \
+# src/kernel/parsers/scala/scale_parser.cc \
+# src/kernel/parsers/scala/scale_parser.hh \
+# src/kernel/parsers/scala/position.hh \
+# src/kernel/parsers/scala/location.hh \
+# src/kernel/parsers/scala/stack.hh \
+# src/kernel/parsers/scala/scale_lexer.cc \
+# src/kernel/parsers/scala/scala-inlines.h \
+# src/xrc/reslocale.cpp:
+$(POTFILES):
+	echo "Building $@..."
 	echo "$@" | sed -e 's,^\.\./,,'
 	$(MAKE) -C .. `echo "$@" | sed -e 's,^\.\./,,'`
 
-gmac:
+mac:
 
 potfilechk:
 
