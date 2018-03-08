@@ -422,8 +422,10 @@ namespace mutaborGUI {
 		*/
 		Ok = true;
 		// Analyse zuerst
+#ifdef DEBUG
 		BoxData * guibox = ToGUIBase(box);
 		mutASSERT(guibox);
+#endif
 
 		wxSizer * sizer = GetSizer();
 		wxSizerFlags flags;

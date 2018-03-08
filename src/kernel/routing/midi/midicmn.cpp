@@ -934,6 +934,7 @@ namespace mutabor {
 	template<class T, class D>
 	void CommonMidiOutput<T,D>::do_Quiet(Route r, int type, size_t id)
 	{
+		mutUnused(r);
 		mutUnused(type);
 		mutUnused(id);
 		if (!this->isOpen) return;

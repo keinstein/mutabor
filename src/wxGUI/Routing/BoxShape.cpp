@@ -610,6 +610,7 @@ namespace mutaborGUI {
 
 	bool MutBoxShape::replaceSelfBy (MutBoxShape  * newshape)
 	{
+		mutUnused (newshape);
 		mutASSERT (newshape);
 
 		// this is only used in NewMutBoxShape so far.

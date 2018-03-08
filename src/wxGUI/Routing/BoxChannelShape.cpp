@@ -194,8 +194,9 @@ namespace mutaborGUI {
 		if (retval) {
 			input = newdev;
 			TRACEC;
-		} else
+		} else {
 			mutASSERT(retval);
+		}
 		TRACEC;
 		return retval;
 	}
@@ -209,8 +210,9 @@ namespace mutaborGUI {
 				 (void *)oldroute.get(), (void *)newroute.get());
 
 			route = newroute;
-		} else
+		} else {
 			mutASSERT(retval);
+		}
 		return retval;
 	}
 

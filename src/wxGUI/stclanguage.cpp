@@ -366,8 +366,10 @@ namespace mutaborGUI {
 
 	void MutSTCLexer::OnStyleNeeded(wxStyledTextEvent & event) {
 		int pos = event.GetPosition();
-		wxPoint editpos = editor->GetPosition();
 		int laststyled = editor->GetEndStyled();
+#ifdef DEBUG
+		wxPoint editpos = editor->GetPosition();
+#endif
 		DEBUGLOG(editlexer, 
 			 ("event.pos = %d, editor pos = (%d,%d), last syled pos = %d"),
 			 pos,editpos.x,editpos.y,laststyled);

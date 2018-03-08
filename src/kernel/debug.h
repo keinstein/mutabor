@@ -341,8 +341,12 @@ private:
 	std::string name;
 #endif
 public:
-	watchedPtr(parenttype * p, const std::string & varname = "watchedPtr", datatype * d = NULL)
+	watchedPtr(parenttype * p,
+		   const std::string & varname = "watchedPtr",
+		   datatype * d = NULL)
 	{
+		mutUnused(p);
+		mutUnused(varname);
 #ifdef DEBUG
 		parent = p;
 		name = varname;
@@ -407,13 +411,13 @@ inline void debug_destroy_class(void * , std::string , int ) {}
 inline void debug_destruct_class(void * ) {}
 inline void debug_print_pointers() {}
 inline bool debug_is_all_deleted() { return true; }
-inline void print_stacktrace (bool flag){}
+inline void print_stacktrace (bool){}
 }
 
 class mutabor_backtrace {
 public:
 	typedef mutabor_backtrace base;
-	mutabor_backtrace(int omit_count = 0) {}
+	mutabor_backtrace(int omit_count = 0)  { mutUnused(omit_count); }
 	void set_print (bool p = true) { mutUnused(p);  }
 	static void set_global_print(bool p = true) { mutUnused(p); }
 };

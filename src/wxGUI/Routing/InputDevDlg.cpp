@@ -182,7 +182,10 @@ namespace mutaborGUI {
 
 	void InputDevDlg::OnFileChanged ( wxFileDirPickerEvent & event ) 
 	{
-		DEBUGLOG (other, ("Path changed: %s"),event.GetPath().c_str());
+		mutUnused(event);
+		DEBUGLOG (other,
+			  ("Path changed: %s"),
+			  event.GetPath().c_str());
 		GetSizer()->SetSizeHints(this);
 		Fit();
 	}

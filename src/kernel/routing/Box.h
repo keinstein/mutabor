@@ -767,6 +767,7 @@ namespace mutabor {
 
 		template<class T>
 		void remove_watchdog(T dog) {
+			mutUnused(dog);
 			mutASSERT(dog == loopguard);
 			loopguard = NULL;
 		}

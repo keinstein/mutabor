@@ -182,6 +182,7 @@ namespace mutaborGUI {
 
 	void OutputDevDlg::OnFileChanged ( wxFileDirPickerEvent & event ) 
 	{
+		mutUnused(event);
 		DEBUGLOG (other, ("Path changed: %s"),event.GetPath().c_str());
 		SetSize(wxDefaultSize);
 		Layout();

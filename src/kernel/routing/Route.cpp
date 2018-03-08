@@ -295,7 +295,7 @@ namespace mutabor {
 	template <class I, class O, class B>
 	void TRouteClass<I,O,B>::RemoveFromRouteList (Route route)
 	{
-#ifndef NDEBUG
+#ifdef DEBUG
 		bool erg =
 #endif
 			routeList.erase(route);

@@ -156,8 +156,10 @@ int configtree::toFirstLeaf(const std::string& name,std::string& id)
 }
 
 
-int configtree::toNextLeaf(const std::string& name, std::string& id)
+int configtree::toNextLeaf(const std::string& name,
+			   std::string& id)
 {
+	mutUnused(name);
 #ifdef DEBUG
 	DEBUGLOG (config, "going to next leaf of group '%s'" ,name.c_str());
 	state oldstate=states.top();

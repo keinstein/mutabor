@@ -575,7 +575,9 @@ void GisReadArtHead::Read()
 				AddTag(&Instr, TAG)->Data.ch = GetMidiInstrument(TAG->GetPara(2));
 		} else if ( Id == TTtempo ) {
 			if ( TAG->GetParaType(2) == GTParaStr ) {
+#ifdef DEBUG
 				long int speed =
+#endif
 				        (AddTag(&Tempo, TAG)->Data.i =
 				                 GetTheSpeedFactor(TAG->GetPara(2)));
 				DEBUGLOG (gmnfile, "Got speed factor %ld" ,speed);

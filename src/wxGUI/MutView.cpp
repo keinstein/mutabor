@@ -183,6 +183,8 @@ namespace mutaborGUI {
 				     wxView *activeView, 
 				     wxView *deactiveView)
 	{
+		mutUnused(activate);
+		mutUnused(activeView);
 		mutUnused(deactiveView);
 		// don't implement this function before looking at the debug output
 		DEBUGLOG (docview, "Activate: %d && %p == %p" ,

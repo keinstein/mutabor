@@ -90,9 +90,10 @@ namespace mutaborGUI {
 // Pass a command to the processor. The processor calls Do();
 // if successful, is appended to the command history unless
 // storeIt is false.
-	bool MutCommandProcessor::Submit(wxCommand *command, bool storeIt)
+	bool MutCommandProcessor::Submit(wxCommand *command,
+					 bool storeIt)
 	{
-
+		mutUnused(storeIt);
 		DEBUGLOG (editor, "Submitted command (storeIt = %d): %s" ,
 			 storeIt,
 			 (command?(const wxChar*)command->GetName().c_str():_T(""))

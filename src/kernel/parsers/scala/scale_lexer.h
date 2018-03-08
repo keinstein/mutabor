@@ -175,6 +175,7 @@ namespace mutabor {
 					 ((yy_start_stack_ptr>0)?yy_top_state():-1));
 			}
 			void pop_state(start_mode mode) {
+				mutUnused(mode);
 				DEBUGLOG(sclparser,
 					 "popping mode1: (%d) %d ->",
 					 yy_start_mode[mode],

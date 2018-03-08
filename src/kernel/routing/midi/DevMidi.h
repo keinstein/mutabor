@@ -227,7 +227,9 @@ namespace mutabor {
 		 *
 		 * \param byte1 1st byte
 		 */
-		MidiPortOutputProvider & RawMsg (int channel, uint8_t byte1) {
+		MidiPortOutputProvider & RawMsg (int channel,
+						 uint8_t byte1) {
+			mutUnused(channel);
 			mutASSERT(channel == -1);
 			std::vector<unsigned char> message(1);
 			message[0] = byte1;

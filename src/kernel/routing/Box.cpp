@@ -329,9 +329,12 @@ namespace mutabor {
 
 	void BoxClass::Panic(Route r, int type, size_t unique_id)
 	{
+		mutUnused(r);
 		mutUnused(type);
-		BoxLock lock(this);
+		mutUnused(unique_id);
 #ifdef DEBUG
+		BoxLock lock(this);
+
 		size_t channel = r -> get_session_id();
 		mutabor_note_type * key;
 		size_t index = 0;
@@ -351,9 +354,11 @@ namespace mutabor {
 
 	void BoxClass::Panic(Route r, int type)
 	{
+		mutUnused(r);
 		mutUnused(type);
-		BoxLock lock(this);
 #ifdef DEBUG
+		BoxLock lock(this);
+
 		size_t channel = r -> get_session_id();
 		mutabor_note_type * key;
 		size_t index = 0;
@@ -959,9 +964,10 @@ namespace mutabor {
 	BoxFactory::factorylist BoxFactory::factories;
 
 	BoxFactory::BoxFactory(size_t type) {
-		if (type < 0) type = 0;
+		// if (type < 0) type = 0;
 		if (factories.size() <= type) {
-			factories.resize(type+1,NULL);
+			factories.resize(type+1,
+					 NULL);
 		}
 		if (factories[type]) {
 			UNREACHABLEC;

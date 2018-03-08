@@ -54,11 +54,17 @@
 #include <malloc.h>
 
 #ifdef __cplusplus
-namespace mutabor {
-	namespace hidden {
-		extern "C" {
+#define BOX_H_NAMESPACE						      \
+	namespace mutabor {					      \
+	namespace hidden {					      \
+	extern "C" {
+#define BOX_H_NAMESPACE_END }}}
+#else
+#define BOX_H_NAMESPACE
+#define BOX_H_NAMESPACE_END
 #endif
 
+BOX_H_NAMESPACE
 /* system headers which do seldom change */
 
 
@@ -191,7 +197,9 @@ void mutabor_initialize_keyplane(mutabor_key_index_type * plane);
 #ifdef DEBUG
 void mutabor_check_key_count(mutabor_box_type * box);
 #else
-inline void mutabor_check_key_count(mutabor_box_type * box) {}
+inline void mutabor_check_key_count(mutabor_box_type * box) {
+	mutUnused(box);
+}
 #endif
 
 
@@ -360,12 +368,7 @@ static inline mutabor_note_type * mutabor_create_key_in_box (mutabor_box_type * 
 	return new_key;
 }
 
-
-#ifdef __cplusplus
-		}
-	}
-}
-#endif
+BOX_H_NAMESPACE_END
 
 #endif
 #endif
