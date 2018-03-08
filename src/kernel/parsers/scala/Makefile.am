@@ -29,21 +29,34 @@ fix_scale_parser.stamp: $(srcdir)/%D%/scale_parser.cc
 # to generate the desired files
 
 %D%/scale_parser.cc: %D%/scale_parser.yy
+	$(MKDIR_P) `dirname $@`
+	rm -f "$(top_srcdir)/%D%/scale_parser.cc" "$@"
 	$(YACCCOMPILE) -o %D%/scale_parser.cc -b %D%/ $<
+	cmp $(top_srcdir)/$@ $@ 2>/dev/null || \
+		cp $@ $(top_srcdir)/$@
 
 %D%/keymap_parser.cc: %D%/keymap_parser.yy
+	$(MKDIR_P) `dirname $@`
+	rm -f "$(top_srcdir)/%D%/keymap_parser.cc" "$@"
 	$(YACCCOMPILE) -o %D%/keymap_parser.cc -b %D%/ $<
+	cmp $(top_srcdir)/$@ $@ 2>/dev/null || \
+		cp $@ $(top_srcdir)/$@
 
 %D%/scale_lexer.cc: %D%/scale_lexer.ll
+	$(MKDIR_P) `dirname $@`
+	rm -f "$(top_srcdir)/%D%/scale_lexer.cc" "$@"
 	$(LEXCOMPILE) -o $@ $<
+	cmp $(top_srcdir)/$@ $@ 2>/dev/null || \
+		cp $@ $(top_srcdir)/$@
 
-if OFF_TREE
-$(top_srcdir)/%D%/scale_parser.cc: %D%/scale_parser.cc
-		cp %D%/scale_parser.cc $(top_srcdir)/%D%/scale_parser.cc
-$(top_srcdir)/%D%/scale_parser.hh: %D%/scale_parser.hh
-		cp %D%/scale_parser.hh $(top_srcdir)/%D%/scale_parser.hh
-$(top_srcdir)/%D%/keymap_parser.cc: %D%/keymap_parser.cc
-		cp %D%/keymap_parser.cc $(top_srcdir)/%D%/keymap_parser.cc
-$(top_srcdir)/%D%/scale_lexer.cc: %D%/scale_lexer.cc
-		cp %D%/scale_lexer.cc $(top_srcdir)/%D%/scale_lexer.cc
-endif
+# if OFF_TREE
+# $(top_srcdir)/%D%/scale_parser.cc: %D%/scale_parser.cc
+# 		cp %D%/scale_parser.cc $(top_srcdir)/%D%/scale_parser.cc
+# $(top_srcdir)/%D%/scale_parser.hh: %D%/scale_parser.hh
+# 		cp %D%/scale_parser.hh $(top_srcdir)/%D%/scale_parser.hh
+# $(top_srcdir)/%D%/keymap_parser.cc: %D%/keymap_parser.cc
+# 		cp %D%/keymap_parser.cc $(top_srcdir)/%D%/keymap_parser.cc
+# $(top_srcdir)/%D%/scale_lexer.cc: %D%/scale_lexer.cc
+# 		cp %D%/scale_lexer.cc $(top_srcdir)/%D%/scale_lexer.cc
+# endif
+

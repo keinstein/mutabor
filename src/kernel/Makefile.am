@@ -89,18 +89,33 @@ noinst_HEADERS += $(%C%_libmutaborkernel_a_INLINEHEADERS) $(%C%_libmutaborkernel
 
 POTSOURCES += %C%_libmutaborkernel_a_POTSOURCES
 
+if OFF_TREE
+$(top_srcdir)/%D%/mut.cc:
+	$(MAKE) %D%/mut.cc
+endif
 %D%/mut.cc: $(top_srcdir)/%D%/mut.yy
-	rm -f $(top_srcdir)/%D%/mut.cc
+	$(MKDIR_P) `dirname $@`
+	rm -f "$(top_srcdir)/%D%/mut.cc" "$@"
 	$(YACCCOMPILE) -o $@ -b $(top_srcdir)/%D%/ $<
-
-%D%/mutlex.cc: $(top_srcdir)/%D%/mutlex.ll
-	rm -f $(top_srcdir)/%D%/mutlex.cc
-	$(LEXCOMPILE) -o $@ $<
-
+	cmp $(top_srcdir)/$@ $@ 2>/dev/null || \
+		cp $@ $(top_srcdir)/$@
 
 if OFF_TREE
-$(top_srcdir)/%D%/mut.cc: %D%/mut.cc
-	cmp $< $@ || cp $< $@
+$(top_srcdir)/%D%/mutlex.cc:
+	$(MAKE) %D%/mutlex.cc
+endif
+$(MUTLEX_CC_TARGETS) \
+%D%/mutlex.cc: $(top_srcdir)/%D%/mutlex.ll
+	$(MKDIR_P) `dirname $@`
+	rm -f "$(top_srcdir)/%D%/mutlex.cc" "$@"
+	$(LEXCOMPILE) -o $@ $<
+	cmp $(top_srcdir)/$@ $@ 2>/dev/null || \
+		cp $@ $(top_srcdir)/$@
+
+
+#if OFF_TREE
+#$(top_srcdir)/%D%/mut.cc: %D%/mut.cc
+#	cmp $< $@ || cp $< $@
 #$(top_srcdir)/%D%/mutlex.cc: %D%/mutlex.cc
 #	cmp $< $@ || cp $< $@
-endif
+#endif
