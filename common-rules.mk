@@ -256,6 +256,7 @@ DEBUGPATHS =
 BUILT_SOURCES += $(DEBUGPATHS)
 $(DEBUGPATHS): Makefile
 	@localpath=`dirname "$@"`; \
+	$(MAKE) "$$localpath/$(am__dirstamp)" ; \
 	echo '#include "src/kernel/Defs.h"' >"$@.tmp" ; \
 	echo 'const char * srcdir = "$(top_srcdir)/'"$$localpath"'";' >> "$@.tmp" ; \
 	echo 'const char * builddir = "'"$$localpath"'";' >> "$@.tmp" ; \
