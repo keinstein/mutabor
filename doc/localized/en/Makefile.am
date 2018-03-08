@@ -1,7 +1,7 @@
 include $(top_srcdir)/common-rules.mk
 #TEXSOURCES = $(srcdir)/Handbuch.tex \
-	$(srcdir)/Referenz.tex \
-	$(srcdir)/Bedienung.tex
+#	$(srcdir)/Referenz.tex \
+#	$(srcdir)/Bedienung.tex
 TEXSOURCES = $(srcdir)/reference.tex
 PDFFILES = $(srcdir)/reference.pdf
 ZIPFILE = Help.zip
