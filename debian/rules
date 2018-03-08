@@ -10,7 +10,7 @@
 #export DH_VERBOSE=1
 
 %:
-	dh $@ --with autoreconf --with autotools-dev
+	dh $@
 
 override_dh_auto_test:
 	@echo Edit debian/rules to enable tests. They are currently disabled as they need X11.
