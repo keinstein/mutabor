@@ -1,5 +1,5 @@
-SUBDIRS = localized
 include $(top_srcdir)/common-rules.mk
+include localized/Makefile.am
 
 #RECURSIVE_TARGETS += mac-recursive
 noinst_PROGRAMS = fixhhp htmldecode
@@ -41,8 +41,8 @@ dist_man_MANS = mutabor.1
 
 fixhhp_SOURCES = fixhhp.cpp
 
-html-local: html-recursive
-html-recursive: htmldecode fixhhp 
+html-local: htmldecode fixhhp
+#html-recursive:
 
 mac: mac-recursive
 

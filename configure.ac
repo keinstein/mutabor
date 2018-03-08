@@ -1019,7 +1019,6 @@ osdep/macosx/Info.plist
 osdep/win/Mutabor.nsi
 doc/Makefile
 doc/mutabor.1
-doc/localized/Makefile
 doc/localized/de/Makefile
 doc/localized/en/Makefile
 Doxyfile
