@@ -48,6 +48,7 @@ CLEANFILES = \
 	mutabor-cxxprecompiled.stamp \
 	*.class \
 	*.dll \
+	*.map \
 	TAGS
 
 
