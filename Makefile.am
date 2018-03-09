@@ -106,6 +106,7 @@ EXTRA_DIST += config.rpath \
 	Examples/german/Instr.mut \
 	Examples/german/Midi.mut \
 	Examples/german/Nix.mut \
+	lib/includes/flex/FlexLexer.h \
 	$(NOCOMPSOURCES)
 
 # Please use Tango names for new files
