@@ -20,11 +20,12 @@ do
   for datei in "$@"
   do
       dateiname=`basename "$datei"`
-    echo
-    echo $seq $datei
-    echo $TEXINPUTS
-    echo
-	latex -interaction=nonstopmode '\def\outputformat{help}\input '"$datei"
+      echo
+      echo $seq $datei
+      echo $TEXINPUTS
+      echo
+      latex -interaction=nonstopmode '\def\outputformat{help}\input '"$datei"
+      mv ${datei%.tex}.log ${datei%.tex}.hlog$seq
 	if [ -f "${dateiname%.tex}".idx ]
 	then
 	  tex '\def\filename{{'"${dateiname%.tex}"'}{idx}{4dx}{ind}} \input  idxmake.4ht'

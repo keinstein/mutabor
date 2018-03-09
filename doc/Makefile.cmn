@@ -47,6 +47,7 @@ HTML_TEXDEPS = \
 		TEXINPUTS=".:$(srcdir):$(top_docdir):$$TEXINPUTS" \
 		INDEXSTYLE=".:$(srcdir):$(top_docdir):$$INDEXSTYLE" \
 		pdflatex --synctex=1 '$*' ; \
+		mv '$*.log' '$*.log'$$i ; \
 		makeindex `basename "$*"` ; \
 	done ; \
 	if [ "`basename $*.pdf`" != "$@" ] ;  \
