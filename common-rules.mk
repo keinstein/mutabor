@@ -181,11 +181,13 @@ remove-podeps.stamp:Makefile
 		echo >>$@ ; \
 		echo "$$pofile: $$pofile.stamp" >>$@ ; \
 		echo "$$pofile.stamp:" >>$@ ; \
+		echo '	$(MKDIR_P) "`dirname $$@`"' >> $@ ; \
 		echo "	-$(SED) -i 's/ mutabor-cxxprecompiled\.[a-zA-Z0-9]* / /g' $$pofile" >>$@ ; \
 		echo '	touch $$@' >>$@ ; \
 		echo >>$@ ; \
 		echo "$$obj:$$pofile.stamp-remove" >>$@ ; \
 		echo "$$pofile.stamp-remove:" >>$@ ; \
+		echo '	$(MKDIR_P) "`dirname $$@`"' >> $@ ; \
 		echo "	rm -f '$$pofile.stamp'" >>$@ ; \
 		echo '	touch $$@' >>$@ ; \
 	done
