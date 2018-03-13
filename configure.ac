@@ -394,6 +394,8 @@ AS_IF(test "$cxx_cv_iso_for_loop_scope" = yes,
   AC_DEFINE(REUSE(x), , [Define if variables must be declared again in for loops]))
 #./  AC_DEFINE_UNQUOTED(MUST_REUSE, [$cxx_iso_for_loop_scope]))
 
+AX_CXX_COMPILE_STDCXX(11)
+
 # Checks for libraries.
 AC_CHECK_LIB(asan,__asan_default_options)
 AC_CHECK_LIB(m,pow)
