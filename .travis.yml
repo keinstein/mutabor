@@ -37,7 +37,7 @@ addons:
   
 os : linux
   - script:
-    - autoreconf -i -f && ./configure --with-boost-libdir=/usr/lib/x86_64-linux-gnu/ && make && make check
+    autoreconf -i -f && ./configure --with-boost-libdir=/usr/lib/x86_64-linux-gnu/ && make && make check
 os: osx 
   - script:
-    - autoreconf -i -f && ./configure && make && make check
+    autoreconf -i -f && ./configure && make && make check
