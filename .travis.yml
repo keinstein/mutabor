@@ -22,18 +22,19 @@ before_install:
 addons:
   apt:
     packages:
-    - libwxgtk3.0-dev
-    - libboost-dev
-    - flex
-    - bison
-    - automake
-    - libcppunit-dev
     - autoconf
     - libtool
     - autopoint
-    - doxygen
+    - automake
+    - flex
+    - bison
+    - libwxgtk3.0-dev
+    - libboost-dev
+    - libboost-locale-dev
     - libasound-dev
+    - libcppunit-dev
+    - doxygen
     
   
 script:
-  autoreconf -i -f && ./configure --with-boost-libdir=/usr/lib/x86_64-linux-gnu/ && make && make check
+  autoreconf -i -f && ./configure && make && make check
