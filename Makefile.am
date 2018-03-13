@@ -793,6 +793,12 @@ installwin:
 	do \
 		$(MAKE) DLLLINKFILE="$$d" DLLEXEDIR="`pwd`/Mutabor" installdll ; \
 	done
+	for d in Mutabor/*.exe Mutabor/*.dll ; \
+	do \
+		$(STRIP) --only-keep-debug "$$d" -o "$$d.dbg" ; \
+		$(STRIP) --strip-debug "$$d" ; \
+		echo 'not running $(STRIP) --add-gnu-debuglink='"$$d.dbg" "$$d" ; \
+	done
 	for d in GPL-2 LGPL-2.1 ChangeLog; do \
 		cp $(top_srcdir)/$$d Mutabor/$$d.txt ; \
 	done
@@ -839,7 +845,7 @@ nsis: installwin $(top_srcdir)/osdep/win/Mutabor.nsi
 	rm -f mutabor-dirs.nsh
 	rm -f mutabor-uninst-files.nsh
 	cd Mutabor && \
-	ls --file-type | grep -v / |  while read d ; \
+	ls --file-type | grep -v /\\\|\\\.a$$\\\|\\\.la$$\\\|\\\.dbg$$ |  while read d ; \
 	do \
 		echo "file  \"Mutabor\\$$d\"" >>../mutabor-files.nsh ; \
 		echo "delete \"\$$INSTDIR\\$$d\"" >>../mutabor-uninst-files.nsh  ; \
@@ -854,6 +860,7 @@ nsis: installwin $(top_srcdir)/osdep/win/Mutabor.nsi
 	done
 	cp osdep/win/Mutabor.nsi .
 	makensis Mutabor.nsi
+	zip $(PACKAGE)-$(VERSION)-$(host_cpu)-dbgsym.zip Mutabor/*.dbg
 
 
 installwinbackup:
