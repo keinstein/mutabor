@@ -1,0 +1,44 @@
+git:
+  depth: 3
+language: c++
+compiler:
+  - gcc
+  - clang
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode8
+      env:
+        - MATRIX_EVAL="brew install wxmac autopoint && CC=gcc-4.9 && CXX=g++-4.9"
+
+    - os: osx
+      osx_image: xcode8
+      env:
+        - MATRIX_EVAL="brew install gcc wxmac autopoint && CC=gcc-7 && CXX=g++-7"
+
+before_install:
+    - eval "${MATRIX_EVAL}"
+
+addons:
+  apt:
+    packages:
+    - autoconf
+    - libtool
+    - autopoint
+    - automake
+    - flex
+    - bison
+    - libwxgtk3.0-dev
+    - libboost-dev
+    - libboost-thread-dev
+    - libboost-locale-dev
+    - libboost-system-dev
+    - libboost-filesystem-dev
+    - libboost-program-options-dev
+    - libasound-dev
+    - libcppunit-dev
+    - doxygen
+    
+  
+script:
+  autoreconf -i -f && ./configure && make && make check
