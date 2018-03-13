@@ -4,8 +4,6 @@ language: c++
 compiler:
   - gcc
   - clang
-script:
-  autoreconf -i -f && ./configure --with-boost-libdir=/usr/lib && make && make check
 matrix:
   include:
     - os: osx
@@ -37,3 +35,9 @@ addons:
     - libasound-dev
     
   
+os : linux
+   script:
+      autoreconf -i -f && ./configure --with-boost-libdir=/usr/lib/x86_64-linux-gnu/ && make && make check
+os: osx 
+   script:
+      autoreconf -i -f && ./configure && make && make check
