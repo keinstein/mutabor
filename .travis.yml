@@ -1,7 +1,11 @@
+git:
+  depth: 3
 language: c++
 compiler:
   - gcc
   - clang
+script:
+  autoreconf -i -f && ./configure && make && make check
 matrix:
   include:
     - os: osx
@@ -12,7 +16,22 @@ matrix:
     - os: osx
       osx_image: xcode8
       env:
-        - MATRIX_EVAL="brew install gcc && CC=gcc-7 && CXX=g++-7"
+        - MATRIX_EVAL="brew install gcc wxmac && CC=gcc-7 && CXX=g++-7"
 
 before_install:
     - eval "${MATRIX_EVAL}"
+
+addons:
+  apt:
+    packages:
+    - libwxgtk3.0-dev
+    - libboost-dev
+    - flex
+    - bison
+    - automake
+    - cppunit
+    - autoconf
+    - libtool
+    - doxygen
+    
+  
