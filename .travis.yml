@@ -24,7 +24,7 @@ install:
   - if test  "$TRAVIS_OS_NAME" = osx ; then  brew update ; fi
   - if test "$TRAVIS_OS_NAME" = osx ; then brew upgrade boost ; fi
   - if test "$TRAVIS_OS_NAME" = osx ; then rm -rf /usr/local/include/c++ ; fi # fix broken gcc installation
-  - if test "$TRAVIS_OS_NAME" = osx ; brew install gcc wxmac gettext flex bison libtool autoconf ; fi
+  - if test "$TRAVIS_OS_NAME" = osx ; then brew install gcc wxmac gettext flex bison libtool autoconf ; fi
 
 addons:
   apt:
