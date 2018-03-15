@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/keinstein/mutabor.svg?branch=master)](https://travis-ci.org/keinstein/mutabor)
+
 Building from GIT
 ==================
 
