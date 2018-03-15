@@ -54,8 +54,8 @@ namespace mutabor {
 	protected:
 		struct container_t:public C {
 			typedef C base;
-			typedef class base::iterator iterator;
-			typedef class base::const_iterator const_iterator;
+			typedef typename base::iterator iterator;
+			typedef typename base::const_iterator const_iterator;
 			REFPTR_INTERFACE;
 
 			container_t():C() {}
