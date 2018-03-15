@@ -20,8 +20,10 @@ before_install:
     - eval "${MATRIX_EVAL}"
     
 install:
-  - test "$TRAVIS_OS_NAME" = osx && brew update
-  - test "$TRAVIS_OS_NAME" = osx && brew install gcc wxmac gettext boost flex bison libtool autoconf
+  - if test  "$TRAVIS_OS_NAME" = osx ; then  brew update ; fi
+  - if test "$TRAVIS_OS_NAME" = osx ; then brew upgrade boost ; fi
+  - if test "$TRAVIS_OS_NAME" = osx ; then rm -rf /usr/local/include/c++ ; fi # fix broken gcc installation
+  - if test "$TRAVIS_OS_NAME" = osx ; brew install gcc wxmac gettext flex bison libtool autoconf ; fi
 
 addons:
   apt:
