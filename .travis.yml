@@ -1,23 +1,24 @@
 git:
   depth: 3
 language: c++
+group: travis_latest
 compiler:
   - gcc
   - clang
 matrix:
   include:
     - os: osx
-      osx_image: xcode8
+      osx_image: xcode9.2
       env:
-        - MATRIX_EVAL="brew install wxmac autopoint && CC=gcc-4.9 && CXX=g++-4.9"
-
-    - os: osx
-      osx_image: xcode8
-      env:
-        - MATRIX_EVAL="brew install gcc wxmac autopoint && CC=gcc-7 && CXX=g++-7"
+        - MATRIX_EVAL="CC=clang && CXX=clang++"
 
 before_install:
     - eval "${MATRIX_EVAL}"
+    - if test "$TRAVIS_OS_NAME" = osx ; then  brew update ; fi
+    - if test "$TRAVIS_OS_NAME" = osx ; then brew upgrade boost ; fi
+    - if test "$TRAVIS_OS_NAME" = osx ; then rm -rf /usr/local/include/c++ ; fi # fix broken gcc installation
+    - if test "$TRAVIS_OS_NAME" = osx ; then brew install gcc wxmac gettext flex bison libtool autoconf jack ; fi
+    - if test "$TRAVIS_OS_NAME" = osx ; then brew link --force gcc wxmac gettext flex bison libtool autoconf jack ; fi
 
 addons:
   apt:
