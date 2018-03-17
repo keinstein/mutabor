@@ -89,7 +89,7 @@ $(PNGSIZEICONDIR)/Makefile.inkscape: $(PNGSIZEICONDIR)/Makefile.in
 #< $(top_srcdir)/Images/depfilerule.prototype
 
 icons: $(PNGSIZEICONDIR)/Makefile.inkscape
-	$(MAKE) $(AM_MAKEFLAGS) -C  $(PNGSIZEICONDIR) -f Makefile.inkscape icons
+	$(MAKE) $(AM_MAKEFLAGS) -C  $(PNGSIZEICONDIR) -f Makefile.inkscape icons "INKSCAPE=$(INKSCAPE)"
 else
 icons:
 endif
