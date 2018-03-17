@@ -173,6 +173,7 @@ public:
 				   int data =0) {
 		mutUnused(R);
 		mutUnused(midiCode);
+		mutUnused(data);
 		return ProceedYes;
 	}
 

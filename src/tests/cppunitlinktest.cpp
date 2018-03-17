@@ -62,7 +62,7 @@ public:
 
 
 int 
-main(int argc, char** argv)
+main()
 {
 	/*
 	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");

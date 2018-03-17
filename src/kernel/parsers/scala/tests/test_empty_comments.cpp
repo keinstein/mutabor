@@ -8,7 +8,7 @@ using namespace mutabor::scala_parser;
 
 struct test_parser: public parser {
 	test_parser(const std::string & s,
-		    const std::string & f):parser(s,s) {};
+		    const std::string & f):parser(s,s) { mutUnused(f); };
 	virtual ~test_parser() {}
 	void parse(const std::string & s,
 		   const std::string & f)
