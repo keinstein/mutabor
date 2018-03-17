@@ -1031,7 +1031,6 @@ doc/localized/de/Makefile
 doc/localized/en/Makefile
 Doxyfile
 osdep/linux/OpenSuse.spec
-tools/midi2text/Makefile
 ])
 dnl src/wxintl/Makefile
 dnl src/kernel/routing/midi/tests/Makefile
