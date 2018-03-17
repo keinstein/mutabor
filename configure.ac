@@ -639,7 +639,6 @@ else
 	AC_SUBST(BUILD_INCLUDED_LIBINTL,no)
 	CXXFLAGS="$CXXFLAGS -DRTMIDI_GETTEXT"
 	WX_LIBS=`echo $ECHO_N "$WX_LIBS"|sed -e 's/-mwindows//g'`
-	echo "$WX_LIBS"
 	enable_nls="no"
 fi
 
@@ -1072,6 +1071,3 @@ dnl libmutabor/tests/Makefile
 dnl includes/mutabor/Makefile
 dnl ])
 AC_OUTPUT
-
-
-cat config.status
