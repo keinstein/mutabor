@@ -96,7 +96,7 @@ namespace mutaborGUI {
 	private:
 		bool IsLogic;
 		int Key;
-		wxIcon Icon;
+		MutIcon Icon;
 		wxString Text;
 		int TPos;
 
