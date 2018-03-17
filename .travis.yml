@@ -10,7 +10,12 @@ matrix:
     - os: osx
       osx_image: xcode9.2
       env:
-        - MATRIX_EVAL="CC=clang && CXX=clang++"
+        - MATRIX_EVAL="CC=clang && CXX=clang++ && EXTRA_BREW= "
+
+    - os: osx
+      osx_image: xcode9.2
+      env:
+        - MATRIX_EVAL="CC=gcc && CXX=g++ && EXTRA_BREW=gcc "
 
 
 addons:
@@ -40,7 +45,7 @@ before_install:
     - if test "$TRAVIS_OS_NAME" = osx ; then  brew update ; fi
     - if test "$TRAVIS_OS_NAME" = osx ; then brew upgrade boost ; fi
     - if test "$TRAVIS_OS_NAME" = osx ; then rm -rf /usr/local/include/c++ ; fi # fix broken gcc installation
-    - if test "$TRAVIS_OS_NAME" = osx ; then brew install gcc wxmac gettext flex bison libtool autoconf jack icu4c ; fi
+    - if test "$TRAVIS_OS_NAME" = osx ; then brew install $EXTRA_BREW wxmac gettext flex bison libtool autoconf jack  ; fi
     - if test "$TRAVIS_OS_NAME" = osx ; then brew link --force gcc wxmac gettext flex bison libtool autoconf jack ; fi
     - if test "$TRAVIS_OS_NAME" = linux ; then eval TEST_RUNNER=xvfb-run ; else eval TEST_RUNNER= ; fi
 
