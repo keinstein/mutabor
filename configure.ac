@@ -41,9 +41,11 @@ AS_IF(test "${enable_silent_rules+set}" != set,
    AM_DEFAULT_VERBOSITY=0)
 AM_CONDITIONAL(VPATH_BUILD, test "$ac_abs_confdir" != "$ac_pwd")
 
-m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
 AM_SILENT_RULES
-LT_INIT
+
+rtmidi_suffix="-mutabor"
+m4_include([lib/rtmidi/configure.library])
+
 
 AC_CONFIG_HEADER([config.h])
 
@@ -115,8 +117,6 @@ AC_PROG_CXX
 AM_PROG_CC_C_O
 PKG_PROG_PKG_CONFIG([0.14.0])
 
-rtmidi_suffix="-mutabor"
-m4_include([lib/rtmidi/configure.library])
 
 AC_LANG_PUSH(C++)
 tmpcxxflags="$CXXFLAGS"

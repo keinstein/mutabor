@@ -1,14 +1,12 @@
 #SUBDIRS=gmut includes kernel wxintl tests wxGUI xrc
 #include $(top_srcdir)/common-rules.mk
 
-CLEANFILES=symbols.map
+CLEANFILES += \
+   %D%/symbols.map
 
-all: midi2text
-midi2text: mf2txt$(EXEEXT) txt2mf$(EXEEXT)
+check_PROGRAMS += mf2txt txt2mf
 
-noinst_PROGRAMS = mf2txt txt2mf
-
-AM_CFLAGS = -Isrc
+AM_CFLAGS += -I%D%/src
 
 mf2txt_SOURCES = \
 	%D%/src/crack.c \

@@ -41,8 +41,8 @@ EXTRA_RTMIDITESTCXXFLAGS = \
 include common-rules.mk
 include %D%/src/Makefile.am
 include %D%/Images/Makefile.am
-include %D%/lib/rtmidi/Makefile.am
-include %D%/tools/midi2text
+include %D%/lib/rtmidi/Makefile.library
+include %D%/tools/midi2text/Makefile.am
 
 RTMIDICONFIGRPATH := 
 
