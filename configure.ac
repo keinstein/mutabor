@@ -1073,3 +1073,4 @@ dnl ])
 AC_OUTPUT
 
 
+cat config.status
