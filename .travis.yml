@@ -12,13 +12,6 @@ matrix:
       env:
         - MATRIX_EVAL="CC=clang && CXX=clang++"
 
-before_install:
-    - eval "${MATRIX_EVAL}"
-    - if test "$TRAVIS_OS_NAME" = osx ; then  brew update ; fi
-    - if test "$TRAVIS_OS_NAME" = osx ; then brew upgrade boost ; fi
-    - if test "$TRAVIS_OS_NAME" = osx ; then rm -rf /usr/local/include/c++ ; fi # fix broken gcc installation
-    - if test "$TRAVIS_OS_NAME" = osx ; then brew install gcc wxmac gettext flex bison libtool autoconf jack ; fi
-    - if test "$TRAVIS_OS_NAME" = osx ; then brew link --force gcc wxmac gettext flex bison libtool autoconf jack ; fi
 
 addons:
   apt:
@@ -39,7 +32,17 @@ addons:
     - libasound-dev
     - libcppunit-dev
     - doxygen
-    
-  
+    - xvfb
+
+
+before_install:
+    - eval "${MATRIX_EVAL}"
+    - if test "$TRAVIS_OS_NAME" = osx ; then  brew update ; fi
+    - if test "$TRAVIS_OS_NAME" = osx ; then brew upgrade boost ; fi
+    - if test "$TRAVIS_OS_NAME" = osx ; then rm -rf /usr/local/include/c++ ; fi # fix broken gcc installation
+    - if test "$TRAVIS_OS_NAME" = osx ; then brew install gcc wxmac gettext flex bison libtool autoconf jack icu ; fi
+    - if test "$TRAVIS_OS_NAME" = osx ; then brew link --force gcc wxmac gettext flex bison libtool autoconf jack ; fi
+    - if test "$TRAVIS_OS_NAME" = linux ; then eval TEST_RUNNER=xvfb-run ; else eval TEST_RUNNER= ; fi
+
 script:
-  autoreconf -i -f && ./configure && make && make check
+  autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4
