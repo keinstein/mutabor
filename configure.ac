@@ -941,7 +941,13 @@ AC_CHECK_FUNC(strdup)
 AC_FUNCTION_VECTOR_DATA
 
 # Locate CppUnit (minimum version 1.8.0) for testing.
-AM_PATH_CPPUNIT(1.8.0)
+AS_IF(test -n "$PKG_CONFIG",
+	   [PKG_CHECK_MODULES(CPPUNIT,
+				[cppunit >= 1.8.0],,
+				[AM_PATH_CPPUNIT(1.8.0)]
+	   )],
+	   [AM_PATH_CPPUNIT(1.8.0)]
+)
 
 # You can set up an automake conditional and use it to conditionally
 # build cppunit-using test programs.

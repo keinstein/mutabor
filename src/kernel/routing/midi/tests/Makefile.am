@@ -216,6 +216,7 @@ nodist_%C%_testcppunit_SOURCES = \
 	libmutabormaincppunit.a \
 	src/kernel/libmutaborkernel.a \
 	src/wxintl/libwxintl.la \
+	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
 	$(CPPUNIT_LIBS) \
 	$(LDADD) \
 	$(AM_LDFLAGS) \

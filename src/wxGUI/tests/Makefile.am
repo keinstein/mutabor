@@ -28,13 +28,15 @@ nodist_%C%_testcppunit_SOURCES = \
 %C%_testcppunit_LDADD = \
 	libmutabormaincppunit.a \
 	src/kernel/libmutaborkernel.a \
+	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
 	src/wxintl/libwxintl.la \
+	$(CPPUNIT_LIBS) \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
-	$(CPPUNIT_LIBS) \
+	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIB) \
 	$(BOOST_SYSTEM_LDFLAGS) \
-	$(BOOST_FILESYSTEM_LIBS) \
-	$(BOOST_SYSTEM_LIBS)
+	$(BOOST_SYSTEM_LIB)
 endif
 
