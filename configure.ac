@@ -638,7 +638,8 @@ else
 	AC_SUBST(USE_INCLUDED_LIBINTL,no)
 	AC_SUBST(BUILD_INCLUDED_LIBINTL,no)
 	CXXFLAGS="$CXXFLAGS -DRTMIDI_GETTEXT"
-	WX_LIBS=`echo -n "$WX_LIBS"|sed -e 's/-mwindows//g'`
+	WX_LIBS=`echo $ECHO_N "$WX_LIBS"|sed -e 's/-mwindows//g'`
+	echo "$WX_LIBS"
 	enable_nls="no"
 fi
 
