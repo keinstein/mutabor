@@ -1,3 +1,6 @@
+CLEANFILES =
+AM_CFLAGS =
+
 include $(top_srcdir)/common-rules.mk
 include localized/Makefile.am
 

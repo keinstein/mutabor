@@ -1,3 +1,5 @@
+CLEANFILES =
+AM_CFLAGS =
 noinst_LIBRARIES = libmissfunc.a
 libmissfunc_a_SOURCES = \
 	stpcpy.h \

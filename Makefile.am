@@ -12,22 +12,28 @@ GIT = git
 REPOSITORY = http://git.berlios.de/mutabor
 REPOSITORY_PATH = .
 AM_LFLAGS = --c++
+AM_CFLAGS =
 DLLPROGRAMS = $(TESTS) $(noinst_PROGRAMS) $(bin_PROGRAMS)
 #-o lex.yy.c
 
+noinst_LIBRARIES =
+noinst_LTLIBRARIES =
 lib_LTLIBRARIES =
+check_LIBRARIES =
+
+bin_PROGRAMS =
 noinst_PROGRAMS =
+check_PROGRAMS =
+
+CLEANFILES =
 
 EXTRA_DIST =
 TEST_EXTENSIONS =
 TESTS =
-check_PROGRAMS =
 NOCOMPSOURCES =
-noinst_LIBRARIES =
-noinst_LTLIBRARIES =
+
 dist_pkgdata_DATA =
-bin_PROGRAMS =
-check_LIBRARIES =
+
 EXTRA_RTMIDITESTLDFLAGS = \
 	$(WXINTLLDFLAGS) \
 	$(WXINTLLDADD)
@@ -36,6 +42,7 @@ EXTRA_RTMIDITESTCXXFLAGS = \
 	$(WXINTLCXXFLAGS) \
 	"-DLOCALEDIR=\"$(LOCALEDIR)\""
 
+RTMIDICONFIGRPATH =
 
 
 include common-rules.mk
@@ -44,7 +51,6 @@ include %D%/Images/Makefile.am
 include %D%/lib/rtmidi/Makefile.library
 include %D%/tools/midi2text/Makefile.am
 
-RTMIDICONFIGRPATH := 
 
 lib_rtmidi_librtmidi@rtmidi_suffix@_la_CXXFLAGS += \
 	$(WXINTLCXXFLAGS) \
@@ -169,7 +175,7 @@ endif
 
 libmutaborgui_a_INLINEHEADERS = \
 		src/wxGUI/GUIBoxData-inlines.h \
-		src/wxGUI/Routing/GUIRoute-inlines.h 
+		src/wxGUI/Routing/GUIRoute-inlines.h
 
 
  libmutaborgui_a_INDENTHEADERS = \
@@ -355,7 +361,7 @@ libmutaborscala_a_INDENTHEADERS = \
 
 
 libmutaborscala_a_INDENTS = \
-		src/kernel/parsers/scala/scala.cpp 
+		src/kernel/parsers/scala/scala.cpp
 
 noinst_HEADERS += $(libmutaborscala_a_INLINEHEADERS) $(libmutaborscala_a_INDENTHEADERS)
 
@@ -407,7 +413,7 @@ libmutabordebugcppunit_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(CPPUNIT_C
 # libmutabordebugcppunit.a
 #-------------------------------------------------------------
 
-libmutabormaincppunit_a_INLINEHEADERS = 
+libmutabormaincppunit_a_INLINEHEADERS =
 libmutabormaincppunit_a_INDENTHEADERS = \
 		src/wxGUI/MutApp.h \
 		src/wxGUI/TestInitializer.h
@@ -461,7 +467,7 @@ libmutabordebugtest_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) -DMUTABOR_TEST
 # libmutabormaintest.a
 #-------------------------------------------------------------
 
-libmutabormaintest_a_INLINEHEADERS = 
+libmutabormaintest_a_INLINEHEADERS =
 libmutabormaintest_a_INDENTHEADERS = \
 		src/wxGUI/MutApp.h \
 		src/wxGUI/TestInitializer.h
@@ -671,7 +677,7 @@ copymac: Mutabor.app
 
 dylibbundler: mac
 	dylibbundler -b -x Mutabor.app/Contents/MacOS/mutabor \
-		-cd -od -d Mutabor.app/Contents/libs 
+		-cd -od -d Mutabor.app/Contents/libs
 pydmg: dylibbundler
 	wget --no-check-certificate https://anon:@scm.wilcoxd.com:8081/svn/OpenSource/Scripts/sane_build_disk_image/sane_build_disk_image.py
 
@@ -680,7 +686,7 @@ dmg: dylibbundler
 	cp -r Mutabor.app dmg/Mutabor
 	cp $(top_srcdir)/osdep/macosx/DS_Store dmg/Mutabor/.DS_Store
 	cp $(top_srcdir)/osdep/macosx/background.png dmg/Mutabor/.background
-	cp $(top_srcdir)/Images/Icons/icns/Mutabor.icns dmg/Mutabor/.VolumeIcon.icns 
+	cp $(top_srcdir)/Images/Icons/icns/Mutabor.icns dmg/Mutabor/.VolumeIcon.icns
 	ln -s /Applications dmg/Mutabor
 	cp -r $(top_srcdir)/Examples dmg/Mutabor
 	rm -f "$(PACKAGE_NAME)-$(PACKAGE_VERSION).dmg"
@@ -911,7 +917,7 @@ CLEANFILES += POTFILES.tmp2
 
 potfilechk-local: POTFILES.tmp $(top_srcdir)/po/POTFILES.in
 	sed -e 's,#.*$$,, ; /^$$/ d' $(top_srcdir)/po/POTFILES.in | LC_ALL=C sort -u >POTFILES.tmp2
-	diff -u POTFILES.tmp2 POTFILES.tmp 
+	diff -u POTFILES.tmp2 POTFILES.tmp
 
 update-po: src/xrc/reslocale.cpp src/kernel/mut.cc
 	make -C po update-po
@@ -967,4 +973,4 @@ cppcheck:
 	echo "$$cfiles" ; \
 	hfiles=`echo $(POTSOURCES) | tr ' ' '\n' | grep -e '\\.h$$'` ; \
 	echo "$$hfiles" ; \
-	cppcheck -v --enable=all --force $$INCLUDES -I. $$cfiles $$hfiles -j8 
+	cppcheck -v --enable=all --force $$INCLUDES -I. $$cfiles $$hfiles -j8

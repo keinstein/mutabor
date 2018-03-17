@@ -12,7 +12,7 @@ AM_CPPFLAGS = -I$(buildincludedir)  \
 LIBS += $(JACK_LIBS) $(ALSA_LIBS) $(WX_LIBS)
 #LIBS += $(BOOST_LDFLAGS)
 LOCALEDIR = @localedir@
-AM_CFLAGS = $(ALSA_CFLAGS) $(JACK_LIBS)  $(WX_CFLAGS) $(WXINTLCFLAGS) "-DLOCALEDIR=\"$(LOCALEDIR)\""
+AM_CFLAGS += $(ALSA_CFLAGS) $(JACK_LIBS)  $(WX_CFLAGS) $(WXINTLCFLAGS) "-DLOCALEDIR=\"$(LOCALEDIR)\""
 AM_CXXFLAGS = $(AM_CFLAGS)
 AM_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
 AM_YFLAGS = -d -v --report=all -x --graph
@@ -42,7 +42,7 @@ INDENT = astyle --style=linux --indent=tab=8
 
 
 
-CLEANFILES = \
+CLEANFILES += \
 	mutabor-cxxprecompiled.$(PCHEXT_CXX) \
 	mutabor-cxxprecompiled.h \
 	mutabor-cxxprecompiled.stamp \
