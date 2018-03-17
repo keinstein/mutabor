@@ -89,7 +89,7 @@ namespace mutaborGUI {
 		       int isOpen, 
 		       int key);
 
-		wxIcon & GetMutIcon() {
+		MutIcon & GetMutIcon() {
 			return Icon;
 		}
 
