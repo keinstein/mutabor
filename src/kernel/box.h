@@ -51,7 +51,7 @@
 
 #ifndef MU32_BOX_H_PRECOMPILED
 #define MU32_BOX_H_PRECOMPILED
-#include <malloc.h>
+#include <stdlib.h>
 
 #ifdef __cplusplus
 #define BOX_H_NAMESPACE						      \
