@@ -44,7 +44,7 @@
 
 
 int 
-main(int argc, char** argv)
+main()
 {
 	mutwxInitializer initializer;
 

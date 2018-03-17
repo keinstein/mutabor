@@ -65,9 +65,11 @@ struct mutabor::hidden::mutabor_callback_type test_backend_callbacks  = {
 struct MyCompileCallback:public mutabor::BoxClass::CompileCallback {
 	void RefreshDlg() {}
 	void SetStatus(std::string status) {
+		mutUnused(status);
 		DEBUGLOG(kernel_parser,("INFO: %s"), status);
 	}
 	void SetMessage(std::string status) {
+		mutUnused(status);
 		DEBUGLOG(kernel_parser,("INFO: %s"), status);
 	}
 	void SetStatus(int logics, 
@@ -75,8 +77,15 @@ struct MyCompileCallback:public mutabor::BoxClass::CompileCallback {
 		       int tunings,
 		       int tone_systems,
 		       int intervals,
-		       int characters) {}
-	void SetLine(int number) {}
+		       int characters) {
+		mutUnused(logics);
+		mutUnused(tones);
+		mutUnused(tunings);
+		mutUnused(tone_systems);
+		mutUnused(intervals);
+		mutUnused(characters);
+	}
+	void SetLine(int number) { mutUnused(number); }
 };
 
 const char * logic_file_names [] = {

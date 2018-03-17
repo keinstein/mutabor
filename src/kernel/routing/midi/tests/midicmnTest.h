@@ -82,12 +82,14 @@ public:
 	void Save(mutabor::tree_storage&, const mutabor::RouteClass*) {}
 	void Load(mutabor::tree_storage&) {}
 	void Load(mutabor::tree_storage&, mutabor::RouteClass*) {}
-	void do_AddTime(mutabor::frac time) {}
+	void do_AddTime(mutabor::frac time) { mutUnused(time); }
 	int GetMaxChannel() const { return 15; }
 	int GetMinChannel() const { return 0; }
 	bool Check(const std::string & s,
 		   int line = -1,
 		   const std::string & filename = (__FILE__)) {
+		mutUnused(line);
+		mutUnused(filename);
 		bool retval = (s == (std::string)Out);
 		if (!retval) {
 			DEBUGLOG (always, "Check failed:\n%s:%d:" ,filename.c_str(),line);
@@ -158,10 +160,21 @@ public:
 	void Load(mutabor::tree_storage&) {}
 	void Load(mutabor::tree_storage&, mutabor::RouteClass*) {}
 	bool Open () { isOpen = true; return true; }
-	proceed_bool shouldProceed(mutabor::Route R, uint32_t midiCode,  int data =0) { return ProceedYes; }
+	proceed_bool shouldProceed(mutabor::Route R,
+				   uint32_t midiCode,
+				   int data =0) {
+		mutUnused(R);
+		mutUnused(midiCode);
+		mutUnused(data);
+		return ProceedYes;
+	}
 	proceed_bool shouldProceed(mutabor::Route R,
 				   const std::vector<unsigned char > & midiCode,
-				   int data =0) { return ProceedYes; }
+				   int data =0) {
+		mutUnused(R);
+		mutUnused(midiCode);
+		return ProceedYes;
+	}
 
 	void NoteOn(int channel, int inkey, int velocity) {
 		std::vector <unsigned char > message(3);

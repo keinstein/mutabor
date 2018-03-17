@@ -47,9 +47,11 @@ template class mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider, mutab
 struct MyCompileCallback:public mutabor::BoxClass::CompileCallback {
 	void RefreshDlg() {}
 	void SetStatus(std::string status) {
+		mutUnused(status);
 		DEBUGLOG(kernel_parser,("INFO: %s"), status);
 	}
 	void SetMessage(std::string status) {
+		mutUnused(status);
 		DEBUGLOG(kernel_parser,("INFO: %s"), status);
 	}
 	void SetStatus(int logics,
@@ -57,8 +59,15 @@ struct MyCompileCallback:public mutabor::BoxClass::CompileCallback {
 		       int tunings,
 		       int tone_systems,
 		       int intervals,
-		       int characters) {}
-	void SetLine(int number) {}
+		       int characters) {
+		mutUnused(logics);
+		mutUnused(tones);
+		mutUnused(tunings);
+		mutUnused(tone_systems);
+		mutUnused(intervals);
+		mutUnused(characters);
+	}
+	void SetLine(int number) {mutUnused(number);}
 };
 
 
@@ -4769,6 +4778,8 @@ void  InputMidiFileTest::testControllerPlay()
 std::string StreamToHex(std::istream & buf);
 
 bool OutputMidiFileTest::CheckOut(std::string s,int line, const char * file) {
+	mutUnused(file);
+	mutUnused(line);
 	std::stringstream stream( std::ios_base::in | std::ios_base::out | 
 					std::ios_base::binary );
 	out->Save(stream);

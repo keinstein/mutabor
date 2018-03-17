@@ -40,6 +40,8 @@ bool midicmnOutputDevice::unsortedCheck(const std::string & s,
 					int line,
 					const std::string & filename)
 {
+	mutUnused(line);
+	mutUnused(filename);
 	std::multiset<std::string> left, right;
 	std::stringstream str;
 	std::string cmd;

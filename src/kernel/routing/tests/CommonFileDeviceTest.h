@@ -129,7 +129,8 @@ public:
 	void Save(mutabor::tree_storage&, const mutabor::RouteClass*){}
 	void Load(mutabor::tree_storage&, mutabor::RouteClass*){}
 	virtual mutabor::ChannelData & GetChannelData(const mutabor::InputDeviceClass::current_keys_type::entry & key) const
-	{ 
+	{
+		mutUnused(key);
 		return const_cast<mutabor::ChannelData & >(Cd);
 	}
 
