@@ -11,18 +11,18 @@ noinst_PROGRAMS = mf2txt txt2mf
 AM_CFLAGS = -Isrc
 
 mf2txt_SOURCES = \
-	src/crack.c \
-	src/mf2t.c \
-	src/mf2tfuncts.h \
-	src/midifile.c \
-	src/midifile.h
+	%D%/src/crack.c \
+	%D%/src/mf2t.c \
+	%D%/src/mf2tfuncts.h \
+	%D%/src/midifile.c \
+	%D%/src/midifile.h
 
 txt2mf_SOURCES = \
-	src/crack.c \
-	src/mf2tfuncts.h \
-	src/midifile.c \
-	src/midifile.h \
-	src/t2mf.c \
-	src/t2mf.h \
-	src/t2mflex.c \
-	src/yyread.c
+	%D%/src/crack.c \
+	%D%/src/mf2tfuncts.h \
+	%D%/src/midifile.c \
+	%D%/src/midifile.h \
+	%D%/src/t2mf.c \
+	%D%/src/t2mf.h \
+	%D%/src/t2mflex.c \
+	%D%/src/yyread.c

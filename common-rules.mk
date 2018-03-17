@@ -340,11 +340,10 @@ POTFILES.tmp:POTFILES.tmp.local Makefile  potfilechk-recursive
 
 midi2text: mf2txt txt2mf
 
-mf2txt txt2mf:
-	$(MAKE) $(AM_MAKEFLAGS) -C $(top_builddir)/tools/midi2text $@$(EXEEXT)
-	cp $(top_builddir)/tools/midi2text/$@$(EXEEXT) .
+#mf2txt txt2mf:
+#	$(MAKE) $(AM_MAKEFLAGS) -C $(top_builddir)/tools/midi2text $@$(EXEEXT)
+#	cp $(top_builddir)/tools/midi2text/$@$(EXEEXT) .
 
 SUFFIXES += .mid .txt
 .txt.mid:
-	$(MAKE) $(AM_MAKEFLAGS) txt2mf
 	./txt2mf $< $@

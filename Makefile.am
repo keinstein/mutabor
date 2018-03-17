@@ -2,7 +2,7 @@ ACLOCAL_AMFLAGS = -I m4 --install
 #AUTOMAKE_OPTIONS = dejagnu
 # intl must be before any source directories
 
-SUBDIRS = po lib . doc tools/midi2text #libmutabor . #intl
+SUBDIRS = po lib . doc  #libmutabor . #intl
 #DIST_SUBDIRS = $(SUBDIRS)
 precompCOMPILESOURCES=$(mutabor_COMPILESOURCES)
 
@@ -42,6 +42,7 @@ include common-rules.mk
 include %D%/src/Makefile.am
 include %D%/Images/Makefile.am
 include %D%/lib/rtmidi/Makefile.am
+include %D%/tools/midi2text
 
 RTMIDICONFIGRPATH := 
 
