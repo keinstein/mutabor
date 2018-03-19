@@ -203,9 +203,10 @@ inline const char *wxwidgets_gettext (const char * msgid1,
 /* Similar to `dgettext' but select the plural form corresponding to the
    number N.  */
 const char *wxwidgets_gettext (const char * domainname, 
-				      const char * msgid1,
-				      const char * msgid2, unsigned long int n)
-	__mutabor_attribute_format_arg__ (2,0) __mutabor_attribute_format_arg__ (3,0);
+			       const char * msgid1,
+			       const char * msgid2, unsigned long int n)
+	__mutabor_attribute_format_arg__ (2,0)
+	__mutabor_attribute_format_arg__ (3,0);
 inline const char *wxwidgets_gettext (const char * domainname, 
 				      const char * msgid1,
 				      const char * msgid2, unsigned long int n)
@@ -218,10 +219,10 @@ inline const char *wxwidgets_gettext (const char * domainname,
 /* Similar to `dcgettext' but select the plural form corresponding to the
    number N.  */
 const char *wxwidgets_gettext (const char * domainname, 
-				      const char * msgid1,
-				      const char * msgid2, 
-				      unsigned long int n,
-				      int category)
+			       const char * msgid1,
+			       const char * msgid2, 
+			       unsigned long int n,
+			       int category)
 	__mutabor_attribute_format_arg__ (2,0) __mutabor_attribute_format_arg__ (3,0);
 extern const char *wxwidgets_gettext (const char * domainname, 
 				      const char * msgid1,
