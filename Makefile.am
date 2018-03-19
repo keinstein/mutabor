@@ -387,7 +387,11 @@ libmutabordebug_a_INDENTS = \
 
 noinst_HEADERS += $(libmutabordebug_a_INLINEHEADERS) $(libmutabordebug_a_INDENTHEADERS)
 
-libmutabordebug_a_POTSOURCES = $(libmutabordebug_a_INLINEHEADERS) $(libmutabordebug_a_INDENTHEADERS) $(libmutabordebug_a_INDENTS)
+libmutabordebug_a_POTSOURCES = \
+	$(libmutabordebug_a_INLINEHEADERS) \
+	$(libmutabordebug_a_INDENTHEADERS) \
+	$(libmutabordebug_a_INDENTS) \
+	src/wxGUI/TestInitializer.h
 
 libmutabordebug_a_SOURCES = $(libmutabordebug_a_INDENTS)
 libmutabordebug_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(BOOST_CPPFLAGS)
