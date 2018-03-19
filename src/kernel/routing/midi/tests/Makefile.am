@@ -202,7 +202,6 @@ check_PROGRAMS += %D%/testcppunit
 
 
 %C%_testcppunit_SOURCES = \
-	%D%/asan_options.cpp \
 	%D%/main.cpp \
 	%D%/DevMidFTest.h \
 	%D%/DevMidFTest.cpp \

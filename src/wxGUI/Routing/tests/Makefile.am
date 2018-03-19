@@ -19,8 +19,8 @@ check_PROGRAMS += %D%/testcppunit
 %C%_testcppunit_SOURCES = \
 	%D%/main.cpp \
 	%D%/GUIRouteTest.h \
-	%D%/GUIRouteTest.cpp \
-	%D%/asan_options.cpp
+	%D%/GUIRouteTest.cpp
+#	%D%/asan_options.cpp
 
 
 nodist_%C%_testcppunit_SOURCES = \

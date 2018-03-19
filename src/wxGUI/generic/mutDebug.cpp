@@ -131,11 +131,20 @@ void _sanitizer_options_link_helper() { }
 //   detect_stack_use_after_return=1 - use fake stack to delay the reuse of
 //     stack allocations and detect stack-use-after-return errors.
 const char * mutASANoptions =
-    "legacy_pthread_cond=1 malloc_context_size=5 "
-    "symbolize=1 check_printf=1 use_sigaltstack=1 detect_leaks=1 "
-    "strip_path_prefix=/../../ fast_unwind_on_fatal=1 "
-    "detect_stack_use_after_return=1 detect_odr_violation=1 "
-    "allow_user_segv_handler=1 ";
+	"legacy_pthread_cond=1 "
+	"malloc_context_size=5 "
+	"symbolize=1 "
+	"check_printf=1 "
+	"use_sigaltstack=1 "
+	"detect_leaks=1 "
+	"strip_path_prefix=/../../ "
+	"fast_unwind_on_fatal=1 "
+	"detect_stack_use_after_return=1 "
+	"detect_odr_violation=1 "
+	"allow_user_segv_handler=1 "
+	"fast_unwind_on_malloc=0 "
+	"report_globals=1 "
+	"print_full_thread_history=1";
 
 NO_SANITIZE const char *__asan_default_options() {
   return mutASANoptions;
@@ -196,6 +205,8 @@ const char * mutLSANsuppressions =
 	// want to debug it. This prevents TSAN from
 	// reporting the caches from fontconfig
 	"leak:libfontconfig\n"
+	"leak:wxInitializer\n"
+	"leak:g_slice_alloc\n"
 	"leak:libX11.so\n"
 	"leak:libglib-2.0.so\n";
 NO_SANITIZE const char *__lsan_default_suppressions() {
