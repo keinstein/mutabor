@@ -119,22 +119,28 @@ PKG_PROG_PKG_CONFIG([0.14.0])
 
 
 AC_LANG_PUSH(C++)
-tmpcxxflags="$CXXFLAGS"
-CXXFLAGS="$CXXFLAGS -pipe"
-AC_MSG_CHECKING([whether $CXX supports -pipe])
-AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-		[AC_MSG_RESULT([yes])],
-		[CXXFLAGS="$tmpcxxflags"]
-		[AC_MSG_RESULT([no])])
+echo "CXXFLAGS: $CXXFLAGS"
+AX_CHECK_COMPILE_FLAG([-pipe],[CXXFLAGS="$CXXFLAGS -pipe"])
+echo "CXXFLAGS: $CXXFLAGS"
+dnl tmpcxxflags="$CXXFLAGS"
+dnl CXXFLAGS="$CXXFLAGS -pipe"
+dnl AC_MSG_CHECKING([whether $CXX supports -pipe])
+dnl AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+dnl 		[AC_MSG_RESULT([yes])],
+dnl 		[CXXFLAGS="$tmpcxxflags"]
+dnl 		[AC_MSG_RESULT([no])])
 AC_LANG_POP(C++)
 AC_LANG_PUSH(C)
-tmpcflags="$CFLAGS"
-CFLAGS="$CFLAGS -pipe"
-AC_MSG_CHECKING([whether $CC supports -pipe])
-AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-		[AC_MSG_RESULT([yes])],
-		[CFLAGS="$tmpcflags"]
-		[AC_MSG_RESULT([no])])
+echo "CFLAGS: $CFLAGS"
+AX_CHECK_COMPILE_FLAG([-pipe],[CFLAGS="$CFLAGS -pipe"])
+echo "CFLAGS: $CFLAGS"
+dnl tmpcflags="$CFLAGS"
+dnl CFLAGS="$CFLAGS -pipe"
+dnl AC_MSG_CHECKING([whether $CC supports -pipe])
+dnl AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+dnl 		[AC_MSG_RESULT([yes])],
+dnl 		[CFLAGS="$tmpcflags"]
+dnl 		[AC_MSG_RESULT([no])])
 AC_LANG_POP(C)
 DEBUGCPPFLAGS=
 dnl for final we could consider --repo to reduce object size
