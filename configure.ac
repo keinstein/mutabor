@@ -430,77 +430,77 @@ dnl GNU/Linux on an Intel or compatible
 
 	PLATFORM=linux
 
-	AC_MSG_CHECKING(for MIDI API)
-	AC_ARG_WITH(jack, [  --with-jack = choose JACK server support (mac and linux only)], [
-		RTMIDI_TS_API="$RTMIDI_TS_API -D__UNIX_JACK__"
-		AC_MSG_RESULT(using JACK)
-		PKG_CHECK_MODULES(JACK,[jack], , AC_MSG_ERROR(JACK support requires the jack library!) ) ], )
-
-	# Look for ALSA flag
-	AC_ARG_WITH(alsa, [  --with-alsa = choose native ALSA sequencer API support (linux only)], [
-	RTMIDI_TS_API="$RTMIDI_TS_API -D__LINUX_ALSA__"
-	AC_MSG_RESULT(using ALSA)
-	AC_CHECK_LIB(asound, snd_seq_open, , AC_MSG_ERROR(ALSA support requires the asound library!))], )
-
-	if [[ "$RTMIDI_TS_API" = "" ]]
-	then
-	    AC_MSG_RESULT(searching for ALSA and Jack)
-	    AC_CHECK_LIB(asound, snd_seq_open)
-	    if test "x$ac_cv_lib_asound_snd_seq_open" = xyes; then :
-	      RTMIDI_TS_API="$RTMIDI_TS_API -D__LINUX_ALSA__"
-	    fi
-	    dnl the 4th argument to PKG_CHECK_MODULES should must be provided to prevent an error message, here
-	    AS_IF(test -n "$PKG_CONFIG",
-		    PKG_CHECK_MODULES([JACK],[jack],[RTMIDI_TS_API="$RTMIDI_TS_API -D__UNIX_JACK__"],[true]))
-	fi
-
-	if [[ "$RTMIDI_TS_API" = "" ]]
-	then
-	    AC_MSG_ERROR(ALSA or Jack are needed to configure MIDI support!)
-	fi
-
-	# Checks for pthread library.
-	AC_CHECK_LIB(pthread, pthread_create, , AC_MSG_ERROR(RtMidi requires the pthread library!))
-
+dnl	AC_MSG_CHECKING(for MIDI API)
+dnl	AC_ARG_WITH(jack, [  --with-jack = choose JACK server support (mac and linux only)], [
+dnl		RTMIDI_TS_API="$RTMIDI_TS_API -D__UNIX_JACK__"
+dnl		AC_MSG_RESULT(using JACK)
+dnl		PKG_CHECK_MODULES(JACK,[jack], , AC_MSG_ERROR(JACK support requires the jack library!) ) ], )
+dnl
+dnl	# Look for ALSA flag
+dnl	AC_ARG_WITH(alsa, [  --with-alsa = choose native ALSA sequencer API support (linux only)], [
+dnl	RTMIDI_TS_API="$RTMIDI_TS_API -D__LINUX_ALSA__"
+dnl	AC_MSG_RESULT(using ALSA)
+dnl	AC_CHECK_LIB(asound, snd_seq_open, , AC_MSG_ERROR(ALSA support requires the asound library!))], )
+dnl
+dnl	if [[ "$RTMIDI_TS_API" = "" ]]
+dnl	then
+dnl	    AC_MSG_RESULT(searching for ALSA and Jack)
+dnl	    AC_CHECK_LIB(asound, snd_seq_open)
+dnl	    if test "x$ac_cv_lib_asound_snd_seq_open" = xyes; then :
+dnl	      RTMIDI_TS_API="$RTMIDI_TS_API -D__LINUX_ALSA__"
+dnl	    fi
+dnl	    dnl the 4th argument to PKG_CHECK_MODULES should must be provided to prevent an error message, here
+dnl	    AS_IF(test -n "$PKG_CONFIG",
+dnl		    PKG_CHECK_MODULES([JACK],[jack],[RTMIDI_TS_API="$RTMIDI_TS_API -D__UNIX_JACK__"],[true]))
+dnl	fi
+dnl
+dnl	if [[ "$RTMIDI_TS_API" = "" ]]
+dnl	then
+dnl	    AC_MSG_ERROR(ALSA or Jack are needed to configure MIDI support!)
+dnl	fi
+dnl
+dnl	# Checks for pthread library.
+dnl	AC_CHECK_LIB(pthread, pthread_create, , AC_MSG_ERROR(RtMidi requires the pthread library!))
+dnl
 	;;
 
 darwin*)
 	PLATFORM=macosx
 	# Check for CoreAudio framework
-	LIBS="$LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio"
-
-	LDFLAGS="$LDFLAGS -framework Cocoa -framework Carbon -Wl,-Y,1455 -framework CoreAudio -framework CoreMIDI -framework CoreFoundation"
-
-	  AC_ARG_WITH(jack, [  --with-jack = choose JACK server support (mac and linux only)], [
-	    RTMIDI_TS_API="$RTMIDI_TS_API -D__UNIX_JACK__"
-	    AC_MSG_RESULT(using JACK)
-	    PKG_CHECK_MODULES(JACK,[jack], , AC_MSG_ERROR(JACK support requires the jack library!))], )
-
-	 # Look for Core flag
-	 AC_ARG_WITH(core, [  --with-core = choose CoreMidi API support (mac only)], [
-		RTMIDI_TS_API="$RTMIDI_TS_API -D__MACOSX_CORE__"
-		AC_MSG_RESULT(using CoreMidi)
-		AC_CHECK_HEADER(CoreMIDI/CoreMIDI.h, [], [AC_MSG_ERROR(CoreMIDI header files not found!)] )
-		RTMIDI_TS_LIBS="$RTMIDI_TS_LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio" ], )
-
-	# If no api flags specified, use CoreMidi
-	if [[ "$RTMIDI_TS_API" = "" ]]
-	then
-	   AC_MSG_RESULT(using both CoreMIDI and Jack if possible)
-	   AC_CHECK_HEADER(CoreMIDI/CoreMIDI.h,[
-		RTMIDI_TS_API="$RTMIDI_TS_API -D__MACOSX_CORE__"]
-		RTMIDI_TS_LIBS="$RTMIDI_TS_LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio"
-	   , )
-	   dnl the 4th argument to PKG_CHECK_MODULES should must be provided to prevent an error message, here
-	   AS_IF(test -n "$PKG_CONFIG",
-		    PKG_CHECK_MODULES(JACK,[jack],[RTMIDI_TS_API="$RTMIDI_TS_API -D__UNIX_JACK__"],))
-	fi
-
-	if [[ "$RTMIDI_TS_API" = "" ]]
-	then
-	    AC_MSG_ERROR(Core MIDI or Jack are needed to configure MIDI support!)
-	fi
-
+dnl	LIBS="$LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio"
+dnl
+dnl	LDFLAGS="$LDFLAGS -framework Cocoa -framework Carbon -Wl,-Y,1455 -framework CoreAudio -framework CoreMIDI -framework CoreFoundation"
+dnl
+dnl	  AC_ARG_WITH(jack, [  --with-jack = choose JACK server support (mac and linux only)], [
+dnl	    RTMIDI_TS_API="$RTMIDI_TS_API -D__UNIX_JACK__"
+dnl	    AC_MSG_RESULT(using JACK)
+dnl	    PKG_CHECK_MODULES(JACK,[jack], , AC_MSG_ERROR(JACK support requires the jack library!))], )
+dnl
+dnl	 # Look for Core flag
+dnl	 AC_ARG_WITH(core, [  --with-core = choose CoreMidi API support (mac only)], [
+dnl		RTMIDI_TS_API="$RTMIDI_TS_API -D__MACOSX_CORE__"
+dnl		AC_MSG_RESULT(using CoreMidi)
+dnl		AC_CHECK_HEADER(CoreMIDI/CoreMIDI.h, [], [AC_MSG_ERROR(CoreMIDI header files not found!)] )
+dnl		RTMIDI_TS_LIBS="$RTMIDI_TS_LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio" ], )
+dnl
+dnl	# If no api flags specified, use CoreMidi
+dnl	if [[ "$RTMIDI_TS_API" = "" ]]
+dnl	then
+dnl	   AC_MSG_RESULT(using both CoreMIDI and Jack if possible)
+dnl	   AC_CHECK_HEADER(CoreMIDI/CoreMIDI.h,[
+dnl		RTMIDI_TS_API="$RTMIDI_TS_API -D__MACOSX_CORE__"]
+dnl		RTMIDI_TS_LIBS="$RTMIDI_TS_LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio"
+dnl	   , )
+dnl	   dnl the 4th argument to PKG_CHECK_MODULES should must be provided to prevent an error message, here
+dnl	   AS_IF(test -n "$PKG_CONFIG",
+dnl		    PKG_CHECK_MODULES(JACK,[jack],[RTMIDI_TS_API="$RTMIDI_TS_API -D__UNIX_JACK__"],))
+dnl	fi
+dnl
+dnl	if [[ "$RTMIDI_TS_API" = "" ]]
+dnl	then
+dnl	    AC_MSG_ERROR(Core MIDI or Jack are needed to configure MIDI support!)
+dnl	fi
+dnl
 	;;
 
 *winnt*|*interix*|cygwin*|*mingw*|uwin*)
@@ -517,40 +517,40 @@ darwin*)
 	AC_CHECK_LIB_HEADER(ws2_32,ntohs,[
 	#include <winsock2.h>
 	])
-	# Look for WinMM flag
-	AC_ARG_WITH(winmm, [  --with-winmm = choose Windows MultiMedia (MM) API support (windoze only)], [
-	    RTMIDI_TS_API="$RTMIDI_TS_API -D__WINDOWS_MM__"
-	    ac_includes_default="$ac_includes_default
-#include <windows.h>
-#include <mmsystem.h>
-"
-	    AC_LANG_PUSH(C)
-	    AC_LIB_WINMM([midiOutGetNumDevs])
-	    AC_LANG_POP(C)
-	    AC_MSG_RESULT(using WinMM)
-	    dnl LIBS="$LIBS -lwinmm
-	    ], )
-
-	AC_ARG_WITH(winks, [  --with-winks = choose kernel streaming support (windoze only)], [
-	    api="$api -D__WINDOWS_KS__"
-	    AC_SUBST( RTMIDI_TS_LIBS, ["-lsetupapi -lksuser"] )
-	    AC_MSG_RESULT(using kernel streaming) ], )
-
-  #	    If no api flags specified, use WinMM
-	    if [[ "$api" = "" ]]
-	    then
-		    RTMIDI_TS_API="$RTMIDI_TS_API -D__WINDOWS_MM__"
-		    ac_includes_default="$ac_includes_default
-#include <windows.h>
-#include <mmsystem.h>
-"
-		    AC_LANG_PUSH(C)
-		    AC_LIB_WINMM([midiOutGetNumDevs])
-		    AC_LANG_POP(C)
-		    AC_MSG_RESULT(using WinMM)
-		    dnl LIBS="$LIBS -lwinmm
-	    fi
-
+dnl	# Look for WinMM flag
+dnl	AC_ARG_WITH(winmm, [  --with-winmm = choose Windows MultiMedia (MM) API support (windoze only)], [
+dnl	    RTMIDI_TS_API="$RTMIDI_TS_API -D__WINDOWS_MM__"
+dnl	    ac_includes_default="$ac_includes_default
+dnl#include <windows.h>
+dnl#include <mmsystem.h>
+dnl"
+dnl	    AC_LANG_PUSH(C)
+dnl	    AC_LIB_WINMM([midiOutGetNumDevs])
+dnl	    AC_LANG_POP(C)
+dnl	    AC_MSG_RESULT(using WinMM)
+dnl	    dnl LIBS="$LIBS -lwinmm
+dnl	    ], )
+dnl
+dnl	AC_ARG_WITH(winks, [  --with-winks = choose kernel streaming support (windoze only)], [
+dnl	    api="$api -D__WINDOWS_KS__"
+dnl	    AC_SUBST( RTMIDI_TS_LIBS, ["-lsetupapi -lksuser"] )
+dnl	    AC_MSG_RESULT(using kernel streaming) ], )
+dnl
+dnl  #	    If no api flags specified, use WinMM
+dnl	    if [[ "$api" = "" ]]
+dnl	    then
+dnl		    RTMIDI_TS_API="$RTMIDI_TS_API -D__WINDOWS_MM__"
+dnl		    ac_includes_default="$ac_includes_default
+dnl#include <windows.h>
+dnl#include <mmsystem.h>
+dnl"
+dnl		    AC_LANG_PUSH(C)
+dnl		    AC_LIB_WINMM([midiOutGetNumDevs])
+dnl		    AC_LANG_POP(C)
+dnl		    AC_MSG_RESULT(using WinMM)
+dnl		    dnl LIBS="$LIBS -lwinmm
+dnl	    fi
+dnl
 	if test "$cross_compiling" = yes; then
 		case "$target_os" in
 		mingw*|cygwin*)
@@ -590,21 +590,6 @@ darwin*)
 
 	;;
 *)
-	AC_MSG_ERROR([
-		Your target system could not be recognized. $PACKAGE depends on
-		a working MIDI configuration for your System. So it can't be built
-		without knowing it.
-
-		Please contact the Development team at
-
-		    $PACKAGE_BUGREPORT
-
-		and provide the following information:
-
-		* The output of configure
-		* The description of your System.
-
-	])
 
 esac
 dnl CPPFLAGS="$CPPFLAGS $RTMIDI_TS_API"

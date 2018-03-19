@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4 --install
+ACLOCAL_AMFLAGS = -I m4 -I lib/rtmidi/m4 --install
 #AUTOMAKE_OPTIONS = dejagnu
 # intl must be before any source directories
 
