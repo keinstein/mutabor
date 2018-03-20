@@ -24,6 +24,7 @@ addons:
     packages:
     - devscripts
     - pbuilder
+    - debhelper
     - autoconf
     - libtool
     - autopoint
@@ -40,6 +41,7 @@ addons:
     - libasound-dev
     - libcppunit-dev
     - doxygen
+    - tex4ht
     - xvfb
 
 
@@ -47,7 +49,6 @@ before_install:
     - eval "${MATRIX_EVAL}"
     - pwd
     - ls
-    - if test "$TRAVIS_OS_NAME" = linux ; then sudo apt-get -qq update ;  yes | sudo /usr/lib/pbuilder/pbuilder-satisfydepends ; fi
     - if test "$TRAVIS_OS_NAME" = osx ; then  brew update ; fi
     - if test "$TRAVIS_OS_NAME" = osx ; then brew upgrade boost ; fi
     - if test "$TRAVIS_OS_NAME" = osx ; then rm -rf /usr/local/include/c++ ; fi # fix broken gcc installation
@@ -56,9 +57,9 @@ before_install:
     - if test "$TRAVIS_OS_NAME" = linux ; then eval TEST_RUNNER=xvfb-run ; else eval TEST_RUNNER= ; fi
 
 script:
-  (cd lib/rtmidi && echo | gettextize -f && autoreconf -i -f) ; 
-  echo | gettextize -f && autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4 || (cat test-suite.log ; exit 1) || $TEST_RUNNER make check || (cat test-suite.log ; exit 1) || exit ;
-  pwd ; ls ; 
-  if test "$TRAVIS_OS_NAME" = osx ; then make dmg || exit; fi ;
-  if test "$TRAVIS_OS_NAME" = linux ; then debuild || exit; fi ;
-  pwd ; ls ;
+    - cd lib/rtmidi && autoreconf -i -f
+    - autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4 || (cat test-suite.log ; exit 1) || $TEST_RUNNER make check || (cat test-suite.log ; exit 1) || exit 
+    - pwd ; ls
+    - if test "$TRAVIS_OS_NAME" = osx ; then make V=1 dmg || exit; fi
+    - if test "$TRAVIS_OS_NAME" = linux ; then debuild || exit; fi
+    - pwd ; ls
