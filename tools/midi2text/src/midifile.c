@@ -56,9 +56,9 @@
 /* #include <malloc.h> */
 #include "midifile.h"
 
-char *strcpy(), *strcat();
+/* char *strcpy(), *strcat(); */
 /*char *malloc();*/
-void exit(), free();
+/* void exit(), free(); */
 
 /* public stuff */
 
@@ -752,7 +752,7 @@ unsigned int chan,type;
 unsigned long size;
 unsigned char *data;
 {
-    int i;
+    unsigned long i;
     unsigned char c;
 
     WriteVarLen(delta_time);
@@ -795,7 +795,7 @@ int mf_w_meta_event(unsigned long delta_time,
 		    unsigned char * data,
 		    unsigned long size)
 {
-    int i;
+    unsigned long i;
 
     WriteVarLen(delta_time);
     
@@ -837,7 +837,7 @@ unsigned long delta_time;
 unsigned char *data;
 unsigned long size;
 {
-    int i;
+    unsigned long i;
 
     WriteVarLen(delta_time);
     
