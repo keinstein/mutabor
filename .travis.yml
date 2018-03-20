@@ -50,5 +50,5 @@ before_install:
     - if test "$TRAVIS_OS_NAME" = linux ; then eval TEST_RUNNER=xvfb-run ; else eval TEST_RUNNER= ; fi
 
 script:
-  (cd lib/rtmidi && autoreconf -i -f)
+  (cd lib/rtmidi && autoreconf -i -f) ; 
   autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4
