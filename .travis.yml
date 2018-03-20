@@ -46,6 +46,8 @@ addons:
 
 
 before_install:
+    - mkdir -p config lib/rtmidi/config
+    - touch config/config.rpath lib/rtmidi/config/config.rpath
     - eval "${MATRIX_EVAL}"
     - pwd
     - ls
