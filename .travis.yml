@@ -58,6 +58,10 @@ before_install:
     - if test "$TRAVIS_OS_NAME" = osx ; then brew install $EXTRA_BREW wxmac gettext flex bison libtool autoconf jack  ; fi
     - if test "$TRAVIS_OS_NAME" = osx ; then brew link --force $EXTRA_BREW wxmac gettext flex bison libtool autoconf jack ; fi
     - if test "$TRAVIS_OS_NAME" = linux ; then eval TEST_RUNNER=xvfb-run ; else eval TEST_RUNNER= ; fi
+    - which gettextize
+    - gettextize --version
+    - which autopoint
+    - autopoint --version
 
 script:
     - (cd lib/rtmidi && autoreconf -i -f)
