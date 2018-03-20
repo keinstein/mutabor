@@ -271,15 +271,6 @@ namespace mutabor {
 #endif
 #define gettext_noop(a) a
 
-#if 0
-inline wxString getContextLocal(const wxString & s)
-{
-	wxString ret = s.AfterFirst('|');
-
-	if (ret == wxEmptyString) return s;
-	else return ret;
-}
-#endif
 
 
 /* we are using std::max and std::min */

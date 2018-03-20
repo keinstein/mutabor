@@ -88,6 +88,16 @@ inline wxString muT(const std::string & s) {
 	return muT(s.c_str());
 }
 
+// currently only used for Mac port translation of “FILE”
+inline wxString getContextLocal(const wxString & s)
+{
+	wxString ret = s.AfterFirst('|');
+
+	if (ret == wxEmptyString) return s;
+	else return ret;
+}
+
+
 #if defined(WX) && (defined(UNICODE) || wxUSE_WCHAR_T)
 #if 0
 #include "wx/strconv.h"
