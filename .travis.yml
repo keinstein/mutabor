@@ -51,4 +51,4 @@ before_install:
 
 script:
   (cd lib/rtmidi && autoreconf -i -f) ; 
-  autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4
+  autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4 || (cat test-suite.log ; false)
