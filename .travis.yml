@@ -52,6 +52,8 @@ before_install:
 
 script:
   (cd lib/rtmidi && autoreconf -i -f) ; 
-  autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4 || (cat test-suite.log ; false) &&
-  if test "$TRAVIS_OS_NAME" = osx ; then make dmg ; fi ;
-  if test "$TRAVIS_OS_NAME" = linux ; then debuild ; fi
+  autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4 || (cat test-suite.log ; exit 1) || exit ;
+  pwd ; ls ; 
+  if test "$TRAVIS_OS_NAME" = osx ; then make dmg || exit; fi ;
+  if test "$TRAVIS_OS_NAME" = linux ; then debuild || exit; fi ;
+  pwd ; ls ;
