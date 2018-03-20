@@ -230,7 +230,7 @@ $(KBMTESTS:.kbm=.log): %D%/run_kbm2mut.sh
 	@echo 'export LC_ALL' >> $@
 	@echo '"./scl2mut$(EXEEXT)" "$$file" "$$outputdir$${basefile%.scl}.mut2" 2>&1 | tee $$outputdir$${basefile%.nscl}.log2 || exit 1' >> $@
 	@echo 'echo "starting grep..."' >> $@
-	@echo 'grep -Pzo -f $${file%.nscl}.err $$outputdir$${basefile%.nscl}.log2 || exit 2' >> $@
+	@echo 'grep -Eo -f $${file%.nscl}.err $$outputdir$${basefile%.nscl}.log2 || exit 2' >> $@
 	@echo 'exit 0' >> $@
 	@chmod u+x $@
 
