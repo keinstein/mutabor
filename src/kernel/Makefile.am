@@ -101,7 +101,7 @@ endif
 %D%/mut.cc.stamp: $(top_srcdir)/%D%/mut.yy
 	rm -f "$@"
 	$(MKDIR_P) `dirname %D%/mut.cc`
-	rm -f "$(top_srcdir)/%D%/mut.cc" "%D%/mut.cc"
+	rm -f "%D%/mut.cc"
 	$(YACCCOMPILE) -o %D%/mut.cc -b $(top_srcdir)/%D%/ $<
 	cmp $(top_srcdir)/%D%/mut.cc %D%/mut.cc 2>/dev/null || \
 		cp %D%/mut.cc $(top_srcdir)/%D%/mut.cc
@@ -112,7 +112,7 @@ endif
 %D%/mutlex.cc.stamp: $(top_srcdir)/%D%/mutlex.ll
 	rm -f "$@"
 	$(MKDIR_P) `dirname %D%/mutlex.cc`
-	rm -f "$(top_srcdir)/%D%/mutlex.cc" "%D%/mutlex.cc"
+	rm -f "%D%/mutlex.cc"
 	$(LEXCOMPILE) -o %D%/mutlex.cc $<
 	cmp $(top_srcdir)/%D%/mutlex.cc %D%/mutlex.cc 2>/dev/null || \
 		cp %D%/mutlex.cc $(top_srcdir)/%D%/mutlex.cc
