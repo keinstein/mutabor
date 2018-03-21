@@ -64,9 +64,10 @@ before_install:
     - autopoint --version
 
 script:
-    - (cd lib/rtmidi && autoreconf -i -f)
-    - autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4 || (cat test-suite.log ; exit 1) || $TEST_RUNNER make check || (cat test-suite.log ; exit 1) || exit 
+    - (cd lib/rtmidi && autoreconf -i -f) ;
+    - autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4 || (cat test-suite.log ; exit 1) || $TEST_RUNNER make check || (cat test-suite.log ; exit 1) || exit ; 
+    - make distcheck ; 
     - pwd ; ls
-    - if test "$TRAVIS_OS_NAME" = osx ; then make V=1 dmg || exit; fi
-    - if test "$TRAVIS_OS_NAME" = linux ; then debuild || exit; fi
-    - pwd ; ls
+    - if test "$TRAVIS_OS_NAME" = osx && false ; then make V=1 dmg || exit; fi ; 
+    - if test "$TRAVIS_OS_NAME" = linux && false ; then debuild || exit; fi ;
+    - pwd ; ls ;
