@@ -64,6 +64,7 @@ before_install:
     - autopoint --version
 
 script:
+    - gettextize -f
     - (cd lib/rtmidi && autoreconf -i -f)
     - autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4 || (cat test-suite.log ; exit 1) || $TEST_RUNNER make check || (cat test-suite.log ; exit 1) || exit 
     - pwd ; ls
