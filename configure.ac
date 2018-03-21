@@ -156,21 +156,9 @@ AC_ARG_ENABLE(debug,
 		    -fbounds-check  -pedantic  -fdiagnostics-show-option  -Wno-long-long \
 		     -Wno-variadic-macros -Wno-nested-anon-types -Wno-c++11-extensions -g -fipa-icf
 	       do
-		       tmpcxxflags="$CXXFLAGS"
-		       CXXFLAGS="$CXXFLAGS $flag"
-		       AC_MSG_CHECKING([whether $CXX supports $flag])
-		       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-		                         [AC_MSG_RESULT([yes])],
-					 [CXXFLAGS="$tmpcxxflags"
-			         AC_MSG_RESULT([no])])
+		       AX_CHECK_COMPILE_FLAG([$flag],[CXXFLAGS="$CXXFLAGS $flag"])
 		       AC_LANG_PUSH(C)
-		       tmpcflags="$CFLAGS"
-		       CFLAGS="$CFLAGS $flag"
-		       AC_MSG_CHECKING([whether $CC supports $flag])
-		       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-		                         [AC_MSG_RESULT([yes])],
-					 [CFLAGS="$tmpcflags"
-			         AC_MSG_RESULT([no])])
+		       AX_CHECK_COMPILE_FLAG([$flag],[CFLAGS="$CFLAGS $flag"])
 		       AC_LANG_POP(C)
 	       done
 dnl mudflap is not possible with g++ 4.7.1 and wxWidgets 2.8
@@ -187,39 +175,15 @@ dnl				[AC_MSG_RESULT([no])])
 dnl
 	       case "$host_os" in
 	       *mingw*)
-		       tmpcxxflags="$CXXFLAGS"
-		       CXXFLAGS="$CXXFLAGS -gstabs"
-			       AC_MSG_CHECKING([whether $CXX supports -gstabs])
-			       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-						 [AC_MSG_RESULT([yes])],
-						 [CXXFLAGS="$tmpcxxflags"]
-						 [AC_MSG_RESULT([no])])
+		       AX_CHECK_COMPILE_FLAG([-gstabs],[CXXFLAGS="$CXXFLAGS -gstabs"])
 		       AC_LANG_PUSH(C)
-		       tmpcxxflags="$CFLAGS"
-		       CXXFLAGS="$CFLAGS -gstabs"
-			       AC_MSG_CHECKING([whether $CC supports -gstabs])
-			       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-						 [AC_MSG_RESULT([yes])],
-						 [CFLAGS="$tmpcflags"]
-						 [AC_MSG_RESULT([no])])
+		       AX_CHECK_COMPILE_FLAG([-gstabs],[CFLAGS="$CFLAGS -gstabs"])
                        AC_LANG_POP(C)
 			;;
 	       darwin*)
-		       tmpcxxflags="$CXXFLAGS"
-		       CXXFLAGS="$CXXFLAGS -ggdb"
-			       AC_MSG_CHECKING([whether $CXX supports -ggdb])
-			       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-						 [AC_MSG_RESULT([yes])],
-						 [CXXFLAGS="$tmpcxxflags"]
-						 [AC_MSG_RESULT([no])])
+		       AX_CHECK_COMPILE_FLAG([-ggdb],[CXXFLAGS="$CXXFLAGS -ggdb"])
 		       AC_LANG_PUSH(C)
-		       tmpcxxflags="$CFLAGS"
-		       CXXFLAGS="$CFLAGS -ggdb"
-			       AC_MSG_CHECKING([whether $CC supports -ggdb])
-			       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-						 [AC_MSG_RESULT([yes])],
-						 [CFLAGS="$tmpcflags"]
-						 [AC_MSG_RESULT([no])])
+		       AX_CHECK_COMPILE_FLAG([-ggdb],[CXXFLAGS="$CFLAGS -ggdb"])
                        AC_LANG_POP(C)
 			;;
 	       esac
@@ -234,21 +198,9 @@ AC_ARG_ENABLE(oink-support,
 	       AC_LANG_PUSH(C++)
 	       for flag in -save-temps
 	       do
-		       tmpcxxflags="$CXXFLAGS"
-		       CXXFLAGS="$CXXFLAGS $flag"
-		       AC_MSG_CHECKING([whether $CXX supports $flag])
-		       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-		                         [AC_MSG_RESULT([yes])],
-					 [CXXFLAGS="$tmpcxxflags"
-			         AC_MSG_RESULT([no])])
+		       AX_CHECK_COMPILE_FLAG([$flag],[CXXFLAGS="$CXXFLAGS $flag"])
 		       AC_LANG_PUSH(C)
-		       tmpcflags="$CFLAGS"
-		       CFLAGS="$CFLAGS $flag"
-		       AC_MSG_CHECKING([whether $CC supports $flag])
-		       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-		                         [AC_MSG_RESULT([yes])],
-					 [CFLAGS="$tmpcflags"
-			         AC_MSG_RESULT([no])])
+		       AX_CHECK_COMPILE_FLAG([$flag],[CFLAGS="$CFLAGS $flag"])
 		       AC_LANG_POP(C)
 	       done
 	       AC_LANG_POP(C++)
@@ -260,41 +212,14 @@ AC_ARG_ENABLE(address-sanitizer,
 	[AS_IF(test "$enableval" = yes,
 
 	       AC_LANG_PUSH(C++)
-	       for flag in  -fsanitize=address  -fno-omit-frame-pointer  -fno-common
+	       for flag in  -fsanitize=address  -fno-omit-frame-pointer  -fno-common \
+				-fsanitize-blacklist
 	       do
-		       tmpcxxflags="$CXXFLAGS"
-		       CXXFLAGS="$CXXFLAGS $flag"
-		       AC_MSG_CHECKING([whether $CXX supports $flag])
-		       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-		                         [AC_MSG_RESULT([yes])],
-					 [CXXFLAGS="$tmpcxxflags"
-			         AC_MSG_RESULT([no])])
-			AC_LANG_PUSH(C)
-			tmpcflags="$CFLAGS"
-			CFLAGS="$CFLAGS $flag"
-			AC_MSG_CHECKING([whether $CC supports $flag])
-			AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-		                          [AC_MSG_RESULT([yes])],
-					  [CFLAGS="$tmpcflags"
-			          AC_MSG_RESULT([no])])
-			AC_LANG_POP(C)
+		       AX_CHECK_COMPILE_FLAG([$flag],[CXXFLAGS="$CXXFLAGS $flag"])
+		       AC_LANG_PUSH(C)
+		       AX_CHECK_COMPILE_FLAG([$flag],[CFLAGS="$CFLAGS $flag"])
+		       AC_LANG_POP(C)
 	       done
-	       tmpcxxflags="$CXXFLAGS"
-	       CXXFLAGS="$CXXFLAGS -fsanitize-blacklist"
-	       AC_MSG_CHECKING([whether $CXX supports $flag])
-	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-	                         [AC_MSG_RESULT([yes])],
-				 [CXXFLAGS="$tmpcxxflags"
-		         AC_MSG_RESULT([no])])
-		AC_LANG_PUSH(C)
-		tmpcflags="$CFLAGS"
-		CFLAGS="$CFLAGS $flag"
-		AC_MSG_CHECKING([whether $CC supports $flag])
-		AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-	                          [AC_MSG_RESULT([yes])],
-				  [CFLAGS="$tmpcflags"
-		          AC_MSG_RESULT([no])])
-		AC_LANG_POP(C)
 	       AC_LANG_POP(C++)
 	       )
 	]
@@ -306,21 +231,9 @@ AC_ARG_ENABLE(thread-sanitizer,
 	       AC_LANG_PUSH(C++)
 	       for flag in  -fsanitize=thread  -fno-omit-frame-pointer  -fno-common
 	       do
-		       tmpcxxflags="$CXXFLAGS"
-		       CXXFLAGS="$CXXFLAGS $flag"
-		       AC_MSG_CHECKING([whether $CXX supports $flag])
-		       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-		                         [AC_MSG_RESULT([yes])],
-					 [CXXFLAGS="$tmpcxxflags"
-			         AC_MSG_RESULT([no])])
+		       AX_CHECK_COMPILE_FLAG([$flag],[CXXFLAGS="$CXXFLAGS $flag"])
 		       AC_LANG_PUSH(C)
-		       tmpcflags="$CFLAGS"
-		       CFLAGS="$CFLAGS $flag"
-		       AC_MSG_CHECKING([whether $CC supports $flag])
-		       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-		                         [AC_MSG_RESULT([yes])],
-					 [CFLAGS="$tmpcflags"
-			         AC_MSG_RESULT([no])])
+		       AX_CHECK_COMPILE_FLAG([$flag],[CFLAGS="$CFLAGS $flag"])
 		       AC_LANG_POP(C)
 	       done
 dnl	       for flag in  -pie
@@ -425,13 +338,13 @@ case "$host_os" in
 dnl GNU/Linux on an Intel or compatible
 *linux*)
 	AC_LANG_PUSH(C++)
-	tmpcxxflags="$CXXFLAGS"
-	CXXFLAGS="$CXXFLAGS -fvisibility-inlines-hidden"
-	AC_MSG_CHECKING([whether $CXX supports -fvisibility-inlines-hidden])
-	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-				[AC_MSG_RESULT([yes])],
-				[CXXFLAGS="$tmpcxxflags"]
-				[AC_MSG_RESULT([yes])])
+	for flag in -fvisibility-inlines-hidden
+	do
+		AX_CHECK_COMPILE_FLAG([$flag],[CXXFLAGS="$CXXFLAGS $flag"])
+		AC_LANG_PUSH(C)
+		AX_CHECK_COMPILE_FLAG([$flag],[CFLAGS="$CFLAGS $flag"])
+		AC_LANG_POP(C)
+	done
 	AC_LANG_POP(C++)
 
 	PLATFORM=linux
@@ -576,24 +489,14 @@ dnl
 		esac
 	fi
 	AC_LANG_PUSH(C++)
-	tmpcxxflags="$CXXFLAGS"
-	CXXFLAGS="$CXXFLAGS -Wl,-Map,symbols.map"
-	AC_MSG_CHECKING([whether $CXX supports -Wl,-Map,symbols.map])
-	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-				[AC_MSG_RESULT([yes])],
-				[CXXFLAGS="$tmpcxxflags"]
-				[AC_MSG_RESULT([yes])])
+	for flag in -Wl,-Map,symbols.map
+	do
+		AX_CHECK_COMPILE_FLAG([$flag],[CXXFLAGS="$CXXFLAGS $flag"])
+		AC_LANG_PUSH(C)
+		AX_CHECK_COMPILE_FLAG([$flag],[CFLAGS="$CFLAGS $flag"])
+		AC_LANG_POP(C)
+	done
 	AC_LANG_POP(C++)
-	AC_LANG_PUSH(C)
-	tmpcflags="$CFLAGS"
-	CFLAGS="$CFLAGS -Wl,-Map,symbols.map"
-	AC_MSG_CHECKING([whether $CC supports ])
-	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-				[AC_MSG_RESULT([yes])],
-				[CXXFLAGS="$tmpcxxflags"]
-				[AC_MSG_RESULT([yes])])
-	AC_LANG_POP(C)
-
 	;;
 *)
 
@@ -812,54 +715,17 @@ AS_IF(test "$ac_cv_format_arg" != __attribute_format_arg,
 
 AC_LANG_POP(C++)
 
-AC_CACHE_CHECK([fallthrough syntax in the C language], ac_cv_c_fallthrough,
-[
-AC_COMPILE_IFELSE([
-	AC_LANG_PROGRAM([
-	int j;
-	void test(int i) { switch (i) { case 1: j = 3; [[[fallthrough]]] ; case 2: j++; }}
-	],[])],[ac_cv_c_fallthrough="[[fallthrough]]"],[
-	AC_COMPILE_IFELSE([
-		AC_LANG_PROGRAM([
-		int j;
-		void test(int i) { switch (i) { case 1: j = 3; [[[gnu::fallthrough]]] ; case 2: j++; }}
-		],[])],[ac_cv_c_fallthrough="[[[gnu::fallthrough]]]"],[
-		AC_COMPILE_IFELSE([
-			AC_LANG_PROGRAM([
-			int j;
-			void test(int i) { switch (i) { case 1: j = 3; __attribute__((fallthrough)) ; case 2: j++; }}
-			],[])],[ac_cv_c_fallthrough="__attribute__((fallthrough))"],[
-			ac_cv_c_fallthrough=""
-		]);
-	]);
-]);
-])
-AC_DEFINE_UNQUOTED(mutCfallthrough,[$ac_cv_c_fallthrough],[syntax for swtich case fallthrough attributes in C])
+AC_LANG_PUSH(C)
+AX_CHECK_FALLTHROUGH_SYNTAX
+AC_LANG_POP(C)
+AC_DEFINE_UNQUOTED(mutCfallthrough,[$ac_cv_check_c_fallthrough_syntax_],
+	[syntax for swtich case fallthrough attributes in C])
 
-AC_LANG(C++)
-AC_CACHE_CHECK([fallthrough syntax in the C++ language], ac_cv_cxx_fallthrough,
-[
-AC_COMPILE_IFELSE([
-	AC_LANG_PROGRAM([
-	int j;
-	void test(int i) { switch (i) { case 1: j = 3; [[[fallthrough]]] ; case 2: j++; }}
-	],[])],[ac_cv_cxx_fallthrough="[[[fallthrough]]]"],[
-	AC_COMPILE_IFELSE([
-		AC_LANG_PROGRAM([
-		int j;
-		void test(int i) { switch (i) { case 1: j = 3; [[[gnu::fallthrough]]] ; case 2: j++; }}
-		],[])],[ac_cv_cxx_fallthrough="[[[gnu::fallthrough]]]"],[
-		AC_COMPILE_IFELSE([
-			AC_LANG_PROGRAM([
-			int j;
-			void test(int i) { switch (i) { case 1: j = 3; __attribute__((fallthrough)) ; case 2: j++; }}
-			],[])],[ac_cv_cxx_fallthrough="__attribute__((fallthrough))"],[
-			ac_cv_cxx_fallthrough=""
-		]);
-	]);
-]);
-])
-AC_DEFINE_UNQUOTED(mutfallthrough,[$ac_cv_cxx_fallthrough],[syntax for swtich case fallthrough attributes in C++])
+AC_LANG_PUSH(C++)
+AX_CHECK_FALLTHROUGH_SYNTAX
+AC_DEFINE_UNQUOTED(mutfallthrough,
+		[$ac_cv_check_cxx_fallthrough_syntax_],
+		[syntax for swtich case fallthrough attributes in C++])
 
 dnl AC_CACHE_CHECK([for variable scope in for loops in C++ mode], ac_cv_cxx_scope_reuse,
 dnl [
