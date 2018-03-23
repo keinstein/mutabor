@@ -106,7 +106,7 @@ namespace mutabor {
 
 	inline bool disconnect(OutputDevice & out, Route & r) { return disconnect(r,out); }
 	inline bool disconnect(InputDevice & in, Route & r) { return disconnect(r,in); }
-	inline bool disconnect(Box & box, Route & r) { return disconnect(box,r); }
+	inline bool disconnect(Box & box, Route & r) { return disconnect(r,box); }
 
 	inline bool reconnect(Route r, OutputDevice oldout, OutputDevice newout) {
 		bool retval = oldout->Remove(r);

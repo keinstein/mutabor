@@ -336,18 +336,22 @@ namespace mutaborGUI {
 
 	template<class T> T * static_cast_to(mutabor::OutputDevice & o,
 					     T * type) {
+		mutUnused(type);
 		return static_cast<T *>(o.get());
 	}
 	template<class T> T * dynamic_cast_to(mutabor::OutputDevice & o,
-					     T * type) {
+					      T * type) {
+		mutUnused(type);
 		return dynamic_cast<T *>(o.get());
 	}
 	template<class T> const T * static_cast_to(const mutabor::OutputDevice & o,
-					     const T * type) {
+						   const T * type) {
+		mutUnused(type);
 		return static_cast<const T *>(o.get());
 	}
 	template<class T> const T * dynamic_cast_to(const mutabor::OutputDevice & o,
-					     const T * type) {
+						    const T * type) {
+		mutUnused(type);
 		return dynamic_cast<const T *>(o.get());
 	}
 

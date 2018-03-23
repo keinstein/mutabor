@@ -252,6 +252,7 @@ namespace mutaborGUI {
 
 		template<class T>
 		wxSizer * GetShapeSizer (T * shape) {
+			mutUnused(shape);
 			return GetShapeSizer<T>();
 		}
 		

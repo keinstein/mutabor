@@ -189,15 +189,16 @@ inline const char * wxwidgets_gettext(const char * domainname,
 /* Similar to `gettext' but select the plural form corresponding to the
    number N.  */
  const char *wxwidgets_gettext (const char * msgid1, 
-				      const char * msgid2,
-				      unsigned long int n)
-	 __mutabor_attribute_format_arg__ (1,0) __mutabor_attribute_format_arg__ (2,0);
+				const char * msgid2,
+				unsigned long int n)
+	 __mutabor_attribute_format_arg__ (1,0)
+	 __mutabor_attribute_format_arg__ (2,0);
 inline const char *wxwidgets_gettext (const char * msgid1, 
 				      const char * msgid2,
 				      unsigned long int n)
 {
 	std::string m1(msgid1), m2(msgid2);
-	return wxwidgets_gettext(msgid1,msgid2,n);
+	return wxwidgets_gettext(m1,m2,n);
 }
 
 /* Similar to `dgettext' but select the plural form corresponding to the

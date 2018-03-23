@@ -264,7 +264,7 @@ bool MutIconShapeClass<T>::Create (wxWindow * parent, wxWindowID id, long style)
 			      style)) return false;
 
 	maxBorderSize = this->GetWindowBorderSize()/2;
-	if (style && (wxBORDER_RAISED | wxBORDER_SUNKEN)) {
+	if (style & (wxBORDER_RAISED | wxBORDER_SUNKEN)) {
 		this->SetWindowStyle(
 				     (this->GetWindowStyle() & ~ wxBORDER_MASK)| wxBORDER_SUNKEN);
 		wxSize tmpBorderSize = this->GetWindowBorderSize()/2;

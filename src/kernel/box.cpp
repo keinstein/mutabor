@@ -160,7 +160,7 @@ void mutabor_initialize_box(mutabor_box_type * box, int id)
 	/* C standard does not define NULL to be 0 */
 	/* the following if statement will be optimized away
 	   if not needed */
-	if (0 != NULL) {
+	if ((void*)0 != NULL) {
 		box->userdata = NULL;
 		box->current_logic = NULL;
 	}

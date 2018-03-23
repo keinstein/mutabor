@@ -118,14 +118,14 @@ public:
 		return value;
 	}
 
-	T fetch_add(T number, boost::memory_order order)
+	T fetch_add(T number, boost::memory_order /* order */)
 	{
 		T retval = value;
 		value += number;
 		return retval;
 	}
 
-	T fetch_sub(T number, boost::memory_order order)
+	T fetch_sub(T number, boost::memory_order /* order */)
 	{
 		T retval = value;
 		value -= number;
