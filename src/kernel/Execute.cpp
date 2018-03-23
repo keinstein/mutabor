@@ -286,7 +286,10 @@ inline static void call_actions (mutabor_box_type * box,
 				switch (aktion->aufruf_typ) {
 				case aufruf_logik: {
 					struct logik * logic = aktion->calling.logic;
-					asprintf(&name, _mut("%s {logic}"),aktion->name?aktion->name:"");
+					if (asprintf(&name,
+						     _mut("%s {logic}"),
+						     aktion->name?aktion->name:"") == -1)
+						name = NULL;
 					TRACE;
 
 					mutASSERT(logic);
@@ -314,7 +317,10 @@ inline static void call_actions (mutabor_box_type * box,
 					break;
 				}
 				case aufruf_tonsystem:
-					asprintf(&name, _mut("%s {tone system}"),aktion->name?aktion->name:"");
+					if (asprintf(&name,
+						     _mut("%s {tone system}"),
+						     aktion->name?aktion->name:"") == -1)
+						name = NULL;
 					TRACE;
 					*(box -> tonesystem) =
 						*aktion->u.aufruf_tonsystem.tonsystem;
@@ -337,7 +343,11 @@ inline static void call_actions (mutabor_box_type * box,
 					    break;
 					}
 
-					asprintf(&name, _mut("%s:%d[]"),aktion->name?aktion->name:"",parameters->data[0]);
+					if (asprintf(&name,
+						     _mut("%s:%d[]"),
+						     aktion->name?aktion->name:"",
+						     parameters->data[0]) == -1)
+						name = NULL;
 
 					change_anker(box, parameters->data[0]);
 
@@ -360,7 +370,11 @@ inline static void call_actions (mutabor_box_type * box,
 					    break;
 					}
 
-					asprintf(&name, _mut("%s:[<< %d >>]"),aktion->name?aktion->name:"",parameters->data[0]);
+					if (asprintf(&name,
+						     _mut("%s:[<< %d >>]"),
+						     aktion->name?aktion->name:"",
+						     parameters->data[0])==-1)
+						name = NULL;
 
 					change_breite(box, parameters->data[0]);
 					update_pattern(box);
@@ -375,8 +389,11 @@ inline static void call_actions (mutabor_box_type * box,
 					TRACE;
 					mutabor_interval period =
 						aktion->u.aufruf_umst_wiederholung_abs.interval;
-					asprintf(&name, _mut("%s:[]%f HT"),aktion->name?aktion->name:"",
-							       mutabor_get_pitch_from_interval(period));
+					if (asprintf(&name,
+						     _mut("%s:[]%f HT"),
+						     aktion->name?aktion->name:"",
+						     mutabor_get_pitch_from_interval(period))
+					    == -1) name = NULL;
 
 					box->tonesystem->periode = period;
 
@@ -392,8 +409,11 @@ inline static void call_actions (mutabor_box_type * box,
 					TRACE;
 					mutabor_interval period =
 						aktion->u.aufruf_umst_wiederholung_abs.interval;
-					asprintf(&name, _mut("%s:[]@+%f HT"),aktion->name?aktion->name:"",
-						 mutabor_get_pitch_from_interval(period));
+					if (asprintf(&name,
+						     _mut("%s:[]@+%f HT"),
+						     aktion->name?aktion->name:"",
+						     mutabor_get_pitch_from_interval(period))
+					    == -1) name = NULL;
 
 					box->tonesystem->periode
 						= mutabor_add_intervals(box->tonesystem->periode,
@@ -419,9 +439,12 @@ inline static void call_actions (mutabor_box_type * box,
 								  _mut("Changing anchor with incompatible parameters. Please report to the MUTABOR team."));
 					    break;
 					}
-					asprintf(&name,_mut("%s:@%c%d[]"),aktion->name?aktion->name:"",
-						 aktion->u.aufruf_umst_taste_rel.rechenzeichen,
-						 parameters->data[0]);
+					if (asprintf(&name,
+						     _mut("%s:@%c%d[]"),
+						     aktion->name?aktion->name:"",
+						     aktion->u.aufruf_umst_taste_rel.rechenzeichen,
+						     parameters->data[0]) == -1)
+						name = NULL;
 
 					help = box->tonesystem->anker;
 
@@ -460,10 +483,12 @@ inline static void call_actions (mutabor_box_type * box,
 								  _mut("Changing tone system width with incompatible parameters. Please report to the MUTABOR team."));
 					    break;
 					}
-					asprintf(&name, _mut("%s:[<<@%c%d>>]"),
-							       name,
-							       aktion->u.aufruf_umst_breite_rel.rechenzeichen,
-							       parameters->data[0]);
+					if (asprintf(&name,
+						     _mut("%s:[<<@%c%d>>]"),
+						     name,
+						     aktion->u.aufruf_umst_breite_rel.rechenzeichen,
+						     parameters->data[0]) == -1)
+						name = NULL;
 					help = box->tonesystem->breite;
 
 					switch (aktion->u.aufruf_umst_breite_rel.rechenzeichen) {
@@ -498,8 +523,10 @@ inline static void call_actions (mutabor_box_type * box,
 					mutabor_tone * ton_zeiger;
 					struct ton_einstell * lauf;
 					TRACE;
-					asprintf(&name, _mut("%s:[.,.,.]"),
-						 aktion->name?aktion->name:"");
+					if (asprintf(&name,
+						     _mut("%s:[.,.,.]"),
+						     aktion->name?aktion->name:"") == -1)
+						name = NULL;
 
 					for (ton_zeiger = box->tonesystem->ton,
 						     lauf = aktion->u.aufruf_umst_toene_veraendert.tonliste;
@@ -549,19 +576,31 @@ inline static void call_actions (mutabor_box_type * box,
 					if (aktion->name) {
 						char * params, * oldparams;
 						if (!parameters || !parameters->size) {
-							asprintf(&name, "%s", aktion->name);
+							if (asprintf(&name,
+								     "%s",
+								     aktion->name)
+							    == -1) name = NULL;
 							break;
 						}
 
-						asprintf(&params, "%d", parameters->data[0]);
+						if (asprintf(&params,
+							     "%d",
+							     parameters->data[0]) == -1)
+							params = NULL;
 						for (size_t i = 1; i < parameters->size; i++) {
 							oldparams = params;
-							asprintf(&params, _mut("%s,%d"),
-								 oldparams,
-								 parameters->data[i]);
+							if (asprintf(&params,
+								     _mut("%s,%d"),
+								     oldparams,
+								     parameters->data[i]) == -1)
+								params = NULL;
 							free(oldparams);
 						}
-						asprintf(&name, "%s(%s)",aktion->name,params);
+						if (asprintf(&name,
+							     "%s(%s)",
+							     aktion->name,
+							     params) == -1)
+							name = NULL;
 					}
 
 					/* nothing to be done here, this is only the head (containing the name) of the compound,
@@ -581,7 +620,10 @@ inline static void call_actions (mutabor_box_type * box,
 					    break;
 					}
 					i=parameters->data[0];
-					asprintf(&name, "%s { %d:", aktion->name?aktion->name:"", i);
+					if (asprintf(&name,
+						     "%s { %d:",
+						     aktion->name?aktion->name:"",
+						     i) == -1) name = NULL;
 					mutabor_log_action(box, name);
 
 					for (lauf = aktion->u.aufruf_umst_umst_case.umst_case;
@@ -603,19 +645,28 @@ inline static void call_actions (mutabor_box_type * box,
 					char * params, * oldparams;
 					struct midiliste * i = aktion->u.aufruf_midi_out.out_liste;
 					if (i) {
-						asprintf(&params,"%x",i->midi_code);
+						if (asprintf(&params,
+							     "%x",
+							     i->midi_code) == -1)
+							params = NULL;
 						i = i->next;
 					} else params = NULL;
 					for (; i ;  i = i->next) {
 						oldparams = params;
-						asprintf(&params, _mut("%s %x"),
-							 oldparams,
-							 i -> midi_code);
+						if (asprintf(&params,
+							     _mut("%s %x"),
+							     oldparams,
+							     i -> midi_code) == -1)
+							params = NULL;
 						free(oldparams);
 					}
 					if (params) {
 						oldparams = params;
-						asprintf(& name,"%s: MidiOut(%s)",aktion->name?aktion->name:"",params);
+						if (asprintf(& name,
+							     "%s: MidiOut(%s)",
+							     aktion->name?aktion->name:"",
+							     params) == -1)
+							name = NULL;
 						free(oldparams);
 					} else {
 						name = strdup(aktion->name);
