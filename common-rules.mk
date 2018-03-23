@@ -352,5 +352,8 @@ midi2text: mf2txt$(EXEEXT) txt2mf$(EXEEXT)
 $(check_MIDIFILES): midi2text
 
 SUFFIXES += .mid .txt
+# We don't need to care about off tree builds here, as we work in the
+# source tree and the MIDI files are distributed, too.
 .txt.mid:
-	./txt2mf$(EXEEXT) $< $@
+	./txt2mf$(EXEEXT) "$<" "$@"
+

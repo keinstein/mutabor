@@ -31,18 +31,18 @@ EXTRA_DIST += \
 check_SCRIPTS += \
 	%D%/midiin.mut
 
-check_MIDIFILES += %D%/playmidi1.mid
+check_MIDIFILES += $(srcdir)/%D%/playmidi1.mid
 check_MIDISOURCES += \
-	%D%/midi1_source.txt \
-	%D%/bug019010.txt \
-	%D%/controller.txt \
-	%D%/bank_select.txt \
-	%D%/all_controller_off.txt \
-	%D%/rpn_nrpn.txt \
-	%D%/controller.txt \
-	%D%/midiin.txt \
-	%D%/aftertouch.txt \
-	%D%/sysex.txt
+	$(srcdir)/%D%/midi1_source.txt \
+	$(srcdir)/%D%/bug019010.txt \
+	$(srcdir)/%D%/controller.txt \
+	$(srcdir)/%D%/bank_select.txt \
+	$(srcdir)/%D%/all_controller_off.txt \
+	$(srcdir)/%D%/rpn_nrpn.txt \
+	$(srcdir)/%D%/controller.txt \
+	$(srcdir)/%D%/midiin.txt \
+	$(srcdir)/%D%/aftertouch.txt \
+	$(srcdir)/%D%/sysex.txt
 
 TESTS += \
 	%D%/playmidi1$(EXEEXT) \
