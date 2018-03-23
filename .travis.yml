@@ -74,6 +74,6 @@ script:
     - cat test-suite.log 
     - grep GETTEXT_MACRO_VERSION -r * || true
     - pwd ; ls
-    - if test "$TRAVIS_OS_NAME" = osx && false ; then make V=1 dmg || exit; fi ; 
+    - if test "$TRAVIS_OS_NAME" = osx ; then make V=1 dmg || exit; fi ;
     - if test "$TRAVIS_OS_NAME" = linux && false ; then debuild || exit; fi ;
     - pwd ; ls ;
