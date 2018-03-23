@@ -346,5 +346,4 @@ midi2text: mf2txt$(EXEEXT) txt2mf$(EXEEXT)
 
 SUFFIXES += .mid .txt
 .txt.mid:
-	$(MAKE) ./txt2mf$(EXEEXT)
 	./txt2mf$(EXEEXT) $< $@
