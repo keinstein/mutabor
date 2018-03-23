@@ -253,12 +253,12 @@ dnl	       AC_LANG_POP(C++)
 
 AC_ARG_ENABLE(ansi,
 	AS_HELP_STRING([--enable-ansi],[Enable strict ansi compiling and warnings]),
-	[AS_IF(test "$enableval" = yes,
-	       AC_DEFINE(ANSI,1,[Define to 1 for compiling in ansi mode.]),
-               AC_DEFINE_UNQUOTED(ANSI,[$enableval]))
-	 AX_CXXFLAGS_WARN_ALL_ANSI
-	 AX_CFLAGS_WARN_ALL_ANSI
+	[AS_IF(test "$enableval" = yes,[
+               AC_DEFINE_UNQUOTED(ANSI,[$enableval],[Define to 1 for compiling in ansi mode.])
+	])
 ])
+AX_CXXFLAGS_WARN_ALL(CXXFLAGS)
+AX_CFLAGS_WARN_ALL(CFLAGS)
 AC_ARG_ENABLE(gui,
 	AS_HELP_STRING([--enable-gui],[Enable compiling ]),
 	[AS_IF(test "$enableval" = yes,
