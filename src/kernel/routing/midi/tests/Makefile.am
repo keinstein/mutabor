@@ -26,30 +26,23 @@ check_PROGRAMS += \
 	%D%/genmidilinear
 
 EXTRA_DIST += \
-	%D%/midi1_source.mid \
+	%D%/midiin.mut
+
+check_SCRIPTS += \
+	%D%/midiin.mut
+
+check_MIDIFILES += %D%/playmidi1.mid
+check_MIDISOURCES += \
 	%D%/midi1_source.txt \
-	%D%/bug019010.mid \
 	%D%/bug019010.txt \
 	%D%/controller.txt \
-	%D%/controller.mid \
 	%D%/bank_select.txt \
-	%D%/bank_select.mid \
 	%D%/all_controller_off.txt \
-	%D%/all_controller_off.mid \
 	%D%/rpn_nrpn.txt \
-	%D%/rpn_nrpn.mid \
 	%D%/controller.txt \
-	%D%/controller.mid \
 	%D%/midiin.txt \
-	%D%/midiin.mid \
-	%D%/midiin.mut \
 	%D%/aftertouch.txt \
-	%D%/aftertouch.mid \
-	%D%/sysex.txt \
-	%D%/sysex.mid
-
-
-check_SCRIPTS += %D%/playmidi1.mid
+	%D%/sysex.txt
 
 TESTS += \
 	%D%/playmidi1$(EXEEXT) \
@@ -178,17 +171,6 @@ CLEANFILES += \
 
 
 if HAVE_CPPUNIT
-check_SCRIPTS += \
-	$(srcdir)/%D%/midi1_source.mid \
-	$(srcdir)/%D%/bug019010.mid \
-	$(srcdir)/%D%/bank_select.mid \
-	$(srcdir)/%D%/all_controller_off.mid \
-	$(srcdir)/%D%/rpn_nrpn.mid \
-	$(srcdir)/%D%/controller.mid \
-	$(srcdir)/%D%/midiin.mid \
-	$(srcdir)/%D%/aftertouch.mid \
-	$(srcdir)/%D%/sysex.mid
-
 TESTS += \
 	%D%/testcppunit$(EXEEXT)
 

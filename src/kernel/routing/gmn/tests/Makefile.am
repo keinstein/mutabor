@@ -13,7 +13,8 @@ check_PROGRAMS += \
 	%D%/playgmn1 \
 	%D%/gmnopenfail1
 
-check_SCRIPTS = %D%/playgmn1.gmn
+check_SCRIPTS += \
+	%D%/playgmn1.gmn
 
 TESTS += \
 	%D%/playgmn1$(EXEEXT) \

@@ -17,6 +17,11 @@ AM_CXXFLAGS = $(AM_CFLAGS)
 AM_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
 AM_YFLAGS = -d -v --report=all -x --graph -o y.tab.c
 EXTRA_PROGRAMS =
+EXTRA_DIST += \
+	$(check_MIDIFILES) \
+	$(check_MIDISOURCES)
+check_MIDIFILES += \
+	$(check_MIDISOURCES:.txt=.mid)
 
 TAGS_FILES = $(POTFILES)
 AM_ETAGSFLAGS = -I --members --declarations -r '/inline[ \t]+\([^ \t(]+[ \t]+\)*\([^ \t(]+\)[ \t]*(/\2/m'
@@ -343,6 +348,8 @@ midi2text: mf2txt$(EXEEXT) txt2mf$(EXEEXT)
 #mf2txt txt2mf:
 #	$(MAKE) $(AM_MAKEFLAGS) -C $(top_builddir)/tools/midi2text $@$(EXEEXT)
 #	cp $(top_builddir)/tools/midi2text/$@$(EXEEXT) .
+
+$(check_MIDIFILES): midi2text
 
 SUFFIXES += .mid .txt
 .txt.mid:

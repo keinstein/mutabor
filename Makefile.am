@@ -24,6 +24,9 @@ check_LIBRARIES =
 bin_PROGRAMS =
 noinst_PROGRAMS =
 check_PROGRAMS =
+check_MIDIFILES =
+check_MIDISOURCES =
+check_SCRIPTS = $(check_MIDIFIILES)
 
 CLEANFILES =
 

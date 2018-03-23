@@ -1,5 +1,6 @@
 CLEANFILES =
 AM_CFLAGS =
+check_MIDIFILES =
 
 SUBDIRS=tests
 include $(top_srcdir)/common-rules.mk
@@ -17,7 +18,7 @@ BUILT_SOURCES += $(CLASSES:%=%.h) $(CLASSES:%=%.hh)
 #	intervalInv.h intervalInv.hh ptrlist.h ptrlist.hh \
 #	mutfile.h mutfile.hh
 
-EXTRA_DIST=makeclass.pl $(CLASSES:%=%.def) $(BUILT_SOURCES)
+EXTRA_DIST += makeclass.pl $(CLASSES:%=%.def) $(BUILT_SOURCES)
 
 
 $(BUILT_SOURCES):makeclass.pl

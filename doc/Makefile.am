@@ -1,12 +1,13 @@
 CLEANFILES =
 AM_CFLAGS =
+check_MIDIFILES =
 
 include $(top_srcdir)/common-rules.mk
 include localized/Makefile.am
 
 #RECURSIVE_TARGETS += mac-recursive
 noinst_PROGRAMS = fixhhp htmldecode
-EXTRA_DIST = \
+EXTRA_DIST += \
 	addbookm.png \
 	back.png \
 	delbookm.png \
