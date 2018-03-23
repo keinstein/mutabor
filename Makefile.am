@@ -11,7 +11,7 @@ CVS = cvs
 GIT = git
 REPOSITORY = http://git.berlios.de/mutabor
 REPOSITORY_PATH = .
-AM_LFLAGS = --c++
+AM_LFLAGS = --c++ -o $(LEX_OUTPUT_ROOT).c
 AM_CFLAGS =
 DLLPROGRAMS = $(TESTS) $(noinst_PROGRAMS) $(bin_PROGRAMS)
 #-o lex.yy.c

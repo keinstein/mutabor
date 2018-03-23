@@ -279,6 +279,7 @@ dnl Perform all the tests Automake and Autoconf need.
 AC_PROG_LEX
 
 AC_PROG_YACC
+AX_PROG_BISON([YACC=bison],[YACC = true])
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MKDIR_P

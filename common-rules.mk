@@ -15,7 +15,7 @@ LOCALEDIR = @localedir@
 AM_CFLAGS += $(ALSA_CFLAGS) $(JACK_LIBS)  $(WX_CFLAGS) $(WXINTLCFLAGS) "-DLOCALEDIR=\"$(LOCALEDIR)\""
 AM_CXXFLAGS = $(AM_CFLAGS)
 AM_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
-AM_YFLAGS = -d -v --report=all -x --graph
+AM_YFLAGS = -d -v --report=all -x --graph -o y.tab.c
 EXTRA_PROGRAMS =
 
 TAGS_FILES = $(POTFILES)
@@ -338,7 +338,7 @@ POTFILES.tmp:POTFILES.tmp.local Makefile  potfilechk-recursive
 # mf2txt and txt2mf generation
 #-------------------------------------------------------------------------------------
 
-midi2text: mf2txt txt2mf
+midi2text: mf2txt$(EXEEXT) txt2mf$(EXEEXT)
 
 #mf2txt txt2mf:
 #	$(MAKE) $(AM_MAKEFLAGS) -C $(top_builddir)/tools/midi2text $@$(EXEEXT)
@@ -346,4 +346,5 @@ midi2text: mf2txt txt2mf
 
 SUFFIXES += .mid .txt
 .txt.mid:
-	./txt2mf $< $@
+	$(MAKE) ./txt2mf$(EXEEXT)
+	./txt2mf$(EXEEXT) $< $@

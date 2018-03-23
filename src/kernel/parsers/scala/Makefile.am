@@ -33,52 +33,28 @@ CLEANFILES += \
 	%D%/keymap_parser.cc.stamp \
 	%D%/scale_lexer.cc.stamp
 
-
-if OFF_TREE
-$(top_srcdir)/%D%/scale_parser.cc: %D%/scale_parser.cc.stamp
-$(top_srcdir)/%D%/keymap_parser.cc: %D%/keymap_parser.cc.stamp
-$(top_srcdir)/%D%/scale_lexer.cc: %D%/scale_lexer.cc.stamp
-endif
-
-
-%D%/scale_parser.cc: %D%/scale_parser.cc.stamp
-%D%/scale_parser.cc.stamp: %D%/scale_parser.yy
-	rm -f "$@"
-	$(MKDIR_P) `dirname %D%/scale_parser.cc`
-	rm -f "%D%/scale_parser.cc"
-	$(YACCCOMPILE) -o %D%/scale_parser.cc -b %D%/ $<
-	cmp $(top_srcdir)/%D%/scale_parser.cc %D%/scale_parser.cc 2>/dev/null || \
-		cp %D%/scale_parser.cc $(top_srcdir)/%D%/scale_parser.cc
-	touch "$@"
-
-%D%/keymap_parser.cc: %D%/keymap_parser.cc.stamp
-%D%/keymap_parser.cc.stamp: %D%/keymap_parser.yy
-	rm -f "$@"
-	$(MKDIR_P) `dirname %D%/keymap_parser.cc`
-	rm -f "%D%/keymap_parser.cc"
-	$(YACCCOMPILE) -o %D%/keymap_parser.cc -b %D%/ $<
-	cmp $(top_srcdir)/%D%/keymap_parser.cc %D%/keymap_parser.cc 2>/dev/null || \
-		cp %D%/keymap_parser.cc $(top_srcdir)/%D%/keymap_parser.cc
-	touch "$@"
-
-%D%/scale_lexer.cc: %D%/scale_lexer.cc.stamp
-%D%/scale_lexer.cc.stamp: %D%/scale_lexer.ll
-	rm -f "$@"
-	$(MKDIR_P) `dirname %D%/scale_lexer.cc`
-	rm -f "%D%/scale_lexer.cc"
-	$(LEXCOMPILE) -o %D%/scale_lexer.cc $<
-	cmp $(top_srcdir)/%D%/scale_lexer.cc %D%/scale_lexer.cc 2>/dev/null || \
-		cp %D%/scale_lexer.cc $(top_srcdir)/%D%/scale_lexer.cc
-	touch "$@"
-
+#
 # if OFF_TREE
-# $(top_srcdir)/%D%/scale_parser.cc: %D%/scale_parser.cc
-# 		cp %D%/scale_parser.cc $(top_srcdir)/%D%/scale_parser.cc
-# $(top_srcdir)/%D%/scale_parser.hh: %D%/scale_parser.hh
-# 		cp %D%/scale_parser.hh $(top_srcdir)/%D%/scale_parser.hh
-# $(top_srcdir)/%D%/keymap_parser.cc: %D%/keymap_parser.cc
-# 		cp %D%/keymap_parser.cc $(top_srcdir)/%D%/keymap_parser.cc
-# $(top_srcdir)/%D%/scale_lexer.cc: %D%/scale_lexer.cc
-# 		cp %D%/scale_lexer.cc $(top_srcdir)/%D%/scale_lexer.cc
+# $(top_srcdir)/%D%/scale_parser.cc: %D%/scale_parser.cc.stamp
+# $(top_srcdir)/%D%/keymap_parser.cc: %D%/keymap_parser.cc.stamp
+# #$(top_srcdir)/%D%/scale_lexer.cc: %D%/scale_lexer.cc.stamp
 # endif
+#
+#
+$(top_srcdir)/%D%/scale_parser.cc: $(top_srcdir)/%D%/scale_parser.yy
+	$(AM_V_YACC)$(am__skipyacc) \
+		$(SHELL) \
+		$(YLWRAP) \
+		'$<' \
+		y.tab.c '$@' \
+		y.tab.h "`echo '$@' | $(am__yacc_c2h)`" \
+		y.output '$*.output' \
+		y.dot '$*.dot' \
+		y.xml '$*.xml' \
+		location.hh '$(top_srcdir)/%D%/location.hh' \
+		position.hh '$(top_srcdir)/%D%/position.hh' \
+		stack.hh  "$(top_srcdir)/%D%/stack.hh" \
+		-- \
+		$(YACCCOMPILE)
+
 

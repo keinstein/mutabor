@@ -32,6 +32,35 @@
 #include "src/kernel/routing/Box.h"
 #include "src/kernel/mutlex.h"
 using namespace mutabor;
+using mutabor::hidden::yytokentype;
+using mutabor::hidden::MUTABOR_TOKEN_IDENTIFIER;
+using mutabor::hidden::MUTABOR_TOKEN_F_NUMBER;
+using mutabor::hidden::MUTABOR_TOKEN_INTEGER;
+using mutabor::hidden::MUTABOR_TOKEN_INTERVAL;
+using mutabor::hidden::MUTABOR_TOKEN_TONE;
+using mutabor::hidden::MUTABOR_TOKEN_TONESYSTEM;
+using mutabor::hidden::MUTABOR_TOKEN_RETUNING;
+using mutabor::hidden::MUTABOR_TOKEN_HARMONY;
+using mutabor::hidden::MUTABOR_TOKEN_LOGIC;
+using mutabor::hidden::MUTABOR_TOKEN_MIDICHANNEL;
+using mutabor::hidden::MUTABOR_TOKEN_KEY;
+using mutabor::hidden::MUTABOR_TOKEN_FORM;
+using mutabor::hidden::MUTABOR_TOKEN_ROOT;
+using mutabor::hidden::MUTABOR_TOKEN_MIDI_IN;
+using mutabor::hidden::MUTABOR_TOKEN_MIDI_OUT;
+using mutabor::hidden::MUTABOR_TOKEN_HARMONY_ANALYSIS;
+using mutabor::hidden::MUTABOR_TOKEN_CALLS;
+using mutabor::hidden::MUTABOR_TOKEN_ELSE;
+using mutabor::hidden::MUTABOR_TOKEN_PARAMETER;
+using mutabor::hidden::MUTABOR_TOKEN_ANCHOR;
+using mutabor::hidden::MUTABOR_TOKEN_DISTANCE;
+using mutabor::hidden::MUTABOR_TOKEN_ENDOFFILE;
+using mutabor::hidden::MUTABOR_TOKEN_ERROR;
+using mutabor::hidden::MUTABOR_TOKEN_SPACES;
+using mutabor::hidden::MUTABOR_TOKEN_COMMENT;
+using mutabor::hidden::MUTABOR_TOKEN_COMMENT_START;
+using mutabor::hidden::MUTABOR_TOKEN_COMMENT_END;
+using mutabor::hidden::MUTABOR_TOKEN_OTHER;
 
 namespace mutaborGUI {
 //============================================================================
