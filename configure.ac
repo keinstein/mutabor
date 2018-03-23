@@ -307,6 +307,23 @@ AM_CONDITIONAL(COND_INKSCAPE, test -n "$INKSCAPE")
 dnl this test must be implemented if necessary
 AC_SUBST(SHUFFLE,["sort -R"])
 
+AC_CHECK_PROG([HAVE_PDFLATEX],[pdflatex],[true],[false])
+AC_CHECK_PROG([HAVE_LATEX],[latex],[true],[false])
+AC_CHECK_PROG([HAVE_TEX],[tex],[true],[false])
+AC_CHECK_PROG([HAVE_MAKEINDEX],[makeindex],[true],[false])
+AC_CHECK_PROG([HAVE_TEX4HT],[tex4ht],[true],[false])
+AC_CHECK_PROG([HAVE_T4HT],[tex4ht],[true],[false])
+AC_CHECK_PROG([HAVE_ZIP],[zip],[true],[false])
+
+
+AM_CONDITIONAL([DO_PDF],[$HAVE_PDFLATEX && $HAVE_MAKEINDEX])
+AM_CONDITIONAL([DO_HTML],[$HAVE_LATEX && \
+			$HAVE_TEX && \
+			$HAVE_MAKEINDEX && \
+			$HAVE_TEX4HT && \
+			$HAVE_T4HT && \
+			$HAVE_ZIP])
+
 
 CXX_FOR_SCOPING
 AS_IF(test "$cxx_cv_iso_for_loop_scope" = yes,

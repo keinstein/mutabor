@@ -63,6 +63,7 @@ HTML_TEXDEPS = \
 
 $(PDFFILES): $(TEXSOURCES) $(TEX_DEPS) $(COMMON_TEXDEPS)
 
+if DO_HTML
 html-local: $(srcdir)/$(ZIPFILE)
 $(srcdir)/$(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
 			$(top_docdir)/preamble.tex \
@@ -84,8 +85,15 @@ $(srcdir)/$(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
 	else \
 		mv -f help.zip $@; \
 	fi
+else
+html-local:
+endif
 
+if DO_PDF
 pdf-local: $(PDFFILES)
+else
+pdf-local:
+endif
 
 
 mac: $(srcdir)/$(ZIPFILE) copymac

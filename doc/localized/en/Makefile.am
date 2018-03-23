@@ -1,5 +1,6 @@
 CLEANFILES =
 AM_CFLAGS =
+check_MIDIFILES =
 
 include $(top_srcdir)/common-rules.mk
 #TEXSOURCES = $(srcdir)/Handbuch.tex \
@@ -79,7 +80,7 @@ TEX_DEPS = \
 	syn8.pic \
 	syn9.pic
 
-EXTRA_DIST = $(TEXSOURCES) \
+EXTRA_DIST += $(TEXSOURCES) \
 	$(ZIPFILE) \
 	$(TEX_DEPS) \
 	$(PDFFILES)
