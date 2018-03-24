@@ -27,11 +27,11 @@ TAGS_FILES = $(POTFILES)
 AM_ETAGSFLAGS = -I --members --declarations -r '/inline[ \t]+\([^ \t(]+[ \t]+\)*\([^ \t(]+\)[ \t]*(/\2/m'
 
 if OFF_TREE
-	RM_OFFTREE = rm -f
-	MV_OFFTREE = mv
+RM_OFFTREE = rm -f
+MV_OFFTREE = mv
 else
-	RM_OFFTREE = ls
-	MV_OFFTREE = ls
+RM_OFFTREE = ls
+MV_OFFTREE = ls
 endif
 
 if COND_INTERNAL_FLEXLEXER
