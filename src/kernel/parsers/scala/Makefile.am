@@ -55,6 +55,12 @@ $(srcdir)/%D%/scale_parser.hh \
 $(srcdir)/%D%/scale_parser.cc: %D%/scale_parser
 	@echo Rule 2
 	cat '$(srcdir)/%D%/scale_parser.hh'
+CLEANFILES += \
+	%D%/location.hh \
+	%D%/stack.hh \
+	%D%/position.hh \
+	%D%/scale_parser.hh \
+	%D%/scale_parser.cc
 endif
 #
 scaleparsertargets = \
@@ -94,7 +100,7 @@ $(scaleparsertargets): %D%/scale_parser
 		sed -i -e '/\#[^"]*include/ s,$(srcdir)/%D%/\(scale_parser\|location\|position\|stack\),%D%/\1,g'  "$$d" || exit 1 ; \
 		grep -v '#line' "$$d" >"$$d.tmp" ; \
 		(grep -v '#line' "$(srcdir)/$$d" 2>/dev/null | cmp "$$d.tmp" "-" >/dev/null 2>/dev/null) && \
-			rm -f "$$d" "$$d.tmp" || \
+			$(RM_OFFTREE) "$$d" "$$d.tmp" || \
 			(rm -f "$$d.tmp" ; mv "$$d" "$(srcdir)/$$d")  || exit 2 ; \
 	done
 	touch "$@"

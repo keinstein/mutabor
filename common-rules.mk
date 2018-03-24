@@ -26,6 +26,12 @@ check_MIDIFILES += \
 TAGS_FILES = $(POTFILES)
 AM_ETAGSFLAGS = -I --members --declarations -r '/inline[ \t]+\([^ \t(]+[ \t]+\)*\([^ \t(]+\)[ \t]*(/\2/m'
 
+if OFF_TREE
+	RM_OFFTREE = rm -f
+else
+	RM_OFFTREE = true
+endif
+
 if COND_INTERNAL_FLEXLEXER
 AM_CXXFLAGS += -I$(top_srcdir)/lib/includes/flex
 endif
