@@ -8,7 +8,7 @@ EXTRA_DIST += \
 	%D%/location.hh \
 	%D%/stack.hh \
 	%D%/position.hh \
-	%D%/scale_lexer.hh \
+	%D%/scale_lexer.h \
 	%D%/scale_lexer.cc \
 	%D%/scale_parser.hh \
 	%D%/scale_parser.cc
@@ -20,7 +20,7 @@ EXTRA_DIST += \
 			    $(srcdir)/%D%/stack.hh \
 			    $(srcdir)/%D%/scale_parser.cc \
 			    $(srcdir)/%D%/scale_parser.hh \
-			    $(srcdir)/%D%/scale_lexer.hh \
+			    $(srcdir)/%D%/scale_lexer.h \
 			    $(srcdir)/%D%/scale_lexer.cc
 
 
