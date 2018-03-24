@@ -54,7 +54,6 @@ $(srcdir)/%D%/position.hh \
 $(srcdir)/%D%/scale_parser.hh \
 $(srcdir)/%D%/scale_parser.cc: %D%/scale_parser
 	@echo Rule 2
-	cat '$(srcdir)/%D%/scale_parser.hh'
 CLEANFILES += \
 	%D%/location.hh \
 	%D%/stack.hh \
@@ -72,7 +71,6 @@ scaleparsertargets = \
 
 $(scaleparsertargets): %D%/scale_parser
 	@echo rule 1
-	cat '$(srcdir)/%D%/scale_parser.hh'
 %D%/scale_parser: $(srcdir)/%D%/scale_parser.yy
 	rm -f $@
 	$(AM_V_YACC)$(am__skipyacc) \
@@ -90,7 +88,6 @@ $(scaleparsertargets): %D%/scale_parser
 		-- \
 		$(YACCCOMPILE)
 	sed -i -e '/digraph/ s,$(PWD),.,g' '$@.dot'
-	ls %D%/*
 	for d in %D%/location.hh \
 		%D%/position.hh \
 		%D%/stack.hh   \
@@ -104,8 +101,5 @@ $(scaleparsertargets): %D%/scale_parser
 			(rm -f "$$d.tmp" ; $(MV_OFFTREE) "$$d" "$(srcdir)/$$d")  || exit 2 ; \
 	done
 	touch "$@"
-	ls %D%/*
-	ls $(srcdir)/%D%/*
-	cat '$(srcdir)/%D%/scale_parser.hh'
 
 
