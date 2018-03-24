@@ -68,7 +68,7 @@ before_install:
 
 script:
     - (cd lib/rtmidi && autoreconf -i -f) ;
-    - autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4
+    - autoreconf -i -f && ./configure && make && $TEST_RUNNER make check
     - cat test-suite.log 
     - $TEST_RUNNER make distcheck
     - cat test-suite.log 
