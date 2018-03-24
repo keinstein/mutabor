@@ -84,6 +84,7 @@ $(scaleparsertargets): %D%/scale_parser
 		-- \
 		$(YACCCOMPILE)
 	sed -i -e '/digraph/ s,$(PWD),.,g' '$@.dot'
+	ls %D%/*
 	for d in %D%/location.hh \
 		%D%/position.hh \
 		%D%/stack.hh   \
@@ -97,6 +98,8 @@ $(scaleparsertargets): %D%/scale_parser
 			(rm -f "$$d.tmp" ; mv "$$d" "$(srcdir)/$$d")  || exit 2 ; \
 	done
 	touch "$@"
+	ls %D%/*
+	ls $(srcdir)/%D%/*
 	cat '$(srcdir)/%D%/scale_parser.hh'
 
 
