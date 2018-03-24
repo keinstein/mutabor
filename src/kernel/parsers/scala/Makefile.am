@@ -53,7 +53,8 @@ $(srcdir)/%D%/stack.hh \
 $(srcdir)/%D%/position.hh \
 $(srcdir)/%D%/scale_parser.hh \
 $(srcdir)/%D%/scale_parser.cc: %D%/scale_parser
-	@echo
+	@echo Rule 2
+	cat '$(srcdir)/%D%/scale_parser.hh'
 endif
 #
 scaleparsertargets = \
@@ -64,7 +65,8 @@ scaleparsertargets = \
 	%D%/scale_parser.cc
 
 $(scaleparsertargets): %D%/scale_parser
-	@echo
+	@echo rule 1
+	cat '$(srcdir)/%D%/scale_parser.hh'
 %D%/scale_parser: $(srcdir)/%D%/scale_parser.yy
 	rm -f $@
 	$(AM_V_YACC)$(am__skipyacc) \
@@ -95,5 +97,6 @@ $(scaleparsertargets): %D%/scale_parser
 			(rm -f "$$d.tmp" ; mv "$$d" "$(srcdir)/$$d")  || exit 2 ; \
 	done
 	touch "$@"
+	cat '$(srcdir)/%D%/scale_parser.hh'
 
 
