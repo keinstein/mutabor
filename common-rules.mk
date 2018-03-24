@@ -28,8 +28,10 @@ AM_ETAGSFLAGS = -I --members --declarations -r '/inline[ \t]+\([^ \t(]+[ \t]+\)*
 
 if OFF_TREE
 	RM_OFFTREE = rm -f
+	MV_OFFTREE = mv
 else
-	RM_OFFTREE = true
+	RM_OFFTREE = ls
+	MV_OFFTREE = ls
 endif
 
 if COND_INTERNAL_FLEXLEXER
@@ -367,3 +369,9 @@ SUFFIXES += .mid .txt
 	cmp "$(@F)" "../$@" || mv "$(@F)" "../$@" || (cd .. ; rm -rf $$dir ; exit 1) ; \
 	cd .. ; rm -rf $$dir
 
+# .ll.cc:
+# 	$(AM_V_LEX)$(am__skiplex) $(SHELL) $(YLWRAP) $< $(LEX_OUTPUT_ROOT).cc $@ -- $(LEXCOMPILE) -o $(LEX_OUTPUT_ROOT).cc
+# 
+# .yy.cc:
+# 	$(AM_V_YACC)$(am__skipyacc) $(SHELL) $(YLWRAP) "$<" "bison.cc" "$@" "bison.hh" `echo $@ | $(am__yacc_c2h)` bison.output $*.output bison.dot $*.dot bison.xml $*.xml -- $(YACCCOMPILE) -o "bison.cc" -b "."
+# 

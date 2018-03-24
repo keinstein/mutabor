@@ -99,9 +99,9 @@ $(scaleparsertargets): %D%/scale_parser
 	do  \
 		sed -i -e '/\#[^"]*include/ s,$(srcdir)/%D%/\(scale_parser\|location\|position\|stack\),%D%/\1,g'  "$$d" || exit 1 ; \
 		grep -v '#line' "$$d" >"$$d.tmp" ; \
-		(grep -v '#line' "$(srcdir)/$$d" 2>/dev/null | cmp "$$d.tmp" "-" >/dev/null 2>/dev/null) && \
+		(grep -v '#line' "$(srcdir)/$$d" 2>/dev/null | diff -u "$$d.tmp" "-") && \
 			$(RM_OFFTREE) "$$d" "$$d.tmp" || \
-			(rm -f "$$d.tmp" ; mv "$$d" "$(srcdir)/$$d")  || exit 2 ; \
+			(rm -f "$$d.tmp" ; $(MV_OFFTREE) "$$d" "$(srcdir)/$$d")  || exit 2 ; \
 	done
 	touch "$@"
 	ls %D%/*
