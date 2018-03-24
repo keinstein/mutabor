@@ -210,5 +210,5 @@ endif
 
 
 $(srcdir)/%D%/playmidi1.mid: $(srcdir)/%D%/midi1_source.mid
-	cp `(if test -f '$<' ; then  echo '$<' ; else echo '$(srcdir)/$<' ; fi )` $@
+	cmp "$<" "$@" >/dev/null || cp "$<" "$@"
 

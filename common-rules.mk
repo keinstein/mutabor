@@ -355,5 +355,9 @@ SUFFIXES += .mid .txt
 # We don't need to care about off tree builds here, as we work in the
 # source tree and the MIDI files are distributed, too.
 .txt.mid:
-	./txt2mf$(EXEEXT) "$<" "$@"
+	dir=`mktemp -d ./txt2mf-data.XXXXXXX` && \
+	cd $$dir && \
+	../txt2mf$(EXEEXT) "../$<" "$(@F)" || (cd .. ; rm -rf $$dir ; exit 1) ; \
+	cmp "$(@F)" "../$@" || mv "$(@F)" "../$@" || (cd .. ; rm -rf $$dir ; exit 1) ; \
+	cd .. ; rm -rf $$dir
 
