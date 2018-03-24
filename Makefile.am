@@ -684,7 +684,11 @@ copymac: Mutabor.app
 
 dylibbundler: mac
 	dylibbundler -b -x Mutabor.app/Contents/MacOS/mutabor \
+		-p @executable_path/../libs/ \
 		-cd -od -d Mutabor.app/Contents/libs
+	otool -D Mutabor.app/Contents/libs/librtmidi-mutabor.3.dylib
+	otool -l Mutabor.app/Contents/MacOS/mutabor
+	otool -L Mutabor.app/Contents/MacOS/mutabor
 pydmg: dylibbundler
 	wget --no-check-certificate https://anon:@scm.wilcoxd.com:8081/svn/OpenSource/Scripts/sane_build_disk_image/sane_build_disk_image.py
 
@@ -728,8 +732,8 @@ Mutabor.app:all Mutabor.xrc mutabor update-gmo
 	$(MAKE) "prefix=`pwd`/Mutabor.app/Contents" \
 		'bindir=$$(prefix)/MacOS' \
 		'datarootdir=$$(prefix)/Resources' \
-		'libdir=$$(prefix)' \
-		'libexecdir=$$(prefix)/libs' \
+		'libdir=$$(prefix)/libs' \
+		'libexecdir=$$(prefix)/lib' \
 		'localedir=$$(prefix)/locales' \
 		'pkgdatadir=$$(prefix)/Resources' \
 		'mutabordir=$$(prefix)' \
