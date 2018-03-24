@@ -7,12 +7,22 @@ CLEANFILES += %D%/*.class \
 EXTRA_DIST += \
 	%D%/location.hh \
 	%D%/stack.hh \
-	%D%/position.hh
+	%D%/position.hh \
+	%D%/scale_lexer.hh \
+	%D%/scale_lexer.cc \
+	%D%/scale_parser.hh \
+	%D%/scale_parser.cc
 
 %D%/scala.$(OBJEXT) \
+%D%/scale_lexer.$(OBJEXT) \
 %D%/scale_parser.$(OBJEXT): $(srcdir)/%D%/location.hh \
 			    $(srcdir)/%D%/position.hh \
-			    $(srcdir)/%D%/stack.hh
+			    $(srcdir)/%D%/stack.hh \
+			    $(srcdir)/%D%/scale_parser.cc \
+			    $(srcdir)/%D%/scale_parser.hh \
+			    $(srcdir)/%D%/scale_lexer.hh \
+			    $(srcdir)/%D%/scale_lexer.cc
+
 
 
 # lex and yacc rules seem not to be very clear about parallel builds
@@ -41,6 +51,7 @@ if OFF_TREE
 $(srcdir)/%D%/location.hh \
 $(srcdir)/%D%/stack.hh \
 $(srcdir)/%D%/position.hh \
+$(srcdir)/%D%/scale_parser.hh \
 $(srcdir)/%D%/scale_parser.cc: %D%/scale_parser
 	@echo
 endif
@@ -49,6 +60,7 @@ scaleparsertargets = \
 	%D%/location.hh \
 	%D%/stack.hh \
 	%D%/position.hh \
+	%D%/scale_parser.hh \
 	%D%/scale_parser.cc
 
 $(scaleparsertargets): %D%/scale_parser
