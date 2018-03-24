@@ -59,7 +59,7 @@ before_install:
     - if test "$TRAVIS_OS_NAME" = osx ; then brew upgrade boost ; fi
     - if test "$TRAVIS_OS_NAME" = osx ; then rm -rf /usr/local/include/c++ ; fi # fix broken gcc installation
     - if test "$TRAVIS_OS_NAME" = osx ; then brew install $EXTRA_BREW wxmac gettext flex bison libtool autoconf jack dylibbundler  ; fi
-    - if test "$TRAVIS_OS_NAME" = osx ; then brew link --force $EXTRA_BREW wxmac gettext flex bison libtool autoconf jack dylibbundler ; fi
+    - if test "$TRAVIS_OS_NAME" = osx ; then brew link --force $EXTRA_BREW boost wxmac gettext flex bison libtool autoconf jack dylibbundler ; fi
     - if test "$TRAVIS_OS_NAME" = linux ; then eval TEST_RUNNER=xvfb-run ; else eval TEST_RUNNER= ; fi
     - which gettextize
     - gettextize --version
@@ -72,5 +72,6 @@ script:
     - cat test-suite.log 
     - $TEST_RUNNER make distcheck
     - cat test-suite.log 
+    - if test "$TRAVIS_OS_NAME" = osx ; then brew ls --verbose boost wxmac ; fi ;
     - if test "$TRAVIS_OS_NAME" = osx ; then make install &&  make V=1 dmg ; fi ;
     - if test "$TRAVIS_OS_NAME" = linux && false ; then debuild ; fi ;
