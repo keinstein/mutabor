@@ -72,8 +72,5 @@ script:
     - cat test-suite.log 
     - $TEST_RUNNER make distcheck
     - cat test-suite.log 
-    - grep GETTEXT_MACRO_VERSION -r * || true
-    - pwd ; ls
-    - if test "$TRAVIS_OS_NAME" = osx ; then make V=1 dmg || exit; fi ;
-    - if test "$TRAVIS_OS_NAME" = linux && false ; then debuild || exit; fi ;
-    - pwd ; ls ;
+    - if test "$TRAVIS_OS_NAME" = osx ; then make install &&  make V=1 dmg ; fi ;
+    - if test "$TRAVIS_OS_NAME" = linux && false ; then debuild ; fi ;
