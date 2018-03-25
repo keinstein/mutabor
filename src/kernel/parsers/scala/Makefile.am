@@ -36,8 +36,12 @@ CLEANFILES += \
 	%D%/scale_parser.dot \
 	%D%/scale_parser.xml \
 	%D%/scale_parser.output \
-	%D%/scale_parser
-
+	%D%/scale_parser \
+	%D%/location.hh.bak \
+	%D%/position.hh.bak \
+	%D%/stack.hh.bak \
+	%D%/scale_parser.cc.bak \
+	%D%/scale_parser.hh.bak
 #
 # if OFF_TREE
 # $(top_srcdir)/%D%/scale_parser.cc: %D%/scale_parser.cc.stamp
@@ -71,6 +75,9 @@ scaleparsertargets = \
 
 $(scaleparsertargets): %D%/scale_parser
 	@echo rule 1
+
+
+# sed -i expects a backup argument on Mac OS X
 %D%/scale_parser: $(srcdir)/%D%/scale_parser.yy
 	rm -f $@
 	$(AM_V_YACC)$(am__skipyacc) \
@@ -94,12 +101,11 @@ $(scaleparsertargets): %D%/scale_parser
 		'$@.cc' \
 		'$@.hh'; \
 	do  \
-		sed -i -e '/\#[^"]*include/ s,$(srcdir)/%D%/\(scale_parser\|location\|position\|stack\),%D%/\1,g'  "$$d" || exit 1 ; \
+		sed -i.bak -e '/\#[^"]*include/ s,$(srcdir)/%D%/\(scale_parser\|location\|position\|stack\),%D%/\1,g' "$$d" || exit 1 ; \
 		grep -v '#line' "$$d" >"$$d.tmp" ; \
 		(grep -v '#line' "$(srcdir)/$$d" 2>/dev/null | diff -u "$$d.tmp" "-") && \
 			$(RM_OFFTREE) "$$d" "$$d.tmp" || \
 			(rm -f "$$d.tmp" ; $(MV_OFFTREE) "$$d" "$(srcdir)/$$d")  || exit 2 ; \
 	done
 	touch "$@"
-
 
