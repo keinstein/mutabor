@@ -375,3 +375,26 @@ SUFFIXES += .mid .txt
 # .yy.cc:
 # 	$(AM_V_YACC)$(am__skipyacc) $(SHELL) $(YLWRAP) "$<" "bison.cc" "$@" "bison.hh" `echo $@ | $(am__yacc_c2h)` bison.output $*.output bison.dot $*.dot bison.xml $*.xml -- $(YACCCOMPILE) -o "bison.cc" -b "."
 # 
+
+
+
+printvariables:
+	@echo Variables in Makefile
+	@echo "DYLD_LIBRARY_PATH(shell) = $$DYLD_LIBRARY_PATH"
+	@echo 'DYLD_LIBRARY_PATH(make)  = $(DYLD_LIBRARY_PATH)'
+	@echo "DYLD_FALLBACK_FRAMEWORK_PATH(shell) = $$DYLD_FALLBACK_FRAMEWORK_PATH"
+	@echo 'DYLD_FALLBACK_FRAMEWORK_PATH(make)  = $(DYLD_FALLBACK_FRAMEWORK_PATH)'
+	@echo 'BOOST_LDFLAGS=$(BOOST_LDFLAGS)'
+	@echo 'BOOST_FILESYSTEM_LIB=$(BOOST_FILESYSTEM_LIB)'
+	@echo 'BOOST_LOCALE_LIB=$(BOOST_LOCALE_LIB)'
+	@echo 'BOOST_PROGRAM_OPTIONS_LIB=$(BOOST_PROGRAM_OPTIONS_LIB)'
+	@echo 'BOOST_SYSTEM_LIB=$(BOOST_SYSTEM_LIB)'
+	@echo 'BOOST_THREAD_LIB=$(BOOST_THREAD_LIB)'
+	@echo 'ALSA_LIBS=$(ALSA_LIBS)'
+	@echo 'CPPUNIT_LIBS=$(CPPUNIT_LIBS)'
+	@echo 'LIBS=$(LIBS)'
+	@echo 'LDFLAGS=$(LDFLAGS)'
+	@echo 'LIBMULTITHREAD=$(LIBMULTITHREAD)'
+	@echo 'RTMIDI_LIBS=$(RTMIDI_LIBS)'
+	@echo 'WX_LIBS=$(WX_LIBS)'
+	@echo 'WX_LIBS_STATIC=$(WX_LIBS_STATIC)'
