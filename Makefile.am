@@ -682,17 +682,14 @@ mac: copymac
 
 copymac: Mutabor.app
 
-dylibbundler: mac
-	otool -D Mutabor.app/Contents/libs/librtmidi-mutabor.3.dylib
-	otool -l Mutabor.app/Contents/MacOS/mutabor
-	otool -L Mutabor.app/Contents/MacOS/mutabor
-	echo | dylibbundler -b -x Mutabor.app/Contents/MacOS/mutabor \
-		-p @executable_path/../libs/ \
-		-cd -od -d Mutabor.app/Contents/libs
-pydmg: dylibbundler
+dylibbundler:
+	make -C tools/macdylibbundler
+	sudo make -C tools/macdylibbundler install
+
+pydmg: Mutabor.app
 	wget --no-check-certificate https://anon:@scm.wilcoxd.com:8081/svn/OpenSource/Scripts/sane_build_disk_image/sane_build_disk_image.py
 
-dmg: dylibbundler
+dmg: Mutabor.app
 	mkdir -p dmg/Mutabor/.background
 	cp -r Mutabor.app dmg/Mutabor
 	cp $(top_srcdir)/osdep/macosx/DS_Store dmg/Mutabor/.DS_Store
@@ -728,7 +725,7 @@ Mutabor.appold:all Mutabor.xrc mutabor update-gmo
 		cp $$file Mutabor.app/Contents/Resources/$$lang.lproj ; \
 	done
 
-Mutabor.app:all Mutabor.xrc mutabor update-gmo
+Mutabor.app:all Mutabor.xrc mutabor update-gmo dylibbundler
 	$(MAKE) "prefix=`pwd`/Mutabor.app/Contents" \
 		'bindir=$$(prefix)/MacOS' \
 		'datarootdir=$$(prefix)/Resources' \
@@ -748,6 +745,12 @@ Mutabor.app:all Mutabor.xrc mutabor update-gmo
 	cp osdep/macosx/Info.plist Mutabor.app/Contents
 	cp $(top_srcdir)/Images/Icons/icns/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
 	echo -n APPLMUTA >Mutabor.app/Contents/PkgInfo
+	otool -D Mutabor.app/Contents/libs/librtmidi-mutabor.3.dylib
+	otool -l Mutabor.app/Contents/MacOS/mutabor
+	otool -L Mutabor.app/Contents/MacOS/mutabor
+	echo | dylibbundler -b -x Mutabor.app/Contents/MacOS/mutabor \
+		-p @executable_path/../libs/ \
+		-cd -od -d Mutabor.app/Contents/libs
 
 installwinold: mutabor.exe
 	mkdir -p Mutabor
