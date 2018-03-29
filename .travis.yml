@@ -1,5 +1,8 @@
 git:
-  depth: 3
+  depth: 1
+branches:
+  except:
+    - /(?i:appveyor)/
 language: c++
 sudo: required
 group: travis_latest
