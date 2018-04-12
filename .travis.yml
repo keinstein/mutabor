@@ -86,3 +86,25 @@ script:
     - if test "$TRAVIS_OS_NAME" = osx ; then brew ls --verbose boost wxmac ; fi ;
     - if test "$TRAVIS_OS_NAME" = osx ; then make install &&  make V=1 dmg ; fi ;
     - if test "$TRAVIS_OS_NAME" = linux && false ; then debuild ; fi ;
+    - mkdir -p "public/$TRAVIS_TAG-$TRAVIS_JOB_ID"
+    - if test "$TRAVIS_OS_NAME" = osx ; then cp *.dmg "public/$TRAVIS_TAG-$TRAVIS_JOB_ID" ; fi ;
+
+deploy:
+- provider: releases
+  api_key:
+    secure: zoo9cYmsDytF4QqiOVMZC0OttLyln+OtkYZ6Oj2qERS8FWqYboVxtQs1IPBq30+r9pkCSyWdD8GOKzjTd/Bzvh/289rbU0WHaafsJnfnSsyZtpJudtMn4s6DMekbZECMrcCfBOuZnUG6uqp2ywGulpJdPCh73UnbqEwq9lluT+IDXgouX+utGPgToXhEc+OZWh1pdQMxM+6VmfUBJsUatrfOnD20TCVKcQwlf/OcUkhmLZspOjCgrTBoVUyNJACsSiEKN41Bx7mXvRjm7+PiFZ+WVTamIoL/i37bSzpAjlYLUWjdS7yqT3BzQf75ABFwTKotB5JLn3Q+JrUTJYyKDvd5iryxBISVtjcdP+ECeZP/j8pHKQmWPtBffpNF1FlUhGr/ry1vn7qMOrnLyumdjWgLuIDCeZcU7avu/rh38l3zTCx7G8OWa1HEJ2TX6GdJi02x/PKmgeO+vmJtSKjp+IXt8ULy5QzE6fz3WNkHX4b/t0IsOmzyJCnlflEcQiirfn0XdAN9a52pobkuD/L401odQrLzTJ/WwXuJcrrgmHZIqay5kbOkTtY7XrawZsMk6Xx1W0rNoUeDDMUi5wJvhRkuusUnIkSiRv1oPci6FEFkYAR4PTS6otYlL6uIRnpcvzYFwSGwV7Rwubw142TQ+DR24T/ahxKsAA2lhJgq0s4=
+  skip_cleanup: true
+  file_glob: true
+  file: public/*/*
+  on:
+    repo: keinstein/mutabor
+    tags: true
+- provider: pages
+  skip_cleanup: true
+  local_dir: public
+  branch:    gh-pages
+  keep_history: true
+  github_token: $GITHUB_TOKEN
+  verbose: true
+  on:
+    repo: keinstein/mutabor
