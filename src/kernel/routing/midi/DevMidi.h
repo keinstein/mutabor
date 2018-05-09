@@ -55,15 +55,7 @@
 #include <cassert>
 #include "boost/format.hpp"
 
-#ifdef RTMIDI
 #include "lib/rtmidi/RtMidi.h"
-#else
-#ifndef H_MMSYSTEM
-//  #define WINVER 0x030a
-#include <mmsystem.h>
-#define H_MMSYSTEM
-#endif
-#endif
 
 namespace mutabor {
 
@@ -85,7 +77,6 @@ namespace mutabor {
 		}
 
 		bool Open(rtmidi::PortDescriptor & id, const std::string name) {
-#ifdef RTMIDI
 			try {
 				port = new rtmidi::MidiOut(rtmidi::UNSPECIFIED, PACKAGE_STRING);
 			} catch (rtmidi::Error &error) {
@@ -105,11 +96,6 @@ namespace mutabor {
 							  % error.what()));
 				return false;
 			}
-
-#else
-			midiOutOpen(&hMidiOut, DevId, NULL, NULL, NULL);
-
-#endif
 			return true;
 		}
 
@@ -120,15 +106,9 @@ namespace mutabor {
 		}
 
 		void Close() {
-#ifdef RTMIDI
 			port->closePort();
 			delete port;
 			port = NULL;
-#else
-			midiOutClose(hMidiOut);
-
-#endif
-
 		}
 
 		/**
@@ -552,14 +532,7 @@ namespace mutabor {
 
 	protected:
 		rtmidi::PortPointer DevId; //< Id of the hardware MIDI device;
-
-#ifdef RTMIDI
 		rtmidi::MidiIn *port;
-
-#else
-		HMIDIIN port;
-
-#endif
 		InputMidiPort(const std::string name = "",
 			      MutaborModeType mode = DeviceStop,
 			      int id = -1):

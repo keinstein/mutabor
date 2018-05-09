@@ -38,9 +38,7 @@
 
 //static long freq ;
 
-#ifdef RTMIDI
 #include "RtMidi.h"
-#endif
 
 #include "src/kernel/routing/midi/midicmn-inlines.h"
 
@@ -216,7 +214,6 @@ OutputMidiPort:\n\
 
 // InputMidiPort -------------------------------------------------------
 
-#ifdef RTMIDI
 	class mycallback:public rtmidi::MidiInterface {
 	public:
 		mycallback(InputMidiPort * c):
@@ -236,20 +233,6 @@ OutputMidiPort:\n\
 	protected:
 		InputMidiPort * appclass;
 	};
-
-#else
-
-	void CALLBACK MidiInPortFunc(HMIDIIN hMidiIn, UINT wMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2)
-	{
-		//  CurrentTimeStamp = dwParam2;
-
-		if ( wMsg != MIM_DATA || dwParam1 % 256 > 240 ) return;
-
-		// Daten in Midi-Automat
-		((InputMidiPort*)dwInstance)->Proceed(dwParam1);
-	}
-
-#endif
 
 // InputMidiPort -------------------------------------------------------
 /// Save current device settings in a tree storage
@@ -428,7 +411,6 @@ OutputMidiPort:\n\
 		for (int i = 0; i < 16; i++)
 			channel_data[i].Reset();
 
-#ifdef RTMIDI
 		try {
 			port = new rtmidi::MidiIn(rtmidi::UNSPECIFIED, PACKAGE_STRING);
 		} catch (rtmidi::Error &error) {
@@ -460,10 +442,6 @@ OutputMidiPort:\n\
 						 % error.what()));
 		}
 
-#else
-		midiInOpen(&hMidiIn, DevId, (DWORD)MidiInPortFunc, (DWORD)this, CALLBACK_FUNCTION);
-		midiInStart(hMidiIn);
-#endif
 		isOpen = true;
 		return true;
 	}
@@ -471,15 +449,9 @@ OutputMidiPort:\n\
 	void InputMidiPort::Close()
 	{
 		mutASSERT(isOpen);
-#ifdef RTMIDI
 		port->closePort();
 		delete port;
 		port = NULL;
-#else
-		midiInStop(hMidiIn);
-		midiInReset(hMidiIn);
-		midiInClose(hMidiIn);
-#endif
 		Panic(midi::DEFAULT_PANIC);
 		isOpen = false;
 	}
@@ -631,19 +603,15 @@ InputMidiPort:\n\
 
 
 
-#ifdef RTMIDI
 #include <string>
 
 	using namespace std;
 #include "RtMidi.h"
 	rtmidi::MidiOut * rtmidiout;
 	rtmidi::MidiIn  * rtmidiin;
-#endif
 
 	void MidiInit()
 	{
-#ifdef RTMIDI
-
 		try {
 			rtmidiout = new rtmidi::MidiOut(rtmidi::UNSPECIFIED, PACKAGE_STRING);
 		} catch (rtmidi::Error &error) {
@@ -658,15 +626,12 @@ InputMidiPort:\n\
 			// abort();
 		}
 
-#endif
 	}
 
 	void MidiUninit()
 	{
-#ifdef RTMIDI
 		delete rtmidiin;
 		delete rtmidiout;
-#endif
 	}
 
 }
