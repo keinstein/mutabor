@@ -99,6 +99,7 @@ deploy:
   on:
     repo: keinstein/mutabor
     tags: true
+    branch: master
 - provider: pages
   skip_cleanup: true
   local_dir: public
@@ -108,3 +109,4 @@ deploy:
   verbose: true
   on:
     repo: keinstein/mutabor
+    branch: master
