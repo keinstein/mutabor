@@ -482,13 +482,13 @@ InputMidiPort:\n\
 		mutUnused(data);
 		switch ( R->GetType() ) {
 		case RTchannel:
-			if (R->Check(midiCode.at(0) & 0x0F))
+			if (R->Check(midiCode[0] & 0x0F))
 				return ProceedYes;
 			break;
 		case RTstaff:
-			if ( ((midiCode.at(0) & 0xF0) != 0x80 &&
-			      (midiCode.at(0) & 0xF0) != 0x90)
-			     || R->Check(midiCode.at(1)) )
+			if ( ((midiCode[0] & 0xF0) != 0x80 &&
+			      (midiCode[0] & 0xF0) != 0x90)
+			     || R->Check(midiCode[1]) )
 				return ProceedYes;
 			break;
 
@@ -505,8 +505,8 @@ InputMidiPort:\n\
 
 	void InputMidiPort::Proceed(const std::vector<unsigned char > &midiCode, int data, int channel_offset) {
 		/** \todo implement system messages */
-		uint8_t MidiChannel = (midiCode.at(0) & 0x0F) + channel_offset;
-		uint8_t MidiStatus  = midiCode.at(0);
+		uint8_t MidiChannel = (midiCode[0] & 0x0F) + channel_offset;
+		uint8_t MidiStatus  = midiCode[0];
 		DEBUGLOG (midifile, "Status: %x" , MidiStatus);
 
 		switch ( MidiStatus ) {

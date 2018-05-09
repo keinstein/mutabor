@@ -983,17 +983,18 @@ namespace mutabor {
 			  route->GetActive(),
 			  (void*)route->GetOutputDevice().get());
 		Box box = route->GetBox();
-		unsigned char MidiChannel = (midiCode.at(0) & 0x0F) + channel_offset;
-		unsigned char MidiStatus  = midiCode.at(0) & 0xF0;
+		mutASSERT(midiCode.size() >= 1);
+		unsigned char MidiChannel = (midiCode[0] & 0x0F) + channel_offset;
+		unsigned char MidiStatus  = midiCode[0] & 0xF0;
 		DEBUGLOG (midifile, "Status: %x" , MidiStatus);
 
 		switch ( MidiStatus ) {
 
 		case midi::NOTE_ON: // Note On
-			if ( (midiCode.at(2) & 0x7f) > 0 ) {
+			if ( (midiCode[2] & 0x7f) > 0 ) {
 				this->NoteOn(route,
-					     midiCode.at(1),
-					     midiCode.at(2),
+					     midiCode[1],
+					     midiCode[2],
 					     MidiChannel,
 					     channel_data[MidiChannel],
 					     NULL);
@@ -1003,13 +1004,13 @@ namespace mutabor {
 
 		case midi::NOTE_OFF: // Note Off
 			this->NoteOff(route,
-				      midiCode.at(1),
-				      midiCode.at(2),
+				      midiCode[1],
+				      midiCode[2],
 				      MidiChannel);
 			break;
 
 		case midi::PROGRAM_CHANGE: // Programm Change
-			channel_data[MidiChannel].program_change(midiCode.at(1));
+			channel_data[MidiChannel].program_change(midiCode[1]);
 
 			break;
 
@@ -1019,7 +1020,7 @@ namespace mutabor {
 			bool panic = false;
 			bool reset = false;
 			/* cases that need special treatment */
-			switch (midiCode.at(1)) {
+			switch (midiCode[1]) {
 			case midi::ALL_CONTROLLERS_OFF:
 				reset = true;
 				FALLTHROUGH;
@@ -1041,10 +1042,10 @@ namespace mutabor {
 			}
 
 			if (propagate)
-				channel_data[MidiChannel].set_controller(midiCode.at(1),
-									 midiCode.at(2));
+				channel_data[MidiChannel].set_controller(midiCode[1],
+									 midiCode[2]);
 			if (panic)
-				this->Panic(midiCode.at(1),MidiChannel);
+				this->Panic(midiCode[1],MidiChannel);
 			if (reset)
 				channel_data[MidiChannel].MidiReset();
 
@@ -1056,7 +1057,7 @@ namespace mutabor {
 			break;
 		case midi::CHANNEL_PRESSURE:
 			channel_data[MidiChannel].set_controller(midi::CHANNEL_PRESSURE_VAL,
-								 midiCode.at(1));
+								 midiCode[1]);
 			// … and create a proper event.
 			FALLTHROUGH;
 		case midi::KEY_PRESSURE: {
@@ -1068,8 +1069,9 @@ namespace mutabor {
 
 			break;
 		case midi::SYSTEM:
+
 			/** \todo handle all these messages in mutabor */
-			switch(midiCode.at(0)) {
+			switch(midiCode[0]) {
 			case midi::SYSTEM_UNDEFINED1:
 			case midi::SYSTEM_UNDEFINED2:
 			case midi::SYSEX_END:
@@ -1119,8 +1121,8 @@ namespace mutabor {
 		bool DidOut = 0;
 		routeListType elseroutes;
 
-		unsigned char MidiStatus  = midiCode.at(0);
-		unsigned char MidiChannel = (midiCode.at(0) & 0x0F) + channel_offset;
+		unsigned char MidiStatus  = midiCode[0];
+		unsigned char MidiChannel = (midiCode[0] & 0x0F) + channel_offset;
 
 		switch ( MidiStatus ) {
 		case midi::SYSTEM_UNDEFINED1:

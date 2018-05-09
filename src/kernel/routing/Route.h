@@ -218,12 +218,12 @@ namespace mutabor {
 #endif
 
 			if (!(box && box->IsNormal() && Active )) return;
-			if (!(midiCode.at(0) & 0x80)) {
+			if (!(midiCode[0] & 0x80)) {
 				UNREACHABLEC;
 				return;
 			}
 #if 0
-			int len = midilength[(midiCode.at(0) & 0x70) >> 4];
+			int len = midilength[(midiCode[0] & 0x70) >> 4];
 			for (int i = 0; i <  len; i++) {
 				if (box)
 					box->MidiAnalysis(midiCode & 0xff);
