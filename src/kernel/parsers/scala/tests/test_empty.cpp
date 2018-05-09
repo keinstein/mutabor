@@ -1,4 +1,3 @@
-#include "src/wxGUI/TestInitializer.h"
 #include "src/kernel/parsers/scala/scala.h"
 #include "src/kernel/parsers/scala/scale_parser.hh"
 #include "src/kernel/parsers/scala/scale_lexer.h"
@@ -14,7 +13,6 @@ struct test_parser: public parser {
 
 int main ()
 {
-	mutwxInitializer initializer;
 	interval_pattern cmp("Constant tone system",0);
 #ifdef DEBUG
 	isDebugFlag(sclparser) =true;

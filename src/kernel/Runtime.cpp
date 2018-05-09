@@ -112,13 +112,13 @@ DevType Str2DT(const std::string& type);
 // aus p eine Zeile in s lesen, p wird verschoben
 bool GetLine(char **p, char *s) {
 	if ( !p || !(*p)[0] )
-		return FALSE;
+		return false;
 
 	while ( (*p)[0] == ' ' || (*p)[0] == '\n' || (*p)[0] == '\r' )
 		*p = &(*p)[1];
 
 	if ( !(*p)[0] )
-		return FALSE;
+		return false;
 
 	char *p1 = *p;
 
@@ -133,7 +133,7 @@ bool GetLine(char **p, char *s) {
 
 	s[i] = 0;
 
-	return TRUE;
+	return true;
 }
 
 #define GETLINE					\

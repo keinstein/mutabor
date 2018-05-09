@@ -164,7 +164,7 @@ class GisReadArtHead : public GisReadHead
 
 public:
 	mutabor::frac Time2;
-	mutint64 Delta; // in μs
+	boost::chrono::microseconds Delta; // in μs
 	mutabor::Box Box;
 
 private:
@@ -203,7 +203,7 @@ public:
 
 			Time2 = 0;
 
-			Delta = 0;
+			Delta = boost::chrono::microseconds::zero();
 			Turn = 0;
 		}
 

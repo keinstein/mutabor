@@ -39,12 +39,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <time.h>
-#include "src/wxGUI/TestInitializer.h"
-
-// Skip the GUI related checks from DebugRoute.cpp
-#define no_wxGUI 1
-#include "src/wxGUI/Routing/DebugRoute.cpp"
-#undef no_wxGUI
+//#include "src/wxGUI/TestInitializer.h"
 
 /// not for headers
 #ifdef __BORLANDC__
@@ -95,7 +90,7 @@ int main(/* int argc, char **argv */)
 //	debugFlags::flags.timer = true;
 //	debugFlags::flags.midifile = true;
 #endif
-	mutwxInitializer initializer;
+	//	mutwxInitializer initializer;
 	time_t t;
 	
 	time(&t);
@@ -103,7 +98,7 @@ int main(/* int argc, char **argv */)
     
 	mutabor::InitDeviceFactories();
 	mutabor::CurrentTime.UseRealtime(false);
-	mutabor::CurrentTime.Set(0);
+	mutabor::CurrentTime.Set(boost::chrono::microseconds(0));
 	
 	mutabor::ChannelData cd;
 	
@@ -148,9 +143,9 @@ int main(/* int argc, char **argv */)
 		bytes[i-1] = tonwert;
 			
 		out->NoteOn(box, tonwert, 0x40, route.get(), 0, cd);
-		mutabor::CurrentTime = mutabor::CurrentTime.Get()+125000;
+		mutabor::CurrentTime = mutabor::CurrentTime.Get()+mutabor::microseconds(125000);
 		out->NoteOff(box, tonwert, 0x40, route.get(), 0, false);
-		mutabor::CurrentTime = mutabor::CurrentTime.Get()+125000;
+		mutabor::CurrentTime = mutabor::CurrentTime.Get()+mutabor::microseconds(125000);
 	}
 	
 	if (out) 

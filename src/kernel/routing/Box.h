@@ -747,7 +747,7 @@ namespace mutabor {
 		void dog_watching() {
 			int counter;
 			{ // lock the mutex as short as possible.
-				ScopedLock lock(logic_timing_mutex);
+				ScopedLock<> lock(logic_timing_mutex);
 				if (logic_timing >= 0) {
 					counter = logic_timing++;
 				} else return;
@@ -773,11 +773,10 @@ namespace mutabor {
 		}
 
 	protected:
-		struct BoxLock: public ScopedLock {
+		struct BoxLock: public ScopedLock<> {
 			Box box;
 			BoxLock(BoxClass * b):ScopedLock(b->mutex),
 					      box(b) {
-				mutASSERT(IsOk());
 				if (b && b->box && b->box->flags.auto_reset_break_logic)
 					b->box->flags.break_logic = 0;
 			}
@@ -826,9 +825,9 @@ namespace mutabor {
 		};
 		CompileCallback * current_compile_callback;
 		static mutabor::hidden::mutabor_callback_type backend_callbacks;
-		Mutex mutex;
+		Mutex<> mutex;
 		int logic_timing;
-		Mutex logic_timing_mutex;
+		Mutex<> logic_timing_mutex;
 		mutint64 loop_timeout;
 		watchdog<Box> * loopguard;
 
@@ -970,6 +969,7 @@ namespace mutabor {
 	class ScopedBox: public Box {
 	public:
 		~ScopedBox() {
+			std::cerr << "Deleting Scoped box" << std::endl;
 			if (get())
 				get()->Destroy();
 		}

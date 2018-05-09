@@ -288,7 +288,7 @@ public:
 
 	void Proceed(GisReadArtHead *h, char turn, Route route);
 	void ProceedRoute(GisReadArtHead *h, char turn);
-	virtual mutint64 ReadOn(mutint64 delta);
+	virtual microseconds ReadOn(microseconds delta);
 	/*		{
 			return GisReadArtHeadOn(&Head, time, Proceed);
 			}*/
@@ -298,7 +298,7 @@ public:
 		return DTGis;
 	}
 
-	mutint64 PrepareNextEvent();
+	boost::chrono::microseconds PrepareNextEvent();
 
 	virtual std::string GetTypeName () const {
 		return _mutN("GIS input file");
@@ -318,7 +318,7 @@ public:
 
 private:
 	static const ChannelData channel_data; /// currently unused
-	mutint64 minDelta;  // in ticks
+	microseconds minDelta;  // in ticks
 	//		UINT TimerId;
 	//    long SpeedFactor;
 	//    frac LastDelta;

@@ -24,6 +24,7 @@ check_PROGRAMS += %D%/testcppunit
 	%D%/boxTest.h \
 	%D%/boxTest.cpp
 
+
 nodist_%C%_testcppunit_SOURCES = \
 	%D%/debugPaths.cpp
 
@@ -31,17 +32,17 @@ nodist_%C%_testcppunit_SOURCES = \
 	libmutabormaincppunit.a \
 	src/kernel/libmutaborkernel.a \
 	libmutabordebugcppunit.a \
-	libmutaborgui.a \
 	libmutaborrouting.a \
 	libmutaborscala.a \
+	src/wxintl/libboostintl.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
-	src/wxintl/libwxintl.la \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(CPPUNIT_LIBS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
 	$(BOOST_SYSTEM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_LOCALE_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 endif

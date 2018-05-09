@@ -93,8 +93,8 @@ public:
 		bool retval = (s == (std::string)Out);
 		if (!retval) {
 			DEBUGLOG (always, "Check failed:\n%s:%d:" ,filename.c_str(),line);
-			DEBUGLOG (always, "Expected:\n%s" ,s.c_str());
-			DEBUGLOG (always, "Got:\n%s" , std::string(Out).c_str());
+			DEBUGLOG (always, "Expected:\n%s" ,MakePrintableC(s).c_str());
+			DEBUGLOG (always, "Got:\n%s" , MakePrintableC(std::string(Out)).c_str());
 		}
 		Out.ClearData();
 //		retval = true;

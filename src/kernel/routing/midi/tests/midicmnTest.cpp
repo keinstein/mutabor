@@ -602,7 +602,7 @@ void CommonMidiInputTest::setUp()
 //	mutabor::mutabor_debug_flags.timer = true;
 //	mutabor::mutabor_debug_flags.midiio = true;
 #endif
-	std::clog << "Running setUp()" << std::endl;
+	// std::clog << "Running setUp()" << std::endl;
 
 	CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
 	CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());

@@ -50,6 +50,7 @@
 
 
 #ifdef __cplusplus
+#include "src/kernel/routing/thread.h"
 #include <string>
 #include <cstdio>
 #ifdef __clang__
@@ -130,8 +131,6 @@ struct debugFlags {
 };
 
 extern debugFlags debugFlagInitialiser;
-class Mutex;
-extern Mutex debugmutex;
 #endif
 
 
@@ -319,6 +318,12 @@ void mutabor_debug_unlock();
 #ifdef __cplusplus
 #ifdef DEBUG
 MUTABOR_EXTERN_C_END
+template <class M>
+ inline void mutabor::Mutex<M>::debug_print_thread_mutex(const char * s) {
+	DEBUGLOG(thread,
+		 s,
+		 Thread::get_current_string_id().c_str(),
+		 get_string_handle().c_str());
 }
 #endif
 struct nogetflag {
@@ -433,6 +438,7 @@ extern const char * top_srcdir;
 extern const char * top_builddir;
 
 std::string StreamToHex(std::istream & buf);
+std::string MakePrintableC(const std::string & s);
 #endif
 
 #endif /* precompiled */

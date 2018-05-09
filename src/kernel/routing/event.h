@@ -41,6 +41,7 @@
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/Device.h"
+#include "boost/chrono/duration.hpp"
 
 #ifndef SRC_KERNEL_ROUTING_EVENT_H_PRECOMPILED
 #define SRC_KERNEL_ROUTING_EVENT_H_PRECOMPILED
@@ -363,7 +364,7 @@ namespace mutabor {
 			unique_id = id;
 			tempo.ms_per_s = number;
 		}
-		int get_tempo() { return tempo.ms_per_s; }
+		boost::chrono::microseconds get_tempo() { return boost::chrono::microseconds(tempo.ms_per_s); }
 	};
 
 

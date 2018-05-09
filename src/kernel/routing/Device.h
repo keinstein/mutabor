@@ -45,8 +45,9 @@
 #include "src/kernel/cow_container.h"
 #include "src/kernel/routing/gmn/GIS.h"
 #include "src/kernel/routing/Route.h"
-#include "src/kernel/routing/timing.h"
+//#include "src/kernel/routing/tim ing.h"
 #include "src/kernel/routing/thread.h"
+#include "boost/thread/lockable_adapter.hpp"
 #include "src/kernel/MidiKern.h"
 
 
@@ -502,8 +503,7 @@ namespace mutabor {
 		int bend;                 //< pitch bend value as integer -8192 – +8191
 	};
 
-	class Device
-	{
+	class Device: public boost::lockable_adapter<Mutex<> > {
 	public:
 		/* this will be used to get the right Id */
 		enum devidtype {
@@ -855,7 +855,7 @@ namespace mutabor {
 			    RouteClass * r,
 			    size_t id,
 			    const ChannelData & input_channel_data) {
-			ScopedLock lock(write_lock);
+			ScopedLock<OutputDeviceClass> lock(*this);
 			do_NoteOn(box,taste,velo,r,id,input_channel_data);
 
 		}
@@ -865,18 +865,18 @@ namespace mutabor {
 			     RouteClass * r,
 			     size_t id,
 			     bool is_note_on) {
-			ScopedLock lock(write_lock);
+			ScopedLock<OutputDeviceClass> lock(*this);
 			do_NoteOff(box,taste,velo,r,id,is_note_on);
 		}
 		void UpdateTones(RouteClass * route) {
-			ScopedLock lock(write_lock);
+			ScopedLock<OutputDeviceClass> lock(*this);
 			do_UpdateTones(route);
 		}
 		void Controller(size_t mutabor_channel,
 				int controller,
 				int value,
 				size_t id) {
-			ScopedLock lock(write_lock);
+			ScopedLock<OutputDeviceClass> lock(*this);
 			do_Controller(mutabor_channel,
 				      controller,
 				      value,
@@ -884,28 +884,28 @@ namespace mutabor {
 		}
 //		virtual void Sustain(int channel, const ChannelData & cd) = 0;
 		int  GetChannel(int inkey, size_t channel, size_t id) {
-			ScopedLock lock(write_lock);
+			ScopedLock<OutputDeviceClass> lock(*this);
 			return do_GetChannel(inkey,channel,id);
 		}
 		void Gis(GisToken *token, char turn) {
-			ScopedLock lock(write_lock);
+			ScopedLock<OutputDeviceClass> lock(*this);
 			do_Gis(token,turn);
 		}
 		void AddTime(frac time) {
-			ScopedLock lock(write_lock);
+			ScopedLock<OutputDeviceClass> lock(*this);
 			do_AddTime(time);
 		}
 		void MidiOut(mutabor::Box box, midi_string data) {
-			ScopedLock lock(write_lock);
+			ScopedLock<OutputDeviceClass> lock(*this);
 			do_MidiOut(box,data);
 		}
 		void MidiOut(uint8_t *p, size_t n) {
-			ScopedLock lock(write_lock);
+			ScopedLock<OutputDeviceClass> lock(*this);
 			do_MidiOut(p,n);
 		}
 
 		void handle_event(event e) {
-			ScopedLock lock(write_lock);
+			ScopedLock<OutputDeviceClass> lock(*this);
 			do_handle_event(e);
 		}
 
@@ -917,27 +917,27 @@ namespace mutabor {
 
 		}
 		void Quiet(Route r, int type) {
-			ScopedLock lock(write_lock);
+			ScopedLock<OutputDeviceClass> lock(*this);
 			do_Quiet(r,type);
 		}
 		void Quiet(Route r,int type, size_t id) {
-			ScopedLock lock(write_lock);
+			ScopedLock<OutputDeviceClass> lock(*this);
 			do_Quiet(r,type,id);
 		}
 
 		void Panic(int type) {
-			ScopedLock lock(write_lock);
+			ScopedLock<OutputDeviceClass> lock(*this);
 			do_Panic(type);
 		}
 		void Close() {
 			Close(false);
 		}
 		void Close(bool sync) {
-			ScopedLock lock(write_lock);
+			ScopedLock<OutputDeviceClass> lock(*this);
 			do_Close(sync);
 		}
 		bool Open() {
-			ScopedLock lock(write_lock);
+			ScopedLock<OutputDeviceClass> lock(*this);
 			return do_Open();
 		}
 
@@ -956,19 +956,16 @@ namespace mutabor {
 		virtual operator std::string() const;
 
 	protected:
-		Mutex write_lock;
 		// private members: access only via access functions for debugging purposes
 		/*
 		  OutputDeviceNext;
 		  static OutputDevice deviceList;
 		*/
-		OutputDeviceClass():CommonTypedDeviceAPI<OutputDeviceClass>(),
-				    write_lock() {}
+		OutputDeviceClass():CommonTypedDeviceAPI<OutputDeviceClass>() {}
 
 		OutputDeviceClass(const std::string& name,
 				  int id = -1):
-			CommonTypedDeviceAPI<OutputDeviceClass>(name, id),
-			write_lock() {}
+			CommonTypedDeviceAPI<OutputDeviceClass>(name, id) {}
 
 
 		/**
@@ -1187,12 +1184,14 @@ namespace mutabor {
 
 		static bool was_last_stop() { return last_was_stop; }
 
+#if 0
 #if (!wxCHECK_VERSION(2,9,2))
 		enum wxThreadWait {
 			wxTHREAD_WAIT_BLOCK,
 			wxTHREAD_WAIT_YIELD,
 			wxTHREAD_WAIT_DEFAULT
 		};
+#endif
 #endif
 
                 /** Wait for the thread started with Play().
@@ -1206,9 +1205,9 @@ namespace mutabor {
 		 *
 		 * \return exit code from the thread after it has ended. Non-threaded devices will return NULL.
 		 */
-		virtual wxThread::ExitCode WaitForDeviceFinish(wxThreadWait flags=wxTHREAD_WAIT_BLOCK) {
-			mutUnused(flags);
-			return NULL;
+		virtual int WaitForDeviceFinish(bool blocking=true) {
+			mutUnused(blocking);
+			return 0;
 		}
 
 		virtual void Pause() {
@@ -1241,7 +1240,7 @@ namespace mutabor {
 		 * \return uint_fast64_t Absolute temporal position of the next event in the
 		 * piece in μs.
 		 */
-		virtual mutint64 PrepareNextEvent() { return MUTABOR_NO_DELTA; }
+		virtual boost::chrono::microseconds PrepareNextEvent() { return NO_DELTA(); }
 
 		virtual DevType GetType() const
 		{
@@ -1252,12 +1251,12 @@ namespace mutabor {
 			return _mutN("Undefined input device");
 		}
 
-		static mutint64 GetNO_DELTA() {
-			return mutint64(std::numeric_limits<mutint64>::max());
+		static constexpr boost::chrono::microseconds NO_DELTA() {
+			return boost::chrono::microseconds::max();
 		}
 
-		bool IsDelta(mutint64 d) {
-			return d != GetNO_DELTA();
+		static constexpr bool IsDelta(boost::chrono::microseconds d) {
+			return d != NO_DELTA();
 		}
 
 #ifdef WX
@@ -1268,7 +1267,7 @@ namespace mutabor {
 			    size_t make_unique,
 			    const ChannelData & input_channel_data,
 			    void * userdata) {
-			ScopedLock lock(write_lock);
+			ScopedLock<InputDeviceClass> lock(*this);
 			DEBUGLOG(routing,("(key = %d, channel = %lu, id = %lu)"),
 				 key,
 				 (unsigned long)R->get_session_id(),
@@ -1294,7 +1293,7 @@ namespace mutabor {
 			     int key,
 			     int velocity,
 			     size_t make_unique) {
-			ScopedLock lock(write_lock);
+			ScopedLock<InputDeviceClass> lock(*this);
 			DoNoteOff(R, key, velocity, make_unique);
 		}
 
@@ -1313,11 +1312,20 @@ namespace mutabor {
 		}
 
 		void SilenceKeys(bool remove) {
-			ScopedLock lock(write_lock);
+			ScopedLock<InputDeviceClass> lock(*this);
 			DoSilenceKeys(remove);
 		}
 		void DoSilenceKeys(bool remove);
-		void ResumeKeys();
+
+		void ResumeKeys() {
+			ScopedLock<thistype> lock(*this);
+			ResumeKeys(lock);
+		}
+
+		virtual void ResumeKeys(ScopedLock<thistype> & lock) {
+			mutUnused(lock);
+			DoResumeKeys();
+		}
 
 		void Panic(int type);
 		void Panic(int type, size_t unique_id);
@@ -1327,7 +1335,6 @@ namespace mutabor {
 
 	protected:
 		current_keys_type current_keys;
-		Mutex write_lock;
 		static bool last_was_stop;
 
 		InputDeviceClass(const std::string& name = "",
@@ -1351,6 +1358,9 @@ namespace mutabor {
 			}
 
 		}
+
+		void DoResumeKeys();
+
 
 	};
 

@@ -15,6 +15,7 @@ namespace fs = boost::filesystem;
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/parsers/scala/scala.h"
+#include "src/kernel/routing/thread.h"
 #include <iostream>
 #include <iterator>
 #include <string>
@@ -28,7 +29,6 @@ extern "C" {
 	void mutabor_debug_unlock() {}
 }
 namespace mutabor {
-	struct Mutex {} ;
 	extern "C" {
 
 		struct mutabor_debug_flagtype mutabor_debug_flags;
@@ -45,8 +45,8 @@ namespace mutabor {
 			//	flags.smartptr = true;
 		}
 
-		Mutex debugmutex;
 	}
+	Mutex<> debugmutex;
 }
 
 #endif

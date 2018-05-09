@@ -35,12 +35,8 @@
 #include "src/kernel/routing/CommonFileDevice-inlines.h"
 #include <cstdlib>
 #include <iostream>
-#include "src/wxGUI/TestInitializer.h"
+//#include "src/wxGUI/TestInitializer.h"
 
-// Skip the GUI related checks from DebugRoute.cpp
-#define no_wxGUI 1
-#include "src/wxGUI/Routing/DebugRoute.cpp"
-#undef no_wxGUI
 
 /// not for headers
 #ifdef __BORLANDC__
@@ -139,7 +135,7 @@ int main(/*int argc, char **argv*/)
 //	debugFlags::flags.timer = true;
 //	debugFlags::flags.midifile = true;
 #endif
-	mutwxInitializer initializer;
+	//	mutwxInitializer initializer;
 	mutabor::InitDeviceFactories();
 	mutabor::ScopedInputDevice in;
 	in = (new myDevice());
@@ -156,9 +152,9 @@ int main(/*int argc, char **argv*/)
 	}
 	in -> Play();
 
-	wxThread::ExitCode e = in->WaitForDeviceFinish();
+	int e = in->WaitForDeviceFinish();
 	//int e = 0;
 //	std::clog << "Deviation min: " << tim->min << " max: " << tim->max << std::endl;
-	return (intptr_t)e; 
+	return e; 
 }
 ///\}

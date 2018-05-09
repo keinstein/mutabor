@@ -116,7 +116,6 @@ namespace mutabor {
 	public:
 		typedef T referenceing_type;
 	idtype():id(idpool++) {}
-
 		size_t operator ()() const { return id; }
 		operator size_t () const { return id; }
 		operator int () const { return (int) id; }

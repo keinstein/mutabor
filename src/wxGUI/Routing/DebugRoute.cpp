@@ -1,4 +1,4 @@
-/** \file 
+/** \file
  ********************************************************************
  * Debug functions for routing system
  *
@@ -28,9 +28,15 @@
  ********************************************************************/
 
 #include "src/kernel/Defs.h"
+#ifndef no_wxGUI
+#define wxGUI 1
+#else
+#define wxGUI 0
+#endif
 #ifdef DEBUG
 #include "src/wxGUI/Routing/DebugRoute.h"
 #include "src/kernel/routing/Device.h"
+#if wxGUI
 #include "src/wxGUI/Routing/DeviceShape.h"
 #include "src/wxGUI/MutRouteWnd.h"
 #include "src/wxGUI/Routing/BoxShape.h"
@@ -38,6 +44,7 @@
 #include "src/wxGUI/Routing/BoxChannelShape.h"
 #include "src/wxGUI/Routing/BoxShape.h"
 #include "src/wxGUI/GUIBoxData-inlines.h"
+#endif
 
 #include "src/kernel/routing/Route-inlines.h"
 
@@ -48,7 +55,7 @@
 
 #ifndef no_wxGUI
 #define wxGUI 1
-#else 
+#else
 #define wxGUI 0
 #endif
 
@@ -62,8 +69,8 @@ namespace mutaborGUI {
 #endif
 
 #if 0
-	static void CheckOutputDevice(const OutputDevice Out, 
-				      const MutBoxChannelShape * channel) 
+	static void CheckOutputDevice(const OutputDevice Out,
+				      const MutBoxChannelShape * channel)
 	{
 		DEBUGLOG2(routing,("Output device %p, Channel %p"),Out.get(),channel);
 		MutOutputDeviceShapeList & shapes = ToGUIBase(Out).GetShapes();
@@ -73,9 +80,9 @@ namespace mutaborGUI {
 			MutOutputDeviceShape * shape = *si;
 			mutASSERT ((channel && shape) || !(channel || shape));
 			bool found = false;
-			const MutBoxChannelShapeList & list = 
+			const MutBoxChannelShapeList & list =
 				shape->getRoutesList();
-			for (MutBoxChannelShapeList::const_iterator i 
+			for (MutBoxChannelShapeList::const_iterator i
 				     = list.begin(); i != list.end(); i++)
 				if ((*i) == channel) {
 					found = true;
@@ -99,34 +106,34 @@ namespace mutaborGUI {
 	}
 
 	static void CheckRoute(const RouteClass * route,
-			       const MutInputDeviceShape * In) 
+			       const MutInputDeviceShape * In)
 	{
 		DEBUGLOG2(routing,
 			  ("Route %p id %d, Type %d, Input range %d -- %d"),
 			  route,
 			  route->GetId(),
 			  route->GetType(),
-			  route->GetInputFrom(), 
+			  route->GetInputFrom(),
 			  route->GetInputTo());
 		DEBUGLOG2(routing,
 			  ("Box %d, active %d, Output range %d -- %d (no Drum: %d)"),
 			  route->GetBox(),
 			  route->GetActive(),
-			  route->GetOutputFrom(), 
-			  route->GetOutputTo(), 
+			  route->GetOutputFrom(),
+			  route->GetOutputTo(),
 			  route->OutputAvoidDrumChannel());
 
-		const MutBoxChannelShapeList & shapes = 
+		const MutBoxChannelShapeList & shapes =
 			ToGUIBase(route).GetBoxChannelShapes();
-		
+
 		for (MutBoxChannelShapeList::const_iterator i = shapes.begin();
 		     i != shapes.end(); i++) {
 			MutBoxChannelShape * shape = *i;
 			mutASSERT((In && shape ) || !(In || shape));
 			if (shape) {
 				DEBUGLOG2(routing,("Box channel shape %p"), shape);
-				MutBoxShape * box = 
-					dynamic_cast<MutBoxShape *> 
+				MutBoxShape * box =
+					dynamic_cast<MutBoxShape *>
 					(shape->GetParent());
 				DEBUGLOG2(routing,
 					  ("Box shape %p box %d"),
@@ -146,20 +153,20 @@ namespace mutaborGUI {
 	static void CheckInputDevice(const InputDeviceClass *  In)
 	{
 		DEBUGLOG2(routing,
-			  ("Input device %p '%s' %d:\n%s"), 
+			  ("Input device %p '%s' %d:\n%s"),
 			  In.get(),
 			  In->GetName().c_str(),
 			  In->GetType(),
 			  In->TowxString().c_str());
 
-		const routeListType & routes = 
+		const routeListType & routes =
 			In->GetRoutes();
 		for (routeListType::const_iterator route = routes.begin();
 		     route != routes.end();route++)
 			CheckRoute(*route, shape);
-		
+
 		const MutInputDeviceShapeList & shapes = ToGUIBase(In).GetShapes();
-		
+
 		for (MutInputDeviceShapeList::const_iterator i = shapes.begin();
 		     i != shapes.end();
 		     i++) {
@@ -176,12 +183,12 @@ namespace mutaborGUI {
 #endif
 
 
-	/** 
+	/**
 	 * Check for duplicate entries in a list.
-	 * 
+	 *
 	 * \param list List to be checked.
 	 */
-	template<class T> 
+	template<class T>
 	static void CheckList(const T & list) {
 		DEBUGLOG2(routing,("List at %p has %d entries"),(void*)&list,(int)list.size());
 		for (typename T::const_iterator i = list.begin();
@@ -198,8 +205,8 @@ namespace mutaborGUI {
 			  const MutBoxChannelShape * route) {
 		// both shapes are found. Are they connected?
 		mutASSERT(route->GetInput() == input);
-		
-		const MutBoxChannelShapeList & routelist = 
+
+		const MutBoxChannelShapeList & routelist =
 			input->GetChannels();
 		MutBoxChannelShapeList::const_iterator i =
 			std::find(routelist.begin(),
@@ -213,7 +220,7 @@ namespace mutaborGUI {
 	static void Check(const MutInputDeviceShape * input,
 			  const  RouteClass * route) {
 		// input has shape search for route shape
-		const MutBoxChannelShapeList & routelist = 
+		const MutBoxChannelShapeList & routelist =
 			ToGUIBase(route)->GetBoxChannelShapes();
 		CheckList(routelist); // doesn't check for duplicate parents
 		bool found = false;
@@ -231,10 +238,10 @@ namespace mutaborGUI {
 		mutASSERT(found);
 	}
 
-	static void Check(const InputDeviceClass * input, 
+	static void Check(const InputDeviceClass * input,
 			  const MutBoxChannelShape * route) {
 		// route has shape search for input shape
-		const MutInputDeviceShapeList & inputlist = 
+		const MutInputDeviceShapeList & inputlist =
 			ToGUIBase(input)->GetShapes();
 		wxWindow * parent = route->GetGrandParent();
 		for (MutInputDeviceShapeList::const_iterator i = inputlist.begin();
@@ -252,19 +259,19 @@ namespace mutaborGUI {
 			  const  RouteClass * route) {
 #if wxGUI
 		// input and route are associated searching for shapes
-		const MutInputDeviceShapeList & inputlist = 
+		const MutInputDeviceShapeList & inputlist =
 			ToGUIBase(input)->GetShapes();
 		for (MutInputDeviceShapeList::const_iterator i = inputlist.begin();
 		     i != inputlist.end(); i++) {
 			Check(*i,route);
-			MutRouteWnd * parent = 
+			MutRouteWnd * parent =
 				dynamic_cast<MutRouteWnd *>((*i)->GetParent());
 			mutASSERT(parent);
-			if (parent) 
+			if (parent)
 				rwdtoplevels.insert(parent);
 		}
 
-		const MutBoxChannelShapeList & routelist = 
+		const MutBoxChannelShapeList & routelist =
 			ToGUIBase(route)->GetBoxChannelShapes();
 		CheckList(routelist);
 		for (MutBoxChannelShapeList::const_iterator i = routelist.begin();
@@ -287,7 +294,7 @@ namespace mutaborGUI {
 			mutASSERT((*i)->GetInputDevice() == input);
 			Check(input, (*i).get());
 		}
-#if wxGUI		
+#if wxGUI
 		CheckList(ToGUIBase(input)->GetShapes());
 		GUIInputDeviceBase * guibase = ToGUIBase(const_cast<InputDeviceClass *>(input));
 		for (rwdset::iterator i = rwdtoplevels.begin();
@@ -300,14 +307,14 @@ namespace mutaborGUI {
 	}
 
 	static void CheckInputDevices() {
-		const InputDeviceList & inputlist = 
+		const InputDeviceList & inputlist =
 			InputDeviceClass::GetDeviceList();
 		CheckList(inputlist);
 		for (InputDeviceList::const_iterator i = inputlist.begin();
 		     i != inputlist.end(); i++) {
 			Check((*i).get());
 		}
-			
+
 	}
 
 
@@ -316,10 +323,10 @@ namespace mutaborGUI {
 			  const MutBoxChannelShape * route) {
 		// both shapes are found. Are they connected?
 		mutASSERT(route->GetOutput() == output);
-		
-		const MutBoxChannelShapeList & routelist = 
+
+		const MutBoxChannelShapeList & routelist =
 			output->GetChannels();
-		for (MutBoxChannelShapeList::const_iterator i = 
+		for (MutBoxChannelShapeList::const_iterator i =
 			     routelist.begin();
 		     i != routelist.end(); i++) {
 			if ((*i) == route) return;
@@ -331,7 +338,7 @@ namespace mutaborGUI {
 	static void Check(const MutOutputDeviceShape * output,
 			  const RouteClass * route) {
 		// output has shape search for route shape
-		const MutBoxChannelShapeList & routelist = 
+		const MutBoxChannelShapeList & routelist =
 			ToGUIBase(route)->GetBoxChannelShapes();
 		CheckList(routelist);
 		wxWindow * parent = output->GetParent();
@@ -345,13 +352,13 @@ namespace mutaborGUI {
 		mutASSERT(false);
 	}
 
-	static void Check(const OutputDeviceClass * output, 
+	static void Check(const OutputDeviceClass * output,
 			  const MutBoxChannelShape * route) {
 		// route has shape search for input shape
-		const MutOutputDeviceShapeList & outputlist = 
+		const MutOutputDeviceShapeList & outputlist =
 			ToGUIBase(output)->GetShapes();
 		wxWindow * parent = route->GetGrandParent();
-		for (MutOutputDeviceShapeList::const_iterator i 
+		for (MutOutputDeviceShapeList::const_iterator i
 			     = outputlist.begin();
 		     i != outputlist.end(); i++) {
 			if ((*i)->GetParent() == parent) {
@@ -368,20 +375,20 @@ namespace mutaborGUI {
 			  const RouteClass * route) {
 #if wxGUI
 		// input and route are associated searching for shapes
-		const MutOutputDeviceShapeList & outputlist = 
+		const MutOutputDeviceShapeList & outputlist =
 			ToGUIBase(output)->GetShapes();
-		for (MutOutputDeviceShapeList::const_iterator i = 
+		for (MutOutputDeviceShapeList::const_iterator i =
 			     outputlist.begin();
 		     i != outputlist.end(); i++) {
 			Check(*i,route);
-			MutRouteWnd * parent = 
+			MutRouteWnd * parent =
 				dynamic_cast<MutRouteWnd *>((*i)->GetParent());
 			mutASSERT(parent);
-			if (parent) 
+			if (parent)
 				rwdtoplevels.insert(parent);
 		}
-		
-		const MutBoxChannelShapeList & routelist = 
+
+		const MutBoxChannelShapeList & routelist =
 			ToGUIBase(route)->GetBoxChannelShapes();
 		CheckList(routelist);
 		for (MutBoxChannelShapeList::const_iterator i = routelist.begin();
@@ -404,7 +411,7 @@ namespace mutaborGUI {
 			mutASSERT((*i)->GetOutputDevice() == output);
 			Check(output, (*i).get());
 		}
-		
+
 #if wxGUI
 		CheckList(ToGUIBase(output)->GetShapes());
 
@@ -418,14 +425,14 @@ namespace mutaborGUI {
 	}
 
 	static void CheckOutputDevices() {
-		const OutputDeviceList & outputlist = 
+		const OutputDeviceList & outputlist =
 			OutputDeviceClass::GetDeviceList();
 		CheckList(outputlist);
 		for (OutputDeviceList::const_iterator i = outputlist.begin();
 		     i != outputlist.end(); i++) {
 			Check((*i).get());
 		}
-			
+
 	}
 
 
@@ -437,12 +444,12 @@ namespace mutaborGUI {
 		Route & r = route->GetRoute();
 		const Box & b = box->GetBox();
 		mutASSERT(r->GetBox() == b);
-		
-		const wxSizer * boxsizer = 
+
+		const wxSizer * boxsizer =
 			box->GetChannels();
-		const wxSizerItemList & channels 
+		const wxSizerItemList & channels
 			= const_cast<wxSizer *>(boxsizer)->GetChildren();
-		for (wxSizerItemList::const_iterator i 
+		for (wxSizerItemList::const_iterator i
 			     = channels.begin();
 		     i != channels.end(); i++) {
 			if ((*i)->GetWindow() == route) return;
@@ -454,7 +461,7 @@ namespace mutaborGUI {
 	static void Check(const MutBoxShape * box,
 			  const RouteClass * route) {
 		// box has shape search for route shape
-		const MutBoxChannelShapeList & routelist = 
+		const MutBoxChannelShapeList & routelist =
 			ToGUIBase(route)->GetBoxChannelShapes();
 		CheckList(routelist);
 		wxWindow * parent = box->GetParent();
@@ -468,7 +475,7 @@ namespace mutaborGUI {
 		mutASSERT(false);
 	}
 
-	static void Check(const BoxClass * box, 
+	static void Check(const BoxClass * box,
 			  const MutBoxChannelShape * route) {
 		// route has shape search for input shape
 		const BoxData * b = ToGUIBase(box);
@@ -488,23 +495,23 @@ namespace mutaborGUI {
 			  const RouteClass * route) {
 #if wxGUI
 		// input and route are associated searching for shapes
-		const MutBoxShapeList & boxlist = 
+		const MutBoxShapeList & boxlist =
 			ToGUIBase(box)->GetShapes();
-		for (MutBoxShapeList::const_iterator i = 
+		for (MutBoxShapeList::const_iterator i =
 			     boxlist.begin();
 		     i != boxlist.end(); i++) {
 			Check(*i,route);
-			MutRouteWnd * parent = 
+			MutRouteWnd * parent =
 				dynamic_cast<MutRouteWnd *>((*i)->GetParent());
 			mutASSERT(parent);
-			if (parent) 
+			if (parent)
 				rwdtoplevels.insert(parent);
 
 			Check(*i);
-			
+
 		}
-		
-		const MutBoxChannelShapeList & routelist = 
+
+		const MutBoxChannelShapeList & routelist =
 			ToGUIBase(route)->GetBoxChannelShapes();
 		CheckList(routelist);
 		for (MutBoxChannelShapeList::const_iterator i = routelist.begin();
@@ -527,7 +534,7 @@ namespace mutaborGUI {
 			mutASSERT((*i)->GetBox() == box);
 			Check(box, (*i).get());
 		}
-		
+
 #if wxGUI
 		CheckList(ToGUIBase(box)->GetShapes());
 		BoxData * guibase = ToGUIBase(const_cast<BoxClass *>(box));
@@ -539,9 +546,9 @@ namespace mutaborGUI {
 		}
 #endif
 	}
-	
+
 	static void CheckBoxes() {
-		const BoxListType & boxlist = 
+		const BoxListType & boxlist =
 			BoxClass::GetBoxList();
 		CheckList(boxlist);
 		for (BoxListType::const_iterator i = boxlist.begin();
@@ -551,14 +558,14 @@ namespace mutaborGUI {
 	}
 
 #if wxGUI
-	static void Check(const RouteClass * route, 
+	static void Check(const RouteClass * route,
 			  const MutBoxChannelShape * channel) {
-		MutRouteWnd * grandparent = 
+		MutRouteWnd * grandparent =
 			dynamic_cast<MutRouteWnd *>(channel->GetGrandParent());
 		mutASSERT(grandparent);
-		if (grandparent) 
+		if (grandparent)
 			rwdtoplevels.insert(grandparent);
-		MutBoxShape * box = 
+		MutBoxShape * box =
 			dynamic_cast<MutBoxShape *>(channel->GetParent());
 		mutASSERT(box);
 		if (!box) return;
@@ -574,8 +581,8 @@ namespace mutaborGUI {
 			  (int)list.size());
 		const BoxData * routeboxdata = ToGUIBase(route)->GetBoxData();
 		int i;
-		for (i = MIN_BOX; i < MAX_BOX && 
-			     routeboxdata != &(BoxData::GetBox(route->GetBox())); 
+		for (i = MIN_BOX; i < MAX_BOX &&
+			     routeboxdata != &(BoxData::GetBox(route->GetBox()));
 		     i++);
 		if (i < MAX_BOX) {
 			DEBUGLOG2(routing, ("Box %p has GUI number %d and id %d"),
@@ -587,7 +594,7 @@ namespace mutaborGUI {
 				  route->GetBox());
 		}
 		CheckList(list);
-		MutBoxShapeList::const_iterator pos = 
+		MutBoxShapeList::const_iterator pos =
 			std::find(list.begin(),
 				  list.end(),
 				  box);
@@ -599,9 +606,9 @@ namespace mutaborGUI {
 	static void Check(const RouteClass * route) {
 		DEBUGLOG2(routing,("%s"),(route->operator std::string()));
 #if wxGUI
-		const MutBoxChannelShapeList & channels = 
+		const MutBoxChannelShapeList & channels =
 			ToGUIBase(route)->GetBoxChannelShapes();
-		
+
 		// associated routes for output device
 		CheckList(channels);
 
@@ -629,7 +636,7 @@ namespace mutaborGUI {
 	}
 
 	static void CheckRoutes() {
-		const routeListType & routelist = 
+		const routeListType & routelist =
 			RouteClass::GetRouteList();
 		CheckList(routelist);
 		for (routeListType::const_iterator i = routelist.begin();
@@ -645,12 +652,12 @@ namespace mutaborGUI {
 		const InputDeviceList & list = InputDeviceClass::GetDeviceList();
 		const InputDevice & dev = shape->GetDevice();
 		mutASSERT(dev);
-		InputDeviceList::const_iterator pos = 
+		InputDeviceList::const_iterator pos =
 			std::find(list.begin(),list.end(),dev.get());
 		mutASSERT(pos != list.end());
-		const MutInputDeviceShapeList & shapelist = 
+		const MutInputDeviceShapeList & shapelist =
 			ToGUIBase(dev.get())->GetShapes();
-		MutInputDeviceShapeList::const_iterator pos2 = 
+		MutInputDeviceShapeList::const_iterator pos2 =
 			std::find(shapelist.begin(),
 				  shapelist.end(),
 				  shape);
@@ -658,16 +665,16 @@ namespace mutaborGUI {
 	}
 
 	static void Check(const MutOutputDeviceShape * shape) {
-		const OutputDeviceList & list = 
+		const OutputDeviceList & list =
 			OutputDeviceClass::GetDeviceList();
 		const OutputDevice & dev = shape->GetDevice();
 		mutASSERT(dev);
-		OutputDeviceList::const_iterator pos = 
+		OutputDeviceList::const_iterator pos =
 			std::find(list.begin(),list.end(),dev.get());
 		mutASSERT(pos != list.end());
-		const MutOutputDeviceShapeList & shapelist = 
+		const MutOutputDeviceShapeList & shapelist =
 			ToGUIBase(dev)->GetShapes();
-		MutOutputDeviceShapeList::const_iterator pos2 = 
+		MutOutputDeviceShapeList::const_iterator pos2 =
 			std::find(shapelist.begin(),
 				  shapelist.end(),
 				  shape);
@@ -678,7 +685,7 @@ namespace mutaborGUI {
 		const Route & route = shape->GetRoute();
 		const MutBoxChannelShapeList & list =
 			ToGUIBase(route)->GetBoxChannelShapes();
-		MutBoxChannelShapeList::const_iterator pos = 
+		MutBoxChannelShapeList::const_iterator pos =
 			std::find(list.begin(),list.end(),shape);
 		mutASSERT(pos != list.end());
 	}
@@ -702,7 +709,7 @@ namespace mutaborGUI {
 		     i++) {
 			wxWindow * window = (*i)->GetWindow();
 			mutASSERT(window);
-			MutBoxChannelShape * channel = 
+			MutBoxChannelShape * channel =
 				dynamic_cast<MutBoxChannelShape *>(window);
 			mutASSERT(children.Find(channel));
 			mutASSERT(shape);
@@ -737,7 +744,7 @@ namespace mutaborGUI {
 		     i++) {
 			wxWindow * window = (*i)->GetWindow();
 			mutASSERT(window);
-			MutInputDeviceShape * shape = 
+			MutInputDeviceShape * shape =
 				dynamic_cast<MutInputDeviceShape *>(window);
 			mutASSERT(shape);
 			Check(shape);
@@ -749,7 +756,7 @@ namespace mutaborGUI {
 		     i++) {
 			wxWindow * window = (*i)->GetWindow();
 			mutASSERT(window);
-			MutOutputDeviceShape * shape = 
+			MutOutputDeviceShape * shape =
 				dynamic_cast<MutOutputDeviceShape *>(window);
 			mutASSERT(shape);
 			Check(shape);
@@ -761,7 +768,7 @@ namespace mutaborGUI {
 		     i++) {
 			wxWindow * window = (*i)->GetWindow();
 			mutASSERT(window);
-			MutBoxShape * shape = 
+			MutBoxShape * shape =
 				dynamic_cast<MutBoxShape *>(window);
 			mutASSERT(shape);
 			Check(shape);
@@ -769,7 +776,7 @@ namespace mutaborGUI {
 	}
 
 	static void CheckWindows() {
-		for (rwdset::iterator i = rwdtoplevels.begin(); 
+		for (rwdset::iterator i = rwdtoplevels.begin();
 		     i !=  rwdtoplevels.begin(); i++) {
 			Check(*i);
 		}
@@ -778,7 +785,7 @@ namespace mutaborGUI {
 
 #if wxGUI
 	static void MakeTopLevelsInput() {
-		const InputDeviceList & inputlist = 
+		const InputDeviceList & inputlist =
 			InputDeviceClass::GetDeviceList();
 		CheckList(inputlist);
 		for (InputDeviceList::const_iterator i = inputlist.begin();
@@ -794,7 +801,7 @@ namespace mutaborGUI {
 		}
 	}
 	static void MakeTopLevelsOutput() {
-		const OutputDeviceList & outputlist = 
+		const OutputDeviceList & outputlist =
 			OutputDeviceClass::GetDeviceList();
 		CheckList(outputlist);
 		for (OutputDeviceList::const_iterator i = outputlist.begin();
@@ -806,11 +813,11 @@ namespace mutaborGUI {
 				MutRouteWnd * root = dynamic_cast<MutRouteWnd *>((*j)->GetParent());
 				mutASSERT(root);
 				rwdtoplevels.insert(root);
-			} 
+			}
 		}
 	}
 	static void MakeTopLevelsBoxes() {
-		const BoxListType & boxlist = 
+		const BoxListType & boxlist =
 			BoxClass::GetBoxList();
 		CheckList(boxlist);
 		for (BoxListType::const_iterator i = boxlist.begin();
@@ -826,13 +833,13 @@ namespace mutaborGUI {
 		}
 	}
 	static void MakeTopLevelsRoutes() {
-		const routeListType & routelist = 
+		const routeListType & routelist =
 			RouteClass::GetRouteList();
 		CheckList(routelist);
 		for (routeListType::const_iterator i = routelist.begin();
 		     i != routelist.end(); i++) {
 			GUIRoute * guiroute = ToGUIBase(const_cast<Route &>(*i));
-			MutBoxChannelShapeList & shapes 
+			MutBoxChannelShapeList & shapes
 				= const_cast<MutBoxChannelShapeList &>(guiroute->GetBoxChannelShapes());
 			for (MutBoxChannelShapeList::iterator j = shapes.begin();
 			     j != shapes.end(); j++)  {

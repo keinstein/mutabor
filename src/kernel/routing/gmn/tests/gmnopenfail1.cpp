@@ -40,12 +40,14 @@
 #include "src/kernel/routing/timing.h"
 #include <cstdlib>
 #include <iostream>
-#include <wx/app.h>
+//#include <wx/app.h>
 
+#if 0
 // Skip the GUI related checks from DebugRoute.cpp
 #define no_wxGUI 1
 #include "src/wxGUI/Routing/DebugRoute.cpp"
 #undef no_wxGUI
+#endif
 
 /// not for headers
 #ifdef __BORLANDC__
@@ -144,6 +146,7 @@ int main(/*int argc, char **argv**/)
 //	debugFlags::flags.timer = true;
 //	debugFlags::flags.gmnfile = true;
 #endif
+#if 0
 	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
 
 	wxInitializer initializer;
@@ -152,6 +155,7 @@ int main(/*int argc, char **argv**/)
 		fprintf(stderr, "Failed to initialize the wxWidgets library, aborting.");
 		return -1;
 	}
+#endif
 
 	mutabor::InitDeviceFactories();
 	mutabor::InputDevice in(new myDevice());
@@ -170,7 +174,7 @@ int main(/*int argc, char **argv**/)
 	
 	in -> Close();
 
-	wxThread::ExitCode e = in->WaitForDeviceFinish();
+	int e = in->WaitForDeviceFinish();
 	if (e != 0) return 0x100 + ((size_t)e & 0xFF);
 	//int e = 0;
 //	std::clog << "Deviation min: " << tim->min << " max: " << tim->max << std::endl;

@@ -57,14 +57,17 @@ namespace mutabor {
 /** This class is an abstract class.
  *  subclass it to provide some storage technology, which can be used for routing and other options.
  */
-	class tree_storage 
+	class tree_storage
 	{
 	public:
 		/// default constructor.
 		tree_storage()  {}
-	
+
 		/// virtual destructor
 		virtual ~tree_storage() {}
+
+		/// returns the value that denotes not finding an object
+		virtual int getNOT_FOUND() = 0;
 
 		/// Reads a long integer value
 		/**
@@ -73,7 +76,7 @@ namespace mutabor {
 		 * \retval data read or defval, if the leaf does not exist.
 		 */
 		virtual long Read(const std::string& key, long defval) = 0;
-	
+
 		/// Reads a double value
 		/**
 		 * \argument key (std::string&) Name of the desired leaf in the tree
@@ -81,7 +84,7 @@ namespace mutabor {
 		 * \retval data read or defval, if the leaf does not exist.
 		 */
 		virtual double Read(const std::string& key, double defval) = 0;
-	
+
 		/// Reads an integer value
 		/**
 		 * \argument key (std::string&) Name of the desired leaf in the tree
@@ -89,7 +92,7 @@ namespace mutabor {
 		 * \retval data read or defval, if the leaf does not exist.
 		 */
 		virtual int Read(const std::string& key, int defval) = 0;
-	
+
 		/// Reads a boolean value
 		/**
 		 * \argument key (std::string&) Name of the desired leaf in the tree
@@ -97,7 +100,7 @@ namespace mutabor {
 		 * \retval data read or defval, if the leaf does not exist.
 		 */
 		virtual bool Read(const std::string& key, bool defval) = 0;
-	
+
 		/// Reads a string value
 		/**
 		 * \argument key (std::string&) Name of the desired leaf in the tree
@@ -106,7 +109,7 @@ namespace mutabor {
 		 */
 		virtual std::string Read(const std::string& key, const std::string& defval) = 0;
 		std::string Read(const std::string& key, const char * defval)
-		{ 
+		{
 			return Read(key,std::string(defval));
 		}
 
@@ -116,21 +119,21 @@ namespace mutabor {
 		 * \argument value (long) value, to be written
 		 */
 		virtual void Write (const std::string& key, long value) = 0;
-	
+
 		/// Writes a double value
 		/**
 		 * \argument key (std::string&) Name of the desired leaf in the tree
 		 * \argument value (double) value, to be written
 		 */
 		virtual void Write (const std::string& key, double value) = 0;
-	
+
 		/// Writes an integer value
 		/**
 		 * \argument key (std::string&) Name of the desired leaf in the tree
 		 * \argument value (int) value, to be written
 		 */
 		virtual void Write (const std::string& key, int value) = 0;
-	
+
 		/// Writes a boolean value
 		/**
 		 * \argument key (std::string&) Name of the desired leaf in the tree
@@ -144,10 +147,10 @@ namespace mutabor {
 		 * \argument value (std::string&) value, to be written
 		 */
 		virtual void Write (const std::string& key, const std::string& value) = 0;
-	
+
 		/// Checks if the tree has a branch with the given name
 		/** \argument subdir (std::string&) subdirectory to check for.
-		 *  \return true if the current node has a leaf with the given 
+		 *  \return true if the current node has a leaf with the given
 		 *  name which is a node itself.
 		 */
 		virtual bool HasGroup(const std::string&) const = 0;
@@ -167,7 +170,7 @@ namespace mutabor {
 		 *  \argument id (int) id of the current object
 		 */
 		virtual void toLeaf(const std::string& name, int id) = 0;
-	
+
 		/// Changes the current node downdwards to the first leaf of given type
 		/** this function can be used to navigate towards the leaves in the tree.
 		 *  The argument can be considered as Items with a unique id.
@@ -181,7 +184,7 @@ namespace mutabor {
 		/** this function can be used to navigate towards the leaves in the tree.
 		 *  The argument can be considered as Items with a unique id.
 		 *  \argument subdir (std::string&) name of the entity to be read from.
-		 *  \argument id (std::string&) reference to a String where the id of the 
+		 *  \argument id (std::string&) reference to a String where the id of the
 		 *       leaf will be stored
 		 *  \return (int) id of the selected item
 		 *  \see toNextLeaf
@@ -201,42 +204,42 @@ namespace mutabor {
 		/** this function can be used to navigate towards the leaves in the tree.
 		 *  The argument can be considered as Items with a unique id.
 		 *  \argument subdir (std::string&) name of the entity to be read from.
-		 *  \argument id (std::string&) reference to a String where the id of the 
+		 *  \argument id (std::string&) reference to a String where the id of the
 		 *       leaf will be stored
 		 *  \return (int) id of the selected item
 		 *  \see toFirstLeaf
 		 */
 		virtual int toNextLeaf(const std::string& name, std::string& id) = 0;
-	
-		/// This function jumps up in the tree (i.e. towards the root). 
+
+		/// This function jumps up in the tree (i.e. towards the root).
 		/** \argument count (int) number of nodes to go upward. Default: 1.
 		 */
 		virtual void toParent(unsigned int count = 1) = 0;
 
 		/// Return a string representation of the position in the current tree.
 		/** This function can be used to store the current position in the tree.
-		 *  \retval std::string String representation of the current path. 
-		 *  The concrete representation is implementation dependent and 
+		 *  \retval std::string String representation of the current path.
+		 *  The concrete representation is implementation dependent and
 		 *  can vary for different tree types.
 		 */
 		virtual std::string GetPath() = 0;
-	
+
 		/// Set the current pointer in the tree.
 		/** This function can be used to store the current position in the tree.
 		 *  \argument path (std::string) String representation of the new path as returned by GetPath().
-		 *  The concrete representation is implementation dependent and 
+		 *  The concrete representation is implementation dependent and
 		 *  can vary for different tree types.
-		 */	
+		 */
 		virtual void SetPath(const std::string& path) = 0;
-	
+
 		/// Delete an entry
-		/** 
+		/**
 		 *  \argument entry path to the entry that shall be deleted
 		 */
 		virtual void DeleteEntry(const std::string& path) = 0;
 
 		/// Delete an entire group with all childs
-		/** 
+		/**
 		 *  \argument group path to the entry that shall be deleted
 		 */
 		virtual void DeleteGroup(const std::string& path) = 0;

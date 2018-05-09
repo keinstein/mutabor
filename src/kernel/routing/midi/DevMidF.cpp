@@ -33,18 +33,11 @@
 #include <owl/pch.h>
 #endif
 
-#ifdef RTMIDI
-#  include "RtMidi.h"
-#else
-#ifndef H_MMSYSTEM
-//  #define WINVER 0x030a
-#include <mmsystem.h>
-#define H_MMSYSTEM
-#endif
-#endif
+#include "RtMidi.h"
 #include "boost/filesystem.hpp"
 #include "boost/filesystem/fstream.hpp"
 #include "boost/filesystem/detail/utf8_codecvt_facet.hpp"
+#include "boost/chrono/chrono_io.hpp"
 
 #include "src/kernel/routing/midi/DevMidF.h"
 #include "src/kernel/routing/midi/DevMidi.h"
@@ -65,6 +58,18 @@
 
 namespace mutabor {
 	using namespace midi;
+
+	void DebugMidiOutputProvider::WriteTime() {
+		// this function is not inlined to reduce the dependencies on timing.h
+		std::string tmp;
+		if (!CurrentTime.isRealtime()) {
+
+			tmp = str(boost::format("%ld ")
+				  % (CurrentTime.Get()-mutabor::CurrentTimer::time_point()).count());
+			data += tmp;
+		}
+	}
+
 	template class CommonMidiOutput<MidiFileOutputProvider,CommonFileOutputDevice>;
 
 #if 0
@@ -105,33 +110,35 @@ namespace mutabor {
 
 // Tracks -----------------------------------------------------------
 
-	mutint64 Track::ReadDelta()
+	microseconds Track::ReadDelta()
 	{
-		mutASSERT(remaining_delta != MUTABOR_NO_DELTA);
-		current_delta = ReadInt();
+		mutASSERT(remaining_delta != InputDeviceClass::NO_DELTA());
+		current_delta = timing_params::miditicks(ReadInt(),timing);
 		DEBUGLOG (midifile, "%s" ,(this->c_str()));
-		remaining_delta += timing.get_time_midi(current_delta);
+		remaining_delta += current_delta.midi_mus();
 		return remaining_delta;
 	}
 
 	void Track::WriteDelta()
 	{
-		mutint64 newtime = CurrentTime.Get();
-		mutint64 Deltatime = std::max(newtime - Time,(mutint64)0);
+		CurrentTimer::time_point newtime = CurrentTime.Get();
+		microseconds newdelta = boost::chrono::duration_cast<microseconds>(newtime - Time);
+		microseconds Deltatime = std::max(newdelta,microseconds::zero());
 		// note: Deltatime may be a little bit ahead if get_delta rounds up
-		mutint64 Delta = timing.get_delta_midi(Deltatime);
+		timing_params::miditicks Delta (Deltatime,timing,true);
 		DEBUGLOG(midifile,
 			 ("Deltatime = %ld, Delta = %ld, get_time_midi(Delta) = %ld, get_delta_midi(get_time_midi(Delta)) = %ld"),
-			 Deltatime, Delta, timing.get_time_midi(Delta), timing.get_delta_midi(timing.get_time_midi(Delta)));
-		mutASSERT(timing.get_delta_midi(timing.get_time_midi(Delta)) == Delta);
+			 Deltatime, Delta.count(),
+			 Delta.midi_mus().count(),
+			 timing_params::miditicks(Delta.midi_mus(),timing,true).count());
+		mutASSERT(timing_params::miditicks(Delta.midi_mus(),timing,true) == Delta);
 		// we should take care of rounding errors
 		//Time = newtime + timing.get_time(Delta) - Deltatime;
-		Time += timing.get_time_midi(Delta);
+		Time += Delta.midi_mus();
 
 		// if the Delta time is bad wite a correct number
-		mutASSERT(0 <= Delta);
-		mutASSERT(Delta < 0x0FFFFFFF);
-		WriteNumber(Delta < 0x0FFFFFFF ? (0 <= Delta ? Delta : 0): 0x0FFFFFFF);
+		mutASSERT(Delta.is_in_range(0,0x0FFFFFFF));
+		WriteNumber(Delta.count_in_range(0,0x0FFFFFFF));
 	}
 
 	uint32_t Track::ReadInt() {
@@ -162,9 +169,11 @@ namespace mutabor {
 		} else status = running_status;
 		if (! (status & 0x80)) {
 			char * tmp;
-			asprintf(&tmp, _mut("Invalid status byte: %x  at position %d"), status, position);
-			std::string s = tmp;
-			free(tmp);
+			std::string s;
+			if (asprintf(&tmp, _mut("Invalid status byte: %x  at position %d"), status, position) > 0) {
+				s = tmp;
+				free(tmp);
+			}
 			BOOST_THROW_EXCEPTION(invalid_status (s));
 		}
 
@@ -240,9 +249,9 @@ namespace mutabor {
 timing: %s\n\
 Time = %ld, position = %d/%d, current_delta = %ld, remaining_delta = %ld\n\
 Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
-				  % str(timing).c_str() 
-				  % Time % (int)position % (int)size() % current_delta % remaining_delta 
-				  % running_status % running_status 
+				  % str(timing).c_str()
+				  % Time % (int)position % (int)size() % current_delta % remaining_delta
+				  % running_status % running_status
 				  % (running_sysex?("true"):("false")) % sysex_id % sysex_id);
 	}
 
@@ -331,7 +340,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 		}
 		if (!correct)
 			runtime_error(mutabor::warning,
-				      boost::str(boost::format(_mut("The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."))  
+				      boost::str(boost::format(_mut("The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."))
 						 % oldfrom%oldto % GetName().c_str() % GetMinChannel() %GetMaxChannel()));
 		config.toParent();
 		mutASSERT(oldpath == config.GetPath());
@@ -347,7 +356,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 		boost::filesystem::path p;
 		p.assign(Name, utf8);
 
-		boost::filesystem::ofstream os(p,  
+		boost::filesystem::ofstream os(p,
 					       std::ios::out | std::ios::binary);
 
 		Out.Save(os);
@@ -543,7 +552,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 		boost::filesystem::path p;
 		p.assign(Name, utf8);
 
-		boost::filesystem::ifstream is(p,  
+		boost::filesystem::ifstream is(p,
 					       std::ios::in | std::ios::binary);
 		if ( is.bad() ) {
 			DEBUGLOG (midifile, "Opening Stream failed" );
@@ -695,7 +704,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 			return;
 
 		// Delta-Times lesen
-		minDelta = MUTABOR_NO_DELTA;
+		minDelta = NO_DELTA();
 		timing.reset();
 
 		for (size_t i = 0; i < Tracks.size(); i++ ) {
@@ -703,41 +712,41 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 			try {
 				minDelta = std::min(minDelta, Tracks[i].ReadDelta());
 			} catch (...) {
-				exception_error();
+				exception_error(false);
 			}
 		}
 	}
 
-	mutint64 InputMidiFile::PrepareNextEvent()
+	microseconds InputMidiFile::PrepareNextEvent()
 	{
-		mutint64 passedDelta = minDelta;
-		mutint64 NewMinDelta = MUTABOR_NO_DELTA;
+		microseconds passedDelta = minDelta;
+		microseconds NewMinDelta = NO_DELTA();
 		for (size_t i = 0; i < Tracks.size(); i++ ) {
-			mutint64 delta = Tracks[i].GetDelta();
+			microseconds delta = Tracks[i].GetDelta();
 			DEBUGLOG (midifile, "Track: %d, delta: %ld μs" ,(int)i,delta);
-			if ( delta  == MUTABOR_NO_DELTA )
+			if ( delta  == NO_DELTA() )
 				continue;
 			if ( delta <= passedDelta )
 				delta = ReadMidiProceed(i, passedDelta);
 			else
 				delta = Tracks[i].PassDelta(passedDelta);
 
-			if (delta != MUTABOR_NO_DELTA &&
+			if (delta != NO_DELTA() &&
 			    delta < NewMinDelta ) {
 					NewMinDelta = delta;
 			}
  			DEBUGLOG (midifile, "Track: %d, delta: %ld μs" ,(int)i,Tracks[i].GetDelta());
 		}
-		DEBUGLOG (midifile, "Next event after %ld μs (MUTABOR_NO_DELTA = %ld)" ,minDelta,MUTABOR_NO_DELTA);
+		DEBUGLOG (midifile, "Next event after %ld μs (MUTABOR_NO_DELTA = %ld)" ,minDelta,NO_DELTA());
 		minDelta = NewMinDelta;
 		return NewMinDelta;
 	}
 
-	mutint64 InputMidiFile::ReadMidiProceed(size_t nr, mutint64 deltatime)
+	microseconds InputMidiFile::ReadMidiProceed(size_t nr, microseconds deltatime)
 	{
-		mutint64 Delta = Tracks[nr].GetDelta();
-		mutASSERT(Delta >= -1000000);
-		mutint64 time = deltatime;
+		microseconds Delta = Tracks[nr].GetDelta();
+		mutASSERT(Delta >= microseconds(-1000000));
+		microseconds time = deltatime;
 
 		while ( time >= Delta ) {
 
@@ -751,7 +760,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 				switch (message[1]) {
 				case midi::META_END_OF_TRACK:
 					Tracks[nr].Stop();
-					Delta = MUTABOR_NO_DELTA;
+					Delta = NO_DELTA();
 					break;
 				case midi::META_SET_TEMPO: {
 					size_t j,e;
@@ -776,7 +785,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 					for (; j < e; j++ )
 						Tracks[j].SetQuarterDuration(ev->get_tempo(),
 									     true,
-									     j>nr ? deltatime - time: (mutint64)0);
+									     j>nr ? deltatime - time: (microseconds::zero()));
 
 					DEBUGLOG(midifile,
 						 ("Change tempo to %ldμs per quarter (next event after %ld)"),
@@ -788,7 +797,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 
 			Proceed(message, nr, nr << 4);
 
-			if (Delta ==  MUTABOR_NO_DELTA)
+			if (Delta ==  NO_DELTA())
 				return Delta;
 
 			Delta = Tracks[nr].ReadDelta();
@@ -798,7 +807,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 				 (int)nr, Delta);
 		}
 #ifdef DEBUG
-		mutint64 checktime =
+		microseconds checktime =
 #endif
 			Tracks[nr].PassDelta(time);
 
@@ -811,8 +820,8 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 
 	void InputMidiFile::Proceed(const std::vector<unsigned char > &midiCode, int data, int channel_offset) {
 		/** \todo implement system messages */
-		uint8_t MidiChannel = (midiCode.at(0) & 0x0F) + channel_offset;
-		uint8_t MidiStatus  = midiCode.at(0);
+		uint8_t MidiChannel = (midiCode[0] & 0x0F) + channel_offset;
+		uint8_t MidiStatus  = midiCode[0];
 		DEBUGLOG (midifile, "Status: %x" , MidiStatus);
 
 		switch ( MidiStatus ) {
@@ -854,7 +863,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
   FileType = %d\n\
   Tracks: %d\n\
   minDelta = %ld\n				\
-  Busy = %d\n") 
+  Busy = %d\n")
 				   % FileType
 				   % (int)Tracks.size()
 				   % minDelta
@@ -869,7 +878,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 		//		DEBUGLOG (midifile, "midiCode: %x, track %d" ,midiCode,track);
 		switch ( R->GetType() ) {
 		case RTchannel:
-			if ( R->Check(midiCode.at(0) & 0x0F) ) {
+			if ( R->Check(midiCode[0] & 0x0F) ) {
 				return ProceedYes;
 			}
 			break;

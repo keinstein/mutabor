@@ -33,6 +33,7 @@
 #include "src/kernel/mutlex.h"
 using namespace mutabor;
 using mutabor::hidden::yytokentype;
+#ifndef MUTABOR_TOKEN_IDENTIFIER
 using mutabor::hidden::MUTABOR_TOKEN_IDENTIFIER;
 using mutabor::hidden::MUTABOR_TOKEN_F_NUMBER;
 using mutabor::hidden::MUTABOR_TOKEN_INTEGER;
@@ -61,6 +62,7 @@ using mutabor::hidden::MUTABOR_TOKEN_COMMENT;
 using mutabor::hidden::MUTABOR_TOKEN_COMMENT_START;
 using mutabor::hidden::MUTABOR_TOKEN_COMMENT_END;
 using mutabor::hidden::MUTABOR_TOKEN_OTHER;
+#endif
 
 namespace mutaborGUI {
 //============================================================================

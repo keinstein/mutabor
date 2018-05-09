@@ -39,12 +39,7 @@
 #include "src/kernel/routing/CommonFileDevice-inlines.h"
 #include <cstdlib>
 #include <iostream>
-#include <wx/app.h>
-
-// Skip the GUI related checks from DebugRoute.cpp
-#define no_wxGUI 1
-#include "src/wxGUI/Routing/DebugRoute.cpp"
-#undef no_wxGUI
+//#include <wx/app.h>
 
 /// not for headers
 #ifdef __BORLANDC__
@@ -143,6 +138,7 @@ int main(/* int argc, char **argv */)
 	//	debugFlags::flags.timer = true;
 	//	debugFlags::flags.midifile = true;
 #endif
+#if 0
 	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
 
 	wxInitializer initializer;
@@ -151,6 +147,7 @@ int main(/* int argc, char **argv */)
 		fprintf(stderr, "Failed to initialize the wxWidgets library, aborting.");
 		return -1;
 	}
+#endif
 
 	mutabor::InitDeviceFactories();
 	mutabor::InputDevice in(new myDevice());

@@ -93,10 +93,10 @@ namespace mutabor {
 		};
 
 		Track(): base(),
-			 Time(0),
+			 Time(),
 			 timing(),
 			 position(0),
-			 current_delta(MUTABOR_NO_DELTA),
+			 current_delta(InputDeviceClass::NO_DELTA(),timing),
 			 remaining_delta(0),
 			 running_status(0),
 			 running_sysex(false),
@@ -106,11 +106,23 @@ namespace mutabor {
 
 		}
 
+
+		Track(const Track & o):base(o),
+				       Time(o.Time),
+				       timing(o.timing),
+				       position(o.position),
+				       current_delta(o.current_delta.count(),timing),
+				       remaining_delta(o.remaining_delta),
+				       running_status(0),
+				       running_sysex(false),
+				       sysex_id() {
+		}
+
 		Track(timing_params p): base(),
-					Time(0),
+					Time(),
 					timing(p),
 					position(0),
-					current_delta(MUTABOR_NO_DELTA),
+					current_delta(InputDeviceClass::NO_DELTA(),timing),
 					remaining_delta(0),
 					running_status(0),
 					running_sysex(false),
@@ -128,16 +140,17 @@ namespace mutabor {
 			running_status = 0;
 			running_sysex = false;
 			if (resettiming) {
-				timing.set_quarter_duration(500000); //  120 bpm
-				Time = 0;
-				current_delta = remaining_delta = 0;
+				timing.set_quarter_duration(microseconds(500000)); //  120 bpm
+				Time = CurrentTimer::time_point();
+				current_delta.set_zero();
+				remaining_delta = microseconds::zero();
 			}
 			DEBUGLOG (midifile, "%s" , (this->c_str()));
  		}
 
 		void ResetDelta() {
 			DEBUGLOG (midifile, "resetting remaining delta to 0" );
-			remaining_delta = 0;
+			remaining_delta = microseconds::zero();
 		}
 
 		void Reset() {
@@ -145,34 +158,34 @@ namespace mutabor {
 			ResetPosition(0,true);
 		}
 
-		mutint64 GetDelta() { return remaining_delta; }
-		mutint64 ReadDelta();
-		mutint64 PassDelta(mutint64 p) {
-			mutASSERT(p >= 0);
-			mutASSERT(remaining_delta != MUTABOR_NO_DELTA);
-			mutASSERT(p != MUTABOR_NO_DELTA);
+		microseconds GetDelta() { return remaining_delta; }
+		microseconds ReadDelta();
+		microseconds PassDelta(microseconds p) {
+			mutASSERT(p >= microseconds::zero());
+			mutASSERT(remaining_delta != InputDeviceClass::NO_DELTA());
+			mutASSERT(p != InputDeviceClass::NO_DELTA());
 			DEBUGLOG (midifile, "remaining_delta = %ld - %ld" ,remaining_delta, p);
-			if (p  == MUTABOR_NO_DELTA)
-				return remaining_delta = MUTABOR_NO_DELTA;
-			if (remaining_delta == MUTABOR_NO_DELTA)
+			if (p  == InputDeviceClass::NO_DELTA())
+				return remaining_delta = InputDeviceClass::NO_DELTA();
+			if (remaining_delta == InputDeviceClass::NO_DELTA())
 				return remaining_delta;
 			return remaining_delta -= p;
 		}
-		mutint64 UpdateDelta() {
-			mutASSERT(remaining_delta != MUTABOR_NO_DELTA);
-			mutASSERT(current_delta != MUTABOR_NO_DELTA);
-			DEBUGLOG (midifile, "remaining_delta = %ld + %ld" ,remaining_delta, current_delta);
-			if (current_delta  == MUTABOR_NO_DELTA)
-				return remaining_delta = MUTABOR_NO_DELTA;
-			if (remaining_delta == MUTABOR_NO_DELTA)
+		microseconds UpdateDelta() {
+			mutASSERT(remaining_delta != InputDeviceClass::NO_DELTA());
+			mutASSERT(current_delta != timing_params::miditicks::no_delta());
+			DEBUGLOG (midifile, "remaining_delta = %ld + %ld" ,remaining_delta, current_delta.midi_mus());
+			if (current_delta  == timing_params::miditicks::no_delta())
+				return remaining_delta = InputDeviceClass::NO_DELTA();
+			if (remaining_delta == InputDeviceClass::NO_DELTA())
 				return remaining_delta;
-			return remaining_delta += current_delta;
+			return remaining_delta += current_delta.midi_mus();
 		}
 		void WriteDelta();
 
-		void SetQuarterDuration(mutint64 new_duration,
+		void SetQuarterDuration(microseconds new_duration,
 					bool update = false,
-					mutint64 offset = 0) {
+					microseconds offset = microseconds::zero()) {
 			if (!update) {
 				timing.set_quarter_duration(new_duration);
 				return;
@@ -184,9 +197,9 @@ namespace mutabor {
 				 remaining_delta,
 				 new_duration,
 				 offset);
-			if (remaining_delta == MUTABOR_NO_DELTA)
+			if (remaining_delta == InputDeviceClass::NO_DELTA())
 				return;
-			mutint64 remaining_remaining_delta = remaining_delta - offset;
+			microseconds remaining_remaining_delta = remaining_delta - offset;
 
 			remaining_delta = timing_params::update_duration_midi(remaining_remaining_delta,
 									      old,
@@ -206,7 +219,7 @@ namespace mutabor {
 			}
 			timing_params old(timing);
 			timing.set_ticks(new_tiks);
-			if (remaining_delta == MUTABOR_NO_DELTA)
+			if (remaining_delta == InputDeviceClass::NO_DELTA())
 				return;
 
 			remaining_delta = timing_params::update_duration(remaining_delta-offset,
@@ -223,7 +236,8 @@ namespace mutabor {
 		uint32_t ReadInt();
 		base ReadMessage();
 
-		void WriteNumber(size_t count) {
+		template <typename T>
+		void WriteNumber(T count) {
 			uint8_t tmp[4];
 			int i = 0;
 			tmp[0] = count & 0x7f;
@@ -275,16 +289,16 @@ namespace mutabor {
 		}
 
 		template <class i>
-		void SendMeta (uint8_t type, i from, i to, mutint64 delta = MUTABOR_NO_DELTA) {
+		void SendMeta (uint8_t type, i from, i to, microseconds delta = InputDeviceClass::NO_DELTA()) {
 			if (type & midi::STARTBYTE_MASK) {
 				UNREACHABLEC;
 				return;
 			}
 			FixSysEx();
-			if (delta == MUTABOR_NO_DELTA) {
+			if (delta == InputDeviceClass::NO_DELTA()) {
 				WriteDelta();
 			} else {
-				WriteNumber(delta);
+				WriteNumber(delta.count());
 			}
 			push_back(midi::META);
 			push_back(type);
@@ -292,7 +306,7 @@ namespace mutabor {
 		}
 
 		template <class i>
-		void SendSysEx (i from, i to, mutint64 delta = MUTABOR_NO_DELTA) {
+		void SendSysEx (i from, i to, microseconds delta = InputDeviceClass::NO_DELTA()) {
 			if ((*from) & midi::STARTBYTE_MASK) {
 				UNREACHABLEC;
 				return;
@@ -305,7 +319,7 @@ namespace mutabor {
 
 		template <class i>
 		void SendSysExCont (i from, i to,
-				    mutint64 delta = MUTABOR_NO_DELTA,
+				    microseconds delta = InputDeviceClass::NO_DELTA(),
 				    size_t offset = 0)
 			{
 
@@ -331,10 +345,10 @@ namespace mutabor {
 				BOOST_THROW_EXCEPTION(wrong_id(_mutN("Device id of continuation package deos not match the id of the system exclusive message")));
 			}
 
-			if (delta == MUTABOR_NO_DELTA) {
+			if (delta == InputDeviceClass::NO_DELTA()) {
 				WriteDelta();
 			} else {
-				WriteNumber(delta);
+				WriteNumber(delta.count());
 			}
 
 			push_back(running_sysex?midi::SYSEX_END:midi::SYSEX_START);
@@ -372,7 +386,8 @@ namespace mutabor {
 		void Save(std::ostream &os);
 
 		void Stop() {
-			remaining_delta = current_delta = MUTABOR_NO_DELTA;
+			remaining_delta = InputDeviceClass::NO_DELTA();
+			current_delta   = timing_params::miditicks::no_delta();
 			running_sysex   = false;
 			sysex_id        = 0;
 			position        = 0;
@@ -385,15 +400,14 @@ namespace mutabor {
 		std::string c_str() const { return *this; }
 
 	protected:
-		mutint64 Time;            //< Time of last action (at least in record mode)
+		CurrentTimer::time_point Time;//< Time of last action (at least in record mode)
 		timing_params timing;
 		size_t position;
-		mutint64 current_delta;   //< Difference between last and next event
-		mutint64 remaining_delta; //< Difference between “now” and the next event
+		timing_params::miditicks current_delta;   //< Difference between last and next event
+		microseconds remaining_delta; //< Difference between “now” and the next event
 		uint8_t running_status;   //< Save status byte for (de)coding running status
 		bool running_sysex;
 		int sysex_id;
-
 	};
 
 	typedef std::vector<Track> TrackList;
@@ -750,7 +764,7 @@ namespace mutabor {
 		 * \return mutint64 Temporal position of the next event in the
 		 * piece.
 		 */
-		virtual mutint64 PrepareNextEvent();
+		virtual microseconds PrepareNextEvent();
 
 		virtual int GetMaxChannel() const { return 15; }
 		virtual int GetMinChannel() const { return 0; }
@@ -771,10 +785,10 @@ namespace mutabor {
 	protected:
 		int FileType;
 		TrackList Tracks;
-		mutint64 minDelta;        //< time interval to next event μs
+		microseconds minDelta;        //< time interval to next event μs
 		bool Busy;
 		timing_params timing;    //< timing parameters
-		mutint64 ReadMidiProceed(size_t nr, mutint64 time);
+		microseconds ReadMidiProceed(size_t nr, microseconds time);
 	};
 
 

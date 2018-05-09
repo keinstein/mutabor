@@ -102,7 +102,7 @@ void _sanitizer_options_link_helper() { }
 	__attribute__((no_sanitize_address,				\
 		       no_sanitize_memory,				\
 		       no_sanitize_thread,				\
-		       no_sanitize_undefined,					\
+		       no_sanitize_undefined,				\
 		       visibility("default"),				\
 		       used))
 

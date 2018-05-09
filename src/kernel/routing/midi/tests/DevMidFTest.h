@@ -239,7 +239,6 @@ public:
 
 	void testNoteOnOff();
 	void testBatchPlay1();
-
 protected:
 	mutabor::OutputDevice guard;
 	mutabor::OutputMidiFile * out;

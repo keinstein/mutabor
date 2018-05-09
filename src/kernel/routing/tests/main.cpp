@@ -46,7 +46,7 @@
 int 
 main()
 {
-	mutwxInitializer initializer;
+	//	mutwxInitializer initializer;
 
 	mutabor::InitDeviceFactories();
 

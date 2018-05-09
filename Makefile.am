@@ -39,7 +39,10 @@ dist_pkgdata_DATA =
 
 EXTRA_RTMIDITESTLDFLAGS = \
 	$(WXINTLLDFLAGS) \
-	$(WXINTLLDADD)
+	$(WXINTLLDADD) \
+	$(BOOST_LDFLAGS) \
+	$(BOOST_SYSTEM_LIB)
+
 EXTRA_RTMIDITESTCXXFLAGS = \
 	$(AM_CXXFLAGS) \
 	$(WXINTLCXXFLAGS) \
@@ -161,7 +164,8 @@ noinst_LIBRARIES += \
 	libmutaborgui.a \
 	libmutaborrouting.a \
 	libmutaborscala.a \
-	libmutabordebug.a  #libmutaborGUIrouting.a libmutaborGUI.a
+	libmutabordebug.a \
+	libmutabordebugnogui.a #libmutaborGUIrouting.a libmutaborGUI.a
 check_LIBRARIES += \
 	libmutabordebugtest.a \
 	libmutabormaintest.a
@@ -399,22 +403,47 @@ libmutabordebug_a_POTSOURCES = \
 libmutabordebug_a_SOURCES = $(libmutabordebug_a_INDENTS)
 libmutabordebug_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(BOOST_CPPFLAGS)
 
+#-------------------------------------------------------------
+# libmutabordebugnogui.a
+#-------------------------------------------------------------
+
+libmutabordebugnogui_a_INLINEHEADERS = \
+		src/kernel/debugFlags.h
+libmutabordebugnogui_a_INDENTHEADERS =
+libmutabordebugnogui_a_INDENTS = \
+		src/kernel/interface_deps_generic.c \
+		src/kernel/debug.cpp \
+		src/wxGUI/Routing/DebugRoute.cpp
+
+noinst_HEADERS += $(libmutabordebugnogui_a_INLINEHEADERS) $(libmutabordebugnogui_a_INDENTHEADERS)
+
+libmutabordebugnogui_a_POTSOURCES = \
+	$(libmutabordebugnogui_a_INLINEHEADERS) \
+	$(libmutabordebugnogui_a_INDENTHEADERS) \
+	$(libmutabordebugnogui_a_INDENTS) \
+	src/wxGUI/TestInitializer.h
+
+libmutabordebugnogui_a_SOURCES = $(libmutabordebugnogui_a_INDENTS)
+libmutabordebugnogui_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(BOOST_CPPFLAGS)  -Dno_wxGUI=1
+
 
 if HAVE_CPPUNIT
 #-------------------------------------------------------------
 # libmutabordebugcppunit.a
 #-------------------------------------------------------------
 libmutabordebugcppunit_a_INLINEHEADERS = \
-		$(libmutabordebug_a_INLINEHEADERS)
+		src/kernel/debugFlags.h
 libmutabordebugcppunit_a_INDENTHEADERS = \
-		$(libmutabordebug_a_INDENTHEADERS)
+		src/wxGUI/generic/mutDebug.h
 libmutabordebugcppunit_a_INDENTS = \
-		$(libmutabordebug_a_INDENTS)
+		src/kernel/interface_deps_cppunit.cpp \
+		src/kernel/debug.cpp \
+		src/wxGUI/Routing/DebugRoute.cpp
 
 # no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
 
 libmutabordebugcppunit_a_SOURCES = $(libmutabordebugcppunit_a_INDENTS)
-libmutabordebugcppunit_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS) -DMUTABOR_TEST  $(BOOST_CPPFLAGS)
+libmutabordebugcppunit_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS) -DMUTABOR_TEST  $(BOOST_CPPFLAGS) -Dno_wxGUI=1
 
 #-------------------------------------------------------------
 # libmutabordebugcppunit.a
@@ -459,7 +488,6 @@ libmutabordebugtest_a_INDENTHEADERS = \
 
 libmutabordebugtest_a_INDENTS = \
 		$(libmutabordebug_a_INDENTS) \
-		src/kernel/interface_deps_generic.cpp \
 		src/wxGUI/MutApp.cpp \
 		src/wxGUI/TestInitializer.cpp
 
@@ -479,7 +507,6 @@ libmutabormaintest_a_INDENTHEADERS = \
 		src/wxGUI/MutApp.h \
 		src/wxGUI/TestInitializer.h
 libmutabormaintest_a_INDENTS = \
-		src/kernel/interface_deps_generic.cpp \
 		src/wxGUI/MutApp.cpp \
 		src/wxGUI/TestInitializer.cpp
 
@@ -581,10 +608,13 @@ mutabor_LDADD = \
 	libmutabordebug.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
 	$(WXINTLLDADD) \
+	$(WX_LIBS) \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_CHRONO_LIB) \
+	$(BOOST_THREAD_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 if COND_WINRC

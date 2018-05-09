@@ -86,6 +86,8 @@ namespace mutaborGUI {
 		{
 		}
 
+		virtual int getNOT_FOUND() { return wxNOT_FOUND; }
+
 		virtual bool Load(const wxString& filename,
 				  const wxString& encoding = wxT("UTF-8"),
 				  int flags = wxXMLDOC_NONE);

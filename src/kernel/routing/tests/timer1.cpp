@@ -36,27 +36,31 @@
 
 
 #include "src/kernel/Defs.h"
+#include "src/kernel/debug.h"
 #include "src/kernel/routing/CommonFileDevice-inlines.h"
 #include "src/kernel/routing/Route-inlines.h"
+#include "src/kernel/routing/Device.h"
 #include <cstdlib>
 #include <iostream>
 
 // Skip the GUI related checks from DebugRoute.cpp
+#if 0
 #define no_wxGUI 1
 #include "src/wxGUI/Routing/DebugRoute.cpp"
 #undef no_wxGUI
 #include "src/wxGUI/TestInitializer.h"
-
+#endif
 
 
 #ifdef __WXMSW__
 #define sleep(x) Sleep(1000*x)
 #endif
 
-
+#if 0
 #include <wx/app.h>
 #include <wx/stopwatch.h>
 #include <wx/time.h>
+#endif
 
 /// not for headers
 #ifdef __BORLANDC__
@@ -65,59 +69,77 @@
 
 class testCommonFileDeviceTimer: public mutabor::CommonFileInputDevice {
 public:
-	mutint64 lasttime;
-	long i;
-	long max;
-	long min;
-	testCommonFileDeviceTimer():CommonFileInputDevice(),i(0),sw() {
+	typedef boost::chrono::milliseconds milliseconds;
+	typedef boost::chrono::high_resolution_clock clocktype;
+	typedef clocktype::time_point     time_point;
+
+	time_point firsttime,lasttime;
+	boost::atomic<milliseconds> i;
+	boost::atomic<milliseconds> max;
+	boost::atomic<milliseconds> min;
+	testCommonFileDeviceTimer():CommonFileInputDevice(),i(milliseconds(0)) {
 		//		SetThreadKind(wxTHREAD_JOINABLE);
 	}
 	virtual ~testCommonFileDeviceTimer() {}
 	void Play() {
+		std::cerr << "Play()" << std::endl;
 		mutabor::CurrentTime.UseRealtime(true);
-		max = 0; min = 100000; i= 0;
+		max = milliseconds(0); min = milliseconds::max(); i= milliseconds(0);
 		CommonFileInputDevice::Play();
-		lasttime = wxGetLocalTimeMillis().GetValue();
-		sw.Start(0);
+		firsttime = lasttime = clocktype::now();
 	}
 
 	bool Open() {
-		sw.Start(0);
-		lasttime = wxGetLocalTimeMillis().GetValue();
+		std::cerr << "Open()" << std::endl;
+		lasttime = clocktype::now();
 		return CommonFileInputDevice::Open();
 	}
 
 	void Stop() {
+		std::cerr << "Stop()" << std::endl;
 		CommonFileInputDevice::Stop();
-		std::clog << std::endl;
-		if (sw.Time() > (i*(i-1))/2+30) {
-			std::clog << "Played too long!" << std::endl;
+		std::cerr << std::endl;
+
+		if (firsttime == time_point())
+			return;
+
+		time_point::duration runtime = clocktype::now() - firsttime;
+		milliseconds time_goal = (i.load(boost::memory_order_relaxed)*
+					  (i.load(boost::memory_order_relaxed).count()-1))/2;
+		std::cerr << "i reached " << i.load(boost::memory_order_relaxed) << std::endl;
+		std::cerr << "Played " << runtime << " (goal is " << time_goal << ")" << std::endl;
+		if ( runtime > (time_goal + milliseconds(30))) {
+			std::cerr << "Played too long!" << std::endl;
 			exit (1);
 		}
-		std::clog << "Played " << sw.Time() << "ms (goal is " << (i*(i-1))/2 << "ms)" << std::endl;
-		if (sw.Time() < (i*(i-1))/2-30) {
-			std::clog << "Played too short!" << std::endl;
+		if (runtime < (time_goal-milliseconds(30))) {
+			std::cerr << "Played too short!" << std::endl;
 			exit (1);
 		}
-		std::clog << "Played " << sw.Time() << "ms (goal is " << (i*(i-1))/2 << "ms)" << std::endl;
-		sw.Pause();
 	}
-	mutint64 PrepareNextEvent() {
-		mutint64 tl = wxGetLocalTimeMillis().GetValue();
-		tl = tl - (lasttime + (mutint64)(i*(i+1))/2);
-		if (max < tl)  max = tl;
-		if (min > tl || min == 0) min = tl;
-		if (tl > 10) {
-			std::cerr << "Too slow: (" << i << "^2 + " << i << ") / 2 = " << (i*(i+1))/2
-				  << " Runtime: " << tl << "ms" << std::endl;
+
+	mutabor::microseconds PrepareNextEvent() {
+		std::cerr << "PrepareNextEvent()" << std::endl;
+		time_point tlp = clocktype::now();
+		milliseconds tl = boost::chrono::duration_cast<milliseconds>(tlp - (lasttime))
+			- i.load(boost::memory_order_relaxed);
+			//+ (i*(i.count()+1))/2;
+		if (max.load(boost::memory_order_relaxed) < tl)  max = tl;
+		if (min.load(boost::memory_order_relaxed) > tl ) min = tl;
+		if (tl > milliseconds(10)) {
+			std::cerr << "Too slow: (" << i.load(boost::memory_order_relaxed)
+				  << "^2 + " << i.load(boost::memory_order_relaxed) << ") / 2 = "
+				  << (i.load(boost::memory_order_relaxed)
+				      *(i.load(boost::memory_order_relaxed).count()+1))/2
+				  << " Runtime: " << tl << std::endl;
 			exit(3);
 		}
-		lasttime = wxGetLocalTimeMillis().GetValue();
-		if (++i<100) {
-			std::clog << "." << i << std::flush;
-			return (mutint64)(i * 1000);
+		lasttime = tlp;
+		if ((i=i.load(boost::memory_order_relaxed) + milliseconds(1))<milliseconds(100)) {
+			std::cerr << "... " << i.load(boost::memory_order_relaxed) << " ... " << std::flush;
+			return i.load(boost::memory_order_relaxed);
 		}
-		return GetNO_DELTA();
+		return NO_DELTA();
 	}
 
 	virtual void Save (mutabor::tree_storage & config,
@@ -139,7 +161,6 @@ public:
 
 protected:
 	static const mutabor::ChannelData Cd;
-	wxStopWatch sw;
 };
 
 const mutabor::ChannelData testCommonFileDeviceTimer::Cd(0);
@@ -148,26 +169,30 @@ const mutabor::ChannelData testCommonFileDeviceTimer::Cd(0);
 int main(/* int argc, char **argv */)
 {
 #ifdef DEBUG
-//	debugFlags::flags.timer = true;
-	mutabor_debug_flags.thread = false;
+	mutabor::mutabor_debug_flags.timer = false;
+	mutabor::mutabor_debug_flags.thread = false;
 #endif
-	mutwxInitializer initializer;
+	//mutwxInitializer initializer;
 
 	testCommonFileDeviceTimer * tim = new testCommonFileDeviceTimer();
 	mutabor::ScopedInputDevice guard;
 	guard = tim;
 	if (tim == NULL) {
-		std::clog << "Class construction failed." << std::endl;
+		std::cerr << "Class construction failed." << std::endl;
 		exit(-1);
 	}
 	mutabor::InputDevice prevent_from_deletion(tim);
+	std::cerr << "Opening device..." << std::endl;
 	tim->Open();
+	std::cerr << "Starting playback..." << std::endl;
 	tim->Play();
 
-	wxThread::ExitCode e = tim->WaitForDeviceFinish();
+	int e = tim->WaitForDeviceFinish();
+	std::cerr << "Closing device..." << std::endl;
+	testCommonFileDeviceTimer::milliseconds min = tim->min, max = tim->max;
 	tim->Close();
-	std::clog << "Deviation min: " << tim->min << " max: " << tim->max << std::endl;
+	std::cerr << "Deviation min: " << min << " max: " << max << std::endl;
 
-	return (intptr_t)e;
+	return e;
 }
 ///\}

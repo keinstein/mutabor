@@ -59,8 +59,6 @@
 
 namespace mutaborGUI {
 
-	int pubTaste; // Taste aus anderen Fenstern für MutWin
-
 	extern bool UseColorBars;
 
 //void RightButtonMenu(TWindow *win, TPoint &point);
@@ -377,8 +375,7 @@ namespace mutaborGUI {
 
 	void MutLogicWnd::OnChar(wxKeyEvent& event)
 	{
-		pubTaste = event.GetKeyCode();
-		CmTaste();
+		CmTaste(event.GetKeyCode());
 
 		SetCurrentBox(box);
 		TRACEC;
@@ -386,11 +383,9 @@ namespace mutaborGUI {
 		event.Skip();
 	}
 
-	void MutLogicWnd::CmTaste()
+	void MutLogicWnd::CmTaste(int key)
 
 	{
-		int key = pubTaste;
-
 		if ( key == WXK_SPACE ) {
 			wxWindow *w = wxWindow::FindFocus();
 

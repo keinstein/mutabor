@@ -31,12 +31,16 @@ nodist_%C%_testcppunit_SOURCES = \
 	src/kernel/libmutaborkernel.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
 	src/wxintl/libwxintl.la \
+	libmutabordebug.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
+	$(WX_LIBS) \
 	$(CPPUNIT_LIBS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
 	$(BOOST_SYSTEM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_THREAD_LIB) \
+	$(BOOST_CHRONO_LIB) \
 	$(BOOST_SYSTEM_LIB)
 endif
 

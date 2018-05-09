@@ -94,13 +94,11 @@ nodist_%C%_test_empty_SOURCES = \
 
 %C%_test_empty_LDADD = \
 	libmutaborscala.a \
-	libmutabordebugtest.a \
-	libmutaborgui.a \
 	libmutaborrouting.a \
+	libmutabordebugnogui.a \
 	src/kernel/libmutaborkernel.a \
-	libmutaborscala.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
-	src/wxintl/libwxintl.la \
+	src/wxintl/libboostintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
@@ -115,13 +113,11 @@ nodist_%C%_test_empty_comments_SOURCES = \
 
 %C%_test_empty_comments_LDADD = \
 	libmutaborscala.a \
-	libmutabordebugtest.a \
-	libmutaborgui.a \
 	libmutaborrouting.a \
+	libmutabordebugnogui.a \
 	src/kernel/libmutaborkernel.a \
-	libmutaborscala.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
-	src/wxintl/libwxintl.la \
+	src/wxintl/libboostintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
@@ -136,13 +132,11 @@ nodist_%C%_test_intervals1_SOURCES = \
 
 %C%_test_intervals1_LDADD = \
 	libmutaborscala.a \
-	libmutabordebugtest.a \
-	libmutaborgui.a \
 	libmutaborrouting.a \
+	libmutabordebugnogui.a \
 	src/kernel/libmutaborkernel.a \
-	libmutaborscala.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
-	src/wxintl/libwxintl.la \
+	src/wxintl/libboostintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
@@ -157,13 +151,11 @@ nodist_%C%_test_keymaps_SOURCES = \
 
 %C%_test_keymaps_LDADD = \
 	libmutaborscala.a \
-	libmutabordebugtest.a \
-	libmutaborgui.a \
 	libmutaborrouting.a \
+	libmutabordebugnogui.a \
 	src/kernel/libmutaborkernel.a \
-	libmutaborscala.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
-	src/wxintl/libwxintl.la \
+	src/wxintl/libboostintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \

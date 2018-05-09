@@ -250,9 +250,10 @@ namespace mutabor {
 		std::string oldpath = config.GetPath();
 #endif
 		config.toLeaf("Routes");
+		const int NOT_FOUND = config.getNOT_FOUND();
 
 		int i = config.toFirstLeaf("Route");
-		while (i != wxNOT_FOUND) {
+		while (i != NOT_FOUND) {
 			DEBUGLOGTYPE(config,Route,("Loading route with id %d."), i);
 			// \todo replace -1 by a correct default
 			int inputid = config.Read("Input Device", -1);

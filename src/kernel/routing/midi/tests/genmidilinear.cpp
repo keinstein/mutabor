@@ -36,12 +36,6 @@
 #include "src/kernel/routing/CommonFileDevice-inlines.h"
 #include <cstdlib>
 #include <iostream>
-#include "src/wxGUI/TestInitializer.h"
-
-// Skip the GUI related checks from DebugRoute.cpp
-#define no_wxGUI 1
-#include "src/wxGUI/Routing/DebugRoute.cpp"
-#undef no_wxGUI
 
 /// not for headers
 #ifdef __BORLANDC__
@@ -92,11 +86,9 @@ int main(/* int argc, char **argv */)
 //	debugFlags::flags.timer = true;
 //	debugFlags::flags.midifile = true;
 #endif
-	mutwxInitializer initializer;
-
 	mutabor::InitDeviceFactories();
 	mutabor::CurrentTime.UseRealtime(false);
-	mutabor::CurrentTime.Set(0);
+	mutabor::CurrentTime.Set(mutabor::microseconds(0));
 	
 	mutabor::ChannelData cd;
 	
@@ -128,9 +120,9 @@ int main(/* int argc, char **argv */)
 
 	for (size_t i = 0 ; i <0x80; i++) {
 		out->NoteOn(box, i, 0x40, route.get(), 0, cd);
-		mutabor::CurrentTime = 250000*(mutint64)i+125000;
+		mutabor::CurrentTime = boost::chrono::milliseconds(250)*i+boost::chrono::milliseconds(125);
 		out->NoteOff(box, i, 0x40, route.get(), 0, false);
-		mutabor::CurrentTime = 250000*((mutint64)i+1);
+		mutabor::CurrentTime = boost::chrono::milliseconds(250)*(i+1);
 	}
 	
 	if (out) 

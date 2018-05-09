@@ -56,6 +56,7 @@ inline void BoxClass::Destroy()  {
 	Box self(this);
 	TRACEC;
 	if (IsOpen()) Close();
+	mutASSERT(!loopguard);
 
 	DisconnectFromAll();
 

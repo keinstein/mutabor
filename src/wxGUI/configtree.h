@@ -87,6 +87,8 @@ public:
 		if (deleteconfig) delete config;
 	}
 
+	virtual int getNOT_FOUND() { return wxNOT_FOUND; }
+
 	virtual long Read(const std::string& key, long defval);
 	virtual double Read(const std::string& key, double defval);
 	virtual int Read(const std::string& key, int defval);

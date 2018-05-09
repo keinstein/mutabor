@@ -43,6 +43,7 @@
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/Device.h"
 #include "src/kernel/routing/thread.h"
+#include "src/kernel/routing/timing.h"
 
 
 #ifndef MU32_ROUTING_MIDI_COMMONFILEDEVICE_H_PRECOMPILED
@@ -52,10 +53,9 @@
 
 #include <limits>
 #include <cstdio>
-#include "wx/thread.h"
+#include <atomic>
 
 namespace mutabor {
-
 	// OutMidiFile ------------------------------------------------------
 
 	class CommonFileDeviceFactory;
@@ -88,19 +88,18 @@ namespace mutabor {
 		virtual void do_Close(bool sync = false);
 
 		virtual void SetName(const std::string & s)
-			{
-				if (s != Name) {
-					bool reopen = IsOpen();
-					if (reopen)
-						Close();
+		{
+			if (s != Name) {
+				bool reopen = IsOpen();
+				if (reopen)
+					Close();
 
-					Name = s;
+				Name = s;
 
-					if (reopen)
-						Open();
-				}
+				if (reopen)
+					Open();
 			}
-
+		}
 
 		virtual std::string GetTypeName () const {
 			mutASSERT(false);
@@ -125,14 +124,14 @@ namespace mutabor {
 
 			boost::intrusive_ptr<CommonFileInputDevice> file;
 		public:
-			FileTimer(CommonFileInputDevice * f) : wxThread(wxTHREAD_JOINABLE),
+			FileTimer(CommonFileInputDevice * f) : Thread(),
 							       file(f)
 			{}
 
 			virtual ~FileTimer() {}
 
-			ExitCode Entry() {
-				ExitCode e;
+			int Entry() {
+				int e;
 				try {
 					e = file->ThreadPlay(this);
 				} catch (...) {
@@ -154,6 +153,7 @@ namespace mutabor {
 		protected:
 		};
 
+
 		friend class FileTimer;
 
 	public:
@@ -161,18 +161,20 @@ namespace mutabor {
 			if (isOpen) Close();
 			mutASSERT(timer == NULL);
 #ifdef DEBUG
-			if (waitMutex.TryLock() == wxMUTEX_BUSY) {
+#if 0
+			if (!waitMutex.TryLock()) {
 				DEBUGLOG(thread,"Error: waitMutex is still busy");
 			} else waitMutex.Unlock();
-			if (threadReady.TryLock() == wxMUTEX_BUSY) {
+			if (!threadReady.TryLock()) {
 				DEBUGLOG(thread, "Error: threadReady is still busy");
 			} else threadReady.Unlock();
-			if (lockMode.TryLock() == wxMUTEX_BUSY) {
+			if (!lockMode.TryLock()) {
 				DEBUGLOG(thread, "Error: lockMode is still busy");
 			} else lockMode.Unlock();
-			if (playerActive.TryLock() == wxMUTEX_BUSY) {
+			if (!playerActive.TryLock()) {
 				DEBUGLOG(thread, "Error: playerActive is still busy");
 			} else playerActive.Unlock();
+#endif
 #endif
 		};
 
@@ -227,7 +229,7 @@ namespace mutabor {
 		 *
 		 * \return Error exit code.
 		 */
-		wxThread::ExitCode exception_error();
+		int exception_error(bool doStop=true);
 
 		/**
 		 * Play the file.
@@ -235,26 +237,33 @@ namespace mutabor {
 		 * thread object. It plays the file using sleep
 		 * operations.
 		 */
-		wxThread::ExitCode ThreadPlay(FileTimer * timer);
+		int ThreadPlay(FileTimer * timer);
 
 
-		wxThread::ExitCode WaitForDeviceFinish(wxThreadWait flags=wxTHREAD_WAIT_BLOCK) {
-			mutUnused(flags);
+		int WaitForDeviceFinish(bool blocking = true) {
+			mutUnused(blocking);
 			mutASSERT(timer);
 			if (timer) {
-				mutASSERT(wxThread::This() != timer);
-				if (wxThread::This() != timer) {
+				mutASSERT(boost::this_thread::get_id() != timer->get_id());
+				if (boost::this_thread::get_id() != timer->get_id()) {
+#if 0
 					DEBUGLOG(thread,
-						 ("Thread %p locking at threadsignal = %x"),
-						 Thread::This(),
+						 ("Thread %s locking at threadsignal = %x"),
+						 Thread::get_current_string_id().c_str(),
 						 threadsignal.get());
-					ScopedLock lock(playerActive);
+					ScopedLock<> lock(playerActive);
 					DEBUGLOG(thread,
-						 ("Thread %p locked at threadsignal = %x"),
-						 Thread::This(),
+						 ("Thread %s locked at threadsignal = %x"),
+						 Thread::get_current_string_id().c_str(),
 						 threadsignal.get());
+#endif
+					ScopedLock<> lock(thread_state.get_mutex());
+					int currentstate = thread_state;
+					while (!(currentstate & RequestPause))
+						currentstate = thread_state.wait_for_data_change(currentstate,
+												 lock);
 
-					if (timer->IsDetached()) {
+					//if (timer->IsDetached()) {
 						switch (Mode) {
 						case DevicePlay:
 						case DevicePause:
@@ -263,11 +272,11 @@ namespace mutabor {
 						case DeviceTimingError:
 						case DeviceCompileError:
 						default:
-							return (void *)Mode;
+							return Mode;
 
 						}
-					}
-				} else return timer;
+						//}
+				} else return -1;
 			}
 			return 0;
 		}
@@ -281,7 +290,7 @@ namespace mutabor {
 	protected:
 		FileTimer * timer;             //< timer thread for the file player
 		/// Signals to communicate with the player thread
-		enum ThreadCommunication {
+		enum ThreadCommunication: int {
 			Nothing       = 0,     //< proceed, no change
 			RequestExit   = 1,     //< exit the thread as soon as possible
 			RequestPause  = 2,     //< stop the thread execution as soon as possible
@@ -295,27 +304,29 @@ namespace mutabor {
 			RequestPanic = 8       //< request Panic() before stopping the device
 		};
 		/* volatile is handled inside the class */
-		safe_integer<int> threadsignal; //< signal
-		Mutex waitMutex, threadReady, lockMode, playerActive;
-		ThreadCondition waitCondition, pauseCondition;
+		ThreadSignal<int> thread_command, thread_state; //< signal
+		//Mutex<> waitMutex, threadReady, lockMode, playerActive;
+		//ThreadCondition<> waitCondition, pauseCondition;
 		/**
 		 * Fixed offset for the relative time the file returns.
 		 */
-		volatile mutint64 referenceTime; // ms
-		volatile mutint64 pauseTime;     // ms
+		std::atomic<CurrentTimer::time_point> referenceTime; // ms
+		std::atomic<CurrentTimer::time_point> pauseTime;     // ms
 		timing_params timing;
 
 		CommonFileInputDevice(): InputDeviceClass(),
 					 timer (NULL),
-					 threadsignal (Nothing),
-					 waitMutex(),
+					 thread_command (Nothing),
+					 thread_state (Nothing),
+					 /*					 waitMutex(),
 					 threadReady(),
 					 lockMode(),
 					 playerActive(),
 					 waitCondition(waitMutex),
 					 pauseCondition(playerActive),
-					 referenceTime(0),
-					 pauseTime(0) { }
+					 */
+					 referenceTime(CurrentTimer::time_point()),
+					 pauseTime(CurrentTimer::time_point()) { }
 
 		CommonFileInputDevice(std::string name,
 				      MutaborModeType mode,
@@ -323,15 +334,18 @@ namespace mutabor {
 								mode,
 								id),
 					       timer(NULL),
-					       threadsignal (Nothing),
+					       thread_command (Nothing),
+					       thread_state (Nothing),
+					       /*
 					       waitMutex(),
 					       threadReady(),
 					       lockMode(),
 					       playerActive(),
 					       waitCondition(waitMutex),
 					       pauseCondition(playerActive),
-					       referenceTime(0),
-					       pauseTime(0) {}
+					       */
+					       referenceTime(CurrentTimer::time_point()),
+					       pauseTime(CurrentTimer::time_point()) {}
 
 	};
 

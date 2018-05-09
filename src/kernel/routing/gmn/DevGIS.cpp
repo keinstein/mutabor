@@ -33,6 +33,7 @@
 #include "src/kernel/Frac.h"
 //#include "src/kernel/GrafKern.h"
 #include "src/kernel/routing/Route-inlines.h"
+#include "src/kernel/routing/timing.h"
 
 #ifdef RTMIDI
 #else
@@ -350,7 +351,7 @@ namespace mutabor {
 		if (!Head) doResetTime();
 
 		// Delta-Times lesen
-		minDelta = 0;
+		minDelta = microseconds::zero();
 		Mode = DeviceStop;
 		Panic(midi::DEFAULT_PANIC);
 	}
@@ -375,9 +376,9 @@ namespace mutabor {
 	}
 
         // Gis arbeitet auf "tick" - Basis, ein tick = 1ms
-	mutint64 InputGis::PrepareNextEvent()
+	microseconds InputGis::PrepareNextEvent()
 	{
-		DEBUGLOG (gmnfile, "Next tone. Mindelta = %d" ,(int)minDelta);
+		DEBUGLOG (gmnfile, "Next tone. Mindelta = %d" ,(int)minDelta.count());
 
 		minDelta = ReadOn(minDelta);
 
@@ -489,7 +490,7 @@ namespace mutabor {
 				break;
 			case 2:
 				box->DeleteNote(Key, 0, route->get_session_id());
-				FALLTHROUGH;
+				mutfallthrough;
 			default:
 				route->NoteOff(Key,
 					       h->GetIntensity(turn),
@@ -544,7 +545,7 @@ namespace mutabor {
 			case RTelse:
 				if ( DidOut )
 					break;
-				FALLTHROUGH;
+				mutfallthrough;
 			case RTall:
 				Proceed(h, turn, *R);
 			}
@@ -588,10 +589,10 @@ namespace mutabor {
 
 
 
-	mutint64 InputGis::ReadOn(mutint64 delta)
+	microseconds InputGis::ReadOn(microseconds delta)
 	{
 		GisReadHead **H = (GisReadHead **)&Head;
-		mutint64 MinDelta = GetNO_DELTA();
+		microseconds MinDelta = NO_DELTA();
 
 	beginloop:
 
@@ -619,22 +620,22 @@ namespace mutabor {
 				DEBUGLOG (gmnfile, "CursorNext()" );
 				h->CursorNext();
 				h->Time = 0;
-				h->Delta = 0;
+				h->Delta = microseconds::zero();
 			}
 
 			DEBUGLOG (gmnfile, "h->Delta = %ld" ,h->Delta);
 
-			if ( h->Delta > 0 ) {// header in normal state
+			if ( h->Delta > boost::chrono::microseconds::zero() ) {// header in normal state
 				DEBUGLOG (gmnfile,
 					  ("Time: %ld/%ld, delta: %ld, speed: %d"),
 					  h->Time.numerator(),
 					  h->Time.denominator(),
 					  delta,
 					  h->GetSpeedFactor());
-				h->Time -= frac(delta, h->GetSpeedFactor());
+				h->Time -= frac(delta.count(), h->GetSpeedFactor());
 				h->Delta -= delta;
 
-				if ( h->Delta <= 0 ) {
+				if ( h->Delta <= boost::chrono::microseconds::zero() ) {
 					ProceedRoute(h, h->Turn++);
 
 					if ( h->Turn == 2 ) {
@@ -650,9 +651,9 @@ namespace mutabor {
 					}
 				}
 
-				h->Delta = (h->GetSpeedFactor() * h->Time.numerator())
+				h->Delta = boost::chrono::microseconds((h->GetSpeedFactor() * h->Time.numerator())
 
-					/ h->Time.denominator();
+							       / h->Time.denominator());
 				DEBUGLOG (gmnfile, "Time: %ld/%ld, Time2: %ld/%ld, delta: %ld, speed: %d" ,
 					  h->Time.numerator(),h->Time.denominator(),
 					  h->Time2.numerator(),h->Time2.denominator(),
@@ -667,7 +668,7 @@ namespace mutabor {
 
 			DEBUGLOG (gmnfile, "h->Delta = %ld" ,h->Delta);
 
-			while ( h->Delta == 0 ) { // read next tokens
+			while ( h->Delta == microseconds::zero() ) { // read next tokens
 				DEBUGLOG (gmnfile, "h->Turn = %d" ,h->Turn);
 
 				if ( h->Turn) {
@@ -679,8 +680,8 @@ namespace mutabor {
 							  str(h->Time).c_str(), str(h->Time2).c_str());
 						h->Time = h->Time2;
 						h->Time2 = 0;
-						h->Delta = (h->GetSpeedFactor() * h->Time.numerator())
-							/ h->Time.denominator();
+						h->Delta = microseconds((h->GetSpeedFactor() * h->Time.numerator())
+											/ h->Time.denominator());
 						DEBUGLOG (gmnfile, "h->Delta = %d * %ld / %ld = %ld" , h->GetSpeedFactor(),
 							  h->Time.numerator(), h->Time.denominator(), h->Delta);
 					}
@@ -719,8 +720,9 @@ namespace mutabor {
 					  h->Time2.numerator(),h->Time2.denominator(),
 					  delta);
 
-				h->Delta = (h->GetSpeedFactor() * h->Time.numerator())
-					/ h->Time.denominator();
+				h->Delta = microseconds((h->GetSpeedFactor()
+									 * h->Time.numerator())
+									/ h->Time.denominator());
 
 				DEBUGLOG (gmnfile, "h->Delta = %d * %ld / %ld = %ld" ,
 					  h->GetSpeedFactor(),
@@ -746,7 +748,7 @@ namespace mutabor {
 			// check MinTime
 			DEBUGLOG (gmnfile, "h->Delta = %ld, MinDelta = %ld" ,h->Delta,MinDelta);
 
-			if ( !IsDelta(MinDelta) || (MinDelta >= 0 && h->Delta < MinDelta) )
+			if ( !IsDelta(MinDelta) || (MinDelta >= microseconds::zero() && h->Delta < MinDelta) )
 				MinDelta = h->Delta;
 
 			// next Header

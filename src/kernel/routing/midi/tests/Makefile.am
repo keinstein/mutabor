@@ -35,6 +35,7 @@ check_MIDIFILES += $(srcdir)/%D%/playmidi1.mid
 check_MIDISOURCES += \
 	$(srcdir)/%D%/midi1_source.txt \
 	$(srcdir)/%D%/bug019010.txt \
+	$(srcdir)/%D%/bug-20180414ts.txt \
 	$(srcdir)/%D%/controller.txt \
 	$(srcdir)/%D%/bank_select.txt \
 	$(srcdir)/%D%/all_controller_off.txt \
@@ -61,35 +62,36 @@ nodist_%C%_playmidi1_SOURCES = \
 	%D%/debugPaths.cpp
 
 %C%_playmidi1_LDADD = \
-	libmutabordebugtest.a \
-	libmutaborgui.a \
 	libmutaborrouting.a \
+	libmutabordebugnogui.a \
 	src/kernel/libmutaborkernel.a \
-	libmutaborscala.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
-	src/wxintl/libwxintl.la \
+	src/wxintl/libboostintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
 	$(BOOST_SYSTEM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_LOCALE_LIB) \
+	$(BOOST_THREAD_LIB) \
+	$(BOOST_CHRONO_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 %C%_midiopenfail1_LDADD = \
-	libmutabordebugtest.a \
-	libmutaborgui.a \
 	libmutaborrouting.a \
+	libmutabordebugnogui.a \
 	src/kernel/libmutaborkernel.a \
-	libmutaborscala.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
-	src/wxintl/libwxintl.la \
+	src/wxintl/libboostintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
 	$(BOOST_SYSTEM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_THREAD_LIB) \
+	$(BOOST_CHRONO_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 %C%_midiopenfail1_CXXFLAGS = \
@@ -111,19 +113,19 @@ nodist_%C%_genmidirnd_SOURCES = \
 	%D%/debugPaths.cpp
 
 %C%_genmidirnd_LDADD = \
-	libmutabordebugtest.a \
-	libmutaborgui.a \
 	libmutaborrouting.a \
+	libmutabordebugnogui.a \
 	src/kernel/libmutaborkernel.a \
-	libmutaborscala.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
-	src/wxintl/libwxintl.la \
+	src/wxintl/libboostintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
 	$(BOOST_SYSTEM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_THREAD_LIB) \
+	$(BOOST_CHRONO_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 
@@ -137,19 +139,19 @@ nodist_%C%_genmidilinear_SOURCES = \
 	%D%/debugPaths.cpp
 
 %C%_genmidilinear_LDADD = \
-	libmutabordebugtest.a \
-	libmutaborgui.a \
 	libmutaborrouting.a \
+	libmutabordebugnogui.a \
 	src/kernel/libmutaborkernel.a \
-	libmutaborscala.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
-	src/wxintl/libwxintl.la \
+	src/wxintl/libboostintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
 	$(BOOST_SYSTEM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_THREAD_LIB) \
+	$(BOOST_CHRONO_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 
@@ -177,7 +179,8 @@ TESTS += \
 check_PROGRAMS += %D%/testcppunit
 
 %C%_testcppunit_CPPFLAGS = $(CPPFLAGS) \
-	-DSRCDIR="\"$(srcdir)/%D%/\""
+	-DSRCDIR="\"$(srcdir)/%D%/\"" \
+	-DDESTDIR="\"%D%/\""
 %C%_testcppunit_CXXFLAGS = \
 	$(CPPUNIT_CFLAGS) \
 	$(AM_CXXFLAGS)
@@ -194,10 +197,11 @@ nodist_%C%_testcppunit_SOURCES = \
 	%D%/debugPaths.cpp
 
 %C%_testcppunit_LDADD = \
-	libmutabormaincppunit.a \
+	libmutaborrouting.a \
+	libmutabordebugnogui.a \
 	src/kernel/libmutaborkernel.a \
-	src/wxintl/libwxintl.la \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
+	src/wxintl/libboostintl.a \
 	$(CPPUNIT_LIBS) \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
@@ -205,6 +209,8 @@ nodist_%C%_testcppunit_SOURCES = \
 	$(BOOST_FILESYSTEM_LDFLAGS) \
 	$(BOOST_SYSTEM_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_THREAD_LIB) \
+	$(BOOST_CHRONO_LIB) \
 	$(BOOST_SYSTEM_LIB)
 endif
 

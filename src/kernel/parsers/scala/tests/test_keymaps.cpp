@@ -1,4 +1,3 @@
-#include "src/wxGUI/TestInitializer.h"
 #include "src/kernel/parsers/scala/scala.h"
 #include "src/kernel/parsers/scala/scale_parser.hh"
 #include "src/kernel/parsers/scala/scale_lexer.h"
@@ -37,7 +36,6 @@ int main ()
 #ifdef DEBUG
 	isDebugFlag(sclparser) =true;
 #endif
-	mutwxInitializer initializer;
 	keymap cmp;
 	cmp.count = 1;
 	cmp.first_key = 0;

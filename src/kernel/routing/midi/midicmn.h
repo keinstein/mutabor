@@ -385,7 +385,7 @@ namespace mutabor {
 			mutASSERT(open);
 			std::string tmp;
 			WriteTime();
-			tmp = (boost::format("%3d: %02x %02x %02x") 
+			tmp = (boost::format("%3d: %02x %02x %02x")
 			       % channel % (int) byte1 % (int) byte2 % (int)byte3).str();
 			DEBUGLOG (midiio, "MIDI OUT to %s" ,tmp.c_str());
 			data += tmp + ("\n");
@@ -425,7 +425,7 @@ namespace mutabor {
 			mutASSERT(open);
 			std::string tmp;
 			WriteTime();
-			tmp = (boost::format("%3d: %02x %02x") 
+			tmp = (boost::format("%3d: %02x %02x")
 			       % channel % (int) byte1 % (int)byte2).str();
 			DEBUGLOG (midiio, "MIDI OUT to %s" ,tmp.c_str());
 			data += tmp + "\n";
@@ -491,13 +491,11 @@ namespace mutabor {
 		// Flawfinder: ignore
 		bool open;
 
-		void WriteTime() {
-			std::string tmp;
-			if (!CurrentTime.isRealtime()) {
-				tmp = str(boost::format("%ld ") % CurrentTime.Get());
-				data += tmp;
-			}
-		}
+		/** Put the time into the output provider.
+		 *
+		 *
+		 */
+		void WriteTime();
 	};
 
 
@@ -509,6 +507,7 @@ namespace mutabor {
 
 		typedef T midiprovider;
 		typedef D base;
+		typedef CommonMidiOutput<T,D> thistype;
 
 		enum bank_type {
 			lsb_first = 0,
@@ -530,7 +529,7 @@ namespace mutabor {
 		 */
 		void UpdateControllers(int channel,
 				       const ChannelData & input_channel_data) {
-			ScopedLock lock(this->write_lock);
+			ScopedLock<thistype> lock(*this);
 			do_UpdateControllers(channel,input_channel_data);
 		}
 
@@ -550,7 +549,7 @@ namespace mutabor {
 
 //		midiprovider & GetProvider () { return Out(); }
 		void SetBendingRange(int br) {
-			ScopedLock lock(this->write_lock);
+			ScopedLock<thistype> lock(*this);
 			bending_range = br;
 			if (!this->isOpen) return;
 			int max = GetMaxChannel();

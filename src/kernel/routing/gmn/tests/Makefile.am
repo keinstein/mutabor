@@ -30,23 +30,31 @@ nodist_%C%_playgmn1_SOURCES = \
 	%D%/debugPaths.cpp
 
 %C%_playgmn1_LDADD = \
-	libmutabormaintest.a \
+	libmutaborrouting.a \
+	libmutabordebugnogui.a \
+	src/kernel/libmutaborkernel.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
-	src/wxintl/libwxintl.la \
+	src/wxintl/libboostintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_THREAD_LIB) \
+	$(BOOST_CHRONO_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 %C%_gmnopenfail1_LDADD = \
-	libmutabormaintest.a \
+	libmutaborrouting.a \
+	libmutabordebugnogui.a \
+	src/kernel/libmutaborkernel.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
-	src/wxintl/libwxintl.la \
+	src/wxintl/libboostintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_THREAD_LIB) \
+	$(BOOST_CHRONO_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 %C%_gmnopenfail1_SOURCES = \

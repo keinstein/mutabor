@@ -369,9 +369,7 @@ OutputDeviceClass:\n\
 	}
 
 	/** \todo move implementation to midicmn and Co. */
-	void InputDeviceClass::ResumeKeys() {
-		ScopedLock lock(write_lock);
-
+	void InputDeviceClass::DoResumeKeys() {
 		DEBUGLOG (routing, "" );
 		current_keys_type::iterator i;
 		size_t j = 0;
@@ -399,7 +397,7 @@ OutputDeviceClass:\n\
 
 	void InputDeviceClass::Panic(int type, size_t unique_id)
 	{
-		ScopedLock lock(write_lock);
+		ScopedLock<thistype> lock(*this);
 
 		current_keys_type tmp;
 		current_keys_type::iterator i;
@@ -429,7 +427,7 @@ OutputDeviceClass:\n\
 	}
 
 	void InputDeviceClass::Panic(int type) {
-		ScopedLock lock(write_lock);
+		ScopedLock<thistype> lock(*this);
 		DoSilenceKeys(true);
 
 		for (routeListType::iterator j = routes.begin(); j!= routes.end(); j++) {
@@ -443,14 +441,14 @@ OutputDeviceClass:\n\
 	/// Device.{h,cpp,-inlines.h} }
 	bool InputDeviceClass::BatchPlay() {
 		// Note::keep this function in sync with Activate (Runtime.cpp)
-		typedef std::pair <mutint64, InputDevice> queue_element;
+		typedef std::pair <CurrentTimer::time_point, InputDevice> queue_element;
 		typedef std::priority_queue< queue_element,
 					     std::deque<queue_element>,
 					     std::greater<queue_element> > batch_queue;
 		// Currenttime is used by output devices to keep track of the time
 		/// \todo implement event types that use timestamps
 		CurrentTime.UseRealtime(false);
-		CurrentTime.Set(0);
+		CurrentTime.Set(CurrentTimer::duration());
 
 
 		OpenAll(OpenAllOutDevices | OpenAllInDevices);
@@ -460,19 +458,19 @@ OutputDeviceClass:\n\
 		for (InputDeviceList::iterator i = deviceList.begin();
 		     i != deviceList.end(); i++) {
 			(*i)->Play();
-			queue.push(queue_element(0,*i));
+			queue.push(queue_element(CurrentTimer::time_point(),*i));
 		}
 
-		mutASSERT(CurrentTime.Get() == 0);
+		mutASSERT(CurrentTime.Get() == CurrentTimer::time_point());
 
 		while (!queue.empty()) {
 			queue_element element = queue.top();
 			queue.pop();
 			mutASSERT(element.first >= CurrentTime.Get());
 			CurrentTime = element.first;
-			mutint64 delta = element.second->PrepareNextEvent();
-			if (delta != MUTABOR_NO_DELTA) {
-				mutASSERT(delta >= 0);
+			microseconds delta = element.second->PrepareNextEvent();
+			if (delta != NO_DELTA()) {
+				mutASSERT(delta >= microseconds::zero());
 				element.first += delta;
 				queue.push(element);
 			}
@@ -496,6 +494,7 @@ OutputDeviceClass:\n\
 	}
 
 	void InputDeviceClass::RealtimePlay() {
+		CurrentTime.UseRealtime(true);
 		last_was_stop = false;
 		for (InputDeviceList::iterator i = deviceList.begin();
 		     i != deviceList.end(); i++) {
@@ -535,9 +534,10 @@ InputDeviceClass:\n\
 		std::string oldpath = config.GetPath();
 #endif
 		config.toLeaf("OutputDevices");
+		int NOT_FOUND = config.getNOT_FOUND();
 
 		int i = config.toFirstLeaf("Device");
-		while (i != wxNOT_FOUND) {
+		while (i != NOT_FOUND) {
 			DEBUGLOGTYPE(config,OutputDeviceClass,"Loading output device with id %d",i);
 			DevType type = (DevType) config.Read("Type", DTMidiPort);
 			OutputDevice out = DeviceFactory::CreateOutput(type);
@@ -588,9 +588,9 @@ InputDeviceClass:\n\
 		std::string oldpath = config.GetPath();
 #endif
 		config.toLeaf("InputDevices");
-
+		const int NOT_FOUND = config.getNOT_FOUND();
 		int i = config.toFirstLeaf("Device");
-		while (i != wxNOT_FOUND) {
+		while (i != NOT_FOUND) {
 			DevType type = (DevType) config.Read("Type", DTMidiPort);
 			TRACE;
 			InputDevice in = CreateInput(type);

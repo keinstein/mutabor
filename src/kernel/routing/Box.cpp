@@ -79,6 +79,7 @@ namespace mutabor {
 		// if there are remaining pointers we have other problems.
 		DEBUGLOG (routing, "this = %p" ,(void*)this);
 		if (open) Close();
+		mutASSERT(!loopguard);
 #ifdef DEBUG
 		// prevent from endless destroy loop
 		intrusive_ptr_add_ref(this);
@@ -399,12 +400,40 @@ namespace mutabor {
 
 	bool BoxClass::DoOpen() {
 		Reset();
-		loopguard = new watchdog<Box>(this,
-					      loop_timeout);
-		wxThreadError result = loopguard -> Create(1024*100); // Stack Size
-		if (result != wxTHREAD_NO_ERROR) {
+
+
+		/* creating threads might be expensive. So we
+		   create it here, as Play() must be
+		   considered to be a realtime function
+		   synchronized with other devices */
+		try {
+			mutASSERT(!loopguard);
+			loopguard = new watchdog<Box>(this,
+						      loop_timeout);
+			if (!loopguard) {
+				Close();
+				return false;
+			}
+		} catch (boost::thread_resource_error & e) {
+			DEBUGLOG(thread,
+				 "Thread %s could not aquire thread resources for loopguard",
+				 Thread::get_current_string_id().c_str());
 			delete loopguard;
-			//loopguard = NULL;
+			loopguard = NULL;
+			Close();
+			return false;
+		} catch (std::exception & e) {
+			DEBUGLOG(thread,
+				 "Thread %s got an exception while creating loopguard: %s",
+				 Thread::get_current_string_id().c_str(),
+				 e.what());
+			delete loopguard;
+			loopguard = NULL;
+			Close();
+			return false;
+		} catch (...) {
+			delete loopguard;
+			loopguard = NULL;
 			Close();
 			return false;
 		}
@@ -417,8 +446,10 @@ namespace mutabor {
 		Reset();
 		mutASSERT(loopguard);
 		if (loopguard) {
+			std::cerr << "Deleting loopguard" << std::endl;
 			loopguard -> request_exit();
-			loopguard = NULL;
+			delete loopguard;
+			mutASSERT(loopguard == NULL);
 		}
 	}
 
@@ -493,7 +524,7 @@ namespace mutabor {
 
 	bool BoxClass::ActivateAll(bool realtime) {
 		CurrentTime.UseRealtime(realtime);
-		mutabor::CurrentTime = 0;
+		mutabor::CurrentTime.Reset();
 		BoxClass_CallReset callreset;
 
 		std::for_each(boxList.begin(),boxList.end(),callreset);
@@ -605,7 +636,7 @@ namespace mutabor {
 	}
 
 	BoxClass::logic_list BoxClass::GetLogics () {
-		ScopedLock lock(mutex);
+		ScopedLock<> lock(mutex);
 		logic_list retval;
 		if (!box) return retval;
 		struct mutabor_logic_parsed * file = box->file;
@@ -625,7 +656,7 @@ namespace mutabor {
 	}
 
 	box_support::tone_system BoxClass::GetToneSystem () {
-		ScopedLock lock(mutex);
+		ScopedLock<> lock(mutex);
 		box_support::tone_system retval;
 		retval.anchor = 60;
 		retval.period = 1;
@@ -664,7 +695,7 @@ namespace mutabor {
 
 	BoxClass::current_tone_list BoxClass::GetCurrentTones()
 	{
-		ScopedLock lock(mutex);
+		ScopedLock<> lock(mutex);
 		current_tone_list retval;
 		if (!box) return retval;
 		struct mutabor_logic_parsed * file = box->file;
@@ -838,7 +869,7 @@ namespace mutabor {
 				    mutex(),
 				    logic_timing(-1),
 				    loop_timeout(500000),
-				    loopguard()
+				    loopguard(0)
 	{
 		AppendToBoxList(this);
 		box = (mutabor_box_type *) malloc(sizeof(mutabor_box_type));
@@ -917,24 +948,24 @@ namespace mutabor {
 
 	void BoxClass::lock_callback(mutabor_logic_parsed * logic) {
 		if (!logic->mutex) {
-			logic->mutex = new Mutex;
+			logic->mutex = new Mutex<>;
 		}
 		if (logic->mutex) {
-			static_cast<Mutex *>(logic->mutex)->Lock();
+			static_cast<Mutex<> *>(logic->mutex)->Lock();
 		}
 	}
 
 	void BoxClass::unlock_callback(mutabor_logic_parsed * logic) {
 		mutASSERT(logic->mutex);
 		if (logic->mutex) {
-			static_cast<Mutex *>(logic->mutex)->Unlock();
+			static_cast<Mutex<> *>(logic->mutex)->Unlock();
 		}
 	}
 
 	void BoxClass::free_mutex_callback(mutabor_logic_parsed * logic) {
 		mutASSERT(logic->mutex);
 		if (logic->mutex) {
-			Mutex * m = static_cast<Mutex *>(logic->mutex);
+			Mutex<> * m = static_cast<Mutex<> *>(logic->mutex);
 			delete m;
 		}
 	}
@@ -985,9 +1016,9 @@ namespace mutabor {
 		std::string oldpath = config.GetPath();
 #endif
 		config.toLeaf(("Boxes"));
-
+		const int NOT_FOUND = config.getNOT_FOUND();
 		int i = config.toFirstLeaf(("Box"));
-		while (i != wxNOT_FOUND) {
+		while (i != NOT_FOUND) {
 			DEBUGLOGTYPE(config,BoxClass,("Loading box device with id %d"),i);
 			int type = config.Read(("Type"), NoBox);
 			Box b = BoxFactory::Create(type);

@@ -35,6 +35,7 @@
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/midi/midicmn.h"
+#include "src/kernel/routing/timing.h"
 #include "src/kernel/MidiKern.h"
 #include "src/kernel/Execute.h"
 #include "src/kernel/Runtime.h"
@@ -104,7 +105,7 @@ namespace mutabor {
 	template<class T, class D>
 	void CommonMidiOutput<T,D>::do_Close(bool sync) {
 		mutUnused(sync);
-		ScopedLock lock(this->write_lock);
+		//		ScopedLock<thistype> lock(*this);
 #ifdef DEBUG
 		if (mutabor::CurrentTime.isRealtime()) {
 			mutASSERT(this->isOpen);

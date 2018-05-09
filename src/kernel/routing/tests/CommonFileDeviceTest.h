@@ -39,44 +39,48 @@
 
 class testCommonFileDeviceTimer: public mutabor::CommonFileInputDevice {
 public:
-	long i;
-	long max;
-	long min;
-	mutint64 lasttime;
-	mutint64 firsttime; 
-	mutint64 pausetime;
-	mutabor::Mutex timelock;
+	typedef boost::chrono::milliseconds milliseconds;
+	typedef boost::chrono::high_resolution_clock clocktype;
+	typedef clocktype::time_point     time_point;
+
+	milliseconds i;
+	milliseconds max;
+	milliseconds min;
+	time_point lasttime;
+	time_point firsttime;
+	time_point pausetime;
+	mutabor::Mutex<> timelock;
 	testCommonFileDeviceTimer():CommonFileInputDevice(),i(0) {
 		//		SetThreadKind(wxTHREAD_JOINABLE);
 	}
 	virtual ~testCommonFileDeviceTimer() {}
 	void Play() {
 		{
-			mutabor::ScopedLock lock(timelock);
+			mutabor::ScopedLock<> lock(timelock);
 			mutabor::CurrentTime.UseRealtime(true);
-			max = 0; min = 100000; i= 0;
-			lasttime = mutabor::CurrentTime.Get();
+			max = milliseconds(0); min = milliseconds(100000); i= milliseconds(0);
+			lasttime = clocktype::now();
 		}
 		CommonFileInputDevice::Play();
 		{
-			mutabor::ScopedLock lock(timelock);
+			mutabor::ScopedLock<> lock(timelock);
 			firsttime += lasttime - pausetime;
 		}
-		DEBUGLOG (timer, "Paused for %ld μs" ,(long) lasttime-pausetime);
+		DEBUGLOG (timer, "Paused for %ld μs" ,(lasttime-pausetime));
 	}
 
 	void Pause() {
 		CommonFileInputDevice::Pause();
 		{
-			mutabor::ScopedLock lock(timelock);
-			pausetime = mutabor::CurrentTime.Get();
+			mutabor::ScopedLock<> lock(timelock);
+			pausetime = clocktype::now();
 		}
 	}
 
 	bool Open() {
 		{
-			mutabor::ScopedLock lock(timelock);
-			firsttime = lasttime = pausetime = mutabor::CurrentTime.Get();
+			mutabor::ScopedLock<> lock(timelock);
+			firsttime = lasttime = pausetime = clocktype::now();
 		}
 		return CommonFileInputDevice::Open();
 	}
@@ -84,46 +88,45 @@ public:
 	void Stop() {
 		CommonFileInputDevice::Stop();
 		// check the overall time
-		mutint64 time = mutabor::CurrentTime.Get() - firsttime;
-		DEBUGLOG (timer, "Stopped at time: %ld μs" ,(long)time);
-		CPPUNIT_ASSERT(time <= ((mutint64)1000*i*(i-1))/2+30000);
-		CPPUNIT_ASSERT(time >= ((mutint64)1000*i*(i-1))/2-30000);
+		milliseconds time = boost::chrono::duration_cast<milliseconds>(clocktype::now() - firsttime);
+		DEBUGLOG (timer, "Stopped at time: %ld μs" ,time);
+		CPPUNIT_ASSERT(time <= (i*(i.count()-1))/2+milliseconds(30));
+		CPPUNIT_ASSERT(time >= (i*(i.count()-1))/2-milliseconds(30));
 	}
 
-	mutint64 PrepareNextEvent() {
-		mutabor::ScopedLock lock(timelock);
+	mutabor::microseconds PrepareNextEvent() {
+		mutabor::ScopedLock<> lock(timelock);
 		/* race condition: Mode should be DevicePlay, but it
 		   may be any error free state as the device might
 		   have been paused or stopped already. */
-		CPPUNIT_ASSERT(Mode == mutabor::DevicePlay || 
-			       Mode == mutabor::DevicePause || 
+		CPPUNIT_ASSERT(Mode == mutabor::DevicePlay ||
+			       Mode == mutabor::DevicePause ||
 			       Mode == mutabor::DeviceStop);
-		mutint64 newtime = mutabor::CurrentTime.Get();
-		mutint64 tl = newtime;
+		time_point newtime = clocktype::now();
+		milliseconds tl = boost::chrono::duration_cast<milliseconds>(newtime - lasttime);
 //		tl = tl - (lasttime + (mutint64)(i*(i+1))/2);
-		tl = tl - lasttime;
-		mutint64 deviation =  tl - (mutint64) i*1000;
+		milliseconds deviation =  tl - i;
 		if (max < deviation)  max = deviation;
-		if (min > deviation || min == 0) min = deviation;
-		DEBUGLOG (timer, "deviation = %ld, min = %ld, max = %ld" , (long)deviation, (long)min, (long)max);
-		if (deviation > 10000) {
-			std::cerr << "Too slow: (" << i << "^2 + " << i << ") / 2 = " << (i*(i+1))/2 
-				  << " Runtime: " << tl << "μs" << std::endl;
-			CPPUNIT_ASSERT(deviation <= 10000);
+		if (min > deviation || min == milliseconds(0)) min = deviation;
+		DEBUGLOG (timer, "deviation = %ld, min = %ld, max = %ld" , deviation, min, max);
+		if (deviation > milliseconds(10)) {
+			std::cerr << "Too slow: (" << i << "^2 + " << i << ") / 2 = " << (i*(i.count()+1))/2
+				  << " Runtime: " << tl << "ms" << std::endl;
+			CPPUNIT_ASSERT(deviation <= milliseconds(10));
 		}
-		if (deviation < -10000) {
-			std::cerr << "Too fast: (" << i << "^2 + " << i << ") / 2 = " << (i*(i+1))/2 
+		if (deviation < milliseconds(-10)) {
+			std::cerr << "Too fast: (" << i << "^2 + " << i << ") / 2 = " << (i*(i.count()+1))/2
 				  << " Runtime: " << tl << "μs" << std::endl;
-			CPPUNIT_ASSERT(deviation >= -10000);
+			CPPUNIT_ASSERT(deviation >= milliseconds(-10));
 		}
 
 		lasttime = newtime;
-		if (++i<100) {
-			DEBUGLOG (timer, "Returning %ldμs" ,(unsigned long)(i*1000));
-			DEBUGLOG (timer, "Time spent in function: %ldμs" , (long)(mutabor::CurrentTime.Get()-newtime));
-			return (mutint64)(i * 1000);
+		if (++i<milliseconds(100)) {
+			DEBUGLOG (timer, "Returning %ld μs" ,(i));
+			DEBUGLOG (timer, "Time spent in function: %ldns" , (clocktype::now()-newtime));
+			return (i);
 		}
-		return GetNO_DELTA();
+		return NO_DELTA();
 	}
 
 	void Save(mutabor::tree_storage&, const mutabor::RouteClass*){}
@@ -142,8 +145,12 @@ class CommonFileDeviceTest : public CPPUNIT_NS::TestFixture {
 	CPPUNIT_TEST_SUITE( CommonFileDeviceTest );
 	CPPUNIT_TEST( testTimer );
 	CPPUNIT_TEST_SUITE_END();
-	
+
 public:
+	typedef testCommonFileDeviceTimer::milliseconds milliseconds;
+	typedef testCommonFileDeviceTimer::clocktype clocktype;
+	typedef testCommonFileDeviceTimer::time_point time_point;
+
 	CommonFileDeviceTest()
 	{
 	}
@@ -153,12 +160,12 @@ public:
 	}
 
 	int countTestCases () const
-	{ 
-		return 1; 
+	{
+		return 1;
 	}
-  
-	void setUp() 
-	{ 
+
+	void setUp()
+	{
 		// change DEBUGA to DEBUG in case you need the debug output
 #ifdef DEBUG
 		//                debugFlags::flags.timer = true;
@@ -175,11 +182,12 @@ public:
 	void usleep(int waitTime) {
 		mutint64 time = waitTime;
 		mutabor::CurrentTime.Sleep(time);
-	}	
+	}
 #endif
-	
+
 	void testTimer()
 	{
+		mutabor::CurrentTime.UseRealtime(true);
 		testCommonFileDeviceTimer * tim = new testCommonFileDeviceTimer();
 		CPPUNIT_ASSERT(tim);
 		mutabor::ScopedInputDevice prevent_from_deletion;
@@ -192,11 +200,11 @@ public:
 		DEBUGLOG (timer, "Cheking play: mode = %d" , (int)tim->GetMode());
 		CPPUNIT_ASSERT(tim->GetMode()==mutabor::DevicePlay);
 		DEBUGLOG (timer, "Sleeping 2000μs" );
-		mutint64 sleped = mutabor::CurrentTime.Get();
+		time_point start = clocktype::now();
 		usleep(2000);
 		DEBUGLOG (timer, "Slept 2000μs" );
-		sleped = mutabor::CurrentTime.Get() - sleped;
-		DEBUGLOG (timer, "In fact it was %ldms" , (long)sleped);
+		milliseconds sleped = boost::chrono::duration_cast<milliseconds>(clocktype::now() - start);
+		DEBUGLOG (timer, "In fact it was %ldms" , sleped);
 		CPPUNIT_ASSERT(tim->GetMode()==mutabor::DevicePlay);
 		DEBUGLOG (timer, "pausing" );
 		tim->Pause();
@@ -213,9 +221,9 @@ public:
 		CPPUNIT_ASSERT(tim->GetMode()==mutabor::DevicePause);
 		tim->Play();
 		CPPUNIT_ASSERT(tim->GetMode()==mutabor::DevicePlay);
-		wxThread::ExitCode e = tim->WaitForDeviceFinish();
+		int e = tim->WaitForDeviceFinish();
 		//			std::clog << "Deviation min: " << tim->min << " max: " << tim->max << std::endl;
-		CPPUNIT_ASSERT(e == 0); 
+		CPPUNIT_ASSERT(e == 0);
 	}
 
 	void sleepaftertests() {

@@ -39,7 +39,6 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
-#include "wx/thread.h"
 //#include "thread.h"
 #include "timing.h"
 
@@ -47,7 +46,6 @@
 #define SRC_KERNEL_ROUTING_WATCHDOG_H_PRECOMPILED
 
 // system headers which do seldom change
-#include <wx/version.h>
 
 namespace mutabor {
 	/**
@@ -61,14 +59,14 @@ namespace mutabor {
 		typedef T targettype;
 	public:
 		watchdog(T t,
-			 mutint64 to):Thread(wxTHREAD_JOINABLE),
-							      mutex(),
-							      cond(mutex),
-							      target(t),
-							      timeout(to),
-							      exit(false) {}
+			 mutint64 to):Thread(),
+				      mutex(),
+				      cond(mutex),
+				      target(t),
+				      timeout(to),
+				      exit(false) {}
 		virtual ~watchdog() {
-			ScopedLock lock(mutex);
+			ScopedLock<> lock(mutex);
 			targettype tmp = const_cast<targettype&>(target);
 			if (tmp) {
 				const_cast<targettype &>(target) = NULL;
@@ -76,20 +74,20 @@ namespace mutabor {
 			}
 		}
 		
-		ExitCode Entry() {
-			ScopedLock lock(mutex);
-			cond.Sleep(timeout);
+		int Entry() {
+			ScopedLock<> lock(mutex);
+			cond.Sleep(lock, CurrentTimer::time_point::clock::now()+timeout);
 			while (!exit && const_cast<targettype&>(target)) {
 				targettype tmp = const_cast<targettype&>(target);
 				if (tmp)
 					tmp->dog_watching();
-				cond.Sleep(timeout);
+				cond.Sleep(lock, CurrentTimer::time_point::clock::now()+timeout);
 			}
-			return (ExitCode)0;
+			return 0;
 		}
 		
 		void OnExit() {
-			ScopedLock lock(mutex);
+			ScopedLock<> lock(mutex);
 			targettype tmp = const_cast<targettype&>(target);
 			if (tmp) {
 				const_cast<targettype &>(target).reset();
@@ -100,20 +98,17 @@ namespace mutabor {
 		void request_exit() {
 			exit = true;
 			{
-				ScopedLock lock(mutex);
+				ScopedLock<> lock(mutex);
 				cond.Broadcast();
 			}
-#if wxCHECK_VERSION(2,9,2)
-			Wait(wxTHREAD_WAIT_BLOCK);
-#else
+			interrupt();
 			Wait();
-#endif
  		}
 	protected:
-		Mutex mutex;
-		ThreadCondition cond;
+		Mutex<> mutex;
+		ThreadCondition<> cond;
 		mutable targettype target;
-		mutint64 timeout;
+		microseconds timeout;
 		boost::atomic<bool> exit;
 	};
 }

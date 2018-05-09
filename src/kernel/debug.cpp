@@ -86,8 +86,8 @@ namespace mutabor {
 			//	flags.smartptr = true;
 		}
 
-		Mutex debugmutex;
 	}
+	Mutex<> debugmutex;
 }
 
 #endif
@@ -410,5 +410,21 @@ std::string StreamToHex(std::istream & buf)
 	retval << "\n";
 	return retval.str();
 }
+
+std::string MakePrintableC(const std::string & s) {
+	std::string output = "\"";
+	for (size_t i = 0, end = 0 ; i != std::string::npos; i = end) {
+		end = s.find("\n",i);
+		if (end != std::string::npos) {
+			output += s.substr(i,end-i) + "\\n\"\n\"";
+			++end;
+		} else
+			output += s.substr(i,end);
+
+	}
+	output += "\"";
+	return output;
+}
+
 
 /** \} */

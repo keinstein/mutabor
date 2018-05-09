@@ -109,7 +109,7 @@ namespace mutaborGUI {
 		void CmUpdateUI(wxCommandEvent & event);
 		void CmBox();
 		void OnChar(wxKeyEvent& event);
-		void CmTaste();
+		void CmTaste(int key);
 		void OnActivate(wxActivateEvent& event);
 		void OnGetFocus(wxFocusEvent& event);
 		void BoxChangedAction(int flags);
