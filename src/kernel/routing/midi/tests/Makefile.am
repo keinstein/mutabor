@@ -1,15 +1,21 @@
 #include $(top_srcdir)/common-rules.mk
 #include $(top_srcdir)/common-linklibs.mk
 
+TEST_EXTENSIONS += .mid
+
 EXTRA_DIST += \
 	$(srcdir)/%D%/lsan_suppressions.txt
+
+
+MID_LOG_COMPILER = %D%/run_midi.sh
 
 CLEANFILES += \
 	%D%/*.class \
 	test_rnd.mid \
 	test_output.mid \
 	test_linear.mid \
-	test_output2.mid
+	test_output2.mid \
+	%D%/run_midi.sh
 
 DEBUGPATHS +=  \
 	%D%/debugPaths.cpp
@@ -25,11 +31,13 @@ check_PROGRAMS += \
 	%D%/genmidirnd \
 	%D%/genmidilinear
 
+
 EXTRA_DIST += \
 	%D%/midiin.mut
 
 check_SCRIPTS += \
-	%D%/midiin.mut
+	%D%/midiin.mut \
+	%D%/run_midi.sh
 
 check_MIDIFILES += $(srcdir)/%D%/playmidi1.mid
 check_MIDISOURCES += \
@@ -45,11 +53,15 @@ check_MIDISOURCES += \
 	$(srcdir)/%D%/aftertouch.txt \
 	$(srcdir)/%D%/sysex.txt
 
+MIDITESTS = \
+	%D%/bug-20180414ts.mid
+
 TESTS += \
 	%D%/playmidi1$(EXEEXT) \
 	%D%/midiopenfail1$(EXEEXT) \
 	%D%/genmidirnd$(EXEEXT) \
-	%D%/genmidilinear$(EXEEXT)
+	%D%/genmidilinear$(EXEEXT) \
+	$(MIDITESTS)
 
 %C%_playmidi1_CPPFLAGS = $(CPPFLAGS) \
 	-DSRCDIR="\"$(srcdir)/%D%/\"" \
@@ -218,3 +230,17 @@ endif
 $(srcdir)/%D%/playmidi1.mid: $(srcdir)/%D%/midi1_source.mid
 	cmp "$<" "$@" >/dev/null || cp "$<" "$@"
 
+$(MIDITESTS:.mid=.log): %D%/run_midi.sh
+
+%D%/run_midi.sh: midifilemutabor$(EXEEXT) Makefile
+	@echo '#!/bin/sh' > $@
+	@echo 'file="$$1"' >> $@
+	@echo 'basefile=`basename "$$file"`' >> $@
+	@echo "outputdir='%D%/'" >> $@
+	@echo 'LC_ALL=C' >> $@
+	@echo 'export LC_ALL' >> $@
+	@echo '. $${file}.variables' >> $@
+	@echo 'echo "./midifilemutabor(EXEEXT)" "$$file" "$$outputdir$${basefile%.mid}-result.mid" "$$logic" "$$startkeys" || exit 1' >> $@
+	@echo 'sed "s/\$$//" "$$outputdir$${basefile%.mid}-result.mid" | diff -u "$${file}-output.mut" - || exit 2' >> $@
+	@echo 'exit 0' >> $@
+	@chmod u+x $@

@@ -159,7 +159,7 @@ dist_pkgdata_DATA += src/xrc/Mutabor.xrc \
 #RECURSIVE_TARGETS += mac-recursive
 
 
-bin_PROGRAMS += mutabor scl2mut
+bin_PROGRAMS += mutabor scl2mut midifilemutabor
 noinst_LIBRARIES += \
 	libmutaborgui.a \
 	libmutaborrouting.a \
@@ -586,6 +586,7 @@ POTSOURCES += $(INDENTSOURCES) \
 	$(noinst_HEADERS) \
 	$(mutabor_COMPILESOURCES) \
 	$(scl2mut_POTSOURCES) \
+	$(midifilemutabor_POTSOURCES) \
 	$(NOCOMPSOURCES) \
 	$(libmutaborrouting_a_POTSOURCES) \
 	$(libmutaborscala_a_POTSOURCES) \
@@ -639,6 +640,26 @@ scl2mut_LDADD = \
 	$(BOOST_LDFLAGS) \
 	$(BOOST_PROGRAM_OPTIONS_LIB) \
 	$(BOOST_LOCALE_LIB) \
+	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_SYSTEM_LIB)
+
+
+midifilemutabor_SOURCES = \
+	src/gmut/midifilemutabor.cpp \
+	src/kernel/interface_deps_generic.c \
+	src/wxintl/libintl_boost.cpp
+
+midifilemutabor_POTSOURCES = $(midifilemutabor_SOURCES)
+
+midifilemutabor_LDADD = \
+	libmutaborrouting.a \
+	src/kernel/libmutaborkernel.a \
+	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
+	$(BOOST_LDFLAGS) \
+	$(BOOST_PROGRAM_OPTIONS_LIB) \
+	$(BOOST_LOCALE_LIB) \
+	$(BOOST_THREAD_LIB) \
+	$(BOOST_CHRONO_LIB) \
 	$(BOOST_FILESYSTEM_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
