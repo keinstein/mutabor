@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mutabor 4.0\n"
 "Report-Msgid-Bugs-To: keinstein@users.sourceforge.net\n"
-"POT-Creation-Date: 2018-03-23 11:30+0100\n"
+"POT-Creation-Date: 2018-03-24 10:41+0100\n"
 "PO-Revision-Date: 2018-03-04 22:10+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.sourceforge.net>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -507,17 +507,17 @@ msgstr "Fehler"
 msgid "Unknown error"
 msgstr "Unbekannter Fehler"
 
-#: src/kernel/Execute.cpp:289
+#: src/kernel/Execute.cpp:290
 #, c-format
 msgid "%s {logic}"
 msgstr "%s {Logik}"
 
-#: src/kernel/Execute.cpp:317
+#: src/kernel/Execute.cpp:321
 #, c-format
 msgid "%s {tone system}"
 msgstr "%s {Tonsystem}"
 
-#: src/kernel/Execute.cpp:336
+#: src/kernel/Execute.cpp:342
 msgid ""
 "Trying to set the anchor with incompatible parameters. Please report to the "
 "MUTABOR team."
@@ -525,12 +525,12 @@ msgstr ""
 "Versuche, den Ankerton mit inkompatiblen Parametern zu setzen. Melden Sie "
 "diesen Fehler bitte an das MUTABOR-Team."
 
-#: src/kernel/Execute.cpp:340
+#: src/kernel/Execute.cpp:347
 #, c-format
 msgid "%s:%d[]"
 msgstr "%s:%d[]"
 
-#: src/kernel/Execute.cpp:359
+#: src/kernel/Execute.cpp:369
 msgid ""
 "Setting tone system width with incompatible parameters. Please report to the "
 "MUTABOR team."
@@ -538,22 +538,22 @@ msgstr ""
 "Versuche, das Tonsystem mit inkompatiblen Parametern zu setzen. Bitte melden "
 "Sie diesen Fehler an das MUTABOR-Team."
 
-#: src/kernel/Execute.cpp:363
+#: src/kernel/Execute.cpp:374
 #, c-format
 msgid "%s:[<< %d >>]"
 msgstr "%s:[<< %d >>]"
 
-#: src/kernel/Execute.cpp:378
+#: src/kernel/Execute.cpp:393
 #, c-format
 msgid "%s:[]%f HT"
 msgstr "%s:[]%f HT"
 
-#: src/kernel/Execute.cpp:395
+#: src/kernel/Execute.cpp:413
 #, c-format
 msgid "%s:[]@+%f HT"
 msgstr "%s:[]@+%f HT"
 
-#: src/kernel/Execute.cpp:419
+#: src/kernel/Execute.cpp:439
 msgid ""
 "Changing anchor with incompatible parameters. Please report to the MUTABOR "
 "team."
@@ -561,12 +561,12 @@ msgstr ""
 "Versuche den Anker mit inkompatiblen Parametern zu ändern. Bitte "
 "benachrichtigen Sie das MUTABOR-Team über diesen Fehler."
 
-#: src/kernel/Execute.cpp:422
+#: src/kernel/Execute.cpp:443
 #, c-format
 msgid "%s:@%c%d[]"
 msgstr "%s:@%c%d[]"
 
-#: src/kernel/Execute.cpp:460
+#: src/kernel/Execute.cpp:483
 msgid ""
 "Changing tone system width with incompatible parameters. Please report to "
 "the MUTABOR team."
@@ -574,22 +574,22 @@ msgstr ""
 "Versuche das Tonsystem mit inkompatiblen Parametern zu ändern. Bitte "
 "benachrichtigen Sie das MUTABOR-Team über diesen Fehler."
 
-#: src/kernel/Execute.cpp:463
+#: src/kernel/Execute.cpp:487
 #, c-format
 msgid "%s:[<<@%c%d>>]"
 msgstr "%s:[<<@%c%d>>]"
 
-#: src/kernel/Execute.cpp:501
+#: src/kernel/Execute.cpp:527
 #, c-format
 msgid "%s:[.,.,.]"
 msgstr "%s:[.,.,.]"
 
-#: src/kernel/Execute.cpp:559
+#: src/kernel/Execute.cpp:593
 #, c-format
 msgid "%s,%d"
 msgstr "%s,%d"
 
-#: src/kernel/Execute.cpp:580
+#: src/kernel/Execute.cpp:619
 msgid ""
 "Switching cases with incompatible parameter list. Please report to the "
 "MUTABOR team."
@@ -597,17 +597,17 @@ msgstr ""
 "Versuche eine Mehrfachauswahl mit inkompatiblen Parametern zu ändern. Bitte "
 "benachrichtigen Sie das MUTABOR-Team über diesen Fehler."
 
-#: src/kernel/Execute.cpp:611
+#: src/kernel/Execute.cpp:657
 #, c-format
 msgid "%s %x"
 msgstr "%s %x"
 
-#: src/kernel/Execute.cpp:635
+#: src/kernel/Execute.cpp:686
 #, c-format
 msgid "Unexpected action type: %d"
 msgstr "Unerwarteter Aktionstyp: %d"
 
-#: src/kernel/Execute.cpp:888
+#: src/kernel/Execute.cpp:939
 #, c-format
 msgid ""
 "Undefined harmony class %d in HarmonyAnalysis().\n"
@@ -1231,36 +1231,36 @@ msgstr "Syntaxfehler: Kann nicht weitermachen"
 
 #: ../../mutabor/src/kernel/mut.cc:1361 ../../mutabor/src/kernel/mut.cc:3050
 #: ../../mutabor/src/kernel/mut.cc:3055
-#: ../../mutabor/src/kernel/parsers/scala/scale_parser.cc:1865
+#: src/kernel/parsers/scala/scale_parser.cc:1865
 msgid "syntax error"
 msgstr "Syntaxfehler"
 
 #: ../../mutabor/src/kernel/mut.cc:1362
-#: ../../mutabor/src/kernel/parsers/scala/scale_parser.cc:1866
+#: src/kernel/parsers/scala/scale_parser.cc:1866
 #, c-format
 msgid "syntax error, unexpected %s"
 msgstr "Syntaxfehler, bekam unerwartet „%s“"
 
 #: ../../mutabor/src/kernel/mut.cc:1363
-#: ../../mutabor/src/kernel/parsers/scala/scale_parser.cc:1867
+#: src/kernel/parsers/scala/scale_parser.cc:1867
 #, c-format
 msgid "syntax error, unexpected %s, expecting %s"
 msgstr "Syntaxfehler, bekam unerwartet „%s“, erwartete „%s“"
 
 #: ../../mutabor/src/kernel/mut.cc:1364
-#: ../../mutabor/src/kernel/parsers/scala/scale_parser.cc:1868
+#: src/kernel/parsers/scala/scale_parser.cc:1868
 #, c-format
 msgid "syntax error, unexpected %s, expecting %s or %s"
 msgstr "Syntaxfehler, bekam unerwartet „%s“, erwartete „%s“ oder „%s\""
 
 #: ../../mutabor/src/kernel/mut.cc:1365
-#: ../../mutabor/src/kernel/parsers/scala/scale_parser.cc:1869
+#: src/kernel/parsers/scala/scale_parser.cc:1869
 #, c-format
 msgid "syntax error, unexpected %s, expecting %s or %s or %s"
 msgstr "Syntaxfehler, bekam unerwartet „%s“, erwartete „%s“, „%s“ oder „%s“"
 
 #: ../../mutabor/src/kernel/mut.cc:1366
-#: ../../mutabor/src/kernel/parsers/scala/scale_parser.cc:1870
+#: src/kernel/parsers/scala/scale_parser.cc:1870
 #, c-format
 msgid "syntax error, unexpected %s, expecting %s or %s or %s or %s"
 msgstr ""
