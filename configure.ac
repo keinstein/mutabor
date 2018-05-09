@@ -149,16 +149,29 @@ AC_ARG_ENABLE(debug,
 	[AS_IF(test "$enableval" = yes,
 	       AC_DEFINE(DEBUG,1,[Define to 1 for compiling in debug mode.]),
                AC_DEFINE_UNQUOTED(DEBUG,[$enableval]))
-	       CFLAGS="$CFLAGS -g"
-	       CXXFLAGS="$CXXFLAGS -g -D__RTMIDI_DEBUG__"
+	       enable_debug_CFLAGS="$CFLAGS"
+	       enable_debug_CXXFLAGS="$CXXFLAGS"
 	       AC_LANG_PUSH(C++)
+	       unset ax_cv_check_cxxflags___Werror
+	       AX_CHECK_COMPILE_FLAG([-Werror],[CXXFLAGS="$CXXFLAGS -Werror"])
+	       AC_LANG_PUSH(C)
+	       unset ax_cv_check_cflags___Werror
+	       AX_CHECK_COMPILE_FLAG([-Werror],[CFLAGS="$CFLAGS -Werror"])
+	       AC_LANG_POP(C)
 	       for flag in -Wall  -Wno-unused-local-typedefs  -fdump-class-hierarchy \
 		    -fbounds-check  -pedantic  -fdiagnostics-show-option  -Wno-long-long \
-		     -Wno-variadic-macros -Wno-nested-anon-types -Wno-c++11-extensions -g -fipa-icf
+		     -Wno-variadic-macros -Wno-nested-anon-types -Wno-c++11-extensions -g -fipa-icf \
+		      -D__RTMIDI_DEBUG__
 	       do
-		       AX_CHECK_COMPILE_FLAG([$flag],[CXXFLAGS="$CXXFLAGS $flag"])
+		       AX_CHECK_COMPILE_FLAG([$flag],[
+			CXXFLAGS="$CXXFLAGS $flag"
+			enable_debug_CXXFLAGS="$enable_debug_CXXFLAGS $flag"
+		       ])
 		       AC_LANG_PUSH(C)
-		       AX_CHECK_COMPILE_FLAG([$flag],[CFLAGS="$CFLAGS $flag"])
+		       AX_CHECK_COMPILE_FLAG([$flag],[
+			CFLAGS="$CFLAGS $flag"
+			enable_debug_CFLAGS="$enable_debug_CFLAGS $flag"
+		       ])
 		       AC_LANG_POP(C)
 	       done
 dnl mudflap is not possible with g++ 4.7.1 and wxWidgets 2.8
@@ -187,6 +200,8 @@ dnl
                        AC_LANG_POP(C)
 			;;
 	       esac
+	       CFLAGS="$enable_debug_CFLAGS"
+	       CXXFLAGS="$enable_debug_CXXFLAGS"
 	       AC_LANG_POP(C++)
 	       wxflags="--debug"
 ])
@@ -736,13 +751,13 @@ AC_LANG_POP(C++)
 AC_LANG_PUSH(C)
 AX_CHECK_FALLTHROUGH_SYNTAX
 AC_LANG_POP(C)
-AC_DEFINE_UNQUOTED(mutCfallthrough,[$ac_cv_check_c_fallthrough_syntax_],
+AC_DEFINE_UNQUOTED(mutCfallthrough,[$ax_cv_check_c_fallthrough_syntax_],
 	[syntax for swtich case fallthrough attributes in C])
 
 AC_LANG_PUSH(C++)
 AX_CHECK_FALLTHROUGH_SYNTAX
 AC_DEFINE_UNQUOTED(mutfallthrough,
-		[$ac_cv_check_cxx_fallthrough_syntax_],
+		[$ax_cv_check_cxx_fallthrough_syntax_],
 		[syntax for swtich case fallthrough attributes in C++])
 
 dnl AC_CACHE_CHECK([for variable scope in for loops in C++ mode], ac_cv_cxx_scope_reuse,
