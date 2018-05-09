@@ -29,7 +29,7 @@
 /* we guard a little bit complicated to ensure the references are set right
  */
 
-#if (!defined(ROUTING_BOX_INLINES) && !defined(PRECOMPILE))	\
+#if (!defined(ROUTING_BOX_INLINES) && !defined(PRECOMPILE))	      \
 	|| (!defined(ROUTING_BOX_INLINES_PRECOMPILED))
 #ifndef PRECOMPILE
 #define ROUTING_BOX_INLINES
@@ -49,57 +49,57 @@
 
 // system headers which do seldom change
 
-namespace mutabor {
+MUTABOR_NAMESPACE(mutabor)
 
-	inline void BoxClass::Destroy()  {
-		TRACEC;
-		Box self(this);
-		TRACEC;
-		if (IsOpen()) Close();
+inline void BoxClass::Destroy()  {
+	TRACEC;
+	Box self(this);
+	TRACEC;
+	if (IsOpen()) Close();
 
-		DisconnectFromAll();
+	DisconnectFromAll();
 
-		TRACEC;
-		debug_destroy_class(this);
-		RemoveFromBoxList(this);
-		TRACEC;
-	}
-
-	inline void BoxClass::DisconnectFromAll()  {
-		Route route (NULL);
-		Box self(this);
-
-		routeListType::iterator R;
-		while ( (R = routes.begin()) != routes.end() ) {
-			TRACEC;
-			route = (*R);
-			TRACEC;
-			disconnect(route,self);
-			TRACEC;
-		}
-		route.reset();
-	}
-	
-	inline bool is_key_trigger(struct any_trigger & trigger) {
-		return trigger.type == any_trigger::key;
-	}
-	inline bool is_harmony_trigger(struct any_trigger & trigger) {
-		return trigger.type == any_trigger::key;
-	}
-	inline bool is_midi_trigger(struct any_trigger & trigger) {
-		return trigger.type == any_trigger::key;
-	}
-	inline keyboard_action * get_key_trigger(struct any_trigger & trigger) {
-		return trigger.u.key_trigger;
-	}
-	inline harmony_action * get_harmony_trigger(struct any_trigger & trigger) {
-		return trigger.u.harmony_trigger;
-	}
-	inline midi_action * get_midi_trigger(struct any_trigger & trigger) {
-		return trigger.u.midi_trigger;
-	}
-
+	TRACEC;
+	debug_destroy_class(this);
+	RemoveFromBoxList(this);
+	TRACEC;
 }
+
+inline void BoxClass::DisconnectFromAll()  {
+	Route route (NULL);
+	Box self(this);
+
+	routeListType::iterator R;
+	while ( (R = routes.begin()) != routes.end() ) {
+		TRACEC;
+		route = (*R);
+		TRACEC;
+		disconnect(route,self);
+		TRACEC;
+	}
+	route.reset();
+}
+	
+inline bool is_key_trigger(struct any_trigger & trigger) {
+	return trigger.type == any_trigger::key;
+}
+inline bool is_harmony_trigger(struct any_trigger & trigger) {
+	return trigger.type == any_trigger::key;
+}
+inline bool is_midi_trigger(struct any_trigger & trigger) {
+	return trigger.type == any_trigger::key;
+}
+inline keyboard_action * get_key_trigger(struct any_trigger & trigger) {
+	return trigger.u.key_trigger;
+}
+inline harmony_action * get_harmony_trigger(struct any_trigger & trigger) {
+	return trigger.u.harmony_trigger;
+}
+inline midi_action * get_midi_trigger(struct any_trigger & trigger) {
+	return trigger.u.midi_trigger;
+}
+
+MUTABOR_NAMESPACE_END(mutabor)
 
 #endif // precompiled
 #endif // header loaded

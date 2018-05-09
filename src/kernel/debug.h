@@ -92,10 +92,8 @@ using std::fflush;
 
 #ifdef DEBUG
 
-#ifdef __cplusplus
-namespace mutabor {
-	extern "C" {
-#endif
+MUTABOR_NAMESPACE(mutabor)
+MUTABOR_EXTERN_C
 
 struct mutabor_debug_flagtype {
 #       define DEBUGFLAG(flag,description) bool flag:1;
@@ -137,11 +135,9 @@ extern Mutex debugmutex;
 #endif
 
 
-#ifdef __cplusplus
-	}
-}
-extern "C" {
-#endif
+MUTABOR_EXTERN_C_END
+MUTABOR_NAMESPACE_END(mutabor)
+MUTABOR_EXTERN_C
 
 /* its easier that these are outside the namespace.
    this prevents us from defining namespacing macros */
@@ -322,6 +318,7 @@ void mutabor_debug_unlock();
 
 #ifdef __cplusplus
 #ifdef DEBUG
+MUTABOR_EXTERN_C_END
 }
 #endif
 struct nogetflag {
@@ -385,13 +382,14 @@ public:
 
 
 #ifdef DEBUG
-extern "C" {
+MUTABOR_EXTERN_C
 void debug_destroy_class(void * ptr, std::string file, int l);
 void debug_destruct_class(void * ptr);
 void debug_print_pointers();
 bool debug_is_all_deleted();
 void print_stacktrace (bool flag);
-}
+MUTABOR_EXTERN_C_END
+
 class mutabor_backtrace: public std::vector<uintptr_t> {
 public:
 	typedef std::vector<uintptr_t> base;
