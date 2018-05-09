@@ -70,20 +70,11 @@ before_install:
     - autopoint --version
 
 script:
-    - ls -l '/usr/local/opt' || true
-    - if test "$TRAVIS_OS_NAME" = osx ; then ls -l /usr/local/opt/wxmac/lib ; fi ;
-    - if test "$TRAVIS_OS_NAME" = osx ; then ls -l /usr/local/opt/boost/lib ; fi ;
-    - if test "$TRAVIS_OS_NAME" = osx ; then echo "DYLD_LIBRARY_PATH = $DYLD_LIBRARY_PATH" ; fi ;
-    - if test "$TRAVIS_OS_NAME" = osx ; then echo "DYLD_FALLBACK_FRAMEWORK_PATH = $DYLD_FALLBACK_FRAMEWORK_PATH" ; fi ;
-    - ls -l '/usr/local/opt/wxmac' || true
-    - ls -l '/usr/local/opt/wxmac/lib' || true
-    - ls -l /usr/local/opt/wxmac/lib/libwx* || true
-    - (cd lib/rtmidi && autoreconf -i -f) ;
-    - autoreconf -i -f && ./configure && make printvariables && make && $TEST_RUNNER make check
-    - cat test-suite.log 
+    - (cd lib/rtmidi && autoreconf -i -f)
+    - autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4 
+    - cat test-suite.log
     - $TEST_RUNNER make distcheck
-    - cat test-suite.log 
-    - if test "$TRAVIS_OS_NAME" = osx ; then brew ls --verbose boost wxmac ; fi ;
+    - cat test-suite.log
     - if test "$TRAVIS_OS_NAME" = osx ; then make install &&  make V=1 dmg ; fi ;
     - if test "$TRAVIS_OS_NAME" = linux && false ; then debuild ; fi ;
     - mkdir -p "public/$TRAVIS_TAG-$TRAVIS_JOB_ID"
