@@ -29,6 +29,7 @@
 
 #include "interface_deps.h"
 #include "stdio.h"
+#include "stdlib.h"
 void mutabor_assert_fail(const char *file,
 			 int line,
 			 const char *func,
