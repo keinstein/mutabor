@@ -234,13 +234,17 @@ $(MIDITESTS:.mid=.log): %D%/run_midi.sh
 
 %D%/run_midi.sh: midifilemutabor$(EXEEXT) Makefile
 	@echo '#!/bin/sh' > $@
+	@echo 'set -e' >> $@
+	@echo 'set -x' >> $@
+	@echo "top_srcdir='"'$(top_srcdir)/'"'" >> $@
 	@echo 'file="$$1"' >> $@
 	@echo 'basefile=`basename "$$file"`' >> $@
 	@echo "outputdir='%D%/'" >> $@
+	@echo 'stemfile=`echo "%D%/$$basefile" | sed "s/.mid\$$//"`' >> $@
 	@echo 'LC_ALL=C' >> $@
 	@echo 'export LC_ALL' >> $@
 	@echo '. $${file}.variables' >> $@
-	@echo 'echo "./midifilemutabor(EXEEXT)" "$$file" "$$outputdir$${basefile%.mid}-result.mid" "$$logic" "$$startkeys" || exit 1' >> $@
-	@echo 'sed "s/\$$//" "$$outputdir$${basefile%.mid}-result.mid" | diff -u "$${file}-output.mut" - || exit 2' >> $@
+	echo '"./midifilemutabor$(EXEEXT)" "$$file" "$${stemfile}-result.mid" "$$logic" "$$startkeys" ' >> $@
+	echo './mf2txt "$${stemfile}-result.mid" | sed "s/\r$$//" | diff -u "$$top_srcdir$${stemfile}-output.txt" - ' >> $@
 	@echo 'exit 0' >> $@
 	@chmod u+x $@
