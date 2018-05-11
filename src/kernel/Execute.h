@@ -43,6 +43,7 @@
 /* --------------------------------------------------------------------------- */
 
 #include "Defs.h"
+#include "src/kernel/error.h"
 
 #ifndef MU32_EXECUTE_H_PRECOMPILED
 #define MU32_EXECUTE_H_PRECOMPILED
@@ -72,15 +73,6 @@ namespace mutabor {
 				mutabor_action_changed = 0x08
 			};
 
-  		        enum mutabor_error_type {
-			    warning,
-			    compiler_warning,
-			    runtime_warning,
-			    error,
-			    internal_error,
-			    compiler_error,
-			    runtime_error
-			};
 			struct any_trigger {
 				enum {
 					key,
@@ -96,7 +88,6 @@ namespace mutabor {
 
 
 
-		    const char * mutabor_error_type_to_string(enum mutabor_error_type type);
 
 			typedef void (* mutabor_callback_update_type) (mutabor_box_type * box,
 								  unsigned int flags);
@@ -142,27 +133,6 @@ namespace mutabor {
 						   ...)  __attribute__ ((format(printf, 3, 4))) ;*/
 
 			
-			static inline void mutabor_error_message(mutabor_box_type * box,
-								 enum mutabor_error_type type,
-								 const char * message,
-								 ...) {
-				char * formatted;
-				va_list args;
-				bool allocated = true;
-				va_start(args,message);
-				if (vasprintf(&formatted,message,args) == -1) {
-					allocated = false;
-					formatted = (char *)_mut("Error in Error: Could not allocate buffer for error message.");
-					if (!formatted) {
-						formatted = 
-							(char *) "Error in Error: Could not allocate buffer for error message.";
-					}
-				}
-				va_end(args);
-				mutabor_callbacks->error_message(box,type,formatted);
-				if (allocated)
-					free(formatted);
-			}
 
 			inline void show_line_number(mutabor_box_type * box, int line_number ) {
 				mutabor_callbacks->update_display(box,line_number);
