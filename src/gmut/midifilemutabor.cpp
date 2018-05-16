@@ -99,11 +99,11 @@ void usleep(int waitTime) {
 
 	QueryPerformanceCounter((LARGE_INTEGER *) &time1);
 	QueryPerformanceFrequency((LARGE_INTEGER *)&freq);
-		
+
 	do {
 		QueryPerformanceCounter((LARGE_INTEGER *) &time2);
 	} while((time2-time1) < waitTime);
-}	
+}
 
 void sleep(int waitTime) {
 	usleep(waitTime * 1000);
@@ -138,20 +138,10 @@ struct MyCompileCallback:public mutabor::BoxClass::CompileCallback {
 	}
 };
 
-
-int main(int ac, char* av[])
-{
-	try {
-		mutabor::InitDeviceFactories();
-
-		boost::locale::generator gen;
-		gen.add_messages_path(LOCALEDIR);
-		gen.add_messages_domain("mutabor");
-		locale::global(gen(""));
-		po::options_description desc(_mut("Allowed options"));
-		po::positional_options_description p;
-		po::variables_map vm;
-
+void add_options(po::options_description & desc,
+		 po::positional_options_description & p,
+		 po::variables_map vm) {
+	mutUnused(vm);
 		desc.add_options()
 			("help", _mut("produce this help message"))
 			("input-file,i", po::value<std::string>(&inputfile),
@@ -175,6 +165,25 @@ int main(int ac, char* av[])
 			;
 
 		p.add("input-file", 1).add("output-file",1).add("logic-file",1).add("start-keys",1);
+}
+
+
+
+int main(int ac, char* av[])
+{
+	try {
+		mutabor::InitDeviceFactories();
+
+		boost::locale::generator gen;
+		gen.add_messages_path(LOCALEDIR);
+		gen.add_messages_domain("mutabor");
+		locale::global(gen(""));
+		po::options_description desc(_mut("Allowed options"));
+		po::positional_options_description p;
+		po::variables_map vm;
+
+		add_options(desc,p,vm);
+
 
 		try {
 			po::store(po::command_line_parser(ac, av).
@@ -215,7 +224,7 @@ int main(int ac, char* av[])
 		route->OutputAvoidDrumChannel (true);
 
 
-		
+
 		inguard = (mutabor::DeviceFactory::CreateInput(mutabor::DTMidiFile));
 		in = static_cast<mutabor::InputMidiFile *> (inguard.get());
 
@@ -227,19 +236,12 @@ int main(int ac, char* av[])
 			return 0;
 		}
 
-		if (inputfile.empty()) {
+		if (inputfile.empty() || outputfile.empty()) {
 			do_help(desc,*av);
 			return 1;
-		} else {
-			in -> SetName(inputfile);
 		}
-
-		if (outputfile.empty()) {
-			do_help(desc,*av);
-			return 1;
-		} else {
-			out -> SetName(outputfile);
-		}
+		in -> SetName(inputfile);
+		out -> SetName(outputfile);
 
 		errno = 0;
 		std::ifstream file(logicfile.c_str());
