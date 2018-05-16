@@ -96,10 +96,10 @@ namespace mutabor {
 	using hidden::midiliste;
 
 
-	using hidden::warning;
+	using hidden::generic_warning;
 	using hidden::compiler_warning;
 	using hidden::runtime_warning;
-	using hidden::error;
+	using hidden::generic_error;
 	using hidden::internal_error;
 	using hidden::compiler_error;
 	using hidden::runtime_error;

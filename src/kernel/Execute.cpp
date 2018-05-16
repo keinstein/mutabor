@@ -58,13 +58,13 @@ MUTABOR_EXTERN_C
 const char * mutabor_error_type_to_string(mutabor_error_type type)
 {
 	switch (type) {
-	case warning: return _mut("Warning");
+	case generic_warning: return _mut("Warning");
 	case compiler_warning: return _mut("Compiler warning");
 	case runtime_warning: return _mut("Runtime warning");
-	case error: return _mut("Error");
-	case internal_error: return ("Internal error");
-	case compiler_error: return ("Compiler error");
-	case runtime_error: return ("Runtime error");
+	case generic_error: return _mut("Error");
+	case internal_error: return _mut("Internal error");
+	case compiler_error: return _mut("Compiler error");
+	case runtime_error: return _mut("Runtime error");
 	default: return _mut("Unknown error");
 	}
 }

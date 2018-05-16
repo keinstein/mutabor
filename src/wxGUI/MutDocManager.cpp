@@ -167,7 +167,7 @@ namespace mutaborGUI {
 			ScalaFile = dialog -> GetScalaFile();
 			if (ScalaFile.IsFileReadable())
 				break;
-			wxGetApp().PrintError(mutabor::error,
+			wxGetApp().PrintError(mutabor::generic_error,
 					      _("Cannot read the Scala file. This file must exist."),
 					      editor);
 		}
@@ -181,7 +181,7 @@ namespace mutaborGUI {
 		wxString scalaText;
 		wxConvAuto autoConverter(wxFONTENCODING_ISO8859_15);
 		if (!scala.ReadAll(&scalaText, autoConverter) ) {
-			wxGetApp().PrintError(mutabor::error,
+			wxGetApp().PrintError(mutabor::generic_error,
 					      _("Could not load the scala file contents into memory."),
 					      editor);
 			return;

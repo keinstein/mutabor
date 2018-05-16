@@ -770,7 +770,7 @@ namespace mutaborGUI {
 
 				break;
 			} else
-				 wxGetApp().PrintError(mutabor::error,
+				 wxGetApp().PrintError(mutabor::generic_error,
 						       _("Cannot open the Scala file. This file must be writable."),
 						       this);
 		}

@@ -89,32 +89,6 @@ namespace mutabor {
 
 
 
-			typedef void (* mutabor_callback_update_type) (mutabor_box_type * box,
-								  unsigned int flags);
-			typedef void (* mutabor_callback_midi_out_type) (mutabor_box_type * box,
-								     struct midiliste * outliste);
-			typedef void (* mutabor_callback_error_message_type)(mutabor_box_type * box,
-									 enum mutabor_error_type type,
-									 const char * message);
-			typedef void (*mutabor_callback_update_display)(mutabor_box_type * box, int line_number);
-			typedef void (*mutabor_callback_log_action)(mutabor_box_type * box,
-								 const char * action);
-
-			typedef void (*mutabor_callback_lock_logic)(struct mutabor_logic_parsed * logic);
-
-
-			struct mutabor_callback_type {
-				mutabor_callback_update_type  update;
-				mutabor_callback_midi_out_type  midi_out;
-				mutabor_callback_error_message_type  error_message;
-				mutabor_callback_update_display  update_display;
-				mutabor_callback_log_action  log_action;
-				mutabor_callback_lock_logic  lock_logic;
-				mutabor_callback_lock_logic  unlock_logic;
-				mutabor_callback_lock_logic  free_mutex;
-			};
-
-			extern struct mutabor_callback_type * mutabor_callbacks;
 
 			inline void mutabor_update(mutabor_box_type * box, unsigned int flags) {
 				if (flags)

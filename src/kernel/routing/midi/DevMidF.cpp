@@ -33,14 +33,15 @@
 #include <owl/pch.h>
 #endif
 
-#include "RtMidi.h"
+//#include "RtMidi.h"
 #include "boost/filesystem.hpp"
 #include "boost/filesystem/fstream.hpp"
 #include "boost/filesystem/detail/utf8_codecvt_facet.hpp"
 #include "boost/chrono/chrono_io.hpp"
 
 #include "src/kernel/routing/midi/DevMidF.h"
-#include "src/kernel/routing/midi/DevMidi.h"
+//#include "src/kernel/routing/midi/DevMidi.h"
+#include "src/kernel/error.h"
 #include "src/kernel/Execute.h"
 //#include "src/kernel/GrafKern.h"
 #include "src/kernel/Runtime.h"
@@ -339,7 +340,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 			route->SetOutputTo(GetMaxChannel());
 		}
 		if (!correct)
-			runtime_error(mutabor::warning,
+			runtime_error(mutabor::generic_warning,
 				      boost::str(boost::format(_mut("The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."))
 						 % oldfrom%oldto % GetName().c_str() % GetMinChannel() %GetMaxChannel()));
 		config.toParent();
@@ -478,7 +479,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 				route->SetInputTo(GetMaxChannel());
 			}
 			if (!correct)
-				runtime_error(mutabor::warning,
+				runtime_error(mutabor::generic_warning,
 					      boost::str(boost::format(_mut("The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."))
 							 % oldfrom
 							 % oldto
@@ -510,7 +511,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 				route->SetInputTo(GetMaxTrack());
 			}
 			if (!correct)
-				runtime_error(mutabor::warning,
+				runtime_error(mutabor::generic_warning,
 					      boost::str(boost::format(_mut("The Track range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."))
 								       % oldfrom
 								       % oldto
@@ -539,7 +540,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 		timing.reset();
 
 		if (Name.empty()) {
-			runtime_error(error,
+			runtime_error(generic_error,
 				      _mut("You instructed me to open a file without file name. I can't do that."));
 			Mode = DeviceCompileError;
 			isOpen = false;
@@ -556,7 +557,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 					       std::ios::in | std::ios::binary);
 		if ( is.bad() ) {
 			DEBUGLOG (midifile, "Opening Stream failed" );
-			runtime_error(error,
+			runtime_error(generic_error,
 				      boost::str(boost::format(_mut("Can not open Midi input file '%s'."))
 						 % Name.c_str()));
 			goto error_cleanup;
@@ -566,7 +567,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 		// Flawfinder: ignore
 		is.read(Header, 4);
 		if (strcmp(Header,"MThd")) {
-			runtime_error(error,
+			runtime_error(generic_error,
 				      boost::str(boost::format(_mut("File '%s' is not a valid midi file."))
 						 % Name.c_str()));
 			goto error_cleanup;
@@ -575,7 +576,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 		l = mutabor::ReadLength(is);
 
 		if (l!=6) {
-			runtime_error(error,
+			runtime_error(generic_error,
 				      boost::str(boost::format(_mut("Unknown header (chunk length %d) in file '%s'."))
 						 % l % Name.c_str()));
 			goto error_cleanup;
@@ -587,7 +588,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 		a = is.get(); //mutGetC(is,a);
 		FileType = ((int)a << 8) + is.get(); //mutGetC(is,FileType);
 		if (FileType > 3) {
-			runtime_error(error,
+			runtime_error(generic_error,
 				      boost::str(boost::format(_mut("Unknown file type %d in file '%s'."))
 						 % FileType % Name.c_str()));
 			goto error_cleanup;
@@ -604,7 +605,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 		try {
 			timing.set_MIDI_tick_signature(a,b);
 		} catch (std::range_error e) {
-			runtime_error(error,
+			runtime_error(generic_error,
 				      boost::str(boost::format(_mut("Midi file '%s' has corrupted timing information."))
 						 % Name.c_str()));
 		}
@@ -624,7 +625,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 		Tracks.resize(nTrack,Track(timing));
 		channel_data.resize(16*nTrack);
 		if (Tracks.empty()) {
-			runtime_error(error,
+			runtime_error(generic_error,
 				      boost::str(boost::format(_mut("Could not allocate memory for the track list of file '%s'."))
 						 %Name.c_str()));
 			goto error_cleanup;

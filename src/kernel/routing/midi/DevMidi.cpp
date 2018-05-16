@@ -168,7 +168,7 @@ namespace mutabor {
 			route->SetOutputTo(GetMaxChannel());
 		}
 		if (!correct) {
-			runtime_error(mutabor::warning,
+			runtime_error(mutabor::generic_warning,
 				      boost::str(boost::format("The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. The current route had to be corrected.")
 					  % oldfrom % oldto % GetName().c_str() % GetMinChannel() % GetMaxChannel()));
 		}
@@ -422,7 +422,7 @@ OutputMidiPort:\n\
 		try {
 			port->openPort(DevId,(GetName().c_str()));
 		} catch (rtmidi::Error &error) {
-			runtime_error(mutabor::warning,
+			runtime_error(mutabor::generic_warning,
 				      boost::str(boost::format(_mut("Can not open MIDI input device %s (%s):\n%s"))
 						 % (GetName().c_str())
 						 % DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
@@ -434,7 +434,7 @@ OutputMidiPort:\n\
 		try {
 			port->setCallback(new mycallback(this));
 		} catch (rtmidi::Error & error) {
-			runtime_error(mutabor::warning,
+			runtime_error(mutabor::generic_warning,
 				      boost::str(boost::format(_mut("Can not register callback for MIDI input device %s (%s):\n%s"))
 						 % (GetName().c_str())
 						 % DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |

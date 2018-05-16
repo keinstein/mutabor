@@ -909,12 +909,12 @@ namespace mutaborGUI {
 		wxString heading;
 		int style;
 		switch (type) {
-		case mutabor::warning:
+		case mutabor::generic_warning:
 		case mutabor::compiler_warning:
 		case mutabor::runtime_warning:
 			style = wxICON_WARNING;
 			break;
-		case mutabor::error:
+		case mutabor::generic_error:
 		case mutabor::internal_error:
 		case mutabor::compiler_error:
 		case mutabor::runtime_error:
@@ -1033,10 +1033,10 @@ namespace mutaborGUI {
 		switch (type) {
 	case mutabor::compiler_warning:
 	case mutabor::runtime_warning:
-	case mutabor::warning:
+	case mutabor::generic_warning:
 		style |= wxICON_EXCLAMATION;
 		break;
-	case mutabor::error:
+	case mutabor::generic_error:
 	case mutabor::internal_error:
 	case mutabor::compiler_error:
 	case mutabor::runtime_error:

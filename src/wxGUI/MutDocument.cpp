@@ -324,7 +324,7 @@ namespace mutaborGUI {
 	void MutDocument::CmImportScala(wxCommandEvent & mutUNUSED(event)) {
 		MutDocManager *manager = dynamic_cast<MutDocManager *>(GetDocumentManager());
 		if (!manager) {
-			wxGetApp().PrintError(mutabor::error,
+			wxGetApp().PrintError(mutabor::generic_error,
 					      _("Interrnal error: Could not get the document manager."),
 					      NULL);
 			return;

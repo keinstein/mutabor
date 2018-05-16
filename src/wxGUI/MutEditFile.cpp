@@ -345,7 +345,7 @@ namespace mutaborGUI {
 		if ( file.IsOpened() ) {
 			wxString text;
 			if ( !file.ReadAll(&text, autoConverter) ) {
-				wxGetApp().PrintError(mutabor::error,
+				wxGetApp().PrintError(mutabor::generic_error,
 						     _("Could not load the file contents into memory."),
 						     this);
 				return false ;
