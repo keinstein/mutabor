@@ -67,7 +67,7 @@ void GUIRouteTest::testConnect()
 	ScopedInputDevice in1, in2;
 	ScopedBox MyNoBox(NULL);
 
-	std::auto_ptr<wxWindow> parent(new wxFrame(0,wxID_ANY,_T("Test")));
+	std::unique_ptr<wxWindow> parent(new wxFrame(0,wxID_ANY,_T("Test")));
 	MutRouteWnd * wnd;
 
 	out1 = DeviceFactory::CreateOutput(DTMidiFile,("testmidi_output1.mid"));
