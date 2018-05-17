@@ -266,6 +266,8 @@ namespace mutabor {
 				 Thread::get_current_string_id().c_str(),
 				 (int)thread_command);
 			thread_command.notify_all();
+#if 0
+			// we don't detach threads anymore
 			/* detached status must be checked before a
 			   detached thead may be deleted. */
 			bool must_join = !timer->IsDetached();
@@ -275,6 +277,7 @@ namespace mutabor {
 			// playerActive.Unlock();
 			// tmp -> Delete();
 			//timer -> ClearFile();
+#endif
 			timer -> Wait();
 			delete timer;
 			timer = NULL;
