@@ -78,7 +78,7 @@ namespace mutabor {
 			last_sustained = this->end();
 
 			for (T i = 0 ; i < this->size(); i++) {
-				this->at(i) = i;
+				(*this)[i] = i;
 			}
 		}
 
@@ -841,14 +841,22 @@ namespace mutabor {
 		}
 
 		long fix_bend(long bend) {
-			long retval;
-			if (bend < 0) {
-				retval = bend / bending_range;
-			} else {
-				mutint64 b =  bend * (mutint64)0x1fff;
-				retval = b / (0x2000 * bending_range);
+			long retval = bend / bending_range;
 
-			}
+			// Midi Pitch bend has 13 bit precision
+			// we have 24 bit precision
+			// 0x1000000 / 0x2000
+			constexpr long divisor = BoxClass::tone::get_semitone() / 0x2000;
+			constexpr long divisor2 = divisor >> 1;
+			// in order to get correct rounding we add
+			// half of the
+
+			long tmp = retval % divisor;
+			retval = retval / divisor;
+			if (tmp > divisor2)
+				retval += 1;
+			else if (tmp < -divisor2)
+				retval -= 1;
 
 			/* A naive approach assumes that pitch bend ranges
 			   from -0x2000 to 0x2000. Actually the range lasts
@@ -869,18 +877,17 @@ namespace mutabor {
 			*/
 
 			// must solve the equation 0x1 00 00 00 / divisor + 0x 3f ff = 0x 7f ff
-			return retval / 0x800; //we can't use >> because of negative values
+			return retval;
 		}
 
 		pitch_bend_type pitch_and_bend(const BoxClass::tone & tuned_note) {
 			pitch_bend_type data;
 			data.bend = tuned_note.get_bend();
 			data.pitch = tuned_note.get_pitch();
-			if (data.bend >=0x800000) {
+			if (data.bend >= tuned_note.get_quartertone()) {
 				data.pitch++;
-				data.bend -= 0x1000000;
+				data.bend -= tuned_note.get_semitone();
 			}
-
 
 			// must solve the equation 0x 80 00 00 / divisor + 0x 40 00 = 0x 1 00 00
 			data.bend = fix_bend(data.bend); //we can't use >> because of negative values
@@ -893,15 +900,15 @@ namespace mutabor {
 
 			long interval_centre = old.pitch;
 			long delta = tuned_note.get_pitch() - interval_centre;
-			long new_bend = tuned_note.get_bend() + (delta << 24);
+			long new_bend = tuned_note.get_bend() + (delta * tuned_note.get_semitone());
 
-			long interval_range = bending_range << 24;
+			long interval_range = bending_range * tuned_note.get_semitone();
 
 			if (std::abs(new_bend) > interval_range)
 				return pitch_and_bend(tuned_note);
 
 			pitch_bend_type data;
-			data.pitch = old.pitch;
+			data.pitch = interval_centre;
 			data.bend = fix_bend(new_bend);
 
 			return  data;

@@ -170,6 +170,13 @@ namespace mutabor {
 					hidden::mutabor_get_tone_type(*this);
 			}
 
+			static constexpr long get_semitone() {
+				return 0x1000000;
+			}
+			static constexpr long get_quartertone() {
+				return 0x800000;
+			}
+
 			/**
 			 * Return the microtonal part of the in fixed
 			 * point integer format. This format has been
@@ -272,7 +279,7 @@ namespace mutabor {
 			case GmnBox:
 				return _mut("GUIDO box");
 			case Box0:
-				return (boost::format(_mut("Box %d")) 
+				return (boost::format(_mut("Box %d"))
 					% get_routefile_id()).str();
 			}
 			return _mut("Unknown box type");
