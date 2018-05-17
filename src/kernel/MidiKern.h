@@ -350,6 +350,12 @@ namespace mutabor {
 			NO_CHANNEL = -127
 		};
 
+
+		inline bool is_valid_length(uint32_t length) {
+			// SMF specification 1.0 p 2
+			return length < 0x10000000;
+		}
+
 		inline int get_data_size(uint8_t status_byte) {
 			static const int midi_size[]   = { 3, 3, 3, 3, 2, 2, 3,-1 };
 			static const int system_size[] = {-1, 2, 3, 2, 1, 1, 1, -1,

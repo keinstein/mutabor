@@ -5122,8 +5122,8 @@ void  OutputMidiFileTest::testBatchPlay1()
 );
 
 	CheckStr = (
-"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
-"  72 r  6b k  00 ·  00 ·  02 ·  13 ·  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n"
+"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  02 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
+"  72 r  6b k  00 ·  00 ·  02 ·  13 ·  00 ·  ff ·    51 Q  03 ·  07 ·  a1 ·  20    00 ·  ff ·  58 X\n"
 )
 		+ DataStr + (
 "  02 ·  00 ·  bf ·  26 &  00 ·  00 ·  ff ·  2f /    00 ·\n"
@@ -5178,8 +5178,8 @@ void  OutputMidiFileTest::testBatchPlay1()
 	DEBUGLOG (midiio, "delta = %d, Current time = %ld" ,delta,mutabor::CurrentTime.Get());
 
 	CheckStr = (
-"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
-"  72 r  6b k  00 ·  00 ·  02 ·  19 ·  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n"
+"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  02 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
+"  72 r  6b k  00 ·  00 ·  02 ·  19 ·  00 ·  ff ·    51 Q  03 ·  07 ·  a1 ·  20    00 ·  ff ·  58 X\n"
 )
 		+ DataStr + (
 "  02 ·  00 ·  bf ·  26 &  00 ·  81 ·  a9 ·  4f O    90 ·  3c <  7f ·  00 ·  ff ·  2f /  00 ·\n"
@@ -5222,8 +5222,8 @@ void  OutputMidiFileTest::testBatchPlay1()
 );
 
 	CheckStr = (
-"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
-"  72 r  6b k  00 ·  00 ·  02 ·  1e ·  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n"
+"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  02 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
+"  72 r  6b k  00 ·  00 ·  02 ·  1e ·  00 ·  ff ·    51 Q  03 ·  07 ·  a1 ·  20    00 ·  ff ·  58 X\n"
 )
 		+ DataStr + (
 "  00 ·  ff ·  2f /  00 ·\n"
@@ -5237,8 +5237,8 @@ void  OutputMidiFileTest::testBatchPlay1()
 	DEBUGLOG (midiio, "delta = %d, Current time = %ld" ,delta,mutabor::CurrentTime.Get());
 
 	CheckStr = (
-"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
-"  72 r  6b k  00 ·  00 ·  02 ·  23 #  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n"
+"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  02 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
+"  72 r  6b k  00 ·  00 ·  02 ·  23 #  00 ·  ff ·    51 Q  03 ·  07 ·  a1 ·  20    00 ·  ff ·  58 X\n"
 )
 		+ DataStr + (
 "  d0 ·  5a Z  81 ·  40 @  40 @  00 ·  ff ·  2f /    00 ·\n"
@@ -5252,8 +5252,8 @@ void  OutputMidiFileTest::testBatchPlay1()
 	DEBUGLOG (midiio, "delta = %d, Current time = %ld" ,delta,mutabor::CurrentTime.Get());
 
 	CheckStr = (
-"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
-"  72 r  6b k  00 ·  00 ·  02 ·  28 (  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n"
+"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  02 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
+"  72 r  6b k  00 ·  00 ·  02 ·  28 (  00 ·  ff ·    51 Q  03 ·  07 ·  a1 ·  20    00 ·  ff ·  58 X\n"
 )
 		+ DataStr + (
 "  d0 ·  5a Z  81 ·  40 @  40 @  d0 ·  5a Z  92 ·    43 C  3f ?  00 ·  ff ·  2f /  00 ·\n"
@@ -5267,8 +5267,8 @@ void  OutputMidiFileTest::testBatchPlay1()
 	delta = in -> PrepareNextEvent();
 	DEBUGLOG (midiio, "delta = %d, Current time = %ld" ,delta,mutabor::CurrentTime.Get());
 	CheckStr = (
-"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
-"  72 r  6b k  00 ·  00 ·  02 ·  2d -  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n"
+"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  02 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
+"  72 r  6b k  00 ·  00 ·  02 ·  2d -  00 ·  ff ·    51 Q  03 ·  07 ·  a1 ·  20    00 ·  ff ·  58 X\n"
 )
 		+ DataStr + (
 "  d0 ·  5a Z  81 ·  40 @  40 @  d0 ·  5a Z  92 ·    43 C  3f ?  d0 ·  5a Z  82 ·  43 C  40 @  00 ·\n"
@@ -5291,8 +5291,8 @@ void  OutputMidiFileTest::testBatchPlay1()
 "  d0 ·  5a Z  81 ·  40 @  40 @  d0 ·  5a Z  92 ·    43 C  3f ?  d0 ·  5a Z  82 ·  43 C  40 @  ec ·\n"
 );
 	CheckStr = (
-"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
-"  72 r  6b k  00 ·  00 ·  02 ·  32 2  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n"
+"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  02 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
+"  72 r  6b k  00 ·  00 ·  02 ·  32 2  00 ·  ff ·    51 Q  03 ·  07 ·  a1 ·  20    00 ·  ff ·  58 X\n"
 )
 		+ DataStr + (
 "  56 V  93 ·  34 4  7f ·  00 ·  ff ·  2f /  00 ·\n"
@@ -5359,8 +5359,8 @@ void  OutputMidiFileTest::testBatchPlay1()
 	DEBUGLOG (midiio, "delta = %d, Current time = %ld" ,delta,mutabor::CurrentTime.Get());
 
 	CheckStr = (
-"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
-"  72 r  6b k  00 ·  00 ·  02 ·  37 7  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n"
+"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  02 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
+"  72 r  6b k  00 ·  00 ·  02 ·  37 7  00 ·  ff ·    51 Q  03 ·  07 ·  a1 ·  20    00 ·  ff ·  58 X\n"
 )
 		+ DataStr + (
 "  56 V  93 ·  34 4  7f ·  e9 ·  58 X  83 ·  34 4    40 @  00 ·  ff ·  2f /  00 ·\n"
@@ -5372,8 +5372,8 @@ void  OutputMidiFileTest::testBatchPlay1()
 	delta = in -> PrepareNextEvent();
 	DEBUGLOG (midiio, "delta = %d, Current time = %ld" ,delta,mutabor::CurrentTime.Get());
 	CheckStr = (
-"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
-"  72 r  6b k  00 ·  00 ·  02 ·  3c <  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n"
+"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  02 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
+"  72 r  6b k  00 ·  00 ·  02 ·  3c <  00 ·  ff ·    51 Q  03 ·  07 ·  a1 ·  20    00 ·  ff ·  58 X\n"
 )
 		+ DataStr + (
 "  56 V  93 ·  34 4  7f ·  e9 ·  58 X  83 ·  34 4    40 @  e9 ·  46 F  80 ·  3c <  7f ·  00 ·  ff ·\n"
@@ -5410,8 +5410,8 @@ void  OutputMidiFileTest::testBatchPlay1()
 	    system states */
 
 	CheckStr = (
-"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  00 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
-"  72 r  6b k  00 ·  00 ·  02 ·  5c \\  00 ·  ff ·    51 Q  03 ·  07 ·  d0 ·  00 ·  00 ·  ff ·  58 X\n"
+"  4d M  54 T  68 h  64 d  00 ·  00 ·  00 ·  06 ·    00 ·  02 ·  00 ·  01 ·  e7 ·  28 (  4d M  54 T\n"
+"  72 r  6b k  00 ·  00 ·  02 ·  5c \\  00 ·  ff ·    51 Q  03 ·  07 ·  a1 ·  20    00 ·  ff ·  58 X\n"
 "  04 ·  04 ·  02 ·  18 ·  08 ·  00 ·  e0 ·  00 ·    40 @  00 ·  b0 ·  7a z  00 ·  00 ·  b0 ·  7d }\n"
 "  00 ·  00 ·  b0 ·  7f ·  00 ·  00 ·  b0 ·  65 e    00 ·  00 ·  b0 ·  64 d  00 ·  00 ·  b0 ·  06 ·\n"
 "  02 ·  00 ·  b0 ·  26 &  00 ·  00 ·  e1 ·  00 ·    40 @  00 ·  b1 ·  7a z  00 ·  00 ·  b1 ·  7d }\n"

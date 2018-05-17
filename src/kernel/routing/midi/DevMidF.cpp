@@ -120,7 +120,7 @@ namespace mutabor {
 		return remaining_delta;
 	}
 
-	void Track::WriteDelta()
+	timing_params::ticktype Track::WriteDelta()
 	{
 		CurrentTimer::time_point newtime = CurrentTime.Get();
 		microseconds newdelta = boost::chrono::duration_cast<microseconds>(newtime - Time);
@@ -138,8 +138,10 @@ namespace mutabor {
 		Time += Delta.midi_mus();
 
 		// if the Delta time is bad wite a correct number
-		mutASSERT(Delta.is_in_range(0,0x0FFFFFFF));
-		WriteNumber(Delta.count_in_range(0,0x0FFFFFFF));
+		mutASSERT(midi::is_valid_length(Delta.count()));
+		uint32_t output = Delta.count_in_range(0,0x0FffFFff);
+		base::WriteDelta(output);
+		return output;
 	}
 
 	uint32_t Track::ReadInt() {
@@ -151,13 +153,11 @@ namespace mutabor {
 			if (++i > 4) {
 				BOOST_THROW_EXCEPTION(delta_length_error(_mutN("Number contains too many bytes")));
 			}
-			a = at(position);
-			position++;
+			a = (*this)[position++];
 			l = (l << 7) + (a & 0x7F);
 		} while (a & 0x80);
 		return l;
 	}
-
 
 	Track::base Track::ReadMessage() {
 		uint8_t status, metatype = midi::META_SEQUENCER_SPECIFIC;
@@ -191,14 +191,18 @@ namespace mutabor {
 			}
 			data_bytes = ReadInt();
 		}
+		if (size() - position  < (size_t) data_bytes)
+			throw std::out_of_range(_mut("File ended while scanning for end of meta event"));
 
 		data_bytes += offset;
- 		base retval(data_bytes,status);
+		base retval(data_bytes);
+		retval.resize(data_bytes);
+		retval[0] = status;
 		if (status == midi::META)
 			retval[1] = metatype;
 
 		for (size_t i = offset ; i < (size_t)data_bytes ; i++ )
-			retval [i] = at(position++); // should throw on access violation.
+			retval [i] = (*this)[position++]; // should throw on access violation.
 
 		return retval;
 	}
@@ -214,36 +218,70 @@ namespace mutabor {
 	void Track::Save(std::ostream &os)
 	{
 		os.write("MTrk",4);
-
-		const uint8_t tempo_events[] = {
-			/// \todo Implement Format 2 files with one separate track for each route
-
-			/* Tempo map will be needed for Format 1 files
-			 * in these files the first track contains all tempo changes
-			 */
-
-			0x00,                                  // delta 0
-			midi::META, midi::META_SET_TEMPO,      // meta event
-			0x03,                                  // 3 data bytes
-			0x07, 0xD0, 0x00,                      // 462080 μs/qarter
-
-			0x00,                                  // delta 0
-			midi::META, midi::META_TIME_SIGNATURE, // meta event
-			0x04,                                  // 4 data bytes
-			0x04,                                  // numerator of 4/4
-			0x02,                                  // exp. of denominator of 4/(2^2)
-			0x18,                                  // 1 metronome click = 18 clocks
-			0x08                                  // 8/32 = 1/4
-		};
+		base metaevents(13);
+		if (! (flags & flags.tempo_sent)) {
+			metaevents.WriteDelta(0);
+			metaevents.SendTempo(timing.get_quarter_duration().count());
+		}
+		if (! (flags & flags.time_signature_sent)) {
+			metaevents.WriteDelta(0);
+			metaevents.SendTimeSignature(4,
+						     2,
+						     24,
+						     8);
+		}
 
 		static const uint8_t EOT[] = {0x00, midi::META, midi::META_END_OF_TRACK, 0x00};
 
-		WriteLength(os, 15+size()+4);
-
-		os.write(reinterpret_cast<const char *>(&tempo_events[0]),15);
+		WriteLength(os, metaevents.size()+size()+4);
+		os.write(reinterpret_cast<const char *>(metaevents.data()),metaevents.size());
 		os.write(reinterpret_cast<const char *>((const uint8_t*)data()),size());
 		os.write(reinterpret_cast<const char *>(EOT),4);
 	}
+
+	void Track::Load(std::istream &is,
+			 const std::string & filename) {
+		char Header[5] = {0,0,0,0,0};   // storage for header mark
+		is.read(Header, 4);
+		if (strcmp(Header,"MTrk")) {
+			throw_runtime_error(generic_error,
+					    boost::str(boost::format(_mut("Track %s of file '%s' has a broken track header."))
+						       % name
+						       % filename));
+		}
+
+		size_t l = mutabor::ReadLength(is);
+
+		clear();
+		try {
+			resize(l);
+		} catch (std::bad_alloc e) {
+			clear();
+		}
+
+		if ( size() < l) {
+			throw_runtime_error(generic_error,
+					    boost::str(boost::format(_mut("Could not allocate data for track %s of MIDI input file '%s'."))
+						       % name % filename));
+		}
+
+
+		if ( l > 0x10000000) {
+			// in order to avoid problems with 32bit integers we read large tracks in 3 chunks
+
+			is.read((char*)(data()), l/3);
+			is.read((char*)(data())+l/3, l/3);
+			is.read((char*)(data())+l/3+l/3,l-l/3- l/3);
+		} else
+			is.read((char*)(data()), l);
+
+		if ( is.bad() ) {
+			throw_runtime_error(generic_error,
+					    boost::str(boost::format(_mut("The MIDI input file “%s” is corrupted. This has been detected while reading track %s."))
+						       % filename % name));
+		}
+	}
+
 
 	Track::operator std::string () const {
 		return boost::str(boost::format("\
@@ -622,7 +660,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 			a = is.get();// mutGetC(is,a);
 
 		// Tracks lesen
-		Tracks.resize(nTrack,Track(timing));
+		Tracks.resize(nTrack);
 		channel_data.resize(16*nTrack);
 		if (Tracks.empty()) {
 			runtime_error(generic_error,
@@ -631,7 +669,26 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 			goto error_cleanup;
 		}
 
+		try {
+			for (size_t i = 0 ; i < Tracks.size() ; ++i ) {
+				auto & t = Tracks[i];
+
+				t.setTiming(timing);
+				t.setName(boost::lexical_cast<std::string>(i));
+				t.Load(is,Name);
+			}
+
+			for (auto & c : channel_data) {
+				c.Reset();
+			}
+		} catch (mutabor::error::runtime_exception & e) {
+			Mode = DeviceCompileError;
+			runtime_error(e.get_type(),e.what());
+			goto error_cleanup;
+		}
+#if 0
 		for (i = 0; i < nTrack; i++ ) {
+
 			is.read(Header, 4);
 			if (strcmp(Header,"MTrk")) {
 				runtime_error(error,
@@ -676,6 +733,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 
 			channel_data[i].Reset();
 		}
+#endif
 
 		return base::Open();
 
@@ -736,7 +794,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 			    delta < NewMinDelta ) {
 					NewMinDelta = delta;
 			}
- 			DEBUGLOG (midifile, "Track: %d, delta: %ld μs" ,(int)i,Tracks[i].GetDelta());
+			DEBUGLOG (midifile, "Track: %d, delta: %ld μs" ,(int)i,Tracks[i].GetDelta());
 		}
 		DEBUGLOG (midifile, "Next event after %ld μs (MUTABOR_NO_DELTA = %ld)" ,minDelta,NO_DELTA());
 		minDelta = NewMinDelta;
