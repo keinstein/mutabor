@@ -102,7 +102,10 @@ $(scaleparsertargets): %D%/scale_parser
 		'$@.cc' \
 		'$@.hh'; \
 	do  \
-		sed -i.bak -e '/\#[^"]*include/ s,$(srcdir)/%D%/\(scale_parser\|location\|position\|stack\),%D%/\1,g' "$$d" || exit 1 ; \
+		sed -i.bak \
+			-e '/\#[^"]*include/ s,$(srcdir)/%D%/\(scale_parser\|location\|position\|stack\),%D%/\1,g' \
+			-e '/\#[^"]*include/ s,"\(scale_parser\|location\|position\|stack\),"%D%/\1,g' \
+			"$$d" || exit 1 ; \
 		grep -v '#line' "$$d" >"$$d.tmp" ; \
 		(grep -v '#line' "$(srcdir)/$$d" 2>/dev/null | diff -u "$$d.tmp" "-") && \
 			$(RM_OFFTREE) "$$d" "$$d.tmp" || \
