@@ -126,7 +126,7 @@ namespace mutabor {
 
 			constexpr ticktype count() const { return ticks; }
 
-			constexpr ticktype count_in_range(ticktype from, ticktype to) {
+			ticktype count_in_range(ticktype from, ticktype to) {
 				if (ticks <= from) return from;
 				if (to < ticks) return to;
 				return ticks;
@@ -177,7 +177,7 @@ namespace mutabor {
 				return ticks == o.count();
 			}
 
-			constexpr bool operator == (const miditicks & o) const {
+			bool operator == (const miditicks & o) const {
 				if (&params != &(o.params)) {
 					return false;
 				}
