@@ -51,6 +51,7 @@
 #include "src/kernel/Defs.h"
 #include "boost/thread.hpp"
 #include "boost/atomic.hpp"
+#include "boost/lexical_cast.hpp"
 
 #ifndef SRC_KERNEL_ROUTING_THREAD_H_PRECOMPILED
 #define SRC_KERNEL_ROUTING_THREAD_H_PRECOMPILED
@@ -244,9 +245,6 @@ namespace mutabor {
 }
 #define MUTABOR_THREAD_OK wxMUTEX_NO_ERROR
 #else
-#if DEBUG
-#include "boost/lexical_cast.hpp"
-#endif
 MUTABOR_NAMESPACE(mutabor)
 
 enum  ThreadKind {};
