@@ -94,9 +94,9 @@ namespace mutabor {
 					    timing_params & p):ticks(t),
 				params(p) {}
 
-			constexpr miditicks(const microseconds & ms,
-					    timing_params & p,
-					    bool midi = false):ticks(),
+			miditicks(const microseconds & ms,
+				  timing_params & p,
+				  bool midi = false):ticks(),
 				params(p)
 			{
 				if (ms == microseconds::max()) {
@@ -150,12 +150,12 @@ namespace mutabor {
 			}
 
 
-			constexpr miditicks & set_zero() {
+			miditicks & set_zero() {
 				ticks = 0;
 				return *this;
 			}
 
-			constexpr miditicks & operator = (const miditicks & o) {
+			miditicks & operator = (const miditicks & o) {
 				if (&params != &(o.params)) {
 					BOOST_THROW_EXCEPTION(std::invalid_argument(_mutN("Trying to assign a miditicks object with different timing parameters")));
 				}
@@ -167,7 +167,7 @@ namespace mutabor {
 				return from <= ticks && ticks < to;
 			}
 
-			constexpr miditicks & operator = (const no_delta & o) {
+			miditicks & operator = (const no_delta & o) {
 				ticks = o.count();
 				return *this;
 
@@ -184,11 +184,11 @@ namespace mutabor {
 				return (ticks == o.ticks);
 			}
 
-			constexpr bool operator != (const no_delta & o) const {
+			bool operator != (const no_delta & o) const {
 				return ticks != o.count();
 			}
 
-			constexpr bool operator != (const miditicks & o) const {
+			bool operator != (const miditicks & o) const {
 				if (&params != &(o.params)) {
 					return true;
 				}
@@ -235,7 +235,7 @@ namespace mutabor {
 		 * Fixed step durations on a 1ms grid at 120 bpm.
 		 *
 		 */
-		constexpr void reset () {
+		void reset () {
 			is_fixed_ticks = true;
 			fps = 0;
 			quarter_duration = microseconds(500000);
@@ -248,7 +248,7 @@ namespace mutabor {
 		 *
 		 * \param d duration of a quarter note in microseconds.
 		 */
-		constexpr void set_quarter_duration(const microseconds & d) {
+		void set_quarter_duration(const microseconds & d) {
 			if (d <= microseconds(0))
 				BOOST_THROW_EXCEPTION(std::range_error("duration must be positive"));
 			quarter_duration = d;
@@ -388,9 +388,9 @@ namespace mutabor {
 		 *
 		 * \return recalculated duration according to the two passed timing objects.
 		 */
-		static constexpr microseconds update_duration_midi(microseconds duration,
-							       const timing_params & oldd,
-							       const timing_params & newd) {
+		static microseconds update_duration_midi(microseconds duration,
+							 const timing_params & oldd,
+							 const timing_params & newd) {
 			if ((oldd.is_fixed_ticks && newd.is_fixed_ticks)
 			    || duration == microseconds::max()) return duration;
 			ticktype old_quarter = oldd.is_fixed_ticks ? 1000000 : oldd.quarter_duration.count();
@@ -423,9 +423,9 @@ namespace mutabor {
 		 *
 		 * \return recalculated duration according to the two passed timing objects.
 		 */
-		static constexpr microseconds update_duration_exact(microseconds duration,
-								    const timing_params & oldd,
-								    const timing_params & newd) {
+		static microseconds update_duration_exact(microseconds duration,
+							  const timing_params & oldd,
+							  const timing_params & newd) {
 			if ((oldd.is_fixed_ticks && newd.is_fixed_ticks)
 			    || duration == microseconds::max()) return duration;
 			ticktype old_quarter = oldd.is_fixed_ticks ? 1000000 : oldd.quarter_duration.count();
@@ -681,7 +681,7 @@ namespace mutabor {
 		/**
 		 * Reset the current time to epoch.
 		 */
-		constexpr void Reset() {
+		void Reset() {
 			if (is_realtime)
 				Start(duration(0));
 			else {
