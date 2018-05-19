@@ -148,7 +148,7 @@ namespace error {
 		typedef std::runtime_error base;
 
 		runtime_exception(enum mutabor_error_type t,
-				  const std::string & message): base(make_what(type,message)),
+				  const std::string & message): base(make_what(t,message)),
 								type(t) {}
 		enum mutabor_error_type get_type() const { return type; }
 	protected:
