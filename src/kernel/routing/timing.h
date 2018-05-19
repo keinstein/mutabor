@@ -276,7 +276,7 @@ namespace mutabor {
 		 * second otherwise the number of divisions of a
 		 * quarter note.
 		 */
-		constexpr ticktype get_ticks() { return quarter_divisions; }
+		constexpr ticktype get_ticks() const { return quarter_divisions; }
 
 #if 0
 
@@ -572,6 +572,7 @@ namespace mutabor {
 #else
 	class CurrentTimerBase:protected wxStopWatch {
 	public:
+#if 0
 		static void Sleep(mutint64 time) {
 			DEBUGLOGTYPE(timer,
 				     CurrentTimerBase,
@@ -579,6 +580,7 @@ namespace mutabor {
 				     (unsigned long) time/1000);
 			Thread::Sleep((unsigned long)time/1000);
 		}
+#endif
 	protected:
 		struct timespec start, resolution;
 
