@@ -52,20 +52,6 @@ CLEANFILES += \
 #
 #
 
-if OFF_TREE
-# this rule is distingct from the rule without $(srcdir) below. Both are needed for VPATH builds
-$(srcdir)/%D%/location.hh \
-$(srcdir)/%D%/stack.hh \
-$(srcdir)/%D%/position.hh \
-$(srcdir)/%D%/scale_parser.hh \
-$(srcdir)/%D%/scale_parser.cc: %D%/scale_parser
-CLEANFILES += \
-	%D%/location.hh \
-	%D%/stack.hh \
-	%D%/position.hh \
-	%D%/scale_parser.hh \
-	%D%/scale_parser.cc
-endif
 #
 scaleparsertargets = \
 	%D%/location.hh \
@@ -74,12 +60,30 @@ scaleparsertargets = \
 	%D%/scale_parser.hh \
 	%D%/scale_parser.cc
 
+if OFF_TREE
+# this rule is distingct from the rule without $(srcdir) below. Both are needed for VPATH builds
+scaleparsertargets += \
+	$(srcdir)/%D%/location.hh \
+	$(srcdir)/%D%/stack.hh \
+	$(srcdir)/%D%/position.hh \
+	$(srcdir)/%D%/scale_parser.hh \
+	$(srcdir)/%D%/scale_parser.cc
+CLEANFILES += \
+	%D%/location.hh \
+	%D%/stack.hh \
+	%D%/position.hh \
+	%D%/scale_parser.hh \
+	%D%/scale_parser.cc
+endif
+
+
 # this rule is distingct from the off-tree rule above. Both are needed for VPATH builds
-$(scaleparsertargets): %D%/scale_parser
+$(scaleparsertargets): %D%/scale_parser.stamp
+	@echo "made $@"
 
 
 # sed -i expects a backup argument on Mac OS X
-%D%/scale_parser: $(srcdir)/%D%/scale_parser.yy
+%D%/scale_parser.stamp: $(srcdir)/%D%/scale_parser.yy
 	rm -f $@
 	$(AM_V_YACC)$(am__skipyacc) \
 		$(SHELL) \
