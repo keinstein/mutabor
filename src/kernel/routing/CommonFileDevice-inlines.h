@@ -590,8 +590,8 @@ namespace mutabor {
 	inline CommonFileInputDevice::operator std::string() const {
 		return InputDeviceClass::operator std::string() +
 			boost::str(boost::format("\n  time zero at = %s\n  paused at  = %s")
-				   % (referenceTime.load(std::memory_order_relaxed))
-				   % (pauseTime.load(std::memory_order_relaxed)));
+				   % (referenceTime.load(boost::memory_order_relaxed))
+				   % (pauseTime.load(boost::memory_order_relaxed)));
 	}
 
 }
