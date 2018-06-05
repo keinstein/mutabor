@@ -78,12 +78,12 @@ endif
 
 
 # this rule is distingct from the off-tree rule above. Both are needed for VPATH builds
-$(scaleparsertargets): %D%/scale_parser.stamp
+$(scaleparsertargets): %D%/scale_parser
 	@echo "made $@"
 
 
 # sed -i expects a backup argument on Mac OS X
-%D%/scale_parser.stamp: $(srcdir)/%D%/scale_parser.yy
+%D%/scale_parser: $(srcdir)/%D%/scale_parser.yy
 	rm -f $@
 	$(AM_V_YACC)$(am__skipyacc) \
 		$(SHELL) \
