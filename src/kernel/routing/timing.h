@@ -472,14 +472,15 @@ namespace mutabor {
 		return m.write(o);
 	}
 
-#if _XOPEN_SOURCE >= 600 || _POSIX_C_SOURCE >= 200112L
+	//#if _XOPEN_SOURCE >= 600 || _POSIX_C_SOURCE >= 200112L
+#if 1
 	class CurrentTimerBase: public boost::chrono::high_resolution_clock {
 	public:
-		typedef boost::chrono::high_resolution_clock base;
-		typedef base::duration duration;
-		typedef base::rep rep;
-		typedef base::period period;
-		typedef base::time_point time_point;
+		typedef typename boost::chrono::high_resolution_clock base;
+		typedef typename base::duration duration;
+		typedef typename base::rep rep;
+		typedef typename base::period period;
+		typedef typename base::time_point time_point;
 
 		CurrentTimerBase():running(false) {
 		}
