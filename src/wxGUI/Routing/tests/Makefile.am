@@ -16,6 +16,10 @@ check_PROGRAMS += %D%/testcppunit
 
 %C%_testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
 
+%C%_testcppunit_LDFLAGS = \
+	$(AM_LDFLAGS) \
+	-Wl,-u_sanitizer_options_link_helper
+
 %C%_testcppunit_SOURCES = \
 	%D%/main.cpp \
 	%D%/GUIRouteTest.h \

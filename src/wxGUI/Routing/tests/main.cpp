@@ -40,10 +40,16 @@
 #include "src/wxGUI/Routing/DebugRoute.cpp"
 //#undef no_wxGUI
 
+extern "C"
+const char * __lsan_default_suppressions();
 
-int 
+int
 main()
 {
+	std::cerr << "Using the following suppressions" << std::endl;
+	std::cerr << __lsan_default_suppressions() << std::endl;
+	std::cerr << "--------------------------------" << std::endl;
+
 	mutwxInitializer initializer;
 
 	// We are using .png files for some extra bitmaps.
@@ -55,19 +61,19 @@ main()
 	mutaborGUI::InitGUIRouteFactories();
 
 
-	
+
 
 #ifdef _GLIBCXX_DEBUG
 	std::clog << "In case of segmentation faults assure that cppunit is compiled using -D_GLIBCXX_DEBUG" << std::endl;
 #endif
 
 	CPPUNIT_NS::TextUi::TestRunner runner;
-	
-	CppUnit::BriefTestProgressListener listener; 
+
+	CppUnit::BriefTestProgressListener listener;
 	runner.eventManager().addListener(&listener);
 
 	runner.addTest( GUIRouteTest::suite() );
-	
+
 	bool wasSuccessful = runner.run();
 
 	return wasSuccessful ? 0 : 1;

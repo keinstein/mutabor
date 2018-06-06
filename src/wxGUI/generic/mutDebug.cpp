@@ -93,11 +93,6 @@ void ProcessDebugCommandLine(wxCmdLineParser&  parser)
 
 EXTERNC
 
-// Functions returning default options are declared weak in the tools' runtime
-// libraries. To make the linker pick the strong replacements for those
-// functions from this module, we explicitly force its inclusion by passing
-// -Wl,-u_sanitizer_options_link_helper
-void _sanitizer_options_link_helper() { }
 #define NO_SANITIZE							\
 	__attribute__((no_sanitize_address,				\
 		       no_sanitize_memory,				\
@@ -105,6 +100,12 @@ void _sanitizer_options_link_helper() { }
 		       no_sanitize_undefined,				\
 		       visibility("default"),				\
 		       used))
+
+// Functions returning default options are declared weak in the tools' runtime
+// libraries. To make the linker pick the strong replacements for those
+// functions from this module, we explicitly force its inclusion by passing
+// -Wl,-u_sanitizer_options_link_helper
+NO_SANITIZE void _sanitizer_options_link_helper() { }
 
 // Default options for AddressSanitizer in various configurations:
 //   malloc_context_size=5 - limit the size of stack traces collected by ASan
@@ -130,7 +131,7 @@ void _sanitizer_options_link_helper() { }
 //     so the slow unwinder may not work properly.
 //   detect_stack_use_after_return=1 - use fake stack to delay the reuse of
 //     stack allocations and detect stack-use-after-return errors.
-const char * mutASANoptions =
+NO_SANITIZE const char * mutASANoptions =
 	"legacy_pthread_cond=1 "
 	"malloc_context_size=5 "
 	"symbolize=1 "
