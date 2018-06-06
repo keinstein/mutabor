@@ -27,7 +27,7 @@ nodist_%C%_testcppunit_SOURCES = \
 	%D%/debugPaths.cpp
 
 %C%_testcppunit_LDADD = \
-	libmutabormaincppunit.a \
+	libmutaborwxcppunit.a \
 	src/kernel/libmutaborkernel.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
 	src/wxintl/libwxintl.la \

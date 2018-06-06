@@ -173,7 +173,7 @@ check_LIBRARIES += \
 if HAVE_CPPUNIT
 check_LIBRARIES += \
 	libmutabordebugcppunit.a \
-	libmutabormaincppunit.a
+	libmutaborwxcppunit.a
 endif
 
 #-------------------------------------------------------------
@@ -449,30 +449,30 @@ libmutabordebugcppunit_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(CPPUNIT_C
 # libmutabordebugcppunit.a
 #-------------------------------------------------------------
 
-libmutabormaincppunit_a_INLINEHEADERS =
-libmutabormaincppunit_a_INDENTHEADERS = \
+libmutaborwxcppunit_a_INLINEHEADERS =
+libmutaborwxcppunit_a_INDENTHEADERS = \
 		src/wxGUI/MutApp.h \
 		src/wxGUI/TestInitializer.h
-libmutabormaincppunit_a_INDENTS = \
+libmutaborwxcppunit_a_INDENTS = \
 		src/kernel/interface_deps_cppunit.cpp \
 		src/wxGUI/MutApp.cpp \
 		src/wxGUI/TestInitializer.cpp
 
 # no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
 
-libmutabormaincppunit_a_SOURCES = $(libmutabormaincppunit_a_INDENTS)
-libmutabormaincppunit_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS) -DMUTABOR_TEST \
-					"-DSRCDIR=\"$(srcdir)\""  $(BOOST_CPPFLAGS)
-libmutabormaincppunit_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
+libmutaborwxcppunit_a_SOURCES = $(libmutaborwxcppunit_a_INDENTS)
+libmutaborwxcppunit_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS) -DMUTABOR_TEST \
+					"-DSRCDIR=\"$(srcdir)\"" $(WX_CXXFLAGS)
+libmutaborwxcppunit_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
 				$(libmutaborrouting_a_OBJECTS) \
 				$(src_kernel_libmutaborkernel_a_OBJECTS) \
 				$(libmutaborscala_a_OBJECTS) \
 				$(libmutabordebugcppunit_a_OBJECTS) \
 				lib/rtmidi/librtmidi@rtmidi_suffix@.la
 
-libmutabormaincppunit_a_DEPENDENCIES = $(libmutabormaincppunit_a_LIBADD)
+libmutaborwxcppunit_a_DEPENDENCIES = $(libmutaborwxcppunit_a_LIBADD)
 
-noinst_HEADERS += $(libmutabormaincppunit_a_INDENTHEADERS)
+noinst_HEADERS += $(libmutaborwxcppunit_a_INDENTHEADERS)
 endif
 
 #-------------------------------------------------------------
