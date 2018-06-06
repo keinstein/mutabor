@@ -23,7 +23,8 @@ DEBUGPATHS +=  \
 CLEANFILES += \
 	%D%/playmidi1.mid \
 	%D%/test_output.mid \
-	%D%/test_output2.mid
+	%D%/test_output2.mid \
+	%D%/bug-20180414ts-result.mid
 
 check_PROGRAMS += \
 	%D%/playmidi1 \
