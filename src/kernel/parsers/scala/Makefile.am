@@ -78,8 +78,9 @@ endif
 
 
 # this rule is distingct from the off-tree rule above. Both are needed for VPATH builds
-$(scaleparsertargets): %D%/scale_parser
-	@echo "made $@"
+$(scaleparsertargets):
+	@rm -f %D%/scale_parser
+	@$(MAKE) $(AM_MAKEFLAGS) %D%/scale_parser
 
 
 # sed -i expects a backup argument on Mac OS X
