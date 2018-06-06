@@ -33,7 +33,10 @@ check_PROGRAMS += \
 
 
 EXTRA_DIST += \
-	%D%/midiin.mut
+	%D%/midiin.mut \
+	%D%/bug-20180414ts.mid.variables \
+	%D%/bug-20180414ts-output.mid \
+	%D%/bug-20180414ts-output.txt
 
 check_SCRIPTS += \
 	%D%/midiin.mut \
