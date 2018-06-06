@@ -58,7 +58,7 @@
 
 // system headers which do seldom change
 
-#ifdef MUTABOR_WX_THRED
+#ifdef MUTABOR_WX_THREAD
 #include "wx/thread.h"
 namespace mutabor {
 	// see CommonFileDevice for usage
