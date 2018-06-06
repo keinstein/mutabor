@@ -976,7 +976,6 @@ namespace mutabor {
 	class ScopedBox: public Box {
 	public:
 		~ScopedBox() {
-			std::cerr << "Deleting Scoped box" << std::endl;
 			if (get())
 				get()->Destroy();
 		}
