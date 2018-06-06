@@ -57,7 +57,6 @@ scaleparsertargets = \
 	%D%/location.hh \
 	%D%/stack.hh \
 	%D%/position.hh \
-	%D%/scale_parser.hh \
 	%D%/scale_parser.cc
 
 if OFF_TREE
@@ -107,14 +106,20 @@ $(scaleparsertargets):
 		'$@.cc' \
 		'$@.hh'; \
 	do  \
+		test -e "$$d" || continue ; \
 		sed -i.bak \
-			-e '/\#[^"]*include/ s,$(srcdir)/%D%/\(scale_parser\|location\|position\|stack\),%D%/\1,g' \
-			-e '/\#[^"]*include/ s,"\(scale_parser\|location\|position\|stack\),"%D%/\1,g' \
+			-e '/\#[^"]*\(include\|line\)/ s,$(srcdir)/%D%/\(scale_parser\|location\|position\|stack\),%D%/\1,g' \
+			-e '/\#[^"]*\(include\|line\)/ s,"\(scale_parser\|location\|position\|stack\),"%D%/\1,g' \
 			"$$d" || exit 1 ; \
 		grep -v '#line' "$$d" >"$$d.tmp" ; \
-		(grep -v '#line' "$(srcdir)/$$d" 2>/dev/null | diff -u "$$d.tmp" "-") && \
-			$(RM_OFFTREE) "$$d" "$$d.tmp" || \
-			(rm -f "$$d.tmp" ; $(MV_OFFTREE) "$$d" "$(srcdir)/$$d")  || exit 2 ; \
+		if diff -u "$(srcdir)/$$d" "$$d"; \
+		then \
+			echo $(RM_OFFTREE) "$$d" "$$d.tmp"; \
+			$(RM_OFFTREE) "$$d" "$$d.tmp" ; \
+		else \
+			echo "rm -f \"$$d.tmp\" ; $(MV_OFFTREE) \"$$d\" \"$(srcdir)/$$d\"" ; \
+			( rm -f "$$d.tmp" ; $(MV_OFFTREE) "$$d" "$(srcdir)/$$d")  || exit 2 ; \
+		fi ; \
 	done
 	touch "$@"
 

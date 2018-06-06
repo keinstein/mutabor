@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mutabor 3.1.0alpha0\n"
 "Report-Msgid-Bugs-To: keinstein@users.sourceforge.net\n"
-"POT-Creation-Date: 2018-06-06 13:24+0200\n"
+"POT-Creation-Date: 2018-06-06 18:11+0200\n"
 "PO-Revision-Date: 2015-12-16 13:18+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.sourceforge.net>\n"
 "Language-Team: Russian\n"
@@ -343,8 +343,7 @@ msgid "Bad MIDI channel (valid: 1...16)"
 msgstr ""
 
 #: src/kernel/Errors.cpp:208 src/kernel/Interval.c:104
-#: src/kernel/Parser.cpp:1101 ../../mutabor/src/kernel/mut.yy:231
-#: ../../mutabor/src/kernel/mut.yy:241
+#: src/kernel/Parser.cpp:1101 src/kernel/mut.yy:232 src/kernel/mut.yy:242
 #, c-format
 msgid "Bad interval value in %s"
 msgstr "Неправильное значение интервала в %s"
@@ -473,12 +472,12 @@ msgstr "недопустимый отпечаток в `%s', строка %d\n"
 msgid "bad pattern decl. at %s"
 msgstr "ошибка в образце: %s"
 
-#: src/kernel/Errors.cpp:246 ../../mutabor/src/kernel/mut.yy:954
+#: src/kernel/Errors.cpp:246 src/kernel/mut.yy:955
 #, fuzzy, c-format
 msgid "Bad MIDI list in line %d"
 msgstr "неверная строка в файле-каркасе"
 
-#: src/kernel/Errors.cpp:247 ../../mutabor/src/kernel/mut.yy:1083
+#: src/kernel/Errors.cpp:247 src/kernel/mut.yy:1084
 #, c-format
 msgid "No hex number after # (line %d)"
 msgstr ""
@@ -1258,130 +1257,122 @@ msgstr "Предупреждающее сообщение компилятора
 msgid "Unknown error (Type %d): %s"
 msgstr "Неизвестная ощипка в %s, строка %d !"
 
-#: ../../mutabor/src/kernel/mut.yy:162
+#: src/kernel/mut.yy:163
 #, c-format
 msgid "%s at line %d"
 msgstr ""
 
-#: ../../mutabor/src/kernel/mut.cc:959
+#: src/kernel/mut.cc:960
 msgid "syntax error: cannot back up"
 msgstr ""
 
-#: ../../mutabor/src/kernel/mut.cc:1361 ../../mutabor/src/kernel/mut.cc:3050
-#: ../../mutabor/src/kernel/mut.cc:3055
+#: src/kernel/mut.cc:1362 src/kernel/mut.cc:3051 src/kernel/mut.cc:3056
 #: src/kernel/parsers/scala/scale_parser.cc:1865
 #, fuzzy
 msgid "syntax error"
 msgstr "Синтаксическая ошибка в строке %d"
 
-#: ../../mutabor/src/kernel/mut.cc:1362
-#: src/kernel/parsers/scala/scale_parser.cc:1866
+#: src/kernel/mut.cc:1363 src/kernel/parsers/scala/scale_parser.cc:1866
 #, fuzzy, c-format
 msgid "syntax error, unexpected %s"
 msgstr "Синтаксическая ошибка в строке %d"
 
-#: ../../mutabor/src/kernel/mut.cc:1363
-#: src/kernel/parsers/scala/scale_parser.cc:1867
+#: src/kernel/mut.cc:1364 src/kernel/parsers/scala/scale_parser.cc:1867
 #, c-format
 msgid "syntax error, unexpected %s, expecting %s"
 msgstr ""
 
-#: ../../mutabor/src/kernel/mut.cc:1364
-#: src/kernel/parsers/scala/scale_parser.cc:1868
+#: src/kernel/mut.cc:1365 src/kernel/parsers/scala/scale_parser.cc:1868
 #, c-format
 msgid "syntax error, unexpected %s, expecting %s or %s"
 msgstr ""
 
-#: ../../mutabor/src/kernel/mut.cc:1365
-#: src/kernel/parsers/scala/scale_parser.cc:1869
+#: src/kernel/mut.cc:1366 src/kernel/parsers/scala/scale_parser.cc:1869
 #, c-format
 msgid "syntax error, unexpected %s, expecting %s or %s or %s"
 msgstr ""
 
-#: ../../mutabor/src/kernel/mut.cc:1366
-#: src/kernel/parsers/scala/scale_parser.cc:1870
+#: src/kernel/mut.cc:1367 src/kernel/parsers/scala/scale_parser.cc:1870
 #, c-format
 msgid "syntax error, unexpected %s, expecting %s or %s or %s or %s"
 msgstr ""
 
-#: ../../mutabor/src/kernel/mut.cc:1555 ../../mutabor/src/kernel/mut.cc:3200
+#: src/kernel/mut.cc:1556 src/kernel/mut.cc:3201
 msgid "memory exhausted"
 msgstr ""
 
-#: ../../mutabor/src/kernel/mut.yy:179
+#: src/kernel/mut.yy:180
 #, fuzzy, c-format
 msgid "Syntax error in line %d."
 msgstr "Синтаксическая ошибка в строке %d"
 
-#: ../../mutabor/src/kernel/mut.yy:250
+#: src/kernel/mut.yy:251
 #, fuzzy, c-format
 msgid "Bad interval declaration of intervall %s in line %d."
 msgstr "Неверный синтаксис объявления: ~S~%Игнорируется."
 
-#: ../../mutabor/src/kernel/mut.yy:257
+#: src/kernel/mut.yy:258
 #, fuzzy, c-format
 msgid "Wrong character. Expecting %s in line %d."
 msgstr "Неверный параметр командной строки."
 
-#: ../../mutabor/src/kernel/mut.yy:298
+#: src/kernel/mut.yy:299
 #, fuzzy, c-format
 msgid "Bad tone declaration of tone %s in line %d."
 msgstr "Неверный синтаксис объявления: ~S~%Игнорируется."
 
-#: ../../mutabor/src/kernel/mut.yy:332 ../../mutabor/src/kernel/mut.yy:342
-#: ../../mutabor/src/kernel/mut.yy:351 ../../mutabor/src/kernel/mut.yy:361
-#: ../../mutabor/src/kernel/mut.yy:371 ../../mutabor/src/kernel/mut.yy:381
-#: ../../mutabor/src/kernel/mut.yy:420 ../../mutabor/src/kernel/mut.yy:430
-#: ../../mutabor/src/kernel/mut.yy:441
+#: src/kernel/mut.yy:333 src/kernel/mut.yy:343 src/kernel/mut.yy:352
+#: src/kernel/mut.yy:362 src/kernel/mut.yy:372 src/kernel/mut.yy:382
+#: src/kernel/mut.yy:421 src/kernel/mut.yy:431 src/kernel/mut.yy:442
 #, fuzzy, c-format
 msgid "Division by (nearly) 0 in line %d."
 msgstr "Деление на (приблизительно) 0 в строки %d"
 
-#: ../../mutabor/src/kernel/mut.yy:494
+#: src/kernel/mut.yy:495
 #, fuzzy, c-format
 msgid "Bad tonesystem declaration in line %d."
 msgstr "недопустимый отпечаток в `%s', строка %d\n"
 
-#: ../../mutabor/src/kernel/mut.yy:526 ../../mutabor/src/kernel/mut.yy:533
+#: src/kernel/mut.yy:527 src/kernel/mut.yy:534
 #, c-format
 msgid ""
 "Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as "
 "parameters as in line %d is not supported. Expect undexpected behaviour."
 msgstr ""
 
-#: ../../mutabor/src/kernel/mut.yy:627
+#: src/kernel/mut.yy:628
 #, fuzzy, c-format
 msgid "Invalid parameter list in retuning %s line %d"
 msgstr "Неверный параметр командной строки."
 
-#: ../../mutabor/src/kernel/mut.yy:640
+#: src/kernel/mut.yy:641
 #, fuzzy, c-format
 msgid "Error while reading %s line %d"
 msgstr "Ошибка при чтении файла."
 
-#: ../../mutabor/src/kernel/mut.yy:660
+#: src/kernel/mut.yy:661
 #, fuzzy, c-format
 msgid "Bad retuning in line %d."
 msgstr "недопустимый отпечаток в `%s', строка %d\n"
 
-#: ../../mutabor/src/kernel/mut.yy:778
+#: src/kernel/mut.yy:779
 #, c-format
 msgid "Invalid argument list for call to %s in line %d"
 msgstr ""
 
-#: ../../mutabor/src/kernel/mut.yy:841
+#: src/kernel/mut.yy:842
 #, fuzzy, c-format
 msgid "There is an error in the chroma list in harmony “%s” at line %d."
 msgstr "Неверный синтаксис объявления: ~S~%Игнорируется."
 
-#: ../../mutabor/src/kernel/mut.yy:849
+#: src/kernel/mut.yy:850
 #, c-format
 msgid ""
 "The chroma list must be enclosed in braces '{' '}' in harmony “%s” at line "
 "%d."
 msgstr ""
 
-#: ../../mutabor/src/kernel/mut.yy:1227
+#: src/kernel/mut.yy:1228
 #, c-format
 msgid "Invalid character: “%c” = %x at line %d."
 msgstr ""
@@ -1439,29 +1430,29 @@ msgstr ""
 msgid "Mutabor tuning"
 msgstr "Настройка жёсткого диска"
 
-#: ../../mutabor/src/kernel/parsers/scala/scale_parser.yy:163
+#: src/kernel/parsers/scala/scale_parser.yy:163
 msgid "Too few intervals have been provided."
 msgstr ""
 
-#: ../../mutabor/src/kernel/parsers/scala/scale_parser.yy:245
+#: src/kernel/parsers/scala/scale_parser.yy:245
 msgid "The interval count must be an integer number, not a float."
 msgstr ""
 
-#: ../../mutabor/src/kernel/parsers/scala/scale_parser.yy:250
+#: src/kernel/parsers/scala/scale_parser.yy:250
 msgid "The interval count must be an integer number, not a ratio."
 msgstr ""
 
-#: ../../mutabor/src/kernel/parsers/scala/scale_parser.yy:302
+#: src/kernel/parsers/scala/scale_parser.yy:302
 msgid ""
 "An incomplete ratio has been detected, and descriptions must not start with "
 "'/'."
 msgstr ""
 
-#: ../../mutabor/src/kernel/parsers/scala/scale_parser.yy:426
+#: src/kernel/parsers/scala/scale_parser.yy:426
 msgid "integer is out of range"
 msgstr ""
 
-#: ../../mutabor/src/kernel/parsers/scala/scale_parser.yy:452
+#: src/kernel/parsers/scala/scale_parser.yy:452
 msgid "float is out of range"
 msgstr ""
 
