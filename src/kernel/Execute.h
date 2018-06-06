@@ -42,7 +42,7 @@
 /* headers */
 /* --------------------------------------------------------------------------- */
 
-#include "Defs.h"
+#include "src/kernel/Defs.h"
 #include "src/kernel/error.h"
 
 #ifndef MU32_EXECUTE_H_PRECOMPILED

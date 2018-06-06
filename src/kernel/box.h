@@ -44,10 +44,10 @@
 // headers
 // --------------------------------------------------------------------------- */
 
-#include "Defs.h"
-#include "Global.h"
-#include "Interpre.h"
-#include "Execute.h"
+#include "src/kernel/Defs.h"
+#include "src/kernel/Global.h"
+#include "src/kernel/Interpre.h"
+#include "src/kernel/Execute.h"
 
 #ifndef MU32_BOX_H_PRECOMPILED
 #define MU32_BOX_H_PRECOMPILED

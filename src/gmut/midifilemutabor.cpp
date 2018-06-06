@@ -6,6 +6,7 @@
 /* The simplest usage of the library.
  */
 
+#include "src/kernel/Defs.h"
 #include <boost/program_options.hpp>
 #include "boost/locale.hpp"
 #include "boost/filesystem.hpp"
@@ -13,7 +14,6 @@
 namespace po = boost::program_options;
 namespace fs = boost::filesystem;
 
-#include "src/kernel/Defs.h"
 #include "src/kernel/routing/midi/DevMidF.h"
 #include "src/kernel/routing/Route.h"
 #include <iostream>
