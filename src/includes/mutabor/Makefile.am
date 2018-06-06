@@ -1,5 +1,4 @@
 CLEANFILES =
-AM_CFLAGS =
 check_MIDIFILES =
 
 SUBDIRS=tests

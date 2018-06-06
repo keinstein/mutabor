@@ -1,4 +1,3 @@
-AM_CFLAGS =
 CLEANFILES =
 SUBDIRS = missfunc
 check_MIDIFILES =

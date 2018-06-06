@@ -1,19 +1,20 @@
 #AM_TESTS_ENVIRONMENT= $(top_srcdir)/run-test.sh
 buildincludedir=$(top_builddir)
-AM_CPPFLAGS = -I$(buildincludedir)  \
+#INCLUDES = # old name for AM_CPPFLAGS
+AM_CPPFLAGS = \
+	-I$(buildincludedir)  \
 	-I$(top_srcdir)/includes \
 	-I$(top_srcdir)/lib/rtmidi \
 	-I$(top_srcdir) \
 	@NETINET_INC@ \
 	-I$(top_builddir)/intl \
-	$(WX_CPPFLAGS) \
 	-DPREFIX='"$(prefix)"' \
 	$(BOOST_CPPFLAGS)
 LIBS += $(JACK_LIBS) $(ALSA_LIBS)
 #LIBS += $(BOOST_LDFLAGS)
 LOCALEDIR = @localedir@
-AM_CFLAGS += $(ALSA_CFLAGS) $(JACK_LIBS)  $(WX_CFLAGS) $(WXINTLCFLAGS) "-DLOCALEDIR=\"$(LOCALEDIR)\""
-AM_CXXFLAGS = $(AM_CFLAGS)
+AM_CFLAGS = $(ALSA_CFLAGS) $(WX_CFLAGS) $(WXINTLCFLAGS) "-DLOCALEDIR=\"$(LOCALEDIR)\""
+AM_CXXFLAGS =  $(ALSA_CFLAGS) $(WX_CFLAGS) $(WXINTLCXXFLAGS) "-DLOCALEDIR=\"$(LOCALEDIR)\""
 AM_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
 AM_YFLAGS = -d -v --report=all -x --graph -o y.tab.c
 EXTRA_PROGRAMS =

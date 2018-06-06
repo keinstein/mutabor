@@ -12,7 +12,6 @@ GIT = git
 REPOSITORY = http://git.berlios.de/mutabor
 REPOSITORY_PATH = .
 AM_LFLAGS = --c++ -o $(LEX_OUTPUT_ROOT).c
-AM_CFLAGS =
 DLLPROGRAMS = $(TESTS) $(noinst_PROGRAMS) $(bin_PROGRAMS)
 #-o lex.yy.c
 
@@ -286,7 +285,8 @@ libmutaborgui_a_POTSOURCES = $(libmutaborgui_a_INLINEHEADERS) $(libmutaborgui_a_
 
 libmutaborgui_a_SOURCES = $(libmutaborgui_a_INDENTS)
 
-libmutaborgui_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(BOOST_CPPFLAGS)
+libmutaborgui_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(WX_CPPFLAGS)
+
 
 
 #-------------------------------------------------------------
@@ -495,7 +495,7 @@ libmutabordebugtest_a_INDENTS = \
 # no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
 
 libmutabordebugtest_a_SOURCES = $(libmutabordebugtest_a_INDENTS)
-libmutabordebugtest_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) -DMUTABOR_TEST  $(BOOST_CPPFLAGS)
+libmutabordebugtest_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) -DMUTABOR_TEST  $(BOOST_CPPFLAGS)  $(WX_CPPFLAGS)
 
 
 #-------------------------------------------------------------
@@ -513,7 +513,12 @@ libmutabormaintest_a_INDENTS = \
 # no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
 
 libmutabormaintest_a_SOURCES = $(libmutabormaintest_a_INDENTS)
-libmutabormaintest_a_CXXFLAGS = $(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(TEST_CFLAGS) -DMUTABOR_TEST $(BOOST_CPPFLAGS)
+libmutabormaintest_a_CXXFLAGS = \
+	$(WXINTLCXXFLAGS) \
+	$(AM_CXXFLAGS) \
+	$(TEST_CFLAGS) \
+	-DMUTABOR_TEST \
+	$(WX_CPPFLAGS)
 libmutabormaintest_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
 				$(libmutaborrouting_a_OBJECTS) \
 				$(src_kernel_libmutaborkernel_a_OBJECTS) \
@@ -598,7 +603,7 @@ if COND_WINRC
 mutabor_COMPILESOURCES += src/wxGUI/Mutabor.rc
 endif
 
-mutabor_CXXFLAGS=$(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(BOOST_CPPFLAGS)
+mutabor_CXXFLAGS=$(WXINTLCXXFLAGS) $(AM_CXXFLAGS) $(WX_CPPFLAGS)
 mutabor_CXXLD=$(CXX)
 mutabor_SHORTNAME = mutabor
 mutabor_LDADD = \
