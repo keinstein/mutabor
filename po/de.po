@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mutabor 4.0\n"
 "Report-Msgid-Bugs-To: keinstein@users.sourceforge.net\n"
-"POT-Creation-Date: 2018-03-24 10:41+0100\n"
-"PO-Revision-Date: 2018-03-04 22:10+0100\n"
+"POT-Creation-Date: 2018-06-06 13:24+0200\n"
+"PO-Revision-Date: 2018-06-06 16:52+0200\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.sourceforge.net>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "Language: de\n"
@@ -18,104 +18,145 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Poedit 2.0.7\n"
 "X-Poedit-SearchPath-0: /home/tobias/macbookbackup/Entwicklung/mutabor/"
 "mutabor-git\n"
 
-#: src/gmut/scl2mut.cpp:56
+#: src/gmut/midifilemutabor.cpp:34 src/gmut/scl2mut.cpp:64
 msgid "too many positional options have been specified on the command line"
-msgstr "Auf der Kommandozeile wurden zu viele Parameter angegeben."
+msgstr "Auf der Kommandozeile wurden zu viele Parameter angegeben"
 
-#: src/gmut/scl2mut.cpp:58
+#: src/gmut/midifilemutabor.cpp:36 src/gmut/scl2mut.cpp:66
 #, c-format
 msgid "can not read options configuration file '%s'"
 msgstr "Ungültige oder beschädigte Konfigurationsdatei „%s“"
 
-#: src/gmut/scl2mut.cpp:61
+#: src/gmut/midifilemutabor.cpp:39 src/gmut/scl2mut.cpp:69
 #, no-c-format
 msgid "option '%canonical_option%' only takes a single argument"
-msgstr "Die Option „%canonical_option%“ kann nur ein Argument verarbeiten."
+msgstr "Die Option „%canonical_option%“ kann nur ein Argument verarbeiten"
 
-#: src/gmut/scl2mut.cpp:64
+#: src/gmut/midifilemutabor.cpp:42 src/gmut/scl2mut.cpp:72
 #, no-c-format
 msgid "option '%canonical_option%' cannot be specified more than once"
 msgstr "Die Option „%canonical_option%“ darf höchstens einmal angegeben werden"
 
-#: src/gmut/scl2mut.cpp:67
+#: src/gmut/midifilemutabor.cpp:45 src/gmut/scl2mut.cpp:75
 #, no-c-format
 msgid "the option '%canonical_option%' is required but missing"
 msgstr ""
 "Die Option „%canonical_option%“ wird benötigt, wurde aber nicht angegeben"
 
-#: src/gmut/scl2mut.cpp:70
+#: src/gmut/midifilemutabor.cpp:48 src/gmut/scl2mut.cpp:78
 #, no-c-format
 msgid "unrecognised option '%canonical_option%'"
 msgstr "Unbekannte Option „%canonical_option%“"
 
-#: src/gmut/scl2mut.cpp:73
+#: src/gmut/midifilemutabor.cpp:51 src/gmut/scl2mut.cpp:81
 #, no-c-format
 msgid "option '%canonical_option%' is ambiguous"
 msgstr "Die Option „%canonical_option%“ ist mehrdeutig"
 
-#: src/gmut/scl2mut.cpp:78
+#: src/gmut/midifilemutabor.cpp:56 src/gmut/scl2mut.cpp:86
+#: src/kernel/error.h:170
 #, c-format
 msgid "Error: %s"
 msgstr "Fehler: %s"
 
-#: src/gmut/scl2mut.cpp:98
+#: src/gmut/midifilemutabor.cpp:71
+#, c-format
+msgid ""
+"Synopsis: %s [options]  input-file[.mid] [output-file[.mid] [logic-file[."
+"mut]]] [start-keys]"
+msgstr ""
+"Aufruf: %s [Optionen] Eingabedatei[.mid] [Ausgabedatei[.mid] [Logik-Datei[."
+"mut] [Starttasten]]]"
+
+#: src/gmut/midifilemutabor.cpp:146 src/gmut/scl2mut.cpp:165
+msgid "produce this help message"
+msgstr "erzeuge diese Hilfenachricht"
+
+#: src/gmut/midifilemutabor.cpp:148
+msgid "Input MIDI file"
+msgstr "Eingabe-MIDI-Datei"
+
+#: src/gmut/midifilemutabor.cpp:151
+msgid "Output MIDI file"
+msgstr "Ausgabe-MIDI-Datei"
+
+#: src/gmut/midifilemutabor.cpp:154
+msgid "Mutabor Logic file"
+msgstr "Mutabor-Logik-Datei"
+
+#: src/gmut/midifilemutabor.cpp:157
+msgid "Execute the given keys before starting the MIDI playback"
+msgstr "Führe die gegebenen Tasten aus, bevor die MIDI-Wiedergabe beginnt"
+
+#: src/gmut/midifilemutabor.cpp:181 src/gmut/scl2mut.cpp:160
+msgid "Allowed options"
+msgstr "Erlaubte Optionen"
+
+#: src/gmut/midifilemutabor.cpp:249
+#, c-format
+msgid "Error: Could not open logic file `%s'."
+msgstr "Fehler: Konnte die Logikdatei „%s“ nicht öffnen."
+
+#: src/gmut/midifilemutabor.cpp:259
+#, c-format
+msgid "Error: Could not read logic file `%s'."
+msgstr "Fehler: Konnte die Logik-Datei „%s” nicht lesen."
+
+#: src/gmut/midifilemutabor.cpp:268
+#, c-format
+msgid "Error: Could not compile logic file `%s'."
+msgstr "Fehler: Konnte die Logik-Datei „%s“ nicht übersetzen."
+
+#: src/gmut/scl2mut.cpp:106
 #, c-format
 msgid "Synopsis: %s [options]  input-file[.scl] [output-file[.mut]]"
 msgstr "Aufruf: %s [Optionen] Eingabedatei.scl] [Ausgabedatei[.mut]]"
 
-#: src/gmut/scl2mut.cpp:152
-msgid "Allowed options"
-msgstr "Erlaubte Optionen"
-
-#: src/gmut/scl2mut.cpp:157
-msgid "produce this help message"
-msgstr "erzeuge diese Hilfenachricht"
-
-#: src/gmut/scl2mut.cpp:159
+#: src/gmut/scl2mut.cpp:167
 msgid "Use .kbm file"
 msgstr "Benutze .kbm-Datei"
 
-#: src/gmut/scl2mut.cpp:162 Mutabor.xrc:1880
+#: src/gmut/scl2mut.cpp:170 Mutabor.xrc:1880
 msgid "scala"
 msgstr "scala"
 
-#: src/gmut/scl2mut.cpp:163
+#: src/gmut/scl2mut.cpp:171
 msgid "Prefix interval identifiers with arg"
-msgstr "Beginne alle Intervallnamen mit „arg“"
+msgstr "Beginne alle Intervallnamen mit dem gegebenen Argument"
 
-#: src/gmut/scl2mut.cpp:166 Mutabor.xrc:1897
+#: src/gmut/scl2mut.cpp:174 Mutabor.xrc:1897
 msgid "scala_tone"
 msgstr "Scala_Ton"
 
-#: src/gmut/scl2mut.cpp:167
+#: src/gmut/scl2mut.cpp:175
 msgid "Prefix tone identifiers with arg"
-msgstr "Beginne alle Tonnamen mit „arg“"
+msgstr "Beginne alle Tonnamen mit dem gegebenn Argument"
 
-#: src/gmut/scl2mut.cpp:170 Mutabor.xrc:1914
+#: src/gmut/scl2mut.cpp:178 Mutabor.xrc:1914
 msgid "scala_tonesystem"
 msgstr "Scala_Tonsystem"
 
-#: src/gmut/scl2mut.cpp:171
+#: src/gmut/scl2mut.cpp:179
 msgid "Set the name of the generated tone system to arg"
 msgstr "Benenne das generierte Tonsystem mit arg"
 
-#: src/gmut/scl2mut.cpp:174 Mutabor.xrc:1931
+#: src/gmut/scl2mut.cpp:182 Mutabor.xrc:1931
 msgid "scala_logic"
 msgstr "Scala_Logik"
 
-#: src/gmut/scl2mut.cpp:175
+#: src/gmut/scl2mut.cpp:183
 msgid "Set the name of the generated logic to arg"
-msgstr "Benenne die Erzeugte Logik mit „arg“"
+msgstr "Benenne die Erzeugte Logik mit diesem Namen"
 
-#: src/gmut/scl2mut.cpp:177
+#: src/gmut/scl2mut.cpp:185
 msgid ".scl file that shall be converted"
 msgstr "die .scl-Datei, die konvertiert werden soll"
 
-#: src/gmut/scl2mut.cpp:178
+#: src/gmut/scl2mut.cpp:186
 msgid "filename of the mutabor logic"
 msgstr "Dateiname der Mutabor-Logik"
 
@@ -254,7 +295,7 @@ msgstr "Unbekannte Harmonieform: %s (in Logik „%s“)"
 #: src/kernel/Errors.cpp:190
 #, c-format
 msgid "Undefined parameter name: %s in %s"
-msgstr "Undefinierter Parametername: %s in „%s“"
+msgstr "Undefinierter Parametername: „%s“ in „%s“"
 
 #: src/kernel/Errors.cpp:191 src/kernel/Interval.c:354
 #, c-format
@@ -304,7 +345,7 @@ msgstr "Ungültiger MIDI-Kanal (erlaubt: 1 bis 16)"
 #: ../../mutabor/src/kernel/mut.yy:241
 #, c-format
 msgid "Bad interval value in %s"
-msgstr "Ungültiger Intervallvert in „%s“"
+msgstr "Ungültiger Intervallwert in „%s“"
 
 #: src/kernel/Errors.cpp:209 src/kernel/Parser.cpp:3040
 #, c-format
@@ -373,8 +414,7 @@ msgstr "Im Fall „%s“: „%s“ muss ohne Parameter aufgerufen werden"
 #, c-format
 msgid "Tones %s and %s are dependent"
 msgstr ""
-"Die Töne „%s“ und „%s“ hängen gegenseitig voneinander ab. Das darf nicht "
-"sein."
+"Die Töne „%s“ und „%s“ hängen gegenseitig voneinander ab. Das darf nicht sein"
 
 #: src/kernel/Errors.cpp:232
 #, c-format
@@ -503,6 +543,18 @@ msgstr "Laufzeitwarnung"
 msgid "Error"
 msgstr "Fehler"
 
+#: src/kernel/Execute.cpp:65
+msgid "Internal error"
+msgstr "Interner Fehler"
+
+#: src/kernel/Execute.cpp:66
+msgid "Compiler error"
+msgstr "Übersetzerfehler"
+
+#: src/kernel/Execute.cpp:67
+msgid "Runtime error"
+msgstr "Laufzeitfehler"
+
 #: src/kernel/Execute.cpp:68
 msgid "Unknown error"
 msgstr "Unbekannter Fehler"
@@ -616,13 +668,6 @@ msgstr ""
 "Undefinierte Harmonieklasse %d in HarmonieAnalyse().\n"
 "Bitte informatieren Sie das MUTABOR-Team über diesen Fehler."
 
-#: src/kernel/Execute.h:155 src/kernel/parsers/scala/scale_lexer.h:140
-#: src/kernel/routing/Box.h:717
-msgid "Error in Error: Could not allocate buffer for error message."
-msgstr ""
-"Fehler in Fehlerausgabe: Konnte keinen Puffer für die Fehlermeldung "
-"erstellen."
-
 #: src/kernel/Hilfs.cpp:97
 msgid "Not enough memory for the MUTABOR file"
 msgstr "Nicht genügend Speicher für die MUTABOR-Datei"
@@ -667,9 +712,7 @@ msgstr "Schleife"
 #: src/kernel/Interval.c:363
 #, c-format
 msgid "Undefined interval type %d for interval %s (%s:%d)."
-msgstr ""
-"Undefinierter Intervalltyp %d für Intervall „%s“ in\n"
-"%s:%d"
+msgstr "Undefinierter Intervalltyp %d für Intervall „%s“ in %s:%d."
 
 #: src/kernel/Parser.cpp:131
 #, c-format
@@ -1036,7 +1079,7 @@ msgid ""
 "%s:%d."
 msgstr ""
 "Unbekannter Argument-Typ %d gefunden bei\n"
-"%s:%d"
+"%s:%d."
 
 #: src/kernel/TabGen.cpp:308
 #, c-format
@@ -1045,7 +1088,7 @@ msgid ""
 "%s:%d."
 msgstr ""
 "Argument Nummer %d hat nichtexistierenden Index %d bei\n"
-"%s:%d"
+"%s:%d."
 
 #: src/kernel/TabGen.cpp:367
 #, c-format
@@ -1054,7 +1097,7 @@ msgid ""
 "%s:%d."
 msgstr ""
 "Unbekannte Parameternummer %d gefunden bei\n"
-"%s:%d"
+"%s:%d."
 
 #: src/kernel/TabGen.cpp:444
 #, c-format
@@ -1132,7 +1175,7 @@ msgstr "Statusinformationen des Mutabor-Kerns anzeigen"
 
 #: src/kernel/debugFlags.h:35
 msgid "Debug the GUIDO file devices"
-msgstr "Überwache GUIDO-Datei-Geräte "
+msgstr "Überwache GUIDO-Datei-Geräte"
 
 #: src/kernel/debugFlags.h:36
 msgid "Other gui related debug information"
@@ -1220,6 +1263,48 @@ msgstr ""
 "Zeige Nachrichten, die immer angezeigt werden ;-). (Nur für internen "
 "Gebrauch)"
 
+#: src/kernel/error.h:118 src/kernel/parsers/scala/scale_lexer.h:140
+#: src/kernel/routing/Box.h:724
+msgid "Error in Error: Could not allocate buffer for error message."
+msgstr ""
+"Fehler in Fehlerausgabe: Konnte keinen Puffer für die Fehlermeldung "
+"erstellen."
+
+#: src/kernel/error.h:164
+#, c-format
+msgid "Warning: %s"
+msgstr "Warnung: %s"
+
+#: src/kernel/error.h:166
+#, c-format
+msgid "Compiler warning: %s"
+msgstr "Warnung des Übersetzers: %s"
+
+#: src/kernel/error.h:168
+#, c-format
+msgid "Runtime Warning: %s"
+msgstr "Laufzeitwarnung: %s"
+
+#: src/kernel/error.h:172
+#, c-format
+msgid "Internal error: %s"
+msgstr "Interner Fehler: %s"
+
+#: src/kernel/error.h:174
+#, c-format
+msgid "Compiler error: %s"
+msgstr "Übersetzerfehler: %s"
+
+#: src/kernel/error.h:176
+#, c-format
+msgid "Runtime error: %s"
+msgstr "Laufzeitfehler: %s"
+
+#: src/kernel/error.h:178
+#, c-format
+msgid "Unknown error (Type %d): %s"
+msgstr "Unbekannter Fehler (Typ %d): %s"
+
 #: ../../mutabor/src/kernel/mut.yy:162
 #, c-format
 msgid "%s at line %d"
@@ -1283,7 +1368,7 @@ msgstr "Ungültige Intervall-Definition vom Intervall „%s“ in Zeile %d."
 #: ../../mutabor/src/kernel/mut.yy:257
 #, c-format
 msgid "Wrong character. Expecting %s in line %d."
-msgstr "Ungültiges Zeichen. Erwarte „%s“ in Zeile %d"
+msgstr "Ungültiges Zeichen. Erwarte „%s“ in Zeile %d."
 
 #: ../../mutabor/src/kernel/mut.yy:298
 #, c-format
@@ -1338,7 +1423,7 @@ msgstr "Fehlerhafte Argument-Liste im Aufruf von „%s“ in Zeile %d"
 #, c-format
 msgid "There is an error in the chroma list in harmony “%s” at line %d."
 msgstr ""
-"Es gibt einen Fehler in der Tonigkeitsliste in Harmonie „%s“ in Zeile %d"
+"Es gibt einen Fehler in der Tonigkeitsliste in Harmonie „%s“ in Zeile %d."
 
 #: ../../mutabor/src/kernel/mut.yy:849
 #, c-format
@@ -1347,7 +1432,7 @@ msgid ""
 "%d."
 msgstr ""
 "Die Tonigkeitsliste in Harmonie „%s“ muss in geschweifte Klammern „{“ „}“ "
-"eingeschlossen werden in Zeile %d"
+"eingeschlossen werden in Zeile %d."
 
 #: ../../mutabor/src/kernel/mut.yy:1227
 #, c-format
@@ -1436,61 +1521,61 @@ msgstr "Ganzzahl ist außerhalb des zulässigen Bereiches"
 msgid "float is out of range"
 msgstr "Fließkommazahl ist außerhalb des zulässigen Bereiches"
 
-#: src/kernel/routing/Box.cpp:480
+#: src/kernel/routing/Box.cpp:511
 msgid "Activation error"
 msgstr "Fehler beim Aktivieren"
 
-#: src/kernel/routing/Box.cpp:723
+#: src/kernel/routing/Box.cpp:754
 msgid "Generating tables"
 msgstr "Erzeuge Tabellen"
 
-#: src/kernel/routing/Box.cpp:733
+#: src/kernel/routing/Box.cpp:764
 msgid "Translation successful"
 msgstr "Erfolgreiche Übersetzung"
 
-#: src/kernel/routing/Box.cpp:734
+#: src/kernel/routing/Box.cpp:765
 msgid "No error occured."
 msgstr "Es tauchte kein Fehler auf."
 
-#: src/kernel/routing/Box.cpp:741
+#: src/kernel/routing/Box.cpp:772
 msgid "Translation interrupted."
 msgstr "Übersetzung wurde abgebrochen."
 
-#: src/kernel/routing/Box.h:255 src/kernel/routing/Box.h:269
+#: src/kernel/routing/Box.h:262 src/kernel/routing/Box.h:276
 msgid "New box"
 msgstr "Neuer Kasten"
 
-#: src/kernel/routing/Box.h:257 src/kernel/routing/Box.h:271
+#: src/kernel/routing/Box.h:264 src/kernel/routing/Box.h:278
 msgid "No box"
 msgstr "Kein Kasten"
 
-#: src/kernel/routing/Box.h:259
+#: src/kernel/routing/Box.h:266
 msgid "GUIDO Music Notation box"
 msgstr "GUIDO Musik-Notations-Kasten"
 
-#: src/kernel/routing/Box.h:261 src/wxGUI/Routing/BoxDlg.cpp:299
+#: src/kernel/routing/Box.h:268 src/wxGUI/Routing/BoxDlg.cpp:299
 msgid "Mutabor box"
 msgstr "Mutabor-Kasten"
 
-#: src/kernel/routing/Box.h:263 src/kernel/routing/Box.h:278
+#: src/kernel/routing/Box.h:270 src/kernel/routing/Box.h:285
 msgid "Unknown box type"
 msgstr "Unbekannter Kastentyp"
 
-#: src/kernel/routing/Box.h:273
+#: src/kernel/routing/Box.h:280
 msgid "GUIDO box"
 msgstr "GUIDO-Kasten"
 
-#: src/kernel/routing/Box.h:275 src/wxGUI/Routing/BoxShape.cpp:154
+#: src/kernel/routing/Box.h:282 src/wxGUI/Routing/BoxShape.cpp:154
 #, c-format
 msgid "Box %d"
 msgstr "Kasten %d"
 
-#: src/kernel/routing/Box.h:759
+#: src/kernel/routing/Box.h:766
 #, c-format
 msgid "Timeout while executing logic in box %d."
 msgstr "Zeitüberschreitung während die Logik in Box %d ausgeführt wurde."
 
-#: src/kernel/routing/Box.h:763
+#: src/kernel/routing/Box.h:770
 #, c-format
 msgid "The logic in box %d is too slow."
 msgstr "Die Logik in Kasten %d ist zu langsam."
@@ -1506,11 +1591,11 @@ msgstr ""
 "möglich)\n"
 "\t die aktuelle Datei nebst den folgenden Informationen an:\n"
 
-#: src/kernel/routing/CommonFileDevice.h:107
+#: src/kernel/routing/CommonFileDevice.h:106
 msgid "Generic output file"
 msgstr "Rudimentäre Ausgabedatei"
 
-#: src/kernel/routing/CommonFileDevice.h:276
+#: src/kernel/routing/CommonFileDevice.h:285
 msgid "Generic input file"
 msgstr "Rudimentäre Eingabedatei"
 
@@ -1522,23 +1607,23 @@ msgstr "Basistyp eines Gerätes"
 msgid "Undefined output device"
 msgstr "Undefiniertes Ausgabegerät"
 
-#: src/kernel/routing/Device.h:1252
+#: src/kernel/routing/Device.h:1251
 msgid "Undefined input device"
 msgstr "Unbekanntes Eingabegerät"
 
-#: src/kernel/routing/Route.cpp:346 src/kernel/routing/Route.cpp:394
+#: src/kernel/routing/Route.cpp:347 src/kernel/routing/Route.cpp:395
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: src/kernel/routing/Route.cpp:347
+#: src/kernel/routing/Route.cpp:348
 msgid "Midi Port"
 msgstr "MIDI-Schnittstelle"
 
-#: src/kernel/routing/Route.cpp:348
+#: src/kernel/routing/Route.cpp:349
 msgid "Midi File"
 msgstr "MIDI-Datei"
 
-#: src/kernel/routing/Route.cpp:349
+#: src/kernel/routing/Route.cpp:350
 msgid "GUIDO .gmn File"
 msgstr "GUIDO-Datei (.gmn)"
 
@@ -1548,7 +1633,7 @@ msgstr "Kein solches Ausgabegerät"
 
 #: src/kernel/routing/Route.h:580
 msgid "Route factory already set"
-msgstr "Die Routenfabrik-Klasse wurde schon erstellt."
+msgstr "Die Routenfabrik-Klasse wurde schon erstellt"
 
 #: src/kernel/routing/Route.h:585
 msgid ""
@@ -1635,17 +1720,42 @@ msgstr "Die Datei muss mit „[“ oder „{“ beginnen."
 msgid "Range without preceeding tag."
 msgstr "Bereich ohne vorheriges Tag."
 
-#: src/kernel/routing/midi/DevMidF.cpp:144
+#: src/kernel/routing/midi/DevMidF.cpp:154
 msgid "Number contains too many bytes"
 msgstr "Die Zahl enthält zu viele Bytes"
 
-#: src/kernel/routing/midi/DevMidF.cpp:165
+#: src/kernel/routing/midi/DevMidF.cpp:174
 #, c-format
 msgid "Invalid status byte: %x  at position %d"
 msgstr "Ungültiges Status-Byte: %x bei Position %d"
 
-#: src/kernel/routing/midi/DevMidF.cpp:334
-#: src/kernel/routing/midi/DevMidF.cpp:473
+#: src/kernel/routing/midi/DevMidF.cpp:195
+msgid "File ended while scanning for end of meta event"
+msgstr "Die Datei endete während nach einem Ende-Meta-Tag gesucht wurde"
+
+#: src/kernel/routing/midi/DevMidF.cpp:248
+#, c-format
+msgid "Track %s of file '%s' has a broken track header."
+msgstr "Die Spur „%s“ aus Datei „%s“ hat einen kaputten Spuranfang."
+
+#: src/kernel/routing/midi/DevMidF.cpp:264
+#, c-format
+msgid "Could not allocate data for track %s of MIDI input file '%s'."
+msgstr ""
+"Ich habe keinen Speicher für die Spur „%s“ der MIDI-Eingabedatei „%s“ "
+"bekommen."
+
+#: src/kernel/routing/midi/DevMidF.cpp:280
+#, c-format
+msgid ""
+"The MIDI input file “%s” is corrupted. This has been detected while reading "
+"track %s."
+msgstr ""
+"Die MIDI-Eingabedatei „%s“ ist kaputt. Das habe ich festgestellt, während "
+"ich die Spur „%s“ lesen wollte."
+
+#: src/kernel/routing/midi/DevMidF.cpp:382
+#: src/kernel/routing/midi/DevMidF.cpp:521
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -1654,14 +1764,14 @@ msgstr ""
 "Der Kanalbereich %d–%d der aktuellen MIDI-Datei „%s“ muss innerhalb von %d–"
 "%d liegen. Die aktuelle Route wurde korrikgiert."
 
-#: src/kernel/routing/midi/DevMidF.cpp:381
-#: src/kernel/routing/midi/DevMidF.cpp:387
-#: src/kernel/routing/midi/DevMidi.cpp:185
-#: src/kernel/routing/midi/DevMidi.cpp:191
+#: src/kernel/routing/midi/DevMidF.cpp:429
+#: src/kernel/routing/midi/DevMidF.cpp:435
+#: src/kernel/routing/midi/DevMidi.cpp:183
+#: src/kernel/routing/midi/DevMidi.cpp:189
 msgid "Bending_Range"
 msgstr "Bending_Range"
 
-#: src/kernel/routing/midi/DevMidF.cpp:505
+#: src/kernel/routing/midi/DevMidF.cpp:553
 #, c-format
 msgid ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -1670,54 +1780,54 @@ msgstr ""
 "Der Bereich für die MIDI-Spuren (%d–%d) der Datei „%s“ muss innerhalb von %d–"
 "%d liegen. Die aktuelle Route wurde angepasst."
 
-#: src/kernel/routing/midi/DevMidF.cpp:534
+#: src/kernel/routing/midi/DevMidF.cpp:582
 msgid "You instructed me to open a file without file name. I can't do that."
 msgstr ""
 "Sie gaben mir die Anweisung eine Datei ohne Dateinamen zu öffnen. Ich kann "
 "das nicht."
 
-#: src/kernel/routing/midi/DevMidF.cpp:551
+#: src/kernel/routing/midi/DevMidF.cpp:599
 #, c-format
 msgid "Can not open Midi input file '%s'."
 msgstr "Kann Midi-Eingabedatei „%s“ nicht öffnen."
 
-#: src/kernel/routing/midi/DevMidF.cpp:561
+#: src/kernel/routing/midi/DevMidF.cpp:609
 #, c-format
 msgid "File '%s' is not a valid midi file."
 msgstr "Die Datei „%s“ ist keine gültige MIDI-Datei."
 
-#: src/kernel/routing/midi/DevMidF.cpp:570
+#: src/kernel/routing/midi/DevMidF.cpp:618
 #, c-format
 msgid "Unknown header (chunk length %d) in file '%s'."
 msgstr "Unbekannter Dateikopf (Abschnittslänge %d) in Datei „%s“."
 
-#: src/kernel/routing/midi/DevMidF.cpp:582
+#: src/kernel/routing/midi/DevMidF.cpp:630
 #, c-format
 msgid "Unknown file type %d in file '%s'."
 msgstr "Unbekannter Dateityp %d in Datei „%s“."
 
-#: src/kernel/routing/midi/DevMidF.cpp:599
+#: src/kernel/routing/midi/DevMidF.cpp:647
 #, c-format
 msgid "Midi file '%s' has corrupted timing information."
 msgstr "Die MIDI-Datei „%s“ enthält kaputte Zeitstempel."
 
-#: src/kernel/routing/midi/DevMidF.cpp:619
+#: src/kernel/routing/midi/DevMidF.cpp:667
 #, c-format
 msgid "Could not allocate memory for the track list of file '%s'."
 msgstr "Die Speicheranforderung für die Spurliste der Datei „%s“ schlug fehl."
 
-#: src/kernel/routing/midi/DevMidF.cpp:628
+#: src/kernel/routing/midi/DevMidF.cpp:695
 #, c-format
 msgid "File '%s' has a broken track header."
 msgstr "Die Datei „%s“ enthält einen kaputten Spuranfang."
 
-#: src/kernel/routing/midi/DevMidF.cpp:645
+#: src/kernel/routing/midi/DevMidF.cpp:712
 #, c-format
 msgid "Could not allocate data for track %d of MIDI input file '%s'."
 msgstr ""
 "Ich habe keinen Speicher für die Spur %d der MIDI-Eingabedatei „%s“ bekommen."
 
-#: src/kernel/routing/midi/DevMidF.cpp:662
+#: src/kernel/routing/midi/DevMidF.cpp:729
 #, c-format
 msgid ""
 "The MIDI input file “%s” is corrupted. This has been detected while reading "
@@ -1726,47 +1836,47 @@ msgstr ""
 "Die MIDI-Eingabedatei „%s“ ist kaputt. Das habe ich festgestellt, während "
 "ich die Spur %d lesen wollte."
 
-#: src/kernel/routing/midi/DevMidF.h:235
+#: src/kernel/routing/midi/DevMidF.h:124
 msgid "trying to write number > 0x0FFFFFFF"
 msgstr ""
 "Es wurde versucht, eine Zahl zu speichern, die größer als 0x0FFFFFFF ist"
 
-#: src/kernel/routing/midi/DevMidF.h:315
+#: src/kernel/routing/midi/DevMidF.h:544
 msgid "The system exclusive message must contain at least a device id."
 msgstr ""
 "Eine systemexklusive Nachritcht (SysEx) muss mindestens eine Gerätekennung "
 "enthalten."
 
-#: src/kernel/routing/midi/DevMidF.h:322
+#: src/kernel/routing/midi/DevMidF.h:551
 msgid "System exclusive message contains an invalid device id"
-msgstr "Die systemexklusive Nachricht enthält eine  ungültige Gerätekennung."
+msgstr "Die systemexklusive Nachricht enthält eine ungültige Gerätekennung"
 
-#: src/kernel/routing/midi/DevMidF.h:331
+#: src/kernel/routing/midi/DevMidF.h:560
 msgid ""
 "Device id of continuation package deos not match the id of the system "
 "exclusive message"
 msgstr ""
 "Die Gerätekennung des Fortsetzungspaketes passt nicht zur Kennung der "
-"systemexklusiven Nachricht."
+"systemexklusiven Nachricht"
 
-#: src/kernel/routing/midi/DevMidF.h:629
+#: src/kernel/routing/midi/DevMidF.h:872
 msgid "MIDI output file"
 msgstr "MIDI-Ausgabedatei"
 
-#: src/kernel/routing/midi/DevMidF.h:761
+#: src/kernel/routing/midi/DevMidF.h:1004
 msgid "MIDI input file"
 msgstr "MIDI-Eingabedatei"
 
-#: src/kernel/routing/midi/DevMidi.cpp:106
-#: src/kernel/routing/midi/DevMidi.cpp:310
-#: src/kernel/routing/midi/DevMidi.h:347 src/kernel/routing/midi/DevMidi.h:496
+#: src/kernel/routing/midi/DevMidi.cpp:104
+#: src/kernel/routing/midi/DevMidi.cpp:293
+#: src/kernel/routing/midi/DevMidi.h:327 src/kernel/routing/midi/DevMidi.h:476
 #: src/wxGUI/Routing/InputDevDlg.h:188 src/wxGUI/Routing/OutputDevDlg.h:181
 msgid "no device"
 msgstr "Kein Gerät"
 
-#: src/kernel/routing/midi/DevMidi.cpp:125
-#: src/kernel/routing/midi/DevMidi.cpp:329
-#: src/kernel/routing/midi/DevMidi.h:338 src/kernel/routing/midi/DevMidi.h:487
+#: src/kernel/routing/midi/DevMidi.cpp:123
+#: src/kernel/routing/midi/DevMidi.cpp:312
+#: src/kernel/routing/midi/DevMidi.h:318 src/kernel/routing/midi/DevMidi.h:467
 #, c-format
 msgid ""
 "Could not get the name of the MIDI device with id %d:\n"
@@ -1775,13 +1885,13 @@ msgstr ""
 "Konnte den Namen des MIDI-Gerätes mit Nr. %d nicht bekommen:\n"
 "%s"
 
-#: src/kernel/routing/midi/DevMidi.cpp:128
-#: src/kernel/routing/midi/DevMidi.cpp:332
-#: src/kernel/routing/midi/DevMidi.h:342 src/kernel/routing/midi/DevMidi.h:491
+#: src/kernel/routing/midi/DevMidi.cpp:126
+#: src/kernel/routing/midi/DevMidi.cpp:315
+#: src/kernel/routing/midi/DevMidi.h:322 src/kernel/routing/midi/DevMidi.h:471
 msgid "invalid device"
 msgstr "ungültiges Gerät"
 
-#: src/kernel/routing/midi/DevMidi.cpp:378
+#: src/kernel/routing/midi/DevMidi.cpp:361
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. "
@@ -1790,11 +1900,11 @@ msgstr ""
 "Der Kanalbereich %d–%d des MIDI-Eingabegerätes „%s“ muss innerhalb von %d–%d "
 "liegen. Die aktuelle Route wurde angepasst."
 
-#: src/kernel/routing/midi/DevMidi.cpp:436
+#: src/kernel/routing/midi/DevMidi.cpp:418
 msgid "Can not open MIDI input devices due to memory allocation problems."
 msgstr "Kann MIDI-Eingabegerät wegen Speicherproblemen nicht öffnen."
 
-#: src/kernel/routing/midi/DevMidi.cpp:444
+#: src/kernel/routing/midi/DevMidi.cpp:426
 #, c-format
 msgid ""
 "Can not open MIDI input device %s (%s):\n"
@@ -1803,7 +1913,7 @@ msgstr ""
 "Kann MIDI-Eingabe-Gerät „%s“ (%s) nicht öffnen:\n"
 "%s"
 
-#: src/kernel/routing/midi/DevMidi.cpp:456
+#: src/kernel/routing/midi/DevMidi.cpp:438
 #, c-format
 msgid ""
 "Can not register callback for MIDI input device %s (%s):\n"
@@ -1813,11 +1923,11 @@ msgstr ""
 "registrieren:\n"
 "%s"
 
-#: src/kernel/routing/midi/DevMidi.h:93
+#: src/kernel/routing/midi/DevMidi.h:84
 msgid "Can not open MIDI output devices due to memory allocation problems."
 msgstr "Kann MIDI-Ausgabegeräte wegen Speicherproblemen nicht öffnen."
 
-#: src/kernel/routing/midi/DevMidi.h:101
+#: src/kernel/routing/midi/DevMidi.h:92
 #, c-format
 msgid ""
 "Can not open output Midi device %s (%s):\n"
@@ -1826,25 +1936,30 @@ msgstr ""
 "Kann Midi-Gerät „%s“ (%s) nicht öffen:\n"
 "%s"
 
-#: src/kernel/routing/midi/DevMidi.h:361
+#: src/kernel/routing/midi/DevMidi.h:341
 msgid "Midi output device"
 msgstr "MIDI-Ausgabegerät"
 
-#: src/kernel/routing/midi/DevMidi.h:547
+#: src/kernel/routing/midi/DevMidi.h:527
 msgid "Midi input device"
 msgstr "MIDI-Eingabegerät"
 
 #: src/kernel/routing/timing.cpp:62 src/kernel/routing/timing.cpp:73
 msgid "frame rate does not divide time divisiens"
-msgstr "Die Bildrate ist kein Teiler der Zeitunterteilung."
+msgstr "Die Bildrate ist kein Teiler der Zeitunterteilung"
 
 #: src/kernel/routing/timing.cpp:82
 msgid "time division is too high for current frame rate"
-msgstr "Zeitunterteilung ist zu groß für die aktuelle Bildrate."
+msgstr "Zeitunterteilung ist zu groß für die aktuelle Bildrate"
 
 #: src/kernel/routing/timing.cpp:96 src/kernel/routing/timing.cpp:102
 msgid "Trying to set bad midi header parameters"
 msgstr "Versuchte, falsche MIDI-Kopfparameter zu setzen"
+
+#: src/kernel/routing/timing.h:160
+msgid "Trying to assign a miditicks object with different timing parameters"
+msgstr ""
+"Versuche ein MIDI-Tick-Objekt mit inkompatiblen Zeitparametern zuzuweisen"
 
 #: src/wxGUI/CompDlg.cpp:114 Mutabor.xrc:169
 msgid "Source"
@@ -1852,11 +1967,11 @@ msgstr "Quelle"
 
 #: src/wxGUI/CompDlg.cpp:121 Mutabor.xrc:187
 msgid "File:"
-msgstr "Datei"
+msgstr "Datei:"
 
 #: src/wxGUI/CompDlg.cpp:124 Mutabor.xrc:207
 msgid "Line:"
-msgstr "Zeile"
+msgstr "Zeile:"
 
 #: src/wxGUI/CompDlg.cpp:133
 msgid "..."
@@ -1892,7 +2007,7 @@ msgstr "Tonsysteme:"
 
 #: src/wxGUI/CompDlg.cpp:170 Mutabor.xrc:346
 msgid "Intervals:"
-msgstr "Intervalle"
+msgstr "Intervalle:"
 
 #: src/wxGUI/CompDlg.cpp:173 Mutabor.xrc:365
 msgid "Read chars:"
@@ -1906,7 +2021,7 @@ msgstr "Meldung"
 msgid "Reading Source ..."
 msgstr "Lese Quelltext ..."
 
-#: src/wxGUI/GUIBoxData.cpp:149 src/wxGUI/MutLogicWnd.cpp:450
+#: src/wxGUI/GUIBoxData.cpp:149 src/wxGUI/MutLogicWnd.cpp:445
 msgid "(INITIAL)"
 msgstr "(INITIAL)"
 
@@ -1995,11 +2110,11 @@ msgstr "Über …"
 
 #: src/wxGUI/MutApp.cpp:647
 msgid "Version: "
-msgstr "Version:"
+msgstr "Version: "
 
 #: src/wxGUI/MutApp.cpp:649
 msgid "Written by: "
-msgstr "Geschrieben von:"
+msgstr "Geschrieben von: "
 
 #: src/wxGUI/MutApp.cpp:650
 msgid ""
@@ -2027,7 +2142,7 @@ msgstr "Rudolf Wille"
 
 #: src/wxGUI/MutApp.cpp:657
 msgid "Licence type: "
-msgstr "Lizenz:"
+msgstr "Lizenz: "
 
 #: src/wxGUI/MutApp.cpp:658
 msgid "GPL"
@@ -2095,7 +2210,7 @@ msgstr "Scala-&Import"
 
 #: src/wxGUI/MutApp.cpp:1127
 msgid "Import a tuning logic from a Scala file and its keymap"
-msgstr "Importiere eine Stimmungslogik aus einer Scala-Datei."
+msgstr "Importiere eine Stimmungslogik aus einer Scala-Datei"
 
 #: src/wxGUI/MutApp.cpp:1129
 msgid "E&xport to Scala"
@@ -2247,7 +2362,7 @@ msgstr ""
 
 #: src/wxGUI/MutApp.cpp:1250
 msgid "Edit options ..."
-msgstr "Bearbeitungsoptionen"
+msgstr "Bearbeitungsoptionen …"
 
 #: src/wxGUI/MutApp.cpp:1251
 msgid "Change &case to ..."
@@ -2320,7 +2435,7 @@ msgstr "Route laden"
 
 #: src/wxGUI/MutApp.cpp:1282 src/wxGUI/MutFrame.cpp:411
 msgid "Load the current route configuration from a file"
-msgstr "Lädt die aktuellen Routeneinstellungen aus einer Datei."
+msgstr "Lädt die aktuellen Routeneinstellungen aus einer Datei"
 
 #: src/wxGUI/MutApp.cpp:1283 src/wxGUI/MutFrame.cpp:412
 msgid "&Save routes"
@@ -2332,7 +2447,7 @@ msgstr "Speichert die aktuellen Routeneinstellungen."
 
 #: src/wxGUI/MutApp.cpp:1285
 msgid "Save routes &as"
-msgstr "Speichere Routen &unter..."
+msgstr "Speichere Routen &unter…"
 
 #: src/wxGUI/MutApp.cpp:1286
 msgid "Save current route configuration to a file with a new name."
@@ -2430,7 +2545,7 @@ msgstr "Kasten &Auswählen"
 
 #: src/wxGUI/MutApp.cpp:1357
 msgid "Select current Box"
-msgstr "aktuellen Kasten &Auswählen"
+msgstr "Aktuellen Kasten &Auswählen"
 
 #: src/wxGUI/MutApp.cpp:1360
 msgid "&View"
@@ -2458,7 +2573,7 @@ msgstr "&Pause"
 
 #: src/wxGUI/MutApp.cpp:1371 src/wxGUI/MutFrame.cpp:425
 msgid "Pause plaing the music from input file devices"
-msgstr "Musik der Datei-Geräte anhalten."
+msgstr "Musik der Datei-Geräte anhalten"
 
 #: src/wxGUI/MutApp.cpp:1372
 msgid "&Sequencer"
@@ -2584,7 +2699,7 @@ msgstr "Unerwarteter Fenstertyp: %d"
 
 #: src/wxGUI/MutDocManager.cpp:119
 msgid " - "
-msgstr "–"
+msgstr " – "
 
 #: src/wxGUI/MutDocManager.cpp:171
 msgid "Cannot read the Scala file. This file must exist."
@@ -2616,7 +2731,7 @@ msgstr "Kann temporäre Datei nicht öffnen."
 
 #: src/wxGUI/MutEditFile.cpp:267
 msgid "Can't write temporary file."
-msgstr "Kann temporäre Datei nicht anlegen"
+msgstr "Kann temporäre Datei nicht anlegen."
 
 #: src/wxGUI/MutEditFile.cpp:294
 msgid "At least one box is needed to compile the logic"
@@ -2714,7 +2829,7 @@ msgstr "Sprache"
 
 #: src/wxGUI/MutEditFile.cpp:1292
 msgid "Lexer-ID: "
-msgstr "Lexer-ID:"
+msgstr "Lexer-ID: "
 
 #: src/wxGUI/MutEditFile.cpp:1304
 msgid "Line endings"
@@ -2948,7 +3063,7 @@ msgstr "Momentan gibt es %d Punkte im Kastenmenü"
 #: src/wxGUI/MutFrame.cpp:2057
 #, c-format
 msgid "Appending menu for box %d with id %d"
-msgstr "Hänge Menü für Kasten %d mit Identifikationsnummer %d an."
+msgstr "Hänge Menü für Kasten %d mit Identifikationsnummer %d an"
 
 #: src/wxGUI/MutFrame.cpp:2059
 #, c-format
@@ -2965,7 +3080,7 @@ msgstr "Kasten %d als aktiven Kasten für Kommandos auswählen."
 msgid "Connecting command with id %d for box command %d"
 msgstr "Verbinde Kommando mit Identifikationsnummer %d für Kasten-Befehl %d"
 
-#: src/wxGUI/MutLogicWnd.cpp:268
+#: src/wxGUI/MutLogicWnd.cpp:266
 #, c-format
 msgid "Logic: %s - Box %d"
 msgstr "Logik: %s - Kasten %d"
@@ -2978,7 +3093,7 @@ msgstr "Die Zeichenkette „%s“ ist kein gültiger Dateiname."
 #: src/wxGUI/MutRouteWnd.cpp:450 src/wxGUI/MutRouteWnd.cpp:469
 #, c-format
 msgid "File '%s' couldn't be loaded"
-msgstr "Die Datei „%s“ konnte nicht geladen werden."
+msgstr "Die Datei „%s“ konnte nicht geladen werden"
 
 #: src/wxGUI/MutRouteWnd.cpp:459
 #, c-format
@@ -3395,7 +3510,7 @@ msgstr "Eingabe-Filter"
 
 #: Mutabor.xrc:553
 msgid "This value shows the type of filtering"
-msgstr "Dieser Wert zeigt den Filtertyp."
+msgstr "Dieser Wert zeigt den Filtertyp"
 
 #: Mutabor.xrc:554
 msgid "Type"
@@ -3468,7 +3583,7 @@ msgstr "Geben Sie einen Dateinamen für die MIDI-Eingabedatei an."
 
 #: Mutabor.xrc:769
 msgid "Select a GUIDO input file"
-msgstr "Wähle eine GUIDO-Eingabedatei."
+msgstr "Wähle eine GUIDO-Eingabedatei"
 
 #: Mutabor.xrc:772
 msgid "Give a file Name for the GUIDO input."
@@ -3500,7 +3615,7 @@ msgstr "Geben Sie einen Dateinamen für die Aufnahme der MIDI-Daten an."
 
 #: Mutabor.xrc:1006
 msgid "Select a GUIDO output file"
-msgstr "Wähle eine GUIDO-Ausgabe-Datei."
+msgstr "Wähle eine GUIDO-Ausgabe-Datei"
 
 #: Mutabor.xrc:1009
 msgid "Give a file Name for recording GUIDO data."

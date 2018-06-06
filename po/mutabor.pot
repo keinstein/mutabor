@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mutabor 4.0.0~rc2\n"
 "Report-Msgid-Bugs-To: keinstein@users.sourceforge.net\n"
-"POT-Creation-Date: 2018-03-24 10:41+0100\n"
+"POT-Creation-Date: 2018-06-06 13:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,99 +17,138 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gmut/scl2mut.cpp:56
+#: src/gmut/midifilemutabor.cpp:34 src/gmut/scl2mut.cpp:64
 msgid "too many positional options have been specified on the command line"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:58
+#: src/gmut/midifilemutabor.cpp:36 src/gmut/scl2mut.cpp:66
 #, c-format
 msgid "can not read options configuration file '%s'"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:61
+#: src/gmut/midifilemutabor.cpp:39 src/gmut/scl2mut.cpp:69
 #, no-c-format
 msgid "option '%canonical_option%' only takes a single argument"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:64
+#: src/gmut/midifilemutabor.cpp:42 src/gmut/scl2mut.cpp:72
 #, no-c-format
 msgid "option '%canonical_option%' cannot be specified more than once"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:67
+#: src/gmut/midifilemutabor.cpp:45 src/gmut/scl2mut.cpp:75
 #, no-c-format
 msgid "the option '%canonical_option%' is required but missing"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:70
+#: src/gmut/midifilemutabor.cpp:48 src/gmut/scl2mut.cpp:78
 #, no-c-format
 msgid "unrecognised option '%canonical_option%'"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:73
+#: src/gmut/midifilemutabor.cpp:51 src/gmut/scl2mut.cpp:81
 #, no-c-format
 msgid "option '%canonical_option%' is ambiguous"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:78
+#: src/gmut/midifilemutabor.cpp:56 src/gmut/scl2mut.cpp:86
+#: src/kernel/error.h:170
 #, c-format
 msgid "Error: %s"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:98
+#: src/gmut/midifilemutabor.cpp:71
+#, c-format
+msgid ""
+"Synopsis: %s [options]  input-file[.mid] [output-file[.mid] [logic-file[."
+"mut]]] [start-keys]"
+msgstr ""
+
+#: src/gmut/midifilemutabor.cpp:146 src/gmut/scl2mut.cpp:165
+msgid "produce this help message"
+msgstr ""
+
+#: src/gmut/midifilemutabor.cpp:148
+msgid "Input MIDI file"
+msgstr ""
+
+#: src/gmut/midifilemutabor.cpp:151
+msgid "Output MIDI file"
+msgstr ""
+
+#: src/gmut/midifilemutabor.cpp:154
+msgid "Mutabor Logic file"
+msgstr ""
+
+#: src/gmut/midifilemutabor.cpp:157
+msgid "Execute the given keys before starting the MIDI playback"
+msgstr ""
+
+#: src/gmut/midifilemutabor.cpp:181 src/gmut/scl2mut.cpp:160
+msgid "Allowed options"
+msgstr ""
+
+#: src/gmut/midifilemutabor.cpp:249
+#, c-format
+msgid "Error: Could not open logic file `%s'."
+msgstr ""
+
+#: src/gmut/midifilemutabor.cpp:259
+#, c-format
+msgid "Error: Could not read logic file `%s'."
+msgstr ""
+
+#: src/gmut/midifilemutabor.cpp:268
+#, c-format
+msgid "Error: Could not compile logic file `%s'."
+msgstr ""
+
+#: src/gmut/scl2mut.cpp:106
 #, c-format
 msgid "Synopsis: %s [options]  input-file[.scl] [output-file[.mut]]"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:152
-msgid "Allowed options"
-msgstr ""
-
-#: src/gmut/scl2mut.cpp:157
-msgid "produce this help message"
-msgstr ""
-
-#: src/gmut/scl2mut.cpp:159
+#: src/gmut/scl2mut.cpp:167
 msgid "Use .kbm file"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:162 Mutabor.xrc:1880
+#: src/gmut/scl2mut.cpp:170 Mutabor.xrc:1880
 msgid "scala"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:163
+#: src/gmut/scl2mut.cpp:171
 msgid "Prefix interval identifiers with arg"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:166 Mutabor.xrc:1897
+#: src/gmut/scl2mut.cpp:174 Mutabor.xrc:1897
 msgid "scala_tone"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:167
+#: src/gmut/scl2mut.cpp:175
 msgid "Prefix tone identifiers with arg"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:170 Mutabor.xrc:1914
+#: src/gmut/scl2mut.cpp:178 Mutabor.xrc:1914
 msgid "scala_tonesystem"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:171
+#: src/gmut/scl2mut.cpp:179
 msgid "Set the name of the generated tone system to arg"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:174 Mutabor.xrc:1931
+#: src/gmut/scl2mut.cpp:182 Mutabor.xrc:1931
 msgid "scala_logic"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:175
+#: src/gmut/scl2mut.cpp:183
 msgid "Set the name of the generated logic to arg"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:177
+#: src/gmut/scl2mut.cpp:185
 msgid ".scl file that shall be converted"
 msgstr ""
 
-#: src/gmut/scl2mut.cpp:178
+#: src/gmut/scl2mut.cpp:186
 msgid "filename of the mutabor logic"
 msgstr ""
 
@@ -492,6 +531,18 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
+#: src/kernel/Execute.cpp:65
+msgid "Internal error"
+msgstr ""
+
+#: src/kernel/Execute.cpp:66
+msgid "Compiler error"
+msgstr ""
+
+#: src/kernel/Execute.cpp:67
+msgid "Runtime error"
+msgstr ""
+
 #: src/kernel/Execute.cpp:68
 msgid "Unknown error"
 msgstr ""
@@ -591,11 +642,6 @@ msgstr ""
 msgid ""
 "Undefined harmony class %d in HarmonyAnalysis().\n"
 "Please, report this error to the MUTABOR team."
-msgstr ""
-
-#: src/kernel/Execute.h:155 src/kernel/parsers/scala/scale_lexer.h:140
-#: src/kernel/routing/Box.h:717
-msgid "Error in Error: Could not allocate buffer for error message."
 msgstr ""
 
 #: src/kernel/Hilfs.cpp:97
@@ -1121,6 +1167,46 @@ msgstr ""
 msgid "Show messages that are always shown ;-). (for internal use only)"
 msgstr ""
 
+#: src/kernel/error.h:118 src/kernel/parsers/scala/scale_lexer.h:140
+#: src/kernel/routing/Box.h:724
+msgid "Error in Error: Could not allocate buffer for error message."
+msgstr ""
+
+#: src/kernel/error.h:164
+#, c-format
+msgid "Warning: %s"
+msgstr ""
+
+#: src/kernel/error.h:166
+#, c-format
+msgid "Compiler warning: %s"
+msgstr ""
+
+#: src/kernel/error.h:168
+#, c-format
+msgid "Runtime Warning: %s"
+msgstr ""
+
+#: src/kernel/error.h:172
+#, c-format
+msgid "Internal error: %s"
+msgstr ""
+
+#: src/kernel/error.h:174
+#, c-format
+msgid "Compiler error: %s"
+msgstr ""
+
+#: src/kernel/error.h:176
+#, c-format
+msgid "Runtime error: %s"
+msgstr ""
+
+#: src/kernel/error.h:178
+#, c-format
+msgid "Unknown error (Type %d): %s"
+msgstr ""
+
 #: ../../mutabor/src/kernel/mut.yy:162
 #, c-format
 msgid "%s at line %d"
@@ -1325,61 +1411,61 @@ msgstr ""
 msgid "float is out of range"
 msgstr ""
 
-#: src/kernel/routing/Box.cpp:480
+#: src/kernel/routing/Box.cpp:511
 msgid "Activation error"
 msgstr ""
 
-#: src/kernel/routing/Box.cpp:723
+#: src/kernel/routing/Box.cpp:754
 msgid "Generating tables"
 msgstr ""
 
-#: src/kernel/routing/Box.cpp:733
+#: src/kernel/routing/Box.cpp:764
 msgid "Translation successful"
 msgstr ""
 
-#: src/kernel/routing/Box.cpp:734
+#: src/kernel/routing/Box.cpp:765
 msgid "No error occured."
 msgstr ""
 
-#: src/kernel/routing/Box.cpp:741
+#: src/kernel/routing/Box.cpp:772
 msgid "Translation interrupted."
 msgstr ""
 
-#: src/kernel/routing/Box.h:255 src/kernel/routing/Box.h:269
+#: src/kernel/routing/Box.h:262 src/kernel/routing/Box.h:276
 msgid "New box"
 msgstr ""
 
-#: src/kernel/routing/Box.h:257 src/kernel/routing/Box.h:271
+#: src/kernel/routing/Box.h:264 src/kernel/routing/Box.h:278
 msgid "No box"
 msgstr ""
 
-#: src/kernel/routing/Box.h:259
+#: src/kernel/routing/Box.h:266
 msgid "GUIDO Music Notation box"
 msgstr ""
 
-#: src/kernel/routing/Box.h:261 src/wxGUI/Routing/BoxDlg.cpp:299
+#: src/kernel/routing/Box.h:268 src/wxGUI/Routing/BoxDlg.cpp:299
 msgid "Mutabor box"
 msgstr ""
 
-#: src/kernel/routing/Box.h:263 src/kernel/routing/Box.h:278
+#: src/kernel/routing/Box.h:270 src/kernel/routing/Box.h:285
 msgid "Unknown box type"
 msgstr ""
 
-#: src/kernel/routing/Box.h:273
+#: src/kernel/routing/Box.h:280
 msgid "GUIDO box"
 msgstr ""
 
-#: src/kernel/routing/Box.h:275 src/wxGUI/Routing/BoxShape.cpp:154
+#: src/kernel/routing/Box.h:282 src/wxGUI/Routing/BoxShape.cpp:154
 #, c-format
 msgid "Box %d"
 msgstr ""
 
-#: src/kernel/routing/Box.h:759
+#: src/kernel/routing/Box.h:766
 #, c-format
 msgid "Timeout while executing logic in box %d."
 msgstr ""
 
-#: src/kernel/routing/Box.h:763
+#: src/kernel/routing/Box.h:770
 #, c-format
 msgid "The logic in box %d is too slow."
 msgstr ""
@@ -1391,11 +1477,11 @@ msgid ""
 "\tthe current file and the following information:\n"
 msgstr ""
 
-#: src/kernel/routing/CommonFileDevice.h:107
+#: src/kernel/routing/CommonFileDevice.h:106
 msgid "Generic output file"
 msgstr ""
 
-#: src/kernel/routing/CommonFileDevice.h:276
+#: src/kernel/routing/CommonFileDevice.h:285
 msgid "Generic input file"
 msgstr ""
 
@@ -1407,23 +1493,23 @@ msgstr ""
 msgid "Undefined output device"
 msgstr ""
 
-#: src/kernel/routing/Device.h:1252
+#: src/kernel/routing/Device.h:1251
 msgid "Undefined input device"
 msgstr ""
 
-#: src/kernel/routing/Route.cpp:346 src/kernel/routing/Route.cpp:394
+#: src/kernel/routing/Route.cpp:347 src/kernel/routing/Route.cpp:395
 msgid "Unknown"
 msgstr ""
 
-#: src/kernel/routing/Route.cpp:347
+#: src/kernel/routing/Route.cpp:348
 msgid "Midi Port"
 msgstr ""
 
-#: src/kernel/routing/Route.cpp:348
+#: src/kernel/routing/Route.cpp:349
 msgid "Midi File"
 msgstr ""
 
-#: src/kernel/routing/Route.cpp:349
+#: src/kernel/routing/Route.cpp:350
 msgid "GUIDO .gmn File"
 msgstr ""
 
@@ -1518,177 +1604,198 @@ msgstr ""
 msgid "Range without preceeding tag."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:144
+#: src/kernel/routing/midi/DevMidF.cpp:154
 msgid "Number contains too many bytes"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:165
+#: src/kernel/routing/midi/DevMidF.cpp:174
 #, c-format
 msgid "Invalid status byte: %x  at position %d"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:334
-#: src/kernel/routing/midi/DevMidF.cpp:473
+#: src/kernel/routing/midi/DevMidF.cpp:195
+msgid "File ended while scanning for end of meta event"
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.cpp:248
+#, c-format
+msgid "Track %s of file '%s' has a broken track header."
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.cpp:264
+#, c-format
+msgid "Could not allocate data for track %s of MIDI input file '%s'."
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.cpp:280
+#, c-format
+msgid ""
+"The MIDI input file “%s” is corrupted. This has been detected while reading "
+"track %s."
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.cpp:382
+#: src/kernel/routing/midi/DevMidF.cpp:521
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
 "current route had to be corrected."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:381
-#: src/kernel/routing/midi/DevMidF.cpp:387
-#: src/kernel/routing/midi/DevMidi.cpp:185
-#: src/kernel/routing/midi/DevMidi.cpp:191
+#: src/kernel/routing/midi/DevMidF.cpp:429
+#: src/kernel/routing/midi/DevMidF.cpp:435
+#: src/kernel/routing/midi/DevMidi.cpp:183
+#: src/kernel/routing/midi/DevMidi.cpp:189
 msgid "Bending_Range"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:505
+#: src/kernel/routing/midi/DevMidF.cpp:553
 #, c-format
 msgid ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
 "current route had to be corrected."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:534
-msgid "You instructed me to open a file without file name. I can't do that."
-msgstr ""
-
-#: src/kernel/routing/midi/DevMidF.cpp:551
-#, c-format
-msgid "Can not open Midi input file '%s'."
-msgstr ""
-
-#: src/kernel/routing/midi/DevMidF.cpp:561
-#, c-format
-msgid "File '%s' is not a valid midi file."
-msgstr ""
-
-#: src/kernel/routing/midi/DevMidF.cpp:570
-#, c-format
-msgid "Unknown header (chunk length %d) in file '%s'."
-msgstr ""
-
 #: src/kernel/routing/midi/DevMidF.cpp:582
-#, c-format
-msgid "Unknown file type %d in file '%s'."
+msgid "You instructed me to open a file without file name. I can't do that."
 msgstr ""
 
 #: src/kernel/routing/midi/DevMidF.cpp:599
 #, c-format
+msgid "Can not open Midi input file '%s'."
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.cpp:609
+#, c-format
+msgid "File '%s' is not a valid midi file."
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.cpp:618
+#, c-format
+msgid "Unknown header (chunk length %d) in file '%s'."
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.cpp:630
+#, c-format
+msgid "Unknown file type %d in file '%s'."
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.cpp:647
+#, c-format
 msgid "Midi file '%s' has corrupted timing information."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:619
+#: src/kernel/routing/midi/DevMidF.cpp:667
 #, c-format
 msgid "Could not allocate memory for the track list of file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:628
+#: src/kernel/routing/midi/DevMidF.cpp:695
 #, c-format
 msgid "File '%s' has a broken track header."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:645
+#: src/kernel/routing/midi/DevMidF.cpp:712
 #, c-format
 msgid "Could not allocate data for track %d of MIDI input file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:662
+#: src/kernel/routing/midi/DevMidF.cpp:729
 #, c-format
 msgid ""
 "The MIDI input file “%s” is corrupted. This has been detected while reading "
 "track %d."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.h:235
+#: src/kernel/routing/midi/DevMidF.h:124
 msgid "trying to write number > 0x0FFFFFFF"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.h:315
+#: src/kernel/routing/midi/DevMidF.h:544
 msgid "The system exclusive message must contain at least a device id."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.h:322
+#: src/kernel/routing/midi/DevMidF.h:551
 msgid "System exclusive message contains an invalid device id"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.h:331
+#: src/kernel/routing/midi/DevMidF.h:560
 msgid ""
 "Device id of continuation package deos not match the id of the system "
 "exclusive message"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.h:629
+#: src/kernel/routing/midi/DevMidF.h:872
 msgid "MIDI output file"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.h:761
+#: src/kernel/routing/midi/DevMidF.h:1004
 msgid "MIDI input file"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidi.cpp:106
-#: src/kernel/routing/midi/DevMidi.cpp:310
-#: src/kernel/routing/midi/DevMidi.h:347 src/kernel/routing/midi/DevMidi.h:496
+#: src/kernel/routing/midi/DevMidi.cpp:104
+#: src/kernel/routing/midi/DevMidi.cpp:293
+#: src/kernel/routing/midi/DevMidi.h:327 src/kernel/routing/midi/DevMidi.h:476
 #: src/wxGUI/Routing/InputDevDlg.h:188 src/wxGUI/Routing/OutputDevDlg.h:181
 msgid "no device"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidi.cpp:125
-#: src/kernel/routing/midi/DevMidi.cpp:329
-#: src/kernel/routing/midi/DevMidi.h:338 src/kernel/routing/midi/DevMidi.h:487
+#: src/kernel/routing/midi/DevMidi.cpp:123
+#: src/kernel/routing/midi/DevMidi.cpp:312
+#: src/kernel/routing/midi/DevMidi.h:318 src/kernel/routing/midi/DevMidi.h:467
 #, c-format
 msgid ""
 "Could not get the name of the MIDI device with id %d:\n"
 "%s"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidi.cpp:128
-#: src/kernel/routing/midi/DevMidi.cpp:332
-#: src/kernel/routing/midi/DevMidi.h:342 src/kernel/routing/midi/DevMidi.h:491
+#: src/kernel/routing/midi/DevMidi.cpp:126
+#: src/kernel/routing/midi/DevMidi.cpp:315
+#: src/kernel/routing/midi/DevMidi.h:322 src/kernel/routing/midi/DevMidi.h:471
 msgid "invalid device"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidi.cpp:378
+#: src/kernel/routing/midi/DevMidi.cpp:361
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. "
 "The current route had to be corrected."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidi.cpp:436
+#: src/kernel/routing/midi/DevMidi.cpp:418
 msgid "Can not open MIDI input devices due to memory allocation problems."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidi.cpp:444
+#: src/kernel/routing/midi/DevMidi.cpp:426
 #, c-format
 msgid ""
 "Can not open MIDI input device %s (%s):\n"
 "%s"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidi.cpp:456
+#: src/kernel/routing/midi/DevMidi.cpp:438
 #, c-format
 msgid ""
 "Can not register callback for MIDI input device %s (%s):\n"
 "%s"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidi.h:93
+#: src/kernel/routing/midi/DevMidi.h:84
 msgid "Can not open MIDI output devices due to memory allocation problems."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidi.h:101
+#: src/kernel/routing/midi/DevMidi.h:92
 #, c-format
 msgid ""
 "Can not open output Midi device %s (%s):\n"
 "%s"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidi.h:361
+#: src/kernel/routing/midi/DevMidi.h:341
 msgid "Midi output device"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidi.h:547
+#: src/kernel/routing/midi/DevMidi.h:527
 msgid "Midi input device"
 msgstr ""
 
@@ -1702,6 +1809,10 @@ msgstr ""
 
 #: src/kernel/routing/timing.cpp:96 src/kernel/routing/timing.cpp:102
 msgid "Trying to set bad midi header parameters"
+msgstr ""
+
+#: src/kernel/routing/timing.h:160
+msgid "Trying to assign a miditicks object with different timing parameters"
 msgstr ""
 
 #: src/wxGUI/CompDlg.cpp:114 Mutabor.xrc:169
@@ -1764,7 +1875,7 @@ msgstr ""
 msgid "Reading Source ..."
 msgstr ""
 
-#: src/wxGUI/GUIBoxData.cpp:149 src/wxGUI/MutLogicWnd.cpp:450
+#: src/wxGUI/GUIBoxData.cpp:149 src/wxGUI/MutLogicWnd.cpp:445
 msgid "(INITIAL)"
 msgstr ""
 
@@ -2783,7 +2894,7 @@ msgstr ""
 msgid "Connecting command with id %d for box command %d"
 msgstr ""
 
-#: src/wxGUI/MutLogicWnd.cpp:268
+#: src/wxGUI/MutLogicWnd.cpp:266
 #, c-format
 msgid "Logic: %s - Box %d"
 msgstr ""
