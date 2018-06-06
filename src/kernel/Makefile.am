@@ -45,6 +45,7 @@ noinst_LIBRARIES += \
 		%D%/Defs.h \
 		%D%/box.h \
 		%D%/Errors.h \
+		%D%/error.h \
 		%D%/Execute.h \
 		%D%/Frac.h \
 		%D%/Global.h \
