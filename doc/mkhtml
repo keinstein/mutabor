@@ -25,7 +25,7 @@ do
       echo $TEXINPUTS
       echo
       latex -interaction=nonstopmode '\def\outputformat{help}\input '"$datei"
-      mv ${datei%.tex}.log ${datei%.tex}.hlog$seq
+      test -f ${datei%.tex}.log && mv ${datei%.tex}.log ${datei%.tex}.hlog$seq
 	if [ -f "${dateiname%.tex}".idx ]
 	then
 	  tex '\def\filename{{'"${dateiname%.tex}"'}{idx}{4dx}{ind}} \input  idxmake.4ht'
