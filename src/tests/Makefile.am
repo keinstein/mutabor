@@ -83,7 +83,6 @@ nodist_%C%_cppunitlinktest_SOURCES = \
 	%D%/debugPaths.cpp
 
 %C%_cppunitlinktest_LDADD = \
-	libmutabormaincppunit.a \
 	libmutabordebugcppunit.a \
 	libmutaborgui.a \
 	src/kernel/libmutaborkernel.a \

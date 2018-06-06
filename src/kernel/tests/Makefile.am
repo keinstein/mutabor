@@ -29,7 +29,6 @@ nodist_%C%_testcppunit_SOURCES = \
 	%D%/debugPaths.cpp
 
 %C%_testcppunit_LDADD = \
-	libmutabormaincppunit.a \
 	src/kernel/libmutaborkernel.a \
 	libmutabordebugcppunit.a \
 	libmutaborrouting.a \
