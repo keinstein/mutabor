@@ -25,7 +25,7 @@ matrix:
 addons:
   apt:
     sources:
-    - sourceline: ppa:cz.nic-labs/knot-dns
+    - sourceline: ppa:keinstein-junior/travis-ci-upgrades
     - sourceline: ppa:nschloe/debhelper-backports
     packages:
     - devscripts
@@ -62,7 +62,7 @@ before_install:
     - if test "$TRAVIS_OS_NAME" = osx ; then  brew update ; fi
     - if test "$TRAVIS_OS_NAME" = osx ; then brew upgrade boost ; fi
     - if test "$TRAVIS_OS_NAME" = osx ; then rm -rf /usr/local/include/c++ ; fi # fix broken gcc installation
-    - if test "$TRAVIS_OS_NAME" = osx ; then brew install $EXTRA_BREW wxmac gettext flex bison libtool autoconf jack automake ; fi
+    - if test "$TRAVIS_OS_NAME" = osx ; then brew install $EXTRA_BREW wxmac gettext flex bison libtool jack automake ; fi
     - if test "$TRAVIS_OS_NAME" = osx ; then brew link --force $EXTRA_BREW boost wxmac gettext flex bison libtool autoconf jack automake ; fi
     - if test "$TRAVIS_OS_NAME" = linux ; then eval TEST_RUNNER=xvfb-run ; else eval TEST_RUNNER= ; fi
     - which gettextize
