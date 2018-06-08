@@ -173,8 +173,10 @@ endif
 #	    cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe);; \
 #	esac;
 
+
 DISTCLEANFILES += podeps.stamp remove-podeps.stamp ./$(DEPDIR)/podeps.dep
 
+if COND_PRECOMP_CXX
 podeps.stamp:remove-podeps.stamp
 	touch $@
 
@@ -186,7 +188,7 @@ remove-podeps.stamp:Makefile
 
 ./$(DEPDIR)/podeps.dep:$(precompCOMPILESOURCES) podeps.stamp
 	$(MKDIR_P) `dirname $@`
-	echo >$@
+	echo "" >$@
 	for obj in $(mutabor_OBJECTS) ; do \
 		base=`basename "$$obj"` ; \
 		dir=`dirname "$$obj"` ; \
@@ -206,10 +208,9 @@ remove-podeps.stamp:Makefile
 		echo "	rm -f '$$pofile.stamp'" >>$@ ; \
 		echo '	touch $$@' >>$@ ; \
 	done
-@am__include@ @am__quote@./$(DEPDIR)/podeps.dep@am__quote@
+include "./$(DEPDIR)/podeps.dep"
 
 
-if COND_PRECOMP_CXX
 
 #./$(DEPDIR)/mutabor-cxxprecompiled.Po:fixdependencies.stamp
 
