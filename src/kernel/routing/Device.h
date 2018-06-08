@@ -1255,7 +1255,7 @@ namespace mutabor {
 			return boost::chrono::microseconds::max();
 		}
 
-		static constexpr bool IsDelta(boost::chrono::microseconds d) {
+		static bool IsDelta(boost::chrono::microseconds d) {
 			return d != NO_DELTA();
 		}
 
