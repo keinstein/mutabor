@@ -114,11 +114,9 @@ struct MyCompileCallback:public mutabor::BoxClass::CompileCallback {
 	void RefreshDlg() {}
 	void SetStatus(std::string status) {
 		mutUnused(status);
-		std::cout << status << std::endl;
 	}
 	void SetMessage(std::string status) {
 		mutUnused(status);
-		std::cerr << status << std::endl;
 	}
 	void SetStatus(int logics,
 		       int tones,

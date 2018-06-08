@@ -446,7 +446,6 @@ namespace mutabor {
 		Reset();
 		mutASSERT(loopguard);
 		if (loopguard) {
-			std::cerr << "Deleting loopguard" << std::endl;
 			loopguard -> request_exit();
 			delete loopguard;
 			mutASSERT(loopguard == NULL);
