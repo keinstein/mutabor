@@ -76,6 +76,7 @@ script:
     - cat test-suite.log
     - $TEST_RUNNER make V=1 distcheck
     - cat test-suite.log
+    - if cat */_build/test-suite.log ; then true ; else true; fi
     - if test "$TRAVIS_OS_NAME" = osx ; then make install &&  make V=1 dmg ; fi ;
     - if test "$TRAVIS_OS_NAME" = linux && false ; then debuild ; fi ;
     - mkdir -p "public/$TRAVIS_TAG-$TRAVIS_JOB_ID"
