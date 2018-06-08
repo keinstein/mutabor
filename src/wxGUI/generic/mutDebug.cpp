@@ -131,7 +131,7 @@ NO_SANITIZE void _sanitizer_options_link_helper() { }
 //     so the slow unwinder may not work properly.
 //   detect_stack_use_after_return=1 - use fake stack to delay the reuse of
 //     stack allocations and detect stack-use-after-return errors.
-NO_SANITIZE const char * mutASANoptions =
+const char * mutASANoptions =
 	"legacy_pthread_cond=1 "
 	"malloc_context_size=5 "
 	"symbolize=1 "

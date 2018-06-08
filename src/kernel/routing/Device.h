@@ -1251,7 +1251,7 @@ namespace mutabor {
 			return _mutN("Undefined input device");
 		}
 
-		static constexpr boost::chrono::microseconds NO_DELTA() {
+		static boost::chrono::microseconds NO_DELTA() {
 			return boost::chrono::microseconds::max();
 		}
 
