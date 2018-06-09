@@ -40,7 +40,6 @@ AS_IF(test "${enable_silent_rules+set}" != set,
    enable_silent_rules=yes
    AM_DEFAULT_VERBOSITY=0)
 AM_CONDITIONAL(VPATH_BUILD, test "$ac_abs_confdir" != "$ac_pwd")
-
 AM_SILENT_RULES
 
 rtmidi_suffix="-mutabor"
@@ -905,8 +904,6 @@ AC_SUBST(LIBS)
 AC_CONFIG_FILES([
 po/Makefile.in
 Makefile
-src/includes/mutabor/Makefile
-src/includes/mutabor/tests/Makefile
 src/wxintl/tests/Makefile
 lib/Makefile
 lib/rtmidi/rtmidi-config
@@ -923,6 +920,8 @@ doc/localized/en/Makefile
 Doxyfile
 osdep/linux/OpenSuse.spec
 ])
+dnl src/includes/mutabor/Makefile
+dnl src/includes/mutabor/tests/Makefile
 dnl src/wxintl/Makefile
 dnl src/kernel/routing/midi/tests/Makefile
 dnl src/kernel/routing/gmn/tests/Makefile
