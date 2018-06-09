@@ -448,6 +448,7 @@ namespace mutabor {
 		if (loopguard) {
 			loopguard -> request_exit();
 			delete loopguard;
+			loopguard = NULL;
 			mutASSERT(loopguard == NULL);
 		}
 	}
