@@ -1,4 +1,5 @@
 #include "src/kernel/routing/thread.h"
+#include <iostream>
 #include <cassert>
 
 boost::mutex printmutex;
