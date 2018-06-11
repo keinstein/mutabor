@@ -50,7 +50,7 @@ EXTRA_RTMIDITESTCXXFLAGS = \
 RTMIDICONFIGRPATH =
 
 
-include common-rules.mk
+include %D%/common-rules.mk
 include %D%/src/Makefile.am
 include %D%/Images/Makefile.am
 include %D%/lib/rtmidi/Makefile.library

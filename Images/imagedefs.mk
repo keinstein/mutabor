@@ -116,3 +116,4 @@ uninstall-icons:
 
 
 
+potfilechk:
