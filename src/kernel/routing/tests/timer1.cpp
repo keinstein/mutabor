@@ -121,13 +121,16 @@ public:
 	mutabor::microseconds PrepareNextEvent() {
 		std::cerr << "PrepareNextEvent()" << std::endl;
 		time_point tlp = clocktype::now();
-		milliseconds tl = boost::chrono::duration_cast<milliseconds>(tlp - (lasttime))
+		milliseconds delta = boost::chrono::duration_cast<milliseconds>(tlp - (lasttime));
+		milliseconds tl = delta
 			- i.load(boost::memory_order_relaxed);
 			//+ (i*(i.count()+1))/2;
 		if (max.load(boost::memory_order_relaxed) < tl)  max = tl;
 		if (min.load(boost::memory_order_relaxed) > tl ) min = tl;
 		if (tl > milliseconds(10)) {
-			std::cerr << "Too slow: (" << i.load(boost::memory_order_relaxed)
+			std::cerr << "Too slow: Runtime: " << delta << std::endl;
+			std::cerr << "         Expected: " << i.load(boost::memory_order_relaxed) << std::endl;
+			std::cerr << "          (" << i.load(boost::memory_order_relaxed)
 				  << "^2 + " << i.load(boost::memory_order_relaxed) << ") / 2 = "
 				  << (i.load(boost::memory_order_relaxed)
 				      *(i.load(boost::memory_order_relaxed).count()+1))/2
@@ -136,7 +139,8 @@ public:
 		}
 		lasttime = tlp;
 		if ((i=i.load(boost::memory_order_relaxed) + milliseconds(1))<milliseconds(100)) {
-			std::cerr << "... " << i.load(boost::memory_order_relaxed) << " ... " << std::flush;
+			std::cerr << "... " << delta
+				  << " / " <<  (tlp-firsttime) << " ... " << std::flush;
 			return i.load(boost::memory_order_relaxed);
 		}
 		return NO_DELTA();
