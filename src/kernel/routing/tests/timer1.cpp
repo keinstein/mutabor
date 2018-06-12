@@ -127,7 +127,10 @@ public:
 			//+ (i*(i.count()+1))/2;
 		if (max.load(boost::memory_order_relaxed) < tl)  max = tl;
 		if (min.load(boost::memory_order_relaxed) > tl ) min = tl;
-		if (tl > milliseconds(10)) {
+		/* Travis CI has problems reaching the accuracy of 10 ms on Mac OS X.
+		   So we need a high value at the moment, here.
+		   See https://github.com/keinstein/mutabor/issues/5 for discussion */
+		if (tl > milliseconds(50)) {
 			std::cerr << "Too slow: Runtime: " << delta << std::endl;
 			std::cerr << "         Expected: " << i.load(boost::memory_order_relaxed) << std::endl;
 			std::cerr << "          (" << i.load(boost::memory_order_relaxed)
