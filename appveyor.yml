@@ -4,10 +4,12 @@ environment:
     - TOOLCHAIN: "default"
       CONFIG: Release
       _CC: MINGW
+      BOOSTPATH: /c/msys64/mingw64/bin
 
     - TOOLCHAIN: "default"
       CONFIG: Debug
       _CC: MINGW
+      BOOSTPATH: /c/msys64/mingw64/bin
 
 # example see: https://github.com/wang-bin/avbuild/blob/master/appveyor.yml
 init:
@@ -62,7 +64,7 @@ build_script:
   - bash -c "mkdir -p config"
   - bash -c "touch config/config.rpath"
   - bash -c "autoreconf -i -f"
-  - bash -c "./configure"
+  - bash -c "./configure --with-boost-libdir=$BOOSTPATH"
   - bash -c make
   - bash -c "make check"
   - bash -c "make distcheck"
