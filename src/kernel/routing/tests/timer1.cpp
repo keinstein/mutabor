@@ -108,11 +108,11 @@ public:
 					  (i.load(boost::memory_order_relaxed).count()-1))/2;
 		std::cerr << "i reached " << i.load(boost::memory_order_relaxed) << std::endl;
 		std::cerr << "Played " << runtime << " (goal is " << time_goal << ")" << std::endl;
-		if ( runtime > (time_goal + milliseconds(30))) {
+		if ( runtime > (time_goal + milliseconds(100))) {
 			std::cerr << "Played too long!" << std::endl;
 			exit (1);
 		}
-		if (runtime < (time_goal-milliseconds(30))) {
+		if (runtime < (time_goal-milliseconds(100))) {
 			std::cerr << "Played too short!" << std::endl;
 			exit (1);
 		}
