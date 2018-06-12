@@ -58,6 +58,7 @@ build_script:
   - bash -c "#autopoint -f"
   - bash -c "#libtoolize -i -f"
   - bash -c "#autoconf --add-missing"
+  - bash -c "git submodule update --init --recursive"
   - bash -c "mkdir -p config"
   - bash -c "touch config/config.rpath"
   - bash -c "autoreconf -i -f"
