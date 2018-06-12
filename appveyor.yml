@@ -2,14 +2,28 @@ environment:
   matrix:
     ###
     - TOOLCHAIN: "default"
-      CONFIG: Release
+      MINGW_ARCH: x86_64
+      MINGW_ROOT: c:\msys64\mingw64
+      CONFIGURE_OPTIONS: --disable-debug
       _CC: MINGW
-      BOOSTPATH: /c/msys64/mingw64/bin
+      BOOST_LIBS: /c/msys64/mingw64/lib
+      BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
 
     - TOOLCHAIN: "default"
-      CONFIG: Debug
+      MINGW_ARCH: x86_64
+      MINGW_ROOT: c:\msys64\mingw64
+      CONFIGURE_OPTINOS: --enable-debug
       _CC: MINGW
-      BOOSTPATH: /c/msys64/mingw64/bin
+      BOOST_LIBS: /c/msys64/mingw64/lib
+      BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
+
+    - TOOLCHAIN: "default"
+      MINGW_ARCH: i386
+      MINGW_ROOT: c:\msys64\mingw32
+      CONFIGURE_OPTIONS: --disable-debug
+      _CC: MINGW
+      BOOST_LIBS: /c/msys64/mingw32/lib
+      BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
 
 # example see: https://github.com/wang-bin/avbuild/blob/master/appveyor.yml
 init:
@@ -49,22 +63,15 @@ build_script:
   - dir C:\mingw-w64
   - dir C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
   - dir C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\opt\bin
-  - SET PATH=C:\mingw-w64\bin;C:\msys64\mingw64\bin;C:\msys64\usr\bin;%PATH%	
+  - SET PATH=%MINGW_ROOT%\bin;C:\mingw-w64\bin;C:\msys64\usr\bin;%PATH%	
   - echo "%PATH%"
-  - path
   - bash -c "env"
   - bash -c pwd
-  - bash -c ls
-  - bash -c "#aclocal -I m4 --install"
-  - bash -c "#automake --add-missing -f"
-  - bash -c "#autopoint -f"
-  - bash -c "#libtoolize -i -f"
-  - bash -c "#autoconf --add-missing"
   - bash -c "git submodule update --init --recursive"
   - bash -c "mkdir -p config"
   - bash -c "touch config/config.rpath"
   - bash -c "autoreconf -i -f"
-  - bash -c "./configure --with-boost-libdir=$BOOSTPATH || cat config.log"
+  - bash -c "./configure %CONFIGURE_OPTIONS% --with-boost-libdir=$BOOST_LIBS || cat config.log"
   - bash -c make
   - bash -c "make check"
   - bash -c "make distcheck"
