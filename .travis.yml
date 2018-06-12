@@ -90,6 +90,7 @@ deploy:
   file_glob: true
   file: public/*/*
   on:
+    os: osx
     repo: keinstein/mutabor
     tags: true
     branch: master
@@ -101,5 +102,6 @@ deploy:
   github_token: $GITHUB_TOKEN
   verbose: true
   on:
+    os: osx
     repo: keinstein/mutabor
     branch: master
