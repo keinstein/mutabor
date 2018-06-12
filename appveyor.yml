@@ -64,7 +64,7 @@ build_script:
   - bash -c "mkdir -p config"
   - bash -c "touch config/config.rpath"
   - bash -c "autoreconf -i -f"
-  - bash -c "./configure --with-boost-libdir=$BOOSTPATH"
+  - bash -c "./configure --with-boost-libdir=$BOOSTPATH || cat config.log"
   - bash -c make
   - bash -c "make check"
   - bash -c "make distcheck"
