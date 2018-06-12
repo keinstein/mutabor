@@ -130,7 +130,7 @@ public:
 		/* Travis CI has problems reaching the accuracy of 10 ms on Mac OS X.
 		   So we need a high value at the moment, here.
 		   See https://github.com/keinstein/mutabor/issues/5 for discussion */
-		if (tl > milliseconds(50)) {
+		if (tl > milliseconds(100)) {
 			std::cerr << "Too slow: Runtime: " << delta << std::endl;
 			std::cerr << "         Expected: " << i.load(boost::memory_order_relaxed) << std::endl;
 			std::cerr << "          (" << i.load(boost::memory_order_relaxed)
