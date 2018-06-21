@@ -462,8 +462,8 @@ namespace mutabor {
 
 			CurrentTimer::time_point nextEvent;
 			CurrentTimer::time_point reference;
-			microseconds playTime; // in μs
-			microseconds eventDelta; // in μs
+			microseconds playTime(0); // in μs
+			microseconds eventDelta(0); // in μs
 			try {
 				while (true) {
 					if (thread_command & RequestPause) {
