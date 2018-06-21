@@ -73,7 +73,7 @@ namespace mutabor {
 		Mutex(wxMutexType mutexType = wxMUTEX_DEFAULT):wxMutex(mutexType) {}
 		~Mutex() {}
 		wxMutexError Lock() {
-			if (debugmutex.m_internal == m_internal) return wxMutex::Lock();
+			if (&debugmutex == this) return wxMutex::Lock();
 			wxMutexError error = wxMutex::TryLock();
 			if (error != wxMUTEX_NO_ERROR) {
 				DEBUGLOG(thread,
@@ -93,7 +93,7 @@ namespace mutabor {
 
 		wxMutexError Unlock() {
 			wxMutexError error = wxMutex::Unlock();
-			if (debugmutex.m_internal == m_internal) return error;
+			if (&debugmutex == this) return error;
 			DEBUGLOG(thread,
 				 ("Thread %s unlocking mutex %p (%s)."),
 				 Thread::get_current_string_id().c_str(),
@@ -276,7 +276,7 @@ public:
 	~Mutex() {}
 	void Lock() {
 #if DEBUG
-		if (debugmutex.native_handle() == this->native_handle()) {
+		if (&debugmutex == this) {
 			this->lock();
 			return;
 		}
@@ -295,7 +295,7 @@ public:
 	void Unlock() {
 		this->unlock();
 #if DEBUG
-		if (debugmutex.native_handle() == this->native_handle()) return;
+		if (&debugmutex == this) return;
 		debug_print_thread_mutex
 			 ("Thread %s unlocked mutex %s.");
 #endif
@@ -304,7 +304,7 @@ public:
 	bool TryLock() {
 		bool error = this->try_lock();
 #if DEBUG
-		if (debugmutex.native_handle() == this->native_handle()) return error;
+		if (&debugmutex == this) return error;
 		if (error)
 			debug_print_thread_mutex
 				("Thread %s trying to lock mutex %s. (ok)");
@@ -343,7 +343,7 @@ public:
 	}
 #endif
 	std::string get_string_handle() {
-		return boost::lexical_cast<std::string>(this->native_handle());
+		return boost::lexical_cast<std::string>(this->get_string_handle());
 	}
 
 #if DEBUG

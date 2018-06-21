@@ -20,6 +20,9 @@ namespace fs = boost::filesystem;
 #include <iterator>
 #include <string>
 #include <vector>
+#if __WXMSW__
+#include "windows.h"
+#endif
 
 #include "src/kernel/routing/Route-inlines.h"
 

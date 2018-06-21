@@ -6,6 +6,7 @@ boost::mutex printmutex;
 using namespace mutabor;
 
 void print_stack_size() {
+#ifndef WIN32
 	pthread_attr_t attr;
 	size_t stacksize;
 
@@ -16,6 +17,7 @@ void print_stack_size() {
 		boost::unique_lock<boost::mutex> lock(printmutex);
 		std::cerr << "Stack size: " << stacksize << std::endl;
 	}
+#endif
 }
 
 void print_status (const char * s) {

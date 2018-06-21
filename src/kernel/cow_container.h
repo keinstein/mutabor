@@ -49,6 +49,8 @@
 // system headers which do seldom change
 
 namespace mutabor {
+	using ::intrusive_ptr_release;
+	using ::intrusive_ptr_add_ref;
 	template<class C>
 	class cow_container {
 	protected:

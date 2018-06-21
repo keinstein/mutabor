@@ -249,6 +249,6 @@ $(MIDITESTS:.mid=.log): %D%/run_midi.sh
 	@echo 'export LC_ALL' >> $@
 	@echo '. $${file}.variables' >> $@
 	echo '"./midifilemutabor$(EXEEXT)" "$$file" "$${stemfile}-result.mid" "$$logic" "$$startkeys" ' >> $@
-	echo './mf2txt "$${stemfile}-result.mid" | sed "s/\r$$//" | diff -u "$$top_srcdir$${stemfile}-output.txt" - ' >> $@
+	echo './mf2txt$(EXEEXT) "$${stemfile}-result.mid" | sed "s/\r$$//" | diff -u "$$top_srcdir$${stemfile}-output.txt" - ' >> $@
 	@echo 'exit 0' >> $@
 	@chmod u+x $@

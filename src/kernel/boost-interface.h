@@ -53,8 +53,8 @@
 
 // system headers which do seldom change
 
-#include "src/kernel/Defs.h"
 #include <boost/atomic.hpp>
+#include "boost/intrusive_ptr.hpp"
 
 
 
@@ -186,11 +186,13 @@ inline void intrusive_ptr_release(intrusive_ptr_T * obj)
 #define CHECK_REFPTR_NULL(class_data)				\
 	mutASSERT(intrusive_ptr_get_refcount(class_data) <= 1);
 
-#include "boost/intrusive_ptr.hpp"
 
 #ifdef DEBUG
 namespace boost {
 	namespace mutabor {
+		using ::intrusive_ptr_add_ref;
+		using ::intrusive_ptr_release;
+
 		template<typename T>
 		class intrusive_ptr:public ::boost::intrusive_ptr<T> {
 		public:

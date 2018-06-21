@@ -6,7 +6,7 @@
 /* The simplest usage of the library.
  */
 
-#include "src/kernel/routing/thread.h"
+#include "src/kernel/Defs.h"
 /* avoid circular dependency problems
 boost/program_options.hpp
  -> boost/lexical_cast.hpp
@@ -22,7 +22,6 @@ boost/program_options.hpp
 namespace po = boost::program_options;
 namespace fs = boost::filesystem;
 
-#include "src/kernel/Defs.h"
 #include "src/kernel/parsers/scala/scala.h"
 #include <iostream>
 #include <iterator>
@@ -54,7 +53,6 @@ namespace mutabor {
 		}
 
 	}
-	Mutex<> debugmutex;
 }
 
 #endif
