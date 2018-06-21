@@ -72,6 +72,6 @@ build_script:
   - bash -c "touch config/config.rpath"
   - bash -c "autoreconf -i -f"
   - bash -c "./configure %CONFIGURE_OPTIONS% --with-boost-libdir=$BOOST_LIBS || cat config.log"
-  - bash -c make
-  - bash -c "make check"
+  - bash -c make V=1
+  - bash -c "make V=1 check"
   - bash -c "make distcheck"
