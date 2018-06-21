@@ -127,7 +127,7 @@ public:
 	}
 	virtual void Play() {
 		std::clog << "Starting..." << std::endl;
-		mutabor::CurrentTime.UseRealtime(true);
+		//mutabor::CurrentTime.UseRealtime(true);
 		mutabor::InputGis::Play();
 		std::clog << "Started." << std::endl;
 	}
@@ -158,11 +158,13 @@ int main(/* int argc, char **argv */)
 	}
 	in -> SetName(SRCDIR "/gmn1_source.gmn");
 //	mutabor::InputDevice prevent_from_deletion(in);
+#if 0
 	if (!(in -> Open())) {
 		DEBUGLOG2(always,("Open failed. Exiting."));
 		exit(1);
 	}
-	in -> Play();
+#endif
+	in -> BatchPlay();
 	in -> Close();
 
 	//e = in->WaitForDeviceFinish();
