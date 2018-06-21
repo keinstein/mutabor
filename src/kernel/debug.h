@@ -50,7 +50,7 @@
 
 
 #ifdef __cplusplus
-#include "src/kernel/routing/thread.h"
+//#include "src/kernel/routing/thread.h"
 #include <string>
 #include <cstdio>
 #ifdef __clang__
@@ -318,13 +318,13 @@ void mutabor_debug_unlock();
 #ifdef __cplusplus
 #ifdef DEBUG
 MUTABOR_EXTERN_C_END
-template <class M>
- inline void mutabor::Mutex<M>::debug_print_thread_mutex(const char * s) {
-	DEBUGLOG(thread,
-		 s,
-		 Thread::get_current_string_id().c_str(),
-		 get_string_handle().c_str());
+MUTABOR_NAMESPACE(mutabor)
+inline void debug_print_mutex(const char * s,
+			      const char * t,
+			      const char * u)  {
+	DEBUGLOGBASE(thread,"mutabor::Mutex<M>",s,t,u);
 }
+MUTABOR_NAMESPACE_END(mutabor)
 #endif
 struct nogetflag {
 		bool operator()() const { return false; }

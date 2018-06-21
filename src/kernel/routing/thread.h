@@ -246,7 +246,9 @@ namespace mutabor {
 #define MUTABOR_THREAD_OK wxMUTEX_NO_ERROR
 #else
 MUTABOR_NAMESPACE(mutabor)
-
+void debug_print_mutex(const char * s,
+		       const char * t,
+		       const char * u);
 enum  ThreadKind {};
 
 template<class M=boost::mutex>
@@ -347,7 +349,7 @@ public:
 	}
 
 #if DEBUG
-	void debug_print_thread_mutex(const char * s);
+	void debug_print_thread_mutex(const char * s) const;
 #endif
 };
 
@@ -622,6 +624,17 @@ protected:
 	int exitcode;
 };
 
+
+#if DEBUG
+template <class M>
+inline void Mutex<M>::debug_print_thread_mutex(const char * s) const {
+	if (isDebugFlag(thread)) {
+		debug_print_mutex(s,
+				  Thread::get_current_string_id().c_str(),
+				  const_cast<Mutex<M> &>(*this).get_string_handle().c_str());
+	}
+}
+#endif
 
 template<class T>
 class safe_integer {
