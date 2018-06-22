@@ -4,7 +4,7 @@ environment:
     - TOOLCHAIN: "default"
       MINGW_ARCH: x86_64
       MINGW_ROOT: c:\msys64\mingw64
-      CONFIGURE_OPTIONS: --disable-debug
+      CONFIGURE_OPTIONS: --disable-debug --disable-silent-rules
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw64/lib
       BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
@@ -12,7 +12,7 @@ environment:
     - TOOLCHAIN: "default"
       MINGW_ARCH: x86_64
       MINGW_ROOT: c:\msys64\mingw64
-      CONFIGURE_OPTINOS: --enable-debug
+      CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw64/lib
       BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
@@ -20,7 +20,7 @@ environment:
     - TOOLCHAIN: "default"
       MINGW_ARCH: i386
       MINGW_ROOT: c:\msys64\mingw32
-      CONFIGURE_OPTIONS: --disable-debug
+      CONFIGURE_OPTIONS: --disable-debug --disable-silent-rules --disable-shared
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw32/lib
       BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
@@ -72,6 +72,6 @@ build_script:
   - bash -c "touch config/config.rpath"
   - bash -c "autoreconf -i -f"
   - bash -c "./configure %CONFIGURE_OPTIONS% --with-boost-libdir=$BOOST_LIBS || cat config.log"
-  - bash -c make V=1
-  - bash -c "make V=1 check"
+  - bash -c make 
+  - bash -c "make check"
   - bash -c "make distcheck"
