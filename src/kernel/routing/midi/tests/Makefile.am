@@ -26,6 +26,9 @@ CLEANFILES += \
 	%D%/test_output2.mid \
 	%D%/bug-20180414ts-result.mid
 
+DISTCLEANFILES += \
+	%D%/bug-20180414ts-output.mid
+
 check_PROGRAMS += \
 	%D%/playmidi1 \
 	%D%/midiopenfail1 \
@@ -36,7 +39,6 @@ check_PROGRAMS += \
 EXTRA_DIST += \
 	%D%/midiin.mut \
 	%D%/bug-20180414ts.mid.variables \
-	%D%/bug-20180414ts-output.mid \
 	%D%/bug-20180414ts-output.txt
 
 check_SCRIPTS += \
