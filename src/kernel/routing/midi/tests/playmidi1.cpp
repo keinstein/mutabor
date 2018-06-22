@@ -117,7 +117,6 @@ class myDevice: public mutabor::InputMidiFile {
 	}
 	virtual void Play() {
 		std::clog << "Starting..." << std::endl;
-		mutabor::CurrentTime.UseRealtime(true);
 		mutabor::InputMidiFile::Play();
 		std::clog << "Started." << std::endl;
 	}
@@ -138,6 +137,7 @@ int main(/*int argc, char **argv*/)
 	//	mutwxInitializer initializer;
 	mutabor::InitDeviceFactories();
 	mutabor::ScopedInputDevice in;
+	mutabor::CurrentTime.UseRealtime(true);
 	in = (new myDevice());
 //	mutabor::InputDevice in(mutabor::DeviceFactory::CreateInput(mutabor::DTMidiFile));
 	if (!in) {

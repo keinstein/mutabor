@@ -83,7 +83,6 @@ public:
 	virtual ~testCommonFileDeviceTimer() {}
 	void Play() {
 		std::cerr << "Play()" << std::endl;
-		mutabor::CurrentTime.UseRealtime(true);
 		max = milliseconds(0); min = milliseconds::max(); i= milliseconds(0);
 		CommonFileInputDevice::Play();
 		firsttime = lasttime = clocktype::now();
@@ -180,6 +179,7 @@ int main(/* int argc, char **argv */)
 	mutabor::mutabor_debug_flags.thread = false;
 #endif
 	//mutwxInitializer initializer;
+	mutabor::CurrentTime.UseRealtime(true);
 
 	testCommonFileDeviceTimer * tim = new testCommonFileDeviceTimer();
 	mutabor::ScopedInputDevice guard;
