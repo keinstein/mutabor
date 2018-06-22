@@ -887,7 +887,7 @@ for v in host build target; do
     fi
 done
 # propagate certain configure options to DISTCHECK_CONFIGURE_FLAGS
-for v in with-wx-config with-wx-dir with-boost with-cppunit-prefix with-cppunit-exec-prefix ; do
+for v in with-wx-config with-wx-dir with-boost with-boost-libdir with-cppunit-prefix with-cppunit-exec-prefix ; do
     tmp="`echo "$v" | sed -e 's/-/_/g'`"
     eval s=\${$tmp+set}
     if test "$s" = 'set' ; then
