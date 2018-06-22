@@ -47,7 +47,7 @@ static char *Onmsg  	= "On ch=%d n=%s v=%d\n";
 static char *Offmsg 	= "Off ch=%d n=%s v=%d\n";
 static char *PoPrmsg 	= "PoPr ch=%d n=%s v=%d\n";
 static char *Parmsg 	= "Par ch=%d c=%d v=%d\n";
-static char *Pbmsg  	= "Pb ch=%d v=%d # %7.5f %% range\n";
+static char *Pbmsg  	= "Pb ch=%d v=%d # %7.3f %% range\n";
 static char *PrChmsg 	= "PrCh ch=%d p=%d\n";
 static char *ChPrmsg 	= "ChPr ch=%d v=%d\n";
 
@@ -91,7 +91,7 @@ char **argv;
 			Offmsg = "Off ch=%d note=%s vol=%d\n";
 			PoPrmsg = "PolyPr ch=%d note=%s val=%d\n";
 			Parmsg = "Param ch=%d con=%d val=%d\n";
-			Pbmsg  = "Pb ch=%d val=%d # %7.5f %% range\n";
+			Pbmsg  = "Pb ch=%d val=%d # %7.3f %% range\n";
 			PrChmsg = "ProgCh ch=%d prog=%d\n";
 			ChPrmsg = "ChanPr ch=%d val=%d\n";
 			break;
@@ -244,7 +244,7 @@ void mypitchbend(chan,lsb,msb)
 int chan, lsb, msb;
 {
 	prtime();
-	printf(Pbmsg,chan+1,128*msb+lsb,((double)((128*msb+lsb)-8192))/81.92);
+	printf(Pbmsg,chan+1,128*msb+lsb,floor(((double)((128*msb+lsb)-8192))/.08192+0.5)/1000.0);
 }
 
 void myprogram(chan,program)
