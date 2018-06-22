@@ -99,7 +99,7 @@ $(scaleparsertargets):
 		stack.hh  "%D%/stack.hh" \
 		-- \
 		$(YACCCOMPILE)
-	sed -i.bak -e '/digraph/ s,$(PWD),.,g' '$@.dot'
+	if test -e '$@.dot' ; then sed -i.bak -e '/digraph/ s,$(PWD),.,g' '$@.dot' ; fi
 	for d in %D%/location.hh \
 		%D%/position.hh \
 		%D%/stack.hh   \
