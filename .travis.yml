@@ -79,9 +79,9 @@ script:
     - if cat */_build/test-suite.log ; then true ; else true; fi
     - if test "$TRAVIS_OS_NAME" = osx ; then make install &&  make V=1 dmg ; fi ;
     - if test "$TRAVIS_OS_NAME" = linux && false ; then debuild ; fi ;
-    - git clone --depth=1 --branch=gh-pages https://github.com/keinstein/mutabor.git public
-    - mkdir -p "public/download/$CXX_$TRAVIS_TAG"
-    - if test "$TRAVIS_OS_NAME" = osx ; then mv *.dmg "public/download/$CXX_$TRAVIS_TAG" ; fi ;
+    - git clone --depth=1 --branch=master https://github.com/keinstein/mutabor-nightlies.git public
+    - mkdir -p "public/download/${CXX}_${TRAVIS_TAG}"
+    - if test "$TRAVIS_OS_NAME" = osx ; then mv *.dmg "public/download/${CXX}_${TRAVIS_TAG}" ; fi ;
 
 deploy:
 - provider: releases
@@ -92,7 +92,7 @@ deploy:
   file: public/*/*
   on:
     os: osx
-    repo: keinstein/mutabor
+    repo: keinstein/mutabor-nightlies
     tags: true
     branch: master
 - provider: pages
