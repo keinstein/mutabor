@@ -2,7 +2,8 @@ include %D%/tests/Makefile.am
 
 CLEANFILES += %D%/*.class \
 	fix_scale_parser.stamp \
-	fix_scale_parser.tmp
+	fix_scale_parser.tmp \
+	remove_scaleparsertargets.stamp
 
 EXTRA_DIST += \
 	%D%/location.hh \
@@ -77,9 +78,13 @@ endif
 
 
 # this rule is distingct from the off-tree rule above. Both are needed for VPATH builds
-$(scaleparsertargets):
+$(scaleparsertargets): remove_scaleparsertargets.stamp
+	@echo 'created $@'
+
+remove_scaleparsertargets.stamp:
 	@rm -f %D%/scale_parser
-	@$(MAKE) $(AM_MAKEFLAGS) %D%/scale_parser
+	touch remove_scaleparsertargets.stamp
+	$(MAKE) $(AM_MAKEFLAGS) %D%/scale_parser
 
 
 # sed -i expects a backup argument on Mac OS X
@@ -109,6 +114,7 @@ $(scaleparsertargets):
 		test -e "$$d" || continue ; \
 		sed -i.bak \
 			-e '/\#[^"]*\(include\|line\)/ s,$(srcdir)/%D%/\(scale_parser\|location\|position\|stack\),%D%/\1,g' \
+			-e '/\#[^"]*\(include\|line\)/ s,'"$$PWD/"',,g' \
 			-e '/\#[^"]*\(include\|line\)/ s,"\(scale_parser\|location\|position\|stack\),"%D%/\1,g' \
 			"$$d" || exit 1 ; \
 		grep -v '#line' "$$d" >"$$d.tmp" ; \
