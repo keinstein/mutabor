@@ -113,8 +113,8 @@ remove_scaleparsertargets.stamp:
 	do  \
 		test -e "$$d" || continue ; \
 		sed -i.bak \
-			-e '/\#[^"]*\(include\|line\)/ s,$(srcdir)/%D%/\(scale_parser\|location\|position\|stack\),%D%/\1,g' \
 			-e '/\#[^"]*\(include\|line\)/ s,'"$$PWD/"',,g' \
+			-e '/\#[^"]*\(include\|line\)/ s,$(srcdir)/%D%/\(scale_parser\|location\|position\|stack\),%D%/\1,g' \
 			-e '/\#[^"]*\(include\|line\)/ s,"\(scale_parser\|location\|position\|stack\),"%D%/\1,g' \
 			"$$d" || exit 1 ; \
 		grep -v '#line' "$$d" >"$$d.tmp" ; \
