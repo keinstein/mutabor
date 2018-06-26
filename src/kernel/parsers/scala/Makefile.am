@@ -44,6 +44,8 @@ CLEANFILES += \
 	%D%/stack.hh.bak \
 	%D%/scale_parser.cc.bak \
 	%D%/scale_parser.hh.bak
+DISTCLEANFILES += \
+	%D%/scale_parser.sed
 #
 # if OFF_TREE
 # $(top_srcdir)/%D%/scale_parser.cc: %D%/scale_parser.cc.stamp
@@ -76,19 +78,31 @@ CLEANFILES += \
 	%D%/scale_parser.cc
 endif
 
-
 # this rule is distingct from the off-tree rule above. Both are needed for VPATH builds
 $(scaleparsertargets): remove_scaleparsertargets.stamp
 	@echo 'created $@'
 
-remove_scaleparsertargets.stamp:
+remove_scaleparsertargets.stamp: $(srcdir)/%D%/scale_parser.yy
 	@rm -f %D%/scale_parser
 	touch remove_scaleparsertargets.stamp
 	$(MAKE) $(AM_MAKEFLAGS) %D%/scale_parser
 
 
+%D%/scale_parser.sed: Makefile
+	rm -f '$@.tmp'
+	for cmd in include line ; do \
+		echo "/\#[[:space:]]*$${cmd}/ s%$(PWD)/%%g" >> '$@.tmp'; \
+		for file in scale_parser location position stack ; do \
+			echo "/\#[[:space:]]*$${cmd}/ s%$(srcdir)/%D%/$${file}%%D%/$${file}%g" >> '$@.tmp' ; \
+			echo "/\#[[:space:]]*$${cmd}/ s%\"$${file}%\"%D%/$${file}%g" >> '$@.tmp' ; \
+		done; \
+	done
+	if cmp '$@.tmp' '$@' ; then rm $@.tmp ; else  mv '$@.tmp' '$@' ; fi
+
 # sed -i expects a backup argument on Mac OS X
-%D%/scale_parser: $(srcdir)/%D%/scale_parser.yy
+# the best way is to add a nonempty extension directly after -i
+# We must use extended regular expressions as otherwise \| would not be recognised on Mac OS X
+%D%/scale_parser: $(srcdir)/%D%/scale_parser.yy %D%/scale_parser.sed
 	rm -f $@
 	$(AM_V_YACC)$(am__skipyacc) \
 		$(SHELL) \
@@ -112,16 +126,12 @@ remove_scaleparsertargets.stamp:
 		'$@.hh'; \
 	do  \
 		test -e "$$d" || continue ; \
-		which sed ; \
-		echo "sed -i.bak \
-			-e '/\#[^\"]*\(include\|line\)/ s,'\"$$PWD/\"',,g' \
-			-e '/\#[^\"]*\(include\|line\)/ s,$(srcdir)/%D%/\(scale_parser\|location\|position\|stack\),%D%/\1,g' \
-			-e '/\#[^\"]*\(include\|line\)/ s,\"\(scale_parser\|location\|position\|stack\),\"%D%/\1,g' \
-			\"$$d\" || exit 1" ; \
-		sed -i.bak \
-			-e '/\#[^"]*\(include\|line\)/ s,'"$$PWD/"',,g' \
-			-e '/\#[^"]*\(include\|line\)/ s,$(srcdir)/%D%/\(scale_parser\|location\|position\|stack\),%D%/\1,g' \
-			-e '/\#[^"]*\(include\|line\)/ s,"\(scale_parser\|location\|position\|stack\),"%D%/\1,g' \
+		echo "" ; \
+		echo --	$(SED) -i.bak \
+			-E  -f '%D%/scale_parser.sed' \
+			"$$d" || exit 1 ; \
+		$(SED) -i.bak \
+			-E  -f '%D%/scale_parser.sed' \
 			"$$d" || exit 1 ; \
 		diff "$${d}.bak" "$$d" ; \
 		grep -v '#line' "$$d" >"$$d.tmp" ; \
