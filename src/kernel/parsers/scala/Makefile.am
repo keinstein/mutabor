@@ -112,11 +112,18 @@ remove_scaleparsertargets.stamp:
 		'$@.hh'; \
 	do  \
 		test -e "$$d" || continue ; \
+		which sed ; \
+		echo "sed -i.bak \
+			-e '/\#[^\"]*\(include\|line\)/ s,'\"$$PWD/\"',,g' \
+			-e '/\#[^\"]*\(include\|line\)/ s,$(srcdir)/%D%/\(scale_parser\|location\|position\|stack\),%D%/\1,g' \
+			-e '/\#[^\"]*\(include\|line\)/ s,\"\(scale_parser\|location\|position\|stack\),\"%D%/\1,g' \
+			\"$$d\" || exit 1" ; \
 		sed -i.bak \
 			-e '/\#[^"]*\(include\|line\)/ s,'"$$PWD/"',,g' \
 			-e '/\#[^"]*\(include\|line\)/ s,$(srcdir)/%D%/\(scale_parser\|location\|position\|stack\),%D%/\1,g' \
 			-e '/\#[^"]*\(include\|line\)/ s,"\(scale_parser\|location\|position\|stack\),"%D%/\1,g' \
 			"$$d" || exit 1 ; \
+		diff "$${d}.bak" "$$d" ; \
 		grep -v '#line' "$$d" >"$$d.tmp" ; \
 		if diff -u "$(srcdir)/$$d" "$$d"; \
 		then \
