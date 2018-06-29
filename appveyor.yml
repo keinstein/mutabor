@@ -125,9 +125,9 @@ build_script:
   - bash -c "(%TEST_COMMAND%) || (cat test-suite.log ; false)"
 
 artifacts:
-  - path: *.exe
+  - path: '*.exe'
     name: Releases
-  - path: *.zip
+  - path: '*.zip'
     name: ZIPs
-  - path: *.log
+  - path: '*.log'
     name: logs
