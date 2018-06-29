@@ -56,7 +56,7 @@ environment:
       TEST_COMMAND: make -j2 nsis
 
     - TOOLCHAIN: "default"
-      MINGW_ARCH: x86_64
+      MINGW_ARCH: i686
       MINGW_ROOT: c:\msys64\mingw32
       CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules --disable-shared
       _CC: MINGW
@@ -65,7 +65,7 @@ environment:
       TEST_COMMAND: make -j2 distcheck
 
     - TOOLCHAIN: "default"
-      MINGW_ARCH: x86_64
+      MINGW_ARCH: i686
       MINGW_ROOT: c:\msys64\mingw32
       CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules --disable-static --enable-shared
       _CC: MINGW
@@ -91,6 +91,7 @@ install:
     )
   - C:\msys64\usr\bin\pacman -Ss --noconfirm boost
   - C:\msys64\usr\bin\pacman -Ss --noconfirm nsis
+  - C:\msys64\usr\bin\pacman -Ss --noconfirm zip
   - C:\msys64\usr\bin\pacman -Ss --noconfirm autoconf
   - C:\msys64\usr\bin\pacman -Ss --noconfirm automake
   - C:\msys64\usr\bin\pacman -Ss --noconfirm libtool
@@ -98,7 +99,7 @@ install:
 #- C:\msys64\usr\bin\pacman -Ss --noconfirm jack
   - C:\msys64\usr\bin\pacman -Ss --noconfirm wxWidgets
   - C:\msys64\usr\bin\pacman -S --noconfirm --needed
-      mingw-w64-%MINGW_ARCH%-boost autoconf mingw-w64-%MINGW_ARCH%-libtool automake1.15 mingw-w64-%MINGW_ARCH%-gettext mingw-w64-%MINGW_ARCH%-wxWidgets 
+      mingw-w64-%MINGW_ARCH%-boost autoconf mingw-w64-%MINGW_ARCH%-libtool automake1.15 mingw-w64-%MINGW_ARCH%-gettext mingw-w64-%MINGW_ARCH%-wxWidgets mingw-w64-%MINGW_ARCH%-nsis mingw-w64-%MINGW_ARCH%-zip
 
 build_script:
   - dir C:\
