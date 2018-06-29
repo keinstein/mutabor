@@ -4,18 +4,38 @@ environment:
     - TOOLCHAIN: "default"
       MINGW_ARCH: x86_64
       MINGW_ROOT: c:\msys64\mingw64
-      CONFIGURE_OPTIONS: --disable-debug --disable-silent-rules
+      CONFIGURE_OPTIONS: --disable-debug --disable-silent-rules --disable-shared
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw64/lib
       BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
+      TEST_COMMAND: make -j2 check
 
     - TOOLCHAIN: "default"
       MINGW_ARCH: x86_64
       MINGW_ROOT: c:\msys64\mingw64
-      CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules
+      CONFIGURE_OPTIONS: --disable-debug --disable-silent-rules --disable-shared
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw64/lib
       BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
+      TEST_COMMAND: make -j2 nsis
+
+    - TOOLCHAIN: "default"
+      MINGW_ARCH: x86_64
+      MINGW_ROOT: c:\msys64\mingw64
+      CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules --disable-shared
+      _CC: MINGW
+      BOOST_LIBS: /c/msys64/mingw64/lib
+      BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
+      TEST_COMMAND: make -j2 distcheck
+
+    - TOOLCHAIN: "default"
+      MINGW_ARCH: x86_64
+      MINGW_ROOT: c:\msys64\mingw64
+      CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules --disable-static --enable-shared
+      _CC: MINGW
+      BOOST_LIBS: /c/msys64/mingw64/lib
+      BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
+      TEST_COMMAND: make -j2 distcheck
 
     - TOOLCHAIN: "default"
       MINGW_ARCH: i686
@@ -24,6 +44,34 @@ environment:
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw32/lib
       BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
+      TEST_COMMAND: make -j2 check 
+
+    - TOOLCHAIN: "default"
+      MINGW_ARCH: i686
+      MINGW_ROOT: c:\msys64\mingw32
+      CONFIGURE_OPTIONS: --disable-debug --disable-silent-rules --disable-shared
+      _CC: MINGW
+      BOOST_LIBS: /c/msys64/mingw32/lib
+      BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
+      TEST_COMMAND: make -j2 nsis
+
+    - TOOLCHAIN: "default"
+      MINGW_ARCH: x86_64
+      MINGW_ROOT: c:\msys64\mingw32
+      CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules --disable-shared
+      _CC: MINGW
+      BOOST_LIBS: /c/msys64/mingw32/lib
+      BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
+      TEST_COMMAND: make -j2 distcheck
+
+    - TOOLCHAIN: "default"
+      MINGW_ARCH: x86_64
+      MINGW_ROOT: c:\msys64\mingw32
+      CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules --disable-static --enable-shared
+      _CC: MINGW
+      BOOST_LIBS: /c/msys64/mingw32/lib
+      BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
+      TEST_COMMAND: make -j2 distcheck
 
 # example see: https://github.com/wang-bin/avbuild/blob/master/appveyor.yml
 init:
@@ -42,6 +90,7 @@ install:
       C:\msys64\usr\bin\pacman -Sc --noconfirm
     )
   - C:\msys64\usr\bin\pacman -Ss --noconfirm boost
+  - C:\msys64\usr\bin\pacman -Ss --noconfirm nsis
   - C:\msys64\usr\bin\pacman -Ss --noconfirm autoconf
   - C:\msys64\usr\bin\pacman -Ss --noconfirm automake
   - C:\msys64\usr\bin\pacman -Ss --noconfirm libtool
@@ -73,5 +122,10 @@ build_script:
   - bash -c "autoreconf -i -f"
   - bash -c "./configure %CONFIGURE_OPTIONS% --with-boost-libdir=$BOOST_LIBS || cat config.log"
   - bash -c make -j2
-  - bash -c "make -j2 check || (cat test-suite.log ; false)"
-  - bash -c "make -j2 distcheck || (cat test-suite.log ; false)"
+  - bash -c "(%TEST_COMMAND%) || (cat test-suite.log ; false)"
+
+artifact:
+  - path: *.exe
+    name: Releases
+  - path: *.zip
+    name: ZIP
