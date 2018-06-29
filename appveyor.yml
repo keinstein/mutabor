@@ -124,8 +124,10 @@ build_script:
   - bash -c make -j2
   - bash -c "(%TEST_COMMAND%) || (cat test-suite.log ; false)"
 
-artifact:
+artifacts:
   - path: *.exe
     name: Releases
   - path: *.zip
-    name: ZIP
+    name: ZIPs
+  - path: *.log
+    name: logs
