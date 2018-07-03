@@ -91,18 +91,21 @@ deploy:
   file_glob: true
   file: public/*/*
   on:
-    os: osx
-    repo: keinstein/mutabor-nightlies
+    condition: "$CC" = clang
+    condition: "$TRAVIS_OS_NAME" = osx
+    repo: keinstein/mutabor
     tags: true
     branch: master
 - provider: pages
   skip_cleanup: true
   local_dir: public
-  branch:    gh-pages
+  repo: keinstein/mutabor-nightlies
+  target_branch: gh-pages
   keep_history: true
   github_token: $GITHUB_TOKEN
   verbose: true
   on:
-    os: osx
+    condition: "$TRAVIS_OS_NAME" = osx
+    condition: "$CC" = clang
     repo: keinstein/mutabor
     branch: master
