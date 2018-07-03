@@ -1,7 +1,8 @@
 environment:
   matrix:
     ###
-    - TOOLCHAIN: "default"
+    - NAME: x86_64 check
+      TOOLCHAIN: "default"
       MINGW_ARCH: x86_64
       MINGW_ROOT: c:\msys64\mingw64
       CONFIGURE_OPTIONS: --disable-debug --disable-silent-rules --disable-shared
@@ -10,7 +11,8 @@ environment:
       BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
       TEST_COMMAND: make -j2 check
 
-    - TOOLCHAIN: "default"
+    - NAME: x86_64 nsis
+      TOOLCHAIN: "default"
       MINGW_ARCH: x86_64
       MINGW_ROOT: c:\msys64\mingw64
       CONFIGURE_OPTIONS: --disable-debug --disable-silent-rules --disable-shared
@@ -18,8 +20,10 @@ environment:
       BOOST_LIBS: /c/msys64/mingw64/lib
       BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
       TEST_COMMAND: make -j2 nsis
+      MUTABOR_DEPLOY: true
 
-    - TOOLCHAIN: "default"
+    - NAME: x86_64 static distcheck
+      TOOLCHAIN: "default"
       MINGW_ARCH: x86_64
       MINGW_ROOT: c:\msys64\mingw64
       CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules --disable-shared
@@ -28,7 +32,8 @@ environment:
       BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
       TEST_COMMAND: make -j2 distcheck
 
-    - TOOLCHAIN: "default"
+    - NAME: x86_64 shared distcheck
+      TOOLCHAIN: "default"
       MINGW_ARCH: x86_64
       MINGW_ROOT: c:\msys64\mingw64
       CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules --disable-static --enable-shared
@@ -37,7 +42,8 @@ environment:
       BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
       TEST_COMMAND: make -j2 distcheck
 
-    - TOOLCHAIN: "default"
+    - NAME: i686 check
+      TOOLCHAIN: "default"
       MINGW_ARCH: i686
       MINGW_ROOT: c:\msys64\mingw32
       CONFIGURE_OPTIONS: --disable-debug --disable-silent-rules --disable-shared
@@ -46,7 +52,8 @@ environment:
       BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
       TEST_COMMAND: make -j2 check 
 
-    - TOOLCHAIN: "default"
+    - NAME: i686 nsis
+      TOOLCHAIN: "default"
       MINGW_ARCH: i686
       MINGW_ROOT: c:\msys64\mingw32
       CONFIGURE_OPTIONS: --disable-debug --disable-silent-rules --disable-shared
@@ -54,8 +61,10 @@ environment:
       BOOST_LIBS: /c/msys64/mingw32/lib
       BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
       TEST_COMMAND: make -j2 nsis
+      MUTABOR_DEPLOY: true
 
-    - TOOLCHAIN: "default"
+    - NAME: i686 static distcheck
+      TOOLCHAIN: "default"
       MINGW_ARCH: i686
       MINGW_ROOT: c:\msys64\mingw32
       CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules --disable-shared
@@ -64,7 +73,8 @@ environment:
       BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
       TEST_COMMAND: make -j2 distcheck
 
-    - TOOLCHAIN: "default"
+    - NAME: i686 shared distcheck
+      TOOLCHAIN: "default"
       MINGW_ARCH: i686
       MINGW_ROOT: c:\msys64\mingw32
       CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules --disable-static --enable-shared
@@ -125,9 +135,22 @@ build_script:
   - bash -c "(%TEST_COMMAND%) || (cat test-suite.log ; false)"
 
 artifacts:
-  - path: '*.exe'
+  - path: 'Mutabor*.exe'
     name: Releases
   - path: '*.zip'
     name: ZIPs
   - path: '*.log'
     name: logs
+
+deploy:
+  - provider: GitHub
+    name: Releases
+    description: Nightly build
+    artifact: Releases,ZIPs
+    force_update: true
+    auth_token::
+        secure: CBpAyIWs05AwGPigYDbYgEzBNV3jhXm6rvoBA+GoFXB5CocdOAzen2ceL906o0EM
+    on:
+	branch:master
+	APPVEYOR_REPO_TAG: true
+	MUTABOR_DEPLOY: true
