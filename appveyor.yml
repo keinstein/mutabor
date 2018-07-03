@@ -148,9 +148,9 @@ deploy:
     description: Nightly build
     artifact: Releases,ZIPs
     force_update: true
-    auth_token::
+    auth_token:
         secure: CBpAyIWs05AwGPigYDbYgEzBNV3jhXm6rvoBA+GoFXB5CocdOAzen2ceL906o0EM
     on:
-	branch:master
+	branch: master
 	APPVEYOR_REPO_TAG: true
 	MUTABOR_DEPLOY: true

@@ -14,12 +14,12 @@ matrix:
     - os: osx
       osx_image: xcode9.2
       env:
-        - MATRIX_EVAL="CC=clang && CXX=clang++ && EXTRA_BREW= && DYLD_LIBRARY_PATH=":/usr/local/opt/wxmac/lib/:/usr/local/Cellar/jack/0.125.0_2/lib:-L/usr/local/lib"
+        - MATRIX_EVAL="CC=clang && CXX=clang++ && EXTRA_BREW= && DYLD_LIBRARY_PATH=":/usr/local/opt/wxmac/lib/:/usr/local/Cellar/jack/0.125.0_2/lib:-L/usr/local/lib && MUTABOR_DEPLOY=true"
 
     - os: osx
       osx_image: xcode9.2
       env:
-        - MATRIX_EVAL="CC=gcc && CXX=g++ && EXTRA_BREW=gcc && DYLD_LIBRARY_PATH=":/usr/local/opt/wxmac/lib/:/usr/local/Cellar/jack/0.125.0_2/lib:-L/usr/local/lib"
+        - MATRIX_EVAL="CC=gcc && CXX=g++ && EXTRA_BREW=gcc && DYLD_LIBRARY_PATH=":/usr/local/opt/wxmac/lib/:/usr/local/Cellar/jack/0.125.0_2/lib:-L/usr/local/lib && MUTABOR_DEPLOY=true"
 
 
 addons:
@@ -72,7 +72,7 @@ before_install:
 
 script:
     - (cd lib/rtmidi && autoreconf -i -f)
-    - autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4 
+    - autoreconf -i -f && ./configure && make -j2 && $TEST_RUNNER make check -j2
     - cat test-suite.log
     - $TEST_RUNNER make V=1 distcheck
     - cat test-suite.log
@@ -91,8 +91,7 @@ deploy:
   file_glob: true
   file: public/*/*
   on:
-    condition: "$CC" = clang
-    condition: "$TRAVIS_OS_NAME" = osx
+    condition: "${MUTABOR_DEPLOY}" = true
     repo: keinstein/mutabor
     tags: true
     branch: master
@@ -105,7 +104,6 @@ deploy:
   github_token: $GITHUB_TOKEN
   verbose: true
   on:
-    condition: "$TRAVIS_OS_NAME" = osx
-    condition: "$CC" = clang
+    condition: "${MUTABOR_DEPLOY}" = true
     repo: keinstein/mutabor
     branch: master
