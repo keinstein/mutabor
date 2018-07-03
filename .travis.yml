@@ -72,7 +72,7 @@ before_install:
 
 script:
     - (cd lib/rtmidi && autoreconf -i -f)
-    - autoreconf -i -f && ./configure && make -j2 && $TEST_RUNNER make check -j2
+    - autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4
     - cat test-suite.log
     - $TEST_RUNNER make V=1 distcheck
     - cat test-suite.log
@@ -90,8 +90,8 @@ deploy:
   skip_cleanup: true
   file_glob: true
   file: public/*/*
+  verbose: true
   on:
-    condition: "${MUTABOR_DEPLOY}" = true
     repo: keinstein/mutabor
     tags: true
     branch: master
@@ -104,6 +104,5 @@ deploy:
   github_token: $GITHUB_TOKEN
   verbose: true
   on:
-    condition: "${MUTABOR_DEPLOY}" = true
     repo: keinstein/mutabor
     branch: master

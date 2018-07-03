@@ -146,10 +146,12 @@ deploy:
   - provider: GitHub
     name: Releases
     description: Nightly build
-    artifact: Releases,ZIPs
-    force_update: true
     auth_token:
         secure: CBpAyIWs05AwGPigYDbYgEzBNV3jhXm6rvoBA+GoFXB5CocdOAzen2ceL906o0EM
+    artifact: Releases,ZIPs
+    force_update: true
+    draft: false
+    prerelease: false
     on:
 	branch: master
 	APPVEYOR_REPO_TAG: true
