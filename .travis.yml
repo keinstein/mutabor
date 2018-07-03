@@ -92,6 +92,7 @@ deploy:
   file: public/*/*
   verbose: true
   on:
+    condition: $MUTABOR_DEPLOY = true  
     repo: keinstein/mutabor
     tags: true
     branch: master
@@ -104,5 +105,6 @@ deploy:
   github_token: $GITHUB_TOKEN
   verbose: true
   on:
+    condition: $MUTABOR_DEPLOY = true
     repo: keinstein/mutabor
     branch: master
