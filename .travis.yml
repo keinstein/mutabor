@@ -79,9 +79,11 @@ script:
     - if cat */_build/test-suite.log ; then true ; else true; fi
     - if test "$TRAVIS_OS_NAME" = osx ; then make install &&  make V=1 dmg ; fi ;
     - if test "$TRAVIS_OS_NAME" = linux && false ; then debuild ; fi ;
-    - git clone --depth=1 --branch=master https://github.com/keinstein/mutabor-nightlies.git public
-    - mkdir -p "public/download/${CXX}_${TRAVIS_TAG}"
-    - if test "$TRAVIS_OS_NAME" = osx ; then mv *.dmg "public/download/${CXX}_${TRAVIS_TAG}" ; fi ;
+    - git clone --depth=1 --branch=master https://${GITHUB_TOKEN}@github.com/keinstein/mutabor-nightlies.git public
+    - mkdir -p "public/docs/download/${CXX}_MAC_x86_64_${TRAVIS_TAG}"
+    - if test "$TRAVIS_OS_NAME" = osx ; then mv *.dmg "public/download/${CXX}_MAC_x86_64_${TRAVIS_TAG}" ; fi ;
+    - if test "$TRAVIS_OS_NAME" = osx ; then cd public && git add "download/${CXX}_MAC_x86_64_${TRAVIS_TAG}/*" && git commit -m "Automatic publishing via Travis-CI" ; fi ;
+    - if test "$TRAVIS_OS_NAME" = osx ; then cd public && until git push origin master ;  do sleep 60 ; git pull origin ; done ; fi ;
 
 deploy:
 - provider: releases
@@ -92,7 +94,7 @@ deploy:
   file: public/*/*
   verbose: true
   on:
-    condition: $MUTABOR_DEPLOY = true  
+    condition: $MUTABOR_DEPLOY = true
     repo: keinstein/mutabor
     tags: true
     branch: master
@@ -100,11 +102,11 @@ deploy:
   skip_cleanup: true
   local_dir: public
   repo: keinstein/mutabor-nightlies
-  target_branch: gh-pages
+  target_branch: master
   keep_history: true
   github_token: $GITHUB_TOKEN
   verbose: true
   on:
     condition: $MUTABOR_DEPLOY = true
     repo: keinstein/mutabor
-    branch: master
+    branch: travis-github-provider
