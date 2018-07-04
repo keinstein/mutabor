@@ -81,7 +81,7 @@ script:
     - if test "$TRAVIS_OS_NAME" = linux && false ; then debuild ; fi ;
     - git clone --depth=1 --branch=master https://${GITHUB_TOKEN}@github.com/keinstein/mutabor-nightlies.git public
     - mkdir -p "public/docs/download/${CXX}_MAC_x86_64_${TRAVIS_TAG}"
-    - if test "$TRAVIS_OS_NAME" = osx ; then mv *.dmg "public/download/${CXX}_MAC_x86_64_${TRAVIS_TAG}" ; fi ;
+    - if test "$TRAVIS_OS_NAME" = osx ; then mv *.dmg "public/docs/download/${CXX}_MAC_x86_64_${TRAVIS_TAG}" ; fi ;
     - if test "$TRAVIS_OS_NAME" = osx ; then cd public && git add "download/${CXX}_MAC_x86_64_${TRAVIS_TAG}/*" && git commit -m "Automatic publishing via Travis-CI" ; fi ;
     - if test "$TRAVIS_OS_NAME" = osx ; then cd public && until git push origin master ;  do sleep 60 ; git pull origin ; done ; fi ;
 
@@ -91,7 +91,7 @@ deploy:
     secure: zoo9cYmsDytF4QqiOVMZC0OttLyln+OtkYZ6Oj2qERS8FWqYboVxtQs1IPBq30+r9pkCSyWdD8GOKzjTd/Bzvh/289rbU0WHaafsJnfnSsyZtpJudtMn4s6DMekbZECMrcCfBOuZnUG6uqp2ywGulpJdPCh73UnbqEwq9lluT+IDXgouX+utGPgToXhEc+OZWh1pdQMxM+6VmfUBJsUatrfOnD20TCVKcQwlf/OcUkhmLZspOjCgrTBoVUyNJACsSiEKN41Bx7mXvRjm7+PiFZ+WVTamIoL/i37bSzpAjlYLUWjdS7yqT3BzQf75ABFwTKotB5JLn3Q+JrUTJYyKDvd5iryxBISVtjcdP+ECeZP/j8pHKQmWPtBffpNF1FlUhGr/ry1vn7qMOrnLyumdjWgLuIDCeZcU7avu/rh38l3zTCx7G8OWa1HEJ2TX6GdJi02x/PKmgeO+vmJtSKjp+IXt8ULy5QzE6fz3WNkHX4b/t0IsOmzyJCnlflEcQiirfn0XdAN9a52pobkuD/L401odQrLzTJ/WwXuJcrrgmHZIqay5kbOkTtY7XrawZsMk6Xx1W0rNoUeDDMUi5wJvhRkuusUnIkSiRv1oPci6FEFkYAR4PTS6otYlL6uIRnpcvzYFwSGwV7Rwubw142TQ+DR24T/ahxKsAA2lhJgq0s4=
   skip_cleanup: true
   file_glob: true
-  file: public/*/*
+  file: public/docs/download/${CXX}_MAC_x86_64_${TRAVIS_TAG}/*
   verbose: true
   on:
     condition: $MUTABOR_DEPLOY = true
