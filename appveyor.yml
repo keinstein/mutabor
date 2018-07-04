@@ -140,7 +140,7 @@ build_script:
   - bash -c "(%TEST_COMMAND%) || (cat test-suite.log ; false)"
   - bash -c "git config --global user.email "keinstein@users.sourceforge.net"
   - bash -c "git config --global user.name "Appveyor automatic deployment"
-  - bash -c "if [[ $MUTABOR_DEPLOY =  true ]] ; then git clone  --depth=1 --branch=master https://${GITHUB_TOKEN}@github.com/keinstein/mutabor-nightlies public && mkdir -p public/docs/downloads/${CXX}_WIN_${MINGW_ARCH}_${APPVEYOR_REPO_TAG_NAME} && cp Mutabor*.exe *.zip public/docs/downloads/${CXX}_WIN_${MINGW_ARCH}_${APPVEYOR_REPO_TAG_NAME} && cd public && git add docs/downloads/${CXX}_WIN_${MINGW_ARCH}_${APPVEYOR_REPO_TAG_NAME} && git commit -m "Automatic publishing from Appveyor" && until git push origin master ;  do sleep 60 ; git pull origin ; done; fi"
+  - bash -c "if [[ $MUTABOR_DEPLOY =  true ]] ; then git clone  --depth=1 --branch=master https://${GITHUB_TOKEN}@github.com/keinstein/mutabor-nightlies public && mkdir -p public/docs/downloads/${CXX}_WIN_${MINGW_ARCH}_${APPVEYOR_REPO_TAG_NAME} && cp Mutabor*.exe *.zip public/docs/downloads/${CXX}_WIN_${MINGW_ARCH}_${APPVEYOR_REPO_TAG_NAME} && cd public && git add docs/downloads/${CXX}_WIN_${MINGW_ARCH}_${APPVEYOR_REPO_TAG_NAME} && git commit -m 'Automatic publishing from Appveyor' && until git push origin master ;  do sleep 60 ; git pull origin ; done; fi"
 
 artifacts:
   - path: 'Mutabor*.exe'

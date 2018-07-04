@@ -82,8 +82,9 @@ script:
     - git clone --depth=1 --branch=master https://${GITHUB_TOKEN}@github.com/keinstein/mutabor-nightlies.git public
     - mkdir -p "public/docs/download/${CXX}_MAC_x86_64_${TRAVIS_TAG}"
     - if test "$TRAVIS_OS_NAME" = osx ; then mv *.dmg "public/docs/download/${CXX}_MAC_x86_64_${TRAVIS_TAG}" ; fi ;
-    - if test "$TRAVIS_OS_NAME" = osx ; then cd public && git add "download/${CXX}_MAC_x86_64_${TRAVIS_TAG}/*" && git commit -m "Automatic publishing via Travis-CI" ; fi ;
-    - if test "$TRAVIS_OS_NAME" = osx ; then cd public && until git push origin master ;  do sleep 60 ; git pull origin ; done ; fi ;
+    - if test "$TRAVIS_OS_NAME" = osx ; then cd public && git add "docs/download/${CXX}_MAC_x86_64_${TRAVIS_TAG}/*" && git commit -m "Automatic publishing via Travis-CI" ; fi ;
+    - if test "$TRAVIS_OS_NAME" = osx ; then until git push origin master ;  do sleep 60 ; git pull origin ; done ; fi ;
+    - if test "$TRAVIS_OS_NAME" = osx ; then cd .. ; fi
 
 deploy:
 - provider: releases
