@@ -85,7 +85,7 @@ script:
   ; fi ;
 - if test "$TRAVIS_OS_NAME" = osx ; then cd public && git add "docs/download/${CXX}_MAC_x86_64_${TRAVIS_TAG}/*"
   && git commit -m "Automatic publishing via Travis-CI" ; fi ;
-- if test "$TRAVIS_OS_NAME" = osx ; then until git push origin master ;  do sleep
+- #if test "$TRAVIS_OS_NAME" = osx ; then until git push origin master ;  do sleep
   60 ; git pull origin ; done ; fi ;
 - if test "$TRAVIS_OS_NAME" = osx ; then cd .. ; fi
 deploy:
