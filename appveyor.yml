@@ -29,7 +29,7 @@ environment:
       TOOLCHAIN: "default"
       MINGW_ARCH: x86_64
       MINGW_ROOT: c:\msys64\mingw64
-      CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules --disable-shared
+      CONFIGURE_OPTIONS: --enable-debug --disable-silent-rules --disable-shared
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw64/lib
       BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
@@ -39,7 +39,7 @@ environment:
       TOOLCHAIN: "default"
       MINGW_ARCH: x86_64
       MINGW_ROOT: c:\msys64\mingw64
-      CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules --disable-static --enable-shared
+      CONFIGURE_OPTIONS: --enable-debug --disable-silent-rules --disable-static --enable-shared
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw64/lib
       BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
@@ -72,7 +72,7 @@ environment:
       TOOLCHAIN: "default"
       MINGW_ARCH: i686
       MINGW_ROOT: c:\msys64\mingw32
-      CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules --disable-shared
+      CONFIGURE_OPTIONS: --enable-debug --disable-silent-rules --disable-shared
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw32/lib
       BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
@@ -82,7 +82,7 @@ environment:
       TOOLCHAIN: "default"
       MINGW_ARCH: i686
       MINGW_ROOT: c:\msys64\mingw32
-      CONFIGURE_OPTINOS: --enable-debug --disable-silent-rules --disable-static --enable-shared
+      CONFIGURE_OPTIONS: --enable-debug --disable-silent-rules --disable-static
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw32/lib
       BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
@@ -136,7 +136,7 @@ build_script:
   - bash -c "mkdir -p config"
   - bash -c "touch config/config.rpath"
   - bash -c "autoreconf -i -f"
-  - bash -c "./configure %CONFIGURE_OPTIONS% --with-boost-libdir=$BOOST_LIBS || cat config.log"
+  - bash -c "./configure %CONFIGURE_OPTIONS%  --host=%MINGW_ARCH%-w64-mingw32 --build=%MINGW_ARCH%-w64-mingw32 --with-boost-libdir=$BOOST_LIBS || cat config.log"
   - bash -c "(%TEST_COMMAND%) || (cat test-suite.log ; false)"
   - bash -c "git config --global user.email "keinstein@users.sourceforge.net"
   - bash -c "git config --global user.name "Appveyor automatic deployment"
