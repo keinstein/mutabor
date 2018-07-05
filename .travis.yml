@@ -20,7 +20,7 @@ matrix:
     osx_image: xcode9.2
     env:
     - MATRIX_EVAL="CC=gcc && CXX=g++ && EXTRA_BREW=gcc && DYLD_LIBRARY_PATH=":/usr/local/opt/wxmac/lib/:/usr/local/Cellar/jack/0.125.0_2/lib:-L/usr/local/lib
-      && MUTABOR_DEPLOY=true"
+      && MUTABOR_DEPLOY=false"
 addons:
   apt:
     sources:
