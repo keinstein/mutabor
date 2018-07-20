@@ -44,7 +44,7 @@ AM_SILENT_RULES
 
 rtmidi_suffix="-mutabor"
 m4_include([lib/rtmidi/configure.library])
-
+ac_cv_mingw_dll_dirs="$ac_cv_rtmidi_ts_mingw_dll_dirs"
 
 AC_CONFIG_HEADER([config.h])
 
