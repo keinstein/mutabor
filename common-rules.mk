@@ -80,11 +80,12 @@ DISTCLEANFILES = \
 
 DLLCOPYPATTERN = \(wx\|mingw\)
 DLLEXEDIR = Mutabor
-DLLSEARCHPATH += \
-	$(top_builddir)/lib/rtmidi \
-	$(top_builddir)/lib/rtmidi/.libs \
-	$(top_builddir)/src/wxintl \
-	$(top_builddir)/src/wxintl/.libs
+#dllsearchpath must not have any spaces included.
+LOCALDLLSEARCHPATH=:\
+$(top_builddir)/lib/rtmidi:\
+$(top_builddir)/lib/rtmidi/.libs:\
+$(top_builddir)/src/wxintl:\
+$(top_builddir)/src/wxintl/.libs
 
 
 
@@ -289,31 +290,31 @@ $(DEBUGPATHS): Makefile
 #-------------------------------------------------------------------------------------	
 
 
-installdll:
-	@echo 'solving references for $(DLLLINKFILE)... '
-	DLLSEARCHPATH="$(DLLSEARCHPATH)" ; \
-	for d in `LANG=C $(OBJDUMP) -p  $(DLLEXEDIR)/$(DLLLINKFILE) |sed '/^\s*DLL Name:.*\(lib\|thread\|wx\|mingw\|gcc\|stdc++\|rtmidi\)/ { s/^\s*DLL Name:\s*//; p } ; d '` ; \
-	do \
-		echo -n checking "$$d ... " ; \
-		if [ ! -f $(DLLEXEDIR)/$$d ] ; then \
-			echo -n "searching... " ; \
-			f=`( find $$DLLSEARCHPATH -name "$$d" || \
-			find $$DLLSEARCHPATH -name "$$d.*")|head -n 1` ; \
-			if test -f "$$f" ; \
-			then \
-				echo "installing $$f to `pwd`/$(DLLEXEDIR)" ; \
-				$(INSTALL_PROGRAM_ENV) $(INSTALL_DATA) "$$f" "$(DLLEXEDIR)" ; \
-				case "$$f" in \
-				*.gz)  GZIP=$(GZIP_ENV) gzip -dc $(DLLEXEDIR)/`basename "$$f"` >$(DLLEXEDIR)/"$$d" ;; \
-				esac ; \
-				$(MAKE) $(AM_MAKEFLAGS) DLLLINKFILE="$$d" DLLEXEDIR="$(DLLEXEDIR)" installdll ; \
-			else \
-				echo "not found." ; \
-			fi ; \
-		fi ; \
-		echo "done." ;\
-	done ;
-
+installdll: rtmidi_installdll
+# 	@echo 'solving references for $(DLLLINKFILE)... '
+# 	DLLSEARCHPATH="$(DLLSEARCHPATH)" ; \
+# 	for d in `LANG=C $(OBJDUMP) -p  $(DLLEXEDIR)/$(DLLLINKFILE) |sed '/^\s*DLL Name:.*\(lib\|thread\|wx\|mingw\|gcc\|stdc++\|rtmidi\)/ { s/^\s*DLL Name:\s*//; p } ; d '` ; \
+# 	do \
+# 		echo -n checking "$$d ... " ; \
+# 		if [ ! -f $(DLLEXEDIR)/$$d ] ; then \
+# 			echo -n "searching... " ; \
+# 			f=`( find $$DLLSEARCHPATH -name "$$d" || \
+# 			find $$DLLSEARCHPATH -name "$$d.*")|head -n 1` ; \
+# 			if test -f "$$f" ; \
+# 			then \
+# 				echo "installing $$f to `pwd`/$(DLLEXEDIR)" ; \
+# 				$(INSTALL_PROGRAM_ENV) $(INSTALL_DATA) "$$f" "$(DLLEXEDIR)" ; \
+# 				case "$$f" in \
+# 				*.gz)  GZIP=$(GZIP_ENV) gzip -dc $(DLLEXEDIR)/`basename "$$f"` >$(DLLEXEDIR)/"$$d" ;; \
+# 				esac ; \
+# 				$(MAKE) $(AM_MAKEFLAGS) DLLLINKFILE="$$d" DLLEXEDIR="$(DLLEXEDIR)" installdll ; \
+# 			else \
+# 				echo "not found." ; \
+# 			fi ; \
+# 		fi ; \
+# 		echo "done." ;\
+# 	done ;
+# 
 
 #-------------------------------------------------------------------------------------
 # Recursive generation of potfiles.chk

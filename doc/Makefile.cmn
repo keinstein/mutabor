@@ -50,9 +50,11 @@ $(srcdir)/$(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
 			$(COMMON_TEXDEPS) \
 			$(HTML_TEXDEPS)
 	$(MAKE) -C '$(rel_docdir)' htmldecode$(EXEEXT) fixhhp$(EXEEXT)
+	$(MAKE) -C '$(top_builddir)' 'DLLEXEDIR=doc/.libs' 'DLLLINKFILE=htmldecode$(EXEEXT)' installdll
+	$(MAKE) -C '$(top_builddir)' 'DLLEXEDIR=doc/.libs' 'DLLLINKFILE=fixhhp$(EXEEXT)' installdll
 	TEXINPUTS=".:$(srcdir):$(top_docdir):$$TEXINPUTS" \
-	htmldecode='$(rel_docdir)/htmldecode' \
-	fixhhp='$(rel_docdir)/fixhhp' \
+	htmldecode='$(rel_docdir)/htmldecode$(EXEEXT)' \
+	fixhhp='$(rel_docdir)/fixhhp$(EXEEXT)' \
 	srcdir='$(srcdir)' \
 	top_docdir='$(top_docdir)' \
 	$(top_docdir)/mkhtml $(TEXSOURCES) 

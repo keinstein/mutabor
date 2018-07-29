@@ -609,7 +609,7 @@ AS_IF(test "$wx_is_inplace" = yes,
 )
 AC_SUBST(WX_LOCALE_DIRS,$ac_cv_wx_locale_dirs)
 
-
+set -x
 AC_CACHE_CHECK([where to find support dlls], [ac_cv_mingw_dll_dirs],
 [
        wxsearchdirs="`$WX_CONFIG_PATH --exec-prefix`"
@@ -642,7 +642,15 @@ AC_CACHE_CHECK([where to find support dlls], [ac_cv_mingw_dll_dirs],
        ac_cv_mingw_dll_dirs="$SEARCHDIRS"
 ])
 
-AC_SUBST(DLLSEARCHPATH,"$ac_cv_mingw_dll_dirs")
+AC_CACHE_CHECK([where to find wxWidgets runtime dlls], [ac_cv_mingw_wxwigets_dll_dirs],
+[
+       wxsearchdirs="`$WX_CONFIG_PATH --exec-prefix`"
+       ac_cv_mingw_wxwigets_dll_dirs="$wxsearchdirs/lib:$wxsearchdirs/bin"
+])
+AC_SUBST(DLLSEARCHPATH,"$ac_cv_mingw_wxwigets_dll_dirs:$ac_cv_mingw_dll_dirs")
+set +x
+
+
 
 AS_IF(test -n "$WX_RESCOMP",RC="$WX_RESCOMP")
 AM_CONDITIONAL(COND_WINRC,test -n "$RC")
