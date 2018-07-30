@@ -9,7 +9,7 @@ environment:
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw64/lib
       BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
-      TEST_COMMAND: make -j2 check
+      TEST_COMMAND: make check
 
     - NAME: x86_64 nsis
       TOOLCHAIN: "default"
