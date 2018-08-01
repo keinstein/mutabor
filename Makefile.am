@@ -901,8 +901,9 @@ linkchecks:
 		file=`basename "$$d"` ; \
 		dir=`dirname "$$d"` ; \
 		$(MAKE) $(AM_MAKEFLAGS) DLLLINKFILE="$$file" DLLEXEDIR="$$dir" installdll ; \
-		test -f "$$dir/.libs/$$file" && \
+		if test -f "$$dir/.libs/$$file" ; then \
 			$(MAKE) $(AM_MAKEFLAGS) DLLLINKFILE="$$file" DLLEXEDIR="$$dir/.libs" installdll ; \
+		fi ; \
 	done
 endif
 
