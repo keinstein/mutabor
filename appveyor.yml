@@ -19,7 +19,7 @@ environment:
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw64/lib
       BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
-      TEST_COMMAND: make -j2 nsis
+      TEST_COMMAND: make nsis
       MUTABOR_DEPLOY: true
       GITHUB_TOKEN:
         secure: CBpAyIWs05AwGPigYDbYgEzBNV3jhXm6rvoBA+GoFXB5CocdOAzen2ceL906o0EM
@@ -63,7 +63,7 @@ environment:
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw32/lib
       BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
-      TEST_COMMAND: make -j2 nsis
+      TEST_COMMAND: make nsis
       MUTABOR_DEPLOY: true
       GITHUB_TOKEN:
         secure: CBpAyIWs05AwGPigYDbYgEzBNV3jhXm6rvoBA+GoFXB5CocdOAzen2ceL906o0EM
@@ -76,7 +76,7 @@ environment:
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw32/lib
       BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
-      TEST_COMMAND: make -j2 distcheck
+      TEST_COMMAND: make distcheck
 
     - NAME: i686 shared distcheck
       TOOLCHAIN: "default"
