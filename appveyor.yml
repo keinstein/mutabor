@@ -33,7 +33,7 @@ environment:
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw64/lib
       BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
-      TEST_COMMAND: make -j2 distcheck
+      TEST_COMMAND: make distcheck
 
     - NAME: x86_64 shared distcheck
       TOOLCHAIN: "default"
@@ -43,7 +43,7 @@ environment:
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw64/lib
       BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
-      TEST_COMMAND: make -j2 distcheck
+      TEST_COMMAND: make distcheck
 
     - NAME: i686 check
       TOOLCHAIN: "default"
@@ -53,7 +53,7 @@ environment:
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw32/lib
       BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
-      TEST_COMMAND: make -j2 check 
+      TEST_COMMAND: make check 
 
     - NAME: i686 nsis
       TOOLCHAIN: "default"
@@ -86,7 +86,7 @@ environment:
       _CC: MINGW
       BOOST_LIBS: /c/msys64/mingw32/lib
       BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
-      TEST_COMMAND: make -j2 distcheck
+      TEST_COMMAND: make distcheck
 
 # example see: https://github.com/wang-bin/avbuild/blob/master/appveyor.yml
 init:
