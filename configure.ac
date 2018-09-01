@@ -5,6 +5,20 @@
 AC_PREREQ([2.67])
 AC_INIT([Mutabor],[4.0.0~rc2],[keinstein@users.sf.net])
 
+dnl preserve some variables for cross compiling
+dnl this should be saved early as we modify them
+dnl and this modifications should be checked during
+dnl distcheck phase
+# propagate selected configure variables to DISTCHECK_CONFIGURE_FLAGS
+for v in CPPFLAGS CC CFLAGS CXX CXXFLAGS CXXCPP LDFLAGS LIBS; do
+    eval s=\${$v+set}
+    if test "$s" = set
+    then
+       eval val=\$`echo $v`
+       preserve_flags="${preserve_flags}'${v}=${val}' "
+    fi
+done
+
 # we don't want to debug leaks while configuring.
 # some checks trigger errors
 ASAN_OPTIONS="detect_leaks=0"
@@ -238,10 +252,13 @@ AC_ARG_ENABLE(address-sanitizer,
 		       AX_CHECK_COMPILE_FLAG([$flag],[CXXFLAGS="$CXXFLAGS $flag"])
 		       AC_LANG_PUSH(C)
 		       AX_CHECK_COMPILE_FLAG([$flag],[CFLAGS="$CFLAGS $flag"])
+		       AC_CHECK_LIB(asan,__asan_default_options)
 		       AC_LANG_POP(C)
+		       AC_CHECK_LIB(asan,__asan_default_options)
 	       done
 	       AC_LANG_POP(C++)
 	       )
+	       preserve_flags="${preserve_flags}'--enable-address-sanitizer=${enableval}' "
 	]
 )
 
@@ -354,7 +371,6 @@ AS_IF(test "$cxx_cv_iso_for_loop_scope" = yes,
 AX_CXX_COMPILE_STDCXX(11)
 
 # Checks for libraries.
-AC_CHECK_LIB(asan,__asan_default_options)
 AC_CHECK_LIB(m,pow)
 AC_CHECK_LIB(backtrace,backtrace_print)
 
@@ -881,16 +897,6 @@ abspath () {
 	fi
 }
 
-dnl preserve some variables for cross compiling
-# propagate selected configure variables to DISTCHECK_CONFIGURE_FLAGS
-for v in CPPFLAGS CXX CXXFLAGS CXXCPP LDFLAGS LIBS; do
-    eval s=\${$v+set}
-    if test "$s" = set
-    then
-       eval val=\$`echo $v`
-       preserve_flags="${preserve_flags}'${v}=${val}' "
-    fi
-done
 # propagate Host triplets to DISTCHECK_CONFIGURE_FLAGS
 for v in host build target; do
     tmp="${v}_alias"
