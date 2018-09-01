@@ -94,6 +94,7 @@ nodist_%C%_playmidi1_SOURCES = \
 	$(BOOST_LOCALE_LIB) \
 	$(BOOST_THREAD_LIB) \
 	$(BOOST_CHRONO_LIB) \
+	$(BOOST_LOCALE_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 %C%_midiopenfail1_LDADD = \
@@ -110,6 +111,7 @@ nodist_%C%_playmidi1_SOURCES = \
 	$(BOOST_FILESYSTEM_LIB) \
 	$(BOOST_THREAD_LIB) \
 	$(BOOST_CHRONO_LIB) \
+	$(BOOST_LOCALE_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 %C%_midiopenfail1_CXXFLAGS = \
@@ -144,6 +146,7 @@ nodist_%C%_genmidirnd_SOURCES = \
 	$(BOOST_FILESYSTEM_LIB) \
 	$(BOOST_THREAD_LIB) \
 	$(BOOST_CHRONO_LIB) \
+	$(BOOST_LOCALE_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 
@@ -170,6 +173,7 @@ nodist_%C%_genmidilinear_SOURCES = \
 	$(BOOST_FILESYSTEM_LIB) \
 	$(BOOST_THREAD_LIB) \
 	$(BOOST_CHRONO_LIB) \
+	$(BOOST_LOCALE_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 
@@ -229,6 +233,7 @@ nodist_%C%_testcppunit_SOURCES = \
 	$(BOOST_FILESYSTEM_LIB) \
 	$(BOOST_THREAD_LIB) \
 	$(BOOST_CHRONO_LIB) \
+	$(BOOST_LOCALE_LIB) \
 	$(BOOST_SYSTEM_LIB)
 endif
 

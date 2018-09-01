@@ -103,6 +103,7 @@ nodist_%C%_test_empty_SOURCES = \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_LOCALE_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 nodist_%C%_test_empty_comments_SOURCES = \
@@ -122,6 +123,7 @@ nodist_%C%_test_empty_comments_SOURCES = \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_LOCALE_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 nodist_%C%_test_intervals1_SOURCES = \
@@ -141,6 +143,7 @@ nodist_%C%_test_intervals1_SOURCES = \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_LOCALE_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 nodist_%C%_test_keymaps_SOURCES = \
@@ -160,6 +163,7 @@ nodist_%C%_test_keymaps_SOURCES = \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
 	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_LOCALE_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 

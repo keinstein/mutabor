@@ -41,6 +41,7 @@ nodist_%C%_playgmn1_SOURCES = \
 	$(BOOST_FILESYSTEM_LIB) \
 	$(BOOST_THREAD_LIB) \
 	$(BOOST_CHRONO_LIB) \
+	$(BOOST_LOCALE_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 %C%_gmnopenfail1_LDADD = \
@@ -55,6 +56,7 @@ nodist_%C%_playgmn1_SOURCES = \
 	$(BOOST_FILESYSTEM_LIB) \
 	$(BOOST_THREAD_LIB) \
 	$(BOOST_CHRONO_LIB) \
+	$(BOOST_LOCALE_LIB) \
 	$(BOOST_SYSTEM_LIB)
 
 %C%_gmnopenfail1_SOURCES = \

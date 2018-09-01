@@ -99,6 +99,7 @@ nodist_%C%_testcppunit_SOURCES = \
 	$(BOOST_FILESYSTEM_LIB) \
 	$(BOOST_CHRONO_LIB) \
 	$(BOOST_THREAD_LIB) \
+	$(BOOST_LOCALE_LIB) \
 	$(BOOST_SYSTEM_LIB)
 endif
 
