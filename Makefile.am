@@ -905,6 +905,10 @@ linkchecks:
 			$(MAKE) $(AM_MAKEFLAGS) DLLLINKFILE="$$file" DLLEXEDIR="$$dir/.libs" installdll ; \
 		fi ; \
 	done
+
+installdll: rtmidi_installdll
+else
+installdll:
 endif
 
 

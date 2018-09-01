@@ -42,8 +42,14 @@ AS_IF(test "${enable_silent_rules+set}" != set,
 AM_CONDITIONAL(VPATH_BUILD, test "$ac_abs_confdir" != "$ac_pwd")
 AM_SILENT_RULES
 
-rtmidi_suffix="-mutabor"
+dnl Set default suffix for RtMidi
+with_rtmidi_suffix="-mutabor"
+m4_define(rtmididir,[lib/rtmidi])
+dnl m4_include([lib/rtmidi/configure.version])
+dnl aclocal cannot handle m4_include(rtmididir[/configure.library])
+dnl so we must expand rtmdiidir manually, here
 m4_include([lib/rtmidi/configure.library])
+
 ac_cv_mingw_dll_dirs="$ac_cv_rtmidi_ts_mingw_dll_dirs"
 
 AC_CONFIG_HEADER([config.h])
@@ -362,7 +368,7 @@ AC_CANONICAL_HOST
 AC_MSG_CHECKING(for MIDI API)
 AC_SUBST( RTMIDI_TS_API, [""] )
 
-copydlls=false
+copydlls=$RTMIDI_COPYDLLS
 
 echo $host_os
 
@@ -534,7 +540,7 @@ dnl
 
 esac
 dnl CPPFLAGS="$CPPFLAGS $RTMIDI_TS_API"
-AM_CONDITIONAL(COPYDLLS,$copydlls)
+AM_CONDITIONAL(COPYDLLS,$rtmidicopydlls)
 
 AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.19])
@@ -915,7 +921,7 @@ Makefile
 src/wxintl/tests/Makefile
 lib/Makefile
 lib/rtmidi/rtmidi-config
-lib/rtmidi/librtmidi.pc
+lib/rtmidi/rtmidi.pc
 lib/missfunc/Makefile
 Images/Icons/png/16x16/Makefile
 Images/Icons/png/20x20/Makefile

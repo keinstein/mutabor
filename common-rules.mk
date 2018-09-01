@@ -290,7 +290,7 @@ $(DEBUGPATHS): Makefile
 #-------------------------------------------------------------------------------------	
 
 
-installdll: rtmidi_installdll
+# installdll: rtmidi_installdll
 # 	@echo 'solving references for $(DLLLINKFILE)... '
 # 	DLLSEARCHPATH="$(DLLSEARCHPATH)" ; \
 # 	for d in `LANG=C $(OBJDUMP) -p  $(DLLEXEDIR)/$(DLLLINKFILE) |sed '/^\s*DLL Name:.*\(lib\|thread\|wx\|mingw\|gcc\|stdc++\|rtmidi\)/ { s/^\s*DLL Name:\s*//; p } ; d '` ; \
