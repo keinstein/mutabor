@@ -801,9 +801,9 @@ Mutabor.app:all Mutabor.xrc mutabor update-gmo dylibbundler
 	cp osdep/macosx/Info.plist Mutabor.app/Contents
 	cp $(top_srcdir)/Images/Icons/icns/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
 	echo -n APPLMUTA >Mutabor.app/Contents/PkgInfo
-	otool -D Mutabor.app/Contents/libs/librtmidi-mutabor.3.dylib
-	otool -l Mutabor.app/Contents/MacOS/mutabor
-	otool -L Mutabor.app/Contents/MacOS/mutabor
+	-otool -D Mutabor.app/Contents/libs/librtmidi-mutabor.*.dylib
+	-otool -l Mutabor.app/Contents/MacOS/mutabor
+	-otool -L Mutabor.app/Contents/MacOS/mutabor
 	echo | dylibbundler -b -x Mutabor.app/Contents/MacOS/mutabor \
 		-p @executable_path/../libs/ \
 		-cd -od -d Mutabor.app/Contents/libs
