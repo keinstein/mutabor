@@ -40,12 +40,12 @@
 
 #ifndef MUWX_MUTDOCMANAGER_H_PRECOMPILED
 #define MUWX_MUTDOCMANAGER_H_PRECOMPILED
-#include "wx/docview.h"
 
 // ---------------------------------------------------------------------------
 // headers
 // ---------------------------------------------------------------------------
 
+#include "wx/docview.h"
 #include "wx/event.h"
 
 namespace mutaborGUI {

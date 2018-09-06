@@ -33,6 +33,12 @@
 #include "wx/window.h"
 #include "wx/stdpaths.h"
 #include "wx/filename.h"
+#include "wx/image.h"
+#ifdef VC8
+  #include <wx/html/helpctrl.h>
+#else
+  class wxHtmlHelpController;
+#endif
 #include <iostream>
 #include <typeinfo>
 #include <list>
