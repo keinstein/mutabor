@@ -57,7 +57,8 @@ check_MIDISOURCES += \
 	$(srcdir)/%D%/controller.txt \
 	$(srcdir)/%D%/midiin.txt \
 	$(srcdir)/%D%/aftertouch.txt \
-	$(srcdir)/%D%/sysex.txt
+	$(srcdir)/%D%/sysex.txt \
+	$(srcdir)/%D%/invalid_delta.txt
 
 MIDITESTS = \
 	%D%/bug-20180414ts.mid
