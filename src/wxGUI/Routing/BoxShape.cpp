@@ -62,7 +62,6 @@ namespace mutaborGUI {
 	BEGIN_EVENT_TABLE(MutBoxShape, MutBoxIconShape)
 	EVT_KEY_DOWN(MutBoxShape::OnKeyDown)
 	EVT_LEFT_DCLICK(MutBoxShape::LeftDblClickEvent)
-	EVT_MENU(CM_LEFT_DOUBLE_CLICK,MutBoxShape::CmLeftDblClick)
 	EVT_MENU(CM_MOVE_UP, MutBoxShape::CmMoveIcon)
 	EVT_MENU(CM_MOVE_DOWN, MutBoxShape::CmMoveIcon)
 	//EVT_CLOSE(MutDeviceShape::DeleteSelfEvent)

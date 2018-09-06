@@ -74,8 +74,11 @@ namespace mutaborGUI {
 	class MutBoxShape:public MutBoxIconShape
 	{
 	public:
-		MutBoxShape():MutBoxIconShape(),m_icon(NULL),channels(NULL),
-			      box() {}
+		MutBoxShape():MutBoxIconShape(),
+			      processclicks(true),
+			      m_icon(NULL),
+			      channels(NULL),
+			      box(){}
 
 #if defined(_MSC_VER)
 #pragma warning(push) // Save warning settings.
@@ -84,7 +87,12 @@ namespace mutaborGUI {
 
 
 		MutBoxShape(wxWindow * parent,wxWindowID wid, mutabor::Box & b):
-			MutBoxIconShape(),m_icon(NULL),channels(NULL),box(NULL) {
+			MutBoxIconShape(),
+			processclicks(true),
+			m_icon(NULL),
+			channels(NULL),
+			box(NULL)
+		{
 			Create(parent,wid,b);
 		}
 
@@ -128,18 +136,24 @@ namespace mutaborGUI {
 		*/
 		void LeftDblClickEvent (wxMouseEvent & event) {
 			mutUnused(event);
+			// ensure that no mouse event intervenes
+			// with the current execution.
+			if (processclicks.exchange(false))
+				CallAfter([this]{CmLeftDblClick();});
+#if 0
 			wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
 					       CM_LEFT_DOUBLE_CLICK);
 			wxPostEvent(this,command);
+#endif
 		}
 		/// Process a double click
 		/** Since programs might produce segmentation faults
 		    when the object is deleted during processing of mouse
 		    events, we send us a new event using the event queue.
 		*/
-		void CmLeftDblClick (wxCommandEvent& event) {
-			mutUnused(event);
+		void CmLeftDblClick () {
 			DoLeftDblClick();
+			processclicks.store(true);
 		}
 
 
@@ -190,7 +204,6 @@ namespace mutaborGUI {
 			TRACEC;
 			return true;
 		}
-
 
 		virtual MutBoxChannelShape * Add(MutBoxChannelShape * channel);
 		virtual bool Remove(MutBoxChannelShape * shape);
@@ -247,6 +260,7 @@ namespace mutaborGUI {
 		 */
 		void BoxChanged();
 	protected:
+		std::atomic_bool processclicks;
 		MutBoxIconShape * m_icon;
 		wxSizer * channels;
 		mutabor::Box box;

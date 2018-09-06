@@ -84,7 +84,6 @@ using namespace mutaborGUI;
 BEGIN_EVENT_TABLE_TEMPLATE1(MutDeviceShape, MutIconShape, T)
 EVT_KEY_DOWN(MutDeviceShape::OnKeyDown)
 EVT_LEFT_DCLICK(MutDeviceShape::LeftDblClickEvent)
-EVT_MENU(CM_LEFT_DOUBLE_CLICK,MutDeviceShape::CmLeftDblClick)
 EVT_MENU(CM_MOVE_UP, MutDeviceShape::CmMoveIcon)
 EVT_MENU(CM_MOVE_DOWN, MutDeviceShape::CmMoveIcon)
 EVT_MENU(CM_DEVICE_STATE_CHANGED, MutDeviceShape::CmDeviceNotification)

@@ -279,17 +279,24 @@ namespace mutaborGUI {
 		    events, we send us a new event using the event queue.
 		*/
 		void LeftDblClickEvent (wxMouseEvent & mutUNUSED(event)) {
+			// ensure that no mouse event intervenes
+			// with the current execution.
+			if (processclicks.exchange(false))
+				CallAfter([this]{CmLeftDblClick();});
+#if 0
 			wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
 					       CM_LEFT_DOUBLE_CLICK);
 			wxPostEvent(this,command);
+#endif
 		}
 		/// Process a double click
 		/** Since programs might produce segmentation faults
 		    when the object is deleted during processing of mouse
 		    events, we send us a new event using the event queue.
 		*/
-		void CmLeftDblClick (wxCommandEvent& mutUNUSED(event)) {
+		void CmLeftDblClick () {
 			DoLeftDblClick();
+			processclicks.store(true);
 		}
 
 #if defined(_MSC_VER)
@@ -302,6 +309,7 @@ namespace mutaborGUI {
 		wxSizer * playbuttons;
 		//	static stringmaptype stringmap;
 		static wxSizerFlags sizerFlags;
+		std::atomic_bool processclicks;
 
 		MutDeviceShape():MutIconShape(),
 				 routes(),

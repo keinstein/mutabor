@@ -128,27 +128,6 @@ namespace mutaborGUI {
 			GetParent()->GetEventHandler()->ProcessEvent(event);
 		}
 
-#if 0 // for own event handling
-		/// Get a double click and prepare for execution of the command
-		/** Since programs might produce segmentation faults
-		    when the object is deleted during processing of mouse
-		    events, we send us a new event using the event queue.
-		*/
-		void LeftDblClickEvent (wxMouseEvent & event) {
-			wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
-					       CM_LEFT_DOUBLE_CLICK);
-			wxPostEvent(this,command);
-		}
-		/// Process a double click
-		/** Since programs might produce segmentation faults
-		    when the object is deleted during processing of mouse
-		    events, we send us a new event using the event queue.
-		*/
-		void CmLeftDblClick (wxCommandEvent& event) {
-			DoLeftDblClick();
-		}
-#endif
-
 
 #if defined(_MSC_VER)
 #pragma warning(push) // Save warning settings.
@@ -316,6 +295,8 @@ namespace mutaborGUI {
 		 */
 		void DetachChannel();
 		void DeleteRoute();
+	protected:
+		std::atomic_bool processclicks;
 	private:
 		DECLARE_EVENT_TABLE()
 	};
