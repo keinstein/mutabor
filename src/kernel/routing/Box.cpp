@@ -414,7 +414,7 @@ namespace mutabor {
 				Close();
 				return false;
 			}
-		} catch (boost::thread_resource_error & e) {
+		} catch (const boost::thread_resource_error & e) {
 			DEBUGLOG(thread,
 				 "Thread %s could not aquire thread resources for loopguard",
 				 Thread::get_current_string_id().c_str());
@@ -422,7 +422,7 @@ namespace mutabor {
 			loopguard = NULL;
 			Close();
 			return false;
-		} catch (std::exception & e) {
+		} catch (const std::exception & e) {
 			DEBUGLOG(thread,
 				 "Thread %s got an exception while creating loopguard: %s",
 				 Thread::get_current_string_id().c_str(),

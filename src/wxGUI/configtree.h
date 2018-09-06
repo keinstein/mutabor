@@ -112,7 +112,7 @@ public:
 		try {
 			int i = boost::lexical_cast<int>( id );
 			return i;
-		} catch( boost::bad_lexical_cast const& ) {
+		} catch(const boost::bad_lexical_cast & ) {
 			return wxNOT_FOUND;
 		}
 	}
@@ -125,7 +125,7 @@ public:
 		try {
 			int i = boost::lexical_cast<int>( id );
 			return i;
-		} catch( boost::bad_lexical_cast const& ) {
+		} catch(const boost::bad_lexical_cast & ) {
 			return wxNOT_FOUND;
 		}
 	}

@@ -64,7 +64,7 @@ char GetMidiInstrument(GisToken *token)
 		if (t.substr(0,4) == "MIDI") {
 			try {
 				value = boost::lexical_cast<int>(t.substr(4));
-			} catch( boost::bad_lexical_cast const& ) {
+			} catch(const boost::bad_lexical_cast & ) {
 			}
 			DEBUGLOG2(gmnfile,("v= %s"), v.c_str());
 			return (char) value;

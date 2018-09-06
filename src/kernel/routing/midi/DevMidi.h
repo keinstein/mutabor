@@ -79,7 +79,7 @@ namespace mutabor {
 		bool Open(rtmidi::PortDescriptor & id, const std::string name) {
 			try {
 				port = new rtmidi::MidiOut(rtmidi::UNSPECIFIED, PACKAGE_STRING);
-			} catch (rtmidi::Error &error) {
+			} catch (const rtmidi::Error &error) {
 				device->runtime_error(false,
 						      _mut("Can not open MIDI output devices due to memory allocation problems."));
 				return false;
@@ -87,7 +87,7 @@ namespace mutabor {
 
 			try {
 				port->openPort(id, name);
-			} catch (rtmidi::Error &error) {
+			} catch (const rtmidi::Error &error) {
 				device->runtime_error(false,
 						      str(boost::format(_mut("Can not open output Midi device %s (%s):\n%s"))
 							  % name.c_str()
@@ -313,7 +313,7 @@ namespace mutabor {
 					Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
 							      rtmidi::PortDescriptor::SHORT_NAME |
 							      rtmidi::PortDescriptor::UNIQUE_PORT_NAME).c_str();
-				} catch (rtmidi::Error &error) {
+				} catch (const rtmidi::Error &error) {
 					runtime_error(false,
 						      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))
 							  % id->getName(rtmidi::PortDescriptor::INCLUDE_API |
@@ -462,7 +462,7 @@ namespace mutabor {
 					Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
 							      rtmidi::PortDescriptor::SHORT_NAME |
 							      rtmidi::PortDescriptor::UNIQUE_PORT_NAME).c_str();
-				} catch (rtmidi::Error &error) {
+				} catch (const rtmidi::Error &error) {
 					runtime_error(false,
 						      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))
 							  % id->getName(rtmidi::PortDescriptor::INCLUDE_API |

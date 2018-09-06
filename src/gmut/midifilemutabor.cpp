@@ -54,8 +54,8 @@ namespace mutaborGUI {
 	_mut("option '%canonical_option%' is ambiguous")
 
 #define mut_catch_exception(ex)						\
-	catch (po::ex & e) {						\
-		e.m_error_template = STR_ ## ex;			\
+	catch (const po::ex & e) {					\
+		const_cast<po::ex &>(e).m_error_template = STR_ ## ex;	\
 		cerr << boost::format(_mut("Error: %s")) % e.what()	\
 		     << std::endl					\
 		     << std::endl;					\
@@ -191,7 +191,7 @@ int main(int ac, char* av[])
 				  options(desc).positional(p).run(), vm);
 			po::notify(vm);
 		}
-		catch (po::too_many_positional_options_error & e) {
+		catch (const po::too_many_positional_options_error & e) {
 			cerr << STR_too_many_positional_options_error
 			     << std::endl
 			     << std::endl;
@@ -203,7 +203,7 @@ int main(int ac, char* av[])
 		mut_catch_exception(required_option)
 		mut_catch_exception(unknown_option)
 		mut_catch_exception(ambiguous_option)
-		catch(exception& e) {
+		catch(const exception& e) {
 			cerr << "error: " << e.what() << "\n";
 			do_help(desc,*av);
 			return 1;
@@ -297,7 +297,7 @@ int main(int ac, char* av[])
 		in = NULL;
 		inguard.reset();
 	}
-	catch(exception& e) {
+	catch(const exception& e) {
 		cerr << "error: " << e.what() << "\n";
 		return 1;
 	}

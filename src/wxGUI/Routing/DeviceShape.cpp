@@ -560,7 +560,7 @@ namespace mutaborGUI {
 					  ++i) {
 						in->AppendPortChoice(*i);
 					}
-			} catch (RtMidiError &error) {
+			} catch (const rtmidi::Error &error) {
 				error.printMessage();
 				in->AppendPortChoiceNoDevice();
 			}
@@ -597,7 +597,7 @@ namespace mutaborGUI {
 					  ++i) {
 						out->AppendPortChoice(*i);
 					}
-			} catch (RtMidiError &error) {
+			} catch (const rtmidi::Error &error) {
 				wxMessageBox(error.getMessage());
 				error.printMessage();
 				out->AppendPortChoiceNoDevice();

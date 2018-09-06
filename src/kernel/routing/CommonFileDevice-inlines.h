@@ -174,7 +174,7 @@ namespace mutabor {
 					Close();
 					return false;
 				}
-			} catch (boost::thread_resource_error & e) {
+			} catch (const boost::thread_resource_error & e) {
 				DEBUGLOG(thread,
 					 "Thread %s could not aquire thread resources for timer",
 					 Thread::get_current_string_id().c_str());
@@ -183,7 +183,7 @@ namespace mutabor {
 				Mode = DeviceTimingError;
 				Close();
 				return false;
-			} catch (std::exception & e) {
+			} catch (const std::exception & e) {
 				DEBUGLOG(thread,
 					 "Thread %s got an exception while creating timer: %s",
 					 Thread::get_current_string_id().c_str(),
@@ -492,7 +492,7 @@ namespace mutabor {
 									thread_state.notify_all();
 								}
 							}
-						catch (boost::thread_interrupted & e) {
+						catch (const boost::thread_interrupted & e) {
 							Stop();
 						}
 						DEBUGLOG(thread,
@@ -522,7 +522,7 @@ namespace mutabor {
 						try {
 							CurrentTime.Sleep(nextEvent,thread_command);
 						}
-						catch (boost::thread_interrupted & e) {
+						catch (const boost::thread_interrupted & e) {
 							Stop();
 						}
 					}
@@ -560,7 +560,7 @@ namespace mutabor {
 						}
 					}
 				}
-			}  catch (boost::thread_interrupted & e) {}
+			}  catch (const boost::thread_interrupted & e) {}
 		}
 		DEBUGLOG (timer, "returning" );
 		{
@@ -568,6 +568,7 @@ namespace mutabor {
 			switch (Mode) {
 			case DevicePlay:
 			case DevicePause:
+			case DeviceKilled:
 				Stop();
 			case DeviceStop:
 				break;

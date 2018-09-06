@@ -118,7 +118,7 @@ namespace mutabor {
 									      rtmidi::PortDescriptor::SHORT_NAME |
 									      rtmidi::PortDescriptor::UNIQUE_PORT_NAME).c_str();
 						}
-					} catch (rtmidi::Error &error) {
+					} catch (const rtmidi::Error &error) {
 						runtime_error(false,
 							      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))									  % (*i)->getName(rtmidi::PortDescriptor::INCLUDE_API |
 																													rtmidi::PortDescriptor::SESSION_PATH).c_str()
@@ -307,7 +307,7 @@ OutputMidiPort:\n\
 									      rtmidi::PortDescriptor::SHORT_NAME |
 									      rtmidi::PortDescriptor::UNIQUE_PORT_NAME).c_str();
 						}
-					} catch (rtmidi::Error &error) {
+					} catch (const rtmidi::Error &error) {
 						runtime_error(false,
 							      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))									  % (*i)->getName(rtmidi::PortDescriptor::INCLUDE_API |
 																													rtmidi::PortDescriptor::SESSION_PATH).c_str()
@@ -413,7 +413,7 @@ OutputMidiPort:\n\
 
 		try {
 			port = new rtmidi::MidiIn(rtmidi::UNSPECIFIED, PACKAGE_STRING);
-		} catch (rtmidi::Error &error) {
+		} catch (const rtmidi::Error &error) {
 			runtime_error(false,
 				      _mut("Can not open MIDI input devices due to memory allocation problems."));
 			return false;
@@ -421,7 +421,7 @@ OutputMidiPort:\n\
 
 		try {
 			port->openPort(DevId,(GetName().c_str()));
-		} catch (rtmidi::Error &error) {
+		} catch (const rtmidi::Error &error) {
 			runtime_error(mutabor::generic_warning,
 				      boost::str(boost::format(_mut("Can not open MIDI input device %s (%s):\n%s"))
 						 % (GetName().c_str())
@@ -433,7 +433,7 @@ OutputMidiPort:\n\
 
 		try {
 			port->setCallback(new mycallback(this));
-		} catch (rtmidi::Error & error) {
+		} catch (const rtmidi::Error & error) {
 			runtime_error(mutabor::generic_warning,
 				      boost::str(boost::format(_mut("Can not register callback for MIDI input device %s (%s):\n%s"))
 						 % (GetName().c_str())
@@ -614,14 +614,14 @@ InputMidiPort:\n\
 	{
 		try {
 			rtmidiout = new rtmidi::MidiOut(rtmidi::UNSPECIFIED, PACKAGE_STRING);
-		} catch (rtmidi::Error &error) {
+		} catch (const rtmidi::Error &error) {
 			error.printMessage();
 			// abort();
 		}
 
 		try {
 			rtmidiin = new rtmidi::MidiIn(rtmidi::UNSPECIFIED, PACKAGE_STRING);
-		} catch (rtmidi::Error &error) {
+		} catch (const rtmidi::Error &error) {
 			error.printMessage();
 			// abort();
 		}

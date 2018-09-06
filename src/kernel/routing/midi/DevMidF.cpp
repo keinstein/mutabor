@@ -255,7 +255,7 @@ namespace mutabor {
 		clear();
 		try {
 			resize(l);
-		} catch (std::bad_alloc e) {
+		} catch (const std::bad_alloc & e) {
 			clear();
 		}
 
@@ -642,7 +642,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 		b = is.get(); //mutGetC(is,b);
 		try {
 			timing.set_MIDI_tick_signature(a,b);
-		} catch (std::range_error e) {
+		} catch (const std::range_error & e) {
 			runtime_error(generic_error,
 				      boost::str(boost::format(_mut("Midi file '%s' has corrupted timing information."))
 						 % Name.c_str()));
@@ -681,7 +681,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 			for (auto & c : channel_data) {
 				c.Reset();
 			}
-		} catch (mutabor::error::runtime_exception & e) {
+		} catch (const mutabor::error::runtime_exception & e) {
 			Mode = DeviceCompileError;
 			runtime_error(e.get_type(),e.what());
 			goto error_cleanup;
@@ -702,7 +702,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 			Tracks[i].clear();
 			try {
 				Tracks[i].resize(l);
-			} catch (std::bad_alloc e) {
+			} catch (const std::bad_alloc & e) {
 				Tracks[i].clear();
 			}
 

@@ -431,7 +431,7 @@ namespace mutaborGUI {
 	void MutApp::OnUnhandledException() {
 		try {
 			throw;
-		} catch (std::exception e) {
+		} catch (const std::exception & e) {
 			std::cerr << "Unhandled exception: " << e.what() << std::endl <<
 				boost::current_exception_diagnostic_information();
 		} catch(...) {
@@ -445,7 +445,7 @@ namespace mutaborGUI {
 	bool MutApp::OnExceptionInMainLoop() {
 		try {
 			throw;
-		} catch (std::exception e) {
+		} catch (const std::exception & e) {
 			std::cerr << "Unhandled exception: " << e.what() << std::endl <<
 				boost::current_exception_diagnostic_information();
 		} catch(...) {
@@ -460,7 +460,7 @@ namespace mutaborGUI {
 	void MutApp::OnFatalException() {
 		try {
 			throw;
-		} catch (std::exception e) {
+		} catch (const std::exception & e) {
 			std::cerr << "Unhandled exception: " << e.what() << std::endl <<
 				boost::current_exception_diagnostic_information();
 		} catch(...) {
