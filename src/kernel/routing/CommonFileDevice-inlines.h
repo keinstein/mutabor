@@ -408,6 +408,7 @@ namespace mutabor {
 		case DeviceCompileError:
 		case DeviceTimingError:
 		case DeviceStop:
+		case DeviceKilled:
 			break;
 		case DevicePlay:
 			{

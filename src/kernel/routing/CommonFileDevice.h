@@ -269,6 +269,7 @@ namespace mutabor {
 						case DevicePause:
 						case DeviceStop:
 							return 0;
+						case DeviceKilled:
 						case DeviceTimingError:
 						case DeviceCompileError:
 						default:
