@@ -156,38 +156,28 @@ namespace compat30 {
 		DEBUGLOG2(routing,("+%s"),s.c_str());
 		// Output lesen
 		while ( s.substr(0,5) != "INPUT") {
-			char Type[s.length()], Name[s.length()];
+			std::vector<char> Type(s.length()+1), Name(s.length()+1);
 			int DevId, BendingRange;
 
 			DEBUGLOG2(routing,("a%s"),s.c_str());
 
 			int test = std::sscanf(s.c_str(), ("%s \"%[^\"]\" %d %d"),
-					       Type, Name, &DevId, &BendingRange);
+					       Type.data(), Name.data(), &DevId, &BendingRange);
 			if ( test < 2 )
 				test = std::sscanf(s.c_str(), ("%s %s %d %d"),
-						   Type, Name, &DevId, &BendingRange);
+						   Type.data(), Name.data(), &DevId, &BendingRange);
 
 			if ( test < 3 ) {
 			  error = true;
 			}
-#if 0
-			int test = SSCANF(s.c_str(), ("%s \"%[^\"]\" %d %d"),
-					  Type, Name, &DevId, &BendingRange);
-			if ( test < 2 )
-				test = SSCANF(s.c_str(), ("%s %s %d %d"),
-					      Type, Name, &DevId, &BendingRange);
-			if ( test < 3 ) {
-			  error = true;
-			}
-#endif
 			DEBUGLOG2(routing,("%d parameters read: Type = '%s', Name = '%s', devid = %d, bendingrange = %d"),
-				  test,(const char *)Type,(const char * )Name,DevId,BendingRange);
-			DEBUGLOG2(routing,("Name = '%s'"),(std::string(Name).c_str()));
+				  test,(const char *)Type.data(),(const char * )Name.data(),DevId,BendingRange);
+			DEBUGLOG2(routing,("Name = '%s'"),(std::string(Name.data()).c_str()));
 			OutputDevice Out =
-				DeviceFactory::CreateOutput(Str2DT(Type),
-							    Name);
+				DeviceFactory::CreateOutput(Str2DT(Type.data()),
+							    Name.data());
 
-			switch (Str2DT(Type)) {
+			switch (Str2DT(Type.data())) {
 			case DTMidiPort:
 				if (test < 4)
 					error = true;
@@ -236,37 +226,25 @@ namespace compat30 {
 
 		while ( 1 ) {
 			// Device lesen
-			char Type[s.length()], Name[s.length()];
+			std::vector<char> Type(s.length()+1), Name(s.length()+1);
 			//std::string Type, Name;
 			int DevId = -1;
 			int test = std::sscanf(s.c_str(), ("%s \"%[^\"]\" %d"),
-					       Type, Name, &DevId);
+					       Type.data(), Name.data(), &DevId);
 			if ( test < 2 )
 				test = std::sscanf(s.c_str(), ("%s %s %d"),
-						   Type, Name, &DevId);
+						   Type.data(), Name.data(), &DevId);
 			if ( test < 3 ) {
 			  error = 1;
 			}
 
-#if 0
-			int test = SSCANF(s, ("%s \"%[^\"]\" %d"),
-					  Type, Name, &DevId);
-			if ( test < 2 )
-				test = SSCANF(s, ("%s %s %d"),
-					      Type, Name, &DevId);
-
-			if ( test < 3 ) {
-			  error = 1;
-			}
-
-#endif
 			DEBUGLOG2(routing,("%d input parameters read: Type = '%s', Name = '%s', DevId = %d"),
-				  test, (const char *)Type, (const char *)Name, DevId);
+				  test, (const char *)Type.data(), (const char *)Name.data(), DevId);
 			InputDevice In =
-				DeviceFactory::CreateInput(Str2DT(Type),
-							   (std::string)Name);
+				DeviceFactory::CreateInput(Str2DT(Type.data()),
+							   (std::string)Name.data());
 
-			switch (Str2DT(Type)) {
+			switch (Str2DT(Type.data())) {
 			case DTMidiPort: {
 				if (rtmidiin) {
 					rtmidi::PortList list = rtmidiin->getPortList();
@@ -290,38 +268,26 @@ namespace compat30 {
 			// Routen lesen
 			while ( Str2DT(s) == DTUnknown ) {
 				// Route lesen
-				char Type[s.length()];
+				std::vector<char> Type(s.length()+1);
 				int IFrom = 0, ITo = 0, boxid = 0, BoxActive = 0,
 				OutDev = -1, OFrom = -1, OTo = -1, ONoDrum = 1;
 				test = std::sscanf(s.c_str(),
 						   ("%s %d %d %d %d %d %d %d %d"),
-						   Type, &IFrom, &ITo, &boxid, &BoxActive,
+						   Type.data(), &IFrom, &ITo, &boxid, &BoxActive,
 						   &OutDev, &OFrom, &OTo, &ONoDrum);
 
 				if ( test < 9 ) {
 					error = true;
 				}
 
-#if 0
-				test = SSCANF(s.c_str(),
-					      ("%s %d %d %d %d %d %d %d %d"),
-					      Type, &IFrom, &ITo, &boxid,
-					      &BoxActive, &OutDev, &OFrom, &OTo,
-					      &ONoDrum);
-
-				if ( test < 9 ) {
-					error = true;
-				}
-
-#endif
 				DEBUGLOG2(routing,("%d parameters read: Type = '%s', IFrom = %d, ITo = %d"),
-					  test, (const char *)Type, IFrom, ITo);
+					  test, (const char *)Type.data(), IFrom, ITo);
 				DEBUGLOG2(routing,("    boxid = %d, BoxActive= %d, OutDev = %d, OFrom = %d, OTo = %d, ONoDrum = %d"), boxid, BoxActive, OutDev, OFrom, OTo, ONoDrum);
 
 				OutputDevice Out = GetOut(OutDev);
 				Box box = BoxClass::GetOrCreateBox(boxid);
 				Route r(RouteFactory::Create(In, Out,
-							     Str2RT(Type),
+							     Str2RT(Type.data()),
 							     IFrom, ITo, box,
 							     BoxActive,
 							     OFrom, OTo, ONoDrum != 0));
