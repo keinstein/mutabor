@@ -48,6 +48,7 @@
 #include "src/kernel/routing/Route-inlines.h"
 
 #include <inttypes.h>
+#include <stdio.h>
 
 #include "src/kernel/routing/midi/midicmn-inlines.h"
 #include "src/kernel/routing/CommonFileDevice-inlines.h"

@@ -46,6 +46,7 @@
 #define SRC_KERNEL_ERROR_H_INCLUDED_PRECOMPILED
 
 /* system headers which do seldom change */
+#include <stdio.h>
 
 /** not for headers */
 #ifdef __BORLANDC__

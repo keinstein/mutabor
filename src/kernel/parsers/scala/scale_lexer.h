@@ -40,6 +40,9 @@
 // ---------------------------------------------------------------------------
 // headers
 // ---------------------------------------------------------------------------
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE 1
+#endif
 
 #include "src/kernel/Defs.h"
 #ifdef LEXER_NAMESPACE
@@ -54,6 +57,7 @@
 // system headers which do seldom change
 #include <cstring>
 #include <cstdarg>
+#include <stdio.h>
 
 namespace mutabor {
 	namespace scala_parser {

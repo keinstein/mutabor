@@ -57,6 +57,11 @@
 
 // system headers which do seldom change
 //#include <boost/intrusive_ptr.hpp>
+// we need asprintf
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE 1
+#endif
+
 #include <vector>
 #include <list>
 #include <algorithm>

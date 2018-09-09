@@ -28,7 +28,7 @@
 // availlable groups: GUI, Parser, route, kernel, debug, docview, config, GUIroute
 
 #include "interface_deps.h"
-#include "stdio.h"
+#include <stdio.h>
 
 void mutabor_assert_fail(const char *file,
 			 int line,

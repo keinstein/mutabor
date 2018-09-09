@@ -53,6 +53,10 @@
 #define MUTABOR_EXTERN_C_END
 #endif
 
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE 1
+#endif
+
 
 #include "interface_deps.h"
 

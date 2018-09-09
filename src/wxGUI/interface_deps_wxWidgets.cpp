@@ -27,8 +27,10 @@
 ********************************************************************/
 // availlable groups: GUI, Parser, route, kernel, debug, docview, config, GUIroute
 
-#include <stdio.h>
 #include "src/kernel/Defs.h"
+
+#include <stdio.h>
+
 #include "src/wxGUI/generic/mhDefs.h"
 #include "src/wxGUI/MutApp.h"
 #include "src/kernel/interface_deps.h"
