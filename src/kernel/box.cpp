@@ -154,7 +154,7 @@ void mutabor_initialize_box(mutabor_box_type * box, int id)
 {
 /* C standard does not define NULL to be 0 */
 	mutASSERT(box != NULL);
-	memset(box,0,sizeof(mutabor_box_type));
+	memset(static_cast<void *>(box),0,sizeof(mutabor_box_type));
 	mutASSERT(box->current_keys.key != 0);
 
 	/* C standard does not define NULL to be 0 */
