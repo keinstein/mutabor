@@ -79,7 +79,7 @@ NOCOMPSOURCES += \
 BUILT_SOURCES += $(NOCOMPSOURCES)
 
 
-EXTRA_DIST += config.rpath \
+EXTRA_DIST += \
 	README.md \
 	m4/ChangeLog  \
 	debian \

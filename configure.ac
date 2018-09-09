@@ -4,6 +4,9 @@
 
 AC_PREREQ([2.67])
 AC_INIT([Mutabor],[4.0.0~rc2],[keinstein@users.sf.net])
+AC_CONFIG_AUX_DIR(config)
+AC_CONFIG_SRCDIR([README.md])
+AC_CONFIG_MACRO_DIR([m4])
 
 dnl preserve some variables for cross compiling
 dnl this should be saved early as we modify them
@@ -46,8 +49,6 @@ AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
 AC_USE_SYSTEM_EXTENSIONS
 echo target_os: $target_os
-AC_CONFIG_SRCDIR([README.md])
-AC_CONFIG_MACRO_DIR([m4])
 
 AM_INIT_AUTOMAKE([dist-bzip2 silent-rules foreign subdir-objects -Wall])
 AS_IF(test "${enable_silent_rules+set}" != set,
