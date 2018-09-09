@@ -102,6 +102,7 @@ namespace mutaborGUI {
 				disconnect(device,this);
 				TRACEC;
 			}
+			if (playbuttons) delete playbuttons;
 			TRACEC;
 		}
 	template<class T>
