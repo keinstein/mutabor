@@ -3,7 +3,7 @@
 
 
 AC_PREREQ([2.67])
-AC_INIT([Mutabor],[4.0.0~rc2],[keinstein@users.sf.net])
+AC_INIT([Mutabor],[4.0.0~rc3],[keinstein@users.sf.net])
 AC_CONFIG_AUX_DIR(config)
 AC_CONFIG_SRCDIR([README.md])
 AC_CONFIG_MACRO_DIR([m4])
