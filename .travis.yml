@@ -1,108 +1,11 @@
-git:
-  depth: 1
-branches:
-  except:
-  - "/(?i:appveyor)/"
-language: c++
 sudo: required
-group: travis_latest
-compiler:
-- gcc
-- clang
-matrix:
-  include:
-  - os: osx
-    osx_image: xcode9.2
-    env:
-    - MATRIX_EVAL="CC=clang && CXX=clang++ && EXTRA_BREW= && DYLD_LIBRARY_PATH=":/usr/local/opt/wxmac/lib/:/usr/local/Cellar/jack/0.125.0_2/lib:-L/usr/local/lib
-      && MUTABOR_DEPLOY=true"
-  - os: osx
-    osx_image: xcode9.2
-    env:
-    - MATRIX_EVAL="CC=gcc && CXX=g++ && EXTRA_BREW=gcc && DYLD_LIBRARY_PATH=":/usr/local/opt/wxmac/lib/:/usr/local/Cellar/jack/0.125.0_2/lib:-L/usr/local/lib
-      && MUTABOR_DEPLOY=false"
-addons:
-  apt:
-    sources:
-    - sourceline: ppa:keinstein-junior/travis-ci-upgrades
-    - sourceline: ppa:nschloe/debhelper-backports
-    packages:
-    - devscripts
-    - pbuilder
-    - fakeroot
-    - debhelper
-    - autoconf
-    - libtool
-    - autopoint
-    - gettext
-    - automake
-    - flex
-    - bison
-    - libwxgtk3.0-dev
-    - libboost-dev
-    - libboost-thread-dev
-    - libboost-locale-dev
-    - libboost-system-dev
-    - libboost-filesystem-dev
-    - libboost-program-options-dev
-    - libasound-dev
-    - libcppunit-dev
-    - doxygen
-    - tex4ht
-    - xvfb
-before_install:
-- mkdir -p config lib/rtmidi/config
-- touch config/config.rpath lib/rtmidi/config/config.rpath
-- eval "${MATRIX_EVAL}"
-- pwd
-- ls
-- if test "$TRAVIS_OS_NAME" = osx ; then  brew update ; fi
-- if test "$TRAVIS_OS_NAME" = osx ; then brew upgrade boost automake ; fi
-- if test "$TRAVIS_OS_NAME" = osx ; then rm -rf /usr/local/include/c++ ; fi
-- if test "$TRAVIS_OS_NAME" = osx ; then brew install $EXTRA_BREW wxmac gettext flex bison libtool jack ; fi
-- if test "$TRAVIS_OS_NAME" = osx ; then brew link --force $EXTRA_BREW boost wxmac gettext flex bison libtool autoconf jack ; fi
-- if test "$TRAVIS_OS_NAME" = linux ; then eval TEST_RUNNER=xvfb-run ; else eval TEST_RUNNER= ; fi
-- which gettextize
-- gettextize --version
-- which autopoint
-- autopoint --version
-script:
-- "(cd lib/rtmidi && autoreconf -i -f)"
-- autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4
-- cat test-suite.log
-- "$TEST_RUNNER make V=1 distcheck"
-- cat test-suite.log
-- if cat */_build/test-suite.log ; then true ; else true; fi
-- if test "$TRAVIS_OS_NAME" = osx ; then make install &&  make V=1 dmg ; fi ;
-- if test "$TRAVIS_OS_NAME" = linux && false ; then debuild ; fi ;
-- git clone --depth=1 --branch=master https://${GITHUB_TOKEN}@github.com/keinstein/mutabor-nightlies.git public
-- mkdir -p "public/docs/download/${CXX}_MAC_x86_64_${TRAVIS_TAG}"
-- if test "$TRAVIS_OS_NAME" = osx ; then mv *.dmg "public/docs/download/${CXX}_MAC_x86_64_${TRAVIS_TAG}" ; fi ;
-- if test "$TRAVIS_OS_NAME" = osx ; then cd public && git add "docs/download/${CXX}_MAC_x86_64_${TRAVIS_TAG}/*" && git commit -m "Automatic publishing via Travis-CI" ; fi ;
-- #if test "$TRAVIS_OS_NAME" = osx ; then until git push origin master ;  do sleep 60 ; git pull origin ; done ; fi ;
-- if test "$TRAVIS_OS_NAME" = osx ; then cd .. ; fi
+language: generic
 
-deploy:
-- provider: releases
-  api_key:
-    secure: r/clPkRvXDVzyqfD6+fhktW+DIDUPimEwfK1Mxrh3obtJUEbB0pQnGilhjMuTyIxHtl8yRf3rMvX0hIaqBSFOUi6reHC5UoZUfc/AGE0DYph7VQY0wLBx/JGO5CVHsAeMvmPvLXiIv0yTEw7speZkakeKyD6nsgKVLj15jfGcGjyhNE5f1ZpoetK8/qO0ZNf9WFe0KM7DPjqGmIeWJ1z6G/hw3bXlgqOhbbq0qOCS+pfG8dZmu83lA6ci9KIqTOJYchcV9ljQ9DubYxEsBSt3dAo2FaVjJICN0XQ3SdrzLfllbSiylcxYrOtBZg9blXhmPpWpBRYW80zON9JRaZTklv65FpPyZ4wJM//pu4zeFGTzBTy4q6ZTXdNSUWi2mZgl7KA9ijqHrdiAzGc2ti/Q+irsDfdpEDOAXKhtKzMSQwka1syLjJTFc4wYEOiiHvpxzp0plKtQ44TbiOJfxkswaJAvXSOgRrfpLw2Ot7dDzsVEE/r9+Q7ntU0k5K9NbbXXb9njy8mhG18lMm+gyvK+AdFgxK4iXlpO6hJ605JgA+ioDQbqkxwzJ4SGecw1nV1x1b2sfaUa1MuXA0/XImYG0CZrl9rmhx2pgyIzI5B0peQRg/aot8VdJTLyiIw03yR0N6ogsTeg4TYKy5MLGL9RKPn+iPBgY4C0xXqtFZkkVU=
-  skip_cleanup: true
-  file_glob: true
-  file: public/docs/download/${CXX}_MAC_x86_64_${TRAVIS_TAG}/*
-  on:
-    condition: $MUTABOR_DEPLOY = true
-    repo: keinstein/mutabor
-    tags: true
-    branch: master
-- provider: pages
-  skip_cleanup: true
-  local_dir: public
-  repo: keinstein/mutabor-nightlies
-  target_branch: master
-  keep_history: true
-  github_token: $GITHUB_TOKEN
-  verbose: true
-  on:
-    condition: $MUTABOR_DEPLOY = true
-    repo: keinstein/mutabor
-    branch: travis-github-provider
+services:
+  - docker
+
+script:
+    - TRAVIS_DEBIAN_DERIVATIVE=ubuntu wget -O- http://travis.debian.net/script.sh | sh -
+
+if:
+  tag IS blank
