@@ -1,8 +1,12 @@
 sudo: required
 language: generic
 
+env:
+    - TRAVIS_DEBIAN_DERIVATIVE=ubuntu
+    - TRAVIS_DEBIAN_DISTRIBUTION=bionic
+
 services:
   - docker
 
 script:
-    - TRAVIS_DEBIAN_DERIVATIVE=ubuntu wget -O- http://travis.debian.net/script.sh | sh -
+    - wget -O- http://travis.debian.net/script.sh | sh -
