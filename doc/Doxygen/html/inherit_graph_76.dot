@@ -1,0 +1,41 @@
+digraph "Grafische Darstellung der Klassenhierarchie"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="mutabor::hidden::mutabor\l_event_type",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/da6/structmutabor_1_1hidden_1_1mutabor__event__type.html"];
+  Node0 -> Node1 [dir="back",color="darkgreen",fontsize="10",style="solid",fontname="Sans"];
+  Node1 [label="mutabor::event_class",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d83/classmutabor_1_1event__class.html"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node2 [label="mutabor::channel_select\l_event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/d17/classmutabor_1_1channel__select__event.html"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node3 [label="mutabor::controller\l_event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d04/classmutabor_1_1controller__event.html"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node4 [label="mutabor::generic_text\l_event\< t \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/dd0/classmutabor_1_1generic__text__event.html"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node5 [label="mutabor::key_pressure\l_event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d3a/classmutabor_1_1key__pressure__event.html"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node6 [label="mutabor::key_signature\l_event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d56/classmutabor_1_1key__signature__event.html"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node7 [label="mutabor::meta_event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/d41/classmutabor_1_1meta__event.html"];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node8 [label="mutabor::quarter_frame\l_event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/d7c/classmutabor_1_1quarter__frame__event.html"];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node9 [label="mutabor::sequence_number\l_event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/dec/classmutabor_1_1sequence__number__event.html"];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node10 [label="mutabor::sequencer\l_specific_meta_event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d6/d24/classmutabor_1_1sequencer__specific__meta__event.html"];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node11 [label="mutabor::set_tempo\l_event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d87/classmutabor_1_1set__tempo__event.html"];
+  Node1 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node12 [label="mutabor::smpte_event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/db8/classmutabor_1_1smpte__event.html"];
+  Node1 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node13 [label="mutabor::song_position\l_event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/de3/classmutabor_1_1song__position__event.html"];
+  Node1 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node14 [label="mutabor::song_select\l_event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d79/classmutabor_1_1song__select__event.html"];
+  Node1 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node15 [label="mutabor::sysex_event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/dab/classmutabor_1_1sysex__event.html"];
+  Node1 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node16 [label="mutabor::system_byte\l_event\< t \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/db9/classmutabor_1_1system__byte__event.html"];
+  Node1 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node17 [label="mutabor::time_signature\l_event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/de4/classmutabor_1_1time__signature__event.html"];
+}

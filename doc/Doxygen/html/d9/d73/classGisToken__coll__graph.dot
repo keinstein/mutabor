@@ -1,0 +1,11 @@
+digraph "GisToken"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  Node11 [label="GisToken",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node12 -> Node11 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Sep" ,fontname="Sans"];
+  Node12 [label="std::string",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node13 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node13 [label="std::basic_string\<\l char \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node11 -> Node11 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Next" ,fontname="Sans"];
+}

@@ -1,0 +1,313 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/kernel/parsers/scala/scale_parser.hh-Dateireferenz</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',false,false,'search.php','Suchen');
+});
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cbd7f246bdf7dc0a50281a272327e6ed.html">kernel</a></li><li class="navelem"><a class="el" href="../../dir_6b02117ded07476b70e50ff30adc443c.html">parsers</a></li><li class="navelem"><a class="el" href="../../dir_e7917108e414bdcc25389ebfe2818288.html">scala</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Klassen</a> &#124;
+<a href="#namespaces">Namensbereiche</a> &#124;
+<a href="#define-members">Makrodefinitionen</a>  </div>
+  <div class="headertitle">
+<div class="title">scale_parser.hh-Dateireferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;string&gt;</code><br />
+<code>#include &lt;cerrno&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../da/db7/scala_8h_source.html">src/kernel/parsers/scala/scala.h</a>&quot;</code><br />
+<code>#include &lt;cassert&gt;</code><br />
+<code>#include &lt;cstdlib&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;stdexcept&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../dc/da6/stack_8hh_source.html">src/kernel/parsers/scala/stack.hh</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d3/d46/location_8hh_source.html">src/kernel/parsers/scala/location.hh</a>&quot;</code><br />
+<code>#include &lt;typeinfo&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include-Abhängigkeitsdiagramm für scale_parser.hh:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../de/dd6/scale__parser_8hh__incl.png" border="0" usemap="#src_2kernel_2parsers_2scala_2scale__parser_8hh" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><div class="textblock"><div class="dynheader">
+Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../df/d8a/scale__parser_8hh__dep__incl.png" border="0" usemap="#src_2kernel_2parsers_2scala_2scale__parser_8hhdep" alt=""/></div>
+<!-- MAP 1 -->
+</div>
+</div>
+<p><a href="../../dc/d1d/scale__parser_8hh_source.html">gehe zum Quellcode dieser Datei</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Klassen</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d57/structmutabor_1_1scala__parser_1_1variant.html">mutabor::scala_parser::variant&lt; S &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A char[S] buffer to store and retrieve objects.  <a href="../../d6/d57/structmutabor_1_1scala__parser_1_1variant.html#details">Mehr ...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dcd/classmutabor_1_1scala__parser_1_1scale__parser.html">mutabor::scala_parser::scale_parser</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Bison parser.  <a href="../../df/dcd/classmutabor_1_1scala__parser_1_1scale__parser.html#details">Mehr ...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d41/unionmutabor_1_1scala__parser_1_1scale__parser_1_1union__type.html">mutabor::scala_parser::scale_parser::union_type</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An auxiliary type to compute the largest semantic type.  <a href="../../db/d41/unionmutabor_1_1scala__parser_1_1scale__parser_1_1union__type.html#details">Mehr ...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d9e/structmutabor_1_1scala__parser_1_1scale__parser_1_1syntax__error.html">mutabor::scala_parser::scale_parser::syntax_error</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Syntax errors thrown from user actions.  <a href="../../d0/d9e/structmutabor_1_1scala__parser_1_1scale__parser_1_1syntax__error.html#details">Mehr ...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dfe/structmutabor_1_1scala__parser_1_1scale__parser_1_1token.html">mutabor::scala_parser::scale_parser::token</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tokens.  <a href="../../d6/dfe/structmutabor_1_1scala__parser_1_1scale__parser_1_1token.html#details">Mehr ...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d67/structmutabor_1_1scala__parser_1_1scale__parser_1_1basic__symbol.html">mutabor::scala_parser::scale_parser::basic_symbol&lt; Base &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A complete symbol.  <a href="../../d6/d67/structmutabor_1_1scala__parser_1_1scale__parser_1_1basic__symbol.html#details">Mehr ...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dfc/structmutabor_1_1scala__parser_1_1scale__parser_1_1by__type.html">mutabor::scala_parser::scale_parser::by_type</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type access provider for token (enum) based symbols.  <a href="../../d2/dfc/structmutabor_1_1scala__parser_1_1scale__parser_1_1by__type.html#details">Mehr ...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d7d/structmutabor_1_1scala__parser_1_1scale__parser_1_1by__state.html">mutabor::scala_parser::scale_parser::by_state</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type access provider for state based symbols.  <a href="../../d5/d7d/structmutabor_1_1scala__parser_1_1scale__parser_1_1by__state.html#details">Mehr ...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dff/structmutabor_1_1scala__parser_1_1scale__parser_1_1stack__symbol__type.html">mutabor::scala_parser::scale_parser::stack_symbol_type</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Internal" symbol: element of the stack.  <a href="../../dc/dff/structmutabor_1_1scala__parser_1_1scale__parser_1_1stack__symbol__type.html#details">Mehr ...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namensbereiche</h2></td></tr>
+<tr class="memitem:d6/daa/namespacemutabor"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html">mutabor</a></td></tr>
+<tr class="memdesc:d6/daa/namespacemutabor"><td class="mdescLeft">&#160;</td><td class="mdescRight">not for headers <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:d1/de4/namespacemutabor_1_1scala__parser"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de4/namespacemutabor_1_1scala__parser.html">mutabor::scala_parser</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Makrodefinitionen</h2></td></tr>
+<tr class="memitem:a369266c24eacffb87046522897a570d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d1d/scale__parser_8hh.html#a369266c24eacffb87046522897a570d5">_GNU_SOURCE</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a369266c24eacffb87046522897a570d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd603ddcf170a7d46a33d9d780d18a4b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d1d/scale__parser_8hh.html#afd603ddcf170a7d46a33d9d780d18a4b">YYASSERT</a>&#160;&#160;&#160;assert</td></tr>
+<tr class="separator:afd603ddcf170a7d46a33d9d780d18a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b07478214400ec2e160dffd1d945266"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d1d/scale__parser_8hh.html#a9b07478214400ec2e160dffd1d945266">YY_ATTRIBUTE</a>(Spec)&#160;&#160;&#160;/* empty */</td></tr>
+<tr class="separator:a9b07478214400ec2e160dffd1d945266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1405f082b8df6353a9d53c9709c4d03"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d1d/scale__parser_8hh.html#ad1405f082b8df6353a9d53c9709c4d03">YY_ATTRIBUTE_PURE</a>&#160;&#160;&#160;<a class="el" href="../../d2/dd1/scale__parser_8stamp_8hh.html#a9b07478214400ec2e160dffd1d945266">YY_ATTRIBUTE</a> ((__pure__))</td></tr>
+<tr class="separator:ad1405f082b8df6353a9d53c9709c4d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab312a884bd41ff11bbd1aa6c1a0e1b0a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d1d/scale__parser_8hh.html#ab312a884bd41ff11bbd1aa6c1a0e1b0a">YY_ATTRIBUTE_UNUSED</a>&#160;&#160;&#160;<a class="el" href="../../d2/dd1/scale__parser_8stamp_8hh.html#a9b07478214400ec2e160dffd1d945266">YY_ATTRIBUTE</a> ((__unused__))</td></tr>
+<tr class="separator:ab312a884bd41ff11bbd1aa6c1a0e1b0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdc60192553b70b37149691b71022d5a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d1d/scale__parser_8hh.html#afdc60192553b70b37149691b71022d5a">_Noreturn</a>&#160;&#160;&#160;<a class="el" href="../../d2/dd1/scale__parser_8stamp_8hh.html#a9b07478214400ec2e160dffd1d945266">YY_ATTRIBUTE</a> ((__noreturn__))</td></tr>
+<tr class="separator:afdc60192553b70b37149691b71022d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33c61e326f5675cc74eb9e1a6906595c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d1d/scale__parser_8hh.html#a33c61e326f5675cc74eb9e1a6906595c">YYUSE</a>(E)&#160;&#160;&#160;((void) (E))</td></tr>
+<tr class="separator:a33c61e326f5675cc74eb9e1a6906595c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d890db48971847b837a6a1397c9059a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d1d/scale__parser_8hh.html#a6d890db48971847b837a6a1397c9059a">YY_INITIAL_VALUE</a>(Value)&#160;&#160;&#160;Value</td></tr>
+<tr class="separator:a6d890db48971847b837a6a1397c9059a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a145ddbb780f86b5f35ddfffb23e62d4d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d1d/scale__parser_8hh.html#a145ddbb780f86b5f35ddfffb23e62d4d">YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN</a></td></tr>
+<tr class="separator:a145ddbb780f86b5f35ddfffb23e62d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b2abbe8d335b7933a69ac2f05a015d2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d1d/scale__parser_8hh.html#a2b2abbe8d335b7933a69ac2f05a015d2">YY_IGNORE_MAYBE_UNINITIALIZED_END</a></td></tr>
+<tr class="separator:a2b2abbe8d335b7933a69ac2f05a015d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a853b3bfad6d2b2ff693dce81182e0c2e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d1d/scale__parser_8hh.html#a853b3bfad6d2b2ff693dce81182e0c2e">YYDEBUG</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a853b3bfad6d2b2ff693dce81182e0c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Makro-Dokumentation</h2>
+<a id="a369266c24eacffb87046522897a570d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a369266c24eacffb87046522897a570d5">&#9670;&nbsp;</a></span>_GNU_SOURCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _GNU_SOURCE&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00046">46</a> der Datei <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html">scale_parser.hh</a>.</p>
+
+</div>
+</div>
+<a id="afdc60192553b70b37149691b71022d5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdc60192553b70b37149691b71022d5a">&#9670;&nbsp;</a></span>_Noreturn</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _Noreturn&#160;&#160;&#160;<a class="el" href="../../d2/dd1/scale__parser_8stamp_8hh.html#a9b07478214400ec2e160dffd1d945266">YY_ATTRIBUTE</a> ((__noreturn__))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00097">97</a> der Datei <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html">scale_parser.hh</a>.</p>
+
+</div>
+</div>
+<a id="a9b07478214400ec2e160dffd1d945266"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b07478214400ec2e160dffd1d945266">&#9670;&nbsp;</a></span>YY_ATTRIBUTE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define YY_ATTRIBUTE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">Spec</td><td>)</td>
+          <td>&#160;&#160;&#160;/* empty */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00080">80</a> der Datei <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html">scale_parser.hh</a>.</p>
+
+</div>
+</div>
+<a id="ad1405f082b8df6353a9d53c9709c4d03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1405f082b8df6353a9d53c9709c4d03">&#9670;&nbsp;</a></span>YY_ATTRIBUTE_PURE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define YY_ATTRIBUTE_PURE&#160;&#160;&#160;<a class="el" href="../../d2/dd1/scale__parser_8stamp_8hh.html#a9b07478214400ec2e160dffd1d945266">YY_ATTRIBUTE</a> ((__pure__))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00085">85</a> der Datei <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html">scale_parser.hh</a>.</p>
+
+</div>
+</div>
+<a id="ab312a884bd41ff11bbd1aa6c1a0e1b0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab312a884bd41ff11bbd1aa6c1a0e1b0a">&#9670;&nbsp;</a></span>YY_ATTRIBUTE_UNUSED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define YY_ATTRIBUTE_UNUSED&#160;&#160;&#160;<a class="el" href="../../d2/dd1/scale__parser_8stamp_8hh.html#a9b07478214400ec2e160dffd1d945266">YY_ATTRIBUTE</a> ((__unused__))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00089">89</a> der Datei <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html">scale_parser.hh</a>.</p>
+
+</div>
+</div>
+<a id="a145ddbb780f86b5f35ddfffb23e62d4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a145ddbb780f86b5f35ddfffb23e62d4d">&#9670;&nbsp;</a></span>YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00120">120</a> der Datei <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html">scale_parser.hh</a>.</p>
+
+</div>
+</div>
+<a id="a2b2abbe8d335b7933a69ac2f05a015d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b2abbe8d335b7933a69ac2f05a015d2">&#9670;&nbsp;</a></span>YY_IGNORE_MAYBE_UNINITIALIZED_END</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define YY_IGNORE_MAYBE_UNINITIALIZED_END</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00121">121</a> der Datei <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html">scale_parser.hh</a>.</p>
+
+</div>
+</div>
+<a id="a6d890db48971847b837a6a1397c9059a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d890db48971847b837a6a1397c9059a">&#9670;&nbsp;</a></span>YY_INITIAL_VALUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define YY_INITIAL_VALUE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">Value</td><td>)</td>
+          <td>&#160;&#160;&#160;Value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00117">117</a> der Datei <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html">scale_parser.hh</a>.</p>
+
+</div>
+</div>
+<a id="afd603ddcf170a7d46a33d9d780d18a4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd603ddcf170a7d46a33d9d780d18a4b">&#9670;&nbsp;</a></span>YYASSERT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define YYASSERT&#160;&#160;&#160;assert</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00070">70</a> der Datei <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html">scale_parser.hh</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00194">mutabor::scala_parser::variant&lt; sizeof(union_type)&gt;::as()</a>, <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00172">mutabor::scala_parser::variant&lt; sizeof(union_type)&gt;::build()</a>, <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00221">mutabor::scala_parser::variant&lt; sizeof(union_type)&gt;::swap()</a>, <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00156">mutabor::scala_parser::variant&lt; sizeof(union_type)&gt;::variant()</a> und <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00164">mutabor::scala_parser::variant&lt; sizeof(union_type)&gt;::~variant()</a>.</p>
+
+</div>
+</div>
+<a id="a853b3bfad6d2b2ff693dce81182e0c2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a853b3bfad6d2b2ff693dce81182e0c2e">&#9670;&nbsp;</a></span>YYDEBUG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define YYDEBUG&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00129">129</a> der Datei <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html">scale_parser.hh</a>.</p>
+
+</div>
+</div>
+<a id="a33c61e326f5675cc74eb9e1a6906595c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33c61e326f5675cc74eb9e1a6906595c">&#9670;&nbsp;</a></span>YYUSE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define YYUSE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">E</td><td>)</td>
+          <td>&#160;&#160;&#160;((void) (E))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html#l00103">103</a> der Datei <a class="el" href="../../dc/d1d/scale__parser_8hh_source.html">scale_parser.hh</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Sam Sep 15 2018 14:57:54 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.13</small></address>
+</body>
+</html>

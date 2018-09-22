@@ -1,0 +1,25 @@
+digraph "Basic event routing functions"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node4 [label="Runtime functions",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/d7e/group__runtime.html",tooltip=" "];
+  Node2 [label="Mutabor core functionality",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d7c/group__kernel.html",tooltip="This group contains the functions that deal with the core idea of Mutabor: Parse Mutabor source files..."];
+  Node7 [label="wxWidgets Mutabor GUI",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/dd1/group__GUI.html",tooltip="While the original frontend of Mutabor was designed using Borland OWL the current one uses the platfo..."];
+  Node1 [label="Test suite",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/d7d/group__tests.html",tooltip="This group contains the test suite. "];
+  Node8 [label="Docview",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/d79/group__docview.html",tooltip=" "];
+  Node0 [label="Basic event routing\l functions",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node9 [label="GUIroute",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/df2/group__GUIroute.html",tooltip=" "];
+  Node5 [label="Parser",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/d21/group__Parser.html",tooltip=" "];
+  Node6 [label="Configuration system",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/d44/group__config.html",tooltip="Save and restore configuration of boxes and routes. "];
+  Node3 [label="Debugging functions",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/db7/group__debug.html",tooltip="This group contains the functions that are used to help debugging of Mutabor. "];
+  Node0->Node1 [shape=plaintext, label="MyCompileCallback", color="orange", dir="none", style="dashed"];
+  Node0->Node2 [shape=plaintext, label="mutabor\nmutabor::hidden", color="blueviolet", dir="none", style="dashed"];
+  Node0->Node3 [shape=plaintext, label="mutabor\nmutaborGUI", color="blueviolet", dir="none", style="dashed"];
+  Node0->Node4 [shape=plaintext, label="mutabor", color="blueviolet", dir="none", style="dashed"];
+  Node0->Node5 [shape=plaintext, label="mutabor", color="blueviolet", dir="none", style="dashed"];
+  Node0->Node6 [shape=plaintext, label="mutabor\nmutaborGUI", color="blueviolet", dir="none", style="dashed"];
+  Node0->Node7 [shape=plaintext, label="mutaborGUI", color="blueviolet", dir="none", style="dashed"];
+  Node0->Node8 [shape=plaintext, label="mutaborGUI", color="blueviolet", dir="none", style="dashed"];
+  Node0->Node9 [shape=plaintext, label="mutaborGUI", color="blueviolet", dir="none", style="dashed"];
+}

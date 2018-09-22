@@ -3,23 +3,15 @@
 <title>src/kernel/routing/CommonFileDevice.h-Dateireferenz</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.6 -->
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
-      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
-      <li><a href="../../modules.html"><span>Module</span></a></li>
-      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
-      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
-      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
-    </ul>
-  </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
-      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
-    </ul>
-  </div>
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',false,false,'search.php','Suchen');
+});
+</script>
+<div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
 <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cbd7f246bdf7dc0a50281a272327e6ed.html">kernel</a></li><li class="navelem"><a class="el" href="../../dir_02be4fa82aae8ff4c4cc45bceb47856f.html">routing</a></li>  </ul>
@@ -34,25 +26,24 @@
 <div class="title">CommonFileDevice.h-Dateireferenz</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d1/d73/Defs_8h_source.html">src/kernel/Defs.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../de/d05/Device_8h_source.html">src/kernel/routing/Device.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../db/dd5/thread_8h_source.html">src/kernel/routing/thread.h</a>&quot;</code><br/>
-<code>#include &lt;limits&gt;</code><br/>
-<code>#include &lt;cstdio&gt;</code><br/>
-<code>#include &quot;wx/thread.h&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d1/d73/Defs_8h_source.html">src/kernel/Defs.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../de/d05/Device_8h_source.html">src/kernel/routing/Device.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../db/dd5/thread_8h_source.html">src/kernel/routing/thread.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../db/d41/timing_8h_source.html">src/kernel/routing/timing.h</a>&quot;</code><br />
+<code>#include &lt;limits&gt;</code><br />
+<code>#include &lt;cstdio&gt;</code><br />
+<code>#include &lt;atomic&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include-Abhängigkeitsdiagramm für CommonFileDevice.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/dae/CommonFileDevice_8h__incl.png" border="0" usemap="#src_2kernel_2routing_2CommonFileDevice_8h" alt=""/></div>
-<map name="src_2kernel_2routing_2CommonFileDevice_8h" id="src_2kernel_2routing_2CommonFileDevice_8h">
-<area shape="rect" id="node3" href="../../d1/d73/Defs_8h.html" title="Common definitions. " alt="" coords="1323,489,1451,517"/><area shape="rect" id="node27" href="../../de/d05/Device_8h.html" title="Routing. " alt="" coords="1071,99,1204,143"/><area shape="rect" id="node71" href="../../db/dd5/thread_8h.html" title="src/kernel/routing\l/thread.h" alt="" coords="2973,387,3107,431"/><area shape="rect" id="node5" href="../../de/ddd/interface__deps_8h.html" title="interface_deps.h" alt="" coords="1323,566,1451,594"/><area shape="rect" id="node10" href="../../db/d16/debug_8h.html" title="src/kernel/debug.h" alt="" coords="1589,566,1728,594"/><area shape="rect" id="node13" href="../../d4/d64/libintl_8h.html" title="src/wxintl/libintl.h" alt="" coords="1748,643,1876,671"/><area shape="rect" id="node25" href="../../d4/dab/debugFlags_8h.html" title="Debug flags for mutabor debug mode. " alt="" coords="1617,643,1724,671"/><area shape="rect" id="node30" href="../../dd/d4d/GIS_8h.html" title="src/kernel/routing\l/gmn/GIS.h" alt="" coords="53,286,187,330"/><area shape="rect" id="node42" href="../../d1/d65/Route_8h.html" title="Routing. " alt="" coords="1379,193,1512,237"/><area shape="rect" id="node45" href="../../da/dfd/MidiKern_8h.html" title="src/kernel/MidiKern.h" alt="" coords="453,294,605,322"/><area shape="rect" id="node93" href="../../db/d41/timing_8h.html" title="src/kernel/routing\l/timing.h" alt="" coords="571,193,704,237"/><area shape="rect" id="node33" href="../../df/d4f/Frac_8h.html" title="Fraction class for Mutabor. " alt="" coords="43,395,168,423"/><area shape="rect" id="node50" href="../../db/dbe/treestorage_8h.html" title="abstract class for tree like storage " alt="" coords="1323,294,1496,322"/><area shape="rect" id="node53" href="../../d1/da4/boost-interface_8h.html" title="Interface to the boost library. " alt="" coords="2296,294,2493,322"/><area shape="rect" id="node87" href="../../dd/d20/event_8h.html" title="src/kernel/routing\l/event.h" alt="" coords="1115,286,1248,330"/></map>
+<!-- MAP 0 -->
 </div>
 </div><div class="textblock"><div class="dynheader">
 Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../da/d7f/CommonFileDevice_8h__dep__incl.png" border="0" usemap="#src_2kernel_2routing_2CommonFileDevice_8hdep" alt=""/></div>
-<map name="src_2kernel_2routing_2CommonFileDevice_8hdep" id="src_2kernel_2routing_2CommonFileDevice_8hdep">
-<area shape="rect" id="node3" href="../../dc/d72/CommonFileDevice_8cpp.html" title="src/kernel/routing\l/CommonFileDevice.cpp" alt="" coords="204,99,377,143"/><area shape="rect" id="node5" href="../../da/d81/DevGIS_8h.html" title="src/kernel/routing\l/gmn/DevGIS.h" alt="" coords="401,99,535,143"/><area shape="rect" id="node150" href="../../da/d3c/DevMidF_8h.html" title="src/kernel/routing\l/midi/DevMidF.h" alt="" coords="3907,99,4040,143"/><area shape="rect" id="node7" href="../../db/d78/DevGIS_8cpp.html" title="GUIDO Music Notation file. " alt="" coords="5,193,139,237"/><area shape="rect" id="node9" href="../../d0/dd6/gmnopenfail1_8cpp.html" title="src/kernel/routing\l/gmn/tests/gmnopenfail1.cpp" alt="" coords="163,193,371,237"/><area shape="rect" id="node11" href="../../d3/d06/playgmn1_8cpp.html" title="src/kernel/routing\l/gmn/tests/playgmn1.cpp" alt="" coords="1131,753,1315,797"/><area shape="rect" id="node13" href="../../db/d80/Runtime_8cpp.html" title="src/kernel/Runtime.cpp" alt="" coords="445,201,611,229"/><area shape="rect" id="node15" href="../../d6/dfa/GUIRoute_8h.html" title="src/wxGUI/Routing/GUIRoute.h" alt="" coords="1836,201,2047,229"/><area shape="rect" id="node17" href="../../d5/d1c/MutApp_8cpp.html" title="Mutabor Application. " alt="" coords="684,294,847,322"/><area shape="rect" id="node19" href="../../d6/d68/BoxChannelShape_8h.html" title="Box shape for route window. " alt="" coords="2672,286,2885,330"/><area shape="rect" id="node25" href="../../d9/d49/BoxShape_8h.html" title="Box shape for route window. " alt="" coords="2873,387,3089,415"/><area shape="rect" id="node42" href="../../da/dee/wxGUI_2Routing_2tests_2main_8cpp.html" title="src/wxGUI/Routing/tests\l/main.cpp" alt="" coords="2097,753,2268,797"/><area shape="rect" id="node44" href="../../d9/d27/wxGUI_2tests_2main_8cpp.html" title="src/wxGUI/tests/main.cpp" alt="" coords="3704,761,3885,789"/><area shape="rect" id="node46" href="../../d4/dee/GUIRoute_8cpp.html" title="src/wxGUI/Routing/GUIRoute.cpp" alt="" coords="3424,667,3648,695"/><area shape="rect" id="node56" href="../../d2/d73/GUIRoute-inlines_8h.html" title="src/wxGUI/Routing/GUIRoute\l&#45;inlines.h" alt="" coords="1915,566,2112,610"/><area shape="rect" id="node63" href="../../d9/d94/DeviceShape_8cpp.html" title="Device shape base class for route window. " alt="" coords="752,659,933,703"/><area shape="rect" id="node106" href="../../d9/d4d/DeviceShape_8h.html" title="Device shape base class for route window. " alt="" coords="1635,379,1816,423"/><area shape="rect" id="node123" href="../../d3/d5e/InputMidiDeviceShape_8h.html" title="MIDI input device shape for route window. " alt="" coords="560,473,755,517"/><area shape="rect" id="node21" href="../../d9/d24/BoxChannelShape_8cpp.html" title="Box shape for route window. " alt="" coords="2304,659,2517,703"/><area shape="rect" id="node23" href="../../d8/db4/BoxShape_8cpp.html" title="Box shape for route window. " alt="" coords="1845,667,2075,695"/><area shape="rect" id="node33" href="../../d9/d27/DebugRoute_8cpp.html" title="Debug functions for routing system. " alt="" coords="3692,667,3935,695"/><area shape="rect" id="node66" href="../../d8/dba/NewBoxShape_8cpp.html" title="New box shape for route window. " alt="" coords="2888,659,3077,703"/><area shape="rect" id="node68" href="../../df/d62/NewInputDeviceShape_8cpp.html" title="Devices Basisklassen. " alt="" coords="2667,659,2864,703"/><area shape="rect" id="node27" href="../../d5/d12/GUIBoxData-inlines_8h.html" title="src/wxGUI/GUIBoxData\l&#45;inlines.h" alt="" coords="3120,566,3285,610"/><area shape="rect" id="node48" href="../../d3/dd7/MutRouteWnd_8h.html" title="src/wxGUI/MutRouteWnd.h" alt="" coords="2499,481,2685,509"/><area shape="rect" id="node52" href="../../d3/d2a/BoxDlg_8cpp.html" title="Box dialog. " alt="" coords="1611,667,1821,695"/><area shape="rect" id="node82" href="../../df/d3c/MutTextBox_8cpp.html" title="Textbox for Lists. " alt="" coords="3120,481,3307,509"/><area shape="rect" id="node91" href="../../d4/dcc/NewBoxShape_8h.html" title="New box shape for route window. " alt="" coords="3309,566,3499,610"/><area shape="rect" id="node97" href="../../d1/d28/RouteIcons_8cpp.html" title="Devices base classes. " alt="" coords="3331,481,3565,509"/><area shape="rect" id="node29" href="../../dc/def/MutRouteWnd_8cpp.html" title="Routing window. " alt="" coords="3101,667,3304,695"/><area shape="rect" id="node36" href="../../df/d72/kernel_2routing_2midi_2tests_2main_8cpp.html" title="src/kernel/routing\l/midi/tests/main.cpp" alt="" coords="4115,753,4267,797"/><area shape="rect" id="node38" href="../../da/ddb/midiopenfail1_8cpp.html" title="src/kernel/routing\l/midi/tests/midiopenfail1.cpp" alt="" coords="4291,753,4496,797"/><area shape="rect" id="node40" href="../../d9/dfe/playmidi1_8cpp.html" title="src/kernel/routing\l/midi/tests/playmidi1.cpp" alt="" coords="3909,753,4091,797"/><area shape="rect" id="node70" href="../../d1/d73/NewOutputDeviceShape_8cpp.html" title="New output device shape for route window. " alt="" coords="1376,659,1587,703"/><area shape="rect" id="node72" href="../../d3/d21/OutputGuidoFileDeviceShape_8cpp.html" title="Input device shape for reading GUIDO files in the route window. " alt="" coords="1163,659,1352,703"/><area shape="rect" id="node74" href="../../d6/d68/OutputMidiDeviceShape_8cpp.html" title="MIDI input device shape for route window. " alt="" coords="2099,659,2280,703"/><area shape="rect" id="node76" href="../../d5/d00/OutputMidiFileDeviceShape_8cpp.html" title="Midi fiele input device shape for route window. " alt="" coords="957,659,1139,703"/><area shape="rect" id="node111" href="../../d9/dd2/BoxDlg_8h.html" title="src/wxGUI/Routing/BoxDlg.h" alt="" coords="1493,574,1688,602"/><area shape="rect" id="node127" href="../../d1/da8/InputMidiFileDeviceShape_8h.html" title="MIDI file input device shape. " alt="" coords="1443,473,1637,517"/><area shape="rect" id="node129" href="../../d5/dba/NewInputDeviceShape_8h.html" title="New input device shape for route window. " alt="" coords="2544,566,2741,610"/><area shape="rect" id="node132" href="../../df/d7b/NewOutputDeviceShape_8h.html" title="New output device shape for route window. " alt="" coords="1056,566,1267,610"/><area shape="rect" id="node135" href="../../db/d77/OutputGuidoFileDeviceShape_8h.html" title="Devices Basisklassen. " alt="" coords="1136,473,1317,517"/><area shape="rect" id="node138" href="../../d8/dcb/OutputMidiDeviceShape_8h.html" title="MIDI output device shape for route window. " alt="" coords="2187,566,2368,610"/><area shape="rect" id="node142" href="../../d4/de8/OutputMidiFileDeviceShape_8h.html" title="MIDI file input device shape. " alt="" coords="931,473,1112,517"/><area shape="rect" id="node125" href="../../d9/d0d/InputGuidoFileDeviceShape_8h.html" title="Guido/Salieri file input device class. " alt="" coords="496,566,704,610"/><area shape="rect" id="node152" href="../../d0/d6b/DevMidF_8cpp.html" title="MIDI&#45;File as device. " alt="" coords="4395,193,4531,237"/><area shape="rect" id="node154" href="../../da/d0f/DevMidFTest_8h.html" title="src/kernel/routing\l/midi/tests/DevMidFTest.h" alt="" coords="4117,286,4301,330"/><area shape="rect" id="node159" href="../../dd/db8/RouteCompat_8cpp.html" title="Routing. " alt="" coords="3957,193,4096,237"/><area shape="rect" id="node161" href="../../d2/dba/RouteTest_8cpp.html" title="src/kernel/routing\l/tests/RouteTest.cpp" alt="" coords="4120,193,4269,237"/></map>
+<!-- MAP 1 -->
 </div>
 </div>
 <p><a href="../../d9/d17/CommonFileDevice_8h_source.html">gehe zum Quellcode dieser Datei</a></p>
@@ -65,13 +56,11 @@ Klassen</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/db9/classmutabor_1_1CommonFileInputDevice_1_1FileTimer.html">mutabor::CommonFileInputDevice::FileTimer</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dfd/classmutabor_1_1CommonFileDeviceFactory.html">mutabor::CommonFileDeviceFactory</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namensbereiche</h2></td></tr>
-<tr class="memitem:d6/daa/namespacemutabor"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html">mutabor</a></td></tr>
-<tr class="memdesc:d6/daa/namespacemutabor"><td class="mdescLeft">&#160;</td><td class="mdescRight">not for headers <br/></td></tr>
+<tr class="memitem:d6/daa/namespacemutabor"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html">mutabor</a></td></tr>
+<tr class="memdesc:d6/daa/namespacemutabor"><td class="mdescLeft">&#160;</td><td class="mdescRight">not for headers <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -83,6 +72,6 @@ Makrodefinitionen</h2></td></tr>
 </table>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Apr 26 2014 12:58:28 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Sep 15 2018 14:57:54 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.13</small></address>
 </body>
 </html>

@@ -1,0 +1,15 @@
+digraph "test_parser"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  Node0 [label="test_parser",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node1 [label="string_parser",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node2 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node2 [label="mutabor::scala_parser\l::parser",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/d28/classmutabor_1_1scala__parser_1_1parser.html"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node3 [label="mutabor::scala_parser\l::error_handler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d91/structmutabor_1_1scala__parser_1_1error__handler.html"];
+  Node2 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node2 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node2 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+}

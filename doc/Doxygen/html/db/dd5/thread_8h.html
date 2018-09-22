@@ -3,23 +3,15 @@
 <title>src/kernel/routing/thread.h-Dateireferenz</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.6 -->
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
-      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
-      <li><a href="../../modules.html"><span>Module</span></a></li>
-      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
-      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
-      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
-    </ul>
-  </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
-      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
-    </ul>
-  </div>
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',false,false,'search.php','Suchen');
+});
+</script>
+<div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
 <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cbd7f246bdf7dc0a50281a272327e6ed.html">kernel</a></li><li class="navelem"><a class="el" href="../../dir_02be4fa82aae8ff4c4cc45bceb47856f.html">routing</a></li>  </ul>
@@ -28,45 +20,57 @@
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Klassen</a> &#124;
-<a href="#namespaces">Namensbereiche</a> &#124;
 <a href="#define-members">Makrodefinitionen</a> &#124;
-<a href="#typedef-members">Typdefinitionen</a>  </div>
+<a href="#typedef-members">Typdefinitionen</a> &#124;
+<a href="#enum-members">Aufzählungen</a> &#124;
+<a href="#func-members">Funktionen</a> &#124;
+<a href="#var-members">Variablen</a>  </div>
   <div class="headertitle">
 <div class="title">thread.h-Dateireferenz</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d1/d73/Defs_8h_source.html">src/kernel/Defs.h</a>&quot;</code><br/>
-<code>#include &quot;wx/thread.h&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d1/d73/Defs_8h_source.html">src/kernel/Defs.h</a>&quot;</code><br />
+<code>#include &quot;boost/thread.hpp&quot;</code><br />
+<code>#include &quot;boost/atomic.hpp&quot;</code><br />
+<code>#include &quot;boost/lexical_cast.hpp&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include-Abhängigkeitsdiagramm für thread.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/d2d/thread_8h__incl.png" border="0" usemap="#src_2kernel_2routing_2thread_8h" alt=""/></div>
-<map name="src_2kernel_2routing_2thread_8h" id="src_2kernel_2routing_2thread_8h">
-<area shape="rect" id="node3" href="../../d1/d73/Defs_8h.html" title="Common definitions. " alt="" coords="164,99,292,127"/><area shape="rect" id="node5" href="../../de/ddd/interface__deps_8h.html" title="interface_deps.h" alt="" coords="5,177,133,205"/><area shape="rect" id="node10" href="../../db/d16/debug_8h.html" title="src/kernel/debug.h" alt="" coords="301,177,440,205"/><area shape="rect" id="node13" href="../../d4/d64/libintl_8h.html" title="src/wxintl/libintl.h" alt="" coords="139,254,267,282"/><area shape="rect" id="node25" href="../../d4/dab/debugFlags_8h.html" title="Debug flags for mutabor debug mode. " alt="" coords="675,254,781,282"/></map>
+<!-- MAP 0 -->
 </div>
 </div><div class="textblock"><div class="dynheader">
 Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/d06/thread_8h__dep__incl.png" border="0" usemap="#src_2kernel_2routing_2thread_8hdep" alt=""/></div>
-<map name="src_2kernel_2routing_2thread_8hdep" id="src_2kernel_2routing_2thread_8hdep">
-<area shape="rect" id="node3" href="../../d1/d00/debug_8cpp.html" title="src/kernel/debug.cpp" alt="" coords="5,107,160,135"/><area shape="rect" id="node5" href="../../de/d0f/Box_8h.html" title="Mutabor Box for C++. " alt="" coords="2911,286,3044,330"/><area shape="rect" id="node115" href="../../d9/d17/CommonFileDevice_8h.html" title="src/kernel/routing\l/CommonFileDevice.h" alt="" coords="829,379,989,423"/><area shape="rect" id="node120" href="../../db/d41/timing_8h.html" title="src/kernel/routing\l/timing.h" alt="" coords="2221,99,2355,143"/><area shape="rect" id="node140" href="../../d9/da3/watchdog_8h.html" title="src/kernel/routing\l/watchdog.h" alt="" coords="2712,193,2845,237"/><area shape="rect" id="node7" href="../../d6/d9a/Box-inlines_8h.html" title="src/kernel/routing\l/Box&#45;inlines.h" alt="" coords="3192,473,3325,517"/><area shape="rect" id="node9" href="../../dd/dc6/Box_8cpp.html" title="Devices for routing. " alt="" coords="4013,473,4147,517"/><area shape="rect" id="node11" href="../../dc/d72/CommonFileDevice_8cpp.html" title="src/kernel/routing\l/CommonFileDevice.cpp" alt="" coords="595,473,768,517"/><area shape="rect" id="node13" href="../../d2/dc0/Device_8cpp.html" title="Devices for routing. " alt="" coords="2861,473,2995,517"/><area shape="rect" id="node15" href="../../d1/db5/GIS__Head_8h.html" title="Description. " alt="" coords="2599,379,2732,423"/><area shape="rect" id="node29" href="../../de/d21/midicmn_8h.html" title="src/kernel/routing\l/midi/midicmn.h" alt="" coords="2756,379,2889,423"/><area shape="rect" id="node63" href="../../d2/d2c/Route-inlines_8h.html" title="src/kernel/routing\l/Route&#45;inlines.h" alt="" coords="2043,379,2176,423"/><area shape="rect" id="node96" href="../../df/d01/BoxTest_8h.html" title="src/kernel/routing\l/tests/BoxTest.h" alt="" coords="3201,379,3335,423"/><area shape="rect" id="node99" href="../../d4/d7c/CompDlg_8h.html" title="Compilation dialog box. " alt="" coords="3359,387,3516,415"/><area shape="rect" id="node101" href="../../d5/d6b/configtree_8h.html" title="src/wxGUI/configtree.h" alt="" coords="3015,387,3177,415"/><area shape="rect" id="node104" href="../../d5/df7/GUIBoxData_8h.html" title="src/wxGUI/GUIBoxData.h" alt="" coords="4177,387,4356,415"/><area shape="rect" id="node107" href="../../de/d3b/MutTextBox_8h.html" title="Textbox for Lists. " alt="" coords="3591,387,3764,415"/><area shape="rect" id="node109" href="../../d5/de4/StatusBar_8cpp.html" title="src/wxGUI/StatusBar.cpp" alt="" coords="2301,387,2480,415"/><area shape="rect" id="node111" href="../../dc/d0c/stclanguage_8cpp.html" title="src/wxGUI/stclanguage.cpp" alt="" coords="3788,387,3980,415"/><area shape="rect" id="node113" href="../../d8/d53/xmltree_8h.html" title="src/wxGUI/xmltree.h" alt="" coords="4004,387,4153,415"/><area shape="rect" id="node17" href="../../da/d81/DevGIS_8h.html" title="src/kernel/routing\l/gmn/DevGIS.h" alt="" coords="843,473,976,517"/><area shape="rect" id="node27" href="../../d7/da0/GIS__Head_8cpp.html" title="Description. " alt="" coords="3019,473,3168,517"/><area shape="rect" id="node19" href="../../db/d78/DevGIS_8cpp.html" title="GUIDO Music Notation file. " alt="" coords="813,566,947,610"/><area shape="rect" id="node21" href="../../d0/dd6/gmnopenfail1_8cpp.html" title="src/kernel/routing\l/gmn/tests/gmnopenfail1.cpp" alt="" coords="264,566,472,610"/><area shape="rect" id="node23" href="../../d3/d06/playgmn1_8cpp.html" title="src/kernel/routing\l/gmn/tests/playgmn1.cpp" alt="" coords="605,566,789,610"/><area shape="rect" id="node25" href="../../db/d80/Runtime_8cpp.html" title="src/kernel/Runtime.cpp" alt="" coords="971,574,1136,602"/><area shape="rect" id="node31" href="../../da/d3c/DevMidF_8h.html" title="src/kernel/routing\l/midi/DevMidF.h" alt="" coords="1152,473,1285,517"/><area shape="rect" id="node40" href="../../d4/da2/DevMidi_8h.html" title="Classes for midi port. " alt="" coords="2307,473,2440,517"/><area shape="rect" id="node49" href="../../d9/d34/midicmn-inlines_8h.html" title="src/kernel/routing\l/midi/midicmn&#45;inlines.h" alt="" coords="3563,473,3731,517"/><area shape="rect" id="node56" href="../../d3/d0f/midicmn_8cpp.html" title="src/kernel/routing\l/midi/midicmn.cpp" alt="" coords="3400,473,3539,517"/><area shape="rect" id="node60" href="../../dd/d56/midicmnTest_8h.html" title="src/kernel/routing\l/midi/tests/midicmnTest.h" alt="" coords="3805,473,3989,517"/><area shape="rect" id="node33" href="../../d0/d6b/DevMidF_8cpp.html" title="MIDI&#45;File as device. " alt="" coords="2137,566,2273,610"/><area shape="rect" id="node35" href="../../dd/db8/RouteCompat_8cpp.html" title="Routing. " alt="" coords="1160,566,1299,610"/><area shape="rect" id="node37" href="../../d2/dba/RouteTest_8cpp.html" title="src/kernel/routing\l/tests/RouteTest.cpp" alt="" coords="1323,566,1472,610"/><area shape="rect" id="node43" href="../../df/d8f/DevMidi_8cpp.html" title="Midi Port IO (Mutabor layer) " alt="" coords="2491,566,2624,610"/><area shape="rect" id="node47" href="../../d5/d1c/MutApp_8cpp.html" title="Mutabor Application. " alt="" coords="2297,574,2460,602"/><area shape="rect" id="node52" href="../../d9/d99/DevMidFTest_8cpp.html" title="src/kernel/routing\l/midi/tests/DevMidFTest.cpp" alt="" coords="3371,566,3568,610"/><area shape="rect" id="node54" href="../../d8/d59/midicmnTest_8cpp.html" title="src/kernel/routing\l/midi/tests/midicmnTest.cpp" alt="" coords="3668,566,3868,610"/><area shape="rect" id="node75" href="../../d8/dfb/Route_8cpp.html" title="Routing. " alt="" coords="437,473,571,517"/><area shape="rect" id="node78" href="../../d4/d70/CommonFileDeviceTest_8h.html" title="src/kernel/routing\l/tests/CommonFileDeviceTest.h" alt="" coords="2616,473,2837,517"/><area shape="rect" id="node80" href="../../d1/de6/kernel_2routing_2tests_2main_8cpp.html" title="src/kernel/routing\l/tests/main.cpp" alt="" coords="2660,566,2793,610"/><area shape="rect" id="node84" href="../../d9/d9a/timer1_8cpp.html" title="src/kernel/routing\l/tests/timer1.cpp" alt="" coords="1360,473,1493,517"/><area shape="rect" id="node87" href="../../d1/da7/boxTest_8cpp.html" title="src/kernel/tests/boxTest.cpp" alt="" coords="1517,481,1715,509"/><area shape="rect" id="node89" href="../../dc/d2f/boxTest_8h.html" title="src/kernel/tests/boxTest.h" alt="" coords="1739,481,1923,509"/><area shape="rect" id="node91" href="../../d4/dc0/mutDebug_8cpp.html" title="Some functions and classes to help to debug Mutabor. " alt="" coords="1947,481,2181,509"/><area shape="rect" id="node93" href="../../d2/dd3/GUIBoxData_8cpp.html" title="src/wxGUI/GUIBoxData.cpp" alt="" coords="4171,481,4363,509"/><area shape="rect" id="node122" href="../../de/d05/Device_8h.html" title="Routing. " alt="" coords="2095,286,2228,330"/><area shape="rect" id="node136" href="../../d6/d6d/tests_2timing_8h.html" title="src/kernel/routing\l/tests/timing.h" alt="" coords="2555,193,2688,237"/><area shape="rect" id="node138" href="../../d1/dca/timing_8cpp.html" title="src/kernel/routing\l/timing.cpp" alt="" coords="2117,193,2251,237"/></map>
+<!-- MAP 1 -->
 </div>
 </div>
 <p><a href="../../db/dd5/thread_8h_source.html">gehe zum Quellcode dieser Datei</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Klassen</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d97/classmutabor_1_1ScopedCondLock.html">mutabor::ScopedCondLock&lt; dolock &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d6f/classScopedLock.html">ScopedLock&lt; M &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc0/structmutabor_1_1ScopedCondLock_3_01false_01_4.html">mutabor::ScopedCondLock&lt; false &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/db9/classMutex.html">Mutex&lt; M &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d1c/classmutabor_1_1safe__integer.html">mutabor::safe_integer&lt; T &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/db9/classMutex.html">Mutex&lt; M &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namensbereiche</h2></td></tr>
-<tr class="memitem:d6/daa/namespacemutabor"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html">mutabor</a></td></tr>
-<tr class="memdesc:d6/daa/namespacemutabor"><td class="mdescLeft">&#160;</td><td class="mdescRight">not for headers <br/></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/classScopedUnlock.html">ScopedUnlock&lt; M &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d55/classThreadCondition.html">ThreadCondition&lt; M &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d64/classScopedCondLock.html">ScopedCondLock&lt; dolock, M &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d2d/structScopedCondLock_3_01false_00_01M_01_4.html">ScopedCondLock&lt; false, M &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d5e/classThreadSignal.html">ThreadSignal&lt; T, M, C &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d51/classThread.html">Thread</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da9/classThread_1_1meeting__point.html">Thread::meeting_point</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d75/classsafe__integer.html">safe_integer&lt; T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -75,26 +79,36 @@ Makrodefinitionen</h2></td></tr>
 <tr class="separator:ga6f2959bb1a110df5da5eaeedba136451"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1eb03dac67baec1e3a9cfcbd14dd13fc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga1eb03dac67baec1e3a9cfcbd14dd13fc">SRC_KERNEL_ROUTING_THREAD_H_PRECOMPILED</a></td></tr>
 <tr class="separator:ga1eb03dac67baec1e3a9cfcbd14dd13fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga894f46887a0cde953d10a25b524c1027"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga894f46887a0cde953d10a25b524c1027">MUTABOR_THREAD_OK</a>&#160;&#160;&#160;wxMUTEX_NO_ERROR</td></tr>
-<tr class="separator:ga894f46887a0cde953d10a25b524c1027"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typdefinitionen</h2></td></tr>
-<tr class="memitem:a6879c9bc9c318c7080f9541ac04257f2"><td class="memItemLeft" align="right" valign="top">typedef wxThread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a6879c9bc9c318c7080f9541ac04257f2">mutabor::Thread</a></td></tr>
-<tr class="separator:a6879c9bc9c318c7080f9541ac04257f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10f22332ca46c3b46e40a41fe03f647d"><td class="memItemLeft" align="right" valign="top">typedef wxThreadKind&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a10f22332ca46c3b46e40a41fe03f647d">mutabor::ThreadKind</a></td></tr>
-<tr class="separator:a10f22332ca46c3b46e40a41fe03f647d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93569d37da81194d4c883c2040166474"><td class="memItemLeft" align="right" valign="top">typedef wxMutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a93569d37da81194d4c883c2040166474">mutabor::Mutex</a></td></tr>
-<tr class="separator:a93569d37da81194d4c883c2040166474"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f4d6114755394df23756ce9fe2fce5c"><td class="memItemLeft" align="right" valign="top">typedef wxMutexLocker&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a8f4d6114755394df23756ce9fe2fce5c">mutabor::ScopedLock</a></td></tr>
-<tr class="separator:a8f4d6114755394df23756ce9fe2fce5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d1ecdfb9ba0a82057e8c6bb08a499e0"><td class="memItemLeft" align="right" valign="top">typedef wxMutexError&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a8d1ecdfb9ba0a82057e8c6bb08a499e0">mutabor::ThreadResult</a></td></tr>
-<tr class="separator:a8d1ecdfb9ba0a82057e8c6bb08a499e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6822392034480be12f47177ddf7dbb8"><td class="memItemLeft" align="right" valign="top">typedef wxCondition&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#ae6822392034480be12f47177ddf7dbb8">mutabor::ThreadCondition</a></td></tr>
-<tr class="separator:ae6822392034480be12f47177ddf7dbb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6ddf56f5286a107aa20d7b949a876fd8"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga6ddf56f5286a107aa20d7b949a876fd8">ThreadResult</a></td></tr>
+<tr class="separator:ga6ddf56f5286a107aa20d7b949a876fd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf44cab6588e8622acc0c84f694774c78"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gaf44cab6588e8622acc0c84f694774c78">WaitResult</a></td></tr>
+<tr class="separator:gaf44cab6588e8622acc0c84f694774c78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Aufzählungen</h2></td></tr>
+<tr class="memitem:ga2afba19f68cee2aa6744ced8a51da2fa"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga2afba19f68cee2aa6744ced8a51da2fa">ThreadKind</a> </td></tr>
+<tr class="separator:ga2afba19f68cee2aa6744ced8a51da2fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:ga73a116146243ecc8ccf3900486cd1dc8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga73a116146243ecc8ccf3900486cd1dc8">MUTABOR_NAMESPACE</a> (mutabor) inline void BoxClass</td></tr>
+<tr class="memdesc:ga73a116146243ecc8ccf3900486cd1dc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">not for headers  <a href="../../d5/dee/group__route.html#ga73a116146243ecc8ccf3900486cd1dc8">Mehr ...</a><br /></td></tr>
+<tr class="separator:ga73a116146243ecc8ccf3900486cd1dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variablen</h2></td></tr>
+<tr class="memitem:gae50517720d2fdecd606991bad289d95f"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gae50517720d2fdecd606991bad289d95f">t</a></td></tr>
+<tr class="separator:gae50517720d2fdecd606991bad289d95f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf0c356b858578db0213ecab925d156f4"><td class="memItemLeft" align="right" valign="top">const char const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#gaf0c356b858578db0213ecab925d156f4">u</a></td></tr>
+<tr class="separator:gaf0c356b858578db0213ecab925d156f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2d6d27858492fcac2d595e5365120569"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/db9/classMutex.html">Mutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/group__route.html#ga2d6d27858492fcac2d595e5365120569">debugmutex</a></td></tr>
+<tr class="separator:ga2d6d27858492fcac2d595e5365120569"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Apr 26 2014 12:58:28 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Sep 15 2018 14:57:54 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.13</small></address>
 </body>
 </html>

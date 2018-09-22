@@ -1,0 +1,14 @@
+digraph "mutaborGUI::MutChild"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  Node5 [label="mutaborGUI::MutChild",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node6 [label="MutTextBox",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d6/deb/classMutTextBox.html"];
+  Node7 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node7 [label="wxTextCtrl",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node8 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node8 [label="mutabor::BoxClass::\lChangedCallback",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/dd8/structmutabor_1_1BoxClass_1_1ChangedCallback.html"];
+  Node9 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node9 [label="mutaborGUI::MutChildApi",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/dfa/structmutaborGUI_1_1MutChildApi.html"];
+}

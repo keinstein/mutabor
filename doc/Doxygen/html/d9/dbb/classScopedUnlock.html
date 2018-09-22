@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>ScopedUnlock&lt; M &gt; Template-Klassenreferenz</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',false,false,'search.php','Suchen');
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Öffentliche Methoden</a> &#124;
+<a href="#pro-attribs">Geschützte Attribute</a> &#124;
+<a href="../../dd/dda/classScopedUnlock-members.html">Aufstellung aller Elemente</a>  </div>
+  <div class="headertitle">
+<div class="title">ScopedUnlock&lt; M &gt; Template-Klassenreferenz<div class="ingroups"><a class="el" href="../../d5/dee/group__route.html">Basic event routing functions</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Öffentliche Methoden</h2></td></tr>
+<tr class="memitem:ab2d5e42ca7e9ed7dc63bb056a67cc68b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/classScopedUnlock.html#ab2d5e42ca7e9ed7dc63bb056a67cc68b">ScopedUnlock</a> (M &amp;m)</td></tr>
+<tr class="separator:ab2d5e42ca7e9ed7dc63bb056a67cc68b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8edf86a18e0e08ead70542e4627eafb5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/classScopedUnlock.html#a8edf86a18e0e08ead70542e4627eafb5">~ScopedUnlock</a> ()</td></tr>
+<tr class="separator:a8edf86a18e0e08ead70542e4627eafb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Geschützte Attribute</h2></td></tr>
+<tr class="memitem:a640de37d9fde431c60b86c30e30e7a22"><td class="memItemLeft" align="right" valign="top">M &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/classScopedUnlock.html#a640de37d9fde431c60b86c30e30e7a22">mutex</a></td></tr>
+<tr class="separator:a640de37d9fde431c60b86c30e30e7a22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
+<div class="textblock"><h3>template&lt;class M = boost::mutex&gt;<br />
+class ScopedUnlock&lt; M &gt;</h3>
+
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00357">357</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+</div><h2 class="groupheader">Beschreibung der Konstruktoren und Destruktoren</h2>
+<a id="ab2d5e42ca7e9ed7dc63bb056a67cc68b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2d5e42ca7e9ed7dc63bb056a67cc68b">&#9670;&nbsp;</a></span>ScopedUnlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class M  = boost::mutex&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d9/dbb/classScopedUnlock.html">ScopedUnlock</a>&lt; M &gt;::<a class="el" href="../../d9/dbb/classScopedUnlock.html">ScopedUnlock</a> </td>
+          <td>(</td>
+          <td class="paramtype">M &amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00359">359</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                           :<a class="code" href="../../d9/dbb/classScopedUnlock.html#a640de37d9fde431c60b86c30e30e7a22">mutex</a>(m) {</div><div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                <a class="code" href="../../d9/dbb/classScopedUnlock.html#a640de37d9fde431c60b86c30e30e7a22">mutex</a>.Unlock();</div><div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        }</div><div class="ttc" id="classScopedUnlock_html_a640de37d9fde431c60b86c30e30e7a22"><div class="ttname"><a href="../../d9/dbb/classScopedUnlock.html#a640de37d9fde431c60b86c30e30e7a22">ScopedUnlock::mutex</a></div><div class="ttdeci">M &amp; mutex</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00366">thread.h:366</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8edf86a18e0e08ead70542e4627eafb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8edf86a18e0e08ead70542e4627eafb5">&#9670;&nbsp;</a></span>~ScopedUnlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class M  = boost::mutex&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d9/dbb/classScopedUnlock.html">ScopedUnlock</a>&lt; M &gt;::~<a class="el" href="../../d9/dbb/classScopedUnlock.html">ScopedUnlock</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00362">362</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                        {</div><div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                <a class="code" href="../../d9/dbb/classScopedUnlock.html#a640de37d9fde431c60b86c30e30e7a22">mutex</a>.Lock();</div><div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        }</div><div class="ttc" id="classScopedUnlock_html_a640de37d9fde431c60b86c30e30e7a22"><div class="ttname"><a href="../../d9/dbb/classScopedUnlock.html#a640de37d9fde431c60b86c30e30e7a22">ScopedUnlock::mutex</a></div><div class="ttdeci">M &amp; mutex</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00366">thread.h:366</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Datenelemente</h2>
+<a id="a640de37d9fde431c60b86c30e30e7a22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a640de37d9fde431c60b86c30e30e7a22">&#9670;&nbsp;</a></span>mutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class M  = boost::mutex&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">M&amp; <a class="el" href="../../d9/dbb/classScopedUnlock.html">ScopedUnlock</a>&lt; M &gt;::mutex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00366">366</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>src/kernel/routing/<a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a></li>
+</ul>
+</div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Sam Sep 15 2018 14:57:56 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.13</small></address>
+</body>
+</html>

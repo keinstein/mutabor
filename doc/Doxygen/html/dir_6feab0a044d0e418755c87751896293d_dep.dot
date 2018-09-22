@@ -1,0 +1,11 @@
+digraph "src/wxGUI/generic" {
+  compound=true
+  node [ fontsize="10", fontname="Sans"];
+  edge [ labelfontsize="10", labelfontname="Sans"];
+  subgraph clusterdir_eaae7e9da1b31c6b329e928d72e0e61a {
+    graph [ bgcolor="#ddddee", pencolor="black", label="wxGUI" fontname="Sans", fontsize="10", URL="dir_eaae7e9da1b31c6b329e928d72e0e61a.html"]
+  dir_6feab0a044d0e418755c87751896293d [shape=box, label="generic", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_6feab0a044d0e418755c87751896293d.html"];
+  }
+  dir_cbd7f246bdf7dc0a50281a272327e6ed [shape=box label="kernel" fillcolor="white" style="filled" color="red" URL="dir_cbd7f246bdf7dc0a50281a272327e6ed.html"];
+  dir_6feab0a044d0e418755c87751896293d->dir_cbd7f246bdf7dc0a50281a272327e6ed [headlabel="10", labeldistance=1.5 headhref="dir_000018_000002.html"];
+}

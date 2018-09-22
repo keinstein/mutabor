@@ -1,0 +1,16 @@
+digraph "GisNote"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  Node2 [label="GisNote",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node3 [label="GisToken",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/db7/classGisToken.html"];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Sep" ,fontname="Sans"];
+  Node4 [label="std::string",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node5 [label="std::basic_string\<\l char \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node3 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Next" ,fontname="Sans"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Accedentials\nName" ,fontname="Sans"];
+  Node6 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Duration" ,fontname="Sans"];
+  Node6 [label="mutabor::frac",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/ded/classmutabor_1_1frac.html"];
+}

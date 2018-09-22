@@ -1,0 +1,11 @@
+digraph "mutabor::hidden::mutabor_syntax_heap"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  Node1 [label="mutabor::hidden::mutabor\l_syntax_heap",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" heap_to_use_syntax\nsyntax_heap" ,fontname="Sans"];
+  Node2 [label="heap_element",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d7d/structheap__element.html"];
+  Node2 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" next" ,fontname="Sans"];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" anzahl_belegt" ,fontname="Sans"];
+  Node3 [label="size_t",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

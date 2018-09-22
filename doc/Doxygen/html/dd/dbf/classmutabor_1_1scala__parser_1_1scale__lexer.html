@@ -1,0 +1,916 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>mutabor::scala_parser::scale_lexer Klassenreferenz</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',false,false,'search.php','Suchen');
+});
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../d6/daa/namespacemutabor.html">mutabor</a></li><li class="navelem"><a class="el" href="../../d1/de4/namespacemutabor_1_1scala__parser.html">scala_parser</a></li><li class="navelem"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html">scale_lexer</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Öffentliche Typen</a> &#124;
+<a href="#pub-methods">Öffentliche Methoden</a> &#124;
+<a href="#pro-methods">Geschützte Methoden</a> &#124;
+<a href="#pro-attribs">Geschützte Attribute</a> &#124;
+<a href="#pro-static-attribs">Statische, geschützte Attribute</a> &#124;
+<a href="../../d2/d41/classmutabor_1_1scala__parser_1_1scale__lexer-members.html">Aufstellung aller Elemente</a>  </div>
+  <div class="headertitle">
+<div class="title">mutabor::scala_parser::scale_lexer Klassenreferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>&gt;</code></p>
+<div class="dynheader">
+Klassendiagramm für mutabor::scala_parser::scale_lexer:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/d64/classmutabor_1_1scala__parser_1_1scale__lexer__inherit__graph.png" border="0" usemap="#mutabor_1_1scala__parser_1_1scale__lexer_inherit__map" alt="Inheritance graph"/></div>
+<!-- MAP 0 -->
+<center><span class="legend">[<a href="../../graph_legend.html">Legende</a>]</span></center></div>
+<div class="dynheader">
+Zusammengehörigkeiten von mutabor::scala_parser::scale_lexer:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d42/classmutabor_1_1scala__parser_1_1scale__lexer__coll__graph.png" border="0" usemap="#mutabor_1_1scala__parser_1_1scale__lexer_coll__map" alt="Collaboration graph"/></div>
+<!-- MAP 1 -->
+<center><span class="legend">[<a href="../../graph_legend.html">Legende</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Öffentliche Typen</h2></td></tr>
+<tr class="memitem:a56a2ab2095e33cec3de2cb13fb129078"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078">start_mode</a> { <br />
+&#160;&#160;<a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078ad257fc33dbccdd86daf8f9118245f346">top_mode</a> =0, 
+<a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078ace2bfef6fab8fcd39a5364e822e8455a">in_string</a>, 
+<a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078a9926868a5b8559dda9af71ff89df1932">in_sclname</a>, 
+<a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078a9f145bbdc8fcfa24c7e1cd8cc8d6cfa0">in_integer</a>, 
+<br />
+&#160;&#160;<a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078a592f17e6f388a87b1338333e4a5f0e16">in_interval</a>, 
+<a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078a0034c8ac36164f630e055757624c6508">in_key</a>, 
+<a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078aa6feb4d414e91dc4cee6634c490d548f">in_garbage</a>
+<br />
+ }</td></tr>
+<tr class="separator:a56a2ab2095e33cec3de2cb13fb129078"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85ea827caf28a2f18594152c0a1c5b11"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../df/dcd/classmutabor_1_1scala__parser_1_1scale__parser.html#adf7b3ab25fc50b7011ed9d5f61d715bd">scale_parser::symbol_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a85ea827caf28a2f18594152c0a1c5b11">symbol_type</a></td></tr>
+<tr class="separator:a85ea827caf28a2f18594152c0a1c5b11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Öffentliche Methoden</h2></td></tr>
+<tr class="memitem:a2a073f5885831e7b1709f1ed6c0dbf25"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a2a073f5885831e7b1709f1ed6c0dbf25">scale_lexer</a> (const char *<a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">string</a>, const char *f, size_t len)</td></tr>
+<tr class="separator:a2a073f5885831e7b1709f1ed6c0dbf25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf66d0117ded7b5a3c14d750f01c88e8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#abf66d0117ded7b5a3c14d750f01c88e8">~scale_lexer</a> ()</td></tr>
+<tr class="separator:abf66d0117ded7b5a3c14d750f01c88e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69b333b56be205cfe9383c0723ffe4d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d91/structmutabor_1_1scala__parser_1_1error__handler.html">error_handler</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a69b333b56be205cfe9383c0723ffe4d4">get_error_handler</a> () const</td></tr>
+<tr class="separator:a69b333b56be205cfe9383c0723ffe4d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcaa709ea305594925e1a35f69cf1108"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#abcaa709ea305594925e1a35f69cf1108">set_error_handler</a> (<a class="el" href="../../de/d91/structmutabor_1_1scala__parser_1_1error__handler.html">error_handler</a> *<a class="el" href="../../d7/d76/mutgis_8h.html#a26506d124b947beae862c007bc8195bb">h</a>)</td></tr>
+<tr class="separator:abcaa709ea305594925e1a35f69cf1108"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a607a79906543dffffc9ffc1468ebe0e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/dfe/structmutabor_1_1scala__parser_1_1scale__parser_1_1token.html#a86316c7afc2f4f665f70a27a0213057e">scale_parser::token_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a607a79906543dffffc9ffc1468ebe0e6">get_start_token</a> () const</td></tr>
+<tr class="separator:a607a79906543dffffc9ffc1468ebe0e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42ad43ef05b56945f20db99849560bc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a42ad43ef05b56945f20db99849560bc0">set_start_token</a> (<a class="el" href="../../d6/dfe/structmutabor_1_1scala__parser_1_1scale__parser_1_1token.html#a86316c7afc2f4f665f70a27a0213057e">scale_parser::token_type</a> <a class="el" href="../../d5/dee/group__route.html#gae50517720d2fdecd606991bad289d95f">t</a>)</td></tr>
+<tr class="separator:a42ad43ef05b56945f20db99849560bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9974d90e7fe4524befd1f1cfafad5d0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a9974d90e7fe4524befd1f1cfafad5d0e">set_string</a> (const char *<a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">string</a>, const char *f, size_t len)</td></tr>
+<tr class="separator:a9974d90e7fe4524befd1f1cfafad5d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa01cc8b91600eb3bea831ecfe5992070"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#aa01cc8b91600eb3bea831ecfe5992070">error</a> (const <a class="el" href="../../d5/dca/classmutabor_1_1scala__parser_1_1location.html">location</a> &amp;<a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a921b3d2d84095ecc6b75a78d28fdc">loc</a>, const char *message,...)</td></tr>
+<tr class="separator:aa01cc8b91600eb3bea831ecfe5992070"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3021c6a74f721586c1e2b45fa4a99f26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a3021c6a74f721586c1e2b45fa4a99f26">get_filename</a> ()</td></tr>
+<tr class="separator:a3021c6a74f721586c1e2b45fa4a99f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf7ce499255637015a9d8f08cfc17e9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a85ea827caf28a2f18594152c0a1c5b11">symbol_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#adf7ce499255637015a9d8f08cfc17e9b">get_token</a> ()</td></tr>
+<tr class="separator:adf7ce499255637015a9d8f08cfc17e9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7999480009030e3629b8604bef515a74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7999480009030e3629b8604bef515a74">free_identifier</a> ()</td></tr>
+<tr class="separator:a7999480009030e3629b8604bef515a74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc764d266bc5cfb456bcd64f02c78665"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#abc764d266bc5cfb456bcd64f02c78665">push_state</a> (<a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078">start_mode</a> mode)</td></tr>
+<tr class="separator:abc764d266bc5cfb456bcd64f02c78665"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6936bc3f22902f48d71f0b31b2e8be1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#ac6936bc3f22902f48d71f0b31b2e8be1">pop_state</a> (<a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078">start_mode</a> mode)</td></tr>
+<tr class="separator:ac6936bc3f22902f48d71f0b31b2e8be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Geschützte Methoden</h2></td></tr>
+<tr class="memitem:a796c6a7a5dcbf4ce40bc692673b572f7"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a796c6a7a5dcbf4ce40bc692673b572f7">LexerInput</a> (char *buf, int max_size)</td></tr>
+<tr class="separator:a796c6a7a5dcbf4ce40bc692673b572f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Geschützte Attribute</h2></td></tr>
+<tr class="memitem:ab0d7710efbb1bd976262b143a04d3319"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d91/structmutabor_1_1scala__parser_1_1error__handler.html">error_handler</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#ab0d7710efbb1bd976262b143a04d3319">handler</a></td></tr>
+<tr class="separator:ab0d7710efbb1bd976262b143a04d3319"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96b65be88822ffef603f70b8c953fbca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a96b65be88822ffef603f70b8c953fbca">file</a></td></tr>
+<tr class="separator:a96b65be88822ffef603f70b8c953fbca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a660831e45f23cf4ccb798822467ee4"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7a660831e45f23cf4ccb798822467ee4">buffer</a></td></tr>
+<tr class="separator:a7a660831e45f23cf4ccb798822467ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa28faf398e647f916057ecec39cbe0bd"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#aa28faf398e647f916057ecec39cbe0bd">buflen</a></td></tr>
+<tr class="separator:aa28faf398e647f916057ecec39cbe0bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9164913b85de3048858f6e5e66782f66"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a9164913b85de3048858f6e5e66782f66">position</a></td></tr>
+<tr class="separator:a9164913b85de3048858f6e5e66782f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0a479a399715b66b34c03d031689a7f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#ac0a479a399715b66b34c03d031689a7f">report_parameters</a></td></tr>
+<tr class="separator:ac0a479a399715b66b34c03d031689a7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56a921b3d2d84095ecc6b75a78d28fdc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dca/classmutabor_1_1scala__parser_1_1location.html">location</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a921b3d2d84095ecc6b75a78d28fdc">loc</a></td></tr>
+<tr class="separator:a56a921b3d2d84095ecc6b75a78d28fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5aaf2711e45eb1c6ab7a5eb2bfa80f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/dfe/structmutabor_1_1scala__parser_1_1scale__parser_1_1token.html#a86316c7afc2f4f665f70a27a0213057e">scale_parser::token_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#af5aaf2711e45eb1c6ab7a5eb2bfa80f8">start_token</a></td></tr>
+<tr class="separator:af5aaf2711e45eb1c6ab7a5eb2bfa80f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
+Statische, geschützte Attribute</h2></td></tr>
+<tr class="memitem:a7be792aa9c82693e8ee26f2b7bb1575d"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7be792aa9c82693e8ee26f2b7bb1575d">yy_start_mode</a> []</td></tr>
+<tr class="separator:a7be792aa9c82693e8ee26f2b7bb1575d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
+<div class="textblock">
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00077">77</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+</div><h2 class="groupheader">Dokumentation der benutzerdefinierten Datentypen</h2>
+<a id="a85ea827caf28a2f18594152c0a1c5b11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85ea827caf28a2f18594152c0a1c5b11">&#9670;&nbsp;</a></span>symbol_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="../../df/dcd/classmutabor_1_1scala__parser_1_1scale__parser.html#adf7b3ab25fc50b7011ed9d5f61d715bd">scale_parser::symbol_type</a> <a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a85ea827caf28a2f18594152c0a1c5b11">mutabor::scala_parser::scale_lexer::symbol_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00088">88</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Aufzählungstypen</h2>
+<a id="a56a2ab2095e33cec3de2cb13fb129078"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56a2ab2095e33cec3de2cb13fb129078">&#9670;&nbsp;</a></span>start_mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078">mutabor::scala_parser::scale_lexer::start_mode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Aufzählungswerte</th></tr><tr><td class="fieldname"><a id="a56a2ab2095e33cec3de2cb13fb129078ad257fc33dbccdd86daf8f9118245f346"></a>top_mode&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a56a2ab2095e33cec3de2cb13fb129078ace2bfef6fab8fcd39a5364e822e8455a"></a>in_string&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a56a2ab2095e33cec3de2cb13fb129078a9926868a5b8559dda9af71ff89df1932"></a>in_sclname&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a56a2ab2095e33cec3de2cb13fb129078a9f145bbdc8fcfa24c7e1cd8cc8d6cfa0"></a>in_integer&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a56a2ab2095e33cec3de2cb13fb129078a592f17e6f388a87b1338333e4a5f0e16"></a>in_interval&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a56a2ab2095e33cec3de2cb13fb129078a0034c8ac36164f630e055757624c6508"></a>in_key&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a56a2ab2095e33cec3de2cb13fb129078aa6feb4d414e91dc4cee6634c490d548f"></a>in_garbage&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00079">79</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                        {</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078ad257fc33dbccdd86daf8f9118245f346">top_mode</a>=0,</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078ace2bfef6fab8fcd39a5364e822e8455a">in_string</a>,</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078a9926868a5b8559dda9af71ff89df1932">in_sclname</a>,</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078a9f145bbdc8fcfa24c7e1cd8cc8d6cfa0">in_integer</a>,</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078a592f17e6f388a87b1338333e4a5f0e16">in_interval</a>,</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078a0034c8ac36164f630e055757624c6508">in_key</a>,</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078aa6feb4d414e91dc4cee6634c490d548f">in_garbage</a></div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        };</div><div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a56a2ab2095e33cec3de2cb13fb129078a9926868a5b8559dda9af71ff89df1932"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078a9926868a5b8559dda9af71ff89df1932">mutabor::scala_parser::scale_lexer::in_sclname</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00082">scale_lexer.h:82</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a56a2ab2095e33cec3de2cb13fb129078a0034c8ac36164f630e055757624c6508"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078a0034c8ac36164f630e055757624c6508">mutabor::scala_parser::scale_lexer::in_key</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00085">scale_lexer.h:85</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a56a2ab2095e33cec3de2cb13fb129078aa6feb4d414e91dc4cee6634c490d548f"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078aa6feb4d414e91dc4cee6634c490d548f">mutabor::scala_parser::scale_lexer::in_garbage</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00086">scale_lexer.h:86</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a56a2ab2095e33cec3de2cb13fb129078a9f145bbdc8fcfa24c7e1cd8cc8d6cfa0"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078a9f145bbdc8fcfa24c7e1cd8cc8d6cfa0">mutabor::scala_parser::scale_lexer::in_integer</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00083">scale_lexer.h:83</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a56a2ab2095e33cec3de2cb13fb129078ace2bfef6fab8fcd39a5364e822e8455a"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078ace2bfef6fab8fcd39a5364e822e8455a">mutabor::scala_parser::scale_lexer::in_string</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00081">scale_lexer.h:81</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a56a2ab2095e33cec3de2cb13fb129078ad257fc33dbccdd86daf8f9118245f346"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078ad257fc33dbccdd86daf8f9118245f346">mutabor::scala_parser::scale_lexer::top_mode</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00080">scale_lexer.h:80</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a56a2ab2095e33cec3de2cb13fb129078a592f17e6f388a87b1338333e4a5f0e16"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078a592f17e6f388a87b1338333e4a5f0e16">mutabor::scala_parser::scale_lexer::in_interval</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00084">scale_lexer.h:84</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Beschreibung der Konstruktoren und Destruktoren</h2>
+<a id="a2a073f5885831e7b1709f1ed6c0dbf25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a073f5885831e7b1709f1ed6c0dbf25">&#9670;&nbsp;</a></span>scale_lexer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mutabor::scala_parser::scale_lexer::scale_lexer </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00089">89</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                               :</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                <a class="code" href="../../d6/d66/scale__lexer_8h.html#af699458ba5331ddec7e15a878f42f8f5">yyFlexLexer</a>(),</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#ab0d7710efbb1bd976262b143a04d3319">handler</a>(NULL),</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a96b65be88822ffef603f70b8c953fbca">file</a>(f),</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7a660831e45f23cf4ccb798822467ee4">buffer</a>(strdup(<span class="keywordtype">string</span>)),</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#aa28faf398e647f916057ecec39cbe0bd">buflen</a>(len),</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a9164913b85de3048858f6e5e66782f66">position</a>(0),</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#ac0a479a399715b66b34c03d031689a7f">report_parameters</a>(<span class="keyword">true</span>),</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#af5aaf2711e45eb1c6ab7a5eb2bfa80f8">start_token</a>(<a class="code" href="../../d6/dfe/structmutabor_1_1scala__parser_1_1scale__parser_1_1token.html#a86316c7afc2f4f665f70a27a0213057eaa9d3a3f9f52233ba37fe81dfa15e3e47">scale_parser::token::SCALA_TOKEN_END</a>)</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                <span class="comment">//                        yylval(new mutabor::hidden::YYSTYPE)</span></div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                        {}</div><div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a96b65be88822ffef603f70b8c953fbca"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a96b65be88822ffef603f70b8c953fbca">mutabor::scala_parser::scale_lexer::file</a></div><div class="ttdeci">std::string file</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00204">scale_lexer.h:204</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_ac0a479a399715b66b34c03d031689a7f"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#ac0a479a399715b66b34c03d031689a7f">mutabor::scala_parser::scale_lexer::report_parameters</a></div><div class="ttdeci">bool report_parameters</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00208">scale_lexer.h:208</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_ab0d7710efbb1bd976262b143a04d3319"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#ab0d7710efbb1bd976262b143a04d3319">mutabor::scala_parser::scale_lexer::handler</a></div><div class="ttdeci">error_handler * handler</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00203">scale_lexer.h:203</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_aa28faf398e647f916057ecec39cbe0bd"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#aa28faf398e647f916057ecec39cbe0bd">mutabor::scala_parser::scale_lexer::buflen</a></div><div class="ttdeci">size_t buflen</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00206">scale_lexer.h:206</a></div></div>
+<div class="ttc" id="structmutabor_1_1scala__parser_1_1scale__parser_1_1token_html_a86316c7afc2f4f665f70a27a0213057eaa9d3a3f9f52233ba37fe81dfa15e3e47"><div class="ttname"><a href="../../d6/dfe/structmutabor_1_1scala__parser_1_1scale__parser_1_1token.html#a86316c7afc2f4f665f70a27a0213057eaa9d3a3f9f52233ba37fe81dfa15e3e47">mutabor::scala_parser::scale_parser::token::SCALA_TOKEN_END</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1d/scale__parser_8hh_source.html#l00383">scale_parser.hh:383</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_af5aaf2711e45eb1c6ab7a5eb2bfa80f8"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#af5aaf2711e45eb1c6ab7a5eb2bfa80f8">mutabor::scala_parser::scale_lexer::start_token</a></div><div class="ttdeci">scale_parser::token_type start_token</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00211">scale_lexer.h:211</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a9164913b85de3048858f6e5e66782f66"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a9164913b85de3048858f6e5e66782f66">mutabor::scala_parser::scale_lexer::position</a></div><div class="ttdeci">size_t position</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00207">scale_lexer.h:207</a></div></div>
+<div class="ttc" id="scale__lexer_8h_html_af699458ba5331ddec7e15a878f42f8f5"><div class="ttname"><a href="../../d6/d66/scale__lexer_8h.html#af699458ba5331ddec7e15a878f42f8f5">yyFlexLexer</a></div><div class="ttdeci">#define yyFlexLexer</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00067">scale_lexer.h:67</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a7a660831e45f23cf4ccb798822467ee4"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7a660831e45f23cf4ccb798822467ee4">mutabor::scala_parser::scale_lexer::buffer</a></div><div class="ttdeci">char * buffer</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00205">scale_lexer.h:205</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abf66d0117ded7b5a3c14d750f01c88e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf66d0117ded7b5a3c14d750f01c88e8">&#9670;&nbsp;</a></span>~scale_lexer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mutabor::scala_parser::scale_lexer::~scale_lexer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00102">102</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00205">buffer</a>.</p>
+<div class="fragment"><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                                       {</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                <span class="comment">// delete yylval;</span></div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7a660831e45f23cf4ccb798822467ee4">buffer</a>)</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                        free(<a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7a660831e45f23cf4ccb798822467ee4">buffer</a>);</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                        }</div><div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a7a660831e45f23cf4ccb798822467ee4"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7a660831e45f23cf4ccb798822467ee4">mutabor::scala_parser::scale_lexer::buffer</a></div><div class="ttdeci">char * buffer</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00205">scale_lexer.h:205</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Elementfunktionen</h2>
+<a id="aa01cc8b91600eb3bea831ecfe5992070"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa01cc8b91600eb3bea831ecfe5992070">&#9670;&nbsp;</a></span>error()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mutabor::scala_parser::scale_lexer::error </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d5/dca/classmutabor_1_1scala__parser_1_1location.html">location</a> &amp;&#160;</td>
+          <td class="paramname"><em>loc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00135">135</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="../../d1/d73/Defs_8h_source.html#l00138">_mut</a>, <a class="el" href="../../de/d91/structmutabor_1_1scala__parser_1_1error__handler.html#a732df65205edaab05534b6f3043ec84a">mutabor::scala_parser::error_handler::error()</a> und <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00203">handler</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d7/df3/scale__parser_8cc_source.html#l02130">mutabor::scala_parser::scale_parser::error()</a> und <a class="el" href="../../d7/df3/scale__parser_8cc_source.html#l00873">mutabor::scala_parser::scale_parser::parse()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                                         {</div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                                <span class="keywordtype">char</span> * formatted;</div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                                va_list args;</div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                                <span class="keywordtype">bool</span> allocated = <span class="keyword">true</span>;</div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                                va_start(args,message);</div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                                <span class="keywordflow">if</span> (vasprintf(&amp;formatted,message,args) == -1) {</div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                        allocated = <span class="keyword">false</span>;</div><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                                        formatted = (<span class="keywordtype">char</span> *)<a class="code" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(<span class="stringliteral">&quot;Error in Error: Could not allocate buffer for error message.&quot;</span>);</div><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                        <span class="keywordflow">if</span> (!formatted) {</div><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                                                formatted =</div><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                                                        (<span class="keywordtype">char</span> *) <span class="stringliteral">&quot;Error in Error: Could not allocate buffer for error message.&quot;</span>;</div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                                        }</div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                                }</div><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                                va_end(args);</div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#ab0d7710efbb1bd976262b143a04d3319">handler</a>)</div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                                        <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#ab0d7710efbb1bd976262b143a04d3319">handler</a>-&gt;<a class="code" href="../../de/d91/structmutabor_1_1scala__parser_1_1error__handler.html#a732df65205edaab05534b6f3043ec84a">error</a>(<a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a921b3d2d84095ecc6b75a78d28fdc">loc</a>,formatted);</div><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                                <span class="keywordflow">else</span></div><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                                        std::cerr &lt;&lt; <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a921b3d2d84095ecc6b75a78d28fdc">loc</a></div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                                                  &lt;&lt; std::endl</div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                                                  &lt;&lt; <span class="stringliteral">&quot;Error: &quot;</span></div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                                                  &lt;&lt; formatted &lt;&lt; std::endl;</div><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                                <span class="keywordflow">if</span> (allocated)</div><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                                        free(formatted);</div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                        }</div><div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a56a921b3d2d84095ecc6b75a78d28fdc"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a921b3d2d84095ecc6b75a78d28fdc">mutabor::scala_parser::scale_lexer::loc</a></div><div class="ttdeci">location loc</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00210">scale_lexer.h:210</a></div></div>
+<div class="ttc" id="structmutabor_1_1scala__parser_1_1error__handler_html_a732df65205edaab05534b6f3043ec84a"><div class="ttname"><a href="../../de/d91/structmutabor_1_1scala__parser_1_1error__handler.html#a732df65205edaab05534b6f3043ec84a">mutabor::scala_parser::error_handler::error</a></div><div class="ttdeci">virtual void error(const location &amp;loc, const char *message)=0</div></div>
+<div class="ttc" id="group__kernel_html_gad94e0fa22a0f815bb713f9d2fb77655b"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a></div><div class="ttdeci">#define _mut</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00138">Defs.h:138</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_ab0d7710efbb1bd976262b143a04d3319"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#ab0d7710efbb1bd976262b143a04d3319">mutabor::scala_parser::scale_lexer::handler</a></div><div class="ttdeci">error_handler * handler</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00203">scale_lexer.h:203</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7999480009030e3629b8604bef515a74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7999480009030e3629b8604bef515a74">&#9670;&nbsp;</a></span>free_identifier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mutabor::scala_parser::scale_lexer::free_identifier </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00163">163</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;{ <span class="comment">/* free(yylval-&gt;identifier); yylval-&gt;identifier = NULL; */</span> }</div></div><!-- fragment -->
+</div>
+</div>
+<a id="a69b333b56be205cfe9383c0723ffe4d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69b333b56be205cfe9383c0723ffe4d4">&#9670;&nbsp;</a></span>get_error_handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../de/d91/structmutabor_1_1scala__parser_1_1error__handler.html">error_handler</a>* mutabor::scala_parser::scale_lexer::get_error_handler </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00109">109</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00203">handler</a>.</p>
+<div class="fragment"><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                                                                  {</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                <span class="keywordflow">return</span> <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#ab0d7710efbb1bd976262b143a04d3319">handler</a>;</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                        }</div><div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_ab0d7710efbb1bd976262b143a04d3319"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#ab0d7710efbb1bd976262b143a04d3319">mutabor::scala_parser::scale_lexer::handler</a></div><div class="ttdeci">error_handler * handler</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00203">scale_lexer.h:203</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3021c6a74f721586c1e2b45fa4a99f26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3021c6a74f721586c1e2b45fa4a99f26">&#9670;&nbsp;</a></span>get_filename()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a>&amp; mutabor::scala_parser::scale_lexer::get_filename </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00161">161</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00204">file</a> und <a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#adf7ce499255637015a9d8f08cfc17e9b">get_token()</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d7/df3/scale__parser_8cc_source.html#l00873">mutabor::scala_parser::scale_parser::parse()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;{<span class="keywordflow">return</span> <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a96b65be88822ffef603f70b8c953fbca">file</a>;}</div><div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a96b65be88822ffef603f70b8c953fbca"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a96b65be88822ffef603f70b8c953fbca">mutabor::scala_parser::scale_lexer::file</a></div><div class="ttdeci">std::string file</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00204">scale_lexer.h:204</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a607a79906543dffffc9ffc1468ebe0e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a607a79906543dffffc9ffc1468ebe0e6">&#9670;&nbsp;</a></span>get_start_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/dfe/structmutabor_1_1scala__parser_1_1scale__parser_1_1token.html#a86316c7afc2f4f665f70a27a0213057e">scale_parser::token_type</a> mutabor::scala_parser::scale_lexer::get_start_token </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00116">116</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00211">start_token</a>.</p>
+<div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                                                                       {</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                <span class="keywordflow">return</span> <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#af5aaf2711e45eb1c6ab7a5eb2bfa80f8">start_token</a>;</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                        }</div><div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_af5aaf2711e45eb1c6ab7a5eb2bfa80f8"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#af5aaf2711e45eb1c6ab7a5eb2bfa80f8">mutabor::scala_parser::scale_lexer::start_token</a></div><div class="ttdeci">scale_parser::token_type start_token</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00211">scale_lexer.h:211</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adf7ce499255637015a9d8f08cfc17e9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf7ce499255637015a9d8f08cfc17e9b">&#9670;&nbsp;</a></span>get_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a85ea827caf28a2f18594152c0a1c5b11">symbol_type</a> mutabor::scala_parser::scale_lexer::get_token </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00161">get_filename()</a>.</p>
+
+</div>
+</div>
+<a id="a796c6a7a5dcbf4ce40bc692673b572f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a796c6a7a5dcbf4ce40bc692673b572f7">&#9670;&nbsp;</a></span>LexerInput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int scale_lexer::LexerInput </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../dc/d46/scale__lexer_8cc_source.html#l02172">2172</a> der Datei <a class="el" href="../../dc/d46/scale__lexer_8cc_source.html">scale_lexer.cc</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="../../dc/d46/scale__lexer_8cc.html#afe708522d17af3e785af0be0607fcedc">garbage</a>, <a class="el" href="../../dc/d46/scale__lexer_8cc.html#aa3d063564f6ab16f6d408b8369d0e9ff">INITIAL</a>, <a class="el" href="../../dc/d46/scale__lexer_8cc.html#a30f7ba481fb6777d119ce55219426be0">integer</a>, <a class="el" href="../../dc/d46/scale__lexer_8cc.html#a7fe55923d8ca3235bd6837c3e38c06ff">interval</a>, <a class="el" href="../../dc/d46/scale__lexer_8cc.html#ae57736c8a0ddeb64dc394712624d8209">key</a>, <a class="el" href="../../dc/d46/scale__lexer_8cc.html#a6bcce56c1a43518dc8663519fcfc0e25">sclname</a>, <a class="el" href="../../da/d02/Hilfs_8cpp_source.html#l00086">size</a> und <a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">string</a>.</p>
+<div class="fragment"><div class="line"><a name="l02172"></a><span class="lineno"> 2172</span>&#160;                                                     {</div><div class="line"><a name="l02173"></a><span class="lineno"> 2173</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7a660831e45f23cf4ccb798822467ee4">buffer</a>)</div><div class="line"><a name="l02174"></a><span class="lineno"> 2174</span>&#160;                <span class="keywordflow">return</span> yyFlexLexer::LexerInput(buf, max_size);</div><div class="line"><a name="l02175"></a><span class="lineno"> 2175</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#aa28faf398e647f916057ecec39cbe0bd">buflen</a> &lt;= <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a9164913b85de3048858f6e5e66782f66">position</a> || max_size &lt;= 0) <span class="keywordflow">return</span> 0;</div><div class="line"><a name="l02176"></a><span class="lineno"> 2176</span>&#160;        <span class="keywordtype">size_t</span>  <a class="code" href="../../d9/d7c/group__kernel.html#ga854352f53b148adc24983a58a1866d66">size</a> = std::min((<span class="keywordtype">size_t</span>)max_size, <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#aa28faf398e647f916057ecec39cbe0bd">buflen</a> - <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a9164913b85de3048858f6e5e66782f66">position</a>);</div><div class="line"><a name="l02177"></a><span class="lineno"> 2177</span>&#160;        std::memcpy(buf,<a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7a660831e45f23cf4ccb798822467ee4">buffer</a>+<a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a9164913b85de3048858f6e5e66782f66">position</a>,size);</div><div class="line"><a name="l02178"></a><span class="lineno"> 2178</span>&#160;        <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a9164913b85de3048858f6e5e66782f66">position</a> += <a class="code" href="../../d9/d7c/group__kernel.html#ga854352f53b148adc24983a58a1866d66">size</a>;</div><div class="line"><a name="l02179"></a><span class="lineno"> 2179</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga854352f53b148adc24983a58a1866d66">size</a>;</div><div class="line"><a name="l02180"></a><span class="lineno"> 2180</span>&#160;}</div><div class="ttc" id="group__kernel_html_ga854352f53b148adc24983a58a1866d66"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga854352f53b148adc24983a58a1866d66">size</a></div><div class="ttdeci">size_t size</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d02/Hilfs_8cpp_source.html#l00086">Hilfs.cpp:86</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_aa28faf398e647f916057ecec39cbe0bd"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#aa28faf398e647f916057ecec39cbe0bd">mutabor::scala_parser::scale_lexer::buflen</a></div><div class="ttdeci">size_t buflen</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00206">scale_lexer.h:206</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a9164913b85de3048858f6e5e66782f66"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a9164913b85de3048858f6e5e66782f66">mutabor::scala_parser::scale_lexer::position</a></div><div class="ttdeci">size_t position</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00207">scale_lexer.h:207</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a7a660831e45f23cf4ccb798822467ee4"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7a660831e45f23cf4ccb798822467ee4">mutabor::scala_parser::scale_lexer::buffer</a></div><div class="ttdeci">char * buffer</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00205">scale_lexer.h:205</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac6936bc3f22902f48d71f0b31b2e8be1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6936bc3f22902f48d71f0b31b2e8be1">&#9670;&nbsp;</a></span>pop_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mutabor::scala_parser::scale_lexer::pop_state </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078">start_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00181">181</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="../../db/d16/debug_8h_source.html#l00294">DEBUGLOG</a>, <a class="el" href="../../d1/d73/Defs_8h_source.html#l00106">mutUnused</a> und <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00202">yy_start_mode</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d7/df3/scale__parser_8cc_source.html#l00873">mutabor::scala_parser::scale_parser::parse()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                                                        {</div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                                <a class="code" href="../../d9/d7c/group__kernel.html#gaedf3113729faf15522da4884cc137733">mutUnused</a>(mode);</div><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(sclparser,</div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                                         <span class="stringliteral">&quot;popping mode1: (%d) %d -&gt;&quot;</span>,</div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                                         <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7be792aa9c82693e8ee26f2b7bb1575d">yy_start_mode</a>[mode],</div><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                                         yy_top_state());</div><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                                yy_pop_state();</div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(sclparser,</div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                                         <span class="stringliteral">&quot;popping mode2: (%d) %d -&gt;&quot;</span>,</div><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                                         <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7be792aa9c82693e8ee26f2b7bb1575d">yy_start_mode</a>[mode],</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                                         yy_top_state());</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                                yy_pop_state();</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(sclparser,</div><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                                         <span class="stringliteral">&quot;popping mode3: (%d) %d.&quot;</span>,</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                                         <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7be792aa9c82693e8ee26f2b7bb1575d">yy_start_mode</a>[mode],</div><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                                         ((yy_start_stack_ptr&gt;0)?yy_top_state():-1));</div><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                        }</div><div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/debug_8h_source.html#l00294">debug.h:294</a></div></div>
+<div class="ttc" id="group__kernel_html_gaedf3113729faf15522da4884cc137733"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gaedf3113729faf15522da4884cc137733">mutUnused</a></div><div class="ttdeci">#define mutUnused(expr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00106">Defs.h:106</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a7be792aa9c82693e8ee26f2b7bb1575d"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7be792aa9c82693e8ee26f2b7bb1575d">mutabor::scala_parser::scale_lexer::yy_start_mode</a></div><div class="ttdeci">static int yy_start_mode[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00202">scale_lexer.h:202</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abc764d266bc5cfb456bcd64f02c78665"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc764d266bc5cfb456bcd64f02c78665">&#9670;&nbsp;</a></span>push_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mutabor::scala_parser::scale_lexer::push_state </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a56a2ab2095e33cec3de2cb13fb129078">start_mode</a>&#160;</td>
+          <td class="paramname"><em>mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00164">164</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="../../db/d16/debug_8h_source.html#l00294">DEBUGLOG</a> und <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00202">yy_start_mode</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d7/df3/scale__parser_8cc_source.html#l00873">mutabor::scala_parser::scale_parser::parse()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                                                         {</div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(sclparser,<span class="stringliteral">&quot;pushing mode: %d/%d (%d) -&gt;&quot;</span>,</div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                                         mode,</div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                                         <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7be792aa9c82693e8ee26f2b7bb1575d">yy_start_mode</a>[mode],</div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                         ((yy_start_stack_ptr&gt;0)?yy_top_state():-1));</div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                yy_push_state(<a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7be792aa9c82693e8ee26f2b7bb1575d">yy_start_mode</a>[mode]);</div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                <span class="comment">/* in debug mode we do a double push, as the current start state is</span></div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">                                   usually not on the stack. With teh additional push we can verify</span></div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">                                   the correct push/pop pairs later during pop */</span></div><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                yy_push_state(<a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7be792aa9c82693e8ee26f2b7bb1575d">yy_start_mode</a>[mode]);</div><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                                <a class="code" href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a>(sclparser,<span class="stringliteral">&quot;pushing mode: %d/%d (%d).&quot;</span>,</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                                         mode,</div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                                         <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7be792aa9c82693e8ee26f2b7bb1575d">yy_start_mode</a>[mode],</div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                                         ((yy_start_stack_ptr&gt;0)?yy_top_state():-1));</div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                        }</div><div class="ttc" id="group__debug_html_ga86ae1dca49d692e6adabb3ba38154f09"><div class="ttname"><a href="../../de/db7/group__debug.html#ga86ae1dca49d692e6adabb3ba38154f09">DEBUGLOG</a></div><div class="ttdeci">#define DEBUGLOG(level,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/debug_8h_source.html#l00294">debug.h:294</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a7be792aa9c82693e8ee26f2b7bb1575d"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7be792aa9c82693e8ee26f2b7bb1575d">mutabor::scala_parser::scale_lexer::yy_start_mode</a></div><div class="ttdeci">static int yy_start_mode[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00202">scale_lexer.h:202</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abcaa709ea305594925e1a35f69cf1108"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcaa709ea305594925e1a35f69cf1108">&#9670;&nbsp;</a></span>set_error_handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mutabor::scala_parser::scale_lexer::set_error_handler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../de/d91/structmutabor_1_1scala__parser_1_1error__handler.html">error_handler</a> *&#160;</td>
+          <td class="paramname"><em>h</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00112">112</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="../../d3/d26/mutgis_8cpp_source.html#l00005">h</a> und <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00203">handler</a>.</p>
+<div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                                                  {</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#ab0d7710efbb1bd976262b143a04d3319">handler</a> = <a class="code" href="../../d3/d26/mutgis_8cpp.html#a26506d124b947beae862c007bc8195bb">h</a>;</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                        }</div><div class="ttc" id="mutgis_8cpp_html_a26506d124b947beae862c007bc8195bb"><div class="ttname"><a href="../../d3/d26/mutgis_8cpp.html#a26506d124b947beae862c007bc8195bb">h</a></div><div class="ttdeci">GisReadArtHead * h</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d26/mutgis_8cpp_source.html#l00005">mutgis.cpp:5</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_ab0d7710efbb1bd976262b143a04d3319"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#ab0d7710efbb1bd976262b143a04d3319">mutabor::scala_parser::scale_lexer::handler</a></div><div class="ttdeci">error_handler * handler</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00203">scale_lexer.h:203</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a42ad43ef05b56945f20db99849560bc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42ad43ef05b56945f20db99849560bc0">&#9670;&nbsp;</a></span>set_start_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mutabor::scala_parser::scale_lexer::set_start_token </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/dfe/structmutabor_1_1scala__parser_1_1scale__parser_1_1token.html#a86316c7afc2f4f665f70a27a0213057e">scale_parser::token_type</a>&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00120">120</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00211">start_token</a> und <a class="el" href="../../db/d16/debug_8h_source.html#l00323">t</a>.</p>
+<div class="fragment"><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                                                                        {</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#af5aaf2711e45eb1c6ab7a5eb2bfa80f8">start_token</a> = <a class="code" href="../../de/db7/group__debug.html#gac3865ffcc8a73c3787e716c5c8a7ff72">t</a>;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                        }</div><div class="ttc" id="group__debug_html_gac3865ffcc8a73c3787e716c5c8a7ff72"><div class="ttname"><a href="../../de/db7/group__debug.html#gac3865ffcc8a73c3787e716c5c8a7ff72">t</a></div><div class="ttdeci">MUTABOR_EXTERN_C_END const char * t</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/debug_8h_source.html#l00323">debug.h:323</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_af5aaf2711e45eb1c6ab7a5eb2bfa80f8"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#af5aaf2711e45eb1c6ab7a5eb2bfa80f8">mutabor::scala_parser::scale_lexer::start_token</a></div><div class="ttdeci">scale_parser::token_type start_token</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00211">scale_lexer.h:211</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9974d90e7fe4524befd1f1cfafad5d0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9974d90e7fe4524befd1f1cfafad5d0e">&#9670;&nbsp;</a></span>set_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mutabor::scala_parser::scale_lexer::set_string </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00124">124</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00205">buffer</a>, <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00206">buflen</a> und <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00204">file</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../df/d64/scala_8cpp_source.html#l00178">mutabor::scala_parser::parser::load_keymap()</a> und <a class="el" href="../../df/d64/scala_8cpp_source.html#l00150">mutabor::scala_parser::parser::parse()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                                                    {</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a96b65be88822ffef603f70b8c953fbca">file</a> = f;</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7a660831e45f23cf4ccb798822467ee4">buffer</a>) free(<a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7a660831e45f23cf4ccb798822467ee4">buffer</a>);</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7a660831e45f23cf4ccb798822467ee4">buffer</a> = strdup(<span class="keywordtype">string</span>);</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#aa28faf398e647f916057ecec39cbe0bd">buflen</a> = len;</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                                <a class="code" href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a9164913b85de3048858f6e5e66782f66">position</a> = 0;</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                                yyrestart(yyin);</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                        }</div><div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a96b65be88822ffef603f70b8c953fbca"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a96b65be88822ffef603f70b8c953fbca">mutabor::scala_parser::scale_lexer::file</a></div><div class="ttdeci">std::string file</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00204">scale_lexer.h:204</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_aa28faf398e647f916057ecec39cbe0bd"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#aa28faf398e647f916057ecec39cbe0bd">mutabor::scala_parser::scale_lexer::buflen</a></div><div class="ttdeci">size_t buflen</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00206">scale_lexer.h:206</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a9164913b85de3048858f6e5e66782f66"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a9164913b85de3048858f6e5e66782f66">mutabor::scala_parser::scale_lexer::position</a></div><div class="ttdeci">size_t position</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00207">scale_lexer.h:207</a></div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1scale__lexer_html_a7a660831e45f23cf4ccb798822467ee4"><div class="ttname"><a href="../../dd/dbf/classmutabor_1_1scala__parser_1_1scale__lexer.html#a7a660831e45f23cf4ccb798822467ee4">mutabor::scala_parser::scale_lexer::buffer</a></div><div class="ttdeci">char * buffer</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d66/scale__lexer_8h_source.html#l00205">scale_lexer.h:205</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Datenelemente</h2>
+<a id="a7a660831e45f23cf4ccb798822467ee4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a660831e45f23cf4ccb798822467ee4">&#9670;&nbsp;</a></span>buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* mutabor::scala_parser::scale_lexer::buffer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00205">205</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00124">set_string()</a> und <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00102">~scale_lexer()</a>.</p>
+
+</div>
+</div>
+<a id="aa28faf398e647f916057ecec39cbe0bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa28faf398e647f916057ecec39cbe0bd">&#9670;&nbsp;</a></span>buflen</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t mutabor::scala_parser::scale_lexer::buflen</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00206">206</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00124">set_string()</a>.</p>
+
+</div>
+</div>
+<a id="a96b65be88822ffef603f70b8c953fbca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96b65be88822ffef603f70b8c953fbca">&#9670;&nbsp;</a></span>file</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a> mutabor::scala_parser::scale_lexer::file</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00204">204</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00161">get_filename()</a> und <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00124">set_string()</a>.</p>
+
+</div>
+</div>
+<a id="ab0d7710efbb1bd976262b143a04d3319"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0d7710efbb1bd976262b143a04d3319">&#9670;&nbsp;</a></span>handler</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../de/d91/structmutabor_1_1scala__parser_1_1error__handler.html">error_handler</a>* mutabor::scala_parser::scale_lexer::handler</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00203">203</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00135">error()</a>, <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00109">get_error_handler()</a> und <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00112">set_error_handler()</a>.</p>
+
+</div>
+</div>
+<a id="a56a921b3d2d84095ecc6b75a78d28fdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56a921b3d2d84095ecc6b75a78d28fdc">&#9670;&nbsp;</a></span>loc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/dca/classmutabor_1_1scala__parser_1_1location.html">location</a> mutabor::scala_parser::scale_lexer::loc</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00210">210</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+</div>
+</div>
+<a id="a9164913b85de3048858f6e5e66782f66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9164913b85de3048858f6e5e66782f66">&#9670;&nbsp;</a></span>position</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t mutabor::scala_parser::scale_lexer::position</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00207">207</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+</div>
+</div>
+<a id="ac0a479a399715b66b34c03d031689a7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0a479a399715b66b34c03d031689a7f">&#9670;&nbsp;</a></span>report_parameters</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool mutabor::scala_parser::scale_lexer::report_parameters</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00208">208</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+</div>
+</div>
+<a id="af5aaf2711e45eb1c6ab7a5eb2bfa80f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5aaf2711e45eb1c6ab7a5eb2bfa80f8">&#9670;&nbsp;</a></span>start_token</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/dfe/structmutabor_1_1scala__parser_1_1scale__parser_1_1token.html#a86316c7afc2f4f665f70a27a0213057e">scale_parser::token_type</a> mutabor::scala_parser::scale_lexer::start_token</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00211">211</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00116">get_start_token()</a> und <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00120">set_start_token()</a>.</p>
+
+</div>
+</div>
+<a id="a7be792aa9c82693e8ee26f2b7bb1575d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7be792aa9c82693e8ee26f2b7bb1575d">&#9670;&nbsp;</a></span>yy_start_mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int scale_lexer::yy_start_mode</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initialisierung:</b><div class="fragment"><div class="line">=</div><div class="line">        { <a class="code" href="../../d0/dc8/mutlex_8cc.html#aa3d063564f6ab16f6d408b8369d0e9ff">INITIAL</a>, <a class="code" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">string</a>, <a class="code" href="../../dc/d46/scale__lexer_8cc.html#a6bcce56c1a43518dc8663519fcfc0e25">sclname</a>, <a class="code" href="../../dc/d46/scale__lexer_8cc.html#a30f7ba481fb6777d119ce55219426be0">integer</a>, <a class="code" href="../../dc/d46/scale__lexer_8cc.html#a7fe55923d8ca3235bd6837c3e38c06ff">interval</a>, <a class="code" href="../../dc/d46/scale__lexer_8cc.html#ae57736c8a0ddeb64dc394712624d8209">key</a>, <a class="code" href="../../dc/d46/scale__lexer_8cc.html#afe708522d17af3e785af0be0607fcedc">garbage</a> }</div></div><!-- fragment -->
+<p class="definition">Definiert in Zeile <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00202">202</a> der Datei <a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00181">pop_state()</a> und <a class="el" href="../../d6/d66/scale__lexer_8h_source.html#l00164">push_state()</a>.</p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Dateien:<ul>
+<li>src/kernel/parsers/scala/<a class="el" href="../../d6/d66/scale__lexer_8h_source.html">scale_lexer.h</a></li>
+<li>src/kernel/parsers/scala/<a class="el" href="../../dc/d46/scale__lexer_8cc_source.html">scale_lexer.cc</a></li>
+</ul>
+</div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Sam Sep 15 2018 14:57:57 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.13</small></address>
+</body>
+</html>

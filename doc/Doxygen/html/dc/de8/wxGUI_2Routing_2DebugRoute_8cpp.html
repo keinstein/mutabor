@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/wxGUI/Routing/DebugRoute.cpp-Dateireferenz</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',false,false,'search.php','Suchen');
+});
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_eaae7e9da1b31c6b329e928d72e0e61a.html">wxGUI</a></li><li class="navelem"><a class="el" href="../../dir_589b0311d58a74617a532121d489d9c2.html">Routing</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">Namensbereiche</a> &#124;
+<a href="#define-members">Makrodefinitionen</a> &#124;
+<a href="#typedef-members">Typdefinitionen</a> &#124;
+<a href="#func-members">Funktionen</a> &#124;
+<a href="#var-members">Variablen</a>  </div>
+  <div class="headertitle">
+<div class="title">DebugRoute.cpp-Dateireferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Debug functions for routing system.  
+<a href="#details">Mehr ...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d1/d73/Defs_8h_source.html">src/kernel/Defs.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d5/d31/DebugRoute_8h_source.html">src/wxGUI/Routing/DebugRoute.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../de/d05/Device_8h_source.html">src/kernel/routing/Device.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/d2c/Route-inlines_8h_source.html">src/kernel/routing/Route-inlines.h</a>&quot;</code><br />
+<code>#include &lt;boost/exception/diagnostic_information.hpp&gt;</code><br />
+<code>#include &lt;set&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d4d/DeviceShape_8h_source.html">src/wxGUI/Routing/DeviceShape.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d3/dd7/MutRouteWnd_8h_source.html">src/wxGUI/MutRouteWnd.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d49/BoxShape_8h_source.html">src/wxGUI/Routing/BoxShape.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html">src/wxGUI/Routing/GUIRoute-inlines.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d6/d68/BoxChannelShape_8h_source.html">src/wxGUI/Routing/BoxChannelShape.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d5/d12/GUIBoxData-inlines_8h_source.html">src/wxGUI/GUIBoxData-inlines.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include-Abhängigkeitsdiagramm für DebugRoute.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dd/d71/wxGUI_2Routing_2DebugRoute_8cpp__incl.png" border="0" usemap="#src_2wxGUI_2Routing_2DebugRoute_8cpp" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><div class="textblock"><div class="dynheader">
+Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d64/wxGUI_2Routing_2DebugRoute_8cpp__dep__incl.png" border="0" usemap="#src_2wxGUI_2Routing_2DebugRoute_8cppdep" alt=""/></div>
+<!-- MAP 1 -->
+</div>
+</div>
+<p><a href="../../dc/de8/wxGUI_2Routing_2DebugRoute_8cpp_source.html">gehe zum Quellcode dieser Datei</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namensbereiche</h2></td></tr>
+<tr class="memitem:db/d94/namespacemutaborGUI"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html">mutaborGUI</a></td></tr>
+<tr class="memdesc:db/d94/namespacemutaborGUI"><td class="mdescLeft">&#160;</td><td class="mdescRight">not for headers <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Makrodefinitionen</h2></td></tr>
+<tr class="memitem:gaf63af6eec97e5b5b5538326e4720e894"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gaf63af6eec97e5b5b5538326e4720e894">wxGUI</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:gaf63af6eec97e5b5b5538326e4720e894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf63af6eec97e5b5b5538326e4720e894"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gaf63af6eec97e5b5b5538326e4720e894">wxGUI</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:gaf63af6eec97e5b5b5538326e4720e894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typdefinitionen</h2></td></tr>
+<tr class="memitem:a78f6e777974e3989649d4324f2a6c65c"><td class="memItemLeft" align="right" valign="top">typedef std::set&lt; MutRouteWnd * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a78f6e777974e3989649d4324f2a6c65c">mutaborGUI::rwdset</a></td></tr>
+<tr class="separator:a78f6e777974e3989649d4324f2a6c65c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:af7ed178f7767faa640ea86e2b9863c69"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:af7ed178f7767faa640ea86e2b9863c69"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#af7ed178f7767faa640ea86e2b9863c69">mutaborGUI::CheckList</a> (const T &amp;list)</td></tr>
+<tr class="memdesc:af7ed178f7767faa640ea86e2b9863c69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for duplicate entries in a list.  <a href="../../db/d94/namespacemutaborGUI.html#af7ed178f7767faa640ea86e2b9863c69">Mehr ...</a><br /></td></tr>
+<tr class="separator:af7ed178f7767faa640ea86e2b9863c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab78a75d7f11b6e12ee315675f04eaf24"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#ab78a75d7f11b6e12ee315675f04eaf24">mutaborGUI::Check</a> (const MutInputDeviceShape *<a class="el" href="../../de/d02/scl2mut_8cpp.html#ab8bf8885cad12f7099f0d543bcc49a42">input</a>, const MutBoxChannelShape *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8fcb76a3736230818c8ecc301e8c8fc7">route</a>)</td></tr>
+<tr class="separator:ab78a75d7f11b6e12ee315675f04eaf24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77f2e9e664613929fc7b94ce97e5264c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a77f2e9e664613929fc7b94ce97e5264c">mutaborGUI::Check</a> (const MutInputDeviceShape *<a class="el" href="../../de/d02/scl2mut_8cpp.html#ab8bf8885cad12f7099f0d543bcc49a42">input</a>, const <a class="el" href="../../d5/dee/group__route.html#ga1883da1b1be8d9e8d11d091c04a37521">RouteClass</a> *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8fcb76a3736230818c8ecc301e8c8fc7">route</a>)</td></tr>
+<tr class="separator:a77f2e9e664613929fc7b94ce97e5264c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac76d072cc91eaa28233580537bbba338"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#ac76d072cc91eaa28233580537bbba338">mutaborGUI::Check</a> (const <a class="el" href="../../d4/d18/classmutabor_1_1InputDeviceClass.html">InputDeviceClass</a> *<a class="el" href="../../de/d02/scl2mut_8cpp.html#ab8bf8885cad12f7099f0d543bcc49a42">input</a>, const MutBoxChannelShape *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8fcb76a3736230818c8ecc301e8c8fc7">route</a>)</td></tr>
+<tr class="separator:ac76d072cc91eaa28233580537bbba338"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee98a6d17f9371ae774bf8e4fd78d55a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#aee98a6d17f9371ae774bf8e4fd78d55a">mutaborGUI::Check</a> (const <a class="el" href="../../d4/d18/classmutabor_1_1InputDeviceClass.html">InputDeviceClass</a> *<a class="el" href="../../de/d02/scl2mut_8cpp.html#ab8bf8885cad12f7099f0d543bcc49a42">input</a>, const <a class="el" href="../../d5/dee/group__route.html#ga1883da1b1be8d9e8d11d091c04a37521">RouteClass</a> *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8fcb76a3736230818c8ecc301e8c8fc7">route</a>)</td></tr>
+<tr class="separator:aee98a6d17f9371ae774bf8e4fd78d55a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad39e1aa14709222c15af2e25d5957df"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#aad39e1aa14709222c15af2e25d5957df">mutaborGUI::Check</a> (const <a class="el" href="../../d4/d18/classmutabor_1_1InputDeviceClass.html">InputDeviceClass</a> *<a class="el" href="../../de/d02/scl2mut_8cpp.html#ab8bf8885cad12f7099f0d543bcc49a42">input</a>)</td></tr>
+<tr class="separator:aad39e1aa14709222c15af2e25d5957df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad145a56a82b56d50b9fdaec0eb134840"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#ad145a56a82b56d50b9fdaec0eb134840">mutaborGUI::CheckInputDevices</a> ()</td></tr>
+<tr class="separator:ad145a56a82b56d50b9fdaec0eb134840"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76814ec45c6a8bdf95dfd48f67e232ca"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a76814ec45c6a8bdf95dfd48f67e232ca">mutaborGUI::Check</a> (const MutOutputDeviceShape *<a class="el" href="../../de/d02/scl2mut_8cpp.html#a7ef2bc99c55a49bf6ce34c0f8b69c16c">output</a>, const MutBoxChannelShape *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8fcb76a3736230818c8ecc301e8c8fc7">route</a>)</td></tr>
+<tr class="separator:a76814ec45c6a8bdf95dfd48f67e232ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8688d5ea1437b94fb6c23010375c6e7e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a8688d5ea1437b94fb6c23010375c6e7e">mutaborGUI::Check</a> (const MutOutputDeviceShape *<a class="el" href="../../de/d02/scl2mut_8cpp.html#a7ef2bc99c55a49bf6ce34c0f8b69c16c">output</a>, const <a class="el" href="../../d5/dee/group__route.html#ga1883da1b1be8d9e8d11d091c04a37521">RouteClass</a> *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8fcb76a3736230818c8ecc301e8c8fc7">route</a>)</td></tr>
+<tr class="separator:a8688d5ea1437b94fb6c23010375c6e7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe9c0ea89dbb1341b0ed9e625ccc0ac8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#afe9c0ea89dbb1341b0ed9e625ccc0ac8">mutaborGUI::Check</a> (const <a class="el" href="../../d2/d2f/classmutabor_1_1OutputDeviceClass.html">OutputDeviceClass</a> *<a class="el" href="../../de/d02/scl2mut_8cpp.html#a7ef2bc99c55a49bf6ce34c0f8b69c16c">output</a>, const MutBoxChannelShape *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8fcb76a3736230818c8ecc301e8c8fc7">route</a>)</td></tr>
+<tr class="separator:afe9c0ea89dbb1341b0ed9e625ccc0ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90ee16ecec3559dcb065b755c8e5e5e7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a90ee16ecec3559dcb065b755c8e5e5e7">mutaborGUI::Check</a> (const <a class="el" href="../../d2/d2f/classmutabor_1_1OutputDeviceClass.html">OutputDeviceClass</a> *<a class="el" href="../../de/d02/scl2mut_8cpp.html#a7ef2bc99c55a49bf6ce34c0f8b69c16c">output</a>, const <a class="el" href="../../d5/dee/group__route.html#ga1883da1b1be8d9e8d11d091c04a37521">RouteClass</a> *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8fcb76a3736230818c8ecc301e8c8fc7">route</a>)</td></tr>
+<tr class="separator:a90ee16ecec3559dcb065b755c8e5e5e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b447d9906c7b8098c5de8237959a479"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a6b447d9906c7b8098c5de8237959a479">mutaborGUI::Check</a> (const <a class="el" href="../../d2/d2f/classmutabor_1_1OutputDeviceClass.html">OutputDeviceClass</a> *<a class="el" href="../../de/d02/scl2mut_8cpp.html#a7ef2bc99c55a49bf6ce34c0f8b69c16c">output</a>)</td></tr>
+<tr class="separator:a6b447d9906c7b8098c5de8237959a479"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15c3203e7691068f8c4671a6115f0d7e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a15c3203e7691068f8c4671a6115f0d7e">mutaborGUI::CheckOutputDevices</a> ()</td></tr>
+<tr class="separator:a15c3203e7691068f8c4671a6115f0d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a390df4bcef8ffc96a84d461f3bc50b88"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a390df4bcef8ffc96a84d461f3bc50b88">mutaborGUI::Check</a> (const MutBoxShape *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a7cc37b2cbacd9de4545ba0a05accc513">box</a>, const MutBoxChannelShape *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8fcb76a3736230818c8ecc301e8c8fc7">route</a>)</td></tr>
+<tr class="separator:a390df4bcef8ffc96a84d461f3bc50b88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69695f843e01024a41a0bfa363b59f89"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a69695f843e01024a41a0bfa363b59f89">mutaborGUI::Check</a> (const MutBoxShape *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a7cc37b2cbacd9de4545ba0a05accc513">box</a>, const <a class="el" href="../../d5/dee/group__route.html#ga1883da1b1be8d9e8d11d091c04a37521">RouteClass</a> *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8fcb76a3736230818c8ecc301e8c8fc7">route</a>)</td></tr>
+<tr class="separator:a69695f843e01024a41a0bfa363b59f89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c89cb21b4880bae80692336f2397ba1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a1c89cb21b4880bae80692336f2397ba1">mutaborGUI::Check</a> (const <a class="el" href="../../d3/d4e/structmutabor_1_1BoxClass.html">BoxClass</a> *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a7cc37b2cbacd9de4545ba0a05accc513">box</a>, const MutBoxChannelShape *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8fcb76a3736230818c8ecc301e8c8fc7">route</a>)</td></tr>
+<tr class="separator:a1c89cb21b4880bae80692336f2397ba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9ca85bda255979683df7cdf5eda8397"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#ac9ca85bda255979683df7cdf5eda8397">mutaborGUI::Check</a> (const MutBoxShape *shape)</td></tr>
+<tr class="separator:ac9ca85bda255979683df7cdf5eda8397"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c46b11f06230cae4b5a5f44a50c584e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a6c46b11f06230cae4b5a5f44a50c584e">mutaborGUI::Check</a> (const <a class="el" href="../../d3/d4e/structmutabor_1_1BoxClass.html">BoxClass</a> *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a7cc37b2cbacd9de4545ba0a05accc513">box</a>, const <a class="el" href="../../d5/dee/group__route.html#ga1883da1b1be8d9e8d11d091c04a37521">RouteClass</a> *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8fcb76a3736230818c8ecc301e8c8fc7">route</a>)</td></tr>
+<tr class="separator:a6c46b11f06230cae4b5a5f44a50c584e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab583622026726bd6aae0618a76b3b0b1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#ab583622026726bd6aae0618a76b3b0b1">mutaborGUI::Check</a> (const <a class="el" href="../../d3/d4e/structmutabor_1_1BoxClass.html">BoxClass</a> *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a7cc37b2cbacd9de4545ba0a05accc513">box</a>)</td></tr>
+<tr class="separator:ab583622026726bd6aae0618a76b3b0b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4071f375f24b14c131874f44e6d64ed5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a4071f375f24b14c131874f44e6d64ed5">mutaborGUI::CheckBoxes</a> ()</td></tr>
+<tr class="separator:a4071f375f24b14c131874f44e6d64ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae43839ce1116dc81f24626094120bad"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#aae43839ce1116dc81f24626094120bad">mutaborGUI::Check</a> (const <a class="el" href="../../d5/dee/group__route.html#ga1883da1b1be8d9e8d11d091c04a37521">RouteClass</a> *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8fcb76a3736230818c8ecc301e8c8fc7">route</a>, const MutBoxChannelShape *channel)</td></tr>
+<tr class="separator:aae43839ce1116dc81f24626094120bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af51dda8067314520e0e586609a2012aa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#af51dda8067314520e0e586609a2012aa">mutaborGUI::Check</a> (const <a class="el" href="../../d5/dee/group__route.html#ga1883da1b1be8d9e8d11d091c04a37521">RouteClass</a> *<a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8fcb76a3736230818c8ecc301e8c8fc7">route</a>)</td></tr>
+<tr class="separator:af51dda8067314520e0e586609a2012aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af90f146cd63e07fa30cc2d696435fccb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#af90f146cd63e07fa30cc2d696435fccb">mutaborGUI::CheckRoutes</a> ()</td></tr>
+<tr class="separator:af90f146cd63e07fa30cc2d696435fccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafdd8060a0a8f198a28084604eee574f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#aafdd8060a0a8f198a28084604eee574f">mutaborGUI::Check</a> (const MutInputDeviceShape *shape)</td></tr>
+<tr class="separator:aafdd8060a0a8f198a28084604eee574f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15686d25ced0b5b38ba8c95dd3241d4c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a15686d25ced0b5b38ba8c95dd3241d4c">mutaborGUI::Check</a> (const MutOutputDeviceShape *shape)</td></tr>
+<tr class="separator:a15686d25ced0b5b38ba8c95dd3241d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65a244d9384419b046f0c7355e04ecb8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a65a244d9384419b046f0c7355e04ecb8">mutaborGUI::Check</a> (const MutBoxChannelShape *shape)</td></tr>
+<tr class="separator:a65a244d9384419b046f0c7355e04ecb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14cc115bcc56c35a796e894a96326321"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a14cc115bcc56c35a796e894a96326321">mutaborGUI::Check</a> (const MutRouteWnd *win)</td></tr>
+<tr class="separator:a14cc115bcc56c35a796e894a96326321"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a132b1e2cb3be9e96a82f9aeb3325c3c9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a132b1e2cb3be9e96a82f9aeb3325c3c9">mutaborGUI::CheckWindows</a> ()</td></tr>
+<tr class="separator:a132b1e2cb3be9e96a82f9aeb3325c3c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa21aee5cd384b8caa508efff20132240"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#aa21aee5cd384b8caa508efff20132240">mutaborGUI::MakeTopLevelsInput</a> ()</td></tr>
+<tr class="separator:aa21aee5cd384b8caa508efff20132240"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fd7bc4c8f2ea7037a12484991a0c1ae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a9fd7bc4c8f2ea7037a12484991a0c1ae">mutaborGUI::MakeTopLevelsOutput</a> ()</td></tr>
+<tr class="separator:a9fd7bc4c8f2ea7037a12484991a0c1ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa90f36c87c5ace50f2828e8156adc4f5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#aa90f36c87c5ace50f2828e8156adc4f5">mutaborGUI::MakeTopLevelsBoxes</a> ()</td></tr>
+<tr class="separator:aa90f36c87c5ace50f2828e8156adc4f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41cfeac473872fa0d41743a74156c78a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a41cfeac473872fa0d41743a74156c78a">mutaborGUI::MakeTopLevelsRoutes</a> ()</td></tr>
+<tr class="separator:a41cfeac473872fa0d41743a74156c78a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga981cc43d26594717af82abab06375f92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga981cc43d26594717af82abab06375f92">mutaborGUI::DebugCheckRoutes</a> ()</td></tr>
+<tr class="separator:ga981cc43d26594717af82abab06375f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variablen</h2></td></tr>
+<tr class="memitem:a2477149f2364c230af21eb2ee8d624fe"><td class="memItemLeft" align="right" valign="top">static rwdset&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html#a2477149f2364c230af21eb2ee8d624fe">mutaborGUI::rwdtoplevels</a></td></tr>
+<tr class="separator:a2477149f2364c230af21eb2ee8d624fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
+<div class="textblock"><p>Debug functions for routing system. </p>
+<p>Copyright: (c) 2010 TU Dresden Changes after 2011-11 (c) Tobias Schlemmer </p><dl class="section author"><dt>Autor</dt><dd>Tobias Schlemmer <a href="#" onclick="location.href='mai'+'lto:'+'kei'+'ns'+'tei'+'n@'+'use'+'rs'+'.so'+'ur'+'cef'+'or'+'ge.'+'ne'+'t'; return false;">keins<span style="display: none;">.nosp@m.</span>tein<span style="display: none;">.nosp@m.</span>@user<span style="display: none;">.nosp@m.</span>s.so<span style="display: none;">.nosp@m.</span>urcef<span style="display: none;">.nosp@m.</span>orge<span style="display: none;">.nosp@m.</span>.net</a>  GPL</dd></dl>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA </p>
+
+<p class="definition">Definiert in Datei <a class="el" href="../../dc/de8/wxGUI_2Routing_2DebugRoute_8cpp_source.html">DebugRoute.cpp</a>.</p>
+</div></div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Sam Sep 15 2018 14:57:54 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.13</small></address>
+</body>
+</html>

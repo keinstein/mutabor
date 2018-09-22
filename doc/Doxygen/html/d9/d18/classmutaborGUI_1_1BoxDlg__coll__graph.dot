@@ -1,0 +1,23 @@
+digraph "mutaborGUI::BoxDlg"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node3 [label="mutaborGUI::BoxDlg",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node4 [label="BoxDlgBase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d6/ddd/classBoxDlgBase.html"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node5 [label="wxDialog",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" noBoxPanel" ,fontname="Sans"];
+  Node6 [label="NoBoxSettingsBase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/dd3/classNoBoxSettingsBase.html"];
+  Node7 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node7 [label="wxPanel",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node8 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" guidoFileBoxPanel" ,fontname="Sans"];
+  Node8 [label="GuidoFileBoxSettingsBase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/df6/classGuidoFileBoxSettingsBase.html"];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node9 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" mutaborBoxPanel" ,fontname="Sans"];
+  Node9 [label="mutaborGUI::MutaborBoxSettings",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d4a/classmutaborGUI_1_1MutaborBoxSettings.html"];
+  Node10 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node10 [label="MutaborBoxSettingsBase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/dcc/classMutaborBoxSettingsBase.html"];
+  Node7 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+}

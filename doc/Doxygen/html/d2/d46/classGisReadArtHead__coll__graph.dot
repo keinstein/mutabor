@@ -1,0 +1,32 @@
+digraph "GisReadArtHead"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  Node2 [label="GisReadArtHead",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node3 [label="GisReadHead",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d81/classGisReadHead.html"];
+  Node3 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Prev\nNext\nBoss\nPrevPtr" ,fontname="Sans"];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Id" ,fontname="Sans"];
+  Node4 [label="std::string",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node5 [label="std::basic_string\<\l char \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node6 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Cursor" ,fontname="Sans"];
+  Node6 [label="GisToken",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/db7/classGisToken.html"];
+  Node4 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Sep" ,fontname="Sans"];
+  Node6 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Next" ,fontname="Sans"];
+  Node7 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Time" ,fontname="Sans"];
+  Node7 [label="mutabor::frac",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/ded/classmutabor_1_1frac.html"];
+  Node8 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Alter\nOctave\nIntensity\nTempo\nInstr\nArticulation" ,fontname="Sans"];
+  Node8 [label="TagListData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/d11/structTagListData.html"];
+  Node8 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Next" ,fontname="Sans"];
+  Node9 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Data" ,fontname="Sans"];
+  Node9 [label="TagListData::data",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d04/unionTagListData_1_1data.html"];
+  Node10 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Tag" ,fontname="Sans"];
+  Node10 [label="GisTag",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/d39/classGisTag.html"];
+  Node6 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node4 -> Node10 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Name" ,fontname="Sans"];
+  Node6 -> Node10 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Para" ,fontname="Sans"];
+  Node11 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Delta" ,fontname="Sans"];
+  Node11 [label="microseconds",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Time2" ,fontname="Sans"];
+}

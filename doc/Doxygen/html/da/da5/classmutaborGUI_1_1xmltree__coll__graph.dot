@@ -1,0 +1,14 @@
+digraph "mutaborGUI::xmltree"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  Node3 [label="mutaborGUI::xmltree",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node4 [label="mutabor::tree_storage",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/de5/classmutabor_1_1tree__storage.html",tooltip="Class tree_storage proviedes an interface for classes providing tree based storage. "];
+  Node5 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node5 [label="wxXmlDocument",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" states" ,fontname="Sans"];
+  Node6 [label="std::stack\< mutaborGUI\l::xmltree::state \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" elements" ,fontname="Sans"];
+  Node7 [label="mutaborGUI::xmltree\l::state",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d6/d06/structmutaborGUI_1_1xmltree_1_1state.html",tooltip="structure describing the current state "];
+}

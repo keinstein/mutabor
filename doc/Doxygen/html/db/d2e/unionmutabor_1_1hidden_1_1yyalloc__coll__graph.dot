@@ -1,0 +1,19 @@
+digraph "mutabor::hidden::yyalloc"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  Node1 [label="mutabor::hidden::yyalloc",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" yyvs_alloc" ,fontname="Sans"];
+  Node2 [label="mutabor::hidden::YYSTYPE",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d3/d6c/unionmutabor_1_1hidden_1_1YYSTYPE.html"];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" parameters" ,fontname="Sans"];
+  Node3 [label="mutabor::hidden::parameter_list",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d9f/structmutabor_1_1hidden_1_1parameter__list.html"];
+  Node3 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" next" ,fontname="Sans"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" arguments" ,fontname="Sans"];
+  Node4 [label="mutabor::hidden::argument_list",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/ddb/structmutabor_1_1hidden_1_1argument__list.html"];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" argument" ,fontname="Sans"];
+  Node5 [label="mutabor::hidden::argument",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d96/structmutabor_1_1hidden_1_1argument.html"];
+  Node3 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" parameter" ,fontname="Sans"];
+  Node4 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" next" ,fontname="Sans"];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" yyls_alloc" ,fontname="Sans"];
+  Node6 [label="mutabor::hidden::YYLTYPE",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d4e/structmutabor_1_1hidden_1_1YYLTYPE.html"];
+}

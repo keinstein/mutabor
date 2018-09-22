@@ -3,23 +3,15 @@
 <title>src/kernel/routing/tests/main.cpp Quellcode</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.6 -->
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
-      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
-      <li><a href="../../modules.html"><span>Module</span></a></li>
-      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
-      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
-      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
-    </ul>
-  </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
-      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
-    </ul>
-  </div>
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',false,false,'search.php','Suchen');
+});
+</script>
+<div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
 <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cbd7f246bdf7dc0a50281a272327e6ed.html">kernel</a></li><li class="navelem"><a class="el" href="../../dir_02be4fa82aae8ff4c4cc45bceb47856f.html">routing</a></li><li class="navelem"><a class="el" href="../../dir_456056c91486b47754c3d6dd7b71854e.html">tests</a></li>  </ul>
@@ -30,69 +22,18 @@
 <div class="title">main.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="../../d1/de6/kernel_2routing_2tests_2main_8cpp.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">src/kernel/Defs.h</a>&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/d70/CommonFileDeviceTest_8h.html">src/kernel/routing/tests/CommonFileDeviceTest.h</a>&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/d45/RouteTest_8h.html">src/kernel/routing/tests/RouteTest.h</a>&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/d01/BoxTest_8h.html">src/kernel/routing/tests/BoxTest.h</a>&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d6/d6d/tests_2timing_8h.html">src/kernel/routing/tests/timing.h</a>&quot;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d2c/Route-inlines_8h.html">src/kernel/routing/Route-inlines.h</a>&quot;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;wx/app.h&quot;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;cppunit/ui/text/TestRunner.h&gt;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;cppunit/TestResult.h&gt;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;cppunit/BriefTestProgressListener.h&gt;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// Skip the GUI related checks from DebugRoute.cpp</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../d2/d7d/group__tests.html#gab23797a472d73f3c4dc79d7a3b65ceff">   40</a></span>&#160;<span class="preprocessor">#define no_wxGUI 1</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="../../d9/d27/DebugRoute_8cpp.html">src/wxGUI/Routing/DebugRoute.cpp</a>&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#undef no_wxGUI</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">int</span> </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<a class="code" href="../../df/d72/kernel_2routing_2midi_2tests_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, <span class="stringliteral">&quot;program&quot;</span>);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        wxInitializer initializer;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> ( !initializer )</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                fprintf(stderr, <span class="stringliteral">&quot;Failed to initialize the wxWidgets library, aborting.&quot;</span>);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="../../d5/dee/group__route.html#gaa237fcc1d0baa5e21ceb53b44a991683">mutabor::InitDeviceFactories</a>();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#ifdef _GLIBCXX_DEBUG</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor"></span>        std::clog &lt;&lt; <span class="stringliteral">&quot;In case of segmentation faults assure that cppunit is compiled using -D_GLIBCXX_DEBUG&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        CPPUNIT_NS::TextUi::TestRunner runner;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        CppUnit::BriefTestProgressListener listener; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        runner.eventManager().addListener(&amp;listener);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        runner.addTest( TimingParamsTest::suite() );</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        runner.addTest( BoxTest::suite() );</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        runner.addTest( RouteTest::suite() );</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        runner.addTest( CommonFileDeviceTest::suite() );</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">bool</span> wasSuccessful = runner.run();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor"></span>        std::clog &lt;&lt; <span class="stringliteral">&quot;Sucess: &quot;</span> &lt;&lt; (wasSuccessful ? <span class="stringliteral">&quot;Yes&quot;</span> : <span class="stringliteral">&quot;No&quot;</span>) &lt;&lt; std::endl &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor"></span>        <span class="comment">//CurrentTime.Sleep(1000);</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> wasSuccessful ? 0 : 1;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
-<div class="ttc" id="DebugRoute_8cpp_html"><div class="ttname"><a href="../../d9/d27/DebugRoute_8cpp.html">DebugRoute.cpp</a></div><div class="ttdoc">Debug functions for routing system. </div></div>
-<div class="ttc" id="group__route_html_gaa237fcc1d0baa5e21ceb53b44a991683"><div class="ttname"><a href="../../d5/dee/group__route.html#gaa237fcc1d0baa5e21ceb53b44a991683">mutabor::InitDeviceFactories</a></div><div class="ttdeci">void InitDeviceFactories()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/Device_8cpp_source.html#l00665">Device.cpp:665</a></div></div>
+<a href="../../d1/de6/kernel_2routing_2tests_2main_8cpp.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">src/kernel/Defs.h</a>&quot;</span></div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/d70/CommonFileDeviceTest_8h.html">src/kernel/routing/tests/CommonFileDeviceTest.h</a>&quot;</span></div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/d45/RouteTest_8h.html">src/kernel/routing/tests/RouteTest.h</a>&quot;</span></div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/d01/BoxTest_8h.html">src/kernel/routing/tests/BoxTest.h</a>&quot;</span></div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d6/d6d/tests_2timing_8h.html">src/kernel/routing/tests/timing.h</a>&quot;</span></div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d2c/Route-inlines_8h.html">src/kernel/routing/Route-inlines.h</a>&quot;</span></div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d5/d47/TestInitializer_8h.html">src/wxGUI/TestInitializer.h</a>&quot;</span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;cppunit/ui/text/TestRunner.h&gt;</span></div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;cppunit/TestResult.h&gt;</span></div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;cppunit/BriefTestProgressListener.h&gt;</span></div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// Skip the GUI related checks from DebugRoute.cpp</span></div><div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../d2/d7d/group__tests.html#gab23797a472d73f3c4dc79d7a3b65ceff">   41</a></span>&#160;<span class="preprocessor">#define no_wxGUI 1</span></div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/de8/wxGUI_2Routing_2DebugRoute_8cpp.html">src/wxGUI/Routing/DebugRoute.cpp</a>&quot;</span></div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#undef no_wxGUI</span></div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">int</span> </div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<a class="code" href="../../df/d72/kernel_2routing_2midi_2tests_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">//      mutwxInitializer initializer;</span></div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="../../d5/dee/group__route.html#gaa237fcc1d0baa5e21ceb53b44a991683">mutabor::InitDeviceFactories</a>();</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#ifdef _GLIBCXX_DEBUG</span></div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        std::clog &lt;&lt; <span class="stringliteral">&quot;In case of segmentation faults assure that cppunit is compiled using -D_GLIBCXX_DEBUG&quot;</span> &lt;&lt; std::endl;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        CPPUNIT_NS::TextUi::TestRunner runner;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        </div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        CppUnit::BriefTestProgressListener listener; </div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        runner.eventManager().addListener(&amp;listener);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        runner.addTest( TimingParamsTest::suite() );</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        runner.addTest( BoxTest::suite() );</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        runner.addTest( RouteTest::suite() );</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        runner.addTest( CommonFileDeviceTest::suite() );</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        </div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">bool</span> wasSuccessful = runner.run();</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        std::clog &lt;&lt; <span class="stringliteral">&quot;Sucess: &quot;</span> &lt;&lt; (wasSuccessful ? <span class="stringliteral">&quot;Yes&quot;</span> : <span class="stringliteral">&quot;No&quot;</span>) &lt;&lt; std::endl &lt;&lt; std::flush;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="comment">//CurrentTime.Sleep(1000);</span></div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> wasSuccessful ? 0 : 1;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div><div class="ttc" id="group__route_html_gaa237fcc1d0baa5e21ceb53b44a991683"><div class="ttname"><a href="../../d5/dee/group__route.html#gaa237fcc1d0baa5e21ceb53b44a991683">mutabor::InitDeviceFactories</a></div><div class="ttdeci">void InitDeviceFactories()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc0/Device_8cpp_source.html#l00667">Device.cpp:667</a></div></div>
 <div class="ttc" id="RouteTest_8h_html"><div class="ttname"><a href="../../dc/d45/RouteTest_8h.html">RouteTest.h</a></div></div>
 <div class="ttc" id="Route-inlines_8h_html"><div class="ttname"><a href="../../d2/d2c/Route-inlines_8h.html">Route-inlines.h</a></div></div>
+<div class="ttc" id="wxGUI_2Routing_2DebugRoute_8cpp_html"><div class="ttname"><a href="../../dc/de8/wxGUI_2Routing_2DebugRoute_8cpp.html">DebugRoute.cpp</a></div><div class="ttdoc">Debug functions for routing system. </div></div>
 <div class="ttc" id="CommonFileDeviceTest_8h_html"><div class="ttname"><a href="../../d4/d70/CommonFileDeviceTest_8h.html">CommonFileDeviceTest.h</a></div></div>
 <div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
+<div class="ttc" id="TestInitializer_8h_html"><div class="ttname"><a href="../../d5/d47/TestInitializer_8h.html">TestInitializer.h</a></div></div>
 <div class="ttc" id="BoxTest_8h_html"><div class="ttname"><a href="../../df/d01/BoxTest_8h.html">BoxTest.h</a></div></div>
-<div class="ttc" id="kernel_2routing_2midi_2tests_2main_8cpp_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="../../df/d72/kernel_2routing_2midi_2tests_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/kernel_2routing_2midi_2tests_2main_8cpp_source.html#l00015">main.cpp:15</a></div></div>
+<div class="ttc" id="kernel_2routing_2midi_2tests_2main_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="../../df/d72/kernel_2routing_2midi_2tests_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/kernel_2routing_2midi_2tests_2main_8cpp_source.html#l00010">main.cpp:10</a></div></div>
 <div class="ttc" id="tests_2timing_8h_html"><div class="ttname"><a href="../../d6/d6d/tests_2timing_8h.html">timing.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Apr 26 2014 12:58:27 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Sep 15 2018 14:57:53 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.13</small></address>
 </body>
 </html>
