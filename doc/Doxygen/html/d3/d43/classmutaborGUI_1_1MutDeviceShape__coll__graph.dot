@@ -1,0 +1,27 @@
+digraph "mutaborGUI::MutDeviceShape&lt; T &gt;"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node11 [label="mutaborGUI::MutDeviceShape\< T \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node12 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node12 [label="MutIconShape",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/d12/classMutIconShapeClass.html",tooltip="An icon control with static text. "];
+  Node13 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node13 [label="T",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node14 -> Node12 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" usedperimeterpoints" ,fontname="Sans"];
+  Node14 [label="std::list\< wxPoint \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node15 -> Node11 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" routes" ,fontname="Sans"];
+  Node15 [label="std::list\< MutBoxChannel\lShape * \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node16 -> Node15 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" elements" ,fontname="Sans"];
+  Node16 [label="mutaborGUI::MutBoxChannel\lShape",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d8e/classmutaborGUI_1_1MutBoxChannelShape.html"];
+  Node12 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node17 -> Node16 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" route" ,fontname="Sans"];
+  Node17 [label="mutabor::TRouteClass\l\< InputDevice, OutputDevice,\l Box \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d05/classmutabor_1_1TRouteClass.html"];
+  Node18 -> Node17 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" routeList" ,fontname="Sans"];
+  Node18 [label="mutabor::cow_container\< C \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d40/classmutabor_1_1cow__container.html"];
+  Node19 -> Node17 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" session_id" ,fontname="Sans"];
+  Node19 [label="mutabor::idtype\< mutabor\l::TRouteClass\< InputDevice,\l OutputDevice \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/dce/classmutabor_1_1idtype.html"];
+  Node20 -> Node19 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" idpool\nid" ,fontname="Sans"];
+  Node20 [label="size_t",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node11 -> Node16 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" output\ninput" ,fontname="Sans"];
+}

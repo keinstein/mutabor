@@ -1,0 +1,594 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/gmut/scl2mut.cpp-Dateireferenz</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',false,false,'search.php','Suchen');
+});
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_25f56488a97be449f6e55505040cb1fd.html">gmut</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">Namensbereiche</a> &#124;
+<a href="#define-members">Makrodefinitionen</a> &#124;
+<a href="#func-members">Funktionen</a> &#124;
+<a href="#var-members">Variablen</a>  </div>
+  <div class="headertitle">
+<div class="title">scl2mut.cpp-Dateireferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d1/d73/Defs_8h_source.html">src/kernel/Defs.h</a>&quot;</code><br />
+<code>#include &quot;boost/program_options.hpp&quot;</code><br />
+<code>#include &quot;boost/locale.hpp&quot;</code><br />
+<code>#include &quot;boost/filesystem.hpp&quot;</code><br />
+<code>#include &quot;boost/filesystem/fstream.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../da/db7/scala_8h_source.html">src/kernel/parsers/scala/scala.h</a>&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;iterator&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d4/dab/debugFlags_8h_source.html">src/kernel/debugFlags.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include-Abhängigkeitsdiagramm für scl2mut.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/d15/scl2mut_8cpp__incl.png" border="0" usemap="#src_2gmut_2scl2mut_8cpp" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div>
+<p><a href="../../de/d02/scl2mut_8cpp_source.html">gehe zum Quellcode dieser Datei</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namensbereiche</h2></td></tr>
+<tr class="memitem:d6/daa/namespacemutabor"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html">mutabor</a></td></tr>
+<tr class="memdesc:d6/daa/namespacemutabor"><td class="mdescLeft">&#160;</td><td class="mdescRight">not for headers <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Makrodefinitionen</h2></td></tr>
+<tr class="memitem:a105f28eeee4fcf945785d64adfe0c03c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#a105f28eeee4fcf945785d64adfe0c03c">DEBUGFLAG</a>(flag,  description)&#160;&#160;&#160;mutabor::mutabor_debug_flags.flag = false;</td></tr>
+<tr class="separator:a105f28eeee4fcf945785d64adfe0c03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4299b72e4c3bb3f86937c2abf69d01d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#aa4299b72e4c3bb3f86937c2abf69d01d">STR_too_many_positional_options_error</a>&#160;&#160;&#160;<a class="el" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(&quot;too many positional <a class="el" href="../../de/d02/scl2mut_8cpp.html#a03bb1ced9965be33d5c33b2559dc36dd">options</a> have been specified on the command line&quot;)</td></tr>
+<tr class="separator:aa4299b72e4c3bb3f86937c2abf69d01d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b3623610d6c87686e3ff72b99885b90"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#a8b3623610d6c87686e3ff72b99885b90">STR_reading_file</a>&#160;&#160;&#160;<a class="el" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(&quot;can not read <a class="el" href="../../de/d02/scl2mut_8cpp.html#a03bb1ced9965be33d5c33b2559dc36dd">options</a> configuration file '%s'&quot;)</td></tr>
+<tr class="separator:a8b3623610d6c87686e3ff72b99885b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b3935e324a7d36be8bd5ea3e7b8bcde"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#a2b3935e324a7d36be8bd5ea3e7b8bcde">STR_multiple_values</a></td></tr>
+<tr class="separator:a2b3935e324a7d36be8bd5ea3e7b8bcde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17b865d9dad0e4af77bfc2b27467ca2d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#a17b865d9dad0e4af77bfc2b27467ca2d">STR_multiple_occurrences</a></td></tr>
+<tr class="separator:a17b865d9dad0e4af77bfc2b27467ca2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aded4afb3bbd848ec98f3ffd7b6d8227b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#aded4afb3bbd848ec98f3ffd7b6d8227b">STR_required_option</a></td></tr>
+<tr class="separator:aded4afb3bbd848ec98f3ffd7b6d8227b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11a13c5a6067199193da75df0084a013"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#a11a13c5a6067199193da75df0084a013">STR_unknown_option</a></td></tr>
+<tr class="separator:a11a13c5a6067199193da75df0084a013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31f7d4aab7eae96fe2f8fbfbef029e6c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#a31f7d4aab7eae96fe2f8fbfbef029e6c">STR_ambiguous_option</a></td></tr>
+<tr class="separator:a31f7d4aab7eae96fe2f8fbfbef029e6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaaa44933ee7649a1d7e3e3b083012f9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#abaaa44933ee7649a1d7e3e3b083012f9">mut_catch_exception</a>(ex)</td></tr>
+<tr class="separator:abaaa44933ee7649a1d7e3e3b083012f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afca135e3ddf148ea7c3d1e42643999ae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#afca135e3ddf148ea7c3d1e42643999ae">N_</a></td></tr>
+<tr class="separator:afca135e3ddf148ea7c3d1e42643999ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a105f28eeee4fcf945785d64adfe0c03c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#a105f28eeee4fcf945785d64adfe0c03c">DEBUGFLAG</a>(flag,  description)&#160;&#160;&#160;(&quot;debug-&quot;#flag, po::bool_switch()-&gt;implicit_value(true)-&gt;notifier(::mutabor::debugFlags::set ## flag()), <a class="el" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(description))</td></tr>
+<tr class="separator:a105f28eeee4fcf945785d64adfe0c03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:a6db42cc8720808f530b56551af7f80f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#a6db42cc8720808f530b56551af7f80f4">mutabor_debug_lock</a> ()</td></tr>
+<tr class="separator:a6db42cc8720808f530b56551af7f80f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga899ae785468b0742d00f2062b09ca5cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#ga899ae785468b0742d00f2062b09ca5cb">mutabor_debug_unlock</a> ()</td></tr>
+<tr class="separator:ga899ae785468b0742d00f2062b09ca5cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fbb3615864749835554cdaea12c6654"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#a7fbb3615864749835554cdaea12c6654">do_help</a> (po::options_description &amp;desc, const char *<a class="el" href="../../d9/d7c/group__kernel.html#ga8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
+<tr class="separator:a7fbb3615864749835554cdaea12c6654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa434b9cbbd0e712209c8ae104737c3bf"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#aa434b9cbbd0e712209c8ae104737c3bf">operator&lt;&lt;</a> (std::ostream &amp;o, const std::vector&lt; <a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a> &gt; &amp;v)</td></tr>
+<tr class="separator:aa434b9cbbd0e712209c8ae104737c3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13a43e6d814de94978c515cb084873b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#a13a43e6d814de94978c515cb084873b1">run</a> ()</td></tr>
+<tr class="separator:a13a43e6d814de94978c515cb084873b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variablen</h2></td></tr>
+<tr class="memitem:ga792f048c4b99c488b928ce89b5ec86b5"><td class="memItemLeft" align="right" valign="top">struct mutabor_debug_flagtype&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga792f048c4b99c488b928ce89b5ec86b5">mutabor::mutabor_debug_flags</a></td></tr>
+<tr class="separator:ga792f048c4b99c488b928ce89b5ec86b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf46a1b35543288613a6d42894ddbdf55"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dbc/structdebugFlags.html">debugFlags</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gaf46a1b35543288613a6d42894ddbdf55">mutabor::debugFlagInitialiser</a></td></tr>
+<tr class="separator:gaf46a1b35543288613a6d42894ddbdf55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d449f087a31268077d13281747f62cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#a7d449f087a31268077d13281747f62cb">outputfile</a></td></tr>
+<tr class="separator:a7d449f087a31268077d13281747f62cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6da0e54460c2bbc00c2291c2dd4b7d1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#a6da0e54460c2bbc00c2291c2dd4b7d1e">inputfile</a></td></tr>
+<tr class="separator:a6da0e54460c2bbc00c2291c2dd4b7d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaad586ac35cbcca6ec00bb30883f0c33"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#aaad586ac35cbcca6ec00bb30883f0c33">kbmfile</a></td></tr>
+<tr class="separator:aaad586ac35cbcca6ec00bb30883f0c33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03bb1ced9965be33d5c33b2559dc36dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d79/structmutabor_1_1scala__parser_1_1mutabor__writer__options.html">mutabor::scala_parser::mutabor_writer_options</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#a03bb1ced9965be33d5c33b2559dc36dd">options</a></td></tr>
+<tr class="separator:a03bb1ced9965be33d5c33b2559dc36dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ef2bc99c55a49bf6ce34c0f8b69c16c"><td class="memItemLeft" align="right" valign="top">ostream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#a7ef2bc99c55a49bf6ce34c0f8b69c16c">output</a> = NULL</td></tr>
+<tr class="separator:a7ef2bc99c55a49bf6ce34c0f8b69c16c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8bf8885cad12f7099f0d543bcc49a42"><td class="memItemLeft" align="right" valign="top">istream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#ab8bf8885cad12f7099f0d543bcc49a42">input</a> = NULL</td></tr>
+<tr class="separator:ab8bf8885cad12f7099f0d543bcc49a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8324a768da7effc2107e91a49bf2349"><td class="memItemLeft" align="right" valign="top">istream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d02/scl2mut_8cpp.html#ae8324a768da7effc2107e91a49bf2349">keymapinput</a> = NULL</td></tr>
+<tr class="separator:ae8324a768da7effc2107e91a49bf2349"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Makro-Dokumentation</h2>
+<a id="a105f28eeee4fcf945785d64adfe0c03c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a105f28eeee4fcf945785d64adfe0c03c">&#9670;&nbsp;</a></span>DEBUGFLAG <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGFLAG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">flag, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">description&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;mutabor::mutabor_debug_flags.flag = false;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Wird benutzt von <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00121">run()</a>.</p>
+
+</div>
+</div>
+<a id="a105f28eeee4fcf945785d64adfe0c03c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a105f28eeee4fcf945785d64adfe0c03c">&#9670;&nbsp;</a></span>DEBUGFLAG <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGFLAG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">flag, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">description&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(&quot;debug-&quot;#flag, po::bool_switch()-&gt;implicit_value(true)-&gt;notifier(::mutabor::debugFlags::set ## flag()), <a class="el" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(description))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abaaa44933ee7649a1d7e3e3b083012f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaaa44933ee7649a1d7e3e3b083012f9">&#9670;&nbsp;</a></span>mut_catch_exception</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mut_catch_exception</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ex</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Wert:</b><div class="fragment"><div class="line"><span class="keywordflow">catch</span> (po::ex &amp; e) {                                            \</div><div class="line">                e.m_error_template = STR_ ## ex;                        \</div><div class="line">                cerr &lt;&lt; boost::format(<a class="code" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(<span class="stringliteral">&quot;Error: %s&quot;</span>)) % e.what()     \</div><div class="line">                     &lt;&lt; std::endl                                       \</div><div class="line">                     &lt;&lt; std::endl;                                      \</div><div class="line">                do_help(desc,*av);                                      \</div><div class="line">                return 1;                                               \</div><div class="line">        }</div><div class="ttc" id="group__kernel_html_gad94e0fa22a0f815bb713f9d2fb77655b"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a></div><div class="ttdeci">#define _mut</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00138">Defs.h:138</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00081">81</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00121">run()</a>.</p>
+
+</div>
+</div>
+<a id="afca135e3ddf148ea7c3d1e42643999ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afca135e3ddf148ea7c3d1e42643999ae">&#9670;&nbsp;</a></span>N_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define N_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Wird benutzt von <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00121">run()</a>.</p>
+
+</div>
+</div>
+<a id="a31f7d4aab7eae96fe2f8fbfbef029e6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31f7d4aab7eae96fe2f8fbfbef029e6c">&#9670;&nbsp;</a></span>STR_ambiguous_option</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR_ambiguous_option</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Wert:</b><div class="fragment"><div class="line"><span class="comment">/* xgettext:no-c-format */</span>                              \</div><div class="line">        _mut(<span class="stringliteral">&quot;option &#39;%canonical_option%&#39; is ambiguous&quot;</span>)</div></div><!-- fragment -->
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00077">77</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a17b865d9dad0e4af77bfc2b27467ca2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17b865d9dad0e4af77bfc2b27467ca2d">&#9670;&nbsp;</a></span>STR_multiple_occurrences</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR_multiple_occurrences</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Wert:</b><div class="fragment"><div class="line"><span class="comment">/* xgettext:no-c-format */</span>                                      \</div><div class="line">        _mut(<span class="stringliteral">&quot;option &#39;%canonical_option%&#39; cannot be specified more than once&quot;</span>)</div></div><!-- fragment -->
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00068">68</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2b3935e324a7d36be8bd5ea3e7b8bcde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b3935e324a7d36be8bd5ea3e7b8bcde">&#9670;&nbsp;</a></span>STR_multiple_values</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR_multiple_values</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Wert:</b><div class="fragment"><div class="line"><span class="comment">/* xgettext:no-c-format */</span>                                      \</div><div class="line">        _mut(<span class="stringliteral">&quot;option &#39;%canonical_option%&#39; only takes a single argument&quot;</span>)</div></div><!-- fragment -->
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00065">65</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8b3623610d6c87686e3ff72b99885b90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b3623610d6c87686e3ff72b99885b90">&#9670;&nbsp;</a></span>STR_reading_file</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR_reading_file&#160;&#160;&#160;<a class="el" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(&quot;can not read <a class="el" href="../../de/d02/scl2mut_8cpp.html#a03bb1ced9965be33d5c33b2559dc36dd">options</a> configuration file '%s'&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00063">63</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aded4afb3bbd848ec98f3ffd7b6d8227b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aded4afb3bbd848ec98f3ffd7b6d8227b">&#9670;&nbsp;</a></span>STR_required_option</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR_required_option</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Wert:</b><div class="fragment"><div class="line"><span class="comment">/* xgettext:no-c-format */</span>                                      \</div><div class="line">        _mut(<span class="stringliteral">&quot;the option &#39;%canonical_option%&#39; is required but missing&quot;</span>)</div></div><!-- fragment -->
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00071">71</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa4299b72e4c3bb3f86937c2abf69d01d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4299b72e4c3bb3f86937c2abf69d01d">&#9670;&nbsp;</a></span>STR_too_many_positional_options_error</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR_too_many_positional_options_error&#160;&#160;&#160;<a class="el" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(&quot;too many positional <a class="el" href="../../de/d02/scl2mut_8cpp.html#a03bb1ced9965be33d5c33b2559dc36dd">options</a> have been specified on the command line&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00061">61</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00121">run()</a>.</p>
+
+</div>
+</div>
+<a id="a11a13c5a6067199193da75df0084a013"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11a13c5a6067199193da75df0084a013">&#9670;&nbsp;</a></span>STR_unknown_option</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR_unknown_option</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Wert:</b><div class="fragment"><div class="line"><span class="comment">/* xgettext:no-c-format */</span>                              \</div><div class="line">        _mut(<span class="stringliteral">&quot;unrecognised option &#39;%canonical_option%&#39;&quot;</span>)</div></div><!-- fragment -->
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00074">74</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Funktionen</h2>
+<a id="a7fbb3615864749835554cdaea12c6654"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fbb3615864749835554cdaea12c6654">&#9670;&nbsp;</a></span>do_help()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_help </td>
+          <td>(</td>
+          <td class="paramtype">po::options_description &amp;&#160;</td>
+          <td class="paramname"><em>desc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00102">102</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="../../d1/d73/Defs_8h_source.html#l00138">_mut</a> und <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00059">name</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00121">run()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;{</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        cout &lt;&lt; (boost::format(<a class="code" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(<span class="stringliteral">&quot;Synopsis: %s [options]  input-file[.scl] [output-file[.mut]]&quot;</span>))</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                 % <a class="code" href="../../d9/d7c/group__kernel.html#ga8f8f80d37794cde9472343e4487ba3eb">name</a>) &lt;&lt; endl &lt;&lt; endl;</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        cout &lt;&lt; desc &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div><div class="ttc" id="group__kernel_html_ga8f8f80d37794cde9472343e4487ba3eb"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga8f8f80d37794cde9472343e4487ba3eb">name</a></div><div class="ttdeci">const char * name</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/da0/TabGen_8cpp_source.html#l00059">TabGen.cpp:59</a></div></div>
+<div class="ttc" id="group__kernel_html_gad94e0fa22a0f815bb713f9d2fb77655b"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a></div><div class="ttdeci">#define _mut</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00138">Defs.h:138</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6db42cc8720808f530b56551af7f80f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6db42cc8720808f530b56551af7f80f4">&#9670;&nbsp;</a></span>mutabor_debug_lock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mutabor_debug_lock </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00035">35</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="ga899ae785468b0742d00f2062b09ca5cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga899ae785468b0742d00f2062b09ca5cb">&#9670;&nbsp;</a></span>mutabor_debug_unlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mutabor_debug_unlock </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00036">36</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="aa434b9cbbd0e712209c8ae104737c3bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa434b9cbbd0e712209c8ae104737c3bf">&#9670;&nbsp;</a></span>operator<<()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>o</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00110">110</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                                                                {</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span> (v.empty()) <span class="keywordflow">return</span> o;</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        std::vector&lt;std::string&gt;::const_iterator i = v.begin();</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        o &lt;&lt; *i;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">while</span> (++i != v.end()) {</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                o &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; *i;</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">return</span> o;</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="a13a43e6d814de94978c515cb084873b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13a43e6d814de94978c515cb084873b1">&#9670;&nbsp;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void run </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00121">121</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="../../d1/d73/Defs_8h_source.html#l00138">_mut</a>, <a class="el" href="../../de/d02/scl2mut_8cpp.html#a105f28eeee4fcf945785d64adfe0c03c">DEBUGFLAG</a>, <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00102">do_help()</a>, <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00092">in</a>, <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00098">input</a>, <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00093">inputfile</a>, <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00094">kbmfile</a>, <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00098">keymapinput</a>, <a class="el" href="../../df/d64/scala_8cpp_source.html#l00178">mutabor::scala_parser::parser::load_keymap()</a>, <a class="el" href="../../da/db7/scala_8h_source.html#l00064">mutabor::scala_parser::mutabor_writer_options::logic_name</a>, <a class="el" href="../../d4/d21/gmn2midi_8cpp_source.html#l00023">main()</a>, <a class="el" href="../../da/db7/scala_8h_source.html#l00298">mutabor::scala_parser::parser::make_keymap()</a>, <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00081">mut_catch_exception</a>, <a class="el" href="../../de/d02/scl2mut_8cpp.html#afca135e3ddf148ea7c3d1e42643999ae">N_</a>, <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00095">options</a>, <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00094">out</a>, <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00097">output</a>, <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00092">outputfile</a>, <a class="el" href="../../de/d08/test__parser_8cpp.html#a80d88758fdda7b4bb234121699f52a2b">p()</a>, <a class="el" href="../../da/db7/scala_8h_source.html#l00061">mutabor::scala_parser::mutabor_writer_options::prefix</a>, <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00061">STR_too_many_positional_options_error</a>, <a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">string</a>, <a class="el" href="../../da/db7/scala_8h_source.html#l00062">mutabor::scala_parser::mutabor_writer_options::tone_prefix</a>, <a class="el" href="../../da/db7/scala_8h_source.html#l00063">mutabor::scala_parser::mutabor_writer_options::tonesystem_name</a> und <a class="el" href="../../df/d64/scala_8cpp_source.html#l00373">mutabor::scala_parser::parser::write_mutabor()</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00173">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;           {</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <a class="code" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a> s;</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <a class="code" href="../../de/d02/scl2mut_8cpp.html#ab8bf8885cad12f7099f0d543bcc49a42">input</a>-&gt;seekg(0, std::ios::end);</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        streampos pos = <a class="code" href="../../de/d02/scl2mut_8cpp.html#ab8bf8885cad12f7099f0d543bcc49a42">input</a>-&gt;tellg();</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">if</span> (pos &gt; 0)</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                s.reserve(pos);</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <a class="code" href="../../de/d02/scl2mut_8cpp.html#ab8bf8885cad12f7099f0d543bcc49a42">input</a>-&gt;seekg(0, std::ios::beg);</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        s.assign((std::istreambuf_iterator&lt;char&gt;(*<a class="code" href="../../de/d02/scl2mut_8cpp.html#ab8bf8885cad12f7099f0d543bcc49a42">input</a>)),</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                   std::istreambuf_iterator&lt;char&gt;());</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <a class="code" href="../../d5/d28/classmutabor_1_1scala__parser_1_1parser.html">mutabor::scala_parser::parser</a> scparser(s,<a class="code" href="../../de/d02/scl2mut_8cpp.html#a6da0e54460c2bbc00c2291c2dd4b7d1e">inputfile</a>);</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../de/d02/scl2mut_8cpp.html#ae8324a768da7effc2107e91a49bf2349">keymapinput</a>) {</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                s.clear();</div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                <a class="code" href="../../de/d02/scl2mut_8cpp.html#ae8324a768da7effc2107e91a49bf2349">keymapinput</a>-&gt;seekg(0, std::ios::end);</div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                streampos pos = <a class="code" href="../../de/d02/scl2mut_8cpp.html#ae8324a768da7effc2107e91a49bf2349">keymapinput</a>-&gt;tellg();</div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                <span class="keywordflow">if</span> (pos &gt; 0)</div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                        s.reserve(pos);</div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                <a class="code" href="../../de/d02/scl2mut_8cpp.html#ae8324a768da7effc2107e91a49bf2349">keymapinput</a>-&gt;seekg(0, std::ios::beg);</div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                s.assign((std::istreambuf_iterator&lt;char&gt;(*<a class="code" href="../../de/d02/scl2mut_8cpp.html#ae8324a768da7effc2107e91a49bf2349">keymapinput</a>)),</div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                         std::istreambuf_iterator&lt;char&gt;());</div><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                scparser.load_keymap(s,<a class="code" href="../../de/d02/scl2mut_8cpp.html#aaad586ac35cbcca6ec00bb30883f0c33">kbmfile</a>);</div><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                scparser.make_keymap();</div><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        }</div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        scparser.write_mutabor(*<a class="code" href="../../de/d02/scl2mut_8cpp.html#a7ef2bc99c55a49bf6ce34c0f8b69c16c">output</a>,<a class="code" href="../../de/d02/scl2mut_8cpp.html#a03bb1ced9965be33d5c33b2559dc36dd">options</a>);</div><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div><div class="ttc" id="scale__lexer_8cc_html_a25093e36e9fb377b246945a84745823f"><div class="ttname"><a href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">string</a></div><div class="ttdeci">#define string</div></div>
+<div class="ttc" id="classmutabor_1_1scala__parser_1_1parser_html"><div class="ttname"><a href="../../d5/d28/classmutabor_1_1scala__parser_1_1parser.html">mutabor::scala_parser::parser</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/db7/scala_8h_source.html#l00271">scala.h:271</a></div></div>
+<div class="ttc" id="scl2mut_8cpp_html_aaad586ac35cbcca6ec00bb30883f0c33"><div class="ttname"><a href="../../de/d02/scl2mut_8cpp.html#aaad586ac35cbcca6ec00bb30883f0c33">kbmfile</a></div><div class="ttdeci">std::string kbmfile</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d02/scl2mut_8cpp_source.html#l00094">scl2mut.cpp:94</a></div></div>
+<div class="ttc" id="scl2mut_8cpp_html_a6da0e54460c2bbc00c2291c2dd4b7d1e"><div class="ttname"><a href="../../de/d02/scl2mut_8cpp.html#a6da0e54460c2bbc00c2291c2dd4b7d1e">inputfile</a></div><div class="ttdeci">std::string inputfile</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d02/scl2mut_8cpp_source.html#l00093">scl2mut.cpp:93</a></div></div>
+<div class="ttc" id="scl2mut_8cpp_html_ab8bf8885cad12f7099f0d543bcc49a42"><div class="ttname"><a href="../../de/d02/scl2mut_8cpp.html#ab8bf8885cad12f7099f0d543bcc49a42">input</a></div><div class="ttdeci">istream * input</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d02/scl2mut_8cpp_source.html#l00098">scl2mut.cpp:98</a></div></div>
+<div class="ttc" id="scl2mut_8cpp_html_ae8324a768da7effc2107e91a49bf2349"><div class="ttname"><a href="../../de/d02/scl2mut_8cpp.html#ae8324a768da7effc2107e91a49bf2349">keymapinput</a></div><div class="ttdeci">istream * keymapinput</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d02/scl2mut_8cpp_source.html#l00098">scl2mut.cpp:98</a></div></div>
+<div class="ttc" id="scl2mut_8cpp_html_a7ef2bc99c55a49bf6ce34c0f8b69c16c"><div class="ttname"><a href="../../de/d02/scl2mut_8cpp.html#a7ef2bc99c55a49bf6ce34c0f8b69c16c">output</a></div><div class="ttdeci">ostream * output</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d02/scl2mut_8cpp_source.html#l00097">scl2mut.cpp:97</a></div></div>
+<div class="ttc" id="scl2mut_8cpp_html_a03bb1ced9965be33d5c33b2559dc36dd"><div class="ttname"><a href="../../de/d02/scl2mut_8cpp.html#a03bb1ced9965be33d5c33b2559dc36dd">options</a></div><div class="ttdeci">mutabor::scala_parser::mutabor_writer_options options</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d02/scl2mut_8cpp_source.html#l00095">scl2mut.cpp:95</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Variablen-Dokumentation</h2>
+<a id="ab8bf8885cad12f7099f0d543bcc49a42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8bf8885cad12f7099f0d543bcc49a42">&#9670;&nbsp;</a></span>input</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">istream* input = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00098">98</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00158">mutaborGUI::MutBoxChannelShape::Add()</a>, <a class="el" href="../../dc/de8/wxGUI_2Routing_2DebugRoute_8cpp_source.html#l00204">mutaborGUI::Check()</a>, <a class="el" href="../../de/d21/midicmn_8h_source.html#l00657">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::do_MidiOut()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00570">mutaborGUI::MutBoxChannelShape::DrawLines()</a>, <a class="el" href="../../d0/dc8/mutlex_8cc_source.html#l00879">if()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00299">mutaborGUI::MutBoxChannelShape::InitializeInputFilter()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00451">mutaborGUI::MutBoxChannelShape::ReadPanel()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00232">mutaborGUI::MutBoxChannelShape::Remove()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00192">mutaborGUI::MutBoxChannelShape::Replace()</a> und <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00121">run()</a>.</p>
+
+</div>
+</div>
+<a id="a6da0e54460c2bbc00c2291c2dd4b7d1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6da0e54460c2bbc00c2291c2dd4b7d1e">&#9670;&nbsp;</a></span>inputfile</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a> inputfile</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00093">93</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00121">run()</a>.</p>
+
+</div>
+</div>
+<a id="aaad586ac35cbcca6ec00bb30883f0c33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaad586ac35cbcca6ec00bb30883f0c33">&#9670;&nbsp;</a></span>kbmfile</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a> kbmfile</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00094">94</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00121">run()</a>.</p>
+
+</div>
+</div>
+<a id="ae8324a768da7effc2107e91a49bf2349"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8324a768da7effc2107e91a49bf2349">&#9670;&nbsp;</a></span>keymapinput</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">istream * keymapinput = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00098">98</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00121">run()</a>.</p>
+
+</div>
+</div>
+<a id="a03bb1ced9965be33d5c33b2559dc36dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03bb1ced9965be33d5c33b2559dc36dd">&#9670;&nbsp;</a></span>options</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d79/structmutabor_1_1scala__parser_1_1mutabor__writer__options.html">mutabor::scala_parser::mutabor_writer_options</a> options</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00095">95</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../dd/db0/MutDocManager_8cpp_source.html#l00060">EVT_MENU()</a>, <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00173">main()</a> und <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00121">run()</a>.</p>
+
+</div>
+</div>
+<a id="a7ef2bc99c55a49bf6ce34c0f8b69c16c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ef2bc99c55a49bf6ce34c0f8b69c16c">&#9670;&nbsp;</a></span>output</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ostream* output = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00097">97</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00166">mutaborGUI::MutBoxChannelShape::Add()</a>, <a class="el" href="../../dc/de8/wxGUI_2Routing_2DebugRoute_8cpp_source.html#l00322">mutaborGUI::Check()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00570">mutaborGUI::MutBoxChannelShape::DrawLines()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00402">mutaborGUI::MutBoxChannelShape::InitializeOutputFilter()</a>, <a class="el" href="../../d1/d00/debug_8cpp_source.html#l00414">MakePrintableC()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00451">mutaborGUI::MutBoxChannelShape::ReadPanel()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00223">mutaborGUI::MutBoxChannelShape::Remove()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00182">mutaborGUI::MutBoxChannelShape::Replace()</a>, <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00121">run()</a>, <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00124">mutabor::Track::WriteDelta()</a> und <a class="el" href="../../de/d21/midicmn_8h_source.html#l00573">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::~CommonMidiOutput()</a>.</p>
+
+</div>
+</div>
+<a id="a7d449f087a31268077d13281747f62cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d449f087a31268077d13281747f62cb">&#9670;&nbsp;</a></span>outputfile</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a> outputfile</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00092">92</a> der Datei <a class="el" href="../../de/d02/scl2mut_8cpp_source.html">scl2mut.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00121">run()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Sam Sep 15 2018 14:57:54 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.13</small></address>
+</body>
+</html>

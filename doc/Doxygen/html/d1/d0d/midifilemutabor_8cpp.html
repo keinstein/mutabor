@@ -1,0 +1,577 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>src/gmut/midifilemutabor.cpp-Dateireferenz</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',false,false,'search.php','Suchen');
+});
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_25f56488a97be449f6e55505040cb1fd.html">gmut</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Klassen</a> &#124;
+<a href="#namespaces">Namensbereiche</a> &#124;
+<a href="#define-members">Makrodefinitionen</a> &#124;
+<a href="#func-members">Funktionen</a> &#124;
+<a href="#var-members">Variablen</a>  </div>
+  <div class="headertitle">
+<div class="title">midifilemutabor.cpp-Dateireferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d1/d73/Defs_8h_source.html">src/kernel/Defs.h</a>&quot;</code><br />
+<code>#include &lt;boost/program_options.hpp&gt;</code><br />
+<code>#include &quot;boost/locale.hpp&quot;</code><br />
+<code>#include &quot;boost/filesystem.hpp&quot;</code><br />
+<code>#include &quot;boost/filesystem/fstream.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../da/d3c/DevMidF_8h_source.html">src/kernel/routing/midi/DevMidF.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d1/d65/Route_8h_source.html">src/kernel/routing/Route.h</a>&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;iterator&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/d2c/Route-inlines_8h_source.html">src/kernel/routing/Route-inlines.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d4/dab/debugFlags_8h_source.html">src/kernel/debugFlags.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include-Abhängigkeitsdiagramm für midifilemutabor.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d07/midifilemutabor_8cpp__incl.png" border="0" usemap="#src_2gmut_2midifilemutabor_8cpp" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div>
+<p><a href="../../d1/d0d/midifilemutabor_8cpp_source.html">gehe zum Quellcode dieser Datei</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Klassen</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d0e/structMyCompileCallback.html">MyCompileCallback</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namensbereiche</h2></td></tr>
+<tr class="memitem:db/d94/namespacemutaborGUI"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d94/namespacemutaborGUI.html">mutaborGUI</a></td></tr>
+<tr class="memdesc:db/d94/namespacemutaborGUI"><td class="mdescLeft">&#160;</td><td class="mdescRight">not for headers <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Makrodefinitionen</h2></td></tr>
+<tr class="memitem:aa4299b72e4c3bb3f86937c2abf69d01d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#aa4299b72e4c3bb3f86937c2abf69d01d">STR_too_many_positional_options_error</a>&#160;&#160;&#160;<a class="el" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(&quot;too many positional <a class="el" href="../../de/d02/scl2mut_8cpp.html#a03bb1ced9965be33d5c33b2559dc36dd">options</a> have been specified on the command line&quot;)</td></tr>
+<tr class="separator:aa4299b72e4c3bb3f86937c2abf69d01d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b3623610d6c87686e3ff72b99885b90"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8b3623610d6c87686e3ff72b99885b90">STR_reading_file</a>&#160;&#160;&#160;<a class="el" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(&quot;can not read <a class="el" href="../../de/d02/scl2mut_8cpp.html#a03bb1ced9965be33d5c33b2559dc36dd">options</a> configuration file '%s'&quot;)</td></tr>
+<tr class="separator:a8b3623610d6c87686e3ff72b99885b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b3935e324a7d36be8bd5ea3e7b8bcde"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a2b3935e324a7d36be8bd5ea3e7b8bcde">STR_multiple_values</a></td></tr>
+<tr class="separator:a2b3935e324a7d36be8bd5ea3e7b8bcde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17b865d9dad0e4af77bfc2b27467ca2d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a17b865d9dad0e4af77bfc2b27467ca2d">STR_multiple_occurrences</a></td></tr>
+<tr class="separator:a17b865d9dad0e4af77bfc2b27467ca2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aded4afb3bbd848ec98f3ffd7b6d8227b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#aded4afb3bbd848ec98f3ffd7b6d8227b">STR_required_option</a></td></tr>
+<tr class="separator:aded4afb3bbd848ec98f3ffd7b6d8227b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11a13c5a6067199193da75df0084a013"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a11a13c5a6067199193da75df0084a013">STR_unknown_option</a></td></tr>
+<tr class="separator:a11a13c5a6067199193da75df0084a013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31f7d4aab7eae96fe2f8fbfbef029e6c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a31f7d4aab7eae96fe2f8fbfbef029e6c">STR_ambiguous_option</a></td></tr>
+<tr class="separator:a31f7d4aab7eae96fe2f8fbfbef029e6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaaa44933ee7649a1d7e3e3b083012f9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#abaaa44933ee7649a1d7e3e3b083012f9">mut_catch_exception</a>(ex)</td></tr>
+<tr class="separator:abaaa44933ee7649a1d7e3e3b083012f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afca135e3ddf148ea7c3d1e42643999ae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#afca135e3ddf148ea7c3d1e42643999ae">N_</a></td></tr>
+<tr class="separator:afca135e3ddf148ea7c3d1e42643999ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a105f28eeee4fcf945785d64adfe0c03c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a105f28eeee4fcf945785d64adfe0c03c">DEBUGFLAG</a>(flag,  description)&#160;&#160;&#160;(&quot;debug-&quot;#flag, po::bool_switch()-&gt;implicit_value(true)-&gt;notifier(::mutabor::debugFlags::set ## flag()), <a class="el" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(description))</td></tr>
+<tr class="separator:a105f28eeee4fcf945785d64adfe0c03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:ga981cc43d26594717af82abab06375f92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#ga981cc43d26594717af82abab06375f92">mutaborGUI::DebugCheckRoutes</a> ()</td></tr>
+<tr class="separator:ga981cc43d26594717af82abab06375f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fbb3615864749835554cdaea12c6654"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a7fbb3615864749835554cdaea12c6654">do_help</a> (po::options_description &amp;desc, const char *<a class="el" href="../../d9/d7c/group__kernel.html#ga8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
+<tr class="separator:a7fbb3615864749835554cdaea12c6654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa434b9cbbd0e712209c8ae104737c3bf"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#aa434b9cbbd0e712209c8ae104737c3bf">operator&lt;&lt;</a> (std::ostream &amp;o, const std::vector&lt; <a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a> &gt; &amp;v)</td></tr>
+<tr class="separator:aa434b9cbbd0e712209c8ae104737c3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadacbe0175a79dff748855d8c9839f82b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db7/group__debug.html#gadacbe0175a79dff748855d8c9839f82b">main</a> (int ac, char *av[])</td></tr>
+<tr class="separator:gadacbe0175a79dff748855d8c9839f82b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variablen</h2></td></tr>
+<tr class="memitem:a7d449f087a31268077d13281747f62cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a7d449f087a31268077d13281747f62cb">outputfile</a></td></tr>
+<tr class="separator:a7d449f087a31268077d13281747f62cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6da0e54460c2bbc00c2291c2dd4b7d1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a6da0e54460c2bbc00c2291c2dd4b7d1e">inputfile</a></td></tr>
+<tr class="separator:a6da0e54460c2bbc00c2291c2dd4b7d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a782e321ca11d46ffd262a23dafbde1e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a782e321ca11d46ffd262a23dafbde1e6">logicfile</a></td></tr>
+<tr class="separator:a782e321ca11d46ffd262a23dafbde1e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a784db5ce1acae92b6d93ec2080fd198f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a784db5ce1acae92b6d93ec2080fd198f">startkeys</a></td></tr>
+<tr class="separator:a784db5ce1acae92b6d93ec2080fd198f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f1bafcc805dbab40ae7fec0e8958414"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dee/group__route.html#gaa07c845228719e7505615a18d241734d">mutabor::InputDevice</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a5f1bafcc805dbab40ae7fec0e8958414">inguard</a></td></tr>
+<tr class="separator:a5f1bafcc805dbab40ae7fec0e8958414"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae267c53fd50f580d86759941247c3b49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d12/classmutabor_1_1InputMidiFile.html">mutabor::InputMidiFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#ae267c53fd50f580d86759941247c3b49">in</a></td></tr>
+<tr class="separator:ae267c53fd50f580d86759941247c3b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae19cc1b57f911caa89b857b77ad6e3a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dee/group__route.html#gaa9af06d2b801f5fbf129acc683bb764d">mutabor::OutputDevice</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#ae19cc1b57f911caa89b857b77ad6e3a7">outguard</a></td></tr>
+<tr class="separator:ae19cc1b57f911caa89b857b77ad6e3a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a052dce0202384105285160d087642ab7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5f/classmutabor_1_1OutputMidiFile.html">mutabor::OutputMidiFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a052dce0202384105285160d087642ab7">out</a></td></tr>
+<tr class="separator:a052dce0202384105285160d087642ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fcb76a3736230818c8ecc301e8c8fc7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">mutabor::Route</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a8fcb76a3736230818c8ecc301e8c8fc7">route</a></td></tr>
+<tr class="separator:a8fcb76a3736230818c8ecc301e8c8fc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cc37b2cbacd9de4545ba0a05accc513"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dee/group__route.html#ga3f643df8253d674ef503b3c344010646">mutabor::Box</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#a7cc37b2cbacd9de4545ba0a05accc513">box</a></td></tr>
+<tr class="separator:a7cc37b2cbacd9de4545ba0a05accc513"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af59f6b62ad0923e59056d4a6f5523347"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d4a/classmutabor_1_1ChannelData.html">mutabor::ChannelData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d0d/midifilemutabor_8cpp.html#af59f6b62ad0923e59056d4a6f5523347">cd</a></td></tr>
+<tr class="separator:af59f6b62ad0923e59056d4a6f5523347"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Makro-Dokumentation</h2>
+<a id="a105f28eeee4fcf945785d64adfe0c03c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a105f28eeee4fcf945785d64adfe0c03c">&#9670;&nbsp;</a></span>DEBUGFLAG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGFLAG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">flag, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">description&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(&quot;debug-&quot;#flag, po::bool_switch()-&gt;implicit_value(true)-&gt;notifier(::mutabor::debugFlags::set ## flag()), <a class="el" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(description))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00137">MyCompileCallback::SetLine()</a>.</p>
+
+</div>
+</div>
+<a id="abaaa44933ee7649a1d7e3e3b083012f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaaa44933ee7649a1d7e3e3b083012f9">&#9670;&nbsp;</a></span>mut_catch_exception</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mut_catch_exception</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ex</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Wert:</b><div class="fragment"><div class="line"><span class="keywordflow">catch</span> (<span class="keyword">const</span> po::ex &amp; e) {                                      \</div><div class="line">                const_cast&lt;po::ex &amp;&gt;(e).m_error_template = STR_ ## ex;  \</div><div class="line">                cerr &lt;&lt; boost::format(<a class="code" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(<span class="stringliteral">&quot;Error: %s&quot;</span>)) % e.what()     \</div><div class="line">                     &lt;&lt; std::endl                                       \</div><div class="line">                     &lt;&lt; std::endl;                                      \</div><div class="line">                do_help(desc,*av);                                      \</div><div class="line">                return 1;                                               \</div><div class="line">        }</div><div class="ttc" id="group__kernel_html_gad94e0fa22a0f815bb713f9d2fb77655b"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a></div><div class="ttdeci">#define _mut</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00138">Defs.h:138</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00056">56</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00173">main()</a>.</p>
+
+</div>
+</div>
+<a id="afca135e3ddf148ea7c3d1e42643999ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afca135e3ddf148ea7c3d1e42643999ae">&#9670;&nbsp;</a></span>N_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define N_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00137">MyCompileCallback::SetLine()</a>.</p>
+
+</div>
+</div>
+<a id="a31f7d4aab7eae96fe2f8fbfbef029e6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31f7d4aab7eae96fe2f8fbfbef029e6c">&#9670;&nbsp;</a></span>STR_ambiguous_option</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR_ambiguous_option</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Wert:</b><div class="fragment"><div class="line"><span class="comment">/* xgettext:no-c-format */</span>                              \</div><div class="line">        _mut(<span class="stringliteral">&quot;option &#39;%canonical_option%&#39; is ambiguous&quot;</span>)</div></div><!-- fragment -->
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00052">52</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a17b865d9dad0e4af77bfc2b27467ca2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17b865d9dad0e4af77bfc2b27467ca2d">&#9670;&nbsp;</a></span>STR_multiple_occurrences</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR_multiple_occurrences</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Wert:</b><div class="fragment"><div class="line"><span class="comment">/* xgettext:no-c-format */</span>                                      \</div><div class="line">        _mut(<span class="stringliteral">&quot;option &#39;%canonical_option%&#39; cannot be specified more than once&quot;</span>)</div></div><!-- fragment -->
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00043">43</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2b3935e324a7d36be8bd5ea3e7b8bcde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b3935e324a7d36be8bd5ea3e7b8bcde">&#9670;&nbsp;</a></span>STR_multiple_values</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR_multiple_values</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Wert:</b><div class="fragment"><div class="line"><span class="comment">/* xgettext:no-c-format */</span>                                      \</div><div class="line">        _mut(<span class="stringliteral">&quot;option &#39;%canonical_option%&#39; only takes a single argument&quot;</span>)</div></div><!-- fragment -->
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00040">40</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8b3623610d6c87686e3ff72b99885b90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b3623610d6c87686e3ff72b99885b90">&#9670;&nbsp;</a></span>STR_reading_file</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR_reading_file&#160;&#160;&#160;<a class="el" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(&quot;can not read <a class="el" href="../../de/d02/scl2mut_8cpp.html#a03bb1ced9965be33d5c33b2559dc36dd">options</a> configuration file '%s'&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00038">38</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aded4afb3bbd848ec98f3ffd7b6d8227b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aded4afb3bbd848ec98f3ffd7b6d8227b">&#9670;&nbsp;</a></span>STR_required_option</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR_required_option</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Wert:</b><div class="fragment"><div class="line"><span class="comment">/* xgettext:no-c-format */</span>                                      \</div><div class="line">        _mut(<span class="stringliteral">&quot;the option &#39;%canonical_option%&#39; is required but missing&quot;</span>)</div></div><!-- fragment -->
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00046">46</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa4299b72e4c3bb3f86937c2abf69d01d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4299b72e4c3bb3f86937c2abf69d01d">&#9670;&nbsp;</a></span>STR_too_many_positional_options_error</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR_too_many_positional_options_error&#160;&#160;&#160;<a class="el" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(&quot;too many positional <a class="el" href="../../de/d02/scl2mut_8cpp.html#a03bb1ced9965be33d5c33b2559dc36dd">options</a> have been specified on the command line&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00036">36</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00173">main()</a>.</p>
+
+</div>
+</div>
+<a id="a11a13c5a6067199193da75df0084a013"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11a13c5a6067199193da75df0084a013">&#9670;&nbsp;</a></span>STR_unknown_option</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR_unknown_option</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Wert:</b><div class="fragment"><div class="line"><span class="comment">/* xgettext:no-c-format */</span>                              \</div><div class="line">        _mut(<span class="stringliteral">&quot;unrecognised option &#39;%canonical_option%&#39;&quot;</span>)</div></div><!-- fragment -->
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00049">49</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Funktionen</h2>
+<a id="a7fbb3615864749835554cdaea12c6654"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fbb3615864749835554cdaea12c6654">&#9670;&nbsp;</a></span>do_help()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_help </td>
+          <td>(</td>
+          <td class="paramtype">po::options_description &amp;&#160;</td>
+          <td class="paramname"><em>desc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00072">72</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="../../d1/d73/Defs_8h_source.html#l00138">_mut</a> und <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00059">name</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00173">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        cout &lt;&lt; (boost::format(<a class="code" href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a>(<span class="stringliteral">&quot;Synopsis: %s [options]  input-file[.mid] [output-file[.mid] [logic-file[.mut]]] [start-keys]&quot;</span>))</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                 % <a class="code" href="../../d9/d7c/group__kernel.html#ga8f8f80d37794cde9472343e4487ba3eb">name</a>) &lt;&lt; endl &lt;&lt; endl;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        cout &lt;&lt; desc &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div><div class="ttc" id="group__kernel_html_ga8f8f80d37794cde9472343e4487ba3eb"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga8f8f80d37794cde9472343e4487ba3eb">name</a></div><div class="ttdeci">const char * name</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/da0/TabGen_8cpp_source.html#l00059">TabGen.cpp:59</a></div></div>
+<div class="ttc" id="group__kernel_html_gad94e0fa22a0f815bb713f9d2fb77655b"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#gad94e0fa22a0f815bb713f9d2fb77655b">_mut</a></div><div class="ttdeci">#define _mut</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d73/Defs_8h_source.html#l00138">Defs.h:138</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa434b9cbbd0e712209c8ae104737c3bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa434b9cbbd0e712209c8ae104737c3bf">&#9670;&nbsp;</a></span>operator<<()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>o</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00080">80</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                                                {</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">if</span> (v.empty()) <span class="keywordflow">return</span> o;</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        std::vector&lt;std::string&gt;::const_iterator i = v.begin();</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        o &lt;&lt; *i;</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">while</span> (++i != v.end()) {</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                o &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; *i;</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">return</span> o;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Variablen-Dokumentation</h2>
+<a id="a7cc37b2cbacd9de4545ba0a05accc513"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cc37b2cbacd9de4545ba0a05accc513">&#9670;&nbsp;</a></span>box</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/dee/group__route.html#ga3f643df8253d674ef503b3c344010646">mutabor::Box</a> box</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00096">96</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00413">mutaborGUI::GUIRouteBase::Add()</a>, <a class="el" href="../../d3/d2a/BoxDlg_8cpp_source.html#l00194">mutaborGUI::RoutePanel::AddBox()</a>, <a class="el" href="../../d3/d2a/BoxDlg_8cpp_source.html#l00362">mutaborGUI::BoxDlg::AddButtonPressed()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00213">mutaborGUI::BEGIN_EVENT_TABLE()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00275">mutaborGUI::MutLogicWnd::BoxChanged()</a>, <a class="el" href="../../dd/db5/MutFrame_8h_source.html#l00256">mutaborGUI::MutFrame::BoxWindowsClose()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l01457">mutaborGUI::MutFrame::CeToggleAct()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l01426">mutaborGUI::MutFrame::CeToggleKey()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l01450">mutaborGUI::MutFrame::CeToggleTS()</a>, <a class="el" href="../../dc/de8/wxGUI_2Routing_2DebugRoute_8cpp_source.html#l00440">mutaborGUI::Check()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00515">mutaborGUI::MutLogicWnd::CmBox()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00795">mutaborGUI::MutFrame::CmDoActivate()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00491">mutaborGUI::MutLogicWnd::CmMutTag()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00390">mutaborGUI::MutLogicWnd::CmTaste()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00735">mutabor::BoxClass::Compile()</a>, <a class="el" href="../../d2/d2c/Route-inlines_8h_source.html#l00189">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::Create()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00600">mutabor::RouteFactory::Create()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00303">mutaborGUI::GUIRouteFactory::CreateBoxChannelShape()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00305">mutaborGUI::MutRouteWnd::createBoxes()</a>, <a class="el" href="../../df/d23/Execute_8cpp_source.html#l01007">mutabor::hidden::DeleteKey()</a>, <a class="el" href="../../d2/d2c/Route-inlines_8h_source.html#l00229">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::Destroy()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l01870">mutaborGUI::MutFrame::DetermineFrameSize()</a>, <a class="el" href="../../d5/d12/GUIBoxData-inlines_8h_source.html#l00094">mutaborGUI::disconnect()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00557">mutaborGUI::GUIRouteFactory::DoCreate()</a>, <a class="el" href="../../db/d0a/BoxTest_8cpp_source.html#l00041">error_callback()</a>, <a class="el" href="../../df/d3c/MutTextBox_8cpp_source.html#l00075">EVT_CLOSE()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00848">mutabor::BoxClass::get_distance()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00836">mutabor::BoxClass::get_frequency()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00843">mutabor::BoxClass::get_index()</a>, <a class="el" href="../../dc/df5/Parser_8cpp_source.html#l00386">mutabor::hidden::get_new_anchor_in_argument_list()</a>, <a class="el" href="../../d9/dd2/BoxDlg_8h_source.html#l00164">mutaborGUI::RoutePanel::BoxShapeData::GetBox()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00330">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::GetBox()</a>, <a class="el" href="../../d9/dd2/BoxDlg_8h_source.html#l00153">mutaborGUI::RoutePanel::GetBoxChoice()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00696">mutabor::BoxClass::GetCurrentTones()</a>, <a class="el" href="../../d6/d68/BoxChannelShape_8h_source.html#l00256">mutaborGUI::MutBoxChannelShape::GetGUIRoute()</a>, <a class="el" href="../../df/d3c/MutTextBox_8cpp_source.html#l00258">MutTextBox::GetKeys()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00638">mutabor::BoxClass::GetLogics()</a>, <a class="el" href="../../df/d3c/MutTextBox_8cpp_source.html#l00305">MutTextBox::GetToneSystem()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00658">mutabor::BoxClass::GetToneSystem()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00207">mutaborGUI::GUIfiedRoute&lt; T &gt;::GUIfiedRoute()</a>, <a class="el" href="../../d2/d2c/Route-inlines_8h_source.html#l00240">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::handle_event()</a>, <a class="el" href="../../d3/d2a/BoxDlg_8cpp_source.html#l00144">mutaborGUI::IMPLEMENT_DYNAMIC_CLASS()</a>, <a class="el" href="../../d8/dba/NewBoxShape_8cpp_source.html#l00058">mutaborGUI::NewMutBoxShape::InitializeDialog()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00358">mutaborGUI::MutBoxChannelShape::InitializeRoute()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00829">mutabor::BoxClass::IsLogicKey()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00229">mutaborGUI::GUIfiedRoute&lt; T &gt;::IsRoute()</a>, <a class="el" href="../../df/d23/Execute_8cpp_source.html#l01224">mutabor::hidden::KeyboardAnalyseSimple()</a>, <a class="el" href="../../dd/d15/gmutdos_8cpp_source.html#l00070">KeyboardIn()</a>, <a class="el" href="../../dd/db8/RouteCompat_8cpp_source.html#l00126">compat30::LoadRoutes()</a>, <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00173">main()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00269">mutaborGUI::MutLogicWnd::MakeTitle()</a>, <a class="el" href="../../df/d3c/MutTextBox_8cpp_source.html#l00464">MutTextBox::MakeTitle()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00212">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::MidiAnalysis()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00236">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::MidiOut()</a>, <a class="el" href="../../dc/d19/box_8h_source.html#l00180">mutabor_clear_box_scanner()</a>, <a class="el" href="../../de/d11/Execute_8h_source.html#l00128">mutabor::hidden::mutabor_free_logic_mutex()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00194">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::NoteOff()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00174">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::NoteOn()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00524">mutaborGUI::MutLogicWnd::OnActivate()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00380">mutaborGUI::MutLogicWnd::OnChar()</a>, <a class="el" href="../../df/d3c/MutTextBox_8cpp_source.html#l00107">MutTextBox::OnClose()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00718">mutaborGUI::MutRouteWnd::OnDraw()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00533">mutaborGUI::MutLogicWnd::OnGetFocus()</a>, <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00307">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::operator std::string()</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00966">mutabor::OutputDeviceClass::OutputDeviceClass()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00254">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::Panic()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00331">mutabor::BoxClass::Panic()</a>, <a class="el" href="../../db/dd6/genmidilinear_8cpp_source.html#l00074">myDevice::Pause()</a>, <a class="el" href="../../db/d78/DevGIS_8cpp_source.html#l00416">mutabor::InputGis::Proceed()</a>, <a class="el" href="../../d3/d0f/midicmn_8cpp_source.html#l00974">mutabor::CommonMidiInput&lt; InputDeviceClass &gt;::ProceedRoute()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00985">mutaborGUI::MutFrame::RaiseLogic()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00451">mutaborGUI::MutBoxChannelShape::ReadPanel()</a>, <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00185">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::Remove()</a>, <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00154">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::Replace()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00393">mutabor::BoxClass::Reset()</a>, <a class="el" href="../../d3/da0/TabGen_8cpp_source.html#l00289">resolve_parameters()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00672">mutabor::RouteFactory::SaveRoutes()</a>, <a class="el" href="../../dd/d20/event_8h_source.html#l00126">mutabor::event_class::set_box()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00100">mutabor::BoxClass::set_routefile_id()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00334">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::SetBox()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00680">mutaborGUI::MutFrame::SetClient()</a>, <a class="el" href="../../d9/dd2/BoxDlg_8h_source.html#l00140">mutaborGUI::RoutePanel::SetPassive()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00091">CommonMidiOutputTest::setUp()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00598">CommonMidiInputTest::setUp()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l04814">OutputMidiFileTest::setUp()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00116">CommonMidiOutputTest::tearDown()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00629">CommonMidiInputTest::tearDown()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l04853">OutputMidiFileTest::tearDown()</a>, <a class="el" href="../../d1/da7/boxTest_8cpp_source.html#l00103">boxTest::testAddKey()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05673">InputMidiFileTest::testAfterTouch()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01500">InputMidiFileTest::testAllControllerOff()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01272">InputMidiFileTest::testBankSelect()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l00075">InputMidiFileTest::testBatchPlay1()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05065">OutputMidiFileTest::testBatchPlay1()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05458">InputMidiFileTest::testBoxMidiIn()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l00935">InputMidiFileTest::testBug019010()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l00597">InputMidiFileTest::testBug019010_2()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01922">InputMidiFileTest::testControllerPlay()</a>, <a class="el" href="../../d2/dba/RouteTest_8cpp_source.html#l00046">RouteTest::testDestroyAll()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l01059">CommonMidiInputTest::testGlobalPanic()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00383">CommonMidiOutputTest::testMoreNotesThanChannels()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00137">CommonMidiOutputTest::testNoteOnOff()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l04875">OutputMidiFileTest::testNoteOnOff()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00653">CommonMidiInputTest::testPanic()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01701">InputMidiFileTest::testRpnNrpn()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05888">InputMidiFileTest::testSysEx()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l01160">mutaborGUI::MutFrame::ToggleTextBox()</a>, <a class="el" href="../../df/d11/MutLogicWnd_8cpp_source.html#l00413">mutaborGUI::MutLogicWnd::UpDate()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l01979">mutaborGUI::MutFrame::UpdateBoxMenu()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00077">mutabor::BoxClass::~BoxClass()</a>, <a class="el" href="../../de/d21/midicmn_8h_source.html#l00573">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::~CommonMidiOutput()</a> und <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00077">mutaborGUI::GUIRouteBase::~GUIRouteBase()</a>.</p>
+
+</div>
+</div>
+<a id="af59f6b62ad0923e59056d4a6f5523347"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af59f6b62ad0923e59056d4a6f5523347">&#9670;&nbsp;</a></span>cd</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d4a/classmutabor_1_1ChannelData.html">mutabor::ChannelData</a> cd</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00097">97</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d5/d04/Frac_8cpp_source.html#l00159">mutabor::frac::operator*()</a>, <a class="el" href="../../d5/d04/Frac_8cpp_source.html#l00119">mutabor::frac::operator+()</a>, <a class="el" href="../../d5/d04/Frac_8cpp_source.html#l00041">mutabor::frac::operator+=()</a>, <a class="el" href="../../d5/d04/Frac_8cpp_source.html#l00140">mutabor::frac::operator-()</a>, <a class="el" href="../../d5/d04/Frac_8cpp_source.html#l00065">mutabor::frac::operator-=()</a>, <a class="el" href="../../d5/d04/Frac_8cpp_source.html#l00174">mutabor::frac::operator/()</a>, <a class="el" href="../../db/dd6/genmidilinear_8cpp_source.html#l00074">myDevice::Pause()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05673">InputMidiFileTest::testAfterTouch()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01500">InputMidiFileTest::testAllControllerOff()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01272">InputMidiFileTest::testBankSelect()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l00075">InputMidiFileTest::testBatchPlay1()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05458">InputMidiFileTest::testBoxMidiIn()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l00935">InputMidiFileTest::testBug019010()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l00597">InputMidiFileTest::testBug019010_2()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01922">InputMidiFileTest::testControllerPlay()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00383">CommonMidiOutputTest::testMoreNotesThanChannels()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00137">CommonMidiOutputTest::testNoteOnOff()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l04875">OutputMidiFileTest::testNoteOnOff()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01701">InputMidiFileTest::testRpnNrpn()</a> und <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05888">InputMidiFileTest::testSysEx()</a>.</p>
+
+</div>
+</div>
+<a id="ae267c53fd50f580d86759941247c3b49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae267c53fd50f580d86759941247c3b49">&#9670;&nbsp;</a></span>in</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d12/classmutabor_1_1InputMidiFile.html">mutabor::InputMidiFile</a>* in</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00092">92</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00141">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::Add()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01038">mutaborGUI::GUIInputDeviceBase::Add()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l04782">OutputMidiFileTest::CheckOut()</a>, <a class="el" href="../../d2/d2c/Route-inlines_8h_source.html#l00059">mutabor::connect()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00063">mutaborGUI::connect()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00268">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::Controller()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00600">mutabor::RouteFactory::Create()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00303">mutaborGUI::GUIRouteFactory::CreateBoxChannelShape()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00177">mutaborGUI::disconnect()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00557">mutaborGUI::GUIRouteFactory::DoCreate()</a>, <a class="el" href="../../d3/d5e/InputMidiDeviceShape_8h_source.html#l00152">mutaborGUI::MutInputMidiDeviceShape::GetMutIcon()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01190">mutaborGUI::GUIInputDeviceBase::GetShape()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00229">mutaborGUI::GUIfiedRoute&lt; T &gt;::IsRoute()</a>, <a class="el" href="../../d6/d68/BoxChannelShape_8h_source.html#l00131">mutaborGUI::MutBoxChannelShape::LeftDblClickEvent()</a>, <a class="el" href="../../d4/df2/mis_8cpp_source.html#l00105">MisFile::Load()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00585">mutabor::DeviceFactory::LoadInputDevices()</a>, <a class="el" href="../../d0/dd6/gmnopenfail1_8cpp_source.html#l00143">main()</a>, <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00571">mutabor::InputMidiFile::Open()</a>, <a class="el" href="../../d8/d2f/GSP__File_8cpp_source.html#l00053">OpenFile()</a>, <a class="el" href="../../d3/d06/playgmn1_8cpp_source.html#l00134">myDevice::Pause()</a>, <a class="el" href="../../d5/dba/NewInputDeviceShape_8h_source.html#l00089">mutaborGUI::MutNewInputDeviceShape::ReadFilterPanel()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01104">mutaborGUI::GUIInputDeviceBase::Remove()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01070">mutaborGUI::GUIInputDeviceBase::Replace()</a>, <a class="el" href="../../d9/d94/DeviceShape_8cpp_source.html#l00515">mutaborGUI::MutDeviceShape&lt; T &gt;::replaceSelfBy()</a>, <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00121">run()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00618">mutabor::DeviceFactory::SaveInputDevices()</a>, <a class="el" href="../../d9/dd2/BoxDlg_8h_source.html#l00147">mutaborGUI::RoutePanel::SetInput()</a>, <a class="el" href="../../d9/d0d/InputGuidoFileDeviceShape_8h_source.html#l00091">mutaborGUI::MutInputGuidoFileDeviceShape::SetLabel()</a>, <a class="el" href="../../d1/da8/InputMidiFileDeviceShape_8h_source.html#l00163">mutaborGUI::MutInputMidiFileDeviceShape::SetLabel()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00598">CommonMidiInputTest::setUp()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00629">CommonMidiInputTest::tearDown()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l01059">CommonMidiInputTest::testGlobalPanic()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00653">CommonMidiInputTest::testPanic()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00490">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::TRouteClass()</a> und <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00077">mutaborGUI::GUIRouteBase::~GUIRouteBase()</a>.</p>
+
+</div>
+</div>
+<a id="a5f1bafcc805dbab40ae7fec0e8958414"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f1bafcc805dbab40ae7fec0e8958414">&#9670;&nbsp;</a></span>inguard</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/dee/group__route.html#gaa07c845228719e7505615a18d241734d">mutabor::InputDevice</a> inguard</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00091">91</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00173">main()</a> und <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05065">OutputMidiFileTest::testBatchPlay1()</a>.</p>
+
+</div>
+</div>
+<a id="a6da0e54460c2bbc00c2291c2dd4b7d1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6da0e54460c2bbc00c2291c2dd4b7d1e">&#9670;&nbsp;</a></span>inputfile</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a> inputfile</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00068">68</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00173">main()</a> und <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00137">MyCompileCallback::SetLine()</a>.</p>
+
+</div>
+</div>
+<a id="a782e321ca11d46ffd262a23dafbde1e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a782e321ca11d46ffd262a23dafbde1e6">&#9670;&nbsp;</a></span>logicfile</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a> logicfile</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00069">69</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00173">main()</a> und <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00137">MyCompileCallback::SetLine()</a>.</p>
+
+</div>
+</div>
+<a id="a052dce0202384105285160d087642ab7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a052dce0202384105285160d087642ab7">&#9670;&nbsp;</a></span>out</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d5f/classmutabor_1_1OutputMidiFile.html">mutabor::OutputMidiFile</a>* out</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00094">94</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00141">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::Add()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00844">mutaborGUI::GUIOutputDeviceBase::Add()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l04782">OutputMidiFileTest::CheckOut()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l00727">mutaborGUI::MutFrame::CmExportScala()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00063">mutaborGUI::connect()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00268">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::Controller()</a>, <a class="el" href="../../dd/d4d/GIS_8h_source.html#l00141">GisToken::Copy()</a>, <a class="el" href="../../dd/d4d/GIS_8h_source.html#l00312">GisTag::Copy()</a>, <a class="el" href="../../dd/d4d/GIS_8h_source.html#l00364">GisTagBegin::Copy()</a>, <a class="el" href="../../dd/d4d/GIS_8h_source.html#l00500">GisParaInt::Copy()</a>, <a class="el" href="../../dd/d4d/GIS_8h_source.html#l00536">GisParaReal::Copy()</a>, <a class="el" href="../../dd/d4d/GIS_8h_source.html#l00581">GisParaStr::Copy()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00600">mutabor::RouteFactory::Create()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00303">mutaborGUI::GUIRouteFactory::CreateBoxChannelShape()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00177">mutaborGUI::disconnect()</a>, <a class="el" href="../../d0/d6b/DevMidF_8cpp_source.html#l00390">mutabor::OutputMidiFile::do_Close()</a>, <a class="el" href="../../d4/dee/GUIRoute_8cpp_source.html#l00557">mutaborGUI::GUIRouteFactory::DoCreate()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00388">GisNote::GetKey()</a>, <a class="el" href="../../d8/dcb/OutputMidiDeviceShape_8h_source.html#l00081">mutaborGUI::MutOutputMidiDeviceShape::GetMutIcon()</a>, <a class="el" href="../../dc/de7/GIS_8cpp_source.html#l00222">GisTag::GetPara()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00756">mutaborGUI::GUIRouteBase::GetShape()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l01025">mutaborGUI::GUIOutputDeviceBase::GetShape()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00229">mutaborGUI::GUIfiedRoute&lt; T &gt;::IsRoute()</a>, <a class="el" href="../../d6/d68/BoxChannelShape_8h_source.html#l00131">mutaborGUI::MutBoxChannelShape::LeftDblClickEvent()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00531">mutabor::DeviceFactory::LoadOutputDevices()</a>, <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00247">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::LoadRoutes()</a>, <a class="el" href="../../db/dd6/genmidilinear_8cpp_source.html#l00074">myDevice::Pause()</a>, <a class="el" href="../../db/d78/DevGIS_8cpp_source.html#l00416">mutabor::InputGis::Proceed()</a>, <a class="el" href="../../df/d7b/NewOutputDeviceShape_8h_source.html#l00095">mutaborGUI::MutNewOutputDeviceShape::ReadFilterPanel()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00907">mutaborGUI::GUIOutputDeviceBase::Remove()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00875">mutaborGUI::GUIOutputDeviceBase::Replace()</a>, <a class="el" href="../../d9/d94/DeviceShape_8cpp_source.html#l00515">mutaborGUI::MutDeviceShape&lt; T &gt;::replaceSelfBy()</a>, <a class="el" href="../../de/d02/scl2mut_8cpp_source.html#l00121">run()</a>, <a class="el" href="../../d4/df2/mis_8cpp_source.html#l00144">MisFile::Save()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00562">mutabor::DeviceFactory::SaveOutputDevices()</a>, <a class="el" href="../../db/d77/OutputGuidoFileDeviceShape_8h_source.html#l00088">mutaborGUI::MutOutputGuidoFileDeviceShape::SetLabel()</a>, <a class="el" href="../../d4/de8/OutputMidiFileDeviceShape_8h_source.html#l00089">mutaborGUI::MutOutputMidiFileDeviceShape::SetLabel()</a>, <a class="el" href="../../d9/dd2/BoxDlg_8h_source.html#l00149">mutaborGUI::RoutePanel::SetOutput()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00091">CommonMidiOutputTest::setUp()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00598">CommonMidiInputTest::setUp()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l04814">OutputMidiFileTest::setUp()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00116">CommonMidiOutputTest::tearDown()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00629">CommonMidiInputTest::tearDown()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l04853">OutputMidiFileTest::tearDown()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05673">InputMidiFileTest::testAfterTouch()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01500">InputMidiFileTest::testAllControllerOff()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01272">InputMidiFileTest::testBankSelect()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l00075">InputMidiFileTest::testBatchPlay1()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05065">OutputMidiFileTest::testBatchPlay1()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05458">InputMidiFileTest::testBoxMidiIn()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l00935">InputMidiFileTest::testBug019010()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l00597">InputMidiFileTest::testBug019010_2()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01922">InputMidiFileTest::testControllerPlay()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l01059">CommonMidiInputTest::testGlobalPanic()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00383">CommonMidiOutputTest::testMoreNotesThanChannels()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00137">CommonMidiOutputTest::testNoteOnOff()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l04875">OutputMidiFileTest::testNoteOnOff()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00653">CommonMidiInputTest::testPanic()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01701">InputMidiFileTest::testRpnNrpn()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05888">InputMidiFileTest::testSysEx()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00490">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::TRouteClass()</a>, <a class="el" href="../../dd/d4d/GIS_8h_source.html#l00194">GisSequenz::Type()</a>, <a class="el" href="../../dd/d4d/GIS_8h_source.html#l00240">GisSegment::Type()</a>, <a class="el" href="../../dd/d4d/GIS_8h_source.html#l00398">GisTagEnd::Type()</a>, <a class="el" href="../../dd/d4d/GIS_8h_source.html#l00456">GisNote::Type()</a>, <a class="el" href="../../dd/d4d/GIS_8h_source.html#l00608">GisComma::Type()</a> und <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00077">mutaborGUI::GUIRouteBase::~GUIRouteBase()</a>.</p>
+
+</div>
+</div>
+<a id="ae19cc1b57f911caa89b857b77ad6e3a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae19cc1b57f911caa89b857b77ad6e3a7">&#9670;&nbsp;</a></span>outguard</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/dee/group__route.html#gaa9af06d2b801f5fbf129acc683bb764d">mutabor::OutputDevice</a> outguard</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00093">93</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00173">main()</a> und <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00598">CommonMidiInputTest::setUp()</a>.</p>
+
+</div>
+</div>
+<a id="a7d449f087a31268077d13281747f62cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d449f087a31268077d13281747f62cb">&#9670;&nbsp;</a></span>outputfile</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a> outputfile</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00067">67</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00173">main()</a> und <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00137">MyCompileCallback::SetLine()</a>.</p>
+
+</div>
+</div>
+<a id="a8fcb76a3736230818c8ecc301e8c8fc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fcb76a3736230818c8ecc301e8c8fc7">&#9670;&nbsp;</a></span>route</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/dee/group__route.html#gae5927f0f6043b271d1bd1c493e2505e4">mutabor::Route</a> route</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00095">95</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00172">mutaborGUI::MutBoxChannelShape::Add()</a>, <a class="el" href="../../d9/d94/DeviceShape_8cpp_source.html#l00138">mutaborGUI::MutDeviceShape&lt; T &gt;::Add()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00133">mutabor::BoxClass::Add()</a>, <a class="el" href="../../d2/dc0/Device_8cpp_source.html#l00135">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::Add()</a>, <a class="el" href="../../d8/db4/BoxShape_8cpp_source.html#l00202">mutaborGUI::MutBoxShape::AddChannel()</a>, <a class="el" href="../../dc/de8/wxGUI_2Routing_2DebugRoute_8cpp_source.html#l00204">mutaborGUI::Check()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00614">mutaborGUI::GUIfiedInputDevice&lt; T &gt;::Close()</a>, <a class="el" href="../../dc/df3/MutFrame_8cpp_source.html#l01096">mutaborGUI::MutFrame::CmRoutes()</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00703">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::CommonTypedDeviceAPI()</a>, <a class="el" href="../../d5/d12/GUIBoxData-inlines_8h_source.html#l00055">mutaborGUI::connect()</a>, <a class="el" href="../../d2/d73/GUIRoute-inlines_8h_source.html#l00113">mutaborGUI::connect_device_shape()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00112">mutaborGUI::MutBoxChannelShape::Create()</a>, <a class="el" href="../../d3/d2a/BoxDlg_8cpp_source.html#l00238">mutaborGUI::RouteRemoveButton::Create()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00303">mutaborGUI::GUIRouteFactory::CreateBoxChannelShape()</a>, <a class="el" href="../../dc/def/MutRouteWnd_8cpp_source.html#l00335">mutaborGUI::MutRouteWnd::createRoutes()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00718">mutaborGUI::MutBoxChannelShape::DeleteRoute()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00713">mutaborGUI::MutBoxChannelShape::DetachChannel()</a>, <a class="el" href="../../d5/d12/GUIBoxData-inlines_8h_source.html#l00094">mutaborGUI::disconnect()</a>, <a class="el" href="../../d6/d9a/Box-inlines_8h_source.html#l00069">mutabor::BoxClass::DisconnectFromAll()</a>, <a class="el" href="../../d8/d4d/Device-inlines_8h_source.html#l00068">mutabor::CommonTypedDeviceAPI&lt; InputDeviceClass &gt;::DisconnectFromAll()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00144">mutaborGUI::MutBoxChannelShape::GetMutIcon()</a>, <a class="el" href="../../d8/dcb/OutputMidiDeviceShape_8h_source.html#l00081">mutaborGUI::MutOutputMidiDeviceShape::GetMutIcon()</a>, <a class="el" href="../../d3/d5e/InputMidiDeviceShape_8h_source.html#l00152">mutaborGUI::MutInputMidiDeviceShape::GetMutIcon()</a>, <a class="el" href="../../de/d0f/Box_8h_source.html#l00303">mutabor::BoxClass::GetNextFreeBox()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00367">mutaborGUI::GUIOutputDeviceBase::GetShapes()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00509">mutaborGUI::GUIInputDeviceBase::GetShapes()</a>, <a class="el" href="../../d8/db4/BoxShape_8cpp_source.html#l00238">mutaborGUI::MutBoxShape::HasChannel()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00299">mutaborGUI::MutBoxChannelShape::InitializeInputFilter()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00402">mutaborGUI::MutBoxChannelShape::InitializeOutputFilter()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00358">mutaborGUI::MutBoxChannelShape::InitializeRoute()</a>, <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00247">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::LoadRoutes()</a>, <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00173">main()</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l01048">mutabor::InputDeviceClass::current_keys_type::entry::operator==()</a>, <a class="el" href="../../d1/d65/Route_8h_source.html#l00386">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::OutputAvoidDrumChannel()</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00966">mutabor::OutputDeviceClass::OutputDeviceClass()</a>, <a class="el" href="../../db/dd6/genmidilinear_8cpp_source.html#l00074">myDevice::Pause()</a>, <a class="el" href="../../d9/d94/DeviceShape_8cpp_source.html#l00201">mutaborGUI::MutDeviceShape&lt; T &gt;::ReadPanel()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00451">mutaborGUI::MutBoxChannelShape::ReadPanel()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00245">mutaborGUI::MutBoxChannelShape::Remove()</a>, <a class="el" href="../../d9/d49/BoxShape_8h_source.html#l00199">mutaborGUI::MutBoxShape::Remove()</a>, <a class="el" href="../../d9/d94/DeviceShape_8cpp_source.html#l00167">mutaborGUI::MutDeviceShape&lt; T &gt;::Remove()</a>, <a class="el" href="../../dd/db5/MutFrame_8h_source.html#l00287">mutaborGUI::MutFrame::repaint_route()</a>, <a class="el" href="../../d9/d24/BoxChannelShape_8cpp_source.html#l00208">mutaborGUI::MutBoxChannelShape::Replace()</a>, <a class="el" href="../../d9/dd2/BoxDlg_8h_source.html#l00179">mutaborGUI::RouteRemoveButton::RouteRemoveButton()</a>, <a class="el" href="../../d8/dfb/Route_8cpp_source.html#l00227">mutabor::TRouteClass&lt; InputDevice, OutputDevice, Box &gt;::SaveRoutes()</a>, <a class="el" href="../../db/d77/OutputGuidoFileDeviceShape_8h_source.html#l00088">mutaborGUI::MutOutputGuidoFileDeviceShape::SetLabel()</a>, <a class="el" href="../../d4/de8/OutputMidiFileDeviceShape_8h_source.html#l00089">mutaborGUI::MutOutputMidiFileDeviceShape::SetLabel()</a>, <a class="el" href="../../d9/d0d/InputGuidoFileDeviceShape_8h_source.html#l00091">mutaborGUI::MutInputGuidoFileDeviceShape::SetLabel()</a>, <a class="el" href="../../d1/da8/InputMidiFileDeviceShape_8h_source.html#l00163">mutaborGUI::MutInputMidiFileDeviceShape::SetLabel()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00091">CommonMidiOutputTest::setUp()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00598">CommonMidiInputTest::setUp()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l04814">OutputMidiFileTest::setUp()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00116">CommonMidiOutputTest::tearDown()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00629">CommonMidiInputTest::tearDown()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l04853">OutputMidiFileTest::tearDown()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05673">InputMidiFileTest::testAfterTouch()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01500">InputMidiFileTest::testAllControllerOff()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01272">InputMidiFileTest::testBankSelect()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l00075">InputMidiFileTest::testBatchPlay1()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05065">OutputMidiFileTest::testBatchPlay1()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05458">InputMidiFileTest::testBoxMidiIn()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l00935">InputMidiFileTest::testBug019010()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l00597">InputMidiFileTest::testBug019010_2()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01922">InputMidiFileTest::testControllerPlay()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00383">CommonMidiOutputTest::testMoreNotesThanChannels()</a>, <a class="el" href="../../d8/d59/midicmnTest_8cpp_source.html#l00137">CommonMidiOutputTest::testNoteOnOff()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l04875">OutputMidiFileTest::testNoteOnOff()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l01701">InputMidiFileTest::testRpnNrpn()</a>, <a class="el" href="../../d9/d99/DevMidFTest_8cpp_source.html#l05888">InputMidiFileTest::testSysEx()</a>, <a class="el" href="../../dd/dc6/Box_8cpp_source.html#l00797">mutabor::BoxClass::UpdateTones()</a>, <a class="el" href="../../de/d21/midicmn_8h_source.html#l00573">mutabor::CommonMidiOutput&lt; MidiPortOutputProvider, OutputDeviceClass &gt;::~CommonMidiOutput()</a>, <a class="el" href="../../de/d05/Device_8h_source.html#l00515">mutabor::Device::~Device()</a>, <a class="el" href="../../d6/dfa/GUIRoute_8h_source.html#l00429">mutaborGUI::GUIfiedOutputDevice&lt; T &gt;::~GUIfiedOutputDevice()</a>, <a class="el" href="../../da/d81/DevGIS_8h_source.html#l00263">mutabor::InputGis::~InputGis()</a>, <a class="el" href="../../da/d3c/DevMidF_8h_source.html#l00937">mutabor::InputMidiFile::~InputMidiFile()</a>, <a class="el" href="../../da/d81/DevGIS_8h_source.html#l00083">mutabor::OutputGis::~OutputGis()</a>, <a class="el" href="../../da/d3c/DevMidF_8h_source.html#l00817">mutabor::OutputMidiFile::~OutputMidiFile()</a> und <a class="el" href="../../d4/da2/DevMidi_8h_source.html#l00268">mutabor::OutputMidiPort::~OutputMidiPort()</a>.</p>
+
+</div>
+</div>
+<a id="a784db5ce1acae92b6d93ec2080fd198f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a784db5ce1acae92b6d93ec2080fd198f">&#9670;&nbsp;</a></span>startkeys</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/d46/scale__lexer_8cc.html#a25093e36e9fb377b246945a84745823f">std::string</a> startkeys</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00070">70</a> der Datei <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html">midifilemutabor.cpp</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00173">main()</a> und <a class="el" href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00137">MyCompileCallback::SetLine()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Sam Sep 15 2018 14:57:54 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.13</small></address>
+</body>
+</html>

@@ -1,0 +1,29 @@
+digraph "mutabor::Track"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node3 [label="mutabor::Track",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node4 [label="mutabor::TrackData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/dec/classmutabor_1_1TrackData.html"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node5 [label="std::vector\< uint8_t \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node6 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" elements" ,fontname="Sans"];
+  Node6 [label="T",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" flags" ,fontname="Sans"];
+  Node7 [label="mutabor::Track::status\l_flags",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d57/structmutabor_1_1Track_1_1status__flags.html"];
+  Node8 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" timing" ,fontname="Sans"];
+  Node8 [label="mutabor::timing_params",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/de0/classmutabor_1_1timing__params.html",tooltip="A class for managing time calculations. "];
+  Node9 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" quarter_duration" ,fontname="Sans"];
+  Node9 [label="microseconds",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node10 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" name" ,fontname="Sans"];
+  Node10 [label="std::string",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node11 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node11 [label="std::basic_string\<\l char \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node9 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" remaining_delta" ,fontname="Sans"];
+  Node12 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" position" ,fontname="Sans"];
+  Node12 [label="size_t",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node13 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" current_delta" ,fontname="Sans"];
+  Node13 [label="mutabor::timing_params\l::miditicks",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/de1/classmutabor_1_1timing__params_1_1miditicks.html"];
+  Node8 -> Node13 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" params" ,fontname="Sans"];
+}

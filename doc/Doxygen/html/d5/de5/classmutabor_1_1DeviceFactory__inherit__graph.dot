@@ -1,0 +1,21 @@
+digraph "mutabor::DeviceFactory"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="mutabor::DeviceFactory",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node1 [label="mutabor::GisFactory",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/df7/classmutabor_1_1GisFactory.html"];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node2 [label="mutabor::MidiFileFactory",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d5a/classmutabor_1_1MidiFileFactory.html"];
+  Node0 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node3 [label="mutabor::MidiPortFactory",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/dc0/classmutabor_1_1MidiPortFactory.html"];
+  Node0 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node4 [label="mutaborGUI::GUIDeviceFactory",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/d9a/classmutaborGUI_1_1GUIDeviceFactory.html"];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node5 [label="mutaborGUI::GUIGisFactory",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/dbd/classmutaborGUI_1_1GUIGisFactory.html"];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node6 [label="mutaborGUI::GUIMidiFileFactory",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d6a/classmutaborGUI_1_1GUIMidiFileFactory.html"];
+  Node4 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node7 [label="mutaborGUI::GUIMidiPortFactory",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d3/db0/classmutaborGUI_1_1GUIMidiPortFactory.html"];
+}

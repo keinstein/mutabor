@@ -1,0 +1,12 @@
+digraph "configtree"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  Node2 [label="configtree",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node3 [label="mutabor::tree_storage",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/de5/classmutabor_1_1tree__storage.html",tooltip="Class tree_storage proviedes an interface for classes providing tree based storage. "];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" states" ,fontname="Sans"];
+  Node4 [label="std::stack\< configtree\l::state \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" elements" ,fontname="Sans"];
+  Node5 [label="configtree::state",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/de4/structconfigtree_1_1state.html",tooltip="structure describing the current state "];
+}

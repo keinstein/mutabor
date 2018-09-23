@@ -1,0 +1,11 @@
+digraph "Grafische Darstellung der Klassenhierarchie"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node407 [label="atomic",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node407 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node0 [label="ThreadSignal\< T, M, C \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d5e/classThreadSignal.html"];
+  Node407 -> Node409 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node409 [label="ThreadSignal\< int \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d5e/classThreadSignal.html"];
+}

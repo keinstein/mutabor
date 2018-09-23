@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>ThreadCondition&lt; M &gt; Template-Klassenreferenz</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',false,false,'search.php','Suchen');
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Öffentliche Typen</a> &#124;
+<a href="#pub-methods">Öffentliche Methoden</a> &#124;
+<a href="#pro-attribs">Geschützte Attribute</a> &#124;
+<a href="../../d3/dd3/classThreadCondition-members.html">Aufstellung aller Elemente</a>  </div>
+  <div class="headertitle">
+<div class="title">ThreadCondition&lt; M &gt; Template-Klassenreferenz<div class="ingroups"><a class="el" href="../../d5/dee/group__route.html">Basic event routing functions</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>&gt;</code></p>
+<div class="dynheader">
+Klassendiagramm für ThreadCondition&lt; M &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dd/dfe/classThreadCondition__inherit__graph.png" border="0" usemap="#ThreadCondition_3_01M_01_4_inherit__map" alt="Inheritance graph"/></div>
+<!-- MAP 0 -->
+<center><span class="legend">[<a href="../../graph_legend.html">Legende</a>]</span></center></div>
+<div class="dynheader">
+Zusammengehörigkeiten von ThreadCondition&lt; M &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/d0b/classThreadCondition__coll__graph.png" border="0" usemap="#ThreadCondition_3_01M_01_4_coll__map" alt="Collaboration graph"/></div>
+<!-- MAP 1 -->
+<center><span class="legend">[<a href="../../graph_legend.html">Legende</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Öffentliche Typen</h2></td></tr>
+<tr class="memitem:ac53dc175ab39eaa459531b8c714f8379"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d55/classThreadCondition.html#ac53dc175ab39eaa459531b8c714f8379">status</a> { <a class="el" href="../../d3/d55/classThreadCondition.html#ac53dc175ab39eaa459531b8c714f8379afea79ec6f6830e5a06542fc802fce78a">status::wakeup</a> = (char) boost::cv_status::no_timeout, 
+<a class="el" href="../../d3/d55/classThreadCondition.html#ac53dc175ab39eaa459531b8c714f8379a90272dda245ae1fb3cf197e91a8689dc">status::timeout</a> = (char) boost::cv_status::timeout
+ }</td></tr>
+<tr class="separator:ac53dc175ab39eaa459531b8c714f8379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7feb2eec8e6921741ff3a50803d05b2d"><td class="memItemLeft" align="right" valign="top">typedef boost::condition_variable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d55/classThreadCondition.html#a7feb2eec8e6921741ff3a50803d05b2d">base</a></td></tr>
+<tr class="separator:a7feb2eec8e6921741ff3a50803d05b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Öffentliche Methoden</h2></td></tr>
+<tr class="memitem:ae9eaad7c7d5c9e33c27235944ee5188a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d55/classThreadCondition.html#ae9eaad7c7d5c9e33c27235944ee5188a">ThreadCondition</a> (<a class="el" href="../../dd/db9/classMutex.html">Mutex</a>&lt; M &gt; &amp;m)</td></tr>
+<tr class="separator:ae9eaad7c7d5c9e33c27235944ee5188a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aead6d633202ea3c2ea9ff6e16dff322e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d55/classThreadCondition.html#aead6d633202ea3c2ea9ff6e16dff322e">Wait</a> (boost::unique_lock&lt; boost::mutex &gt; &amp;lock)</td></tr>
+<tr class="separator:aead6d633202ea3c2ea9ff6e16dff322e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e1f15f4fcfea8df255f9088c47143d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d55/classThreadCondition.html#a0e1f15f4fcfea8df255f9088c47143d1">Broadcast</a> ()</td></tr>
+<tr class="separator:a0e1f15f4fcfea8df255f9088c47143d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad368a6bba2dc2d9dc3d1a3c849a383fb"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:ad368a6bba2dc2d9dc3d1a3c849a383fb"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d3/d55/classThreadCondition.html#ac53dc175ab39eaa459531b8c714f8379">status</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d55/classThreadCondition.html#ad368a6bba2dc2d9dc3d1a3c849a383fb">Sleep</a> (boost::unique_lock&lt; boost::mutex &gt; &amp;lock, const T &amp;time)</td></tr>
+<tr class="separator:ad368a6bba2dc2d9dc3d1a3c849a383fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Geschützte Attribute</h2></td></tr>
+<tr class="memitem:ae7d22a7222cb5c0f981b239ab641bf05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/db9/classMutex.html">Mutex</a>&lt; M &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d55/classThreadCondition.html#ae7d22a7222cb5c0f981b239ab641bf05">mutex</a></td></tr>
+<tr class="separator:ae7d22a7222cb5c0f981b239ab641bf05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
+<div class="textblock"><h3>template&lt;class M = boost::mutex&gt;<br />
+class ThreadCondition&lt; M &gt;</h3>
+
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00371">371</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+</div><h2 class="groupheader">Dokumentation der benutzerdefinierten Datentypen</h2>
+<a id="a7feb2eec8e6921741ff3a50803d05b2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7feb2eec8e6921741ff3a50803d05b2d">&#9670;&nbsp;</a></span>base</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class M = boost::mutex&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::condition_variable <a class="el" href="../../d3/d55/classThreadCondition.html">ThreadCondition</a>&lt; M &gt;::<a class="el" href="../../d3/d55/classThreadCondition.html#a7feb2eec8e6921741ff3a50803d05b2d">base</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00374">374</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Aufzählungstypen</h2>
+<a id="ac53dc175ab39eaa459531b8c714f8379"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac53dc175ab39eaa459531b8c714f8379">&#9670;&nbsp;</a></span>status</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class M = boost::mutex&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="../../d3/d55/classThreadCondition.html#ac53dc175ab39eaa459531b8c714f8379">ThreadCondition::status</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Aufzählungswerte</th></tr><tr><td class="fieldname"><a id="ac53dc175ab39eaa459531b8c714f8379afea79ec6f6830e5a06542fc802fce78a"></a>wakeup&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac53dc175ab39eaa459531b8c714f8379a90272dda245ae1fb3cf197e91a8689dc"></a>timeout&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00376">376</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                           {</div><div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                wakeup = (char) boost::cv_status::no_timeout,</div><div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                timeout = (<span class="keywordtype">char</span>) boost::cv_status::timeout</div><div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        };</div></div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Beschreibung der Konstruktoren und Destruktoren</h2>
+<a id="ae9eaad7c7d5c9e33c27235944ee5188a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9eaad7c7d5c9e33c27235944ee5188a">&#9670;&nbsp;</a></span>ThreadCondition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class M = boost::mutex&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d55/classThreadCondition.html">ThreadCondition</a>&lt; M &gt;::<a class="el" href="../../d3/d55/classThreadCondition.html">ThreadCondition</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dd/db9/classMutex.html">Mutex</a>&lt; M &gt; &amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00380">380</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;:<a class="code" href="../../d3/d55/classThreadCondition.html#a7feb2eec8e6921741ff3a50803d05b2d">base</a>(),<a class="code" href="../../d3/d55/classThreadCondition.html#ae7d22a7222cb5c0f981b239ab641bf05">mutex</a>(m) {}</div><div class="ttc" id="classThreadCondition_html_a7feb2eec8e6921741ff3a50803d05b2d"><div class="ttname"><a href="../../d3/d55/classThreadCondition.html#a7feb2eec8e6921741ff3a50803d05b2d">ThreadCondition::base</a></div><div class="ttdeci">boost::condition_variable base</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00374">thread.h:374</a></div></div>
+<div class="ttc" id="classThreadCondition_html_ae7d22a7222cb5c0f981b239ab641bf05"><div class="ttname"><a href="../../d3/d55/classThreadCondition.html#ae7d22a7222cb5c0f981b239ab641bf05">ThreadCondition::mutex</a></div><div class="ttdeci">Mutex&lt; M &gt; &amp; mutex</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00401">thread.h:401</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Elementfunktionen</h2>
+<a id="a0e1f15f4fcfea8df255f9088c47143d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e1f15f4fcfea8df255f9088c47143d1">&#9670;&nbsp;</a></span>Broadcast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class M = boost::mutex&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../d3/d55/classThreadCondition.html">ThreadCondition</a>&lt; M &gt;::Broadcast </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00387">387</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d9/da3/watchdog_8h_source.html#l00098">mutabor::watchdog&lt; Box &gt;::request_exit()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                         {</div><div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                notify_all();</div><div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        }</div></div><!-- fragment -->
+</div>
+</div>
+<a id="ad368a6bba2dc2d9dc3d1a3c849a383fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad368a6bba2dc2d9dc3d1a3c849a383fb">&#9670;&nbsp;</a></span>Sleep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class M = boost::mutex&gt; </div>
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d55/classThreadCondition.html#ac53dc175ab39eaa459531b8c714f8379">status</a> <a class="el" href="../../d3/d55/classThreadCondition.html">ThreadCondition</a>&lt; M &gt;::Sleep </td>
+          <td>(</td>
+          <td class="paramtype">boost::unique_lock&lt; boost::mutex &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>time</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00392">392</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="../../d9/da3/watchdog_8h_source.html#l00077">mutabor::watchdog&lt; Box &gt;::Entry()</a> und <a class="el" href="../../db/d41/timing_8h_source.html#l00760">mutabor::CurrentTimer::Sleep()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        {</div><div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                <span class="keywordflow">if</span> (time &lt; boost::chrono::steady_clock::now())</div><div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="../../d3/d55/classThreadCondition.html#ac53dc175ab39eaa459531b8c714f8379afea79ec6f6830e5a06542fc802fce78a">status::wakeup</a>;</div><div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                <span class="keywordflow">else</span></div><div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                        <span class="keywordflow">return</span> (<a class="code" href="../../d3/d55/classThreadCondition.html#ac53dc175ab39eaa459531b8c714f8379">status</a>)wait_until(lock, time);</div><div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        }</div><div class="ttc" id="classThreadCondition_html_ac53dc175ab39eaa459531b8c714f8379"><div class="ttname"><a href="../../d3/d55/classThreadCondition.html#ac53dc175ab39eaa459531b8c714f8379">ThreadCondition::status</a></div><div class="ttdeci">status</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00376">thread.h:376</a></div></div>
+<div class="ttc" id="classThreadCondition_html_ac53dc175ab39eaa459531b8c714f8379afea79ec6f6830e5a06542fc802fce78a"><div class="ttname"><a href="../../d3/d55/classThreadCondition.html#ac53dc175ab39eaa459531b8c714f8379afea79ec6f6830e5a06542fc802fce78a">ThreadCondition::status::wakeup</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aead6d633202ea3c2ea9ff6e16dff322e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aead6d633202ea3c2ea9ff6e16dff322e">&#9670;&nbsp;</a></span>Wait()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class M = boost::mutex&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../d3/d55/classThreadCondition.html">ThreadCondition</a>&lt; M &gt;::Wait </td>
+          <td>(</td>
+          <td class="paramtype">boost::unique_lock&lt; boost::mutex &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00383">383</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                                                       {</div><div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                wait(lock);</div><div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        }</div></div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Datenelemente</h2>
+<a id="ae7d22a7222cb5c0f981b239ab641bf05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7d22a7222cb5c0f981b239ab641bf05">&#9670;&nbsp;</a></span>mutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class M = boost::mutex&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/db9/classMutex.html">Mutex</a>&lt;M&gt;&amp; <a class="el" href="../../d3/d55/classThreadCondition.html">ThreadCondition</a>&lt; M &gt;::mutex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00401">401</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>src/kernel/routing/<a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a></li>
+</ul>
+</div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Sam Sep 15 2018 14:57:56 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.13</small></address>
+</body>
+</html>

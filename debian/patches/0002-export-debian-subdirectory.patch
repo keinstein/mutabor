@@ -1,0 +1,18 @@
+From 64ff87291f27c1a861de0798adc0a01ce78f4edf Mon Sep 17 00:00:00 2001
+From: Tobias Schlemmer <keinstein@users.sourceforge.net>
+Date: Sat, 22 Sep 2018 09:34:35 +0200
+Subject: export debian subdirectory
+
+---
+ .gitattributes | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/.gitattributes b/.gitattributes
+index 46f39996..6e15d476 100644
+--- a/.gitattributes
++++ b/.gitattributes
+@@ -32,4 +32,3 @@ doc/Doxygen/html export-ignore
+ doc/Doxygen/xml  export-ignore
+ old-stuff        export-ignore
+ Images/doc       export-ignore
+-debian           export-ignore

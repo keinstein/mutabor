@@ -1,0 +1,13 @@
+digraph "mutabor::RouteFactory::FactoryAlreadySet"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  Node3 [label="mutabor::RouteFactory\l::FactoryAlreadySet",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node4 [label="std::logic_error",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node5 [label="std::exception",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node6 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" old\ncreated" ,fontname="Sans"];
+  Node6 [label="mutabor::RouteFactory",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d3e/classmutabor_1_1RouteFactory.html",tooltip="Class for creation of Routes. "];
+  Node6 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" factory" ,fontname="Sans"];
+}

@@ -1,0 +1,30 @@
+digraph "mutabor::InputDeviceClass"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node14 [label="mutabor::InputDeviceClass",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node15 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node15 [label="mutabor::CommonTypedDevice\lAPI\< InputDeviceClass \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/dbf/classmutabor_1_1CommonTypedDeviceAPI.html"];
+  Node16 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node16 [label="mutabor::Device",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/db4/classmutabor_1_1Device.html"];
+  Node17 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node17 [label="boost::lockable_adapter\l\< Mutex\<\> \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node18 -> Node16 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" routes" ,fontname="Sans"];
+  Node18 [label="mutabor::TRouteClass\l\< InputDevice, OutputDevice,\l Box \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d05/classmutabor_1_1TRouteClass.html"];
+  Node19 -> Node18 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" routeList" ,fontname="Sans"];
+  Node19 [label="mutabor::cow_container\< C \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d40/classmutabor_1_1cow__container.html"];
+  Node20 -> Node18 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" session_id" ,fontname="Sans"];
+  Node20 [label="mutabor::idtype\< mutabor\l::TRouteClass\< InputDevice,\l OutputDevice \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/dce/classmutabor_1_1idtype.html"];
+  Node21 -> Node20 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" idpool\nid" ,fontname="Sans"];
+  Node21 [label="size_t",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node22 -> Node16 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Name" ,fontname="Sans"];
+  Node22 [label="std::string",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node23 -> Node22 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node23 [label="std::basic_string\<\l char \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node24 -> Node16 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" session_id" ,fontname="Sans"];
+  Node24 [label="mutabor::idtype\< mutabor\l::Device \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/dce/classmutabor_1_1idtype.html"];
+  Node21 -> Node24 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" idpool\nid" ,fontname="Sans"];
+  Node25 -> Node14 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" current_keys" ,fontname="Sans"];
+  Node25 [label="mutabor::InputDeviceClass\l::current_keys_type",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/d50/structmutabor_1_1InputDeviceClass_1_1current__keys__type.html"];
+}

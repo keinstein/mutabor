@@ -1,0 +1,12 @@
+digraph "mutabor::channel_queue_template&lt; T, count &gt;"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  Node2 [label="mutabor::channel_queue\l_template\< T, count \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node3 [label="std::vector\< T \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" elements" ,fontname="Sans"];
+  Node4 [label="T",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node5 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" last_sustained\nfirst_free" ,fontname="Sans"];
+  Node5 [label="std::vector\< T \>::iterator",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL iterator class. "];
+}

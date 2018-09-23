@@ -3,23 +3,15 @@
 <title>src/kernel/routing/midi/DevMidi.cpp-Dateireferenz</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.6 -->
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
-      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
-      <li><a href="../../modules.html"><span>Module</span></a></li>
-      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
-      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
-      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
-    </ul>
-  </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
-      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
-    </ul>
-  </div>
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',false,false,'search.php','Suchen');
+});
+</script>
+<div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
 <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cbd7f246bdf7dc0a50281a272327e6ed.html">kernel</a></li><li class="navelem"><a class="el" href="../../dir_02be4fa82aae8ff4c4cc45bceb47856f.html">routing</a></li><li class="navelem"><a class="el" href="../../dir_9991dc3f13b86ed5072092a2559a4881.html">midi</a></li>  </ul>
@@ -27,6 +19,7 @@
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Klassen</a> &#124;
 <a href="#namespaces">Namensbereiche</a> &#124;
 <a href="#func-members">Funktionen</a> &#124;
 <a href="#var-members">Variablen</a>  </div>
@@ -37,33 +30,37 @@
 
 <p>Midi Port IO (Mutabor layer)  
 <a href="#details">Mehr ...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d4/da2/DevMidi_8h_source.html">src/kernel/routing/midi/DevMidi.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../de/d11/Execute_8h_source.html">src/kernel/Execute.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../da/dfd/MidiKern_8h_source.html">src/kernel/MidiKern.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../d2/d2c/Route-inlines_8h_source.html">src/kernel/routing/Route-inlines.h</a>&quot;</code><br/>
-<code>#include &lt;boost/foreach.hpp&gt;</code><br/>
-<code>#include &quot;<a class="el" href="../../d9/d34/midicmn-inlines_8h_source.html">src/kernel/routing/midi/midicmn-inlines.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../d3/d0f/midicmn_8cpp_source.html">src/kernel/routing/midi/midicmn.cpp</a>&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d4/da2/DevMidi_8h_source.html">src/kernel/routing/midi/DevMidi.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../de/d11/Execute_8h_source.html">src/kernel/Execute.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../da/dfd/MidiKern_8h_source.html">src/kernel/MidiKern.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/d2c/Route-inlines_8h_source.html">src/kernel/routing/Route-inlines.h</a>&quot;</code><br />
+<code>#include &lt;boost/foreach.hpp&gt;</code><br />
+<code>#include &quot;RtMidi.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d34/midicmn-inlines_8h_source.html">src/kernel/routing/midi/midicmn-inlines.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d3/d0f/midicmn_8cpp_source.html">src/kernel/routing/midi/midicmn.cpp</a>&quot;</code><br />
+<code>#include &lt;string&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include-Abhängigkeitsdiagramm für DevMidi.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/dec/DevMidi_8cpp__incl.png" border="0" usemap="#src_2kernel_2routing_2midi_2DevMidi_8cpp" alt=""/></div>
-<map name="src_2kernel_2routing_2midi_2DevMidi_8cpp" id="src_2kernel_2routing_2midi_2DevMidi_8cpp">
-<area shape="rect" id="node3" href="../../d4/da2/DevMidi_8h.html" title="Classes for midi port. " alt="" coords="1835,99,1968,143"/><area shape="rect" id="node46" href="../../da/dfd/MidiKern_8h.html" title="src/kernel/MidiKern.h" alt="" coords="2560,574,2712,602"/><area shape="rect" id="node119" href="../../de/d11/Execute_8h.html" title="Execute tuning changes. " alt="" coords="2125,481,2275,509"/><area shape="rect" id="node143" href="../../d2/d2c/Route-inlines_8h.html" title="src/kernel/routing\l/Route&#45;inlines.h" alt="" coords="1029,193,1163,237"/><area shape="rect" id="node152" href="../../d9/d34/midicmn-inlines_8h.html" title="src/kernel/routing\l/midi/midicmn&#45;inlines.h" alt="" coords="2499,99,2667,143"/><area shape="rect" id="node157" href="../../d3/d0f/midicmn_8cpp.html" title="src/kernel/routing\l/midi/midicmn.cpp" alt="" coords="2321,99,2460,143"/><area shape="rect" id="node5" href="../../d1/d73/Defs_8h.html" title="Common definitions. " alt="" coords="1619,659,1747,687"/><area shape="rect" id="node29" href="../../de/d21/midicmn_8h.html" title="src/kernel/routing\l/midi/midicmn.h" alt="" coords="2091,193,2224,237"/><area shape="rect" id="node32" href="../../de/d05/Device_8h.html" title="Routing. " alt="" coords="1088,286,1221,330"/><area shape="rect" id="node7" href="../../de/ddd/interface__deps_8h.html" title="interface_deps.h" alt="" coords="1568,737,1696,765"/><area shape="rect" id="node12" href="../../db/d16/debug_8h.html" title="src/kernel/debug.h" alt="" coords="524,737,663,765"/><area shape="rect" id="node15" href="../../d4/d64/libintl_8h.html" title="src/wxintl/libintl.h" alt="" coords="675,814,803,842"/><area shape="rect" id="node27" href="../../d4/dab/debugFlags_8h.html" title="Debug flags for mutabor debug mode. " alt="" coords="544,814,651,842"/><area shape="rect" id="node107" href="../../de/d0f/Box_8h.html" title="Mutabor Box for C++. " alt="" coords="1579,286,1712,330"/><area shape="rect" id="node35" href="../../dd/d4d/GIS_8h.html" title="src/kernel/routing\l/gmn/GIS.h" alt="" coords="1229,473,1363,517"/><area shape="rect" id="node43" href="../../d1/d65/Route_8h.html" title="Routing. " alt="" coords="959,379,1092,423"/><area shape="rect" id="node82" href="../../db/d41/timing_8h.html" title="src/kernel/routing\l/timing.h" alt="" coords="801,473,935,517"/><area shape="rect" id="node38" href="../../df/d4f/Frac_8h.html" title="Fraction class for Mutabor. " alt="" coords="1571,574,1696,602"/><area shape="rect" id="node51" href="../../db/dbe/treestorage_8h.html" title="abstract class for tree like storage " alt="" coords="1675,481,1848,509"/><area shape="rect" id="node54" href="../../d1/da4/boost-interface_8h.html" title="Interface to the boost library. " alt="" coords="233,481,431,509"/><area shape="rect" id="node76" href="../../dd/d20/event_8h.html" title="src/kernel/routing\l/event.h" alt="" coords="644,473,777,517"/><area shape="rect" id="node62" href="../../db/dd5/thread_8h.html" title="src/kernel/routing\l/thread.h" alt="" coords="517,566,651,610"/><area shape="rect" id="node113" href="../../d9/da3/watchdog_8h.html" title="src/kernel/routing\l/watchdog.h" alt="" coords="801,379,935,423"/><area shape="rect" id="node124" href="../../dc/d19/box_8h.html" title="Description: Collect all properties, which are used by boxes. " alt="" coords="2028,387,2151,415"/><area shape="rect" id="node163" href="../../d5/d84/Runtime_8h.html" title="Runtime functions of the (mainly C) old kernel of Mutabor. " alt="" coords="2428,201,2580,229"/></map>
+<!-- MAP 0 -->
 </div>
 </div>
 <p><a href="../../df/d8f/DevMidi_8cpp_source.html">gehe zum Quellcode dieser Datei</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Klassen</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9d/classmutabor_1_1mycallback.html">mutabor::mycallback</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namensbereiche</h2></td></tr>
-<tr class="memitem:d6/daa/namespacemutabor"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html">mutabor</a></td></tr>
-<tr class="memdesc:d6/daa/namespacemutabor"><td class="mdescLeft">&#160;</td><td class="mdescRight">not for headers <br/></td></tr>
+<tr class="memitem:d6/daa/namespacemutabor"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html">mutabor</a></td></tr>
+<tr class="memdesc:d6/daa/namespacemutabor"><td class="mdescLeft">&#160;</td><td class="mdescRight">not for headers <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funktionen</h2></td></tr>
-<tr class="memitem:a8742ac95d620c7c1324a34e328785f6d"><td class="memItemLeft" align="right" valign="top">void CALLBACK&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a8742ac95d620c7c1324a34e328785f6d">mutabor::MidiInPortFunc</a> (HMIDIIN hMidiIn, UINT wMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2)</td></tr>
-<tr class="separator:a8742ac95d620c7c1324a34e328785f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8158fab36b9bfba27655f30a3018ace9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a8158fab36b9bfba27655f30a3018ace9">mutabor::MidiInit</a> ()</td></tr>
 <tr class="separator:a8158fab36b9bfba27655f30a3018ace9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cafc1d01a9657488e0ded97d3a75743"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a3cafc1d01a9657488e0ded97d3a75743">mutabor::MidiUninit</a> ()</td></tr>
@@ -71,22 +68,21 @@ Funktionen</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variablen</h2></td></tr>
-<tr class="memitem:a048e23b80c91eb2cf5695a3a2dc3ec39"><td class="memItemLeft" align="right" valign="top">RtMidiOut *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a048e23b80c91eb2cf5695a3a2dc3ec39">mutabor::rtmidiout</a></td></tr>
-<tr class="separator:a048e23b80c91eb2cf5695a3a2dc3ec39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaec1c55a1f701d77a8e05c4e416875b2"><td class="memItemLeft" align="right" valign="top">RtMidiIn *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#aaec1c55a1f701d77a8e05c4e416875b2">mutabor::rtmidiin</a></td></tr>
-<tr class="separator:aaec1c55a1f701d77a8e05c4e416875b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eba34466e35af9c22684a78ab67c4fe"><td class="memItemLeft" align="right" valign="top">rtmidi::MidiOut *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a2eba34466e35af9c22684a78ab67c4fe">mutabor::rtmidiout</a></td></tr>
+<tr class="separator:a2eba34466e35af9c22684a78ab67c4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23be760905e04c3ed55bd18b3d88b454"><td class="memItemLeft" align="right" valign="top">rtmidi::MidiIn *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/daa/namespacemutabor.html#a23be760905e04c3ed55bd18b3d88b454">mutabor::rtmidiin</a></td></tr>
+<tr class="separator:a23be760905e04c3ed55bd18b3d88b454"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
 <div class="textblock"><p>Midi Port IO (Mutabor layer) </p>
-<p>Copyright: (c) 1998-2011 TU Dresden </p>
-<dl class="section author"><dt>Autor</dt><dd>R.Krauße Tobias Schlemmer <a href="#" onclick="location.href='mai'+'lto:'+'kei'+'ns'+'tei'+'n@'+'use'+'rs'+'.be'+'rl'+'ios'+'.d'+'e'; return false;">keins<span style="display: none;">.nosp@m.</span>tein<span style="display: none;">.nosp@m.</span>@user<span style="display: none;">.nosp@m.</span>s.be<span style="display: none;">.nosp@m.</span>rlios<span style="display: none;">.nosp@m.</span>.de</a>  GPL</dd></dl>
+<p>Copyright: (c) 1998-2011 TU Dresden </p><dl class="section author"><dt>Autor</dt><dd>R.Krauße Tobias Schlemmer <a href="#" onclick="location.href='mai'+'lto:'+'kei'+'ns'+'tei'+'n@'+'use'+'rs'+'.so'+'ur'+'cef'+'or'+'ge.'+'ne'+'t'; return false;">keins<span style="display: none;">.nosp@m.</span>tein<span style="display: none;">.nosp@m.</span>@user<span style="display: none;">.nosp@m.</span>s.so<span style="display: none;">.nosp@m.</span>urcef<span style="display: none;">.nosp@m.</span>orge<span style="display: none;">.nosp@m.</span>.net</a>  GPL</dd></dl>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA </p>
 
-<p>Definiert in Datei <a class="el" href="../../df/d8f/DevMidi_8cpp_source.html">DevMidi.cpp</a>.</p>
+<p class="definition">Definiert in Datei <a class="el" href="../../df/d8f/DevMidi_8cpp_source.html">DevMidi.cpp</a>.</p>
 </div></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Apr 26 2014 12:58:28 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Sep 15 2018 14:57:54 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.13</small></address>
 </body>
 </html>

@@ -3,23 +3,15 @@
 <title>src/kernel/TabGen.h Quellcode</title>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.6 -->
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="../../index.html"><span>Hauptseite</span></a></li>
-      <li><a href="../../pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
-      <li><a href="../../modules.html"><span>Module</span></a></li>
-      <li><a href="../../namespaces.html"><span>Namensbereiche</span></a></li>
-      <li><a href="../../annotated.html"><span>Klassen</span></a></li>
-      <li class="current"><a href="../../files.html"><span>Dateien</span></a></li>
-    </ul>
-  </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="../../files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
-      <li><a href="../../globals.html"><span>Datei-Elemente</span></a></li>
-    </ul>
-  </div>
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',false,false,'search.php','Suchen');
+});
+</script>
+<div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
 <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cbd7f246bdf7dc0a50281a272327e6ed.html">kernel</a></li>  </ul>
@@ -30,52 +22,13 @@
 <div class="title">TabGen.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="../../d6/d68/TabGen_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/* we guard a little bit complicated to ensure the references are set right</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#if (!defined(SRC_KERNEL_TABGEN_H) &amp;&amp; !defined(PRECOMPILE)) \</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">        || (!defined(SRC_KERNEL_TABGEN_H_PRECOMPILED))</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef PRECOMPILE</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../d9/d7c/group__kernel.html#gae68a4eb2b516e72a2694b7884da40e89">   36</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SRC_KERNEL_TABGEN_H</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// headers</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">Defs.h</a>&quot;</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#ifndef SRC_KERNEL_TABGEN_H_PRECOMPILED</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d9/d7c/group__kernel.html#ga275c0c59be7f44ecc7c51dd59b0fd57c">   46</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SRC_KERNEL_TABGEN_H_PRECOMPILED</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">// system headers which do seldom change</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#ifdef __cplusplus </span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor"></span><span class="keyword">namespace </span>mutabor {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">namespace </span>hidden {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/* TabGen.cpp */</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a5b50b41814c8ac579c5ee30bcd35ead0">expand_decition_tree</a> (<a class="code" href="../../d6/dbb/namespacemutabor_1_1hidden.html#a5aa9b62feeb6bf19e234254001b2c228">mutabor_box_type</a> * box);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#ifdef __cplusplus </span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span>                } <span class="comment">// extern &quot;C&quot;</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        } <span class="comment">// namespace hidden</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <span class="comment">// namespace mutabor</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif // precompiled</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="ttc" id="namespacemutabor_1_1hidden_html_a5b50b41814c8ac579c5ee30bcd35ead0"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#a5b50b41814c8ac579c5ee30bcd35ead0">mutabor::hidden::expand_decition_tree</a></div><div class="ttdeci">void expand_decition_tree(mutabor_box_type *box)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/da0/TabGen_8cpp_source.html#l01324">TabGen.cpp:1324</a></div></div>
+<a href="../../d6/d68/TabGen_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/* we guard a little bit complicated to ensure the references are set right</span></div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> */</span></div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#if (!defined(SRC_KERNEL_TABGEN_H) &amp;&amp; !defined(PRECOMPILE)) \</span></div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">        || (!defined(SRC_KERNEL_TABGEN_H_PRECOMPILED))</span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#ifndef PRECOMPILE</span></div><div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../d9/d7c/group__kernel.html#gae68a4eb2b516e72a2694b7884da40e89">   36</a></span>&#160;<span class="preprocessor">#define SRC_KERNEL_TABGEN_H</span></div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// headers</span></div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// ---------------------------------------------------------------------------</span></div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d73/Defs_8h.html">Defs.h</a>&quot;</span></div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#ifndef SRC_KERNEL_TABGEN_H_PRECOMPILED</span></div><div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d9/d7c/group__kernel.html#ga275c0c59be7f44ecc7c51dd59b0fd57c">   46</a></span>&#160;<span class="preprocessor">#define SRC_KERNEL_TABGEN_H_PRECOMPILED</span></div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">// system headers which do seldom change</span></div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#ifdef __cplusplus </span></div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d6/daa/namespacemutabor.html">mutabor</a> {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">namespace </span>hidden {</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/* TabGen.cpp */</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d7c/group__kernel.html#ga166a469a0ff7e89b06d5a4b2055bb1a9">expand_decition_tree</a> (<a class="code" href="../../d6/dee/structmutabor__box__type__struct.html">mutabor_box_type</a> * <a class="code" href="../../d1/d0d/midifilemutabor_8cpp.html#a7cc37b2cbacd9de4545ba0a05accc513">box</a>);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#ifdef __cplusplus </span></div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                } <span class="comment">// extern &quot;C&quot;</span></div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        } <span class="comment">// namespace hidden</span></div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <span class="comment">// namespace mutabor</span></div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif // precompiled</span></div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div><div class="ttc" id="structmutabor__box__type__struct_html"><div class="ttname"><a href="../../d6/dee/structmutabor__box__type__struct.html">mutabor_box_type_struct</a></div><div class="ttdoc">Mutabor box type. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d19/box_8h_source.html#l00115">box.h:115</a></div></div>
 <div class="ttc" id="Defs_8h_html"><div class="ttname"><a href="../../d1/d73/Defs_8h.html">Defs.h</a></div><div class="ttdoc">Common definitions. </div></div>
-<div class="ttc" id="namespacemutabor_1_1hidden_html_a5aa9b62feeb6bf19e234254001b2c228"><div class="ttname"><a href="../../d6/dbb/namespacemutabor_1_1hidden.html#a5aa9b62feeb6bf19e234254001b2c228">mutabor::hidden::mutabor_box_type</a></div><div class="ttdeci">struct mutabor::hidden::mutabor_box_type mutabor_box_type</div><div class="ttdoc">Mutabor box type. </div></div>
+<div class="ttc" id="namespacemutabor_html"><div class="ttname"><a href="../../d6/daa/namespacemutabor.html">mutabor</a></div><div class="ttdoc">not for headers </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d02/scl2mut_8cpp_source.html#l00038">scl2mut.cpp:38</a></div></div>
+<div class="ttc" id="midifilemutabor_8cpp_html_a7cc37b2cbacd9de4545ba0a05accc513"><div class="ttname"><a href="../../d1/d0d/midifilemutabor_8cpp.html#a7cc37b2cbacd9de4545ba0a05accc513">box</a></div><div class="ttdeci">mutabor::Box box</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0d/midifilemutabor_8cpp_source.html#l00096">midifilemutabor.cpp:96</a></div></div>
+<div class="ttc" id="group__kernel_html_ga166a469a0ff7e89b06d5a4b2055bb1a9"><div class="ttname"><a href="../../d9/d7c/group__kernel.html#ga166a469a0ff7e89b06d5a4b2055bb1a9">mutabor::hidden::expand_decition_tree</a></div><div class="ttdeci">void expand_decition_tree(mutabor_box_type *box)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/da0/TabGen_8cpp_source.html#l01324">TabGen.cpp:1324</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Apr 26 2014 12:58:27 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Sep 15 2018 14:57:53 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.13</small></address>
 </body>
 </html>

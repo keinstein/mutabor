@@ -3,17 +3,15 @@
 <title>Erklärung des Graphen</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
-<!-- Erzeugt von Doxygen 1.8.6 -->
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="index.html"><span>Hauptseite</span></a></li>
-      <li><a href="pages.html"><span>Zusätzliche&#160;Informationen</span></a></li>
-      <li><a href="modules.html"><span>Module</span></a></li>
-      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
-      <li><a href="annotated.html"><span>Klassen</span></a></li>
-      <li><a href="files.html"><span>Dateien</span></a></li>
-    </ul>
-  </div>
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Suchen');
+});
+</script>
+<div id="main-nav"></div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
@@ -21,44 +19,9 @@
 </div><!--header-->
 <div class="contents">
 <p>Diese Seite erklärt die Interpretation der von doxygen erzeugten Graphen.</p>
-<p>Beispiel: </p>
-<div class="fragment"><div class="line"><span class="comment">/*! Wegen Verkürzung unsichtbare Klasse */</span></div>
-<div class="line"><span class="keyword">class </span>Invisible { };</div>
-<div class="line"><span class="comment"></span></div>
-<div class="line"><span class="comment">/*! Klasse verkürzt dargestellt, Vererbungsbeziehung ist versteckt */</span></div>
-<div class="line"><span class="keyword">class </span>Truncated : <span class="keyword">public</span> Invisible { };</div>
-<div class="line"></div>
-<div class="line"><span class="comment">/* Nicht mit doxygen-Kommentaren dokumentierte Klasse */</span></div>
-<div class="line"><span class="keyword">class </span>Undocumented { };</div>
-<div class="line"><span class="comment"></span></div>
-<div class="line"><span class="comment">/*! Mithilfe öffentlicher Vererbung vererbte Klasse */</span></div>
-<div class="line"><span class="keyword">class </span>PublicBase : <span class="keyword">public</span> Truncated { };</div>
-<div class="line"><span class="comment"></span></div>
-<div class="line"><span class="comment">/*! Eine Template-Klasse */</span></div>
-<div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="keyword">class </span>Templ { };</div>
-<div class="line"><span class="comment"></span></div>
-<div class="line"><span class="comment">/*! Mithilfe geschützter Vererbung vererbte Klasse */</span></div>
-<div class="line"><span class="keyword">class </span>ProtectedBase { };</div>
-<div class="line"><span class="comment"></span></div>
-<div class="line"><span class="comment">/*! Mithilfe privater Vererbung vererbte Klasse */</span></div>
-<div class="line"><span class="keyword">class </span>PrivateBase { };</div>
-<div class="line"><span class="comment"></span></div>
-<div class="line"><span class="comment">/*! Von der Klasse Inherited benutzte Klasse */</span></div>
-<div class="line"><span class="keyword">class </span>Used { };</div>
-<div class="line"><span class="comment"></span></div>
-<div class="line"><span class="comment">/*! Superklasse, die von mehreren anderen Klassen erbt */</span></div>
-<div class="line"><span class="keyword">class </span>Inherited : <span class="keyword">public</span> PublicBase,</div>
-<div class="line">                  <span class="keyword">protected</span> ProtectedBase,</div>
-<div class="line">                  <span class="keyword">private</span> PrivateBase,</div>
-<div class="line">                  <span class="keyword">public</span> Undocumented,</div>
-<div class="line">                  <span class="keyword">public</span> Templ&lt;int&gt;</div>
-<div class="line">{</div>
-<div class="line">  <span class="keyword">private</span>:</div>
-<div class="line">    Used *m_usedClass;</div>
-<div class="line">};</div>
-</div><!-- fragment --><p> Dies liefert den folgenden Graphen:</p>
+<p>Beispiel: </p><div class="fragment"><div class="line">/*! Wegen Verkürzung unsichtbare Klasse */</div><div class="line">class Invisible { };</div><div class="line"></div><div class="line">/*! Klasse verkürzt dargestellt, Vererbungsbeziehung ist versteckt */</div><div class="line">class Truncated : public Invisible { };</div><div class="line"></div><div class="line">/* Nicht mit doxygen-Kommentaren dokumentierte Klasse */</div><div class="line">class Undocumented { };</div><div class="line"></div><div class="line">/*! Mithilfe öffentlicher Vererbung vererbte Klasse */</div><div class="line">class PublicBase : public Truncated { };</div><div class="line"></div><div class="line">/*! Eine Template-Klasse */</div><div class="line">template&lt;class T&gt; class Templ { };</div><div class="line"></div><div class="line">/*! Mithilfe geschützter Vererbung vererbte Klasse */</div><div class="line">class ProtectedBase { };</div><div class="line"></div><div class="line">/*! Mithilfe privater Vererbung vererbte Klasse */</div><div class="line">class PrivateBase { };</div><div class="line"></div><div class="line">/*! Von der Klasse Inherited benutzte Klasse */</div><div class="line">class Used { };</div><div class="line"></div><div class="line">/*! Superklasse, die von mehreren anderen Klassen erbt */</div><div class="line">class Inherited : public PublicBase,</div><div class="line">                  protected ProtectedBase,</div><div class="line">                  private PrivateBase,</div><div class="line">                  public Undocumented,</div><div class="line">                  public Templ&lt;int&gt;</div><div class="line">{</div><div class="line">  private:</div><div class="line">    Used *m_usedClass;</div><div class="line">};</div></div><!-- fragment --><p> Dies liefert den folgenden Graphen:</p>
 <center><div class="image">
-<img src="graph_legend.png" />
+<img src="graph_legend.png"/>
 </div>
 </center><p>Die Rechtecke in obigem Graphen bedeuten: </p>
 <ul>
@@ -86,6 +49,6 @@ Ein gestrichelter gelber Pfeil kennzeichnet eine Verknüpfung zwischen einer Tem
 </ul>
 </div><!-- contents -->
 <hr size="1"><address style="align: right;"><small>
-Erzeugt am Sam Apr 26 2014 12:58:33 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.6</small></address>
+Erzeugt am Sam Sep 15 2018 14:57:58 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.13</small></address>
 </body>
 </html>

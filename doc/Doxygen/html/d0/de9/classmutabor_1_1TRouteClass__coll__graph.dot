@@ -1,0 +1,18 @@
+digraph "mutabor::TRouteClass&lt; I, O, B &gt;"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  Node1 [label="mutabor::TRouteClass\l\< I, O, B \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" routeList" ,fontname="Sans"];
+  Node2 [label="mutabor::cow_container\< C \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d40/classmutabor_1_1cow__container.html"];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" In" ,fontname="Sans"];
+  Node3 [label="I",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Out" ,fontname="Sans"];
+  Node4 [label="O",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" session_id" ,fontname="Sans"];
+  Node5 [label="mutabor::idtype\< mutabor\l::TRouteClass\< I, O \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/dce/classmutabor_1_1idtype.html"];
+  Node6 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" idpool\nid" ,fontname="Sans"];
+  Node6 [label="size_t",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" box" ,fontname="Sans"];
+  Node7 [label="B",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

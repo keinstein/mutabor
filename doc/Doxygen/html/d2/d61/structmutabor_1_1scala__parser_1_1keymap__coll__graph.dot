@@ -1,0 +1,22 @@
+digraph "mutabor::scala_parser::keymap"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="mutabor::scala_parser\l::keymap",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" last_key\nanchor\ncount\nrepetition_interval\nreference\nfirst_key" ,fontname="Sans"];
+  Node2 [label="mutabor::scala_parser\l::scala_value\< int32_t \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d9e/structmutabor_1_1scala__parser_1_1scala__value.html"];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" comment\ndescription" ,fontname="Sans"];
+  Node3 [label="std::string",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node4 [label="std::basic_string\<\l char \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" keys" ,fontname="Sans"];
+  Node5 [label="std::vector\< key \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" elements" ,fontname="Sans"];
+  Node6 [label="mutabor::scala_parser::key",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d3c/structmutabor_1_1scala__parser_1_1key.html"];
+  Node2 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node7 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" reference_frequency" ,fontname="Sans"];
+  Node7 [label="mutabor::scala_parser\l::scala_value\< double \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d9e/structmutabor_1_1scala__parser_1_1scala__value.html"];
+  Node3 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" comment\ndescription" ,fontname="Sans"];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" garbage" ,fontname="Sans"];
+}

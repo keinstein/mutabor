@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>Thread::meeting_point Klassenreferenz</title>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',false,false,'search.php','Suchen');
+});
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../d0/d51/classThread.html">Thread</a></li><li class="navelem"><a class="el" href="../../dd/da9/classThread_1_1meeting__point.html">meeting_point</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Öffentliche Typen</a> &#124;
+<a href="#pub-methods">Öffentliche Methoden</a> &#124;
+<a href="#pro-attribs">Geschützte Attribute</a> &#124;
+<a href="../../d5/d89/classThread_1_1meeting__point-members.html">Aufstellung aller Elemente</a>  </div>
+  <div class="headertitle">
+<div class="title">Thread::meeting_point Klassenreferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Öffentliche Typen</h2></td></tr>
+<tr class="memitem:a3781040b70ebeb263eb025186b62885f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885facab895b0d1204adfd8dab8f5bc7402f7">locked_master</a> =1, 
+<a class="el" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885fac0a9f5ca21a527a3a9029371dab5076d">locked_slave</a> =2, 
+<a class="el" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885faf5835d23470c76868eb1b6f4e07539d1">unlocked_first</a> =4, 
+<a class="el" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885fa5b0d5f7d20f585843e9dc802d8acecf0">unlocked_secound</a> =8, 
+<br />
+&#160;&#160;<a class="el" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885fa4853410017f842c3585205970624f4ca">locked_mask</a> = locked_master | locked_slave, 
+<a class="el" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885faa5469b1db5a2259a0218e061ff200da3">unlocked_mask</a> = unlocked_first | unlocked_secound
+<br />
+ }</td></tr>
+<tr class="separator:a3781040b70ebeb263eb025186b62885f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Öffentliche Methoden</h2></td></tr>
+<tr class="memitem:a7dd1811ab101f5958f346e10c625b134"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da9/classThread_1_1meeting__point.html#a7dd1811ab101f5958f346e10c625b134">meeting_point</a> ()</td></tr>
+<tr class="separator:a7dd1811ab101f5958f346e10c625b134"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae443b49677c25ddc99a3a83bdda21141"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da9/classThread_1_1meeting__point.html#ae443b49677c25ddc99a3a83bdda21141">sync</a> (int role, boost::unique_lock&lt; boost::mutex &gt; &amp;lock)</td></tr>
+<tr class="separator:ae443b49677c25ddc99a3a83bdda21141"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Geschützte Attribute</h2></td></tr>
+<tr class="memitem:aac5665c55ef030119e4f3578ba3dcb2d"><td class="memItemLeft" align="right" valign="top">boost::condition_variable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da9/classThread_1_1meeting__point.html#aac5665c55ef030119e4f3578ba3dcb2d">sync_condition</a></td></tr>
+<tr class="separator:aac5665c55ef030119e4f3578ba3dcb2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6749f5c3ff3159d7884d5fda1e138794"><td class="memItemLeft" align="right" valign="top">boost::atomic&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da9/classThread_1_1meeting__point.html#a6749f5c3ff3159d7884d5fda1e138794">locked</a></td></tr>
+<tr class="separator:a6749f5c3ff3159d7884d5fda1e138794"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
+<div class="textblock">
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00510">510</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+</div><h2 class="groupheader">Dokumentation der Aufzählungstypen</h2>
+<a id="a3781040b70ebeb263eb025186b62885f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3781040b70ebeb263eb025186b62885f">&#9670;&nbsp;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Aufzählungswerte</th></tr><tr><td class="fieldname"><a id="a3781040b70ebeb263eb025186b62885facab895b0d1204adfd8dab8f5bc7402f7"></a>locked_master&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3781040b70ebeb263eb025186b62885fac0a9f5ca21a527a3a9029371dab5076d"></a>locked_slave&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3781040b70ebeb263eb025186b62885faf5835d23470c76868eb1b6f4e07539d1"></a>unlocked_first&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3781040b70ebeb263eb025186b62885fa5b0d5f7d20f585843e9dc802d8acecf0"></a>unlocked_secound&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3781040b70ebeb263eb025186b62885fa4853410017f842c3585205970624f4ca"></a>locked_mask&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3781040b70ebeb263eb025186b62885faa5469b1db5a2259a0218e061ff200da3"></a>unlocked_mask&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00512">512</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;                     {</div><div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;                        <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885facab895b0d1204adfd8dab8f5bc7402f7">locked_master</a>=1,</div><div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;                        <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885fac0a9f5ca21a527a3a9029371dab5076d">locked_slave</a>=2,</div><div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;                        <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885faf5835d23470c76868eb1b6f4e07539d1">unlocked_first</a>=4,</div><div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;                        <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885fa5b0d5f7d20f585843e9dc802d8acecf0">unlocked_secound</a>=8,</div><div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;                        <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885fa4853410017f842c3585205970624f4ca">locked_mask</a> = <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885facab895b0d1204adfd8dab8f5bc7402f7">locked_master</a> | <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885fac0a9f5ca21a527a3a9029371dab5076d">locked_slave</a>,</div><div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;                        <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885faa5469b1db5a2259a0218e061ff200da3">unlocked_mask</a> = <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885faf5835d23470c76868eb1b6f4e07539d1">unlocked_first</a> | <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885fa5b0d5f7d20f585843e9dc802d8acecf0">unlocked_secound</a></div><div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;                };</div><div class="ttc" id="classThread_1_1meeting__point_html_a3781040b70ebeb263eb025186b62885fa4853410017f842c3585205970624f4ca"><div class="ttname"><a href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885fa4853410017f842c3585205970624f4ca">Thread::meeting_point::locked_mask</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00517">thread.h:517</a></div></div>
+<div class="ttc" id="classThread_1_1meeting__point_html_a3781040b70ebeb263eb025186b62885fac0a9f5ca21a527a3a9029371dab5076d"><div class="ttname"><a href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885fac0a9f5ca21a527a3a9029371dab5076d">Thread::meeting_point::locked_slave</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00514">thread.h:514</a></div></div>
+<div class="ttc" id="classThread_1_1meeting__point_html_a3781040b70ebeb263eb025186b62885fa5b0d5f7d20f585843e9dc802d8acecf0"><div class="ttname"><a href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885fa5b0d5f7d20f585843e9dc802d8acecf0">Thread::meeting_point::unlocked_secound</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00516">thread.h:516</a></div></div>
+<div class="ttc" id="classThread_1_1meeting__point_html_a3781040b70ebeb263eb025186b62885faf5835d23470c76868eb1b6f4e07539d1"><div class="ttname"><a href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885faf5835d23470c76868eb1b6f4e07539d1">Thread::meeting_point::unlocked_first</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00515">thread.h:515</a></div></div>
+<div class="ttc" id="classThread_1_1meeting__point_html_a3781040b70ebeb263eb025186b62885facab895b0d1204adfd8dab8f5bc7402f7"><div class="ttname"><a href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885facab895b0d1204adfd8dab8f5bc7402f7">Thread::meeting_point::locked_master</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00513">thread.h:513</a></div></div>
+<div class="ttc" id="classThread_1_1meeting__point_html_a3781040b70ebeb263eb025186b62885faa5469b1db5a2259a0218e061ff200da3"><div class="ttname"><a href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885faa5469b1db5a2259a0218e061ff200da3">Thread::meeting_point::unlocked_mask</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00518">thread.h:518</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Beschreibung der Konstruktoren und Destruktoren</h2>
+<a id="a7dd1811ab101f5958f346e10c625b134"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dd1811ab101f5958f346e10c625b134">&#9670;&nbsp;</a></span>meeting_point()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Thread::meeting_point::meeting_point </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00520">520</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;                               :<a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#aac5665c55ef030119e4f3578ba3dcb2d">sync_condition</a>() {</div><div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;                        <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a6749f5c3ff3159d7884d5fda1e138794">locked</a> = 0;</div><div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;                }</div><div class="ttc" id="classThread_1_1meeting__point_html_a6749f5c3ff3159d7884d5fda1e138794"><div class="ttname"><a href="../../dd/da9/classThread_1_1meeting__point.html#a6749f5c3ff3159d7884d5fda1e138794">Thread::meeting_point::locked</a></div><div class="ttdeci">boost::atomic&lt; int &gt; locked</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00546">thread.h:546</a></div></div>
+<div class="ttc" id="classThread_1_1meeting__point_html_aac5665c55ef030119e4f3578ba3dcb2d"><div class="ttname"><a href="../../dd/da9/classThread_1_1meeting__point.html#aac5665c55ef030119e4f3578ba3dcb2d">Thread::meeting_point::sync_condition</a></div><div class="ttdeci">boost::condition_variable sync_condition</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00545">thread.h:545</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Elementfunktionen</h2>
+<a id="ae443b49677c25ddc99a3a83bdda21141"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae443b49677c25ddc99a3a83bdda21141">&#9670;&nbsp;</a></span>sync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Thread::meeting_point::sync </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>role</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">boost::unique_lock&lt; boost::mutex &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lock</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00524">524</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;                                                               {</div><div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;                        <span class="comment">// We must ensure that subsequent syncronisation</span></div><div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;                        <span class="comment">// points do not interfere with each other.</span></div><div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;                        <span class="keywordflow">while</span> (<a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a6749f5c3ff3159d7884d5fda1e138794">locked</a> &amp; <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885faa5469b1db5a2259a0218e061ff200da3">unlocked_mask</a>) {</div><div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                                <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#aac5665c55ef030119e4f3578ba3dcb2d">sync_condition</a>.wait(lock);</div><div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;                        }</div><div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;                        <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a6749f5c3ff3159d7884d5fda1e138794">locked</a> |= role;</div><div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;                        <span class="keywordflow">if</span> ((<a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a6749f5c3ff3159d7884d5fda1e138794">locked</a> &amp; <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885fa4853410017f842c3585205970624f4ca">locked_mask</a>) == locked_mask) {</div><div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;                                <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a6749f5c3ff3159d7884d5fda1e138794">locked</a> |= (unlocked_mask &amp;  ~(int) <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885fa5b0d5f7d20f585843e9dc802d8acecf0">unlocked_secound</a>);</div><div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;                        } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;                                <span class="keywordflow">while</span> (!(<a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a6749f5c3ff3159d7884d5fda1e138794">locked</a> &amp; unlocked_mask)) {</div><div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;                                        <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#aac5665c55ef030119e4f3578ba3dcb2d">sync_condition</a>.wait(lock);</div><div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;                                }</div><div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;                                <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a6749f5c3ff3159d7884d5fda1e138794">locked</a> &amp;= ~(int) <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885faf5835d23470c76868eb1b6f4e07539d1">unlocked_first</a>;</div><div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;                        }</div><div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;                        <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#a6749f5c3ff3159d7884d5fda1e138794">locked</a> &amp;= ~role;</div><div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;                        <a class="code" href="../../dd/da9/classThread_1_1meeting__point.html#aac5665c55ef030119e4f3578ba3dcb2d">sync_condition</a>.notify_all();</div><div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                }</div><div class="ttc" id="classThread_1_1meeting__point_html_a3781040b70ebeb263eb025186b62885fa4853410017f842c3585205970624f4ca"><div class="ttname"><a href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885fa4853410017f842c3585205970624f4ca">Thread::meeting_point::locked_mask</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00517">thread.h:517</a></div></div>
+<div class="ttc" id="classThread_1_1meeting__point_html_a3781040b70ebeb263eb025186b62885fa5b0d5f7d20f585843e9dc802d8acecf0"><div class="ttname"><a href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885fa5b0d5f7d20f585843e9dc802d8acecf0">Thread::meeting_point::unlocked_secound</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00516">thread.h:516</a></div></div>
+<div class="ttc" id="classThread_1_1meeting__point_html_a6749f5c3ff3159d7884d5fda1e138794"><div class="ttname"><a href="../../dd/da9/classThread_1_1meeting__point.html#a6749f5c3ff3159d7884d5fda1e138794">Thread::meeting_point::locked</a></div><div class="ttdeci">boost::atomic&lt; int &gt; locked</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00546">thread.h:546</a></div></div>
+<div class="ttc" id="classThread_1_1meeting__point_html_aac5665c55ef030119e4f3578ba3dcb2d"><div class="ttname"><a href="../../dd/da9/classThread_1_1meeting__point.html#aac5665c55ef030119e4f3578ba3dcb2d">Thread::meeting_point::sync_condition</a></div><div class="ttdeci">boost::condition_variable sync_condition</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00545">thread.h:545</a></div></div>
+<div class="ttc" id="classThread_1_1meeting__point_html_a3781040b70ebeb263eb025186b62885faf5835d23470c76868eb1b6f4e07539d1"><div class="ttname"><a href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885faf5835d23470c76868eb1b6f4e07539d1">Thread::meeting_point::unlocked_first</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00515">thread.h:515</a></div></div>
+<div class="ttc" id="classThread_1_1meeting__point_html_a3781040b70ebeb263eb025186b62885faa5469b1db5a2259a0218e061ff200da3"><div class="ttname"><a href="../../dd/da9/classThread_1_1meeting__point.html#a3781040b70ebeb263eb025186b62885faa5469b1db5a2259a0218e061ff200da3">Thread::meeting_point::unlocked_mask</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd5/thread_8h_source.html#l00518">thread.h:518</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Datenelemente</h2>
+<a id="a6749f5c3ff3159d7884d5fda1e138794"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6749f5c3ff3159d7884d5fda1e138794">&#9670;&nbsp;</a></span>locked</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::atomic&lt;int&gt; Thread::meeting_point::locked</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00546">546</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+
+</div>
+</div>
+<a id="aac5665c55ef030119e4f3578ba3dcb2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac5665c55ef030119e4f3578ba3dcb2d">&#9670;&nbsp;</a></span>sync_condition</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::condition_variable Thread::meeting_point::sync_condition</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../db/dd5/thread_8h_source.html#l00545">545</a> der Datei <a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a>.</p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>src/kernel/routing/<a class="el" href="../../db/dd5/thread_8h_source.html">thread.h</a></li>
+</ul>
+</div><!-- contents -->
+<hr size="1"><address style="align: right;"><small>
+Erzeugt am Sam Sep 15 2018 14:57:56 für Mutabor von&nbsp;<a href="http://www.doxygen.org/index.html"><img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.8.13</small></address>
+</body>
+</html>

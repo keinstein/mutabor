@@ -1,0 +1,13 @@
+digraph "Grafische Darstellung der Klassenhierarchie"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node121 [label="mutabor::tree_storage",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/de5/classmutabor_1_1tree__storage.html",tooltip="Class tree_storage proviedes an interface for classes providing tree based storage. "];
+  Node121 -> Node122 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node122 [label="configtree",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d7f/classconfigtree.html"];
+  Node121 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node0 [label="mutaborGUI::xmltree",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/d18/classmutaborGUI_1_1xmltree.html"];
+  Node9 [label="wxXmlDocument",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node9 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+}

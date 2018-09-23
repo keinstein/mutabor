@@ -1,0 +1,11 @@
+digraph "Grafische Darstellung der Klassenhierarchie"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node303 [label="high_resolution_clock",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node303 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node0 [label="mutabor::CurrentTimerBase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/dac/classmutabor_1_1CurrentTimerBase.html"];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node1 [label="mutabor::CurrentTimer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/dda/classmutabor_1_1CurrentTimer.html",tooltip="A class for handling global timing issues. "];
+}

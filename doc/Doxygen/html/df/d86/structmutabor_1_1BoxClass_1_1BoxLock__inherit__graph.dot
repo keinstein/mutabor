@@ -1,0 +1,12 @@
+digraph "mutabor::BoxClass::BoxLock"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  Node0 [label="mutabor::BoxClass::\lBoxLock",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node1 [label="ScopedLock\<\>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d6f/classScopedLock.html"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node2 [label="boost::unique_lock\l\< boost::mutex  \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node3 [label="mutabor::BoxClass::\lscoped_watchdog",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/da3/structmutabor_1_1BoxClass_1_1scoped__watchdog.html"];
+}

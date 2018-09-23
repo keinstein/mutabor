@@ -1,0 +1,9 @@
+digraph "Test suite"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node0 [label="Test suite",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 [label="Basic event routing\l functions",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/dee/group__route.html",tooltip="This group contains functions and classes that can be used to set up a generic event routing..."];
+  Node0->Node1 [shape=plaintext, label="MyCompileCallback", color="orange", dir="none", style="dashed"];
+}

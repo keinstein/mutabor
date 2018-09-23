@@ -1,0 +1,47 @@
+digraph "Grafische Darstellung der Klassenhierarchie"
+{
+  edge [fontname="Sans",fontsize="10",labelfontname="Sans",labelfontsize="10"];
+  node [fontname="Sans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node330 [label="std::exception",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node330 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node0 [label="mutabor::BoxFactory\l::BoxNotCreated",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/d03/structmutabor_1_1BoxFactory_1_1BoxNotCreated.html"];
+  Node330 -> Node332 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node332 [label="mutabor::BoxFactory\l::FactoryNotFound",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d1f/structmutabor_1_1BoxFactory_1_1FactoryNotFound.html"];
+  Node330 -> Node333 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node333 [label="mutabor::CommonMidiOutput\l\< T, D \>::TooHighPitchBend",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d8a/classmutabor_1_1CommonMidiOutput_1_1TooHighPitchBend.html"];
+  Node330 -> Node334 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node334 [label="mutabor::CommonMidiOutput\l\< T, D \>::TooSmallPitchBend",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d5c/classmutabor_1_1CommonMidiOutput_1_1TooSmallPitchBend.html"];
+  Node330 -> Node335 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node335 [label="mutabor::DeviceFactory\l::DeviceNotCreated",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d47/structmutabor_1_1DeviceFactory_1_1DeviceNotCreated.html"];
+  Node330 -> Node336 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node336 [label="mutabor::DeviceFactory\l::FactoryNotFound",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d72/structmutabor_1_1DeviceFactory_1_1FactoryNotFound.html"];
+  Node330 -> Node337 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node337 [label="std::logic_error",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node337 -> Node338 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node338 [label="mutabor::RouteFactory\l::FactoryAlreadySet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/ddf/structmutabor_1_1RouteFactory_1_1FactoryAlreadySet.html",tooltip="Douplicate route factory exception. "];
+  Node337 -> Node339 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node339 [label="mutabor::RouteFactory\l::RouteFactoryNotSet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d00/structmutabor_1_1RouteFactory_1_1RouteFactoryNotSet.html"];
+  Node337 -> Node340 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node340 [label="std::invalid_argument",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node340 -> Node341 [dir="back",color="firebrick4",fontsize="10",style="solid",fontname="Sans"];
+  Node341 [label="mutabor::TRouteClass\l\< I, O, B \>::NoOutputDevice",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d2b/classmutabor_1_1TRouteClass_1_1NoOutputDevice.html"];
+  Node340 -> Node342 [dir="back",color="firebrick4",fontsize="10",style="solid",fontname="Sans"];
+  Node342 [label="mutaborGUI::BoxData\l::NoSuchBoxException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/d2d/classmutaborGUI_1_1BoxData_1_1NoSuchBoxException.html"];
+  Node330 -> Node343 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node343 [label="std::runtime_error",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node343 -> Node344 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node344 [label="mutabor::scala_parser\l::scale_parser::syntax_error",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d9e/structmutabor_1_1scala__parser_1_1scale__parser_1_1syntax__error.html",tooltip="Syntax errors thrown from user actions. "];
+  Node343 -> Node345 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node345 [label="std::range_error",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node345 -> Node346 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node346 [label="compat30::RouteIOError",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/dad/classcompat30_1_1RouteIOError.html"];
+  Node345 -> Node347 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node347 [label="mutabor::TrackData\l::delta_length_error",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d3f/classmutabor_1_1TrackData_1_1delta__length__error.html"];
+  Node345 -> Node348 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node348 [label="mutabor::TrackData\l::invalid_status",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d36/classmutabor_1_1TrackData_1_1invalid__status.html"];
+  Node345 -> Node349 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node349 [label="mutabor::TrackData\l::message_length_error",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d3f/classmutabor_1_1TrackData_1_1message__length__error.html"];
+  Node345 -> Node350 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Sans"];
+  Node350 [label="mutabor::TrackData\l::wrong_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/dfc/classmutabor_1_1TrackData_1_1wrong__id.html"];
+}

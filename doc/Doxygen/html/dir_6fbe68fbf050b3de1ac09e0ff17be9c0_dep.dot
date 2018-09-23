@@ -1,0 +1,11 @@
+digraph "src/wxGUI/Routing/tests" {
+  compound=true
+  node [ fontsize="10", fontname="Sans"];
+  edge [ labelfontsize="10", labelfontname="Sans"];
+  subgraph clusterdir_589b0311d58a74617a532121d489d9c2 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="Routing" fontname="Sans", fontsize="10", URL="dir_589b0311d58a74617a532121d489d9c2.html"]
+  dir_6fbe68fbf050b3de1ac09e0ff17be9c0 [shape=box, label="tests", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_6fbe68fbf050b3de1ac09e0ff17be9c0.html"];
+  }
+  dir_cbd7f246bdf7dc0a50281a272327e6ed [shape=box label="kernel" fillcolor="white" style="filled" color="red" URL="dir_cbd7f246bdf7dc0a50281a272327e6ed.html"];
+  dir_6fbe68fbf050b3de1ac09e0ff17be9c0->dir_cbd7f246bdf7dc0a50281a272327e6ed [headlabel="5", labeldistance=1.5 headhref="dir_000015_000002.html"];
+}
