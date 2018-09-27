@@ -10,83 +10,8 @@ environment:
       BOOST_LIBS: /c/msys64/mingw64/lib
       BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
       TEST_COMMAND: make check
+      AUTOCONF_VERSION: 2.69
 
-    - NAME: x86_64 nsis
-      TOOLCHAIN: "default"
-      MINGW_ARCH: x86_64
-      MINGW_ROOT: c:\msys64\mingw64
-      CONFIGURE_OPTIONS: --disable-debug --disable-silent-rules --disable-shared
-      _CC: MINGW
-      BOOST_LIBS: /c/msys64/mingw64/lib
-      BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
-      TEST_COMMAND: make nsis
-      MUTABOR_DEPLOY: true
-      GITHUB_TOKEN:
-        secure: CBpAyIWs05AwGPigYDbYgEzBNV3jhXm6rvoBA+GoFXB5CocdOAzen2ceL906o0EM
-
-
-    - NAME: x86_64 static distcheck
-      TOOLCHAIN: "default"
-      MINGW_ARCH: x86_64
-      MINGW_ROOT: c:\msys64\mingw64
-      CONFIGURE_OPTIONS: --enable-debug --disable-silent-rules --disable-shared
-      _CC: MINGW
-      BOOST_LIBS: /c/msys64/mingw64/lib
-      BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
-      TEST_COMMAND: make distcheck
-
-    - NAME: x86_64 shared distcheck
-      TOOLCHAIN: "default"
-      MINGW_ARCH: x86_64
-      MINGW_ROOT: c:\msys64\mingw64
-      CONFIGURE_OPTIONS: --enable-debug --disable-silent-rules --disable-static --enable-shared
-      _CC: MINGW
-      BOOST_LIBS: /c/msys64/mingw64/lib
-      BOOST_INCLUDES: /c/msys64/mingw64/includes/boost
-      TEST_COMMAND: make distcheck
-
-    - NAME: i686 check
-      TOOLCHAIN: "default"
-      MINGW_ARCH: i686
-      MINGW_ROOT: c:\msys64\mingw32
-      CONFIGURE_OPTIONS: --disable-debug --disable-silent-rules --disable-shared
-      _CC: MINGW
-      BOOST_LIBS: /c/msys64/mingw32/lib
-      BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
-      TEST_COMMAND: make check 
-
-    - NAME: i686 nsis
-      TOOLCHAIN: "default"
-      MINGW_ARCH: i686
-      MINGW_ROOT: c:\msys64\mingw32
-      CONFIGURE_OPTIONS: --disable-debug --disable-silent-rules --disable-shared
-      _CC: MINGW
-      BOOST_LIBS: /c/msys64/mingw32/lib
-      BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
-      TEST_COMMAND: make nsis
-      MUTABOR_DEPLOY: true
-      GITHUB_TOKEN:
-        secure: CBpAyIWs05AwGPigYDbYgEzBNV3jhXm6rvoBA+GoFXB5CocdOAzen2ceL906o0EM
-
-    - NAME: i686 static distcheck
-      TOOLCHAIN: "default"
-      MINGW_ARCH: i686
-      MINGW_ROOT: c:\msys64\mingw32
-      CONFIGURE_OPTIONS: --enable-debug --disable-silent-rules --disable-shared
-      _CC: MINGW
-      BOOST_LIBS: /c/msys64/mingw32/lib
-      BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
-      TEST_COMMAND: make distcheck
-
-    - NAME: i686 shared distcheck
-      TOOLCHAIN: "default"
-      MINGW_ARCH: i686
-      MINGW_ROOT: c:\msys64\mingw32
-      CONFIGURE_OPTIONS: --enable-debug --disable-silent-rules --disable-static
-      _CC: MINGW
-      BOOST_LIBS: /c/msys64/mingw32/lib
-      BOOST_INCLUDES: /c/msys64/mingw32/includes/boost
-      TEST_COMMAND: make distcheck
 
 # example see: https://github.com/wang-bin/avbuild/blob/master/appveyor.yml
 init:
@@ -94,10 +19,39 @@ init:
   - echo PROCESSOR_IDENTIFIER=%PROCESSOR_IDENTIFIER%
   - set MSYS2_PATH_TYPE=inherit
   - set MSYS2_DIR=C:\msys64
+  - C:\msys64\usr\bin\pacman -Fyy 
+  - C:\msys64\usr\bin\pacman -Fs BN_print.3ssl.gz
+  - SET PATH=C:\cygwin64\usr\bin;%PATH%	
+  - c:\cygwin64\bin\bash -c "ln -s /cygdrive/c /c"
+  - c:\cygwin64\bin\bash -c "ls /c"  
+  - c:\cygwin64\bin\bash -c "ls /cygdrive/c/cygwin64"
+  - c:\cygwin64\bin\bash -c "ls /cygdrive/c/cygwin64/bin"
+# - C:\cygwin64\setup-x86_64.exe --help
+  - C:\cygwin64\setup-x86_64.exe -qnNdO  -P make -P automake -P autoconf -P libtool -P mingw64-%MINGW-ARCH%-gcc -P mingw64-x86_64-pkg-config -P gettext -P libintl -P flex -P bison
+  - c:\cygwin64\bin\bash -c "ls /"
+  - c:\cygwin64\bin\bash -c "ls /etc"
+  - c:\cygwin64\bin\bash -c "ls /etc/postinstall"
+  - c:\cygwin64\bin\bash -c "cat /etc/postinstall/autoconf.sh.done"
 
 install:
 # can not starts with %
 #  - git submodule update --init
+#  Workaround for some strange error (can be deleted if these files disappear)
+  - del C:\msys64\mingw32\share\man\man3\BN_print.3ssl.gz
+  - del C:\msys64\mingw32\share\man\man3\HMAC.3ssl.gz
+  - del C:\msys64\mingw32\share\man\man3\LHASH.3ssl.gz
+  - del C:\msys64\mingw32\share\man\man3\MD5.3ssl.gz
+  - del C:\msys64\mingw32\share\man\man3\MDC2.3ssl.gz
+  - del C:\msys64\mingw32\share\man\man3\RC4.3ssl.gz
+  - del C:\msys64\mingw32\share\man\man3\UI.3ssl.gz
+  - del C:\msys64\mingw64\share\man\man3\BN_print.3ssl.gz
+  - del C:\msys64\mingw64\share\man\man3\HMAC.3ssl.gz
+  - del C:\msys64\mingw64\share\man\man3\LHASH.3ssl.gz
+  - del C:\msys64\mingw64\share\man\man3\MD5.3ssl.gz
+  - del C:\msys64\mingw64\share\man\man3\MDC2.3ssl.gz
+  - del C:\msys64\mingw64\share\man\man3\RC4.3ssl.gz
+  - del C:\msys64\mingw64\share\man\man3\UI.3ssl.gz
+# end of workaround
   - if /i %_CC%==MinGW (
       C:\msys64\usr\bin\pacman -Syyuu --noconfirm &&
       C:\msys64\usr\bin\pacman -Suu --noconfirm   &&
@@ -128,19 +82,19 @@ build_script:
   - dir C:\mingw-w64
   - dir C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
   - dir C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\opt\bin
-  - SET PATH=%MINGW_ROOT%\bin;C:\mingw-w64\bin;C:\msys64\usr\bin;%PATH%	
+  - SET PATH=C:\cygwin64\usr\bin;%MINGW_ROOT%\bin;C:\mingw-w64\bin;%PATH%
   - echo "%PATH%"
-  - bash -c "env"
-  - bash -c pwd
-  - bash -c "git submodule update --init --recursive"
-  - bash -c "mkdir -p config"
-  - bash -c "touch config/config.rpath"
-  - bash -c "autoreconf -i -f"
-  - bash -c "./configure %CONFIGURE_OPTIONS%  --host=%MINGW_ARCH%-w64-mingw32 --build=%MINGW_ARCH%-w64-mingw32 --with-boost-libdir=$BOOST_LIBS || cat config.log"
-  - bash -c "(%TEST_COMMAND%) || (cat test-suite.log ; false)"
-  - bash -c "git config --global user.email "keinstein@users.sourceforge.net"
-  - bash -c "git config --global user.name "Appveyor automatic deployment"
-  - bash -c "if [[  $MUTABOR_DEPLOY =  true ]] && false ; then git clone  --depth=1 --branch=master https://${GITHUB_TOKEN}@github.com/keinstein/mutabor-nightlies public && mkdir -p public/docs/download/${_CC}_WIN_${MINGW_ARCH}_${APPVEYOR_REPO_TAG_NAME} && cp Mutabor*.exe *.zip public/docs/download/${_CC}_WIN_${MINGW_ARCH}_${APPVEYOR_REPO_TAG_NAME} && cd public && git add docs/download/${_CC}_WIN_${MINGW_ARCH}_${APPVEYOR_REPO_TAG_NAME} && git commit -m 'Automatic publishing from Appveyor' && until git push origin master ;  do sleep 60 ; git pull origin ; done; fi"
+  - c:\cygwin64\bin\bash -c "env"
+  - c:\cygwin64\bin\bash -c pwd
+  - c:\cygwin64\bin\bash -c "git submodule update --init --recursive"
+  - c:\cygwin64\bin\bash -c "mkdir -p config"
+  - c:\cygwin64\bin\bash -c "touch config/config.rpath"
+  - c:\cygwin64\bin\bash -c "autoreconf -i -f"
+  - c:\cygwin64\bin\bash -c "./configure %CONFIGURE_OPTIONS%  --host=%MINGW_ARCH%-w64-mingw32 --build=%MINGW_ARCH%-w64-mingw32 --with-boost-libdir=$BOOST_LIBS --with-boost=$BOOST_LIBS || cat config.log"
+  - c:\cygwin64\bin\bash -c "(%TEST_COMMAND%) || (cat test-suite.log ; false)"
+  - c:\cygwin64\bin\bash -c "git config --global user.email "keinstein@users.sourceforge.net"
+  - c:\cygwin64\bin\bash -c "git config --global user.name "Appveyor automatic deployment"
+  - c:\cygwin64\bin\bash -c "if [[  $MUTABOR_DEPLOY =  true ]] && false ; then git clone  --depth=1 --branch=master https://${GITHUB_TOKEN}@github.com/keinstein/mutabor-nightlies public && mkdir -p public/docs/download/${_CC}_WIN_${MINGW_ARCH}_${APPVEYOR_REPO_TAG_NAME} && cp Mutabor*.exe *.zip public/docs/download/${_CC}_WIN_${MINGW_ARCH}_${APPVEYOR_REPO_TAG_NAME} && cd public && git add docs/download/${_CC}_WIN_${MINGW_ARCH}_${APPVEYOR_REPO_TAG_NAME} && git commit -m 'Automatic publishing from Appveyor' && until git push origin master ;  do sleep 60 ; git pull origin ; done; fi"
 
 artifacts:
   - path: 'Mutabor*.exe'
