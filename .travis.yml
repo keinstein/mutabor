@@ -57,6 +57,7 @@ before_install:
 - pwd
 - ls
 - if test "$TRAVIS_OS_NAME" = osx ; then  brew update ; fi
+- if test "$TRAVIS_OS_NAME" = osx ; then brew pin postgis ; fi
 - if test "$TRAVIS_OS_NAME" = osx ; then brew upgrade boost automake ; fi
 - if test "$TRAVIS_OS_NAME" = osx ; then rm -rf /usr/local/include/c++ ; fi
 - if test "$TRAVIS_OS_NAME" = osx ; then brew install $EXTRA_BREW wxmac gettext flex bison libtool jack ; fi
