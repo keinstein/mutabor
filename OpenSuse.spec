@@ -1,19 +1,20 @@
 #
 # Example spec file for cdplayer app...
 #
-Name: @PACKAGE_TARNAME@
+Name: mutabor
 Summary: Retuning MIDI instruments for complex microtonal tunings
-Version: @PACKAGE_VERSION@
+Version: 4.0.0~rc3
 Release: 1
 License: GPL
 Group: Productivity/Multimedia/Sound/Midi
-Source: https://github.com/keinstein/mutabor/releases/download/debian%2F4.0.0_rc3-1/mutabor_4.0.0.rc3.orig.tar.gzURL: http://www.math.tu-dresden.de/~mutabor/
+Source: https://github.com/keinstein/mutabor/releases/download/debian%2F4.0.0_rc3-1/mutabor_4.0.0.rc3.orig.tar.gz
+URL: http://www.math.tu-dresden.de/~mutabor/
 #Distribution: OpenSuse
 Vendor: TU Dresden, Institut für Algebra
 #Packager: Tobias.Schlemmer <keinstein@users.berlios.de>
 BuildRoot:    %{_tmppath}/%{name}-%{version}-build
 Prefix:       %{_prefix}
-BuildRequires: wxWidgets-3_0-devel, alsa-devel, boost-devel >= 1.53.0 , gcc-c++, cppunit-devel, texlive-tex4ht, bison, flex, libexpat-devel, autoconf >= 2.67, pkg-config >= 0.14.0, gettext-devel >= 0.19
+BuildRequires: wxWidgets-devel, alsa-devel, boost-devel >= 1.53.0 , gcc-c++, cppunit-devel, tex4ht, bison, flex, autopoint, libexpat-devel, autoconf >= 2.67, pkg-config >= 0.14.0, gettext >= 0.19
 
 %description
 Mutabor is a program that allows a musician to perform real time Music with
@@ -59,10 +60,9 @@ umask 022
 cd "$RPM_BUILD_DIR"/%{name}-%{version}
 %if %{?fake:%fake}%{!?fake:0}
 %else
-autoreconf -i -f
 %configure --enable-static --enable-shared
 make %{?_smp_mflags} glibmm_docdir=%{docsub} gtkmm_docdir=%{docsub}
-find . -name "*.so*" -type f -not -name \*.source | xargs strip --strip-unneeded @PACKAGE_TARNAME@
+find . -name "*.so*" -type f -not -name \*.source | xargs strip --strip-unneeded mutabor
 %endif
 
 
@@ -76,7 +76,7 @@ test -d '%{buildroot}' && rm -rf '%{buildroot}'
 install -d -m 755 '%{buildroot}%{docsub}'
 install -p -m 644 AUTHORS ChangeLog COPYING NEWS README '%{buildroot}%{docs}'
 %make_install
-%find_lang  @PACKAGE_TARNAME@
+%find_lang  mutabor
 
 %files -f %{name}.lang
 %defattr(-,root,root)
@@ -86,9 +86,9 @@ install -p -m 644 AUTHORS ChangeLog COPYING NEWS README '%{buildroot}%{docs}'
 %{docs}/COPYING
 %{docs}/NEWS
 %{docs}/README
-%{_bindir}/@PACKAGE_TARNAME@
-%{_datadir}/@PACKAGE_TARNAME@
-%{_mandir}/*/@PACKAGE_TARNAME@.*
+%{_bindir}/mutabor
+%{_datadir}/mutabor
+%{_mandir}/*/mutabor.*
 
 # Requires
 
@@ -99,7 +99,7 @@ install -p -m 644 AUTHORS ChangeLog COPYING NEWS README '%{buildroot}%{docs}'
 %defattr(-,root,root)
 %dir %{docs}
 %doc ChangeLog
-%doc %{_datadir}/doc/@PACKAGE_TARNAME@
+%doc %{_datadir}/doc/mutabor
 %{docsub}
 
 %changelog
