@@ -66,7 +66,7 @@ namespace mutaborGUI {
 #define RGN_ERROR 0
 #endif
 
-#define DEFAULT_LANGUAGE _("<default>")
+#define DEFAULT_LANGUAGE wxTRANSLATE("<default>")
 
 #define PAGE_COMMON _("Common")
 #define PAGE_LANGUAGES _("Languages")

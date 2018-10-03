@@ -461,9 +461,9 @@ wxString MutTextBox::MakeTitle() const {
 	if (winKind == WK_ACT && CAW) {
 		return _("Actions - all boxes");
 	} else {
-		return wxString::Format(wxGetTranslation(_("%s - %s")),
-					(const wxChar *)wxGetTranslation(TextBoxTitle[winKind]),
-					(const wxChar *)(box?box->GetLabel():wxString(_("unknown"))));
+		return wxString::Format(_("%s - %s"),
+					wxGetTranslation(TextBoxTitle[winKind]),
+					box?wxString(box->GetLabel()):wxString(_("no box")));
 	}
 }
 

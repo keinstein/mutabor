@@ -184,7 +184,7 @@ namespace mutaborGUI {
 		  {-1, NULL}},
 		 MutSTC_FOLD_COMMENT | MutSTC_FOLD_COMPACT | MutSTC_FOLD_PREPROC},
 		// * (any)
-		{(const wxChar *)DEFAULT_LANGUAGE,
+		{_T(DEFAULT_LANGUAGE),
 		 _T("*.*"),
 		 _T("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),
 		 wxSTC_LEX_PROPERTIES,

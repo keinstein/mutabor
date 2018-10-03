@@ -64,9 +64,9 @@ namespace mutaborGUI {
 		if (!bitmap.IsOk())
 			if(!bitmap.LoadFile(filename,type)) {
 				wxMessageBox(wxString::Format(_("Error: The bitmap %s could not be found."),
-					(const wxChar *)filename),
-					_("Error"),
-					wxOK | wxICON_ERROR);
+							      filename),
+					     _("Error"),
+					     wxOK | wxICON_ERROR);
 				bitmap = MutToolBarBitmaps::EmptyBitmap;
 			}
 		mutASSERT(bitmap.IsOk());

@@ -1300,7 +1300,7 @@ namespace mutaborGUI {
 			int Nr;
 			for (Nr = 0; Nr < ::g_LanguagePrefsSize; Nr++) {
 				menuHilight->Append (CM_HILIGHTFIRST + Nr,
-						     ::g_LanguagePrefs [Nr].name);
+						     ::wxGetTranslation(g_LanguagePrefs [Nr].name));
 			}
 
 			// charset submenu

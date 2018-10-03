@@ -774,7 +774,10 @@ namespace mutaborGUI {
 			}
 			EndUndoAction();
 			wxMessageBox(
-				wxString::Format(_("Replaced %d occurrences of `%s' by `%s'.\n\n"), count,(const wxChar*)findString,(const wxChar*)event.GetReplaceString())
+				wxString::Format(_("Replaced %d occurrences of `%s' by `%s'.\n\n"),
+						 count,
+						 findString,
+						 event.GetReplaceString())
 				+ (ff.down?
 				   _("Note: Occurences before the current cursor positions are not changed."):
 				   _("Note: Occurences after the current cursor positions are not changed.")),
@@ -909,7 +912,7 @@ namespace mutaborGUI {
 	}
 
 	void MutEditFile::OnHilightLang (wxCommandEvent &event) {
-		InitializePrefs (g_LanguagePrefs [event.GetId() - CM_HILIGHTFIRST].name);
+		InitializePrefs (wxGetTranslation(g_LanguagePrefs [event.GetId() - CM_HILIGHTFIRST].name));
 	}
 
 	void MutEditFile::OnDisplayEOL (wxCommandEvent &WXUNUSED(event)) {
@@ -1047,7 +1050,7 @@ namespace mutaborGUI {
 				if ((cur == filename) ||
 				    (cur == (filename.BeforeLast ('.') + _T(".*"))) ||
 				    (cur == (_T("*.") + filename.AfterLast ('.')))) {
-					return curInfo->name;
+					return wxGetTranslation(curInfo->name);
 				}
 				filepattern = filepattern.AfterFirst (';');
 			}
@@ -1068,7 +1071,7 @@ namespace mutaborGUI {
 		int languageNr;
 		for (languageNr = 0; languageNr < g_LanguagePrefsSize; languageNr++) {
 			curInfo = &g_LanguagePrefs [languageNr];
-			if (curInfo->name == name) {
+			if (wxGetTranslation(curInfo->name) == name) {
 				found = true;
 				break;
 			}

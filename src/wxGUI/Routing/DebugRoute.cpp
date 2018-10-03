@@ -40,6 +40,7 @@
 #include "src/wxGUI/Routing/DeviceShape.h"
 #include "src/wxGUI/MutRouteWnd.h"
 #include "src/wxGUI/Routing/BoxShape.h"
+#include "src/wxGUI/Routing/BoxChannelShape.h"
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"
 #include "src/wxGUI/Routing/BoxChannelShape.h"
 #include "src/wxGUI/Routing/BoxShape.h"

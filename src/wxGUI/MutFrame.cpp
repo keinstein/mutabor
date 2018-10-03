@@ -1137,8 +1137,8 @@ To start the translation hit the play button or select “Play” from the “Se
 						      wxSize(width,height));
 		auimanager.AddPane(client,
 				   wxAuiPaneInfo().Name(wxString::Format(_T("Logic %s"),
-									 (box?box->GetLabel()
-									  :wxString(_("(unknown)"))).c_str()))
+									 (box?wxString(box->GetLabel())
+									  :wxString(_("(unknown)")))))
 				   .Bottom()
 				   .Floatable(true)
 				   .CloseButton(false)
