@@ -181,7 +181,7 @@ AC_ARG_ENABLE(debug,
 	       for flag in -Wall  -Wno-unused-local-typedefs  -fdump-class-hierarchy \
 		    -fbounds-check  -pedantic  -fdiagnostics-show-option  -Wno-long-long \
 		     -Wno-variadic-macros -Wno-nested-anon-types -Wno-c++11-extensions -g -fipa-icf \
-		      -D__RTMIDI_DEBUG__
+		      -D__RTMIDI_DEBUG__  -fvisibility-inlines-hidden
 	       do
 		       AX_CHECK_COMPILE_FLAG([$flag],[
 			CXXFLAGS="$CXXFLAGS $flag"
@@ -392,16 +392,6 @@ echo $host_os
 case "$host_os" in
 dnl GNU/Linux on an Intel or compatible
 *linux*)
-	AC_LANG_PUSH(C++)
-	for flag in -fvisibility-inlines-hidden
-	do
-		AX_CHECK_COMPILE_FLAG([$flag],[CXXFLAGS="$CXXFLAGS $flag"])
-		AC_LANG_PUSH(C)
-		AX_CHECK_COMPILE_FLAG([$flag],[CFLAGS="$CFLAGS $flag"])
-		AC_LANG_POP(C)
-	done
-	AC_LANG_POP(C++)
-
 	PLATFORM=linux
 
 dnl	AC_MSG_CHECKING(for MIDI API)
