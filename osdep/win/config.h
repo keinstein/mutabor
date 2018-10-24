@@ -375,7 +375,7 @@
 #define PACKAGE "mutabor"
 
 /* address for reporting bugs */
-#define PACKAGE_BUGREPORT "mutabor@mailbox.tu-dresden.de"
+#define PACKAGE_BUGREPORT "keinstein@users.sourceforge.net"
 
 /* Define to the full name of this package. */
 #define PACKAGE_NAME "Mutabor"

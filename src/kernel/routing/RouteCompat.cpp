@@ -4,7 +4,7 @@
  ********************************************************************
  * Routing. Compatibility functions.
  *
- * \author Rüdiger Krauße <krausze@mail.berlios.de>,
+ * \author Rüdiger Krauße,
  * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date 1998
  * $Date: 2011/11/02 14:31:57 $

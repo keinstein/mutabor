@@ -2,7 +2,7 @@
  ***********************************************************************
  * Error descriptions for Mutabor.
  *
- * \author R. Krauße <krausze@users.berlios.de>
+ * \author R. Krauße,
  * T. Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *

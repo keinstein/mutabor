@@ -3,7 +3,7 @@
  ********************************************************************
  * Icon class fixing issues with Mac OS.
  *
- * \author Rüdiger Krauße <krausze@mail.berlios.de>,
+ * \author Rüdiger Krauße,
  * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *

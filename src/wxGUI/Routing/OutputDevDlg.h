@@ -4,7 +4,7 @@
  *
  * Copyright:   (c) R. Krauße, TU Dresden,
  *              2013 Tobias Schlemmer
- * \author R. Krauße <krausze@users.berlios.de>
+ * \author R. Krauße,
  *         Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license: GPL
  *

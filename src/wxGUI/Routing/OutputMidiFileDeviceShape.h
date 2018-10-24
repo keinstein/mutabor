@@ -3,7 +3,7 @@
  ********************************************************************
  * MIDI file input device shape.
  *
- * \author Rüdiger Krauße <krausze@mail.berlios.de>,
+ * \author Rüdiger Krauße,
  * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *

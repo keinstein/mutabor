@@ -6,7 +6,7 @@
  *              changes after 2011-11 (c) by the authors
  * \author
  *              Volker Abel,
- *              Tobias Schlemmer <keinstein@users.berlios.de>
+ *              Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

@@ -6,7 +6,7 @@
  * Copyright: (c) 2011 TU Dresden
  *            (c) Tobias Schlemmer (changes after 2011-11-01)
  *
- * \author Rüdiger Krauße <krausze@mail.berlios.de>,
+ * \author Rüdiger Krauße,
  * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *

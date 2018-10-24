@@ -3,7 +3,7 @@
  * Mutabor runtime functions.
  *
  * Copyright:   (c) 1997-2011 TU Dresden
- * \author Rüdiger Krauße <krausze@mail.berlios.de>
+ * \author Rüdiger Krauße,
  * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *

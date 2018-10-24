@@ -2,7 +2,7 @@
 ***********************************************************************
 * Mutabor MDI-Child.
 *
-* \author R. Krauﬂe <krausze@users.berlios.de>
+* \author R. Krauﬂe,
 * T. Schlemmer <keinstein@users.sourceforge.net>
 * \license GPL
 *

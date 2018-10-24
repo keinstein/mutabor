@@ -3,7 +3,7 @@
  ********************************************************************
  * Devices base classes. Icons used in route window.
  *
- * \author Rüdiger Krauße <krausze@mail.berlios.de>,
+ * \author Rüdiger Krauße,
  * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *

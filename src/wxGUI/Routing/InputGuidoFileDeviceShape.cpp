@@ -3,7 +3,7 @@
  ********************************************************************
  * Input device shape for reading GUIDO files in the route window.
  *
- * \author Rüdiger Krauße <krausze@mail.berlios.de>,
+ * \author Rüdiger Krauße,
  * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *

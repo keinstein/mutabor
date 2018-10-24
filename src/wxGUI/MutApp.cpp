@@ -4,7 +4,7 @@
  *
  * Copyright:   (c) 2005,2006,2007-2011 TU Dresden
  * Changes: (c) 2012-2013 Tobias Schlemmer
- * \author Rüdiger Krauße <krausze@mail.berlios.de>
+ * \author Rüdiger Krauße,
  * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *
@@ -593,8 +593,8 @@ namespace mutaborGUI {
 		/*
 		  (void)wxMessageBox(wxString::Format(_("%s\nAuthors: \n%s\nUsage: %s"),
 		  mumT(PACKAGE_STRING),
-		  ("Ruediger Krausze <krausze@mail.berlios.de>\n")
-		  ("Tobias Schlemmer <keinstein@mail.berlios.de>\n"),
+		  ("Ruediger Krausze\n")
+		  ("Tobias Schlemmer <keinstein@users.sourceforge.net>\n"),
 		  mumT(PACKAGE)),
 		  wxString::Format(_("About %s"),mumT(PACKAGE_NAME)));
 		*/
@@ -615,6 +615,7 @@ namespace mutaborGUI {
 				    wxBITMAP_TYPE_PNG));
 		info.SetDescription(_("An application to implement different tuning logics.\n Both fixed, adaptive and mutable tunings are supported."));
 		info.AddArtist(_("Rudolf Wille (mathematical foundation)"));
+		info.AddArtist(_("Clemens Misch (foundations of the MUTABOR language)"));
 		info.AddArtist(_("Tobias Schlemmer (new icon/splash)"));
 		info.AddDeveloper(_("Bernhard Ganter"));
 		info.AddDeveloper(_("Volker Abel"));
@@ -652,8 +653,8 @@ namespace mutaborGUI {
 		aboutinfo->Add (new wxStaticText(this, -1, _("Bernhard Ganter\n"
 							     "Volker Abel\n"
 							     "Peter Reiss\n"
-							     "Ruediger Krausze <krausze@mail.berlios.de>\n"
-							     "Tobias Schlemmer <keinstein@mail.berlios.de>")));
+							     "Ruediger Krausze\n"
+							     "Tobias Schlemmer <keinstein@users.sourceforge.net>")));
 		aboutinfo->Add (new wxStaticText(this, -1, _("Mathematical\nmodelling:")));
 		aboutinfo->Add (new wxStaticText(this, -1, _("Rudolf Wille")));
 		aboutinfo->Add (new wxStaticText(this, -1, _("Licence type: ")));

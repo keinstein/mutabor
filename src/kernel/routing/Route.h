@@ -4,7 +4,7 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * \author Rüdiger Krauße <krausze@mail.berlios.de>,
+ * \author Rüdiger Krauße,
  * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date 1998-2013
  * \license GPL

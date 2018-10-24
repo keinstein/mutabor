@@ -4,7 +4,7 @@
  ********************************************************************
  * Midi fiele input device shape for route window.
  *
- * \author Rüdiger Krauße <krausze@mail.berlios.de>,
+ * \author Rüdiger Krauße,
  * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \date 2009/11/23
  * \license GPL

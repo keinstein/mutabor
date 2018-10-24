@@ -3,7 +3,7 @@
  * Mutabor Frame.
  *
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
- * \author Rüdiger Krauße <krausze@mail.berlios.de>
+ * \author Rüdiger Krauße,
  * Tobias Schlemmer <keinstein@users.sourceforge.net>
  * \license GPL
  *
