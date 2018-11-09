@@ -49,8 +49,8 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
+#include <atomic>
 #include "boost/thread.hpp"
-#include "boost/atomic.hpp"
 #include "boost/lexical_cast.hpp"
 
 #ifndef SRC_KERNEL_ROUTING_THREAD_H_PRECOMPILED
@@ -417,13 +417,13 @@ struct ScopedCondLock<false, M> {
 
 
 template<class T,class M = boost::mutex, class C = boost::condition_variable>
-class ThreadSignal: public boost::atomic<T> {
+class ThreadSignal: public std::atomic<T> {
 public:
 	typedef T data_type;
 	typedef M mutex_type;
 	typedef C condition_type;
 
-	typedef boost::atomic<data_type> base;
+	typedef std::atomic<data_type> base;
 
 	ThreadSignal():base(),
 		       mutex(),
@@ -543,7 +543,7 @@ public:
 
 	protected:
 		boost::condition_variable sync_condition;
-		boost::atomic<int> locked;
+		std::atomic<int> locked;
 	};
 
 	Thread():command(thread_initializing),
@@ -616,8 +616,8 @@ public:
 		return boost::lexical_cast<std::string>(boost::this_thread::get_id());
 	}
 protected:
-	boost::atomic<thread_state> command;
-	boost::atomic<thread_state> state;
+	std::atomic<thread_state> command;
+	std::atomic<thread_state> state;
 	Mutex<> sync_mutex;
 	meeting_point sync;
 	boost::thread thread;

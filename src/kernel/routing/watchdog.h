@@ -109,7 +109,7 @@ namespace mutabor {
 		ThreadCondition<> cond;
 		mutable targettype target;
 		microseconds timeout;
-		boost::atomic<bool> exit;
+		std::atomic_bool exit;
 	};
 }
 

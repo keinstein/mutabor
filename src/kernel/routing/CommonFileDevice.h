@@ -311,8 +311,8 @@ namespace mutabor {
 		/**
 		 * Fixed offset for the relative time the file returns.
 		 */
-		boost::atomic<CurrentTimer::time_point> referenceTime; // ms
-		boost::atomic<CurrentTimer::time_point> pauseTime;     // ms
+		std::atomic<CurrentTimer::time_point> referenceTime; // ms
+		std::atomic<CurrentTimer::time_point> pauseTime;     // ms
 		timing_params timing;
 
 		CommonFileInputDevice(): InputDeviceClass(),

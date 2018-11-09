@@ -53,7 +53,7 @@
 
 // system headers which do seldom change
 
-#include <boost/atomic.hpp>
+#include <atomic>
 #include "boost/intrusive_ptr.hpp"
 
 
@@ -71,12 +71,12 @@ private:
   mutable boost::atomic<int> refcount_;
   friend void intrusive_ptr_add_ref(const X * x)
   {
-    x->refcount_.fetch_add(1, boost::memory_order_relaxed);
+    x->refcount_.fetch_add(1, std::memory_order_relaxed);
   }
   friend void intrusive_ptr_release(const X * x)
   {
-    if (x->refcount_.fetch_sub(1, boost::memory_order_release) == 1) {
-      boost::atomic_thread_fence(boost::memory_order_acquire);
+    if (x->refcount_.fetch_sub(1, std::memory_order_release) == 1) {
+      boost::atomic_thread_fence(std::memory_order_acquire);
       delete x;
     }
   }
@@ -94,17 +94,17 @@ public:
 		return value;
 	}
 
-	T fetch_add(T number, boost::memory_order order)
+	T fetch_add(T number, std::memory_order order)
 	{
 		return value.fetch_add(number,order);
 	}
 
-	T fetch_sub(T number, boost::memory_order order)
+	T fetch_sub(T number, std::memory_order order)
 	{
 		return value.fetch_sub(number,order);
 	}
 protected:
-	boost::atomic<T> value;
+	std::atomic<T> value;
 };
 
 template<class T>
@@ -118,14 +118,14 @@ public:
 		return value;
 	}
 
-	T fetch_add(T number, boost::memory_order /* order */)
+	T fetch_add(T number, std::memory_order /* order */)
 	{
 		T retval = value;
 		value += number;
 		return retval;
 	}
 
-	T fetch_sub(T number, boost::memory_order /* order */)
+	T fetch_sub(T number, std::memory_order /* order */)
 	{
 		T retval = value;
 		value -= number;
@@ -137,7 +137,7 @@ protected:
 
 template <class intrusive_ptr_T>
 inline void intrusive_ptr_atomic_fence(intrusive_ptr_T * mutUNUSED(obj)) {
-	boost::atomic_thread_fence(boost::memory_order_acquire);
+	std::atomic_thread_fence(std::memory_order_acquire);
 }
 
 template <>
@@ -154,7 +154,7 @@ template <class intrusive_ptr_T>
 inline void intrusive_ptr_add_ref(intrusive_ptr_T * obj)
 {
 	if (!obj) return;
-	obj->intrusive_ptr_refcount.fetch_add(1,boost::memory_order_relaxed);
+	obj->intrusive_ptr_refcount.fetch_add(1,std::memory_order_relaxed);
 	DEBUGLOGTYPE(smartptr,*obj,("Incrementing %p to %d"),
 		     (void *)obj,(int)intrusive_ptr_get_refcount(obj));
 	// print_stacktrace(isDebugFlag(smartptr));
@@ -167,7 +167,7 @@ inline void intrusive_ptr_release(intrusive_ptr_T * obj)
 	DEBUGLOGTYPE(smartptr,*obj,("Decrementing %p from %d"),
 		     (void *)obj,(int)intrusive_ptr_get_refcount(obj));
 	//	print_stacktrace(isDebugFlag(smartptr));
-	if (obj->intrusive_ptr_refcount.fetch_sub(1, boost::memory_order_release) == 1) {
+	if (obj->intrusive_ptr_refcount.fetch_sub(1, std::memory_order_release) == 1) {
 		intrusive_ptr_atomic_fence(obj);
 		delete obj;
 	}

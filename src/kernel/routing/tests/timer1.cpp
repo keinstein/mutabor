@@ -74,9 +74,9 @@ public:
 	typedef clocktype::time_point     time_point;
 
 	time_point firsttime,lasttime;
-	boost::atomic<milliseconds> i;
-	boost::atomic<milliseconds> max;
-	boost::atomic<milliseconds> min;
+	std::atomic<milliseconds> i;
+	std::atomic<milliseconds> max;
+	std::atomic<milliseconds> min;
 	testCommonFileDeviceTimer():CommonFileInputDevice(),i(milliseconds(0)) {
 		//		SetThreadKind(wxTHREAD_JOINABLE);
 	}
@@ -103,9 +103,9 @@ public:
 			return;
 
 		time_point::duration runtime = clocktype::now() - firsttime;
-		milliseconds time_goal = (i.load(boost::memory_order_relaxed)*
-					  (i.load(boost::memory_order_relaxed).count()-1))/2;
-		std::cerr << "i reached " << i.load(boost::memory_order_relaxed) << std::endl;
+		milliseconds time_goal = (i.load(std::memory_order_relaxed)*
+					  (i.load(std::memory_order_relaxed).count()-1))/2;
+		std::cerr << "i reached " << i.load(std::memory_order_relaxed) << std::endl;
 		std::cerr << "Played " << runtime << " (goal is " << time_goal << ")" << std::endl;
 		if ( runtime > (time_goal + milliseconds(100))) {
 			std::cerr << "Played too long!" << std::endl;
@@ -122,28 +122,28 @@ public:
 		time_point tlp = clocktype::now();
 		milliseconds delta = boost::chrono::duration_cast<milliseconds>(tlp - (lasttime));
 		milliseconds tl = delta
-			- i.load(boost::memory_order_relaxed);
+			- i.load(std::memory_order_relaxed);
 			//+ (i*(i.count()+1))/2;
-		if (max.load(boost::memory_order_relaxed) < tl)  max = tl;
-		if (min.load(boost::memory_order_relaxed) > tl ) min = tl;
+		if (max.load(std::memory_order_relaxed) < tl)  max = tl;
+		if (min.load(std::memory_order_relaxed) > tl ) min = tl;
 		/* Travis CI has problems reaching the accuracy of 10 ms on Mac OS X.
 		   So we need a high value at the moment, here.
 		   See https://github.com/keinstein/mutabor/issues/5 for discussion */
 		if (tl > milliseconds(100)) {
 			std::cerr << "Too slow: Runtime: " << delta << std::endl;
-			std::cerr << "         Expected: " << i.load(boost::memory_order_relaxed) << std::endl;
-			std::cerr << "          (" << i.load(boost::memory_order_relaxed)
-				  << "^2 + " << i.load(boost::memory_order_relaxed) << ") / 2 = "
-				  << (i.load(boost::memory_order_relaxed)
-				      *(i.load(boost::memory_order_relaxed).count()+1))/2
+			std::cerr << "         Expected: " << i.load(std::memory_order_relaxed) << std::endl;
+			std::cerr << "          (" << i.load(std::memory_order_relaxed)
+				  << "^2 + " << i.load(std::memory_order_relaxed) << ") / 2 = "
+				  << (i.load(std::memory_order_relaxed)
+				      *(i.load(std::memory_order_relaxed).count()+1))/2
 				  << " Runtime: " << tl << std::endl;
 			exit(3);
 		}
 		lasttime = tlp;
-		if ((i=i.load(boost::memory_order_relaxed) + milliseconds(1))<milliseconds(100)) {
+		if ((i=i.load(std::memory_order_relaxed) + milliseconds(1))<milliseconds(100)) {
 			std::cerr << "... " << delta
 				  << " / " <<  (tlp-firsttime) << " ... " << std::flush;
-			return i.load(boost::memory_order_relaxed);
+			return i.load(std::memory_order_relaxed);
 		}
 		return NO_DELTA();
 	}
