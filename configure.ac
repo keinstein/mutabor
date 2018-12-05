@@ -57,16 +57,6 @@ AS_IF(test "${enable_silent_rules+set}" != set,
 AM_CONDITIONAL(VPATH_BUILD, test "$ac_abs_confdir" != "$ac_pwd")
 AM_SILENT_RULES
 
-dnl Set default suffix for RtMidi
-with_rtmidi_suffix="-mutabor"
-m4_define(rtmididir,[lib/rtmidi])
-dnl m4_include([lib/rtmidi/configure.version])
-dnl aclocal cannot handle m4_include(rtmididir[/configure.library])
-dnl so we must expand rtmdiidir manually, here
-m4_include([lib/rtmidi/configure.library])
-
-ac_cv_mingw_dll_dirs="$ac_cv_rtmidi_ts_mingw_dll_dirs"
-
 AC_CONFIG_HEADER([config.h])
 
 AC_MSG_CHECKING([whether we are building off tree])
@@ -137,8 +127,18 @@ AC_PROG_CXX
 AM_PROG_CC_C_O
 PKG_PROG_PKG_CONFIG([0.14.0])
 
-
+AC_LANG_PUSH(C)
+AC_CACHE_CHECK([whether $CXX can link programs],
+	       [ax_cv_link_cxx_ok],
+	       [AC_LINK_IFELSE([],[],[])])
+AC_LANG_POP(C)
 AC_LANG_PUSH(C++)
+# Hack
+# force output of shell functions
+AC_CACHE_CHECK([whether $CXX can link programs],
+	       [ax_cv_link_cxx_ok],
+	       [AC_LINK_IFELSE([],[],[])])
+
 echo "CXXFLAGS: $CXXFLAGS"
 AX_CHECK_COMPILE_FLAG([-pipe],[CXXFLAGS="$CXXFLAGS -pipe"])
 echo "CXXFLAGS: $CXXFLAGS"
@@ -227,6 +227,7 @@ dnl
 ])
 
 
+
 AC_ARG_ENABLE(oink-support,
 	AS_HELP_STRING([--enable-oink-support],[Prepare sources for Oink checks]),
 	[AS_IF(test "$enableval" = yes,
@@ -241,53 +242,6 @@ AC_ARG_ENABLE(oink-support,
 	       AC_LANG_POP(C++)
 	  )
 ])
-
-AC_ARG_ENABLE(address-sanitizer,
-	AS_HELP_STRING([--enable-address-sanitizer],[Enable gcc/clang address santizer]),
-	[AS_IF(test "$enableval" = yes,
-
-	       AC_LANG_PUSH(C++)
-	       for flag in  -fsanitize=address  -fno-omit-frame-pointer  -fno-common \
-				-fsanitize-blacklist
-	       do
-		       AX_CHECK_COMPILE_FLAG([$flag],[CXXFLAGS="$CXXFLAGS $flag"])
-		       AC_LANG_PUSH(C)
-		       AX_CHECK_COMPILE_FLAG([$flag],[CFLAGS="$CFLAGS $flag"])
-		       AC_CHECK_LIB(asan,__asan_default_options)
-		       AC_LANG_POP(C)
-		       AC_CHECK_LIB(asan,__asan_default_options)
-	       done
-	       AC_LANG_POP(C++)
-	       )
-	       preserve_flags="${preserve_flags}'--enable-address-sanitizer=${enableval}' "
-	]
-)
-
-AC_ARG_ENABLE(thread-sanitizer,
-	AS_HELP_STRING([--enable-thread-sanitizer],[Enable gcc/clang thread santizer]),
-	[AS_IF(test "$enableval" = yes,
-	       AC_LANG_PUSH(C++)
-	       for flag in  -fsanitize=thread  -fno-omit-frame-pointer  -fno-common
-	       do
-		       AX_CHECK_COMPILE_FLAG([$flag],[CXXFLAGS="$CXXFLAGS $flag"])
-		       AC_LANG_PUSH(C)
-		       AX_CHECK_COMPILE_FLAG([$flag],[CFLAGS="$CFLAGS $flag"])
-		       AC_LANG_POP(C)
-	       done
-dnl	       for flag in  -pie
-dnl	       do
-dnl		       tmpldflags="$LDFLAGS"
-dnl		       LDFLAGS="$LDFLAGS $flag"
-dnl		       AC_MSG_CHECKING([whether $LD supports $flag])
-dnl		       AC_LINK_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
-dnl		                         [AC_MSG_RESULT([yes])],
-dnl					 [LDFLAGS="$tmpldflags"
-dnl			         AC_MSG_RESULT([no])])
-dnl	       done
-dnl	       AC_LANG_POP(C++)
-	       )
-	]
-)
 
 AC_ARG_ENABLE(ansi,
 	AS_HELP_STRING([--enable-ansi],[Enable strict ansi compiling and warnings]),
@@ -370,6 +324,18 @@ AS_IF(test "$cxx_cv_iso_for_loop_scope" = yes,
 #./  AC_DEFINE_UNQUOTED(MUST_REUSE, [$cxx_iso_for_loop_scope]))
 
 AX_CXX_COMPILE_STDCXX(11)
+
+
+dnl RtMIDI must be included after enabling addres/thread sanitizer
+with_rtmidi_suffix="-mutabor"
+m4_define(rtmididir,[lib/rtmidi])
+dnl m4_include([lib/rtmidi/configure.version])
+dnl aclocal cannot handle m4_include(rtmididir[/configure.library])
+dnl so we must expand rtmdiidir manually, here
+m4_include([lib/rtmidi/configure.library])
+
+ac_cv_mingw_dll_dirs="$ac_cv_rtmidi_ts_mingw_dll_dirs"
+
 
 # Checks for libraries.
 AC_CHECK_LIB(m,pow)
@@ -763,6 +729,52 @@ AS_IF(test -n "$PKG_CONFIG",
 AM_CONDITIONAL(HAVE_CPPUNIT, test "$CPPUNIT_LIBS")
 CPPUNIT_CFLAGS="$CPPUNIT_CFLAGS -DMUTABOR_CPPUNIT -DMUTABOR_TEST"
 DLLSEARCHPATH="$DLLSEARCHPATH `echo $CPPUNIT_LIBS  | tr ' ' '\n' | sed -e '/^-L/ { s/^-L//; s,$,/../bin, ; p }; d'`"
+
+dnl the sanitizer library must be the last checked to be the first in $LIBS
+AC_ARG_ENABLE(address-sanitizer,
+	AS_HELP_STRING([--enable-address-sanitizer],[Enable gcc/clang address santizer]),
+	[AS_IF(test "$enableval" = yes,
+
+	       AC_LANG_PUSH(C++)
+	       for flag in  -fsanitize=address  -fno-omit-frame-pointer  -fno-common \
+				-fsanitize-blacklist  -static-libasan
+	       do
+		       AX_CHECK_COMPILE_FLAG([$flag],[CXXFLAGS="$CXXFLAGS $flag"])
+		       AC_LANG_PUSH(C)
+		       AX_CHECK_COMPILE_FLAG([$flag],[CFLAGS="$CFLAGS $flag"])
+		       AC_LANG_POP(C)
+	       done
+	       AC_LANG_POP(C++)
+	       )
+	       preserve_flags="${preserve_flags}'--enable-address-sanitizer=${enableval}' "
+	]
+)
+
+AC_ARG_ENABLE(thread-sanitizer,
+	AS_HELP_STRING([--enable-thread-sanitizer],[Enable gcc/clang thread santizer]),
+	[AS_IF(test "$enableval" = yes,
+	       AC_LANG_PUSH(C++)
+	       for flag in  -fsanitize=thread  -fno-omit-frame-pointer  -fno-common -static-libasan
+	       do
+		       AX_CHECK_COMPILE_FLAG([$flag],[CXXFLAGS="$CXXFLAGS $flag"])
+		       AC_LANG_PUSH(C)
+		       AX_CHECK_COMPILE_FLAG([$flag],[CFLAGS="$CFLAGS $flag"])
+		       AC_LANG_POP(C)
+	       done
+dnl	       for flag in  -pie
+dnl	       do
+dnl		       tmpldflags="$LDFLAGS"
+dnl		       LDFLAGS="$LDFLAGS $flag"
+dnl		       AC_MSG_CHECKING([whether $LD supports $flag])
+dnl		       AC_LINK_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
+dnl		                         [AC_MSG_RESULT([yes])],
+dnl					 [LDFLAGS="$tmpldflags"
+dnl			         AC_MSG_RESULT([no])])
+dnl	       done
+	       AC_LANG_POP(C++)
+	       )
+	]
+)
 
 dnl non verbose
 
