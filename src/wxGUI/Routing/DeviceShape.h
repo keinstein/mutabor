@@ -281,8 +281,13 @@ namespace mutaborGUI {
 		void LeftDblClickEvent (wxMouseEvent & mutUNUSED(event)) {
 			// ensure that no mouse event intervenes
 			// with the current execution.
-			if (processclicks.exchange(false))
+			if (processclicks.exchange(false)) {
+				DEBUGLOG(trace,"processclicks was true");
 				CallAfter([this]{CmLeftDblClick();});
+			} else {
+				DEBUGLOG(trace,"processclicks was false");
+			}
+
 #if 0
 			wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
 					       CM_LEFT_DOUBLE_CLICK);
@@ -314,7 +319,9 @@ namespace mutaborGUI {
 		MutDeviceShape():MutIconShape(),
 				 routes(),
 				 device(NULL),
-				 playbuttons(NULL) {
+				 playbuttons(NULL),
+				 processclicks(true)
+		{
 		}
 
 		MutDeviceShape (wxWindow * parent, wxWindowID id,
@@ -322,7 +329,8 @@ namespace mutaborGUI {
 			MutIconShape(),
 			routes(),
 			device(NULL),
-			playbuttons(NULL)
+			playbuttons(NULL),
+			processclicks(true)
 			{
 				Create(parent, id, name);
 			}
@@ -333,7 +341,8 @@ namespace mutaborGUI {
 			MutIconShape(),
 			routes(),
 			device(NULL), // device gets assigned by Create
-			playbuttons(NULL)
+			playbuttons(NULL),
+			processclicks(true)
 		{
 			Create (parent, id, d);
 		}
