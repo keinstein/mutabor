@@ -307,6 +307,7 @@ namespace mutaborGUI {
 			}
 		}
 
+		bool dolayout = false;
 		wxSizerItemList & playlist = playbuttons->GetChildren();
 		for (wxSizerItemList::iterator i = playlist.begin();
 		     i != playlist.end(); i++) {
@@ -323,13 +324,24 @@ namespace mutaborGUI {
 				hide = hidePause;
 				break;
 			}
-			if (hide) playbuttons->Hide(button);
-			else playbuttons->Show(button);
+			if (hide) {
+				if (playbuttons->IsShown(button)) {
+					playbuttons->Hide(button);
+					dolayout = true;
+				}
+			} else {
+				if (!playbuttons->IsShown(button)) {
+					playbuttons->Show(button);
+					dolayout = true;
+				}
+			}
 		}
-		playbuttons->Layout();
-		wxSize size = playbuttons->GetMinSize();
-		playbuttons->SetDimension(0,0,size.GetWidth(),size.GetHeight());
-		Update();
+		if (dolayout) {
+			playbuttons->Layout();
+			wxSize size = playbuttons->GetMinSize();
+			playbuttons->SetDimension(0,0,size.GetWidth(),size.GetHeight());
+			Update();
+		}
 	}
 
 	template <class T>
