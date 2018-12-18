@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mutabor 4.0\n"
 "Report-Msgid-Bugs-To: keinstein@users.sourceforge.net\n"
-"POT-Creation-Date: 2018-10-03 13:35+0200\n"
-"PO-Revision-Date: 2018-06-06 16:52+0200\n"
+"POT-Creation-Date: 2018-12-18 22:14+0100\n"
+"PO-Revision-Date: 2018-12-18 22:17+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.sourceforge.net>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-SearchPath-0: /home/tobias/macbookbackup/Entwicklung/mutabor/"
 "mutabor-git\n"
 
@@ -267,7 +267,7 @@ msgstr "Die Alternative %d wurde in „%s“ doppelt vergeben"
 msgid "Undefined symbol: %s"
 msgstr "Unbekanntes Symbol: %s"
 
-#: src/kernel/Errors.cpp:185 src/kernel/Interval.c:83 src/kernel/Interval.c:159
+#: src/kernel/Errors.cpp:185 src/kernel/Interval.c:84 src/kernel/Interval.c:160
 #, c-format
 msgid "Undefined interval: %s"
 msgstr "Unbekanntes Intervall: %s"
@@ -297,7 +297,7 @@ msgstr "Unbekannte Harmonieform: %s (in Logik „%s“)"
 msgid "Undefined parameter name: %s in %s"
 msgstr "Undefinierter Parametername: „%s“ in „%s“"
 
-#: src/kernel/Errors.cpp:191 src/kernel/Interval.c:354
+#: src/kernel/Errors.cpp:191 src/kernel/Interval.c:355
 #, c-format
 msgid "Undefined interval: %s (in %s)"
 msgstr "Unbekanntes Intervall: %s (in %s)\""
@@ -340,7 +340,7 @@ msgstr "Undefinierte Parameter: „%s“ (im Aufrum „%s“ von Logik „%s“)
 msgid "Bad MIDI channel (valid: 1...16)"
 msgstr "Ungültiger MIDI-Kanal (erlaubt: 1 bis 16)"
 
-#: src/kernel/Errors.cpp:208 src/kernel/Interval.c:104
+#: src/kernel/Errors.cpp:208 src/kernel/Interval.c:105
 #: src/kernel/Parser.cpp:1101 src/kernel/mut.yy:232 src/kernel/mut.yy:242
 #, c-format
 msgid "Bad interval value in %s"
@@ -689,26 +689,26 @@ msgstr "Die Änderung der Größe eines Speicherbereiches ist fehlgeschlagen."
 msgid "Not enough memory."
 msgstr "Nicht genügend Speicher."
 
-#: src/kernel/Interval.c:72 src/kernel/Interval.c:269
+#: src/kernel/Interval.c:73 src/kernel/Interval.c:270
 #, c-format
 msgid "Undefined interval type %d for interval %s."
 msgstr "Unbekannter Intervalltyp %d für Intervall %s."
 
-#: src/kernel/Interval.c:173
+#: src/kernel/Interval.c:174
 #, c-format
 msgid "Intervals %s and %s depend on each other"
 msgstr "Die Intervalle „%s“ und „%s“ hängen gegenseitig voneinander ab"
 
-#: src/kernel/Interval.c:221
+#: src/kernel/Interval.c:222
 #, c-format
 msgid "Unknown error in %s, line %d."
 msgstr "Unbekannter Fehler in %s, Zeile %d."
 
-#: src/kernel/Interval.c:222
+#: src/kernel/Interval.c:223
 msgid "loop"
 msgstr "Schleife"
 
-#: src/kernel/Interval.c:363
+#: src/kernel/Interval.c:364
 #, c-format
 msgid "Undefined interval type %d for interval %s (%s:%d)."
 msgstr "Undefinierter Intervalltyp %d für Intervall „%s“ in %s:%d."
@@ -1477,7 +1477,7 @@ msgstr "LOGIK"
 msgid "KEY"
 msgstr "TASTE"
 
-#: src/kernel/parsers/scala/scala.h:161 src/wxGUI/MutApp.cpp:688
+#: src/kernel/parsers/scala/scala.h:161 src/wxGUI/MutApp.cpp:689
 msgid "Mutabor tuning"
 msgstr ""
 "Mutabor – ein Programm, mit dem feste und mutierende Stimmungen sowie andere "
@@ -1544,7 +1544,7 @@ msgstr "Kein Kasten"
 msgid "GUIDO Music Notation box"
 msgstr "GUIDO Musik-Notations-Kasten"
 
-#: src/kernel/routing/Box.h:273 src/wxGUI/Routing/BoxDlg.cpp:299
+#: src/kernel/routing/Box.h:273 src/wxGUI/Routing/BoxDlg.cpp:300
 msgid "Mutabor box"
 msgstr "Mutabor-Kasten"
 
@@ -1594,11 +1594,11 @@ msgstr "Rudimentäre Eingabedatei"
 msgid "Device base class"
 msgstr "Basistyp eines Gerätes"
 
-#: src/kernel/routing/Device.h:953
+#: src/kernel/routing/Device.h:955
 msgid "Undefined output device"
 msgstr "Undefiniertes Ausgabegerät"
 
-#: src/kernel/routing/Device.h:1251
+#: src/kernel/routing/Device.h:1253
 msgid "Undefined input device"
 msgstr "Unbekanntes Eingabegerät"
 
@@ -1642,8 +1642,8 @@ msgstr "GIS-Ausgabe-Datei"
 msgid "GIS input file"
 msgstr "GIS-Eingabedatei"
 
-#: src/kernel/routing/gmn/GSP_Err.cpp:34 src/wxGUI/MutApp.cpp:697
-#: src/wxGUI/MutEditFile.cpp:1359 Mutabor.xrc:89
+#: src/kernel/routing/gmn/GSP_Err.cpp:34 src/wxGUI/MutApp.cpp:698
+#: src/wxGUI/MutEditFile.cpp:1362 Mutabor.xrc:89
 msgid "OK"
 msgstr "OK"
 
@@ -1711,32 +1711,32 @@ msgstr "Die Datei muss mit „[“ oder „{“ beginnen."
 msgid "Range without preceeding tag."
 msgstr "Bereich ohne vorheriges Tag."
 
-#: src/kernel/routing/midi/DevMidF.cpp:155
+#: src/kernel/routing/midi/DevMidF.cpp:153
 msgid "Number contains too many bytes"
 msgstr "Die Zahl enthält zu viele Bytes"
 
-#: src/kernel/routing/midi/DevMidF.cpp:175
+#: src/kernel/routing/midi/DevMidF.cpp:173
 #, c-format
 msgid "Invalid status byte: %x  at position %d"
 msgstr "Ungültiges Status-Byte: %x bei Position %d"
 
-#: src/kernel/routing/midi/DevMidF.cpp:196
+#: src/kernel/routing/midi/DevMidF.cpp:194
 msgid "File ended while scanning for end of meta event"
 msgstr "Die Datei endete während nach einem Ende-Meta-Tag gesucht wurde"
 
-#: src/kernel/routing/midi/DevMidF.cpp:249
+#: src/kernel/routing/midi/DevMidF.cpp:247
 #, c-format
 msgid "Track %s of file '%s' has a broken track header."
 msgstr "Die Spur „%s“ aus Datei „%s“ hat einen kaputten Spuranfang."
 
-#: src/kernel/routing/midi/DevMidF.cpp:265
+#: src/kernel/routing/midi/DevMidF.cpp:263
 #, c-format
 msgid "Could not allocate data for track %s of MIDI input file '%s'."
 msgstr ""
 "Ich habe keinen Speicher für die Spur „%s“ der MIDI-Eingabedatei „%s“ "
 "bekommen."
 
-#: src/kernel/routing/midi/DevMidF.cpp:281
+#: src/kernel/routing/midi/DevMidF.cpp:279
 #, c-format
 msgid ""
 "The MIDI input file “%s” is corrupted. This has been detected while reading "
@@ -1745,8 +1745,8 @@ msgstr ""
 "Die MIDI-Eingabedatei „%s“ ist kaputt. Das habe ich festgestellt, während "
 "ich die Spur „%s“ lesen wollte."
 
-#: src/kernel/routing/midi/DevMidF.cpp:383
-#: src/kernel/routing/midi/DevMidF.cpp:522
+#: src/kernel/routing/midi/DevMidF.cpp:381
+#: src/kernel/routing/midi/DevMidF.cpp:520
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -1755,14 +1755,14 @@ msgstr ""
 "Der Kanalbereich %d–%d der aktuellen MIDI-Datei „%s“ muss innerhalb von %d–"
 "%d liegen. Die aktuelle Route wurde korrikgiert."
 
-#: src/kernel/routing/midi/DevMidF.cpp:430
-#: src/kernel/routing/midi/DevMidF.cpp:436
+#: src/kernel/routing/midi/DevMidF.cpp:428
+#: src/kernel/routing/midi/DevMidF.cpp:434
 #: src/kernel/routing/midi/DevMidi.cpp:183
 #: src/kernel/routing/midi/DevMidi.cpp:189
 msgid "Bending_Range"
 msgstr "Bending_Range"
 
-#: src/kernel/routing/midi/DevMidF.cpp:554
+#: src/kernel/routing/midi/DevMidF.cpp:552
 #, c-format
 msgid ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -1771,54 +1771,54 @@ msgstr ""
 "Der Bereich für die MIDI-Spuren (%d–%d) der Datei „%s“ muss innerhalb von %d–"
 "%d liegen. Die aktuelle Route wurde angepasst."
 
-#: src/kernel/routing/midi/DevMidF.cpp:583
+#: src/kernel/routing/midi/DevMidF.cpp:581
 msgid "You instructed me to open a file without file name. I can't do that."
 msgstr ""
 "Sie gaben mir die Anweisung eine Datei ohne Dateinamen zu öffnen. Ich kann "
 "das nicht."
 
-#: src/kernel/routing/midi/DevMidF.cpp:600
+#: src/kernel/routing/midi/DevMidF.cpp:598
 #, c-format
 msgid "Can not open Midi input file '%s'."
 msgstr "Kann Midi-Eingabedatei „%s“ nicht öffnen."
 
-#: src/kernel/routing/midi/DevMidF.cpp:610
+#: src/kernel/routing/midi/DevMidF.cpp:608
 #, c-format
 msgid "File '%s' is not a valid midi file."
 msgstr "Die Datei „%s“ ist keine gültige MIDI-Datei."
 
-#: src/kernel/routing/midi/DevMidF.cpp:619
+#: src/kernel/routing/midi/DevMidF.cpp:617
 #, c-format
 msgid "Unknown header (chunk length %d) in file '%s'."
 msgstr "Unbekannter Dateikopf (Abschnittslänge %d) in Datei „%s“."
 
-#: src/kernel/routing/midi/DevMidF.cpp:631
+#: src/kernel/routing/midi/DevMidF.cpp:629
 #, c-format
 msgid "Unknown file type %d in file '%s'."
 msgstr "Unbekannter Dateityp %d in Datei „%s“."
 
-#: src/kernel/routing/midi/DevMidF.cpp:648
+#: src/kernel/routing/midi/DevMidF.cpp:646
 #, c-format
 msgid "Midi file '%s' has corrupted timing information."
 msgstr "Die MIDI-Datei „%s“ enthält kaputte Zeitstempel."
 
-#: src/kernel/routing/midi/DevMidF.cpp:668
+#: src/kernel/routing/midi/DevMidF.cpp:666
 #, c-format
 msgid "Could not allocate memory for the track list of file '%s'."
 msgstr "Die Speicheranforderung für die Spurliste der Datei „%s“ schlug fehl."
 
-#: src/kernel/routing/midi/DevMidF.cpp:696
+#: src/kernel/routing/midi/DevMidF.cpp:694
 #, c-format
 msgid "File '%s' has a broken track header."
 msgstr "Die Datei „%s“ enthält einen kaputten Spuranfang."
 
-#: src/kernel/routing/midi/DevMidF.cpp:713
+#: src/kernel/routing/midi/DevMidF.cpp:711
 #, c-format
 msgid "Could not allocate data for track %d of MIDI input file '%s'."
 msgstr ""
 "Ich habe keinen Speicher für die Spur %d der MIDI-Eingabedatei „%s“ bekommen."
 
-#: src/kernel/routing/midi/DevMidF.cpp:730
+#: src/kernel/routing/midi/DevMidF.cpp:728
 #, c-format
 msgid ""
 "The MIDI input file “%s” is corrupted. This has been detected while reading "
@@ -1850,18 +1850,18 @@ msgstr ""
 "Die Gerätekennung des Fortsetzungspaketes passt nicht zur Kennung der "
 "systemexklusiven Nachricht"
 
-#: src/kernel/routing/midi/DevMidF.h:872
+#: src/kernel/routing/midi/DevMidF.h:857
 msgid "MIDI output file"
 msgstr "MIDI-Ausgabedatei"
 
-#: src/kernel/routing/midi/DevMidF.h:1004
+#: src/kernel/routing/midi/DevMidF.h:989
 msgid "MIDI input file"
 msgstr "MIDI-Eingabedatei"
 
 #: src/kernel/routing/midi/DevMidi.cpp:104
 #: src/kernel/routing/midi/DevMidi.cpp:293
 #: src/kernel/routing/midi/DevMidi.h:327 src/kernel/routing/midi/DevMidi.h:476
-#: src/wxGUI/Routing/InputDevDlg.h:188 src/wxGUI/Routing/OutputDevDlg.h:181
+#: src/wxGUI/Routing/InputDevDlg.h:189 src/wxGUI/Routing/OutputDevDlg.h:181
 msgid "no device"
 msgstr "Kein Gerät"
 
@@ -1931,7 +1931,7 @@ msgstr ""
 msgid "Midi output device"
 msgstr "MIDI-Ausgabegerät"
 
-#: src/kernel/routing/midi/DevMidi.h:527
+#: src/kernel/routing/midi/DevMidi.h:528
 msgid "Midi input device"
 msgstr "MIDI-Eingabegerät"
 
@@ -1968,7 +1968,7 @@ msgstr "Zeile:"
 msgid "..."
 msgstr "…"
 
-#: src/wxGUI/CompDlg.cpp:136 src/wxGUI/MutEditFile.cpp:1346 Mutabor.xrc:231
+#: src/wxGUI/CompDlg.cpp:136 src/wxGUI/MutEditFile.cpp:1349 Mutabor.xrc:231
 msgid "Statistics"
 msgstr "Statistik"
 
@@ -2024,7 +2024,7 @@ msgstr "Hilfe.zip"
 msgid "Mutabor logic file"
 msgstr "Mutabor-Logik-Datei"
 
-#: src/wxGUI/MutApp.cpp:334 src/wxGUI/MutApp.cpp:1408 Mutabor.xrc:518
+#: src/wxGUI/MutApp.cpp:334 src/wxGUI/MutApp.cpp:1409 Mutabor.xrc:518
 #: Mutabor.xrc:1162
 msgid "&Help"
 msgstr "&Hilfe"
@@ -2068,568 +2068,577 @@ msgid "Rudolf Wille (mathematical foundation)"
 msgstr "Rudolf Wille (Mathematisches Modell)"
 
 #: src/wxGUI/MutApp.cpp:618
+msgid "Clemens Misch (foundations of the MUTABOR language)"
+msgstr "Clemens Misch (Grundlagen der MUTABOR-Sprache)"
+
+#: src/wxGUI/MutApp.cpp:619
 msgid "Tobias Schlemmer (new icon/splash)"
 msgstr "Tobias Schlemmer (Neues Icon/Startbild)"
 
-#: src/wxGUI/MutApp.cpp:619
+#: src/wxGUI/MutApp.cpp:620
 msgid "Bernhard Ganter"
 msgstr "Bernhard Ganter"
 
-#: src/wxGUI/MutApp.cpp:620 src/wxGUI/MutApp.cpp:624
+#: src/wxGUI/MutApp.cpp:621 src/wxGUI/MutApp.cpp:625
 msgid "Volker Abel"
 msgstr "Volker Abel"
 
-#: src/wxGUI/MutApp.cpp:621 src/wxGUI/MutApp.cpp:625
+#: src/wxGUI/MutApp.cpp:622 src/wxGUI/MutApp.cpp:626
 msgid "Peter Reiss"
 msgstr "Peter Reiss"
 
-#: src/wxGUI/MutApp.cpp:622 src/wxGUI/MutApp.cpp:626
+#: src/wxGUI/MutApp.cpp:623 src/wxGUI/MutApp.cpp:627
 msgid "Ruediger Krausze"
 msgstr "Rüdiger Krauße"
 
-#: src/wxGUI/MutApp.cpp:623 src/wxGUI/MutApp.cpp:627
+#: src/wxGUI/MutApp.cpp:624 src/wxGUI/MutApp.cpp:628
 msgid "Tobias Schlemmer <keinstein@users.sf.net>"
 msgstr "Tobias Schlemmer <keinstein@users.sf.net>"
 
-#: src/wxGUI/MutApp.cpp:628
+#: src/wxGUI/MutApp.cpp:629
 msgid "English: Tobias Schlemmer"
 msgstr "Englisch: Tobias Schlemmer"
 
-#: src/wxGUI/MutApp.cpp:645
+#: src/wxGUI/MutApp.cpp:646
 msgid "About ..."
 msgstr "Über …"
 
-#: src/wxGUI/MutApp.cpp:649
+#: src/wxGUI/MutApp.cpp:650
 msgid "Version: "
 msgstr "Version: "
 
-#: src/wxGUI/MutApp.cpp:651
+#: src/wxGUI/MutApp.cpp:652
 msgid "Written by: "
 msgstr "Geschrieben von: "
 
-#: src/wxGUI/MutApp.cpp:652
+#: src/wxGUI/MutApp.cpp:653
 msgid ""
 "Bernhard Ganter\n"
 "Volker Abel\n"
 "Peter Reiss\n"
 "Ruediger Krausze\n"
-"Tobias Schlemmer <keinstein@mail.berlios.de>"
+"Tobias Schlemmer <keinstein@users.sourceforge.net>"
 msgstr ""
+"Bernhard Ganter\n"
+"Volker Abel\n"
+"Peter Reiss\n"
+"Ruediger Krauße\n"
+"Tobias Schlemmer <keinstein@users.sourceforge.net>"
 
-#: src/wxGUI/MutApp.cpp:657
+#: src/wxGUI/MutApp.cpp:658
 msgid ""
 "Mathematical\n"
 "modelling:"
 msgstr "Mathematische Modellierung:"
 
-#: src/wxGUI/MutApp.cpp:658
+#: src/wxGUI/MutApp.cpp:659
 msgid "Rudolf Wille"
 msgstr "Rudolf Wille"
 
-#: src/wxGUI/MutApp.cpp:659
+#: src/wxGUI/MutApp.cpp:660
 msgid "Licence type: "
 msgstr "Lizenz: "
 
-#: src/wxGUI/MutApp.cpp:660
+#: src/wxGUI/MutApp.cpp:661
 msgid "GPL"
 msgstr "GPL"
 
-#: src/wxGUI/MutApp.cpp:661
+#: src/wxGUI/MutApp.cpp:662
 msgid "wxWidgets: "
 msgstr "wxWidgets: "
 
-#: src/wxGUI/MutApp.cpp:663
+#: src/wxGUI/MutApp.cpp:664
 msgid "Copyright: "
 msgstr "Rechte: "
 
-#: src/wxGUI/MutApp.cpp:664
+#: src/wxGUI/MutApp.cpp:665
 msgid "(c) 2007 TU Dresden, Institut fuer Algebra"
 msgstr "© 2007 TU Dresden, Institut für Algebra"
 
-#: src/wxGUI/MutApp.cpp:865
+#: src/wxGUI/MutApp.cpp:866
 msgid "help.html"
 msgstr "Bedienung.html"
 
-#: src/wxGUI/MutApp.cpp:870 src/wxGUI/MutConfDlg.h:73
+#: src/wxGUI/MutApp.cpp:871 src/wxGUI/MutConfDlg.h:73
 msgid "The setup dialog"
 msgstr "Der Einstellungsdialog"
 
-#: src/wxGUI/MutApp.cpp:875
+#: src/wxGUI/MutApp.cpp:876
 msgid "manual.html"
 msgstr "Handbuch.html"
 
-#: src/wxGUI/MutApp.cpp:880
+#: src/wxGUI/MutApp.cpp:881
 msgid "reference.html"
 msgstr "Referenz.html"
 
-#: src/wxGUI/MutApp.cpp:885
+#: src/wxGUI/MutApp.cpp:886
 msgid "Help window"
 msgstr "Das Hilfefenster"
 
-#: src/wxGUI/MutApp.cpp:895
+#: src/wxGUI/MutApp.cpp:896
 msgid "Search for?"
 msgstr "Suche nach?"
 
-#: src/wxGUI/MutApp.cpp:896
+#: src/wxGUI/MutApp.cpp:897
 msgid "Search help for keyword"
 msgstr "Hilfe nach einem Schlüsselwort durchsuchen"
 
-#: src/wxGUI/MutApp.cpp:1115
+#: src/wxGUI/MutApp.cpp:1116
 msgid "&New\tCtrl+N"
 msgstr "&Neu\tCtrl+N"
 
-#: src/wxGUI/MutApp.cpp:1116
+#: src/wxGUI/MutApp.cpp:1117
 msgid "Create a new logic file."
 msgstr "Erzeuge eine neue Logikdatei."
 
-#: src/wxGUI/MutApp.cpp:1117
+#: src/wxGUI/MutApp.cpp:1118
 msgid "&Open...\tCtrl+O"
 msgstr "Ö&ffnen...\tCtrl+O"
 
-#: src/wxGUI/MutApp.cpp:1118
+#: src/wxGUI/MutApp.cpp:1119
 msgid "Open a logic file in editor window"
 msgstr "Öffnet eine Logikdatei im Editorfenster"
 
-#: src/wxGUI/MutApp.cpp:1128
+#: src/wxGUI/MutApp.cpp:1129
 msgid "&Import from Scala"
 msgstr "Scala-&Import"
 
-#: src/wxGUI/MutApp.cpp:1129
+#: src/wxGUI/MutApp.cpp:1130
 msgid "Import a tuning logic from a Scala file and its keymap"
 msgstr "Importiere eine Stimmungslogik aus einer Scala-Datei"
 
-#: src/wxGUI/MutApp.cpp:1131
+#: src/wxGUI/MutApp.cpp:1132
 msgid "E&xport to Scala"
 msgstr "Scala-E&xport"
 
-#: src/wxGUI/MutApp.cpp:1132
+#: src/wxGUI/MutApp.cpp:1133
 msgid "Export the currently active logic to a Scala file with keymap"
 msgstr ""
 "Exportiert die momentan aktive Logik als Scala-Datei mit entsprechender "
 "Tastenzuordnung"
 
-#: src/wxGUI/MutApp.cpp:1136
+#: src/wxGUI/MutApp.cpp:1137
 msgid "&Execute\tCtrl+F9"
 msgstr "S&tarten\tCtrl+F9"
 
-#: src/wxGUI/MutApp.cpp:1137
+#: src/wxGUI/MutApp.cpp:1138
 msgid "Load a logic file an immediately activate it"
 msgstr "Logikdatei laden und sofort aktivieren"
 
-#: src/wxGUI/MutApp.cpp:1146
+#: src/wxGUI/MutApp.cpp:1147
 msgid "Proper&ties ...\tCtrl+I"
 msgstr "Dokumenteigenschaften…\tCtrl+I"
 
-#: src/wxGUI/MutApp.cpp:1147
+#: src/wxGUI/MutApp.cpp:1148
 msgid "Get some information about the currently edited file"
 msgstr "Informationen über aktuell bearbeitete Datei anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1155
+#: src/wxGUI/MutApp.cpp:1156
 msgid "Print setup..."
 msgstr "Druckeinstellungen…"
 
-#: src/wxGUI/MutApp.cpp:1156
+#: src/wxGUI/MutApp.cpp:1157
 msgid "Configure how the pages will be printed"
 msgstr "Einstellen, wie Seiten gedruckt werden"
 
-#: src/wxGUI/MutApp.cpp:1176
+#: src/wxGUI/MutApp.cpp:1177
 msgid "&File"
 msgstr "&Datei"
 
-#: src/wxGUI/MutApp.cpp:1178
+#: src/wxGUI/MutApp.cpp:1179
 msgid "@MAC|&File"
 msgstr "&Ablage"
 
-#: src/wxGUI/MutApp.cpp:1198
+#: src/wxGUI/MutApp.cpp:1199
 msgid "Select &line\tCtrl+Shift+L"
 msgstr "&Zeile auswählen\tCtrl+Shift+L"
 
-#: src/wxGUI/MutApp.cpp:1199
+#: src/wxGUI/MutApp.cpp:1200
 msgid "Select the complete line at cursor position"
 msgstr "Gesamte Zeile an Cursorposition auswählen"
 
-#: src/wxGUI/MutApp.cpp:1203
+#: src/wxGUI/MutApp.cpp:1204
 msgid "Find &next\tCtrl+G"
 msgstr "&Weitersuchen\tCtrl+G"
 
-#: src/wxGUI/MutApp.cpp:1204
+#: src/wxGUI/MutApp.cpp:1205
 msgid "Continue last search"
 msgstr "Letzte Suche fortsetzen"
 
-#: src/wxGUI/MutApp.cpp:1207
+#: src/wxGUI/MutApp.cpp:1208
 msgid "Replace &again\tShift+F4"
 msgstr "&Nochmal ersetzen\tShift+F4"
 
-#: src/wxGUI/MutApp.cpp:1208
+#: src/wxGUI/MutApp.cpp:1209
 msgid "Go on with replacement"
 msgstr "Suchen/Ersetzen fortsetzen"
 
-#: src/wxGUI/MutApp.cpp:1211
+#: src/wxGUI/MutApp.cpp:1212
 msgid "&Match brace\tCtrl+M"
 msgstr "&Klammer finden\tCtrl+M"
 
-#: src/wxGUI/MutApp.cpp:1212
+#: src/wxGUI/MutApp.cpp:1213
 msgid "Find matching brace and select all contained characters"
 msgstr "Finde die passende Klammer und markiere den Text zwischen beiden"
 
-#: src/wxGUI/MutApp.cpp:1214
+#: src/wxGUI/MutApp.cpp:1215
 msgid "&Goto Line...\tCtrl+L"
 msgstr "Gehe zu &Zeile…\tCtrl+L"
 
-#: src/wxGUI/MutApp.cpp:1215
+#: src/wxGUI/MutApp.cpp:1216
 msgid "Jump to a specific line"
 msgstr "Gehe zu einer bestimmten Zeile"
 
-#: src/wxGUI/MutApp.cpp:1222
+#: src/wxGUI/MutApp.cpp:1223
 msgid "&Overwrite mode\tIns"
 msgstr "Übersch&reiben\tIns"
 
-#: src/wxGUI/MutApp.cpp:1223
+#: src/wxGUI/MutApp.cpp:1224
 msgid "Replace the caracters at the caret position by the ones you type in"
 msgstr "Überschreibe den Text an der Cursorposition mit der neuen Eingabe"
 
-#: src/wxGUI/MutApp.cpp:1225
+#: src/wxGUI/MutApp.cpp:1226
 msgid "&Wrap mode\tCtrl+U"
 msgstr "&Automatischer Zeilenumbruch\tCtrl+U"
 
-#: src/wxGUI/MutApp.cpp:1226
+#: src/wxGUI/MutApp.cpp:1227
 msgid "Automatic line breaking while inserting text"
 msgstr "Automatischer Zeilenumbruch beim Eingeben des textes"
 
-#: src/wxGUI/MutApp.cpp:1228
+#: src/wxGUI/MutApp.cpp:1229
 msgid "&Readonly mode"
 msgstr "Schreib&geschützt"
 
-#: src/wxGUI/MutApp.cpp:1229
+#: src/wxGUI/MutApp.cpp:1230
 msgid "Disallow changing the document"
 msgstr "Verbiete Änderungen am Dokument"
 
-#: src/wxGUI/MutApp.cpp:1234
+#: src/wxGUI/MutApp.cpp:1235
 msgid "&Upper case"
 msgstr "In &Großbuchstaben umwandeln"
 
-#: src/wxGUI/MutApp.cpp:1235
+#: src/wxGUI/MutApp.cpp:1236
 msgid "Change the current selection to upper case"
 msgstr "Aktuelle Auswahl in Großbuchstaben umwandeln"
 
-#: src/wxGUI/MutApp.cpp:1237
+#: src/wxGUI/MutApp.cpp:1238
 msgid "&Lower case"
 msgstr "In Klei&nbuchstaben umwandeln"
 
-#: src/wxGUI/MutApp.cpp:1238
+#: src/wxGUI/MutApp.cpp:1239
 msgid "Change the current selection to lower case"
 msgstr "Aktuelle Auswahl in Kleinbuchstaben umwandeln"
 
-#: src/wxGUI/MutApp.cpp:1243
+#: src/wxGUI/MutApp.cpp:1244
 msgid "CR (&Linux/MAC OS X)"
 msgstr "CR (&Linux/MAC OS X)"
 
-#: src/wxGUI/MutApp.cpp:1244
+#: src/wxGUI/MutApp.cpp:1245
 msgid "Change line endings to carrage return only (Unix style)"
 msgstr "Zeilenenden durch Wagenrücklauf-Zeichen markieren (Unix-Stil)"
 
-#: src/wxGUI/MutApp.cpp:1246
+#: src/wxGUI/MutApp.cpp:1247
 msgid "CR+LF (&Windows)"
 msgstr "CR+LF (&Windows)"
 
-#: src/wxGUI/MutApp.cpp:1247
+#: src/wxGUI/MutApp.cpp:1248
 msgid "Change line endigs to carrage return + line feed (DOS/Windows style)"
 msgstr ""
 "Zelenenden durch Wagenrücklauf/Zeilenschaltung markieren (DOS/Windows-Stil)"
 
-#: src/wxGUI/MutApp.cpp:1249
+#: src/wxGUI/MutApp.cpp:1250
 msgid "LF (&Macintosh)"
 msgstr "LF (&Macintosh)"
 
-#: src/wxGUI/MutApp.cpp:1250
+#: src/wxGUI/MutApp.cpp:1251
 msgid "Change line endings to line feed only (old Macintosh style)"
 msgstr ""
 "Zeilenenden durch Zeilenschaltungszeichen markieren (alter Macintosh-Stil)"
 
-#: src/wxGUI/MutApp.cpp:1252
+#: src/wxGUI/MutApp.cpp:1253
 msgid "Edit options ..."
 msgstr "Bearbeitungsoptionen …"
 
-#: src/wxGUI/MutApp.cpp:1253
+#: src/wxGUI/MutApp.cpp:1254
 msgid "Change &case to ..."
 msgstr "Ändere Groß-/Kleinbuchstaben…"
 
-#: src/wxGUI/MutApp.cpp:1255
+#: src/wxGUI/MutApp.cpp:1256
 msgid "Convert line &endings to ..."
 msgstr "&Zeilenenden umwandeln…"
 
-#: src/wxGUI/MutApp.cpp:1258
+#: src/wxGUI/MutApp.cpp:1259
 msgid "&Edit"
 msgstr "&Bearbeiten"
 
-#: src/wxGUI/MutApp.cpp:1265
+#: src/wxGUI/MutApp.cpp:1266
 msgid "&Compile\tAlt+F9"
 msgstr "&Übersetzen\tAlt+F9"
 
-#: src/wxGUI/MutApp.cpp:1265
+#: src/wxGUI/MutApp.cpp:1266
 msgid "Load the actual file into the Mutabor Kernel."
 msgstr "Lädt die aktuelle Datei in den Mutabor-Kern."
 
-#: src/wxGUI/MutApp.cpp:1266
+#: src/wxGUI/MutApp.cpp:1267
 msgid "&Activate\tF9"
 msgstr "&Aktivieren\tF9"
 
-#: src/wxGUI/MutApp.cpp:1266
+#: src/wxGUI/MutApp.cpp:1267
 msgid "Activate the Mutabor Kernel."
 msgstr "Aktiviert den Mutabor-Kern."
 
-#: src/wxGUI/MutApp.cpp:1267
+#: src/wxGUI/MutApp.cpp:1268
 msgid "&Stop\tF8"
 msgstr "An&halten\tF8"
 
-#: src/wxGUI/MutApp.cpp:1267
+#: src/wxGUI/MutApp.cpp:1268
 msgid "Stop the Mutabor Kernel."
 msgstr "Hält den Mutaborkern an."
 
-#: src/wxGUI/MutApp.cpp:1269
+#: src/wxGUI/MutApp.cpp:1270
 msgid "&Panic\tF12"
 msgstr "&Panik\tF12"
 
-#: src/wxGUI/MutApp.cpp:1269
+#: src/wxGUI/MutApp.cpp:1270
 msgid "Send \"all notes off\" signal to on all MIDI Channels."
 msgstr ""
 "Sendet das Signal „all notes off (alle Noten aus)“ auf allen MIDI-Kanälen."
 
-#: src/wxGUI/MutApp.cpp:1270
+#: src/wxGUI/MutApp.cpp:1271
 msgid "&Logic"
 msgstr "&Logik"
 
-#: src/wxGUI/MutApp.cpp:1277
+#: src/wxGUI/MutApp.cpp:1278
 msgid "&Move icon up\tShift+Up"
 msgstr "&Symbol aufwärts verschieben\tShift+Up"
 
-#: src/wxGUI/MutApp.cpp:1278 src/wxGUI/MutFrame.cpp:416
+#: src/wxGUI/MutApp.cpp:1279 src/wxGUI/MutFrame.cpp:416
 msgid "Moves the device or box upwards in the window."
 msgstr "Bewegt das Gerät oder den Kasten im Fenster aufwärts."
 
-#: src/wxGUI/MutApp.cpp:1279
+#: src/wxGUI/MutApp.cpp:1280
 msgid "&Move icon down\tShift+Down"
 msgstr "Symbol &abwärts verschieben\tShift+Down"
 
-#: src/wxGUI/MutApp.cpp:1280 src/wxGUI/MutFrame.cpp:418
+#: src/wxGUI/MutApp.cpp:1281 src/wxGUI/MutFrame.cpp:418
 msgid "Moves the device or box downwards in the window."
 msgstr "Bewegt das Gerät oder den Kasten im Fenster abwärts."
 
-#: src/wxGUI/MutApp.cpp:1283 src/wxGUI/MutFrame.cpp:410
+#: src/wxGUI/MutApp.cpp:1284 src/wxGUI/MutFrame.cpp:410
 msgid "&Load routes"
 msgstr "Route laden"
 
-#: src/wxGUI/MutApp.cpp:1284 src/wxGUI/MutFrame.cpp:411
+#: src/wxGUI/MutApp.cpp:1285 src/wxGUI/MutFrame.cpp:411
 msgid "Load the current route configuration from a file"
 msgstr "Lädt die aktuellen Routeneinstellungen aus einer Datei"
 
-#: src/wxGUI/MutApp.cpp:1285 src/wxGUI/MutFrame.cpp:412
+#: src/wxGUI/MutApp.cpp:1286 src/wxGUI/MutFrame.cpp:412
 msgid "&Save routes"
 msgstr "Route &speichern"
 
-#: src/wxGUI/MutApp.cpp:1286 src/wxGUI/MutFrame.cpp:413
+#: src/wxGUI/MutApp.cpp:1287 src/wxGUI/MutFrame.cpp:413
 msgid "Save current route configuration to a file."
 msgstr "Speichert die aktuellen Routeneinstellungen."
 
-#: src/wxGUI/MutApp.cpp:1287
+#: src/wxGUI/MutApp.cpp:1288
 msgid "Save routes &as"
 msgstr "Speichere Routen &unter…"
 
-#: src/wxGUI/MutApp.cpp:1288
+#: src/wxGUI/MutApp.cpp:1289
 msgid "Save current route configuration to a file with a new name."
 msgstr ""
 "Speichert die aktuellen Routeneinstellungen in einer Datei unter einem neuen "
 "Namen."
 
-#: src/wxGUI/MutApp.cpp:1289
+#: src/wxGUI/MutApp.cpp:1290
 msgid "&Routes"
 msgstr "&Routen"
 
-#: src/wxGUI/MutApp.cpp:1308
+#: src/wxGUI/MutApp.cpp:1309
 msgid "&ANSI (Windows)"
 msgstr "&ANSI (Windows)"
 
-#: src/wxGUI/MutApp.cpp:1309
+#: src/wxGUI/MutApp.cpp:1310
 msgid "&MAC (Macintosh)"
 msgstr "&MAC (Macintosh)"
 
-#: src/wxGUI/MutApp.cpp:1310
+#: src/wxGUI/MutApp.cpp:1311
 msgid "&UTF-8 (International)"
 msgstr "&UTF-8 (International)"
 
-#: src/wxGUI/MutApp.cpp:1311
+#: src/wxGUI/MutApp.cpp:1312
 msgid "Uni&code (same as UTF-8)"
 msgstr "Uni&code (das gleiche wie UTF-8)"
 
-#: src/wxGUI/MutApp.cpp:1314
+#: src/wxGUI/MutApp.cpp:1315
 msgid "&Hilight language..."
 msgstr "Hervorhebungen für Sprache…"
 
-#: src/wxGUI/MutApp.cpp:1318
+#: src/wxGUI/MutApp.cpp:1319
 msgid "&Toggle current fold\tCtrl+T"
 msgstr "Umgebung &Falten/Entfalten\tCtrl+T"
 
-#: src/wxGUI/MutApp.cpp:1320
+#: src/wxGUI/MutApp.cpp:1321
 msgid "Show line &endings"
 msgstr "Zeilenenden &anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1321
+#: src/wxGUI/MutApp.cpp:1322
 msgid "Show &indent guides"
 msgstr "Einrückungs&hilfe anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1322
+#: src/wxGUI/MutApp.cpp:1323
 msgid "Show line &numbers"
 msgstr "Zeilen&nummern anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1323
+#: src/wxGUI/MutApp.cpp:1324
 msgid "Show &long line marker"
 msgstr "Text&breite anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1324
+#: src/wxGUI/MutApp.cpp:1325
 msgid "Show white&space"
 msgstr "&Leerzeichen anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1326
+#: src/wxGUI/MutApp.cpp:1327
 msgid "Use &code page of..."
 msgstr "Zeichen&kodierung…"
 
-#: src/wxGUI/MutApp.cpp:1340
+#: src/wxGUI/MutApp.cpp:1341
 msgid "Current ke&ys\tF5"
 msgstr "Aktuelle &Tasten\tF5"
 
-#: src/wxGUI/MutApp.cpp:1341
+#: src/wxGUI/MutApp.cpp:1342
 msgid "Show current keys window"
 msgstr "Zeige aktuelle Tasten"
 
-#: src/wxGUI/MutApp.cpp:1342
+#: src/wxGUI/MutApp.cpp:1343
 msgid "&Tone system\tF6"
 msgstr "Ton&system\tF6"
 
-#: src/wxGUI/MutApp.cpp:1343
+#: src/wxGUI/MutApp.cpp:1344
 msgid "Show tone system window"
 msgstr "Zeige Tonsystem-Fenster"
 
-#: src/wxGUI/MutApp.cpp:1344
+#: src/wxGUI/MutApp.cpp:1345
 msgid "&Actions\tF7"
 msgstr "&Aktionen\tF7"
 
-#: src/wxGUI/MutApp.cpp:1345
+#: src/wxGUI/MutApp.cpp:1346
 msgid "Show current actions window"
 msgstr "Zeigt das Fenster für aktuelle Aktionen"
 
-#: src/wxGUI/MutApp.cpp:1347
+#: src/wxGUI/MutApp.cpp:1348
 msgid "&Routes\tF11"
 msgstr "&Routen\tF11"
 
-#: src/wxGUI/MutApp.cpp:1348
+#: src/wxGUI/MutApp.cpp:1349
 msgid "Open route configuration window"
 msgstr "Öffne die Routeneinstellungen"
 
-#: src/wxGUI/MutApp.cpp:1358
+#: src/wxGUI/MutApp.cpp:1359
 msgid "Select &Box"
 msgstr "Kasten &Auswählen"
 
-#: src/wxGUI/MutApp.cpp:1359
+#: src/wxGUI/MutApp.cpp:1360
 msgid "Select current Box"
 msgstr "Aktuellen Kasten &Auswählen"
 
-#: src/wxGUI/MutApp.cpp:1362
+#: src/wxGUI/MutApp.cpp:1363
 msgid "&View"
 msgstr "&Anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1368 src/wxGUI/MutFrame.cpp:420
+#: src/wxGUI/MutApp.cpp:1369 src/wxGUI/MutFrame.cpp:420
 msgid "&Play"
 msgstr "Ab&spielen"
 
-#: src/wxGUI/MutApp.cpp:1369 src/wxGUI/MutFrame.cpp:421
+#: src/wxGUI/MutApp.cpp:1370 src/wxGUI/MutFrame.cpp:421
 msgid "Start playing the music from input file devices"
 msgstr "Musik der Datei-Geräte starten"
 
-#: src/wxGUI/MutApp.cpp:1370 src/wxGUI/MutFrame.cpp:422
+#: src/wxGUI/MutApp.cpp:1371 src/wxGUI/MutFrame.cpp:422
 msgid "St&op"
 msgstr "St&op"
 
-#: src/wxGUI/MutApp.cpp:1371 src/wxGUI/MutFrame.cpp:423
+#: src/wxGUI/MutApp.cpp:1372 src/wxGUI/MutFrame.cpp:423
 msgid "Stop playing the music from input file devices"
 msgstr "Musik der Datei-Geräte stoppen"
 
-#: src/wxGUI/MutApp.cpp:1372 src/wxGUI/MutFrame.cpp:424
+#: src/wxGUI/MutApp.cpp:1373 src/wxGUI/MutFrame.cpp:424
 msgid "P&ause"
 msgstr "&Pause"
 
-#: src/wxGUI/MutApp.cpp:1373 src/wxGUI/MutFrame.cpp:425
+#: src/wxGUI/MutApp.cpp:1374 src/wxGUI/MutFrame.cpp:425
 msgid "Pause plaing the music from input file devices"
 msgstr "Musik der Datei-Geräte anhalten"
 
-#: src/wxGUI/MutApp.cpp:1374
+#: src/wxGUI/MutApp.cpp:1375
 msgid "&Sequencer"
 msgstr "&Sequencer"
 
-#: src/wxGUI/MutApp.cpp:1382
+#: src/wxGUI/MutApp.cpp:1383
 msgid "Online &Help\tF1"
 msgstr "Online-&Hilfe\tF1"
 
-#: src/wxGUI/MutApp.cpp:1383
+#: src/wxGUI/MutApp.cpp:1384
 msgid "Open the help Window"
 msgstr "Das Hilfefenster öffnen"
 
-#: src/wxGUI/MutApp.cpp:1384
+#: src/wxGUI/MutApp.cpp:1385
 msgid "&Manual"
 msgstr "&Handbuch"
 
-#: src/wxGUI/MutApp.cpp:1385
+#: src/wxGUI/MutApp.cpp:1386
 msgid "Open the manual"
 msgstr "Handbuch öffnen"
 
-#: src/wxGUI/MutApp.cpp:1386
+#: src/wxGUI/MutApp.cpp:1387
 msgid "Language &reference"
 msgstr "Sprach&referenz"
 
-#: src/wxGUI/MutApp.cpp:1387
+#: src/wxGUI/MutApp.cpp:1388
 msgid "Open the Mutabor language reference"
 msgstr "Mutabor-Sprachreferenz öffnen"
 
-#: src/wxGUI/MutApp.cpp:1389
+#: src/wxGUI/MutApp.cpp:1390
 msgid "&Index"
 msgstr "&Register"
 
-#: src/wxGUI/MutApp.cpp:1390
+#: src/wxGUI/MutApp.cpp:1391
 msgid "Open the help index"
 msgstr "Hilfeindex öffnen"
 
-#: src/wxGUI/MutApp.cpp:1391
+#: src/wxGUI/MutApp.cpp:1392
 msgid "&Search"
 msgstr "&Suchen"
 
-#: src/wxGUI/MutApp.cpp:1392
+#: src/wxGUI/MutApp.cpp:1393
 msgid "Search the help system for a specific keyword"
 msgstr "Hilfesystem nach einem speziellen Suchwort durchsuchen"
 
-#: src/wxGUI/MutApp.cpp:1394
+#: src/wxGUI/MutApp.cpp:1395
 msgid "Help &on help"
 msgstr "H&ilfe über Hilfe"
 
-#: src/wxGUI/MutApp.cpp:1395
+#: src/wxGUI/MutApp.cpp:1396
 msgid "Show Help about the help system"
 msgstr "Zeigt Hilfe über das Hilfesystem"
 
-#: src/wxGUI/MutApp.cpp:1401
+#: src/wxGUI/MutApp.cpp:1402
 msgid "&About"
 msgstr "Ü&ber"
 
-#: src/wxGUI/MutApp.cpp:1402
+#: src/wxGUI/MutApp.cpp:1403
 msgid "Show information about the program"
 msgstr "Informationen über das Programm anzeigen"
 
-#: src/wxGUI/MutApp.cpp:1405 src/wxGUI/MutFrame.cpp:399
+#: src/wxGUI/MutApp.cpp:1406 src/wxGUI/MutFrame.cpp:399
 msgid "Stop"
 msgstr "An&halten"
 
-#: src/wxGUI/MutApp.cpp:1406
+#: src/wxGUI/MutApp.cpp:1407
 msgid "Stop the current program"
 msgstr "Programm verlassen, ohne es ordnungsgemäß zu beenden"
 
-#: src/wxGUI/MutApp.cpp:1487 src/wxGUI/MutApp.cpp:1512
+#: src/wxGUI/MutApp.cpp:1488 src/wxGUI/MutApp.cpp:1513
 msgid "Could not get configuration storage"
 msgstr "Konnte Konfigurationsspeicher nicht finden"
 
@@ -2739,11 +2748,11 @@ msgstr "Die Datei konnte nicht geladen werden."
 msgid "The text couldn't be saved."
 msgstr "Der Text konnte nicht gespeichert werden."
 
-#: src/wxGUI/MutEditFile.cpp:759 src/wxGUI/MutEditFile.cpp:832
+#: src/wxGUI/MutEditFile.cpp:759 src/wxGUI/MutEditFile.cpp:835
 msgid "The search string was not found."
 msgstr "Die Zeichenkette wurde nicht gefunden."
 
-#: src/wxGUI/MutEditFile.cpp:760 src/wxGUI/MutEditFile.cpp:781
+#: src/wxGUI/MutEditFile.cpp:760 src/wxGUI/MutEditFile.cpp:784
 msgid "Replace all"
 msgstr "Alle ersetzen"
 
@@ -2756,19 +2765,19 @@ msgstr ""
 "Ich konnte an %d Stellen `%s' durch `%s' ersetzen.\n"
 "\n"
 
-#: src/wxGUI/MutEditFile.cpp:779
+#: src/wxGUI/MutEditFile.cpp:782
 msgid "Note: Occurences before the current cursor positions are not changed."
 msgstr ""
 "Hinweis: Auftretende Stellen vor der aktuellen Cursor-Position wurden nicht "
 "geändert."
 
-#: src/wxGUI/MutEditFile.cpp:780
+#: src/wxGUI/MutEditFile.cpp:783
 msgid "Note: Occurences after the current cursor positions are not changed."
 msgstr ""
 "Hinweis: Auftretende Stellen nach der aktuellen Cursor-Position wurden nicht "
 "geändert."
 
-#: src/wxGUI/MutEditFile.cpp:813
+#: src/wxGUI/MutEditFile.cpp:816
 msgid ""
 "Search reached the end of the file.\n"
 "Proceed from the beginning?"
@@ -2776,12 +2785,12 @@ msgstr ""
 "Die Suche erreichte das Ende der Datei.\n"
 "Am Anfang fortsetzen?"
 
-#: src/wxGUI/MutEditFile.cpp:814 src/wxGUI/MutEditFile.cpp:822
-#: src/wxGUI/MutEditFile.cpp:833
+#: src/wxGUI/MutEditFile.cpp:817 src/wxGUI/MutEditFile.cpp:825
+#: src/wxGUI/MutEditFile.cpp:836
 msgid "Search"
 msgstr "Suche"
 
-#: src/wxGUI/MutEditFile.cpp:821
+#: src/wxGUI/MutEditFile.cpp:824
 msgid ""
 "Search reached the beginning of the file.\n"
 "Proceed from the end?"
@@ -2789,55 +2798,55 @@ msgstr ""
 "Die Suche erreichte den Anfang der Datei.\n"
 "Von hinten fortsetzen?"
 
-#: src/wxGUI/MutEditFile.cpp:882
+#: src/wxGUI/MutEditFile.cpp:885
 msgid "Where shall we jump to?"
 msgstr "Wohin wollen Sie Springen?"
 
-#: src/wxGUI/MutEditFile.cpp:883
+#: src/wxGUI/MutEditFile.cpp:886
 msgid "Line No.:"
 msgstr "Zeilennummer:"
 
-#: src/wxGUI/MutEditFile.cpp:884
+#: src/wxGUI/MutEditFile.cpp:887
 msgid "Goto"
 msgstr "Gehe zu"
 
-#: src/wxGUI/MutEditFile.cpp:1273
+#: src/wxGUI/MutEditFile.cpp:1276
 msgid "Properties"
 msgstr "Eigenschaften"
 
-#: src/wxGUI/MutEditFile.cpp:1279
+#: src/wxGUI/MutEditFile.cpp:1282
 msgid "Full filename"
 msgstr "Vollständiger Dateiname"
 
-#: src/wxGUI/MutEditFile.cpp:1287
+#: src/wxGUI/MutEditFile.cpp:1290
 msgid "Language"
 msgstr "Sprache"
 
-#: src/wxGUI/MutEditFile.cpp:1292
+#: src/wxGUI/MutEditFile.cpp:1295
 msgid "Lexer-ID: "
 msgstr "Lexer-ID: "
 
-#: src/wxGUI/MutEditFile.cpp:1304
+#: src/wxGUI/MutEditFile.cpp:1307
 msgid "Line endings"
 msgstr "Zeilenumbrüche"
 
-#: src/wxGUI/MutEditFile.cpp:1312
+#: src/wxGUI/MutEditFile.cpp:1315
 msgid "Informations"
 msgstr "Informationen"
 
-#: src/wxGUI/MutEditFile.cpp:1319
+#: src/wxGUI/MutEditFile.cpp:1322
 msgid "Total lines"
 msgstr "Anzahl Zeilen"
 
-#: src/wxGUI/MutEditFile.cpp:1325
+#: src/wxGUI/MutEditFile.cpp:1328
 msgid "Total chars"
 msgstr "Zeichen insgesamt"
 
-#: src/wxGUI/MutEditFile.cpp:1331
+#: src/wxGUI/MutEditFile.cpp:1334
 msgid "Current line"
 msgstr "Aktuelle Zeile"
 
-#: src/wxGUI/MutEditFile.cpp:1337
+#: src/wxGUI/MutEditFile.cpp:1340
 msgid "Current pos"
 msgstr "Aktuelle Position"
 
@@ -3185,10 +3194,9 @@ msgstr "Aktionen – alle Kästen %d"
 msgid "%s - %s"
 msgstr "%s – %s"
 
-#
 #: src/wxGUI/MutTextBox.cpp:466
-msgid "unknown"
-msgstr "unbekannt"
+msgid "no box"
+msgstr "kein Kasten"
 
 #: src/wxGUI/Routing/BoxChannelShape.cpp:324
 msgid "No input device"
@@ -3198,27 +3206,27 @@ msgstr "Kein Eingabegerät"
 msgid "No output device"
 msgstr "Kein Ausgabegerät"
 
-#: src/wxGUI/Routing/BoxDlg.cpp:200
+#: src/wxGUI/Routing/BoxDlg.cpp:201
 msgid "this box"
 msgstr "diese Box"
 
-#: src/wxGUI/Routing/BoxDlg.cpp:206
+#: src/wxGUI/Routing/BoxDlg.cpp:207
 msgid "new box"
 msgstr "neue Box"
 
-#: src/wxGUI/Routing/BoxDlg.cpp:258
+#: src/wxGUI/Routing/BoxDlg.cpp:259
 msgid "Remove Route"
 msgstr "Route Entfernen"
 
-#: src/wxGUI/Routing/BoxDlg.cpp:258
+#: src/wxGUI/Routing/BoxDlg.cpp:259
 msgid "Undelete Route"
 msgstr "Route wiederherstellen"
 
-#: src/wxGUI/Routing/BoxDlg.cpp:295
+#: src/wxGUI/Routing/BoxDlg.cpp:296
 msgid "No box / thru mode"
 msgstr "Kein Kasten / Durchschleifen"
 
-#: src/wxGUI/Routing/BoxDlg.cpp:303
+#: src/wxGUI/Routing/BoxDlg.cpp:304
 msgid "GUIDO file box"
 msgstr "GUIDO-Datei-Kasten"
 
@@ -3262,7 +3270,7 @@ msgstr "Gerätetyp auswählen"
 msgid "Unknown device type"
 msgstr "Unbekannter Gerätetyp"
 
-#: src/wxGUI/Routing/InputDevDlg.h:68
+#: src/wxGUI/Routing/InputDevDlg.h:69
 msgid "Input Device"
 msgstr "Eingabegerät"
 
@@ -3758,6 +3766,10 @@ msgstr "Tastenzuordnungs-Datei"
 msgid "Select a file"
 msgstr "Wähle eine Datei"
 
+#
+#~ msgid "unknown"
+#~ msgstr "unbekannt"
+
 #~ msgid "<init>"
 #~ msgstr "<init>"
 
@@ -3780,9 +3792,6 @@ msgstr "Wähle eine Datei"
 
 #~ msgid "Error parsing scala document: "
 #~ msgstr "Fehler beim Einlesen des Scala-Dokumentes"
-
-#~ msgid "Ruediger Krausze"
-#~ msgstr "Rüdiger Krauße"
 
 #~ msgid "Bad MIDI from channel %d (valid: 1...16)"
 #~ msgstr "Ungültiger Anfang %d der MIDI-Kanalbereiches (erlaubt: 1 bis 16)"
