@@ -673,7 +673,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 				auto & t = Tracks[i];
 
 				t.setTiming(timing);
-				t.setName(boost::lexical_cast<std::string>(i));
+				t.SetName(boost::lexical_cast<std::string>(i));
 				t.Load(is,Name);
 			}
 

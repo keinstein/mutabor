@@ -458,7 +458,7 @@ namespace mutabor {
 			timing = t;
 		}
 
-		void setName(const std::string & s) {
+		void SetName(const std::string & s) {
 			name = s;
 		}
 
@@ -842,21 +842,6 @@ namespace mutabor {
 		 * \argument route (Route ) Route whos data shall be loaded.
 		 */
 		virtual void Load (tree_storage & config, RouteClass * route);
-
-
-		virtual void SetName(const std::string & s)
-		{
-			if (s != Name) {
-				bool reopen = IsOpen();
-				if (reopen)
-					Close();
-
-				Name = s;
-
-				if (reopen)
-					Open();
-			}
-		}
 
 
 		virtual DevType GetType() const

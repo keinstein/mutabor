@@ -770,6 +770,8 @@ namespace mutabor {
 		 */
 		static DevicePtr GetDevice(int id, devidtype kind);
 
+		using Device::SetName;
+
 		operator const thistype & () const {
 			return *(static_cast <const thistype *>(this));
 		}

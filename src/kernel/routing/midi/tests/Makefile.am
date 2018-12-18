@@ -31,6 +31,7 @@ DISTCLEANFILES += \
 
 check_PROGRAMS += \
 	%D%/playmidi1 \
+	%D%/playmidi2 \
 	%D%/midiopenfail1 \
 	%D%/genmidirnd \
 	%D%/genmidilinear
@@ -65,6 +66,7 @@ MIDITESTS = \
 
 TESTS += \
 	%D%/playmidi1$(EXEEXT) \
+	%D%/playmidi2$(EXEEXT) \
 	%D%/midiopenfail1$(EXEEXT) \
 	%D%/genmidirnd$(EXEEXT) \
 	%D%/genmidilinear$(EXEEXT) \
@@ -81,6 +83,34 @@ nodist_%C%_playmidi1_SOURCES = \
 	%D%/debugPaths.cpp
 
 %C%_playmidi1_LDADD = \
+	libmutaborrouting.a \
+	libmutabordebugnogui.a \
+	src/kernel/libmutaborkernel.a \
+	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
+	src/wxintl/libboostintl.a \
+	$(LDADD) \
+	$(AM_LDFLAGS) \
+	$(BOOST_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LDFLAGS) \
+	$(BOOST_SYSTEM_LDFLAGS) \
+	$(BOOST_FILESYSTEM_LIB) \
+	$(BOOST_LOCALE_LIB) \
+	$(BOOST_THREAD_LIB) \
+	$(BOOST_CHRONO_LIB) \
+	$(BOOST_LOCALE_LIB) \
+	$(BOOST_SYSTEM_LIB)
+
+%C%_playmidi2_CPPFLAGS = $(CPPFLAGS) \
+	-DSRCDIR="\"$(srcdir)/%D%/\"" \
+	$(WXINTLCXXFLAGS)
+
+%C%_playmidi2_SOURCES = \
+	%D%/playmidi2.cpp
+
+nodist_%C%_playmidi2_SOURCES = \
+	%D%/debugPaths.cpp
+
+%C%_playmidi2_LDADD = \
 	libmutaborrouting.a \
 	libmutabordebugnogui.a \
 	src/kernel/libmutaborkernel.a \

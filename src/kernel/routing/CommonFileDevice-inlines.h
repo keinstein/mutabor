@@ -160,8 +160,12 @@ namespace mutabor {
 				 Thread::get_current_string_id().c_str(),
 				 threadsignal.get());
 #endif
-			thread_command |= RequestPause;
-
+			/* we are starting a new thread so
+			   we must set thread_command to a correct value
+			   relatve operators like |= may lead to problems, here
+			*/
+			thread_command.store(RequestPause);
+			thread_state.store(0);
 
 			/* creating threads might be expensive. So we
 			   create it here, as Play() must be

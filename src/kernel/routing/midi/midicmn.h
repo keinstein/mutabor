@@ -957,6 +957,7 @@ namespace mutabor {
 		virtual ChannelData & GetChannelData(const InputDeviceClass::current_keys_type::entry & key) const {
 			return const_cast<ChannelData &>(channel_data[key.unique_id]);
 		}
+		using D::SetName;
 
 	protected:
 

@@ -497,6 +497,7 @@ namespace mutabor {
 		virtual void SetName(const std::string & s)
 		{
 			mutUnused(s);
+			parentType::SetName(s);
 			assert (false);
 			//Name = s;
 		}
