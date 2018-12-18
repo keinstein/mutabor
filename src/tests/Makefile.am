@@ -28,6 +28,7 @@ check_PROGRAMS += \
 	src/kernel/libmutaborkernel.a \
 	libmutaborscala.a \
 	src/wxintl/libwxintl.la \
+	$(SANITIZER_LIBS) \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
@@ -54,6 +55,7 @@ nodist_%C%_wxlinktest2_SOURCES = \
 	libmutaborscala.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
 	src/wxintl/libwxintl.la \
+	$(SANITIZER_LIBS) \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(BOOST_LDFLAGS) \
@@ -90,6 +92,7 @@ nodist_%C%_cppunitlinktest_SOURCES = \
 	libmutaborscala.a \
 	lib/rtmidi/librtmidi@rtmidi_suffix@.la \
 	src/wxintl/libwxintl.la \
+	$(SANITIZER_LIBS) \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(CPPUNIT_LIBS) \
