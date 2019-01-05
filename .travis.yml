@@ -9,6 +9,11 @@ group: travis_latest
 compiler:
 - gcc
 - clang
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "npvMwqPINvv8ARh58fItW2U3AHshNQySSchKSyptMnyUNNz4tN6lUwI+mW/qC6Y8C39A53bn/KmBOG/ieGret//B4qklSqOoRkrXfDybzRAUEDcKCCwRt60vbr0560cgvBSD3dvGM3txH0Ov1eiiiYBkfodwyy091qpHZtuDuTLJ8BETF/nwdtUx8G7o9QzIyejiQ1xGwXsLrZgoffUrQDZCndOb7Z8gc3OQzIJxZHSIMlFMcvpei5YsbsbM191Q0EWdFRXra3QjhygHyeWh9/po0zOtQBKd/DMpArTBQDoXi/vtjocqUP4pnZhuegwTawigf7kG0ogGTKiA6v41LMjEzNmC944BJhzLBQ3EBYNjdICQ6oss3Uunm5RmBsJAsQfv/Y+pUOlD8hj3F90RjEj5VLI5rnf3g7h3zxMItD0kDHEaIDrOvEFdpYulhfIOJT2hstFLUFbZvb0RlACVFgbFSE/gfgEDXy2J5mJkm1UcKQRQ2SG3QVrg8uBnYJNlqxow+7a9tRySnSL23hZfSi19j3kRE2sp/USJKJ3NWzVpEo9zrXuxG9vhR/D/lWOzhUFIICxUxVFFzc0OEfG4UlJMGvGKtLxVZP83Le4sgSYI8Npsy+e53JMm0ymwOAwh3g1RSYux8FM49sHco0XZtzGe3T38LeY7Xyuvv5t2p2s="
 matrix:
   include:
   - os: osx
@@ -50,6 +55,14 @@ addons:
     - doxygen
     - tex4ht
     - xvfb
+  coverity_scan:
+    project:
+      name: "keinstein/mutabor"
+      description: "Perform dynamic tunings in realtime music or use them for procesing MIDI files"
+    notification_email: keinstein_junior@gmx.net
+    build_command_prepend: "(cd lib/rtmidi && autoreconf -i -f) && autoreconf -i -f && ./configure"
+    build_command: "make"
+    branch_pattern: coverity_scan
 before_install:
 - mkdir -p config lib/rtmidi/config
 - touch config/config.rpath lib/rtmidi/config/config.rpath
@@ -67,6 +80,8 @@ before_install:
 - gettextize --version
 - which autopoint
 - autopoint --version
+- echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+
 script:
 - "(cd lib/rtmidi && autoreconf -i -f)"
 - autoreconf -i -f && ./configure && make -j4 && $TEST_RUNNER make check -j4
