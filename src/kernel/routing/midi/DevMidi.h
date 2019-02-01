@@ -257,13 +257,13 @@ namespace mutabor {
 		mutabor::Device * device;
 	};
 
-	class OutputMidiPort : public CommonMidiOutput<MidiPortOutputProvider, OutputDeviceClass>
+	class OutputMidiPort : public CommonMidiOutput<MidiPortOutputProvider, minimalOutputDeviceClass>
 	{
 		friend class MidiPortFactory;
 	protected:
 	public:
 
-		typedef CommonMidiOutput<MidiPortOutputProvider, OutputDeviceClass> base;
+		typedef CommonMidiOutput<MidiPortOutputProvider, minimalOutputDeviceClass> base;
 
 		~OutputMidiPort() {};
 

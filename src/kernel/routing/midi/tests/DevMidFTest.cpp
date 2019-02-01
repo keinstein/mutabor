@@ -41,7 +41,8 @@
 #include "src/kernel/routing/midi/midicmn.cpp"
 
 
-template class mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider, mutabor::OutputDeviceClass>;
+template class mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider,
+					 mutabor::minimalOutputDeviceClass>;
 
 
 
@@ -4814,10 +4815,10 @@ bool OutputMidiFileTest::CheckOut(std::string s,int line, const char * file) {
 void OutputMidiFileTest::setUp()
 {
 // change DEBUGA to DEBUG in case you need the debug output
-#ifdef DEBUGA
+#ifdef DEBUG
 //	mutabor_debug_flags.timer = true;
 //	mutabor_debug_flags.midiio = true;
-//	mutabor_debug_flags.midifile = true;
+	mutabor::mutabor_debug_flags.midifile = true;
 #else
 #ifdef DEBUG
 //	mutabor_debug_flags.timer = false;

@@ -107,6 +107,7 @@ namespace mutabor {
 		}
 
 		virtual operator std::string() const;
+
 	};
 
 
@@ -311,14 +312,12 @@ namespace mutabor {
 		/**
 		 * Fixed offset for the relative time the file returns.
 		 */
-		boost::atomic<CurrentTimer::time_point> referenceTime; // ms
-		boost::atomic<CurrentTimer::time_point> pauseTime;     // ms
 		timing_params timing;
 
 		CommonFileInputDevice(): InputDeviceClass(),
 					 timer (NULL),
 					 thread_command (Nothing),
-					 thread_state (Nothing),
+					 thread_state (Nothing)
 					 /*					 waitMutex(),
 					 threadReady(),
 					 lockMode(),
@@ -326,8 +325,7 @@ namespace mutabor {
 					 waitCondition(waitMutex),
 					 pauseCondition(playerActive),
 					 */
-					 referenceTime(CurrentTimer::time_point()),
-					 pauseTime(CurrentTimer::time_point()) { }
+		{ }
 
 		CommonFileInputDevice(std::string name,
 				      MutaborModeType mode,
@@ -336,7 +334,7 @@ namespace mutabor {
 								id),
 					       timer(NULL),
 					       thread_command (Nothing),
-					       thread_state (Nothing),
+					       thread_state (Nothing)
 					       /*
 					       waitMutex(),
 					       threadReady(),
@@ -345,8 +343,7 @@ namespace mutabor {
 					       waitCondition(waitMutex),
 					       pauseCondition(playerActive),
 					       */
-					       referenceTime(CurrentTimer::time_point()),
-					       pauseTime(CurrentTimer::time_point()) {}
+		{}
 
 	};
 

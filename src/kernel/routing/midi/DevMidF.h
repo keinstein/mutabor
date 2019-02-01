@@ -602,6 +602,7 @@ namespace mutabor {
 		void Load(std::istream &is,
 			  const std::string & Name);
 
+
 		void Stop() {
 			remaining_delta = InputDeviceClass::NO_DELTA();
 			current_delta   = timing_params::miditicks::no_delta();

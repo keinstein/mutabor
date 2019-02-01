@@ -33,7 +33,8 @@
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/Runtime.cpp"
 
-template class mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider,mutabor::OutputDeviceClass>;
+template class mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider,
+					 mutabor::minimalOutputDeviceClass>;
 
 
 bool midicmnOutputDevice::unsortedCheck(const std::string & s,

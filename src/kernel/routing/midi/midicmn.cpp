@@ -97,9 +97,7 @@ namespace mutabor {
 			do_SendBendingRange(i);
 		}
 
-		this->isOpen = true;
 		return true;
-
 	}
 
 	template<class T, class D>

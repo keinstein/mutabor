@@ -47,7 +47,7 @@
 
 namespace mutabor {
 
-	template class CommonMidiOutput<MidiPortOutputProvider,OutputDeviceClass>;
+	template class CommonMidiOutput<MidiPortOutputProvider,minimalOutputDeviceClass>;
 	template class CommonMidiInput<InputDeviceClass>;
 
 	using namespace midi;
