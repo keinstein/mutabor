@@ -291,6 +291,15 @@ namespace mutabor {
 
 	inline void CommonFileInputDevice::Stop()
 	{
+		// TODO: implement safe locking
+		// Problem: When the device is locked it must not perform
+		//          any data changes except those done by
+		//          the event thread.
+#if 0
+		mutUnused(lock);
+		mutASSERT(lock.mutex() == static_cast<Device*>(this));
+#endif
+
 		bool lock_active = (timer && Thread::get_current_id() != timer->get_id());
 		{
 #if 0

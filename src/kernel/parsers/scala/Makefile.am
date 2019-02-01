@@ -62,6 +62,8 @@ scaleparsertargets = \
 	%D%/position.hh \
 	%D%/scale_parser.cc
 
+# todo transform into a pattern rule.
+
 if OFF_TREE
 # this rule is distingct from the rule without $(srcdir) below. Both are needed for VPATH builds
 scaleparsertargets += \
