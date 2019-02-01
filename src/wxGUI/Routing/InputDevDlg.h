@@ -149,13 +149,12 @@ namespace mutaborGUI {
 		}
 
                 void SetMidiDevice(rtmidi::PortPointer value)
-
 		{
 			DEBUGLOG (other, "%p" ,&(*value));
 			int choices = PortChoice->GetCount();
 			for (int i = 0 ; i < choices ; i++) {
 				PortData * entry = static_cast<PortData *>(PortChoice->GetClientObject(i));
-				if (entry && entry->port == value) {
+				if (entry && entry->port  && value && *(entry->port) == *(value)) {
 					PortChoice->SetSelection(i);
 					break;
 				}
@@ -176,7 +175,6 @@ namespace mutaborGUI {
 			int p = PortChoice->GetSelection();
 			if (p == wxNOT_FOUND) return NULL;
 			return GetMidiDevice(p);
-
 		}
 
 		void AppendPortChoice (rtmidi::PortPointer p)
