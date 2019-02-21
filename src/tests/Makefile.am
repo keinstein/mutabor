@@ -1,5 +1,6 @@
 #include $(top_srcdir)/common-rules.mk
 #include $(top_srcdir)/common-linklibs.mk
+
 DEBUGPATHS +=  \
 	%D%/debugPaths.cpp
 
@@ -13,6 +14,12 @@ TESTS += \
 check_PROGRAMS += \
 	%D%/wxlinktest \
 	%D%/wxlinktest2
+
+EXTRA_DIST += \
+	$(srcdir)/%D%/12tet.scl
+
+check_MIDISOURCES += \
+	%D%/runmut.txt
 
 %C%_wxlinktest_SOURCES = \
 	%D%/wxlinktest.cpp

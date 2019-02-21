@@ -697,10 +697,16 @@ AC_ARG_ENABLE(precompile,
 	AS_HELP_STRING([--enable-precompile],[use precompiled headers]),
 	[ AX_COMPILER_PCH_CXX
 	  AX_COMPILER_PCH_C
+	  AS_IF(test "x$ac_cv_cxx_header_precompile" = "xyes" -o "x$ac_cv_c_header_precompile" = "xyes",
+		[AM_CONDITIONAL(COND_PRECOMP,true)],
+		[AM_CONDITIONAL(COND_PRECOMP,false)])
+
 	  ],[
 		AM_CONDITIONAL(COND_PRECOMP_C,false)
 		AM_CONDITIONAL(COND_PRECOMP_CXX,false)
+		AM_CONDITIONAL(COND_PRECOMP,false)
 	  ])
+
 
 # Checks for library functions.
 AM_INTL_SUBDIR
@@ -840,6 +846,7 @@ doc/localized/de/Makefile
 doc/localized/en/Makefile
 Doxyfile
 osdep/linux/OpenSuse.spec
+src/tests/run_variables.sh
 ])
 dnl src/includes/mutabor/Makefile
 dnl src/includes/mutabor/tests/Makefile

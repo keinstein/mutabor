@@ -175,6 +175,10 @@ int main(int ac, char* av[])
 			 po::value<std::string>(&options.tonesystem_name)
 			 ->default_value(std::string(_mut("scala_tonesystem"))),
 			 _mut("Set the name of the generated tone system to arg"))
+			("base-frequency,b",
+			 po::value<double>(&options.base_frequency)
+			 ->default_value(-1.0),
+			 _mut("Set the base frequency of the generated tone system to arg. Use negative frequencies to omit it"))
 			("logic,l",
 			 po::value<std::string>(&options.logic_name)
 			 ->default_value(std::string(_mut("scala_logic"))),

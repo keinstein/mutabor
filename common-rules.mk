@@ -17,12 +17,62 @@ AM_CFLAGS = $(ALSA_CFLAGS) $(WX_CFLAGS) $(WXINTLCFLAGS) "-DLOCALEDIR=\"$(LOCALED
 AM_CXXFLAGS =  $(ALSA_CFLAGS) $(WX_CFLAGS) $(WXINTLCXXFLAGS) "-DLOCALEDIR=\"$(LOCALEDIR)\""
 AM_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
 AM_YFLAGS = -d -v --report=all -x --graph -o y.tab.c
+
 EXTRA_PROGRAMS =
 EXTRA_DIST += \
+	$(check_SCLFILES) \
+	$(check_SCLFILES:.scl=.muto) \
+	$(check_NSCLFILES) \
+	$(check_NSCLFILES:.nscl=.err) \
+	$(check_KBMFILES) \
+	$(check_KBMFILES:.kbm=.muto) \
 	$(check_MIDIFILES) \
 	$(check_MIDISOURCES)
+check_SCLFILES=
+check_NSCLFILES=
+check_KBMFILES=
 check_MIDIFILES += \
 	$(check_MIDISOURCES:.txt=.mid)
+
+
+
+
+
+TEST_EXTENSIONS += \
+	.mut \
+	.mutscript \
+	.mutexample \
+	.scl \
+	.nscl \
+	.kbm
+
+SCL_LOG_COMPILER        = $(top_srcdir)/src/tests/run_scl2mut.sh '$@'
+MUT_LOG_COMPILER        = $(top_srcdir)/src/tests/run_mut.sh '$@'
+MUTSCRIPT_LOG_COMPILER  = $(top_srcdir)/src/tests/run_mutscript.sh '$@'
+MUTEXAMPLE_LOG_COMPILER = $(top_srcdir)/src/tests/run_mutexample.sh '$@'
+NSCL_LOG_COMPILER       = $(top_srcdir)/src/tests/run_nscl2mut.sh '$@'
+KBM_LOG_COMPILER        = $(top_srcdir)/src/tests/run_kbm2mut.sh '$@'
+check_PROGRAMS         += midifilemutabor
+check_MIDISOURCES      += src/tests/runmut.txt
+check_SCRIPTS          += src/tests/run_variables.sh
+
+
+CLEANFILES += \
+	$(check_SCLFILES:.scl=.mut2) \
+	$(check_NSCLFILES:.nscl=.nscl.mut2) \
+	$(check_NSCLFILES:.nscl=.log2) \
+	$(check_KBMFILES:.kbm=.mut2)
+
+
+TESTS +=  \
+	$(check_SCLFILES) \
+	$(check_NSCLFILES) \
+	$(check_KBMFILES)
+
+#check_MIDIFILES += \
+#	$(srcdir)/%D%/runmut.mid
+
+
 
 TAGS_FILES = $(POTFILES)
 AM_ETAGSFLAGS = -I --members --declarations -r '/inline[ \t]+\([^ \t(]+[ \t]+\)*\([^ \t(]+\)[ \t]*(/\2/m'
@@ -148,6 +198,7 @@ endif
 # Dealing with precompiled headers
 #-------------------------------------------------------------------------------------
 
+if COND_PRECOMP
 .h.$(PCHEXT_CXX):
 if am__fastdepCXX
 	if $(CXXCOMPILE) $(mutabor_CPPFLAGS) $(mutabor_CallFLAGS) -MT $@ \
@@ -162,6 +213,7 @@ if AMDEP
 endif
 	$(CXXCOMPILE) $(mutabor_CPPFLAGS) $(mutabor_CallFLAGS) \
 		 -c  `test -f '$<' || echo '$(srcdir)/'`$<
+endif
 endif
 
 #Makefile:remove-podeps.stamp $(srcdir)/Makefile.in $(top_builddir)/config.status

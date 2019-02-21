@@ -39,7 +39,7 @@ check_PROGRAMS += \
 
 EXTRA_DIST += \
 	%D%/midiin.mut \
-	%D%/bug-20180414ts.mid.variables \
+	%D%/bug-20180414ts.mid.variables \*
 	%D%/bug-20180414ts-output.txt
 
 check_SCRIPTS += \
@@ -63,6 +63,7 @@ check_MIDISOURCES += \
 
 MIDITESTS = \
 	%D%/bug-20180414ts.mid
+
 
 TESTS += \
 	%D%/playmidi1$(EXEEXT) \

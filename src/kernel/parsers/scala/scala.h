@@ -58,6 +58,7 @@ namespace mutabor {
 
 
 		struct mutabor_writer_options {
+			double base_frequency;
 			std::string prefix; //< Interval prefix
 			std::string tone_prefix;
 			std::string tonesystem_name;
