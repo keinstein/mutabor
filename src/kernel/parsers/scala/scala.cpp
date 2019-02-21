@@ -349,7 +349,7 @@ namespace mutabor {
 			o << "\t" << w.tonesystem_name << " = ";
 			anchor.print_mutabor(o,"", false)
 				<< "\t\t[ ";
-			if (keys.empty() || keys[0].type != key::empty)
+			if (!keys.empty() && keys[0].type != key::empty)
 				o << w.tone_prefix << "0";
 
 			for (size_t i = 1; i < keys.size() ; i++) {
