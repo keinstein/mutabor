@@ -15,7 +15,16 @@ then
     . ${script%.mut}.variables
 fi
 
-./midifilemutabor${EXEEXT} "$file" "${stemfile}-result.mid" "$srcscript" "$startkeys" || exit $?
+set +e
+./midifilemutabor${EXEEXT} "$file" "${stemfile}-result.mid" "$srcscript" "$startkeys"
+returned=$?
+if test "$returned" -ne "$retval"
+then
+    echo "Got wrong return value ${returned} (expected: ${retval})"
+    exit $returned
+fi
+set -e
+
 
 ./mf2txt${EXEEXT} "${stemfile}-result.mid" | \
     sed 's/\r$//' | \
