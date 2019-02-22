@@ -1,4 +1,5 @@
-SUBDIRS += %D%/tests
+include %D%/tests/Makefile.am
+
 CLEANFILES += %D%/*.class
 
 WXBUILDDEPENDS_yes = %D%/libwxintl.la
