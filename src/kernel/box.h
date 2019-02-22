@@ -107,7 +107,8 @@ struct mutabor_box_flags {
 						   break_logic. This flag is
 						   used to indicate whether it
 						   is allowed to be done. */
-
+	unsigned int uninterruptible:1; /**< Used for debugging. Set this flag to 1 
+					   in order to stop the watchdog to annoy you. */
 };
 
 /** Mutabor box type. */
