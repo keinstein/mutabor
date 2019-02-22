@@ -818,6 +818,7 @@ namespace mutabor {
 		int routefile_id;
 		routeListType routes;
 		bool open ;
+		bool compile_error;
 		std::string current_logic;
 		std::string current_tonesystem;
 		int current_key_tonesystem; // 0

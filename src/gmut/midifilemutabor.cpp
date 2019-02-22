@@ -116,27 +116,30 @@ void sleep(int waitTime) {
 struct MyCompileCallback:public mutabor::BoxClass::CompileCallback {
 	void RefreshDlg() {}
 	void SetStatus(std::string status) {
-		mutUnused(status);
+		std::cout << status << std::endl;
 	}
 	void SetMessage(std::string status) {
-		mutUnused(status);
+		std::cout << status << std::endl;
 	}
-	void SetStatus(int logics,
-		       int tones,
-		       int tunings,
-		       int tone_systems,
-		       int intervals,
-		       int characters) {
-		mutUnused(logics);
-		mutUnused(tones);
-		mutUnused(tunings);
-		mutUnused(tone_systems);
-		mutUnused(intervals);
-		mutUnused(characters);
+	void SetStatus(int log,
+		       int ton,
+		       int tun,
+		       int sys,
+		       int ints,
+		       int chr) {
+		
+		logics = log;
+		tones = ton;
+		tunings = tun;
+		tone_systems = sys;
+		intervals = ints;
+		characters = chr;
 	}
 	void SetLine(int number) {
 		mutUnused(number);
 	}
+protected:
+	int logics, tones, tunings, tone_systems, intervals, characters;
 };
 
 void add_options(po::options_description & desc,
@@ -169,9 +172,9 @@ void add_options(po::options_description & desc,
 }
 
 
-
 int main(int ac, char* av[])
 {
+	int retval = 0;
 	try {
 		mutabor::InitDeviceFactories();
 
@@ -209,6 +212,8 @@ int main(int ac, char* av[])
 			return 1;
 		}
 
+		mutabor::initialize_box_data();
+		
 		route = mutabor::RouteFactory::Create();
 		box = mutabor::BoxFactory::Create(mutabor::Box0,0);
 		connect(route, box);
@@ -250,7 +255,7 @@ int main(int ac, char* av[])
 			cerr << boost::format(_mut("Error: Could not open logic file `%s'.")) % logicfile
 			     << std::endl;
 			cerr << strerror(errno) << std::endl;
-			return 1;
+			return 2;
 		}
 		file.seekg(0, std::ios::end);
 		std::streampos length = file.tellg();
@@ -260,7 +265,7 @@ int main(int ac, char* av[])
 			cerr << boost::format(_mut("Error: Could not read logic file `%s'.")) % logicfile
 			     << std::endl;
 			cerr << strerror(errno) << std::endl;
-			return 1;
+			return 3;
 		}
 		logic_string[length] = 0;
 
@@ -268,7 +273,7 @@ int main(int ac, char* av[])
 		if (!box->Compile(&callback, logic_string)) {
 			cerr << boost::format(_mut("Error: Could not compile logic file `%s'.")) % logicfile
 			     << std::endl;
-			return 1;
+			retval = 4;
 		}
 
 		free(logic_string);
@@ -306,5 +311,5 @@ int main(int ac, char* av[])
 	}
 
 
-	return 0;
+	return retval;
 }

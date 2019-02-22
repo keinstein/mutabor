@@ -735,6 +735,7 @@ namespace mutabor {
 	bool BoxClass::Compile(CompileCallback * callback, const char * logic) {
 
 		set_callback callback_holder(this,callback);
+		compile_error = false;
 		if (!setjmp(weiter_gehts_nach_compilerfehler)) {
 			mutabor_box_clear_logic(box);
 			//			init_yylex ();
@@ -751,6 +752,12 @@ namespace mutabor {
 
 				//	 show_line_number(-1);
 
+				if (compile_error) {
+					callback->SetStatus(_mut("Translation interrupted."));
+					callback->SetMessage(get_errors());
+					return false;
+				}
+
 				callback->SetStatus(_mut("Generating tables"));
 				callback->RefreshDlg();
 			}
@@ -759,6 +766,11 @@ namespace mutabor {
 
 			expand_decition_tree(box);
 
+			if (compile_error) {
+				callback->SetStatus(_mut("Translation interrupted."));
+				callback->SetMessage(get_errors());
+				return false;
+			}
 
 			if (callback) {
 				callback->SetStatus(_mut("Translation successful"));
@@ -852,6 +864,18 @@ namespace mutabor {
 
 	void BoxClass::runtime_error(error_type type, const char * message) {
 	    fprintf(stderr,"%s: %s\n",to_string(type),message);
+	    switch (type) {
+	    case generic_warning:
+	    case compiler_warning:
+	    case runtime_warning:
+		    break;
+	    case generic_error:
+	    case internal_error:
+	    case compiler_error:
+	    case hidden::runtime_error:
+	    default:
+		    compile_error = true;
+	    }
 	}
 
 	BoxClass::BoxClass(int id): box(NULL),
@@ -859,6 +883,7 @@ namespace mutabor {
 				    routefile_id(Box0),
 				    routes(),
 				    open (false),
+				    compile_error(false),
 				    current_logic(),
 				    current_tonesystem(),
 				    current_key_tonesystem(0),
