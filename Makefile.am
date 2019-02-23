@@ -50,6 +50,58 @@ EXTRA_RTMIDITESTCXXFLAGS = \
 RTMIDICONFIGRPATH =
 
 
+EXTRA_DIST += \
+	$(check_SCLFILES) \
+	$(check_SCLFILES:.scl=.muto) \
+	$(check_NSCLFILES) \
+	$(check_NSCLFILES:.nscl=.err) \
+	$(check_KBMFILES) \
+	$(check_KBMFILES:.kbm=.muto) \
+	$(check_MIDIFILES) \
+	$(check_MIDISOURCES)
+check_SCLFILES=
+check_NSCLFILES=
+check_KBMFILES=
+check_MIDIFILES += \
+	$(check_MIDISOURCES:.txt=.mid)
+
+
+
+
+
+TEST_EXTENSIONS += \
+	.mut \
+	.mutscript \
+	.mutexample \
+	.scl \
+	.nscl \
+	.kbm
+
+SCL_LOG_COMPILER        = $(top_srcdir)/src/tests/run_scl2mut.sh '$@'
+MUT_LOG_COMPILER        = $(top_srcdir)/src/tests/run_mut.sh '$@'
+MUTSCRIPT_LOG_COMPILER  = $(top_srcdir)/src/tests/run_mutscript.sh '$@'
+MUTEXAMPLE_LOG_COMPILER = $(top_srcdir)/src/tests/run_mutexample.sh '$@'
+NSCL_LOG_COMPILER       = $(top_srcdir)/src/tests/run_nscl2mut.sh '$@'
+KBM_LOG_COMPILER        = $(top_srcdir)/src/tests/run_kbm2mut.sh '$@'
+check_PROGRAMS         += midifilemutabor
+check_MIDISOURCES      += src/tests/runmut.txt
+check_SCRIPTS          += src/tests/run_variables.sh
+
+
+CLEANFILES += \
+	$(check_SCLFILES:.scl=.mut2) \
+	$(check_NSCLFILES:.nscl=.nscl.mut2) \
+	$(check_NSCLFILES:.nscl=.log2) \
+	$(check_KBMFILES:.kbm=.mut2)
+
+
+TESTS +=  \
+	$(check_SCLFILES) \
+	$(check_NSCLFILES) \
+	$(check_KBMFILES)
+
+
+
 include %D%/common-rules.mk
 include %D%/src/Makefile.am
 include %D%/Images/Makefile.am
