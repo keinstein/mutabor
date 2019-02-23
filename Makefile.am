@@ -51,6 +51,12 @@ RTMIDICONFIGRPATH =
 
 
 EXTRA_DIST += \
+	src/tests/run_scl2mut.sh \
+	src/tests/run_mut.sh \
+	src/tests/run_mutscript.sh \
+	src/tests/run_mutexample.sh \
+	src/tests/run_nscl2mut.sh \
+	src/tests/run_kbm2mut.sh \
 	$(check_SCLFILES) \
 	$(check_SCLFILES:.scl=.muto) \
 	$(check_NSCLFILES) \
@@ -89,8 +95,9 @@ check_SCRIPTS          += src/tests/run_variables.sh
 
 
 CLEANFILES += \
+	src/tests/runmut.mid \
 	$(check_SCLFILES:.scl=.mut2) \
-	$(check_NSCLFILES:.nscl=.nscl.mut2) \
+	$(check_NSCLFILES:.nscl=.mut2) \
 	$(check_NSCLFILES:.nscl=.log2) \
 	$(check_KBMFILES:.kbm=.mut2)
 

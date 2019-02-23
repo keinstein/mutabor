@@ -19,12 +19,27 @@ MUTEXAMPLETESTS = \
 	%D%/german_Nix.mutexample 
 
 MUTTESTS = \
-	$(MUTEXAMPLETESTS) \
 	%D%/error1.mut \
 	%D%/error2.mut \
 	%D%/missing_tones.mut
 
-TESTS += $(MUTTESTS)
+EXTRA_DIST += \
+	$(MUTEXAMPLETESTS:.mutexample=-output.txt) \
+	%D%/error1-output.txt \
+	%D%/error1.variables \
+	%D%/error2-output.txt \
+	%D%/error2.variables \
+	%D%/missing_tones-output.txt \
+	%D%/missing_tones.variables \
+	$(MUTTESTS)
+
+CLEANFILES += \
+	$(MUTEXAMPLETESTS:.mutexample=-result.mid) \
+	$(MUTTESTS:.mut=-result.mid)
+
+TESTS += \
+	$(MUTEXAMPLETESTS) \
+	$(MUTTESTS)
 
 .PHONY: $(MUTEXAMPLETESTS)
 $(MUTEXAMPLETESTS):

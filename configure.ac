@@ -831,7 +831,6 @@ AC_SUBST(LIBS)
 AC_CONFIG_FILES([
 po/Makefile.in
 Makefile
-src/wxintl/tests/Makefile
 lib/Makefile
 lib/rtmidi/rtmidi-config
 lib/rtmidi/rtmidi.pc
