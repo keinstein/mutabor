@@ -40,7 +40,6 @@
 
 namespace mutabor {
 // Route ------------------------------------------------------------
-	template <> size_t idtype<RouteClass>::idpool(0);
 
 	/*
 	template <class I, class O>
@@ -340,7 +339,7 @@ TRouteClass<I,O,B>:\n\
 				  % ONoDrum);
 	}
 
-	template class TRouteClass<>;
+	//template class TRouteClass<>;
 
 	const std::string DevTypeName[] =
 	{
@@ -608,6 +607,9 @@ TRouteClass<I,O,B>:\n\
 		mutASSERT(oldpath == config.GetPath());
 	}
 
+	template <> size_t idtype<RouteClass>::idpool(0);
+	template class  TRouteClass<InputDevice,OutputDevice, Box>;
+	template class idtype<TRouteClass<InputDevice,OutputDevice, Box> >;
 
 }
 

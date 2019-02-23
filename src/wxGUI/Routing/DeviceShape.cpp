@@ -81,6 +81,11 @@
 
 using namespace mutaborGUI;
 
+using namespace mutabor;
+
+
+
+
 BEGIN_EVENT_TABLE_TEMPLATE1(MutDeviceShape, MutIconShape, T)
 EVT_KEY_DOWN(MutDeviceShape::OnKeyDown)
 EVT_LEFT_DCLICK(MutDeviceShape::LeftDblClickEvent)
@@ -92,7 +97,6 @@ EVT_BUTTON(CM_PAUSEDEVICE, MutDeviceShape::PlayButtonPressed)
 EVT_BUTTON(CM_STOPDEVICE, MutDeviceShape::PlayButtonPressed)
 END_EVENT_TABLE()
 
-using namespace mutabor;
 namespace mutaborGUI {
 
 	template<class T>
@@ -644,18 +648,15 @@ namespace mutaborGUI {
 		return out;
 	}
 
-
 	IMPLEMENT_ABSTRACT_CLASS_TEMPLATE1(MutDeviceShape, MutIconShape, inputdevicetypes)
 	IMPLEMENT_ABSTRACT_CLASS_TEMPLATE1(MutDeviceShape, MutIconShape, outputdevicetypes)
-
-//	template<>  MutDeviceShape<inputdevicetypes>
-//	template<>
 
 	template class MutDeviceShape<inputdevicetypes>;
 	template class MutDeviceShape<outputdevicetypes>;
 }
 
-
+template class std::list<mutaborGUI::MutInputDeviceShape *>;
+template class std::list<mutaborGUI::MutOutputDeviceShape *>;
 
 /*
  * \}

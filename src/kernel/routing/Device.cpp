@@ -81,6 +81,7 @@ namespace mutabor {
 	}
 
 	template <> size_t idtype<Device>::idpool(0);
+	template class idtype<Device>;
 
 	void Device::runtime_error(int type, const std::string & message) {
 		std::string t = mutabor::to_string((mutabor::error_type)type);

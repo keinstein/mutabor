@@ -189,7 +189,17 @@ private:
 	DECLARE_EVENT_TABLE()
 };
 
+template<> wxClassInfo MutIconShapeClass<wxControl>::ms_classInfo;
+template<> wxClassInfo MutIconShapeClass<MutPanel>::ms_classInfo;
+template<> wxClassInfo *MutIconShapeClass<wxControl>::GetClassInfo() const;
+template<> wxClassInfo *MutIconShapeClass<MutPanel>::GetClassInfo() const;
+template<> wxObject* MutIconShapeClass<wxControl>::wxCreateObject();
+template<> wxObject* MutIconShapeClass<MutPanel>::wxCreateObject();
+extern template class MutIconShapeClass<wxControl>;
+extern template class MutIconShapeClass<MutPanel>;
+
 typedef MutIconShapeClass<wxControl> MutIconShape;
+
 
 
 #endif				/* precompiled */

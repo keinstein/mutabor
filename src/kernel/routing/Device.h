@@ -503,6 +503,10 @@ namespace mutabor {
 		int bend;                 //< pitch bend value as integer -8192 – +8191
 	};
 
+	class Device;
+	template <> size_t idtype<Device>::idpool;
+	extern template class mutabor::idtype<Device>;
+
 	class Device: public boost::lockable_adapter<Mutex<> > {
 	public:
 		/* this will be used to get the right Id */
@@ -587,7 +591,7 @@ namespace mutabor {
 			Mode = DevicePause;
 		}
 
-		
+
 		/**
 		 * Stop playback or recording of the device.
 		 *
@@ -1382,7 +1386,7 @@ namespace mutabor {
 
 	};
 
-	
+
 	class minimalOutputDeviceClass: public mutabor::OutputDeviceClass {
 	public:
 		typedef mutabor::OutputDeviceClass base;
