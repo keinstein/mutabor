@@ -72,5 +72,8 @@ nodist_%C%_gmnopenfail1_SOURCES = \
 
 
 %D%/playgmn1.gmn: %D%/gmn1_source.gmn
-	cp `(if test -f '$<' ; then  echo '$<' ; else echo '$(top_srcdir)/$<' ; fi )` $@
+	if test -f '$<' ; \
+	then  if cmp '$<' '$@' ; then : ; else cp '$<' '$@' ; fi ; \
+	else if cmp '$(top_srcdir)' '$@'  ; then :  ; else cp '$(top_srcdir)/$<' '$@' ; fi ; \
+	fi
 
