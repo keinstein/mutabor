@@ -572,7 +572,7 @@ namespace mutabor {
 				(i->name?i->name:""),
 				(start_tuning?start_tuning:""),
 				i->taste,
-				{ mutabor::hidden::any_trigger::key, i }
+				{ mutabor::hidden::any_trigger::key, {i} }
 				};
 			list.push_back(entry);
 		}
