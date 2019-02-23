@@ -1401,10 +1401,11 @@ namespace mutabor {
 			return true;
 		}
 
-		void do_Close() {
+		void do_Close(bool sync=false) {
+			mutUnused(sync);
 			isOpen = false;
 		}
-	
+
 	};
 
 
