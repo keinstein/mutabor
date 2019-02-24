@@ -312,7 +312,7 @@ namespace mutabor {
 		 *
 		 * \return time in quarter divisions
 		 */
-		constexpr miditicks get_delta_midi(microseconds time) {
+		constexpr miditicks get_delta_midi(microseconds time) const {
 #if 0
 			ticktype factor = is_fixed_ticks?
 				1000000/quarter_divisions:
@@ -335,7 +335,7 @@ namespace mutabor {
 		 *
 		 * \return  time in quarter divisions
 		 */
-		constexpr miditicks get_delta_exact(microseconds time) {
+		constexpr miditicks get_delta_exact(microseconds time) const {
 #if 0
 			return is_fixed_ticks?
 				(time.count() * quarter_divisions + 500000) / 1000000:
@@ -445,7 +445,7 @@ namespace mutabor {
 
 		}
 
-		constexpr bool operator != (timing_params & o) {
+		constexpr bool operator != (const timing_params & o) const {
 			return  (this != &o) &&
 				(is_fixed_ticks != o.is_fixed_ticks ||
 				 fps != o.fps ||
