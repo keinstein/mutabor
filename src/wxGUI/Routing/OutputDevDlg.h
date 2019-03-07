@@ -147,7 +147,7 @@ namespace mutaborGUI {
 			int choices = PortChoice->GetCount();
 			for (int i = 0 ; i < choices ; i++) {
 				PortData * entry = static_cast<PortData *>(PortChoice->GetClientObject(i));
-				if (entry && entry->port == value) {
+				if (entry && entry->port  && value && *(entry->port) == *(value)) {
 					PortChoice->SetSelection(i);
 					break;
 				}

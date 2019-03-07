@@ -59,26 +59,6 @@
 namespace mutaborGUI {
 
 
-#if 0
-/*!
- * Control identifiers
- */
-
-#define ID_INPDIALOG 10010
-#define SYMBOL_INPUTDEVDLG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX
-#define SYMBOL_INPUTDEVDLG_TITLE _("Input Device")
-#define SYMBOL_INPUTDEVDLG_IDNAME ID_INPDIALOG
-#define SYMBOL_INPUTDEVDLG_SIZE wxSize(400, 300)
-#define SYMBOL_INPUTDEVDLG_POSITION wxDefaultPosition
-#define ID_CHOICE 10011
-#define ID_CHOICE1 10012
-#define ID_TEXTCTRL 10013
-#define ID_BUTTON 10014
-#define ID_TEXTCTRL1 10015
-#define ID_BUTTON1 10016
-
-#endif
-
 	class InputDevDlg: public InputDevDlgBase
 	{
 		DECLARE_DYNAMIC_CLASS( InputDevDlg )
