@@ -144,7 +144,13 @@ msgstr "Scala_Tonsystem"
 msgid "Set the name of the generated tone system to arg"
 msgstr "Benenne das generierte Tonsystem mit arg"
 
-#: src/gmut/scl2mut.cpp:180 Mutabor.xrc:1931
+#: src/gmut/scl2mut.cpp:181
+#, fuzzy
+msgid ""
+"Set the base frequency of the generated tone system to arg. Use negative "
+"frequencies to omit it"
+msgstr "Benenne das generierte Tonsystem mit arg"
+
 msgid "scala_logic"
 msgstr "Scala_Logik"
 
@@ -1516,7 +1522,11 @@ msgstr "Fließkommazahl ist außerhalb des zulässigen Bereiches"
 msgid "Activation error"
 msgstr "Fehler beim Aktivieren"
 
-#: src/kernel/routing/Box.cpp:754
+#: src/kernel/routing/Box.cpp:756 src/kernel/routing/Box.cpp:770
+#: src/kernel/routing/Box.cpp:784
+msgid "Translation interrupted."
+msgstr "Übersetzung wurde abgebrochen."
+
 msgid "Generating tables"
 msgstr "Erzeuge Tabellen"
 
@@ -1527,10 +1537,6 @@ msgstr "Erfolgreiche Übersetzung"
 #: src/kernel/routing/Box.cpp:765
 msgid "No error occured."
 msgstr "Es tauchte kein Fehler auf."
-
-#: src/kernel/routing/Box.cpp:772
-msgid "Translation interrupted."
-msgstr "Übersetzung wurde abgebrochen."
 
 #: src/kernel/routing/Box.h:267 src/kernel/routing/Box.h:281
 msgid "New box"
