@@ -107,7 +107,8 @@ namespace mutabor {
 
 		bool Open(rtmidi::PortDescriptor & id, const std::string name) {
 			try {
-				port = new rtmidi::MidiOut(rtmidi::UNSPECIFIED, PACKAGE_STRING);
+				//				port = new rtmidi::MidiOut(rtmidi::UNSPECIFIED, PACKAGE_STRING);
+				port = id.getOutputApi();
 			} catch (const rtmidi::Error &error) {
 				device->runtime_error(false,
 						      _mut("Can not open MIDI output devices due to memory allocation problems."));
@@ -282,7 +283,7 @@ namespace mutabor {
 		}
 
 	protected:
-		rtmidi::MidiOut * port;
+		rtmidi::MidiOutApi * port;
 		mutabor::Device * device;
 	};
 
@@ -561,7 +562,7 @@ namespace mutabor {
 
 	protected:
 		rtmidi::PortPointer DevId; //< Id of the hardware MIDI device;
-		rtmidi::MidiIn *port;
+		rtmidi::MidiInApi *port;
 		InputMidiPort(const std::string name = "",
 			      MutaborModeType mode = DeviceStop,
 			      int id = -1):

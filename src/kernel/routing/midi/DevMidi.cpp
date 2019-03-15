@@ -402,7 +402,8 @@ OutputMidiPort:\n\
 			channel_data[i].Reset();
 
 		try {
-			port = new rtmidi::MidiIn(rtmidi::UNSPECIFIED, PACKAGE_STRING);
+			// port = new rtmidi::MidiIn(rtmidi::UNSPECIFIED, PACKAGE_STRING);
+			port = DevId->getInputApi();
 		} catch (const rtmidi::Error &error) {
 			runtime_error(false,
 				      _mut("Can not open MIDI input devices due to memory allocation problems."));
@@ -597,20 +598,20 @@ InputMidiPort:\n\
 
 	using namespace std;
 #include "RtMidi.h"
-	rtmidi::MidiOut * rtmidiout;
-	rtmidi::MidiIn  * rtmidiin;
+	rtmidi::MidiOut * rtmidiout = nullptr;
+	rtmidi::MidiIn  * rtmidiin  = nullptr;
 
 	void MidiInit()
 	{
 		try {
-			rtmidiout = new rtmidi::MidiOut(rtmidi::UNSPECIFIED, PACKAGE_STRING);
+			rtmidiout = new rtmidi::MidiOut(rtmidi::ALL_API, PACKAGE_STRING);
 		} catch (const rtmidi::Error &error) {
 			error.printMessage();
 			// abort();
 		}
 
 		try {
-			rtmidiin = new rtmidi::MidiIn(rtmidi::UNSPECIFIED, PACKAGE_STRING);
+			rtmidiin = new rtmidi::MidiIn(rtmidi::ALL_API, PACKAGE_STRING);
 		} catch (const rtmidi::Error &error) {
 			error.printMessage();
 			// abort();
