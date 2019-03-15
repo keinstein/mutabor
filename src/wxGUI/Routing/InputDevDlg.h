@@ -159,7 +159,8 @@ namespace mutaborGUI {
 
 		void AppendPortChoice (rtmidi::PortPointer p)
 		{
-			PortChoice->Append (p->getName(),new PortData(p));
+			PortChoice->Append (MidiDevIdVisualName(p),
+					    new PortData(p));
 		}
 
 		void AppendPortChoiceNoDevice()

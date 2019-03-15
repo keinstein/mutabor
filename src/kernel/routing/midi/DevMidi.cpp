@@ -63,10 +63,8 @@ namespace mutabor {
 #ifdef DEBUG
 		std::string oldpath = config.GetPath();
 #endif
-		config.Write("Device Id",DevId->getName(rtmidi::PortDescriptor::STORAGE_PATH |
-							rtmidi::PortDescriptor::UNIQUE_PORT_NAME |
-							rtmidi::PortDescriptor::INCLUDE_API));
-		config.Write("Device Name",Name);
+		config.Write("Device Id",    MidiDevIdStoragePath(DevId));
+		config.Write("Device Name",  Name);
 		config.Write("Bending Range",GetBendingRange());
 		mutASSERT(oldpath == config.GetPath());
 	}
@@ -87,7 +85,7 @@ namespace mutabor {
 		config.toLeaf("Midi Output");
 		config.Write("Avoid Drum Channel", route->OutputAvoidDrumChannel());
 		config.Write("Channel Range From", route->GetOutputFrom());
-		config.Write("Channel Range To", route->GetOutputTo());
+		config.Write("Channel Range To",   route->GetOutputTo());
 		config.toParent();
 		mutASSERT(oldpath == config.GetPath());
 	}
@@ -110,18 +108,15 @@ namespace mutabor {
 				     i != list.end();
 				     ++i) {
 					try {
-						if ((*i)->getName(rtmidi::PortDescriptor::STORAGE_PATH |
-								  rtmidi::PortDescriptor::UNIQUE_PORT_NAME |
-								  rtmidi::PortDescriptor::INCLUDE_API) == idstring) {
+						if (MidiDevIdStoragePath(*i) == idstring) {
 							DevId = *i;
-							Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
-									      rtmidi::PortDescriptor::SHORT_NAME |
-									      rtmidi::PortDescriptor::UNIQUE_PORT_NAME).c_str();
+							Name  = MidiDevIdVisualName(DevId);
 						}
 					} catch (const rtmidi::Error &error) {
 						runtime_error(false,
-							      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))									  % (*i)->getName(rtmidi::PortDescriptor::INCLUDE_API |
-																													rtmidi::PortDescriptor::SESSION_PATH).c_str()
+							      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))
+								  % (*i)->getName(rtmidi::PortDescriptor::INCLUDE_API |
+										  rtmidi::PortDescriptor::SESSION_PATH).c_str()
 								  % error.what()));
 						Name = _mut("invalid device");
 						return ;
@@ -243,9 +238,7 @@ OutputMidiPort:\n\
 #ifdef DEBUG
 		std::string oldpath = config.GetPath();
 #endif
-		config.Write("Device Id",DevId->getName(rtmidi::PortDescriptor::STORAGE_PATH |
-							rtmidi::PortDescriptor::UNIQUE_PORT_NAME |
-							rtmidi::PortDescriptor::INCLUDE_API));
+		config.Write("Device Id",   MidiDevIdStoragePath(DevId));
 		config.Write("Device Name", Name);
 		mutASSERT(oldpath == config.GetPath());
 	}
@@ -299,18 +292,15 @@ OutputMidiPort:\n\
 				     i != list.end();
 				     ++i) {
 					try {
-						if ((*i)->getName(rtmidi::PortDescriptor::STORAGE_PATH |
-								  rtmidi::PortDescriptor::UNIQUE_PORT_NAME |
-								  rtmidi::PortDescriptor::INCLUDE_API) == idstring) {
+						if (MidiDevIdStoragePath(*i) == idstring) {
 							DevId = *i;
-							Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
-									      rtmidi::PortDescriptor::SHORT_NAME |
-									      rtmidi::PortDescriptor::UNIQUE_PORT_NAME).c_str();
+							Name  = MidiDevIdVisualName(DevId);
 						}
 					} catch (const rtmidi::Error &error) {
 						runtime_error(false,
-							      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))									  % (*i)->getName(rtmidi::PortDescriptor::INCLUDE_API |
-																													rtmidi::PortDescriptor::SESSION_PATH).c_str()
+							      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))
+								  % (*i)->getName(rtmidi::PortDescriptor::INCLUDE_API |
+										  rtmidi::PortDescriptor::SESSION_PATH).c_str()
 								  % error.what()));
 						Name = _mut("invalid device");
 						return ;
@@ -426,7 +416,7 @@ OutputMidiPort:\n\
 				      boost::str(boost::format(_mut("Can not open MIDI input device %s (%s):\n%s"))
 						 % (GetName().c_str())
 						 % DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
-								       rtmidi::PortDescriptor::SESSION_PATH).c_str()
+								  rtmidi::PortDescriptor::SESSION_PATH).c_str()
 						 % error.what()));
 			return false;
 		}
@@ -438,7 +428,7 @@ OutputMidiPort:\n\
 				      boost::str(boost::format(_mut("Can not register callback for MIDI input device %s (%s):\n%s"))
 						 % (GetName().c_str())
 						 % DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
-								       rtmidi::PortDescriptor::SESSION_PATH).c_str()
+								  rtmidi::PortDescriptor::SESSION_PATH).c_str()
 						 % error.what()));
 		}
 

@@ -173,7 +173,8 @@ namespace mutaborGUI {
 
 		void AppendPortChoice (rtmidi::PortPointer &p)
 		{
-			PortChoice->Append (p->getName(),
+			// jackd2 needs LONG_NAME
+			PortChoice->Append (MidiDevIdVisualName(p),
 					    new PortData(p));
 		}
 		void AppendPortChoiceNoDevice()

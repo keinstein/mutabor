@@ -62,8 +62,37 @@ namespace mutabor {
 	extern rtmidi::MidiOut * rtmidiout;
 	extern rtmidi::MidiIn  * rtmidiin;
 
-// OutputMidiPort ------------------------------------------------------
+	/**
+	 * Get a MIDI port name from a port descriptor for visible output.
+	 *
+	 * \param id Port descriptor.
+	 *
+	 * \return String that represents a MIDI port with a unique name.
+	 */
+	inline std::string MidiDevIdVisualName(const rtmidi::PortPointer & id) {
+		// JACKd2 needs LONG_NAME for meaningful output.
+		// This is not necessary for client/port trees
+		return id -> getName(rtmidi::PortDescriptor::INCLUDE_API |
+				     rtmidi::PortDescriptor::LONG_NAME |
+				     rtmidi::PortDescriptor::UNIQUE_PORT_NAME);
+	}
 
+	/**
+	 * Get a MIDI port name from a port descriptor for configuration.
+	 *
+	 * \param id Port descriptor.
+	 *
+	 * \return String that represents a MIDI port with a unique name.
+	 */
+	inline std::string MidiDevIdStoragePath(const rtmidi::PortPointer & id) {
+		// JACKd2 needs LONG_NAME for meaningful output.
+		// This is not necessary for client/port trees
+		return id -> getName(rtmidi::PortDescriptor::STORAGE_PATH |
+				     rtmidi::PortDescriptor::UNIQUE_PORT_NAME |
+				     rtmidi::PortDescriptor::INCLUDE_API);
+	}
+
+	// OutputMidiPort ------------------------------------------------------
 	class MidiPortFactory;
 
 	class MidiPortOutputProvider {
@@ -303,16 +332,15 @@ namespace mutabor {
 
 		virtual void SetDevId (rtmidi::PortPointer id) {
 			bool reopen = false;
-			if (id != DevId) {
+			if (id != DevId && (!id || !DevId || ! (*id == *DevId))) {
 				DevId = id;
 				if ((reopen = IsOpen()))
 					Close(false);
 			}
 			if (id) {
 				try {
-					Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
-							      rtmidi::PortDescriptor::SHORT_NAME |
-							      rtmidi::PortDescriptor::UNIQUE_PORT_NAME).c_str();
+					// jackd2 is unusable without long names
+					Name = MidiDevIdVisualName(DevId);
 				} catch (const rtmidi::Error &error) {
 					runtime_error(false,
 						      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))
@@ -333,9 +361,9 @@ namespace mutabor {
 		rtmidi::PortPointer GetDevId() { return DevId; }
 
 		virtual DevType GetType() const
-			{
-				return DTMidiPort;
-			}
+		{
+			return DTMidiPort;
+		}
 
 		virtual std::string GetTypeName () const {
 			return _mutN("Midi output device");
@@ -452,16 +480,15 @@ namespace mutabor {
 
 		virtual void SetDevId (rtmidi::PortPointer id) {
 			bool reopen = false;
-			if (id != DevId) {
+			if (id != DevId && (!id || !DevId || !(*id == *DevId))) {
 				DevId = id;
 				if ((reopen = IsOpen()))
 					Close();
 			}
 			if (id) {
 				try {
-					Name = DevId->getName(rtmidi::PortDescriptor::INCLUDE_API |
-							      rtmidi::PortDescriptor::SHORT_NAME |
-							      rtmidi::PortDescriptor::UNIQUE_PORT_NAME).c_str();
+					// jackd2 needs long names
+					Name = MidiDevIdVisualName(DevId);
 				} catch (const rtmidi::Error &error) {
 					runtime_error(false,
 						      str(boost::format(_mut("Could not get the name of the MIDI device with id %d:\n%s"))
@@ -478,6 +505,7 @@ namespace mutabor {
 				Open();
 			}
 		}
+
 
 		virtual rtmidi::PortPointer GetDevId()
 		{
