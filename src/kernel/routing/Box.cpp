@@ -715,10 +715,10 @@ namespace mutabor {
 			tone t = get_frequency(index);
 
 			switch (t.get_type()) {
-			case mutabor_empty_tone:
+			case empty_tone:
 				retval[i].index = index;
 				break;
-			case mutabor_invalid_tone:
+			case invalid_tone:
 				retval[i].flag=box_support::tone_entry::invalid;
 				break;
 			default:
