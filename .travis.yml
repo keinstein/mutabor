@@ -50,7 +50,7 @@ addons:
       description: "Perform dynamic tunings in realtime music or use them for procesing MIDI files"
     notification_email: keinstein_junior@gmx.net
     build_command_prepend: "(cd lib/rtmidi && autoreconf -i -f) && autoreconf -i -f && ./configure"
-    build_command: "make -j4 && make -j4 check"
+    build_command: "make -j4 && $TEST_RUNNER make -j4 check"
     branch_pattern: coverity_scan
 before_install:
 - mkdir -p config lib/rtmidi/config
@@ -74,8 +74,8 @@ before_install:
 - which autopoint
 - autopoint --version
 - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-certificates.crt
-- "(cd lib/rtmidi && autoreconf -i -f)"
-- autoreconf -i -f && ./configure
+  #- "(cd lib/rtmidi && autoreconf -i -f)"
+  #- autoreconf -i -f && ./configure
 
 script:
-        - make -j4 && make -j4 check
+        - make -j3 && $TEST_RUNNER make -j3 check
