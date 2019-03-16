@@ -78,4 +78,4 @@ before_install:
   #- autoreconf -i -f && ./configure
 
 script:
-        - make -j3 && $TEST_RUNNER make -j3 check
+        - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then make -j3 && $TEST_RUNNER make -j3 check ; fi
