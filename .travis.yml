@@ -50,7 +50,7 @@ addons:
       description: "Perform dynamic tunings in realtime music or use them for procesing MIDI files"
     notification_email: keinstein_junior@gmx.net
     build_command_prepend: "(cd lib/rtmidi && autoreconf -i -f) && autoreconf -i -f && ./configure"
-    build_command: "make -j4 && $TEST_RUNNER make -j4 check"
+    build_command: "/bin/bash -c 'make -j4 && $TEST_RUNNER make -j4 check'"
     branch_pattern: coverity_scan
 before_install:
 - mkdir -p config lib/rtmidi/config
@@ -78,4 +78,4 @@ before_install:
   #- autoreconf -i -f && ./configure
 
 script:
-        - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then make -j3 && $TEST_RUNNER make -j3 check ; fi
+        - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then $TEST_RUNNER make -j3 all check ; fi
