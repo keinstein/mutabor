@@ -76,12 +76,17 @@ namespace mutabor {
 		
 		int Entry() {
 			ScopedLock<> lock(mutex);
-			cond.Sleep(lock, CurrentTimer::time_point::clock::now()+timeout);
+			auto cur_time = CurrentTimer::time_point::clock::now();
+			auto wake_time = cur_time+timeout;
 			while (!exit && const_cast<targettype&>(target)) {
+				do {
+					cond.Sleep(lock, wake_time);
+					// deal with spurious wakeups.
+				} while ((cur_time = CurrentTimer::time_point::clock::now()) < wake_time);
 				targettype tmp = const_cast<targettype&>(target);
 				if (tmp)
 					tmp->dog_watching();
-				cond.Sleep(lock, CurrentTimer::time_point::clock::now()+timeout);
+				wake_time = cur_time+timeout;
 			}
 			return 0;
 		}

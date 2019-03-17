@@ -64,6 +64,7 @@ check_MIDISOURCES += \
 MIDITESTS = \
 	%D%/bug-20180414ts.mid
 
+
 TESTS += \
 	%D%/playmidi1$(EXEEXT) \
 	%D%/playmidi2$(EXEEXT) \

@@ -305,8 +305,8 @@ namespace mutaborGUI {
 
 		CompDia->SetFileName(GetName());
 
-		int line;
-		if ( (line = box->Compile(CompDia, GetText().ToUTF8())) >= 0 ) {
+		//int line;
+		if ( box->Compile(CompDia, GetText().ToUTF8()) ) {
 			CompiledFile = m_filename;
 			ToGUIBase(box)->SetEditor(this);
 			for (i!=boxlist.end()?++i:i ; i!= boxlist.end() ; ++i) {
@@ -326,7 +326,7 @@ namespace mutaborGUI {
 		} else {
 			CompiledFile = wxEmptyString;
 			CompDia->EnableButton(true);
-			GoToErrorLine(line);
+			//GoToErrorLine(line);
 			result = false;
 		}
 

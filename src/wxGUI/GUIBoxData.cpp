@@ -395,7 +395,7 @@ namespace mutaborGUI {
 			wxFAIL_MSG(msg);
 		}
 #endif
-		fprintf(stderr, "%s\n", msg.c_str());
+		BoxClass::runtime_error(type,message); // output to stderr and update error flag
 #ifdef DEBUG
 		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::BoxData::runtime_error.\n",
 			__FILE__,

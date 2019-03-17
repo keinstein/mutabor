@@ -45,7 +45,7 @@
 #include "src/kernel/cow_container.h"
 #include "src/kernel/routing/gmn/GIS.h"
 #include "src/kernel/routing/Route.h"
-//#include "src/kernel/routing/tim ing.h"
+#include "src/kernel/routing/timing.h"
 #include "src/kernel/routing/thread.h"
 #include "boost/thread/lockable_adapter.hpp"
 #include "src/kernel/MidiKern.h"
@@ -503,6 +503,10 @@ namespace mutabor {
 		int bend;                 //< pitch bend value as integer -8192 – +8191
 	};
 
+	class Device;
+	template <> size_t idtype<Device>::idpool;
+	extern template class mutabor::idtype<Device>;
+
 	class Device: public boost::lockable_adapter<Mutex<> > {
 	public:
 		/* this will be used to get the right Id */
@@ -557,24 +561,48 @@ namespace mutabor {
 		// The following functions can be used both for playback and recording.
 		// Nevertheless they should not be availlable without a proper device type.
 
-		/**
-		 * Start playback or recording of the device.
-		 *
-		 */
-		virtual void Play() {}
-
 
 		/**
-		 * Pause playback or recording of the device.
+		 * Start playback or recording of the device.  The
+		 * device must be locked before.  This function starts
+		 * playing or recording the music of the device at the
+		 * curren position.
 		 *
+		 * \param lock reference to the lock.
 		 */
-		virtual void Pause() {}
+		virtual void Play() {
+			if (Mode == DeviceStop || Mode == DevicePause)
+				Mode = DevicePlay;
+			referenceTime = CurrentTimer::time_point(referenceTime) + ((CurrentTime.Get() - pauseTime));
+			pauseTime = CurrentTimer::time_point();
+		}
+
+		/**
+		 * Pause playback or recording of the device.  The
+		 * device must be locked before.  This function starts
+		 * playing or recording the music of the device at the
+		 * curren position.
+		 *
+		 * \param lock reference to the lock.
+		 */
+		virtual void Pause() {
+			if (Mode == DevicePlay)
+				pauseTime = CurrentTime.Get();
+			Mode = DevicePause;
+		}
+
 
 		/**
 		 * Stop playback or recording of the device.
 		 *
 		 */
-		virtual void Stop() {}
+		virtual void Stop() {
+			Panic(midi::DEFAULT_PANIC);
+			referenceTime = CurrentTimer::time_point();
+			pauseTime = CurrentTimer::time_point();
+			if ( Mode != DeviceCompileError )
+				Mode = DeviceStop;
+		}
 
 		virtual void SetMode(MutaborModeType m) { Mode = m; }
 
@@ -654,6 +682,9 @@ namespace mutabor {
 		bool isOpen:1;
 		enum MutaborModeType Mode;
 		routeListType routes;
+		boost::atomic<CurrentTimer::time_point> referenceTime; // ms
+		boost::atomic<CurrentTimer::time_point> pauseTime;     // ms
+
 
 		Device(const std::string& name = "",
 		       int id = -1):session_id(),
@@ -663,6 +694,8 @@ namespace mutabor {
 				    isOpen(false),
 				    Mode(DeviceInitializing),
 				    routes(),
+				    referenceTime(CurrentTimer::time_point()),
+				    pauseTime(CurrentTimer::time_point()),
 				    userdata(NULL)
 		{}
 
@@ -811,6 +844,31 @@ namespace mutabor {
 #endif
 			}
 		}
+		/**
+		 * Stop all  devices.
+		 */
+		static void StopAll() {
+			// TODO: lock devices
+			for (auto &i : deviceList) {
+				// Stop locks *this anyway so we can
+				// simply avoid the race condition.
+				//ScopedLock<thistype> lock(*i);
+				if ( i->GetMode() == DevicePlay
+				     || i->GetMode() == DevicePause ) {
+					i->Stop();
+				}
+			}
+		}
+		/**
+		 * Pause all devices.
+		 *
+		 */
+		static void PauseAll() {
+			for (auto &i : deviceList) {
+				i->Pause();
+			}
+		}
+
 #ifdef WX
 		virtual operator  std::string() const;
 #endif
@@ -1009,7 +1067,7 @@ namespace mutabor {
 		virtual void do_Quiet(Route r, int type) = 0;
 		virtual void do_Quiet(Route r, int type, size_t id) = 0;
 		virtual void do_Panic(int mutUNUSED(type)) { STUBC; };
-		virtual bool do_Open() { return true; }
+		virtual bool do_Open() = 0;
 		virtual void do_Close(bool sync = false) = 0;
 
 	};
@@ -1132,20 +1190,9 @@ namespace mutabor {
 		virtual void Close() {
 			Stop();
 		}
-		virtual void Stop() {
-			Panic(midi::DEFAULT_PANIC);
-			Mode = DeviceStop;
-		}
 
 
 
-                /** Command the device to play music.
-		 * This function starts playing the music of the device at the curren position.
-		 */
-		virtual void Play() {
-			if (Mode == DeviceStop || Mode == DevicePause)
-				Mode = DevicePlay;
-		}
 
                 /** Play all input devices in batch mode
 		 * The batch mode allows for direct conversion of data in a complex route environment.
@@ -1159,30 +1206,6 @@ namespace mutabor {
 		 */
 		static void RealtimePlay();
 
-		/**
-		 * Stop all inupt devices.
-		 */
-		static void StopAll() {
-			for (listtype::iterator i = deviceList.begin();
-			     i != deviceList.end(); ++i) {
-				if ( (*i)->GetMode() == DevicePlay
-				     || (*i)->GetMode() == DevicePause ) {
-					(*i)->Stop();
-				}
-			}
-			last_was_stop = true;
-		}
-		/**
-		 * Pause all input devices.
-		 *
-		 */
-		static void PauseAll() {
-			for (listtype::iterator i = deviceList.begin();
-			     i != deviceList.end(); ++i) {
-				(*i)->Pause();
-			}
-			last_was_stop = false;
-		}
 
 		static bool was_last_stop() { return last_was_stop; }
 
@@ -1212,9 +1235,6 @@ namespace mutabor {
 			return 0;
 		}
 
-		virtual void Pause() {
-			Mode = DevicePause;
-		}
 		//	  virtual frac ReadOn(frac time) = 0;
 
 
@@ -1363,6 +1383,28 @@ namespace mutabor {
 
 		void DoResumeKeys();
 
+
+	};
+
+
+	class minimalOutputDeviceClass: public mutabor::OutputDeviceClass {
+	public:
+		typedef mutabor::OutputDeviceClass base;
+		minimalOutputDeviceClass():base() {}
+		minimalOutputDeviceClass(std::string & s,
+					 int & i):base(s,i) {}
+
+
+	protected:
+		bool do_Open() {
+			isOpen = true;
+			return true;
+		}
+
+		void do_Close(bool sync=false) {
+			mutUnused(sync);
+			isOpen = false;
+		}
 
 	};
 

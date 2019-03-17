@@ -1,0 +1,14 @@
+set -e
+set -x
+EXEEXT='@EXEEXT@'
+top_srcdir='@abs_top_srcdir@/'
+SED='@SED@'
+dstfile="$1"
+srcscript="$2"
+scriptbase=`basename "${srcscript}"`
+dstdir=`dirname "${dstfile}"`
+script="${dstdir}/${scriptbase}"
+scriptdir="${dstdir}"
+srcscriptdir=`dirname "${srcscript}"`
+LC_ALL=C
+export LC_ALL

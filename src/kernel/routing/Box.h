@@ -614,13 +614,24 @@ namespace mutabor {
 		int get_distance(int note);
 
 		/**
+		 * Ignore the watchdog action
+		 * this is helpful for debugging.
+		 *
+		 * \param flag true to forbid interruption by watchdog
+		 */
+		void make_uninterruptible (bool flag = true) {
+			box->flags.uninterruptible = flag;
+		}
+
+
+		/**
 		 * Break the execution of any running logic loops.
 		 *
 		 * \param allow_resume if true allow the next call to
 		 * the logic to resume logic execution
 		 */
 		void interrupt_logic (bool allow_resume = true) {
-			if (box) {
+			if (box && !box->flags.uninterruptible) {
 				box->flags.break_logic = 1;
 				box->flags.auto_reset_break_logic = allow_resume;
 			}
@@ -818,6 +829,7 @@ namespace mutabor {
 		int routefile_id;
 		routeListType routes;
 		bool open ;
+		bool compile_error;
 		std::string current_logic;
 		std::string current_tonesystem;
 		int current_key_tonesystem; // 0

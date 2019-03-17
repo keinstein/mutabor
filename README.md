@@ -1,4 +1,7 @@
-[![Build Status](https://travis-ci.org/keinstein/mutabor.svg?branch=master)](https://travis-ci.org/keinstein/mutabor)
+Travis CI (Linux/Mac OS X): [![Travis CI Build Status](https://travis-ci.org/keinstein/mutabor.svg?branch=master)](https://travis-ci.org/keinstein/mutabor),
+AppVeyor (Windows, GCC): [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/4h1y6hhapti03u9j/branch/master?svg=true)](https://ci.appveyor.com/project/keinstein/mutabor/branch/master),
+Coverity Scan: [![Coverity Scan Build Status](https://scan.coverity.com/projects/17590/badge.svg)](https://scan.coverity.com/projects/keinstein-mutabor)
+
 
 Building from GIT
 ==================

@@ -47,7 +47,6 @@
 using namespace mutabor;
 
 namespace mutaborGUI {
-
 	BEGIN_EVENT_TABLE(MutBoxChannelShape, MutIconShape)
 	EVT_LEFT_DCLICK(MutBoxChannelShape::LeftDblClickEvent)
 	END_EVENT_TABLE()

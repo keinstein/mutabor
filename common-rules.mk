@@ -17,12 +17,13 @@ AM_CFLAGS = $(ALSA_CFLAGS) $(WX_CFLAGS) $(WXINTLCFLAGS) "-DLOCALEDIR=\"$(LOCALED
 AM_CXXFLAGS =  $(ALSA_CFLAGS) $(WX_CFLAGS) $(WXINTLCXXFLAGS) "-DLOCALEDIR=\"$(LOCALEDIR)\""
 AM_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
 AM_YFLAGS = -d -v --report=all -x --graph -o y.tab.c
+
 EXTRA_PROGRAMS =
-EXTRA_DIST += \
-	$(check_MIDIFILES) \
-	$(check_MIDISOURCES)
-check_MIDIFILES += \
-	$(check_MIDISOURCES:.txt=.mid)
+
+#check_MIDIFILES += \
+#	$(srcdir)/%D%/runmut.mid
+
+
 
 TAGS_FILES = $(POTFILES)
 AM_ETAGSFLAGS = -I --members --declarations -r '/inline[ \t]+\([^ \t(]+[ \t]+\)*\([^ \t(]+\)[ \t]*(/\2/m'
@@ -148,6 +149,7 @@ endif
 # Dealing with precompiled headers
 #-------------------------------------------------------------------------------------
 
+if COND_PRECOMP
 .h.$(PCHEXT_CXX):
 if am__fastdepCXX
 	if $(CXXCOMPILE) $(mutabor_CPPFLAGS) $(mutabor_CallFLAGS) -MT $@ \
@@ -162,6 +164,7 @@ if AMDEP
 endif
 	$(CXXCOMPILE) $(mutabor_CPPFLAGS) $(mutabor_CallFLAGS) \
 		 -c  `test -f '$<' || echo '$(srcdir)/'`$<
+endif
 endif
 
 #Makefile:remove-podeps.stamp $(srcdir)/Makefile.in $(top_builddir)/config.status

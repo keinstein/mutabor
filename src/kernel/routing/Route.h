@@ -544,10 +544,14 @@ namespace mutabor {
 
 	template<class I, class O, class B>
 	typename TRouteClass<I,O, B>::routeListType TRouteClass<I,O, B>::routeList;
-
-	typedef TRouteClass<InputDevice,OutputDevice, Box>::Route Route;
 	typedef TRouteClass<InputDevice,OutputDevice, Box> RouteClass;
-	typedef TRouteClass<InputDevice,OutputDevice, Box>::routeListType routeListType;
+	template <> size_t idtype<RouteClass>::idpool;
+
+
+	extern template class mutabor::idtype<TRouteClass<InputDevice,OutputDevice, Box> >;
+	extern template class TRouteClass<InputDevice,OutputDevice, Box>;
+	typedef RouteClass::Route Route;
+	typedef RouteClass::routeListType routeListType;
 #if 0
 	typedef TRouteClass<InputDevice,OutputDevice, Box>::routePtrList routePtrList;
 #endif

@@ -424,19 +424,36 @@ namespace mutaborGUI {
 		DECLARE_EVENT_TABLE()
 	};
 
+
+	// specialisations (differences between the classes)
+	template<> wxClassInfo MutDeviceShape<inputdevicetypes>::ms_classInfo;
+	template<> wxClassInfo *MutDeviceShape<inputdevicetypes>::GetClassInfo() const;
+	template<>
+	InputDevDlg * MutDeviceShape<inputdevicetypes>::ShowDeviceDialog();
+
+	template<> wxClassInfo MutDeviceShape<outputdevicetypes>::ms_classInfo;
+	template<> wxClassInfo *MutDeviceShape<outputdevicetypes>::GetClassInfo() const;
+	template<>
+	OutputDevDlg * MutDeviceShape<outputdevicetypes>::ShowDeviceDialog();
+
 	template <class T>
 	wxSizerFlags MutDeviceShape<T>::sizerFlags;
 
-
-
-
 	typedef MutDeviceShape<inputdevicetypes> MutInputDeviceShape;
-	typedef std::list<MutInputDeviceShape *> MutInputDeviceShapeList;
 
 	typedef MutDeviceShape<outputdevicetypes> MutOutputDeviceShape;
+	typedef std::list<MutInputDeviceShape *> MutInputDeviceShapeList;
 	typedef std::list<MutOutputDeviceShape *> MutOutputDeviceShapeList;
 
+	extern template class MutDeviceShape<inputdevicetypes>;
+	extern template class MutDeviceShape<outputdevicetypes>;
+	extern template wxClassInfo MutDeviceShape<inputdevicetypes>::ms_classInfo;
+	extern template wxClassInfo MutDeviceShape<outputdevicetypes>::ms_classInfo;
+	extern template wxClassInfo *MutDeviceShape<inputdevicetypes>::GetClassInfo() const;
+	extern template wxClassInfo *MutDeviceShape<outputdevicetypes>::GetClassInfo() const;
 }
+extern template class std::list<mutaborGUI::MutInputDeviceShape *>;
+extern template class std::list<mutaborGUI::MutOutputDeviceShape *>;
 #endif				/* DEVICESHAPE_H_PRECOMPILED */
 #endif				/* DEVICESHAPE_H */
 /*

@@ -63,13 +63,12 @@
 #include <cppunit/portability/Stream.h>
 #include "src/kernel/Runtime.h"
 
-
 class  midicmnOutputDevice:
 	public mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider,
-					 mutabor::OutputDeviceClass> {
+					 mutabor::minimalOutputDeviceClass> {
 public:
 	typedef mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider,
-					  mutabor::OutputDeviceClass> base;
+					  mutabor::minimalOutputDeviceClass> base;
 
 	midicmnOutputDevice(std::string name,
 			    int id = -1,
