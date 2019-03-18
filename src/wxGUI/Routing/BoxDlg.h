@@ -198,7 +198,16 @@ namespace mutaborGUI {
 	class BoxDlg:public BoxDlgBase {
 		wxChoice * boxTypeChoice;
 	public:
-	BoxDlg():BoxDlgBase(),noBoxPanel(NULL),mutaborBoxPanel(NULL),guidoFileBoxPanel(NULL) { }
+		BoxDlg():BoxDlgBase(),
+			 noBoxPanel(NULL),
+			 mutaborBoxPanel(NULL),
+			 guidoFileBoxPanel(NULL) {
+			if (boxType)
+				boxTypeChoice = boxType -> GetChoiceCtrl();
+			else
+				boxTypeChoice = nullptr;
+		}
+
 		BoxDlg(wxWindow * parent);
 
 		void InitializeBoxTypes();

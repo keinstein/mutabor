@@ -151,7 +151,7 @@ namespace mutabor {
 			std::string count_comment;
 			interval_list intervals;
 			std::string garbage;
-			interval_pattern() {}
+			interval_pattern():count(0) {}
 
 			/// Create a scala interval pattern from a mutabor tone system
 			/** This a kind of a “copy contructor”.

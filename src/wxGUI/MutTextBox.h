@@ -146,8 +146,6 @@ public:
 
 	wxString MakeTitle() const;
 
-	int ColorBox;
-
 	void OnClose(wxCloseEvent& event);
 
 

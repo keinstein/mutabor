@@ -981,7 +981,8 @@ namespace mutaborGUI {
 	template <class T>
 	inline int GUIfiedOutputDevice<T>::MoveInList(int count) {
 		int newpos = basetype::MoveInList(count);
-		GUIOutputDeviceBase::MoveToInList(newpos);
+		if (newpos >= 0)
+			GUIOutputDeviceBase::MoveToInList(newpos);
 		return newpos;
 	}
 
