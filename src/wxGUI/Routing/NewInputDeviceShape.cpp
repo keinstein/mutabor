@@ -39,7 +39,7 @@
 
 using namespace mutabor;
 
-namespace mutaborGUI {
+MUTABOR_NAMESPACE(mutaborGUI)
 
 	void MutNewInputDeviceShape::InitializeDialog(InputDevDlg * in) const
 	{
@@ -60,7 +60,8 @@ namespace mutaborGUI {
 
 	IMPLEMENT_DYNAMIC_CLASS(MutNewInputDeviceShape, MutInputDeviceShape)
 
-}
+MUTABOR_NAMESPACE_END(mutaborGUI)
+
 /*
  * \}
  */
