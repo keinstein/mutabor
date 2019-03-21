@@ -559,7 +559,7 @@ public:
 	}
 	virtual ~Thread() {}
 
-	void operator()() {
+	void operator()() throw() {
 		{
 			boost::unique_lock<boost::mutex> lock(sync_mutex);
 			state = thread_initialized;
@@ -575,8 +575,8 @@ public:
 		state = thread_finished;
 	}
 
-	virtual int Entry() = 0;
-	virtual void OnExit() {}
+	virtual int Entry() throw() = 0;
+	virtual void OnExit() throw() {}
 
 
 	bool IsDetached() {

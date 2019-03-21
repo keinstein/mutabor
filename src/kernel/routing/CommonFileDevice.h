@@ -131,7 +131,7 @@ namespace mutabor {
 
 			virtual ~FileTimer() {}
 
-			int Entry() {
+			int Entry() throw() {
 				int e;
 				try {
 					e = file->ThreadPlay(this);
@@ -141,8 +141,6 @@ namespace mutabor {
 				return e;
 			}
 
-
-			void OnExit() {}
 
 			void ClearFile() {
 				file.reset();

@@ -74,24 +74,29 @@ namespace mutabor {
 			}
 		}
 		
-		int Entry() {
+		int Entry() throw() {
 			ScopedLock<> lock(mutex);
 			auto cur_time = CurrentTimer::time_point::clock::now();
 			auto wake_time = cur_time+timeout;
 			while (!exit && const_cast<targettype&>(target)) {
 				do {
-					cond.Sleep(lock, wake_time);
+					try {
+						cond.Sleep(lock, wake_time);
+					} catch (boost::thread_interrupted) {
+						exit = 1;
+					}
 					// deal with spurious wakeups.
 				} while ((cur_time = CurrentTimer::time_point::clock::now()) < wake_time);
+				if (exit) break;
 				targettype tmp = const_cast<targettype&>(target);
-				if (tmp)
+				if (tmp && !exit)
 					tmp->dog_watching();
 				wake_time = cur_time+timeout;
 			}
 			return 0;
 		}
 		
-		void OnExit() {
+		void OnExit() throw() {
 			ScopedLock<> lock(mutex);
 			targettype tmp = const_cast<targettype&>(target);
 			if (tmp) {
