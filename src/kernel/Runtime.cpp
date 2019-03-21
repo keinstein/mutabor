@@ -115,22 +115,19 @@ bool GetLine(char **p, char *s) {
 		return false;
 
 	while ( (*p)[0] == ' ' || (*p)[0] == '\n' || (*p)[0] == '\r' )
-		*p = &(*p)[1];
+		++(*p);
 
 	if ( !(*p)[0] )
 		return false;
 
 	char *p1 = *p;
-
 	*p = strchr(p1, '\n');
-
-	if ( !p )
+	if ( !(*p) )
 		*p = &p1[strlen(p1)];
 
 	int i = (*p)-p1;
-
+	if (i > length) i = length;
 	strncpy(s, p1, i);
-
 	s[i] = 0;
 
 	return true;

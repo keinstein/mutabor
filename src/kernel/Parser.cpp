@@ -1218,10 +1218,9 @@ void get_new_ton_komplex_negative (mutabor_box_type * box, const char *name, con
 					      ((*lauf)->name),
 					      (__FILE__),
 					      __LINE__);
+		} else {
+			help -> faktor *= -1.0 ;
 		}
-
-		help -> faktor *= -1.0 ;
-
 		(* lauf) -> u.ton_komplex.komplex_liste = help;
 	}
 
@@ -1338,9 +1337,8 @@ void get_new_tonsystem_negative (mutabor_box_type * box, const char * name, int 
 					      ((*lauf)->name),
 					      (__FILE__),
 					      __LINE__);
-
-		help -> faktor *= -1.0 ;
-
+		else
+			help -> faktor *= -1.0 ;
 		(* lauf) -> periode = help;
 	}
 

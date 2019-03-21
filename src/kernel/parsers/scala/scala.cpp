@@ -150,9 +150,15 @@ namespace mutabor {
 		void parser::parse(const std::string & s,
 				   const std::string & filename) {
 			if (!lexer) {
-				lexer = new scale_lexer(s.c_str(),
-							filename.c_str(),
-							s.length());
+				try {
+					lexer = new scale_lexer(s.c_str(),
+								filename.c_str(),
+								s.length());
+				} catch (const std::bad_alloc & e) {
+					lexer = nullptr;
+					return;
+				}
+				if (!lexer) return;
 #ifdef DEBUG
 				if (isDebugFlag(sclparser))
 					lexer -> set_debug(7);
@@ -178,9 +184,15 @@ namespace mutabor {
 		void parser::load_keymap(const std::string & s,
 				   const std::string & filename) {
 			if (!lexer) {
-				lexer = new scale_lexer(s.c_str(),
-							filename.c_str(),
-							s.length());
+				try {
+					lexer = new scale_lexer(s.c_str(),
+								filename.c_str(),
+								s.length());
+				} catch (const std::bad_alloc & e) {
+					lexer = nullptr;
+					return;
+				}
+				if (!lexer) return;
 #ifdef DEBUG
 				if (isDebugFlag(sclparser))
 					lexer -> set_debug(7);

@@ -51,11 +51,11 @@ size_t minimal_box_used = 0;
 
 void mutabor_set_logic(mutabor_box_type * box, struct mutabor_logic_parsed * logic) {
 	if (logic == box->file) return;
-	if (logic || logic != NULL) {
+	if (logic != NULL) {
 		mutabor_lock_logic(logic);
 		logic->refcount++;
 	}
-	if (box->file || box->file != NULL) {
+	if (box->file != NULL) {
 		mutabor_lock_logic(box->file);
 		box->file->refcount--;
 		if (!box->file->refcount) {
