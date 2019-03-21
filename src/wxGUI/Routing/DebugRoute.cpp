@@ -62,7 +62,7 @@
 
 
 using namespace mutabor;
-namespace mutaborGUI {
+MUTABOR_NAMESPACE(mutaborGUI)
 
 #if wxGUI
 	typedef std::set<MutRouteWnd *> rwdset;
@@ -869,7 +869,8 @@ namespace mutaborGUI {
 		CheckWindows();
 #endif
 	}
-}
+MUTABOR_NAMESPACE_END(mutaborGUI)
+
 #endif
 
 ///\}

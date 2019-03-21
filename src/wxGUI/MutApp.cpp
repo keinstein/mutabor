@@ -88,7 +88,7 @@ IMPLEMENT_APP_NO_MAIN(MutApp)
 IMPLEMENT_APP(MutApp)
 #endif
 
-namespace mutaborGUI {
+MUTABOR_NAMESPACE(mutaborGUI)
 
 	wxHtmlHelpController * HelpController = (wxHtmlHelpController *) NULL;
 #if wxUSE_PRINTING_ARCHITECTURE
@@ -1578,6 +1578,7 @@ namespace mutaborGUI {
 		config->SetPath(oldpath);
 	}
 
-}
+MUTABOR_NAMESPACE_END(mutaborGUI)
+
 
 ///\}

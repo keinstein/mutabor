@@ -70,7 +70,7 @@ class OutputDevDlg: public OutputDevDlgBase
 	DECLARE_EVENT_TABLE()
 
 	protected:
-	wxSizer *Container,* TypeBox, *PortBox, *MidiFileBox, *GuidoFileBox;
+	wxSizer *TypeBox, *PortBox, *MidiFileBox, *GuidoFileBox;
 
 	struct TypeData:wxClientData
 	{

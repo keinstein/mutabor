@@ -1,33 +1,33 @@
 /** \file               -*- C++ -*-
- ********************************************************************
- * Language definitions for wxStyledTextControl (wxScintilla)
- *
- * Copyright:   (c) 2011 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
- * \license GPL
- *
- *    This program is free software; you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation; either version 2 of the License, or
- *    (at your option) any later version.
- *
- *    This program is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNprU General Public License
- *    along with this program; if not, write to the Free Software
- *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- *
- ********************************************************************
- * \addtogroup GUI
- * \{
- ********************************************************************/
+********************************************************************
+* Language definitions for wxStyledTextControl (wxScintilla)
+*
+* Copyright:   (c) 2011 TU Dresden
+* \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
+* \license GPL
+*
+*    This program is free software; you can redistribute it and/or modify
+*    it under the terms of the GNU General Public License as published by
+*    the Free Software Foundation; either version 2 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU General Public License for more details.
+*
+*    You should have received a copy of the GNprU General Public License
+*    along with this program; if not, write to the Free Software
+*    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*
+*
+********************************************************************
+* \addtogroup GUI
+* \{
+********************************************************************/
 // availlable groups: GUI, route, kernel, src/wxGUI, debug, docview
 
-#if (!defined(MUWX_STCLANGUAGE_H) && !defined(PRECOMPILE)) \
+#if (!defined(MUWX_STCLANGUAGE_H) && !defined(PRECOMPILE))	      \
 	|| (!defined(MUWX_STCLANGUAGE_H_PRECOMPILED))
 #ifndef PRECOMPILE
 #define MUWX_STCLANGUAGE_H
@@ -51,7 +51,8 @@
 
 //! application headers
 
-namespace mutaborGUI {
+MUTABOR_NAMESPACE(mutaborGUI)
+
 //============================================================================
 // declarations
 //============================================================================
@@ -160,82 +161,83 @@ namespace mutaborGUI {
 //----------------------------------------------------------------------------
 // CommonInfo
 
-	struct CommonInfo {
-		// editor functionality prefs
-		bool syntaxEnable;
-		bool foldEnable;
-		bool indentEnable;
-		// display defaults prefs
-		bool readOnlyInitial;
-		bool overTypeInitial;
-		bool wrapModeInitial;
-		bool displayEOLEnable;
-		bool indentGuideEnable;
-		bool lineNumberEnable;
-		bool longLineOnEnable;
-		bool whiteSpaceEnable;
-	};
-	extern const CommonInfo g_CommonPrefs;
+struct CommonInfo {
+	// editor functionality prefs
+	bool syntaxEnable;
+	bool foldEnable;
+	bool indentEnable;
+	// display defaults prefs
+	bool readOnlyInitial;
+	bool overTypeInitial;
+	bool wrapModeInitial;
+	bool displayEOLEnable;
+	bool indentGuideEnable;
+	bool lineNumberEnable;
+	bool longLineOnEnable;
+	bool whiteSpaceEnable;
+};
+extern const CommonInfo g_CommonPrefs;
 
 //----------------------------------------------------------------------------
 // LanguageInfo
 
-	struct LanguageInfo {
-		const wxChar *name;
-		const wxChar *filepattern;
-		const wxChar *wordchars;
-		int lexer;
-		struct {
-			int type;
-			const wxChar *words;
-		} styles [STYLE_TYPES_COUNT];
-		int folds;
-	};
+struct LanguageInfo {
+	const wxChar *name;
+	const wxChar *filepattern;
+	const wxChar *wordchars;
+	int lexer;
+	struct {
+		int type;
+		const wxChar *words;
+	} styles [STYLE_TYPES_COUNT];
+	int folds;
+};
 
-	extern const LanguageInfo g_LanguagePrefs[];
-	extern const int g_LanguagePrefsSize;
+extern const LanguageInfo g_LanguagePrefs[];
+extern const int g_LanguagePrefsSize;
 
 //----------------------------------------------------------------------------
 // StyleInfo
-	struct StyleInfo {
-		const wxChar *name;
-		const wxChar *foreground;
-		const wxChar *background;
-		const wxChar *fontname;
-		int fontsize;
-		int fontstyle;
-		int lettercase;
+struct StyleInfo {
+	const wxChar *name;
+	const wxChar *foreground;
+	const wxChar *background;
+	const wxChar *fontname;
+	int fontsize;
+	int fontstyle;
+	int lettercase;
+};
+
+extern const StyleInfo g_StylePrefs[];
+extern const int g_StylePrefsSize;
+
+class MutSTCLexer {
+public: 
+	enum States {
+		     DEFAULT = 0,
+		     IDENTIFIER = 1,
+		     SECTIONKEYWORD = 2,
+		     OPERATOR = 3,
+		     RESERVEDWORD = 4,
+		     DELIMITER = 5,
+		     COMMENT = 6,
+		     NUMBER = 7,
+		     PARAMETER = 8,
+		     OTHER = 9,
+		     ERROR = 10,
+		     BRACE = 11
 	};
 
-	extern const StyleInfo g_StylePrefs[];
-	extern const int g_StylePrefsSize;
+	MutSTCLexer(wxStyledTextCtrl * e):editor(e) {}
+	void OnStyleNeeded (wxStyledTextEvent & event);
+protected:
+	wxStyledTextCtrl * editor;
 
-	class MutSTCLexer {
-	public: 
-		enum States {
-			DEFAULT = 0,
-			IDENTIFIER = 1,
-			SECTIONKEYWORD = 2,
-			OPERATOR = 3,
-			RESERVEDWORD = 4,
-			DELIMITER = 5,
-			COMMENT = 6,
-			NUMBER = 7,
-			PARAMETER = 8,
-			OTHER = 9,
-			ERROR = 10,
-			BRACE = 11
-		};
+	int SetStyling(int style, int pos, int len);
+};
 
-		MutSTCLexer(wxStyledTextCtrl * e):editor(e) {}
-		void OnStyleNeeded (wxStyledTextEvent & event);
-	protected:
-		wxStyledTextCtrl * editor;
+MUTABOR_NAMESPACE_END(mutaborGUI)
 
-		int SetStyling(int style, int pos, int len);
-	};
-
-}
 
 #endif // precompiled
 #endif // full header inclusion

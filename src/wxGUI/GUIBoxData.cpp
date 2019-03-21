@@ -42,396 +42,395 @@
 #include "GUIBoxData-inlines.h"
 #include "src/kernel/routing/Route-inlines.h"
 
-namespace mutaborGUI {
-	mutabor::Box BoxData::curBox(NULL);
+MUTABOR_NAMESPACE(mutaborGUI)
+mutabor::Box BoxData::curBox(NULL);
 
-	// don't initialize these classes before WX is intialized
+// don't initialize these classes before WX is intialized
 //	BoxData::BoxVector BoxData::vector; 
 //	BoxData BoxData::GmnBoxData;
 //	BoxData BoxData::NoBoxData;
 //	BoxData BoxData::NewBoxData;
-	BoxData::BoxData(int id):BoxClass(id),
-				 shapes(),
-				 editor(NULL),
-				 text_colour(*wxBLACK),
-				 background_colour(),
-/*
-  current_logic(),
-  current_tonesystem(),
-  current_key_tonesystem(0),
-  current_key_logic(0),
-*/
-				 winattr()
-	{		
-		set_routefile_id(id);
-		if (!boxList.empty()) {
-			mutabor::Box tmp = boxList.front();
-			BoxData * guibox = ToGUIBase(tmp);
-			editor = guibox->editor;
-			SetLogic(tmp);
-		}
+BoxData::BoxData(int id):BoxClass(id),
+			 shapes(),
+			 editor(NULL),
+			 text_colour(*wxBLACK),
+			 background_colour(),
+			 /*
+			   current_logic(),
+			   current_tonesystem(),
+			   current_key_tonesystem(0),
+			   current_key_logic(0),
+			 */
+			 winattr()
+{		
+	set_routefile_id(id);
+	if (!boxList.empty()) {
+		mutabor::Box tmp = boxList.front();
+		BoxData * guibox = ToGUIBase(tmp);
+		editor = guibox->editor;
+		SetLogic(tmp);
 	}
+}
 
-	void BoxData::set_routefile_id(int id) {
-		BoxClass::set_routefile_id(id);
-		if (box)
-			id = box->id;
+void BoxData::set_routefile_id(int id) {
+	BoxClass::set_routefile_id(id);
+	if (box)
+		id = box->id;
 
-		switch (id) {
-		case mutabor::NewBox:
-		case mutabor::NoBox:
-		case mutabor::GmnBox: 
-			background_colour = wxNullColour;
+	switch (id) {
+	case mutabor::NewBox:
+	case mutabor::NoBox:
+	case mutabor::GmnBox: 
+		background_colour = wxNullColour;
+		text_colour = *wxBLACK;
+		break;
+	default:
+		int r = ((id & 0x01) << 7 ) | ((id & 0x08) << 3) | ((id & 0x40) >> 1) |
+			((id & 0x200) >> 5) | ((id & 0x1000) >> 9) | ((id & 0x8000) >> 13) |
+			((id & 0x40000) >> 17) | ((id & 0x200000) >> 21) ;
+		r = r?r-1:0;
+		int g = ((id & 0x02) << 6 ) | ((id & 0x10) << 2) | ((id & 0x80) >> 2) |
+			((id & 0x400) >> 6) | ((id & 0x2000) >> 10) | ((id & 0x10000) >> 14) |
+			((id & 0x80000) >> 18) | ((id & 0x400000) >> 22);
+		g = g?g-1:0;
+		int b = ((id & 0x04) << 5 ) | ((id & 0x20) << 1) | ((id & 0x100) >> 3) |
+			((id & 0x800) >> 7) | ((id & 0x4000) >> 11) | ((id & 0x20000) >> 15) |
+			((id & 0x100000) >> 19) | ((id & 0x800000) >> 23);
+		b = b?b-1:0;
+		DEBUGLOG2(other,("Box %d color %x,%x,%x"),id-1,r,g,b);
+		if (r+b+g < 0x180) 
+			text_colour = *wxWHITE;
+		else
 			text_colour = *wxBLACK;
-			break;
-		default:
-			int r = ((id & 0x01) << 7 ) | ((id & 0x08) << 3) | ((id & 0x40) >> 1) |
-				((id & 0x200) >> 5) | ((id & 0x1000) >> 9) | ((id & 0x8000) >> 13) |
-				((id & 0x40000) >> 17) | ((id & 0x200000) >> 21) ;
-			r = r?r-1:0;
-			int g = ((id & 0x02) << 6 ) | ((id & 0x10) << 2) | ((id & 0x80) >> 2) |
-				((id & 0x400) >> 6) | ((id & 0x2000) >> 10) | ((id & 0x10000) >> 14) |
-				((id & 0x80000) >> 18) | ((id & 0x400000) >> 22);
-			g = g?g-1:0;
-			int b = ((id & 0x04) << 5 ) | ((id & 0x20) << 1) | ((id & 0x100) >> 3) |
-				((id & 0x800) >> 7) | ((id & 0x4000) >> 11) | ((id & 0x20000) >> 15) |
-				((id & 0x100000) >> 19) | ((id & 0x800000) >> 23);
-			b = b?b-1:0;
-			DEBUGLOG2(other,("Box %d color %x,%x,%x"),id-1,r,g,b);
-			if (r+b+g < 0x180) 
-				text_colour = *wxWHITE;
-			else
-				text_colour = *wxBLACK;
-			background_colour = wxColour(r,g,b);
-		}
-		MutChildApi * windows[] = { winattr.key_window,
-					    winattr.tonesystem_window,
-					    winattr.actions_window,
-					    winattr.logic_window };
-
-		for (int i = 0 ; i < 4 ; ++i) {
-			if (!windows[i]) continue;
-			windows[i]->BoxChanged();
-		}
-		for (MutBoxShapeList::iterator i = shapes.begin();
-		     i!= shapes.end();
-		     ++i) {
-			MutBoxShape * shape = *i;
-			shape->BoxChanged();
-		}
-		if (LogicOn) {
-			MutFrame * logicframe = MutFrame::GetActiveWindow();
-			if (logicframe)
-				logicframe->UpdateBoxMenu();
-			MutFrame * routewin = dynamic_cast<MutFrame *>(wxWindow::FindWindowById(WK_ROUTE));
-			if (routewin)
-				routewin->UpdateBoxMenu();
-		}
+		background_colour = wxColour(r,g,b);
 	}
+	MutChildApi * windows[] = { winattr.key_window,
+				    winattr.tonesystem_window,
+				    winattr.actions_window,
+				    winattr.logic_window };
 
-	void BoxData::Destroy() {
-		if (GetCurrentBox() == this) {
-			SetCurrentBox(NULL);
-		}
-		mutabor::Box b = this;
-		mutabor::BoxClass::Destroy();
-		MutBoxShapeList::iterator i;
-		while ((i = shapes.begin())!= shapes.end()) {
-			MutBoxShape * shape = *i;
-			disconnect (b, shape);
-			shape->Destroy();
-		}
+	for (int i = 0 ; i < 4 ; ++i) {
+		if (!windows[i]) continue;
+		windows[i]->BoxChanged();
 	}
+	for (MutBoxShapeList::iterator i = shapes.begin();
+	     i!= shapes.end();
+	     ++i) {
+		MutBoxShape * shape = *i;
+		shape->BoxChanged();
+	}
+	if (LogicOn) {
+		MutFrame * logicframe = MutFrame::GetActiveWindow();
+		if (logicframe)
+			logicframe->UpdateBoxMenu();
+		MutFrame * routewin = dynamic_cast<MutFrame *>(wxWindow::FindWindowById(WK_ROUTE));
+		if (routewin)
+			routewin->UpdateBoxMenu();
+	}
+}
+
+void BoxData::Destroy() {
+	if (GetCurrentBox() == this) {
+		SetCurrentBox(NULL);
+	}
+	mutabor::Box b = this;
+	mutabor::BoxClass::Destroy();
+	MutBoxShapeList::iterator i;
+	while ((i = shapes.begin())!= shapes.end()) {
+		MutBoxShape * shape = *i;
+		disconnect (b, shape);
+		shape->Destroy();
+	}
+}
 		
 #if 0
-	void BoxData::reset() 
-	{
-		current_logic = _("(INITIAL)");
-		current_tonesystem = _T("0");
-		current_key_tonesystem = current_key_logic = 0;
-		mutASSERT(!winattr.key_window);
-		mutASSERT(!winattr.tonesystem_window);
-		mutASSERT(!winattr.actions_window);
-		mutASSERT(!winattr.logic_window);
-	}
+void BoxData::reset() 
+{
+	current_logic = _("(INITIAL)");
+	current_tonesystem = _T("0");
+	current_key_tonesystem = current_key_logic = 0;
+	mutASSERT(!winattr.key_window);
+	mutASSERT(!winattr.tonesystem_window);
+	mutASSERT(!winattr.actions_window);
+	mutASSERT(!winattr.logic_window);
+}
 #endif
 
 
 #if 0
-	void BoxData::CloseRoute(mutabor::Box) {
-		// if logic is off we are not resposible
-		if (!LogicOn) return;
-		// check whether the windows should be closed
-		const mutabor::routeListType & list 
-			= mutabor::RouteClass::GetRouteList();
-		for (mutabor::routeListType::const_iterator i
-			     = list.begin();
-		     i != list.end(); i++) {
-			if ((*i)->GetBox() ==  boxid) return;
-		}
-		CloseBox(boxid);
+void BoxData::CloseRoute(mutabor::Box) {
+	// if logic is off we are not resposible
+	if (!LogicOn) return;
+	// check whether the windows should be closed
+	const mutabor::routeListType & list 
+		= mutabor::RouteClass::GetRouteList();
+	for (mutabor::routeListType::const_iterator i
+		     = list.begin();
+	     i != list.end(); i++) {
+		if ((*i)->GetBox() ==  boxid) return;
 	}
+	CloseBox(boxid);
+}
 
 
 
-	void BoxData::CloseBox(int boxid) {
-		if (!(MIN_BOX <= boxid && boxid < MAX_BOX)) {
-			UNREACHABLECT(BoxData);
-			return;
-		}
+void BoxData::CloseBox(int boxid) {
+	if (!(MIN_BOX <= boxid && boxid < MAX_BOX)) {
+		UNREACHABLECT(BoxData);
+		return;
+	}
 		
-		if (boxid < 0) return;
+	if (boxid < 0) return;
 
-		int tmp = minimal_box_used;
-		if (boxid == tmp) {
-			if (mut_box[tmp].next_used) {
-				minimal_box_used = mut_box[tmp].next_used;
-			}
-		} else {
-			if (mut_box[tmp].next_used != boxid) {
-				do {
-					tmp = mut_box[tmp].next_used;
-					mutASSERT(tmp);
-				} while (tmp && mut_box[tmp].next_used != boxid) ;
-				if (!tmp) {
-					UNREACHABLECT(BoxData);
-					return;
-				}
-			}
-			// box 0 is valid, here
-			mut_box[tmp].next_used = mut_box[boxid].next_used;
+	int tmp = minimal_box_used;
+	if (boxid == tmp) {
+		if (mut_box[tmp].next_used) {
+			minimal_box_used = mut_box[tmp].next_used;
 		}
-		mut_box[boxid].used = 0;
-		mut_box[boxid].next_used = 0;
-		MutFrame::BoxWindowsClose(boxid,true);
-	}
-	
-	void BoxData::OpenRoute(int boxid) {
-		// if logic is off we are not resposible
-		if (!LogicOn) return;
-		// in contrast to CloseRoute we do not have to precheck the routes
-		OpenBox(boxid);
-	}
-	void BoxData::OpenBox(int boxid) {
-		if (!(MIN_BOX <= boxid && boxid < MAX_BOX)) {
-			UNREACHABLECT(BoxData);
-			return;
-		}
-		
-		size_t box = boxid;
-		if (boxid < 0) return;
-		if (!(mut_box[minimal_box_used].used)) {
-			mutASSERT(!minimal_box_used);
-			minimal_box_used=box;
-			mut_box[box].next_used = 0;
-		} else if (box < minimal_box_used) {
-			mut_box[box].next_used = minimal_box_used;
-			minimal_box_used = box;
-		} else {
-			size_t tmp = minimal_box_used;
-			if (box == tmp) return;
-			while (mut_box[tmp].next_used 
-			       && mut_box[tmp].next_used < boxid) {
+	} else {
+		if (mut_box[tmp].next_used != boxid) {
+			do {
 				tmp = mut_box[tmp].next_used;
-				if (tmp == box) return;
+				mutASSERT(tmp);
+			} while (tmp && mut_box[tmp].next_used != boxid) ;
+			if (!tmp) {
+				UNREACHABLECT(BoxData);
+				return;
 			}
-			if (mut_box[tmp].next_used == boxid) return;
-			mut_box[box].next_used = mut_box[tmp].next_used;
-			mut_box[tmp].next_used = box;
-			
 		}
-		mut_box[box].used = 1;
-		MutFrame::BoxWindowsOpen(box,true);
+		// box 0 is valid, here
+		mut_box[tmp].next_used = mut_box[boxid].next_used;
 	}
+	mut_box[boxid].used = 0;
+	mut_box[boxid].next_used = 0;
+	MutFrame::BoxWindowsClose(boxid,true);
+}
+	
+void BoxData::OpenRoute(int boxid) {
+	// if logic is off we are not resposible
+	if (!LogicOn) return;
+	// in contrast to CloseRoute we do not have to precheck the routes
+	OpenBox(boxid);
+}
+void BoxData::OpenBox(int boxid) {
+	if (!(MIN_BOX <= boxid && boxid < MAX_BOX)) {
+		UNREACHABLECT(BoxData);
+		return;
+	}
+		
+	size_t box = boxid;
+	if (boxid < 0) return;
+	if (!(mut_box[minimal_box_used].used)) {
+		mutASSERT(!minimal_box_used);
+		minimal_box_used=box;
+		mut_box[box].next_used = 0;
+	} else if (box < minimal_box_used) {
+		mut_box[box].next_used = minimal_box_used;
+		minimal_box_used = box;
+	} else {
+		size_t tmp = minimal_box_used;
+		if (box == tmp) return;
+		while (mut_box[tmp].next_used 
+		       && mut_box[tmp].next_used < boxid) {
+			tmp = mut_box[tmp].next_used;
+			if (tmp == box) return;
+		}
+		if (mut_box[tmp].next_used == boxid) return;
+		mut_box[box].next_used = mut_box[tmp].next_used;
+		mut_box[tmp].next_used = box;
+			
+	}
+	mut_box[box].used = 1;
+	MutFrame::BoxWindowsOpen(box,true);
+}
 
-	void BoxData::ReOpenRoute(int old_boxid, int new_boxid) {
-		// if logic is off we are not resposible
-		if (!LogicOn || old_boxid == new_boxid) return;
-		// in contrast to CloseRoute we do not have to precheck the routes
-		ReOpenBox(old_boxid, new_boxid);
-	}
-	void BoxData::ReOpenBox(int old_boxid, int new_boxid) {
-		/// \todo if possible, let windows as they are
-		CloseRoute(old_boxid);
-		OpenRoute(new_boxid);
-	}
+void BoxData::ReOpenRoute(int old_boxid, int new_boxid) {
+	// if logic is off we are not resposible
+	if (!LogicOn || old_boxid == new_boxid) return;
+	// in contrast to CloseRoute we do not have to precheck the routes
+	ReOpenBox(old_boxid, new_boxid);
+}
+void BoxData::ReOpenBox(int old_boxid, int new_boxid) {
+	/// \todo if possible, let windows as they are
+	CloseRoute(old_boxid);
+	OpenRoute(new_boxid);
+}
 #endif
 
-	void BoxData::Save(mutabor::tree_storage & config) {
-		mutabor::BoxClass::Save(config);
-		config.Write("KeyWindow",
-			     winattr.want_key_window);
-		config.Write("ToneSystemWindow", 
-			     winattr.want_tonesystem_window);
-		config.Write("ActionsWindow", 
-			     winattr.want_actions_window);
-	}
+void BoxData::Save(mutabor::tree_storage & config) {
+	mutabor::BoxClass::Save(config);
+	config.Write("KeyWindow",
+		     winattr.want_key_window);
+	config.Write("ToneSystemWindow", 
+		     winattr.want_tonesystem_window);
+	config.Write("ActionsWindow", 
+		     winattr.want_actions_window);
+}
 
-	void BoxData::Load(mutabor::tree_storage & config) {
-		mutabor::BoxClass::Load(config);
-		winattr.want_key_window = config.Read("KeyWindow", 
-						      (long int)false) != 0l;
-		winattr.want_tonesystem_window =
-			config.Read("ToneSystemWindow",
-				    (long int)false) != 0l;
-		winattr.want_actions_window =
-			config.Read("ActionsWindow", 
-				    (long int)false) != 0l;
-	}
+void BoxData::Load(mutabor::tree_storage & config) {
+	mutabor::BoxClass::Load(config);
+	winattr.want_key_window = config.Read("KeyWindow", 
+					      (long int)false) != 0l;
+	winattr.want_tonesystem_window =
+		config.Read("ToneSystemWindow",
+			    (long int)false) != 0l;
+	winattr.want_actions_window =
+		config.Read("ActionsWindow", 
+			    (long int)false) != 0l;
+}
 
 #if 0
-	bool BoxData::SaveAll(wxConfigBase * config) 
-	{
-		bool retval = true;
-		for (size_t box = 0 ; box < vector.size() ; box++) {
-			config->SetPath(wxString::Format(("%d"),(int)box));
-			retval &= vector[box].Save(config);
-			config->SetPath(_T(".."));
-		}
-		return retval;
+bool BoxData::SaveAll(wxConfigBase * config) 
+{
+	bool retval = true;
+	for (size_t box = 0 ; box < vector.size() ; box++) {
+		config->SetPath(wxString::Format(("%d"),(int)box));
+		retval &= vector[box].Save(config);
+		config->SetPath(_T(".."));
 	}
+	return retval;
+}
 
-	bool BoxData::LoadAll(wxConfigBase * config) 
-	{
-		bool retval = true;
-		for (size_t box = 0 ; box < vector.size() ; box++) {
-			config->SetPath(wxString::Format(_T("%d"),(int)box));
-			retval &= vector[box].Load(config);
-			config->SetPath(_T(".."));
-		}
-		return retval;
+bool BoxData::LoadAll(wxConfigBase * config) 
+{
+	bool retval = true;
+	for (size_t box = 0 ; box < vector.size() ; box++) {
+		config->SetPath(wxString::Format(_T("%d"),(int)box));
+		retval &= vector[box].Load(config);
+		config->SetPath(_T(".."));
 	}
+	return retval;
+}
 #endif
 
-	bool BoxData::DoOpen() 
-	{
-		mutASSERT(editor);
+bool BoxData::DoOpen() 
+{
+	mutASSERT(editor);
+	wxWindow * win = editor->GetParent();
+	while (win && (typeid(*win) != typeid(MutFrame))) win = win->GetParent();
+	mutASSERT(dynamic_cast<MutFrame *>(win));
+	MutFrame * frame = static_cast<MutFrame *>(win);
+	if (!frame) {
+		UNREACHABLEC;
+		return false;
+	}
+	bool retval = mutabor::BoxClass::DoOpen();
+	//temporarily unlock the mutex (we don't need it and GetLogics complains)
+	mutex.Unlock();
+	mutabor::Box b(this);
+	if (WantKeyWindow())
+		frame->TextBoxOpen(WK_KEY, b, false);
+	if (WantTonesystemWindow())
+		frame->TextBoxOpen(WK_TS, b, false);
+	if (WantActionsWindow())
+		frame->TextBoxOpen(WK_ACT, b, false);
+
+	frame -> LogicWinOpen(b); // updates already
+	frame -> UpdateBoxMenu();
+	MutFrame * routewin = dynamic_cast<MutFrame *>(wxWindow::FindWindowById(WK_ROUTE));
+	if ( routewin ) routewin->UpdateBoxMenu();
+	mutex.Lock();
+	return retval;
+}
+
+void BoxData::DoClose()
+{
+	mutASSERT(editor);
+	if (editor) {
 		wxWindow * win = editor->GetParent();
 		while (win && (typeid(*win) != typeid(MutFrame))) win = win->GetParent();
 		mutASSERT(dynamic_cast<MutFrame *>(win));
 		MutFrame * frame = static_cast<MutFrame *>(win);
 		if (!frame) {
 			UNREACHABLEC;
-			return false;
+			return;
 		}
-		bool retval = mutabor::BoxClass::DoOpen();
-		//temporarily unlock the mutex (we don't need it and GetLogics complains)
-		mutex.Unlock();
-		mutabor::Box b(this);
-		if (WantKeyWindow())
-			frame->TextBoxOpen(WK_KEY, b, false);
-		if (WantTonesystemWindow())
-			frame->TextBoxOpen(WK_TS, b, false);
-		if (WantActionsWindow())
-			frame->TextBoxOpen(WK_ACT, b, false);
-
-		frame -> LogicWinOpen(b); // updates already
-		frame -> UpdateBoxMenu();
-		MutFrame * routewin = dynamic_cast<MutFrame *>(wxWindow::FindWindowById(WK_ROUTE));
-		if ( routewin ) routewin->UpdateBoxMenu();
-		mutex.Lock();
-		return retval;
-	}
-
-	void BoxData::DoClose()
-	{
-		mutASSERT(editor);
-		if (editor) {
-			wxWindow * win = editor->GetParent();
-			while (win && (typeid(*win) != typeid(MutFrame))) win = win->GetParent();
-			mutASSERT(dynamic_cast<MutFrame *>(win));
-			MutFrame * frame = static_cast<MutFrame *>(win);
-			if (!frame) {
-				UNREACHABLEC;
-				return;
-			}
-			win = GetKeyWindow();
-			if (win) 
-				frame->CloseClientWindow(win,false);
-			win = GetTonesystemWindow();
-			if (win) 
-				frame->CloseClientWindow(win,false);
-			win = GetActionsWindow();
-			if (win) 
-				frame->CloseClientWindow(win,false);
-			win = GetLogicWindow();
-			if (win) 
-				frame->CloseClientWindow(win,true);
-			else {
-				UNREACHABLEC;
-			}
-
-			frame->UpdateBoxMenu();
-		} else {
-			mutASSERT(!GetKeyWindow());
-			mutASSERT(!GetTonesystemWindow());
-			mutASSERT(!GetActionsWindow());
-			mutASSERT(!GetLogicWindow());
+		win = GetKeyWindow();
+		if (win) 
+			frame->CloseClientWindow(win,false);
+		win = GetTonesystemWindow();
+		if (win) 
+			frame->CloseClientWindow(win,false);
+		win = GetActionsWindow();
+		if (win) 
+			frame->CloseClientWindow(win,false);
+		win = GetLogicWindow();
+		if (win) 
+			frame->CloseClientWindow(win,true);
+		else {
+			UNREACHABLEC;
 		}
 
-		MutFrame * routewin = dynamic_cast<MutFrame *>(wxWindow::FindWindowById(WK_ROUTE));
-		if ( routewin ) routewin->UpdateBoxMenu();
-		mutabor::BoxClass::DoClose();
+		frame->UpdateBoxMenu();
+	} else {
+		mutASSERT(!GetKeyWindow());
+		mutASSERT(!GetTonesystemWindow());
+		mutASSERT(!GetActionsWindow());
+		mutASSERT(!GetLogicWindow());
 	}
 
-	void BoxData::Activate () {
-		curBox = this;
-		wxWindow * win = GetLogicWindow();
-		if (win) {
-			win -> SetFocus();
-			win -> Raise();
-			while (win && !dynamic_cast<wxTopLevelWindow *>(win))
-				win = win ->GetParent();
-			if (win)
-				win->Raise();
-		}
-	}
+	MutFrame * routewin = dynamic_cast<MutFrame *>(wxWindow::FindWindowById(WK_ROUTE));
+	if ( routewin ) routewin->UpdateBoxMenu();
+	mutabor::BoxClass::DoClose();
+}
 
-	void BoxData::runtime_error(mutabor::error_type type, const char * message) {
-		std::string head(mutabor::to_string((mutabor::error_type)type));
-		std::string msg = head + ": " + message;
+void BoxData::Activate () {
+	curBox = this;
+	wxWindow * win = GetLogicWindow();
+	if (win) {
+		win -> SetFocus();
+		win -> Raise();
+		while (win && !dynamic_cast<wxTopLevelWindow *>(win))
+			win = win ->GetParent();
+		if (win)
+			win->Raise();
+	}
+}
+
+void BoxData::runtime_error(mutabor::error_type type, const char * message) {
+	std::string head(mutabor::to_string((mutabor::error_type)type));
+	std::string msg = head + ": " + message;
 #ifdef DEBUG
-		if (type == mutabor::internal_error) {
-			wxFAIL_MSG(msg);
-		}
+	if (type == mutabor::internal_error) {
+		wxFAIL_MSG(msg);
+	}
 #endif
-		BoxClass::runtime_error(type,message); // output to stderr and update error flag
+	BoxClass::runtime_error(type,message); // output to stderr and update error flag
 #ifdef DEBUG
-		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::BoxData::runtime_error.\n",
-			__FILE__,
-			__LINE__);
+	fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::BoxData::runtime_error.\n",
+		__FILE__,
+		__LINE__);
 #endif
 
-		wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, CM_PRINT_ERROR);
-		event.SetString(wxString::FromUTF8(msg.c_str()));
-		event.SetInt(type);
-		wxPostEvent(&wxGetApp(),event);
+	wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, CM_PRINT_ERROR);
+	event.SetString(wxString::FromUTF8(msg.c_str()));
+	event.SetInt(type);
+	wxPostEvent(&wxGetApp(),event);
 	       
-	}
+}
 
 	
 
-	MutBoxShape * GUIBoxFactory::DoCreateBoxShape(mutabor::Box & box,
-						      wxWindow * parent) const {
-		MutBoxShape * shape;	
-		DEBUGLOG (routing, "Adding box shape for box %p (list of %d)" ,
-			 box.get(),(int)(ToGUIBase(box)->GetShapes().size()));
+MutBoxShape * GUIBoxFactory::DoCreateBoxShape(mutabor::Box & box,
+					      wxWindow * parent) const {
+	MutBoxShape * shape;	
+	DEBUGLOG (routing, "Adding box shape for box %p (list of %d)" ,
+		  box.get(),(int)(ToGUIBase(box)->GetShapes().size()));
 		
 	
-		if (!box) 
-			shape = new NewMutBoxShape(parent,wxID_ANY);
-		else
-			/** \todo implement ID sharing between the different
-			    shapes of one common route */
+	if (!box) 
+		shape = new NewMutBoxShape(parent,wxID_ANY);
+	else
+		/** \todo implement ID sharing between the different
+		    shapes of one common route */
 			    
-			shape = new MutBoxShape(parent, wxID_ANY,box);
+		shape = new MutBoxShape(parent, wxID_ANY,box);
 
-		DEBUGLOG (routing, "Added box shape for box %p (list of %d)" ,
-			 box.get(),(int)(ToGUIBase(box)->GetShapes().size()));
+	DEBUGLOG (routing, "Added box shape for box %p (list of %d)" ,
+		  box.get(),(int)(ToGUIBase(box)->GetShapes().size()));
 
-		return shape;
-	}
-
-
+	return shape;
 }
+
+MUTABOR_NAMESPACE_END(mutaborGUI)
 ///\}

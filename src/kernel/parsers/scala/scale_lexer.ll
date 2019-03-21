@@ -86,7 +86,8 @@ MUTABOR_NAMESPACE(scala_parser)
 	if (start_token) {
 		scale_parser::token_type t = start_token;
 		start_token = scale_parser::token::SCALA_TOKEN_END;
-		return scale_parser::symbol_type(t,loc);
+		// explicitely make rvalue
+		return scale_parser::symbol_type(t,location(loc));
 	}
 	/*
 	switch (start_mode) {
@@ -119,7 +120,8 @@ MUTABOR_NAMESPACE(scala_parser)
 
 <INITIAL,string,sclname,integer,interval,key>\n                 {
 	loc.lines();
-	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
+	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),
+					 location(loc));
 }
 <garbage>\n                        { loc.lines(); return scale_parser::make_GARBAGE(yytext,loc); }
 <garbage>[^\n]+                    return scale_parser::make_GARBAGE(yytext,loc);
@@ -128,10 +130,12 @@ MUTABOR_NAMESPACE(scala_parser)
 <interval,integer,key>{number}?{blank}*"."{number}?    return scale_parser::make_F_NUMBER(yytext,loc);
 <interval,integer,key>{number}          return scale_parser::make_INTEGER(yytext,loc);
 <interval,integer,key>[!/]             {
-	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
+			      return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),
+							       location(loc));
  }
 <key>[Xx]                               {
-	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
+	     return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),
+					      location(loc));
  }
 <interval,integer>[^ \t\n/!.]{-}[[:digit:]][^\n]* {
 	return scale_parser::make_STRING(yytext,loc);
@@ -141,7 +145,8 @@ MUTABOR_NAMESPACE(scala_parser)
 				}
 
 <INITIAL,interval,integer>"!"      {
-	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),loc);
+	return scale_parser::symbol_type((scale_parser::token_type)(yytext[0]),
+					 location(loc));
 }
 <INITIAL,interval,integer>{blank}+   {
 	return scale_parser::make_SPACE(yytext,loc);

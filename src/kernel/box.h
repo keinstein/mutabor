@@ -264,6 +264,10 @@ static inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t inde
 		if (current_key -> next != MUTABOR_NO_NEXT) {
 			mutabor_note_type * next_key
 				= mutabor_find_key_in_box(box,current_key->next);
+			if (next_key == NULL) {
+				UNREACHABLE;
+				return;
+			}
 			if (current_key->next == box->last_key)
 				box -> last_key = 0;
 			*(current_key) = *(next_key);

@@ -55,63 +55,64 @@
 
 //#include "Device.h"
 
-namespace mutaborGUI {
-	class MutBoxIconShape:public MutIconShapeClass<MutPanel>
-	{
-	public:
-		typedef MutIconShapeClass<MutPanel> base;
+MUTABOR_NAMESPACE(mutaborGUI)
+class MutBoxIconShape:public MutIconShapeClass<MutPanel>
+{
+public:
+	typedef MutIconShapeClass<MutPanel> base;
 		
-		MutBoxIconShape():base() {}
+	MutBoxIconShape():base() {}
 	
-		MutBoxIconShape(wxWindow * parent, wxWindowID id = wxID_ANY):
-			base() 
-			{
-				Create (parent, id);
-			}
+	MutBoxIconShape(wxWindow * parent, wxWindowID id = wxID_ANY):
+		base() 
+	{
+		Create (parent, id);
+	}
 
-		virtual ~MutBoxIconShape() {}
+	virtual ~MutBoxIconShape() {}
 	
-		bool Create (wxWindow * parent = NULL, wxWindowID id = wxID_ANY)
-			{
-				return base::Create(parent, id);
-			}
+	bool Create (wxWindow * parent = NULL, wxWindowID id = wxID_ANY)
+	{
+		return base::Create(parent, id);
+	}
 
-		virtual bool SetForegroundColour (const wxColour & colour) 
-			{
-				if (staticText)
-					staticText->SetForegroundColour(colour);
-				return base::SetForegroundColour(colour);
-			}
+	virtual bool SetForegroundColour (const wxColour & colour) 
+	{
+		if (staticText)
+			staticText->SetForegroundColour(colour);
+		return base::SetForegroundColour(colour);
+	}
 
-		/*  bool Create( wxWindow *parent,
-		    wxWindowID id,
-		    const wxString &label,
-		    const wxPoint &pos = wxDefaultPosition,
-		    const wxSize &size = wxDefaultSize,
-		    long style = 0,
-		    const wxString &name = wxStaticBoxNameStr );
-		*/
+	/*  bool Create( wxWindow *parent,
+	    wxWindowID id,
+	    const wxString &label,
+	    const wxPoint &pos = wxDefaultPosition,
+	    const wxSize &size = wxDefaultSize,
+	    long style = 0,
+	    const wxString &name = wxStaticBoxNameStr );
+	*/
 
-		void GetBordersForSizer(int &borderTop, int &borderOther) const;
+	void GetBordersForSizer(int &borderTop, int &borderOther) const;
  
-		virtual void OnDraw (wxDC & dc);
-		virtual bool Layout();
+	virtual void OnDraw (wxDC & dc);
+	virtual bool Layout();
 
-		MutIcon & GetMutIcon () {
-			mutASSERT(BoxBitmap.IsOk());
-			return BoxBitmap;
-		}
+	MutIcon & GetMutIcon () {
+		mutASSERT(BoxBitmap.IsOk());
+		return BoxBitmap;
+	}
 
 
 
-		// returning true from here ensures that we act as a container window for
-		// our children
-		//virtual bool IsStaticBox() const { return true; }
+	// returning true from here ensures that we act as a container window for
+	// our children
+	//virtual bool IsStaticBox() const { return true; }
 	
-	private: 
-	};
+private: 
+};
 
-}
+MUTABOR_NAMESPACE_END(mutaborGUI)
+
 #endif				/* BOXICONSHAPE_H_PRECOMPILED */
 #endif				/* BOXICONSHAPE_H */
 /*

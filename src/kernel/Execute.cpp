@@ -192,10 +192,11 @@ void execute_aktion (mutabor_box_type * box,
 inline static void call_actions (mutabor_box_type * box,
 				 struct do_aktion * aktion_list,
 				 struct interpreter_parameter_list * parameters) {
+	if (!box || box->flags.break_logic) return;
+
 	interpreter_parameter_list * current_parameters;
 	interpreter_parameter_list * old_parameters = box->current_parameters;
 
-	if (!box || box->flags.break_logic) return;
 
 	// check whether we must allocate memory
 	if ((box->current_parameters == NULL && box->parameters == NULL)

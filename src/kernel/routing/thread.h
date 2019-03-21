@@ -550,17 +550,16 @@ public:
 		 state(thread_initializing),
 		 sync_mutex(),
 		 sync(),
-		 thread(boost::ref(*this)) {
-		{
-			boost::unique_lock<boost::mutex> lock(sync_mutex);
-			command = thread_initialized;
-			sync.sync(meeting_point::locked_master,
-				  lock);
-		}
+		 thread(boost::ref(*this)),
+		 exitcode(0) {
+		boost::unique_lock<boost::mutex> lock(sync_mutex);
+		command = thread_initialized;
+		sync.sync(meeting_point::locked_master,
+			  lock);
 	}
 	virtual ~Thread() {}
 
-	void operator()() {
+	void operator()() throw() {
 		{
 			boost::unique_lock<boost::mutex> lock(sync_mutex);
 			state = thread_initialized;
@@ -576,8 +575,8 @@ public:
 		state = thread_finished;
 	}
 
-	virtual int Entry() = 0;
-	virtual void OnExit() {}
+	virtual int Entry() throw() = 0;
+	virtual void OnExit() throw() {}
 
 
 	bool IsDetached() {

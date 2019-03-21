@@ -28,554 +28,555 @@
 #include "src/wxGUI/xmltree.h"
 #include "wx/tokenzr.h"
 
-namespace mutaborGUI {
+MUTABOR_NAMESPACE(mutaborGUI)
 
-	xmltree::xmltree(wxString rootname,
-			 bool create):tree_storage(),
-					   doc(),
-					   states(),
-					   create_tree(create),
-					   current_node(doc::GetRoot())
-	{
-		if (!create) return;
+xmltree::xmltree(wxString rootname,
+		 bool create):tree_storage(),
+	doc(),
+	states(),
+	create_tree(create),
+	current_node(doc::GetRoot())
+{
+	if (!create) return;
+	states.push(state(NULL,_T("/")));
+	toLeaf(_T("/")+rootname);
+}
+
+bool xmltree::Load(const wxString& filename,
+		   const wxString& encoding,
+		   int flags) {
+	while(!states.empty())
+		states.pop();
+	current_node = NULL;
+	wxXmlNode * tmp = GetRoot();
+	SetRoot(NULL);
+	delete tmp;
+	if (doc::Load(filename,encoding,flags)) {
+		current_node = GetRoot();
 		states.push(state(NULL,_T("/")));
-		toLeaf(_T("/")+rootname);
-	}
-
-	bool xmltree::Load(const wxString& filename,
-			  const wxString& encoding,
-			  int flags) {
-		while(!states.empty())
-			states.pop();
-		current_node = NULL;
-		wxXmlNode * tmp = GetRoot();
-		SetRoot(NULL);
-		delete tmp;
-		if (doc::Load(filename,encoding,flags)) {
-			current_node = GetRoot();
-			states.push(state(NULL,_T("/")));
-			if (current_node) {
-				toLeaf(_T("/")+current_node->GetName());
-				return true;
-			}
+		if (current_node) {
+			toLeaf(_T("/")+current_node->GetName());
+			return true;
 		}
-		return false;
 	}
+	return false;
+}
 
 
-	long xmltree::Read(const wxString & key, long defval)
-	{
-		wxXmlProperty * prop = GetProperty(key, true);
-		if (!prop) return defval;
-		const wxString & val = prop->GetValue();
-		long retval;
-		val.ToLong(&retval);
-		return retval;
-	}
+long xmltree::Read(const wxString & key, long defval)
+{
+	wxXmlProperty * prop = GetProperty(key, true);
+	if (!prop) return defval;
+	const wxString & val = prop->GetValue();
+	long retval;
+	val.ToLong(&retval);
+	return retval;
+}
 
-	double xmltree::Read(const wxString & key, double defval)
-	{
-		wxXmlProperty * prop = GetProperty(key, true);
-		if (!prop) return defval;
-		const wxString & val = prop->GetValue();
-		double retval;
-		val.ToDouble(&retval);
-		return retval;
-	}
+double xmltree::Read(const wxString & key, double defval)
+{
+	wxXmlProperty * prop = GetProperty(key, true);
+	if (!prop) return defval;
+	const wxString & val = prop->GetValue();
+	double retval;
+	val.ToDouble(&retval);
+	return retval;
+}
 
-	int xmltree::Read(const wxString & key, int defval)
-	{
-		wxXmlProperty * prop = GetProperty(key, true);
-		if (!prop) return defval;
-		const wxString & val = prop->GetValue();
-		long retval;
-		val.ToLong(&retval);
-		return retval;
-	}
+int xmltree::Read(const wxString & key, int defval)
+{
+	wxXmlProperty * prop = GetProperty(key, true);
+	if (!prop) return defval;
+	const wxString & val = prop->GetValue();
+	long retval;
+	val.ToLong(&retval);
+	return retval;
+}
 
-	bool xmltree::Read(const wxString & key, bool defval)
-	{
-		wxXmlProperty * prop = GetProperty(key, true);
-		if (!prop) return defval;
-		const wxString & val = prop->GetValue();
+bool xmltree::Read(const wxString & key, bool defval)
+{
+	wxXmlProperty * prop = GetProperty(key, true);
+	if (!prop) return defval;
+	const wxString & val = prop->GetValue();
 #ifdef DEBUG
-		long tmp;
-		mutASSERT(!(wxString(_T("false")).ToLong(&tmp)));
+	long tmp;
+	mutASSERT(!(wxString(_T("false")).ToLong(&tmp)));
 #endif
-		long retval;
-		if (val.ToLong(&retval)) return retval;
-		return val == _T("true");
-	}
+	long retval;
+	if (val.ToLong(&retval)) return retval;
+	return val == _T("true");
+}
 
-	wxString xmltree::Read(const wxString & key, const wxString & defval)
-	{
-		if (key == _T("name")) {
-			wxXmlProperty * prop = GetProperty(key, true);
-			if (!prop) return defval;
-			const wxString & val = prop->GetValue();
-			return val;
-		}
-		if (!current_node) return defval;
-		wxString name = key;
-		NormalizeName(name);
-		wxXmlNode * node = current_node->GetChildren();
-		while (node && node -> GetName() != name) {
-			node = node->GetNext();
-		}
-		if (!node) return defval;
-		return node->GetNodeContent();
+wxString xmltree::Read(const wxString & key, const wxString & defval)
+{
+	if (key == _T("name")) {
+		wxXmlProperty * prop = GetProperty(key, true);
+		if (!prop) return defval;
+		const wxString & val = prop->GetValue();
+		return val;
 	}
+	if (!current_node) return defval;
+	wxString name = key;
+	NormalizeName(name);
+	wxXmlNode * node = current_node->GetChildren();
+	while (node && node -> GetName() != name) {
+		node = node->GetNext();
+	}
+	if (!node) return defval;
+	return node->GetNodeContent();
+}
 
-	void xmltree::Write (const wxString & key, long value)
-	{
+void xmltree::Write (const wxString & key, long value)
+{
+	wxXmlProperty * prop = GetProperty(key, true);
+	if (!prop) return;
+	prop->SetValue(wxString::Format(_T("%ld"),value));
+}
+
+void xmltree::Write (const wxString & key, double value)
+{
+	wxXmlProperty * prop = GetProperty(key, true);
+	if (!prop) return;
+	prop->SetValue(wxString::Format(_T("%20g"),value));
+}
+
+void xmltree::Write (const wxString & key, int value)
+{
+	wxXmlProperty * prop = GetProperty(key, true);
+	if (!prop) return;
+	prop->SetValue(wxString::Format(_T("%d"),value));
+}
+
+void xmltree::Write (const wxString & key, bool value)
+{
+	wxXmlProperty * prop = GetProperty(key, true);
+	if (!prop) return;
+	prop->SetValue(value?_T("true"):_T("false"));
+}
+
+void xmltree::Write (const wxString & key, const wxString & value)
+{
+	if (key == _T("name")) {
 		wxXmlProperty * prop = GetProperty(key, true);
 		if (!prop) return;
-		prop->SetValue(wxString::Format(_T("%ld"),value));
+		prop->SetValue(value);
+	} else {
+		wxString keyname = key;
+		NormalizeName(keyname);
+		wxXmlNode * node = new node_type(current_node,
+						 wxXML_ELEMENT_NODE,
+						 keyname);
+
+		new node_type(node,
+			      wxXML_TEXT_NODE,
+			      keyname,
+			      value);
 	}
+}
 
-	void xmltree::Write (const wxString & key, double value)
-	{
-		wxXmlProperty * prop = GetProperty(key, true);
-		if (!prop) return;
-		prop->SetValue(wxString::Format(_T("%20g"),value));
-	}
+bool xmltree::HasGroup(const wxString & subdir)
+{
+	wxString sanitized_name = subdir;
+	NormalizeName(sanitized_name);
+	node_type * node = current_node;
+	bool create = create_tree;
+	create_tree = false;
+	SetPath(sanitized_name);
+	bool retval = current_node;
+	create_tree = create;
+	current_node = node;
+	return retval;
+}
 
-	void xmltree::Write (const wxString & key, int value)
-	{
-		wxXmlProperty * prop = GetProperty(key, true);
-		if (!prop) return;
-		prop->SetValue(wxString::Format(_T("%d"),value));
-	}
-
-	void xmltree::Write (const wxString & key, bool value)
-	{
-		wxXmlProperty * prop = GetProperty(key, true);
-		if (!prop) return;
-		prop->SetValue(value?_T("true"):_T("false"));
-	}
-
-	void xmltree::Write (const wxString & key, const wxString & value)
-	{
-		if (key == _T("name")) {
-			wxXmlProperty * prop = GetProperty(key, true);
-			if (!prop) return;
-			prop->SetValue(value);
-		} else {
-			wxString keyname = key;
-			NormalizeName(keyname);
-			wxXmlNode * node = new node_type(current_node,
-							 wxXML_ELEMENT_NODE,
-							 keyname);
-
-			new node_type(node,
-				      wxXML_TEXT_NODE,
-				      keyname,
-				      value);
-		}
-	}
-
-	bool xmltree::HasGroup(const wxString & subdir)
-	{
-		wxString sanitized_name = subdir;
-		NormalizeName(sanitized_name);
-		node_type * node = current_node;
-		bool create = create_tree;
-		create_tree = false;
-		SetPath(sanitized_name);
-		bool retval = current_node;
-		create_tree = create;
-		current_node = node;
-		return retval;
-	}
-
-	void xmltree::toLeaf(const wxString & subdir)
-	{
-		wxString sanitized_name = subdir;
-		NormalizeName(sanitized_name);
-		DEBUGLOG (config, "going to group '%s'" ,sanitized_name.c_str());
+void xmltree::toLeaf(const wxString & subdir)
+{
+	wxString sanitized_name = subdir;
+	NormalizeName(sanitized_name);
+	DEBUGLOG (config, "going to group '%s'" ,sanitized_name.c_str());
 #if 0
-		mutASSERT(sanitized_name.Find('/') == wxNOT_FOUND);
-		mutASSERT(sanitized_name != _T(".."));
-		if (sanitized_name.Find('/') != wxNOT_FOUND || sanitized_name == _T("..")) {
-			UNREACHABLEC;
-			return;
-		}
-#endif
-		SetPath(sanitized_name);
-		state newstate(current_node,sanitized_name);
-
-		DEBUGLOG (config, "setting path to '%s'" ,(sanitized_name).c_str());
-		states.push(newstate);
-		DEBUGLOG (config, "current path = '%s', newstate(node = %p)" ,
-			 GetPath().c_str(), newstate.node);
+	mutASSERT(sanitized_name.Find('/') == wxNOT_FOUND);
+	mutASSERT(sanitized_name != _T(".."));
+	if (sanitized_name.Find('/') != wxNOT_FOUND || sanitized_name == _T("..")) {
+		UNREACHABLEC;
+		return;
 	}
-
-	void xmltree::toLeaf(const wxString & name, int id)
-	{
-		wxString sanitized_name = name;
-		NormalizeName(sanitized_name);
-		if (!current_node) return;
-		DEBUGLOG (config, "going to group '%s' with id %d" ,sanitized_name.c_str(),id);
-		node_type * node = current_node;
-		bool create = create_tree;
-		create_tree = false;
-		SetPath(sanitized_name);
-		create_tree = create;
-		wxString idstr = wxString::Format(_T("%d"),id);
-		node_type * old_node = current_node;
-		wxString idval;
-		if (!current_node) {
-			current_node = node;
-			toLeaf(sanitized_name);
-			if (current_node) {
-#if wxCHECK_VERSION(2,9,0)
-				current_node->SetAttributes(new wxXmlAttribute(_T("Id"),idstr));
-#else
-				current_node->SetProperties(new wxXmlProperty(_T("Id"),idstr));
 #endif
-			}
-			return;
-		}
-		node = current_node;
-#if wxCHECK_VERSION(2,9,0)
-		idval = node->GetAttribute(_T("Id"),_T(""));
-#else
-		node->GetPropVal(_T("Id"),&idval);
-#endif
-		while (node && (node->GetName() != sanitized_name || idval != idstr)) {
-			old_node = node;
-			node = node->GetNext();
-			if (node) {
-#if wxCHECK_VERSION(2,9,0)
-				idval = node->GetAttribute(_T("Id"),_T(""));
-#else
-				node->GetPropVal(_T("Id"),&idval);
-#endif
-			}
-		}
-		if (!node && create_tree) {
-			node = new node_type(wxXML_ELEMENT_NODE,sanitized_name);
-			if (!old_node) {
-				node_type * tmp = GetRoot();
-				if (!tmp) {
-					delete node;
-					return;
-				}
-				old_node = tmp;
-				tmp = tmp->GetChildren();
-				if (!tmp) {
-					old_node->SetChildren(tmp);
-				} else {
-					while (tmp) {
-						old_node = tmp;
-						tmp = tmp->GetNext();
-					}
-				}
-			} else {
-				old_node->SetNext(node);
-			}
-			current_node = node;
-			Write(_T("Id"),id);
-		} else current_node = node;
-		if (node)
-			states.push(state(node,sanitized_name));
+	SetPath(sanitized_name);
+	state newstate(current_node,sanitized_name);
 
-		DEBUGLOG (config, "current path = '%s'" ,
-			 GetPath().c_str());
-	}
+	DEBUGLOG (config, "setting path to '%s'" ,(sanitized_name).c_str());
+	states.push(newstate);
+	DEBUGLOG (config, "current path = '%s', newstate(node = %p)" ,
+		  GetPath().c_str(), newstate.node);
+}
 
-	int xmltree::toFirstLeaf(const wxString & name,
-				 wxString & id)
-	{
-		wxString sanitized_name = name;
-		NormalizeName(sanitized_name);
-		DEBUGLOG (config, "going to first leaf of group '%s'" ,name.c_str());
+void xmltree::toLeaf(const wxString & name, int id)
+{
+	wxString sanitized_name = name;
+	NormalizeName(sanitized_name);
+	if (!current_node) return;
+	DEBUGLOG (config, "going to group '%s' with id %d" ,sanitized_name.c_str(),id);
+	node_type * node = current_node;
+	bool create = create_tree;
+	create_tree = false;
+	SetPath(sanitized_name);
+	create_tree = create;
+	wxString idstr = wxString::Format(_T("%d"),id);
+	node_type * old_node = current_node;
+	wxString idval;
+	if (!current_node) {
+		current_node = node;
 		toLeaf(sanitized_name);
 		if (current_node) {
 #if wxCHECK_VERSION(2,9,0)
-			id = current_node->GetAttribute(_T("Id"),_T(""));
+			current_node->SetAttributes(new wxXmlAttribute(_T("Id"),idstr));
 #else
-			current_node->GetPropVal(_T("Id"),&id);
+			current_node->SetProperties(new wxXmlProperty(_T("Id"),idstr));
 #endif
-		} else
-			id = _T("0");
-
-		return 0; // we don't use Ids.
-	}
-
-
-	int xmltree::toNextLeaf(const wxString & name, wxString & id)
-	{
-		wxString sanitized_name = name;
-		NormalizeName(sanitized_name);
-		node_type * node = current_node;
-		if (!current_node) {
-			id = _T("0");
-			return wxNOT_FOUND;
 		}
-		do {
-			node = node -> GetNext();
-		} while (node && node->GetName() != sanitized_name);
-		current_node = node;
-		if (!node) {
-			id = _T("0");
-			return wxNOT_FOUND;
-		}
-
-		state & mystate = states.top();
-		mystate.node = node;
-
-#if wxCHECK_VERSION(2,9,0)
-		id = node->GetAttribute(_T("Id"),_T(""));
-#else
-		node->GetPropVal(_T("Id"),&id);
-#endif
-		return 0;
-	}
-
-
-	void xmltree::toParent(unsigned int count)
-	{
-		DEBUGLOG (config, "going up %d level groups" ,count);
-		while (count--) {
-#ifdef DEBUG
-			mutASSERT(states.size());
-#endif
-			// we always keep the root element in the stack
-			if (!(states.size()>=3)) {
-				UNREACHABLEC;
-				return;
-			}
-			states.pop();
-			state & state = states.top();
-			current_node = state.node;
-		}
-	}
-
-	wxString xmltree::GetwxPath()
-	{
-		node_type * node = current_node;
-		if (!node) return _T("/");
-		wxString path = _T("/") + node->GetName();
-		while ((node = node->GetParent()))
-			path = _T("/") + node->GetName() + path;
-		return path;
-	}
-
-	void xmltree::SetPath(const wxString & path)
-	{
-
-		/* Warning!!!
-		   This function as well as the inner loop have several exit points.
-		   The loop step is done using goto.
-		*/
-		bool create = create_tree;
-		if (!path) return;
-		wxStringTokenizer tokenizer(path,_T("/"));
-		if (!tokenizer.HasMoreTokens()) return;
-		wxString name = tokenizer.GetNextToken();
-		node_type * node;
-		if (!name) {
-			if (!tokenizer.HasMoreTokens()) {
-				current_node = NULL;
-				return;
-			}
-			name = tokenizer.GetNextToken();
-			node = GetRoot();
-			if (!node) {
-				if (!create) {
-					current_node = NULL;
-					return;
-				}
-				node = new node_type(current_node,
-						     wxXML_ELEMENT_NODE,
-						     name);
-				SetRoot(node);
-			} else if (node->GetName() != name) {
-				current_node = NULL;
-				return;
-			}
-			current_node = node;
-			name = _T(".");
-		} else if (!GetRoot() || !current_node) return;
-		bool cont = false;
-		do {
-			cont = tokenizer.HasMoreTokens();
-			if (!name || name == _T(".")) {
-				goto loop_step;
-			}
-			if (!current_node) {
-				if (GetRoot()->GetName() == name) {
-					current_node = GetRoot();
-					goto loop_step;
-				}
-				return;
-			}
-			if (name == _T("..")) {
-				if (current_node == GetRoot()) {
-					current_node = NULL;
-					return;
-				}
-				current_node = current_node->GetParent();
-				goto loop_step;
-			}
-			node = current_node->GetChildren();
-			while (node && node -> GetName() != name) {
-				node = node->GetNext();
-			}
-			if (!node) {
-				if (!create) {
-					current_node = NULL;
-					return;
-				}
-				node = new node_type(current_node,
-						     wxXML_ELEMENT_NODE,
-						     name);
-			}
-
-			current_node = node;
-		loop_step:
-			if (cont) {
-				name = tokenizer.GetNextToken();
-			}
-		} while (cont);
 		return;
 	}
-
-	void xmltree::DeleteEntry(const wxString & path) {
-		if (!current_node) return;
+	node = current_node;
 #if wxCHECK_VERSION(2,9,0)
-		wxXmlAttribute * prop =
-			current_node -> GetAttributes();
-		wxXmlAttribute * last_prop = prop;
+	idval = node->GetAttribute(_T("Id"),_T(""));
 #else
-		wxXmlProperty * prop =
-			current_node->GetProperties();
-		wxXmlProperty * last_prop = prop;
+	node->GetPropVal(_T("Id"),&idval);
 #endif
-		while (prop && prop->GetName() != path) {
-			last_prop = prop;
-			prop = prop->GetNext();
+	while (node && (node->GetName() != sanitized_name || idval != idstr)) {
+		old_node = node;
+		node = node->GetNext();
+		if (node) {
+#if wxCHECK_VERSION(2,9,0)
+			idval = node->GetAttribute(_T("Id"),_T(""));
+#else
+			node->GetPropVal(_T("Id"),&idval);
+#endif
 		}
-		if (!prop) {
-			wxXmlNode * node = current_node;
-			SetPath(path);
-			if (current_node) {
-				wxXmlNodeType type = current_node->GetType();
-				switch (type) {
-				case wxXML_ELEMENT_NODE:
-				case wxXML_ATTRIBUTE_NODE:
-				case wxXML_ENTITY_REF_NODE:
-				case wxXML_ENTITY_NODE:
-				case wxXML_PI_NODE:
-				case wxXML_COMMENT_NODE:
-				case wxXML_DOCUMENT_NODE:
-				case wxXML_DOCUMENT_TYPE_NODE:
-				case wxXML_DOCUMENT_FRAG_NODE:
-				case wxXML_NOTATION_NODE:
-				case wxXML_HTML_DOCUMENT_NODE:
-					break;
-				case wxXML_TEXT_NODE:
-				case wxXML_CDATA_SECTION_NODE:
-					delete current_node;
+	}
+	if (!node && create_tree) {
+		node = new node_type(wxXML_ELEMENT_NODE,sanitized_name);
+		if (!old_node) {
+			node_type * tmp = GetRoot();
+			if (!tmp) {
+				delete node;
+				return;
+			}
+			old_node = tmp;
+			tmp = tmp->GetChildren();
+			if (!tmp) {
+				old_node->SetChildren(tmp);
+			} else {
+				while (tmp) {
+					old_node = tmp;
+					tmp = tmp->GetNext();
 				}
 			}
-			current_node = node;
-		}
-		if (last_prop != prop) {
-			last_prop->SetNext(prop->GetNext());
-			prop->SetNext(NULL);
 		} else {
-#if wxCHECK_VERSION(2,9,0)
-			current_node->SetAttributes(prop->GetNext());
-#else
-			current_node->SetProperties(prop->GetNext());
-#endif
+			old_node->SetNext(node);
 		}
-			delete prop;
-	}
-
-	void xmltree::DeleteGroup(const wxString & path) {
-		wxXmlNode * node = current_node;
-		bool create = create_tree;
-		create_tree = false;
-		SetPath(path);
-		if (current_node) {
-			delete current_node;
-		}
-		create_tree = create;
 		current_node = node;
-	}
+		Write(_T("Id"),id);
+	} else current_node = node;
+	if (node)
+		states.push(state(node,sanitized_name));
 
-	wxXmlProperty * xmltree::GetProperty (wxString name,
-					      bool create)
-	{
-		NormalizeName(name);
-		if (!current_node) return NULL;
+	DEBUGLOG (config, "current path = '%s'" ,
+		  GetPath().c_str());
+}
+
+int xmltree::toFirstLeaf(const wxString & name,
+			 wxString & id)
+{
+	wxString sanitized_name = name;
+	NormalizeName(sanitized_name);
+	DEBUGLOG (config, "going to first leaf of group '%s'" ,name.c_str());
+	toLeaf(sanitized_name);
+	if (current_node) {
 #if wxCHECK_VERSION(2,9,0)
-		wxXmlAttribute * prop =
-			current_node -> GetAttributes();
+		id = current_node->GetAttribute(_T("Id"),_T(""));
 #else
-		wxXmlProperty * prop =
-			current_node->GetProperties();
+		current_node->GetPropVal(_T("Id"),&id);
 #endif
-		wxXmlProperty * last_prop = prop;
-		while (prop && prop->GetName() != name) {
-			last_prop = prop;
-			prop = prop->GetNext();
-		}
-		if (!prop && create) {
-			prop = new wxXmlProperty(name,_T(""));
-			if (last_prop) {
-				last_prop->SetNext(prop);
-			} else {
-#if wxCHECK_VERSION(2,9,0)
-				current_node->SetAttributes(prop);
-#else
-				current_node->SetProperties(prop);
-#endif
-			}
-		}
-		return prop;
-	}
-	wxXmlProperty * xmltree::SetProperty (wxString name,
-					      const wxString & value)
-	{
-		NormalizeName(name);
-		if (!current_node) return NULL;
-#if wxCHECK_VERSION(2,9,0)
-		wxXmlAttribute * prop =
-			current_node -> GetAttributes();
-#else
-		wxXmlProperty * prop =
-			current_node->GetProperties();
-#endif
-		wxXmlProperty * last_prop = prop;
-		while (prop && prop->GetName() != name) {
-			last_prop = prop;
-			prop = prop->GetNext();
-		}
-		if (!prop) {
-			prop = new wxXmlProperty(name,value);
-			if (last_prop) {
-				last_prop->SetNext(prop);
-			} else {
-#if wxCHECK_VERSION(2,9,0)
-				current_node->SetAttributes(prop);
-#else
-				current_node->SetProperties(prop);
-#endif
-			}
-		} else {
-			prop->SetValue(value);
-		}
-		return prop;
-	}
+	} else
+		id = _T("0");
+
+	return 0; // we don't use Ids.
+}
 
 
-	void xmltree::NormalizeName(wxString & name) {
-		name.Replace(_T(" "),_T("-"));
+int xmltree::toNextLeaf(const wxString & name, wxString & id)
+{
+	wxString sanitized_name = name;
+	NormalizeName(sanitized_name);
+	node_type * node = current_node;
+	if (!current_node) {
+		id = _T("0");
+		return wxNOT_FOUND;
+	}
+	do {
+		node = node -> GetNext();
+	} while (node && node->GetName() != sanitized_name);
+	current_node = node;
+	if (!node) {
+		id = _T("0");
+		return wxNOT_FOUND;
+	}
+
+	state & mystate = states.top();
+	mystate.node = node;
+
+#if wxCHECK_VERSION(2,9,0)
+	id = node->GetAttribute(_T("Id"),_T(""));
+#else
+	node->GetPropVal(_T("Id"),&id);
+#endif
+	return 0;
+}
+
+
+void xmltree::toParent(unsigned int count)
+{
+	DEBUGLOG (config, "going up %d level groups" ,count);
+	while (count--) {
+#ifdef DEBUG
+		mutASSERT(states.size());
+#endif
+		// we always keep the root element in the stack
+		if (!(states.size()>=3)) {
+			UNREACHABLEC;
+			return;
+		}
+		states.pop();
+		state & state = states.top();
+		current_node = state.node;
 	}
 }
+
+wxString xmltree::GetwxPath()
+{
+	node_type * node = current_node;
+	if (!node) return _T("/");
+	wxString path = _T("/") + node->GetName();
+	while ((node = node->GetParent()))
+		path = _T("/") + node->GetName() + path;
+	return path;
+}
+
+void xmltree::SetPath(const wxString & path)
+{
+
+	/* Warning!!!
+	   This function as well as the inner loop have several exit points.
+	   The loop step is done using goto.
+	*/
+	bool create = create_tree;
+	if (!path) return;
+	wxStringTokenizer tokenizer(path,_T("/"));
+	if (!tokenizer.HasMoreTokens()) return;
+	wxString name = tokenizer.GetNextToken();
+	node_type * node;
+	if (!name) {
+		if (!tokenizer.HasMoreTokens()) {
+			current_node = NULL;
+			return;
+		}
+		name = tokenizer.GetNextToken();
+		node = GetRoot();
+		if (!node) {
+			if (!create) {
+				current_node = NULL;
+				return;
+			}
+			node = new node_type(current_node,
+					     wxXML_ELEMENT_NODE,
+					     name);
+			SetRoot(node);
+		} else if (node->GetName() != name) {
+			current_node = NULL;
+			return;
+		}
+		current_node = node;
+		name = _T(".");
+	} else if (!GetRoot() || !current_node) return;
+	bool cont = false;
+	do {
+		cont = tokenizer.HasMoreTokens();
+		if (!name || name == _T(".")) {
+			goto loop_step;
+		}
+		if (!current_node) {
+			if (GetRoot()->GetName() == name) {
+				current_node = GetRoot();
+				goto loop_step;
+			}
+			return;
+		}
+		if (name == _T("..")) {
+			if (current_node == GetRoot()) {
+				current_node = NULL;
+				return;
+			}
+			current_node = current_node->GetParent();
+			goto loop_step;
+		}
+		node = current_node->GetChildren();
+		while (node && node -> GetName() != name) {
+			node = node->GetNext();
+		}
+		if (!node) {
+			if (!create) {
+				current_node = NULL;
+				return;
+			}
+			node = new node_type(current_node,
+					     wxXML_ELEMENT_NODE,
+					     name);
+		}
+
+		current_node = node;
+	loop_step:
+		if (cont) {
+			name = tokenizer.GetNextToken();
+		}
+	} while (cont);
+	return;
+}
+
+void xmltree::DeleteEntry(const wxString & path) {
+	if (!current_node) return;
+#if wxCHECK_VERSION(2,9,0)
+	wxXmlAttribute * prop =
+		current_node -> GetAttributes();
+	wxXmlAttribute * last_prop = prop;
+#else
+	wxXmlProperty * prop =
+		current_node->GetProperties();
+	wxXmlProperty * last_prop = prop;
+#endif
+	while (prop && prop->GetName() != path) {
+		last_prop = prop;
+		prop = prop->GetNext();
+	}
+	if (!prop) {
+		wxXmlNode * node = current_node;
+		SetPath(path);
+		if (current_node) {
+			wxXmlNodeType type = current_node->GetType();
+			switch (type) {
+			case wxXML_ELEMENT_NODE:
+			case wxXML_ATTRIBUTE_NODE:
+			case wxXML_ENTITY_REF_NODE:
+			case wxXML_ENTITY_NODE:
+			case wxXML_PI_NODE:
+			case wxXML_COMMENT_NODE:
+			case wxXML_DOCUMENT_NODE:
+			case wxXML_DOCUMENT_TYPE_NODE:
+			case wxXML_DOCUMENT_FRAG_NODE:
+			case wxXML_NOTATION_NODE:
+			case wxXML_HTML_DOCUMENT_NODE:
+				break;
+			case wxXML_TEXT_NODE:
+			case wxXML_CDATA_SECTION_NODE:
+				delete current_node;
+			}
+		}
+		current_node = node;
+	}
+	if (last_prop != prop) {
+		last_prop->SetNext(prop->GetNext());
+		prop->SetNext(NULL);
+	} else {
+#if wxCHECK_VERSION(2,9,0)
+		current_node->SetAttributes(prop->GetNext());
+#else
+		current_node->SetProperties(prop->GetNext());
+#endif
+	}
+	delete prop;
+}
+
+void xmltree::DeleteGroup(const wxString & path) {
+	wxXmlNode * node = current_node;
+	bool create = create_tree;
+	create_tree = false;
+	SetPath(path);
+	if (current_node) {
+		delete current_node;
+	}
+	create_tree = create;
+	current_node = node;
+}
+
+wxXmlProperty * xmltree::GetProperty (wxString name,
+				      bool create)
+{
+	NormalizeName(name);
+	if (!current_node) return NULL;
+#if wxCHECK_VERSION(2,9,0)
+	wxXmlAttribute * prop =
+		current_node -> GetAttributes();
+#else
+	wxXmlProperty * prop =
+		current_node->GetProperties();
+#endif
+	wxXmlProperty * last_prop = prop;
+	while (prop && prop->GetName() != name) {
+		last_prop = prop;
+		prop = prop->GetNext();
+	}
+	if (!prop && create) {
+		prop = new wxXmlProperty(name,_T(""));
+		if (last_prop) {
+			last_prop->SetNext(prop);
+		} else {
+#if wxCHECK_VERSION(2,9,0)
+			current_node->SetAttributes(prop);
+#else
+			current_node->SetProperties(prop);
+#endif
+		}
+	}
+	return prop;
+}
+wxXmlProperty * xmltree::SetProperty (wxString name,
+				      const wxString & value)
+{
+	NormalizeName(name);
+	if (!current_node) return NULL;
+#if wxCHECK_VERSION(2,9,0)
+	wxXmlAttribute * prop =
+		current_node -> GetAttributes();
+#else
+	wxXmlProperty * prop =
+		current_node->GetProperties();
+#endif
+	wxXmlProperty * last_prop = prop;
+	while (prop && prop->GetName() != name) {
+		last_prop = prop;
+		prop = prop->GetNext();
+	}
+	if (!prop) {
+		prop = new wxXmlProperty(name,value);
+		if (last_prop) {
+			last_prop->SetNext(prop);
+		} else {
+#if wxCHECK_VERSION(2,9,0)
+			current_node->SetAttributes(prop);
+#else
+			current_node->SetProperties(prop);
+#endif
+		}
+	} else {
+		prop->SetValue(value);
+	}
+	return prop;
+}
+
+
+void xmltree::NormalizeName(wxString & name) {
+	name.Replace(_T(" "),_T("-"));
+}
+MUTABOR_NAMESPACE_END(mutaborGUI)
+
 
 ///\}

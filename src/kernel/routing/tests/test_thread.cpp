@@ -33,7 +33,7 @@ public:
 	thread_state get_command() { return command; }
 	thread_state get_state()   { return state;   }
 private:
-	int Entry() {
+	int Entry() throw() {
 		print_status("Entry()");
 
 		print_stack_size();
@@ -42,7 +42,7 @@ private:
 		
 		return 0;
 	}
-	void OnExit() {
+	void OnExit() throw() {
 		boost::unique_lock<boost::mutex> lock(printmutex);
 		std::cerr << "OnExit()" << std::endl;
 		assert(state == thread_ending);
