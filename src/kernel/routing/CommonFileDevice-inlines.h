@@ -494,14 +494,18 @@ namespace mutabor {
 							 thread_command);
 						try
 							{
-								thread_state &= ~(int) ResetTime;
-								thread_state |= RequestPause;
-								thread_state.notify_all();
+								{
+									ScopedLock<> slock(thread_state.get_mutex());
+									thread_state &= ~(int) ResetTime;
+									thread_state |= RequestPause;
+									thread_state.notify_all();
+								}
 								ScopedLock<> lock(thread_command.get_mutex());
 								while ((thread_command & RequestPause) &&
 								       !(thread_command & RequestExit))
 									thread_command.wait(lock);
 								if (!(thread_command & RequestPause)) {
+									ScopedLock<> slock(thread_state.get_mutex());
 									thread_state &= ~(int)RequestPause;
 									thread_state.notify_all();
 								}
