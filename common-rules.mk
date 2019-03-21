@@ -408,4 +408,4 @@ printvariables:
 MULTITARGETS = all check
 
 multitarget:
-	for t in $(MULTITARGETS) ; do $(MAKE) $t ; done
+	for t in $(MULTITARGETS) ; do $(MAKE) $$t ; done
