@@ -159,10 +159,11 @@ char *s;
 
 	while ( n++<4 && (c=(*Mf_getc)()) != EOF ) {
 		if ( c != *p++ ) {
+			int i;
 			char buff[32];
 			(void) strcpy(buff,"expecting ");
 			// avoid strcat which is reported as dangerous.
-			for (int i = 0 ; i < 4 ; ++i)
+			for (i = 0 ; i < 4 ; ++i)
 				buff[i+10] = s[i];
 			buff[14] = 0;
 			mferror(buff);
