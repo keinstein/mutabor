@@ -9,7 +9,12 @@
 int 
 main()
 {
-	mutabor::InitDeviceFactories();
+	try {
+		mutabor::InitDeviceFactories();
+	} catch (const mutabor::RouteFactory::FactoryAlreadySet & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	}
 
 #ifdef _GLIBCXX_DEBUG
 	std::clog << "In case of segmentation faults assure that cppuinit is compiled using -D_GLIBCXX_DEBUG" << std::endl;

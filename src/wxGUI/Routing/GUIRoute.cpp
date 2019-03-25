@@ -634,8 +634,14 @@ GUIRouteFactory::DoCreateBoxChannelShape(mutabor::Route & route,
 	if (!boxshape) {
 		boxshape = GUIBoxFactory::CreateBoxShape(box, parent);
 		MutRouteWnd * root = dynamic_cast<MutRouteWnd *>(parent);
-		root->AddBox(boxshape,MutBoxShape::GetSizerFlags());
+		if (root)
+			root->AddBox(boxshape,MutBoxShape::GetSizerFlags());
+		else {
+			UNREACHABLEC;
+			return nullptr;
+		}
 	}
+	if (!boxshape) return nullptr;
 	MutBoxChannelShape * shape =
 		new MutBoxChannelShape (boxshape,
 					wxID_ANY,

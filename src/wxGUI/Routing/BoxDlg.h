@@ -239,7 +239,10 @@ public:
 	
 	void DisableRemove (bool disable=true) 
 	{
-		if (!wxID_REMOVE) UNREACHABLEC;
+		if (!wxID_REMOVE) {
+			UNREACHABLEC;
+			return;
+		}
 		wxID_REMOVE->Show(!disable);
 		wxID_REMOVE->Enable(!disable);
 	}

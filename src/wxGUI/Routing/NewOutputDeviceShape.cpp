@@ -48,8 +48,19 @@ void MutNewOutputDeviceShape::InitializeDialog(OutputDevDlg * out) const
 
 bool MutNewOutputDeviceShape::replaceSelfBy (MutOutputDeviceShape  * newshape)
 {
+	auto parent = m_parent;
 	MutRouteWnd * p = dynamic_cast<MutRouteWnd *> (m_parent);
-	if (!p) UNREACHABLEC;
+	while (parent && !p) {
+		parent = parent->GetParent();
+		p = dynamic_cast<MutRouteWnd *> (m_parent);
+	}
+
+	mutASSERT(p);
+	if (!p) {
+		UNREACHABLEC;
+		return false;
+	}
+
 	// the "New device" icon won't be replaced, so we just append the device
 	p->AddOutputDevice(newshape,sizerFlags);
 	return false;

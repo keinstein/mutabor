@@ -582,7 +582,7 @@ namespace mutabor {
 		default:
 			output.set_controller(ctrl, value);
 			newctrl = output.get_index(ctrl);
-			if (newctrl != ctrl)
+			if (newctrl >= 0 && newctrl != ctrl)
 				value = output.get_controller(newctrl);
 
 		}

@@ -2,11 +2,8 @@
  ********************************************************************
  * Test midi file functions
  *
- * Copyright:   (c) 2012 Tobias Schlemmer
+ * Copyright:   (c) 2012-2019 Tobias Schlemmer
  * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
- * \date 
- * $Date: 2011/09/27 20:13:26 $
- * \version $Version$
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -218,7 +215,7 @@ class OutputMidiFileTest : public CPPUNIT_NS::TestFixture
 
 public:
 
-	OutputMidiFileTest()
+	OutputMidiFileTest():out(nullptr)
 	{
 	}
 

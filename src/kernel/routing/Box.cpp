@@ -32,6 +32,7 @@
 #include "src/kernel/routing/Box.h"
 #include <algorithm>
 #include <queue>
+#include <iostream>
 #include "src/kernel/routing/Box-inlines.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/routing/Route.h"
@@ -78,7 +79,13 @@ namespace mutabor {
 	{
 		// if there are remaining pointers we have other problems.
 		DEBUGLOG (routing, "this = %p" ,(void*)this);
-		if (open) Close();
+		if (open)
+			try {
+				Close();
+			} catch (const boost::lock_error & e) {
+				UNREACHABLEC;
+				std::cerr << boost::diagnostic_information(e);
+			}
 		mutASSERT(!loopguard);
 #ifdef DEBUG
 		// prevent from endless destroy loop
@@ -810,7 +817,13 @@ namespace mutabor {
 	{
 		for (routeListType::const_iterator route = routes.begin();
 		     route != routes.end(); route++) {
-			(*route)->UpdateTones();
+			try {
+				(*route)->UpdateTones();
+			} catch (const boost::lock_error & e) {
+				issue_error(::mutabor::error::runtime_error,
+					    _mut("Internal Error: Updating tones failed.\nPlease, send the following information to the developers:\n%s"),
+					    boost::diagnostic_information(e).c_str());
+			}
 		}
 	}
 

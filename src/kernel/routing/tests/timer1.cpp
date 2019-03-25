@@ -181,7 +181,13 @@ int main(/* int argc, char **argv */)
 	//mutwxInitializer initializer;
 	mutabor::CurrentTime.UseRealtime(true);
 
-	testCommonFileDeviceTimer * tim = new testCommonFileDeviceTimer();
+	testCommonFileDeviceTimer * tim;
+	try {
+		tim = new testCommonFileDeviceTimer();
+	} catch (const boost::thread_resource_error & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	}
 	mutabor::ScopedInputDevice guard;
 	guard = tim;
 	if (tim == NULL) {

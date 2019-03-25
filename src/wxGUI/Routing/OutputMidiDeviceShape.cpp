@@ -79,6 +79,10 @@ void MutOutputMidiDeviceShape::InitializeDialog(OutputDevDlg * out) const
 	mutASSERT(out);
 	OutputMidiPort * dev = dynamic_cast<OutputMidiPort *> (device.get());
 	mutASSERT (dev);
+	if (!dev) {
+		UNREACHABLEC;
+		return;
+	}
 	out -> SetType(DTMidiPort);
 	out -> SetMidiDevice(dev->GetDevId());
 	out -> SetMidiBendingRange (dev-> GetBendingRange());

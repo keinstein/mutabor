@@ -43,6 +43,10 @@ void MutInputMidiDeviceShape::InitializeDialog(InputDevDlg * in) const
 	mutASSERT(in);
 	InputMidiPort * dev = dynamic_cast<InputMidiPort *> (device.get());
 	mutASSERT (dev);
+	if (!dev) {
+		UNREACHABLEC;
+		return;
+	}
 	in -> SetType(DTMidiPort);
 	in -> SetMidiDevice(dev->GetDevId());
 }

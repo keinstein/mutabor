@@ -468,6 +468,7 @@ public:
 		Boss->ChordPos = Boss->Cursor;
 		Status = 0;
 		TieBegin = 0;
+		AlterBegin = 0;
 		nTie = 0;
 		LastSep = 0;
 		InstrId = -1;

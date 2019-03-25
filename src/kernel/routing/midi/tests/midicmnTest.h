@@ -113,7 +113,7 @@ class CommonMidiOutputTest : public CPPUNIT_NS::TestFixture
 
 public:
 
-	CommonMidiOutputTest()
+	CommonMidiOutputTest():out(0)
 	{
 	}
 

@@ -157,7 +157,15 @@ namespace mutabor {
 
 	public:
 		virtual ~CommonFileInputDevice() {
-			if (isOpen) Close();
+			try {
+				if (isOpen) Close();
+			} catch (const boost::thread_resource_error &) {
+				// probably wrong thread
+				exception_error(false);
+			} catch (const boost::lock_error &) {
+				exception_error(false);
+			}
+
 			mutASSERT(timer == NULL);
 #ifdef DEBUG
 #if 0

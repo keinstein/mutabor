@@ -73,7 +73,8 @@ public:
 		mutASSERT(guibox);
 		if (!guibox)
 			UNREACHABLEC;
-		guibox->SetLogicWindow(NULL);
+		else
+			guibox->SetLogicWindow(NULL);
 	}
 
 	virtual wxString MakeTitle();

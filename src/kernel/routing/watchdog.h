@@ -66,11 +66,21 @@ namespace mutabor {
 				      timeout(to),
 				      exit(false) {}
 		virtual ~watchdog() {
-			ScopedLock<> lock(mutex);
-			targettype tmp = const_cast<targettype&>(target);
-			if (tmp) {
-				const_cast<targettype &>(target) = NULL;
-				tmp->remove_watchdog(this);
+			try {
+				ScopedLock<> lock(mutex);
+				targettype tmp = const_cast<targettype&>(target);
+				if (tmp) {
+					const_cast<targettype &>(target) = NULL;
+					tmp->remove_watchdog(this);
+				}
+			} catch (const boost::lock_error & e) {
+				UNREACHABLEC;
+				// danger! unlocked operation
+				targettype tmp = const_cast<targettype&>(target);
+				if (tmp) {
+					const_cast<targettype &>(target) = NULL;
+					tmp->remove_watchdog(this);
+				}
 			}
 		}
 		
@@ -89,19 +99,40 @@ namespace mutabor {
 				} while ((cur_time = CurrentTimer::time_point::clock::now()) < wake_time);
 				if (exit) break;
 				targettype tmp = const_cast<targettype&>(target);
-				if (tmp && !exit)
-					tmp->dog_watching();
+				if (tmp && !exit) {
+					try {
+						tmp->dog_watching();
+					} catch (const boost::lock_error & e) {
+						// rethrow after joining.
+						state = thread_exception_caught;
+						exception = std::current_exception();
+					}
+				}
 				wake_time = cur_time+timeout;
 			}
 			return 0;
 		}
 		
 		void OnExit() throw() {
-			ScopedLock<> lock(mutex);
-			targettype tmp = const_cast<targettype&>(target);
-			if (tmp) {
-				const_cast<targettype &>(target).reset();
-				tmp->remove_watchdog(this);
+			try {
+				ScopedLock<> lock(mutex);
+				targettype tmp = const_cast<targettype&>(target);
+				if (tmp) {
+					const_cast<targettype &>(target).reset();
+					tmp->remove_watchdog(this);
+				}
+			} catch (const boost::lock_error & e) {
+				UNREACHABLEC;
+				// rethrow after joining.
+				state = thread_exception_caught;
+				exception = std::current_exception();
+
+				// Try to recover without locking.
+				targettype tmp = const_cast<targettype&>(target);
+				if (tmp) {
+					const_cast<targettype &>(target).reset();
+					tmp->remove_watchdog(this);
+				}
 			}
 		}
 		

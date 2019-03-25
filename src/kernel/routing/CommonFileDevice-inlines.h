@@ -282,7 +282,7 @@ namespace mutabor {
 			// tmp -> Delete();
 			//timer -> ClearFile();
 #endif
-			timer -> Wait();
+			timer -> Wait(); // throws boost::thread_resource_error
 			delete timer;
 			timer = NULL;
 		}

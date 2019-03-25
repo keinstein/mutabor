@@ -49,8 +49,18 @@ MUTABOR_NAMESPACE(mutaborGUI)
 
 	bool MutNewInputDeviceShape::replaceSelfBy (MutInputDeviceShape  * newshape)
 	{
+		auto parent = m_parent;
 		MutRouteWnd * p = dynamic_cast<MutRouteWnd *> (m_parent);
+		while (parent && !p) {
+			parent = parent->GetParent();
+			p = dynamic_cast<MutRouteWnd *> (m_parent);
+		}
+
 		mutASSERT(p);
+		if (!p) {
+			UNREACHABLEC;
+			return false;
+		}
 		// the "New device" icon won't be replaced, so we just append the device
 		p->AddInputDevice(newshape,sizerFlags);
 		return false;

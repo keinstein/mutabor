@@ -1,4 +1,4 @@
-/** \file 
+/** \file
 ********************************************************************
 * Document/View View class for Mutabor source files.
 *
@@ -73,7 +73,7 @@ MutView::~MutView()
 }
 
 /** this function will create a frame window, child of the mainframe,
- *   and will tell that frame about the view. 
+ *   and will tell that frame about the view.
  *  The MutViewFrame is smart enough
  *   to know what to  do with the view (ie use it for painting).
  */
@@ -83,6 +83,8 @@ bool MutView::OnCreate(wxDocument* doc, long flags)
 	TRACEC;
 	if (doc) {
 		mutASSERT(dynamic_cast<MutDocument *>(doc));
+	} else {
+		return false;
 	}
 
 	// create a new MutViewFrame for this view to draw into. The ChildFrame is
@@ -93,16 +95,18 @@ bool MutView::OnCreate(wxDocument* doc, long flags)
 	wxGetApp().InitMainFrame(MutApp::EditorMenu,frame);
 
 	textsw = new MutEditFile(this,
-				 frame, 
-				 wxDefaultPosition, 
+				 frame,
+				 wxDefaultPosition,
 				 wxDefaultSize);
-	
+
 
 	if (!textsw) {
 		delete frame;
 		return false;
 	}
-	frame->SetClient(textsw,doc->GetTitle());
+	if (doc)
+		frame->SetClient(textsw,doc->GetTitle());
+
 #ifdef __X__
 	// X seems to require a forced resize
 	int x, y;
@@ -112,7 +116,7 @@ bool MutView::OnCreate(wxDocument* doc, long flags)
 
 	frame->SetView(this);
 	SetFrame(frame);
-	frame->Show(true);	
+	frame->Show(true);
 	// The doc manager maintains an active view, which is used to
 	// discern the active document which could be meaningful in MDI apps.
 	Activate(true);
@@ -125,9 +129,9 @@ bool MutView::OnClose(bool deleteWindow)
 {
 	if (!GetDocument()->Close())
 		return false;
-    
+
 	Activate(false);
-    
+
 	if (deleteWindow)
 		{
 			MutFrame * f = GetMutFrame();
@@ -179,8 +183,8 @@ void MutView::OnUpdate(wxView* WXUNUSED(sender), wxObject* WXUNUSED(hint))
 #endif
 }
 
-void MutView::OnActivateView(bool activate, 
-			     wxView *activeView, 
+void MutView::OnActivateView(bool activate,
+			     wxView *activeView,
 			     wxView *deactiveView)
 {
 	mutUnused(activate);
@@ -196,7 +200,7 @@ bool MutView::TryParent(wxEvent& event)
 {
 	mutUnused(event);
 	TRACEC;
-	// if we must pass some events to the Application, 
+	// if we must pass some events to the Application,
 	// they must be handled here somehow replacing false
 #if 0
 	// Implementation in Event.cpp:

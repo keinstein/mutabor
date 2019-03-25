@@ -254,7 +254,10 @@ void MutBoxChannelShape::CreateRoutePanel(MutBoxChannelShape * channel,
 					  wxWindow * routeWindow,
 					  const mutabor::Box & box) {
 	wxSizer * routeSizer = routeWindow->GetSizer();
-	if (!routeSizer) UNREACHABLECT(MutBoxChannelShape);
+	if (!routeSizer) {
+		UNREACHABLECT(MutBoxChannelShape);
+		return;
+	}
 
 	InputFilterPanel * inputfilter = new InputFilterPanel(routeWindow);
 	MutBoxChannelShape::InitializeInputFilter(inputfilter,
@@ -502,8 +505,9 @@ void MutBoxChannelShape::ReadPanel(RoutePanel * panel)
 	}
 
 	OutputFilterPanel * outputPanel = panel->GetOutput();
-	if (!outputPanel) UNREACHABLEC;
-	else if (outputPanel) {
+	if (!outputPanel) {
+		UNREACHABLEC;
+	} else {
 		MutOutputDeviceShape * newoutput =
 			outputPanel->GetCurrentSelection();
 		if (newoutput) {
@@ -514,8 +518,11 @@ void MutBoxChannelShape::ReadPanel(RoutePanel * panel)
 					connect(this,newoutput);
 				}
 			}
-			output->ReadPanel(outputPanel,this);
-			output->Refresh();
+			mutASSERT(output == newoutput);
+			if (output) {
+				output->ReadPanel(outputPanel,this);
+				output->Refresh();
+			}
 		} else if (output) {
 			disconnect(this,output);
 		}
@@ -523,8 +530,9 @@ void MutBoxChannelShape::ReadPanel(RoutePanel * panel)
 
 
 	InputFilterPanel * inputPanel = panel->GetInput();
-	if (!inputPanel) UNREACHABLEC;
-	else if (inputPanel) {
+	if (!inputPanel) {
+		UNREACHABLEC;
+	} else {
 		TRACEC;
 		MutInputDeviceShape * newinput =
 			inputPanel->GetCurrentSelection();
@@ -538,11 +546,14 @@ void MutBoxChannelShape::ReadPanel(RoutePanel * panel)
 					connect(this,newinput);
 				}
 			}
-			TRACEC;
-			input->ReadPanel(inputPanel,this);
-			TRACEC;
-			input->Refresh();
-			TRACEC;
+			mutASSERT(input == newinput);
+			if (input) {
+				TRACEC;
+				input->ReadPanel(inputPanel,this);
+				TRACEC;
+				input->Refresh();
+				TRACEC;
+			}
 		} else if (input) {
 			TRACEC;
 			disconnect(this,input);

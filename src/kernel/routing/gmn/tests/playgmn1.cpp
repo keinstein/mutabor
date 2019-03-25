@@ -88,7 +88,7 @@ public:
 		if (max < tl)  max = tl;
 		if (min > tl || min == 0) min = tl;
 		if (tmp.GetHi() || tmp.GetLo() > 10) {
-			std::cerr << "Too slow: (" << i << "^2 + " << i << ") / 2 = " << (i*(i+1))/2 
+			std::cerr << "Too slow: (" << i << "^2 + " << i << ") / 2 = " << (i*(i+1))/2
 				  << " Runtime: " << tmp.GetHi() << "," << tmp.GetLo() << "ms" << std::endl;
 			exit(3);
 		}
@@ -113,13 +113,13 @@ public:
 		std::clog << "Stopping..." << std::endl;
 		mutabor::InputGis::Stop();
 		std::clog << "Stopped" << std::endl;
-	}	
+	}
 	virtual bool Open() {
 		std::clog << "Opening..." << std::endl;
 		bool ret = mutabor::InputGis::Open();
 		std::clog << "Opened." << std::endl;
 		return ret;
-	}	
+	}
 	virtual void Close() {
 		std::clog << "Closing..." << std::endl;
 		mutabor::InputGis::Close();
@@ -148,9 +148,20 @@ int main(/* int argc, char **argv */)
 #endif
 	//	mutwxInitializer initializer;
 
-	mutabor::InitDeviceFactories();
+	try {
+		mutabor::InitDeviceFactories();
+	} catch (const mutabor::RouteFactory::FactoryAlreadySet & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	}
 	mutabor::ScopedInputDevice in;
-	in = static_cast<mutabor::InputDeviceClass *>(new myDevice());
+	try {
+		in = static_cast<mutabor::InputDeviceClass *>(new myDevice());
+	} catch (const boost::thread_resource_error & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 2;
+	}
+
 //	mutabor::InputDevice in(mutabor::DeviceFactory::CreateInput(mutabor::DTMidiFile));
 	if (!in) {
 		DEBUGLOG2(always,("Class construction failed."));

@@ -481,18 +481,19 @@ void xmltree::DeleteEntry(const wxString & path) {
 			}
 		}
 		current_node = node;
-	}
-	if (last_prop != prop) {
-		last_prop->SetNext(prop->GetNext());
-		prop->SetNext(NULL);
 	} else {
+		if (last_prop && last_prop != prop) {
+			last_prop->SetNext(prop->GetNext());
+			prop->SetNext(NULL);
+		} else {
 #if wxCHECK_VERSION(2,9,0)
-		current_node->SetAttributes(prop->GetNext());
+			current_node->SetAttributes(prop->GetNext());
 #else
-		current_node->SetProperties(prop->GetNext());
+			current_node->SetProperties(prop->GetNext());
 #endif
+		}
+		delete prop;
 	}
-	delete prop;
 }
 
 void xmltree::DeleteGroup(const wxString & path) {

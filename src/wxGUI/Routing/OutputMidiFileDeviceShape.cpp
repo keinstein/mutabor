@@ -81,6 +81,10 @@ void MutOutputMidiFileDeviceShape::InitializeDialog(OutputDevDlg * out) const
 	mutASSERT(device->GetType() == DTMidiFile);
 	mutASSERT(out);
 	OutputMidiFile * d = static_cast<OutputMidiFile *>(device.get());
+	if (!d) {
+		UNREACHABLEC;
+		return;
+	}
 	out -> SetType(DTMidiFile);
 	out -> SetMidiFile(d->GetName());
 	out -> SetMidiFileBendingRange (d -> GetBendingRange());

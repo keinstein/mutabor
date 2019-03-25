@@ -184,9 +184,11 @@ namespace compat30 {
 				else {
 					OutputMidiPort * dev =
 						dynamic_cast<OutputMidiPort *>(Out.get());
-					if (!dev)
+					if (!dev) {
 						UNREACHABLE;
-					else if (rtmidiout) {
+						BOOST_THROW_EXCEPTION(::mutabor::error::runtime_exception(error::allocation_error,
+										    _mut("Could not allocate a MIDI output device.")));
+					} else if (rtmidiout) {
 						rtmidi::PortList list = rtmidiout->getPortList();
 						rtmidi::PortList::iterator i = list.begin();
 						while (DevId && ++i != list.end()) DevId--;
@@ -202,9 +204,11 @@ namespace compat30 {
 				else {
 					OutputMidiFile * dev =
 						dynamic_cast<OutputMidiFile *>(Out.get());
-					if (!dev)
+					if (!dev) {
 						UNREACHABLE;
-					else
+						BOOST_THROW_EXCEPTION(::mutabor::error::runtime_exception(error::allocation_error,
+										    _mut("Could not allocate an output device.")));
+					} else
 						dev -> SetBendingRange (BendingRange);
 				}
 				break;

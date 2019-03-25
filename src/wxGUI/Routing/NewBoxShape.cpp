@@ -66,8 +66,18 @@ void NewMutBoxShape::InitializeDialog(BoxDlg * dlg) const {
 
 bool NewMutBoxShape::replaceSelfBy (MutBoxShape  * newshape)
 {
+	auto parent = m_parent;
 	MutRouteWnd * p = dynamic_cast<MutRouteWnd *> (m_parent);
+	while (parent && !p) {
+		parent = parent->GetParent();
+		p = dynamic_cast<MutRouteWnd *> (m_parent);
+	}
+
 	mutASSERT(p);
+	if (!p) {
+		UNREACHABLEC;
+		return false;
+	}
 
 	/* make shure the shape has the correct size.  this
 	   must be done here, as we could have added some

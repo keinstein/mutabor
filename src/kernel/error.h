@@ -68,7 +68,8 @@ enum mutabor_error_type {
 	generic_error,
 	internal_error,
 	compiler_error,
-	runtime_error
+	runtime_error,
+	allocation_error
 };
 
 struct mutabor_logic_parsed;
@@ -143,6 +144,7 @@ namespace error {
 	using mutabor::hidden::internal_error;
 	using mutabor::hidden::compiler_error;
 	using mutabor::hidden::runtime_error;
+	using mutabor::hidden::allocation_error;
 
 	class runtime_exception: public std::runtime_error{
 	public:
@@ -175,6 +177,8 @@ namespace error {
 				return boost::format(_mut("Compiler error: %s"));
 			case ::mutabor::error::runtime_error:
 				return boost::format(_mut("Runtime error: %s"));
+			case ::mutabor::error::allocation_error:
+				return boost::format(_mut("Allocation failed: %s"));
 			default:
 				return boost::format(_mut("Unknown error (Type %d): %s")) %type;
 			}

@@ -1524,16 +1524,20 @@ MUTABOR_NAMESPACE(mutaborGUI)
 					h -> RemoveFileFromHistory(i);
 		}
 
-		wxString oldpath = config->GetPath();
+		wxString oldpath;
+		if (config) {
+			oldpath = config->GetPath();
 
-		config->SetPath(_T("/Settings"));
-		config->Read(_T("ToneSystem"), &asTS, true);
-		config->Read(_T("SaveEditor"), &SaveEditor, true);
-		config->Read(_T("ColorBars"), &UseColorBars, true);
+			config->SetPath(_T("/Settings"));
+			config->Read(_T("ToneSystem"), &asTS, true);
+			config->Read(_T("SaveEditor"), &SaveEditor, true);
+			config->Read(_T("ColorBars"), &UseColorBars, true);
 
-		config->SetPath(_T("DocManager"));
-		document_manager->FileHistoryLoad(*config);
-		config->SetPath(_T(".."));
+			config->SetPath(_T("DocManager"));
+			if (document_manager)
+				document_manager->FileHistoryLoad(*config);
+			config->SetPath(_T(".."));
+		}
 
 		MutRouteWnd * routewnd=NULL;
 		MutFrame * frame =
@@ -1562,7 +1566,8 @@ MUTABOR_NAMESPACE(mutaborGUI)
 
 		DebugCheckRoutes();
 
-		LoadRoutes(config);
+		if (config)
+			LoadRoutes(config);
 
 
 		if (routewnd) {

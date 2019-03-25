@@ -504,7 +504,8 @@ public:
 		thread_initialized,
 		thread_running,
 		thread_ending,
-		thread_finished
+		thread_finished,
+		thread_exception_caught
 	};
 
 	class meeting_point {
@@ -551,7 +552,8 @@ public:
 		 sync_mutex(),
 		 sync(),
 		 thread(boost::ref(*this)),
-		 exitcode(0) {
+		 exitcode(0),
+		 exception(nullptr) {
 		boost::unique_lock<boost::mutex> lock(sync_mutex);
 		command = thread_initialized;
 		sync.sync(meeting_point::locked_master,
@@ -561,13 +563,27 @@ public:
 
 	void operator()() throw() {
 		{
-			boost::unique_lock<boost::mutex> lock(sync_mutex);
-			state = thread_initialized;
-			sync.sync(meeting_point::locked_slave,
-				  lock);
-			sync.sync(meeting_point::locked_slave,
-				  lock);
-			state = thread_running;
+			try {
+				boost::unique_lock<boost::mutex> lock(sync_mutex);
+				state = thread_initialized;
+				sync.sync(meeting_point::locked_slave,
+					  lock);
+				sync.sync(meeting_point::locked_slave,
+					  lock);
+				state = thread_running;
+			} catch (const boost::condition_error & e) {
+				state = thread_exception_caught;
+				exception = std::current_exception();
+				return;
+			} catch (const boost::lock_error & e) {
+				state = thread_exception_caught;
+				exception = std::current_exception();
+				return;
+			} catch (...) {
+				state = thread_exception_caught;
+				exception = std::current_exception();
+				return;
+			}
 		}
 		exitcode = Entry();
 		state = thread_ending;
@@ -584,6 +600,8 @@ public:
 	}
 
 	void Run() {
+		if (state == thread_exception_caught)
+			return;
 		boost::unique_lock<boost::mutex> lock(sync_mutex);
 		command = thread_running;
 		sync.sync(meeting_point::locked_master,
@@ -596,6 +614,9 @@ public:
 
 	int Wait() {
 		thread.join();
+		if (exception) {
+			std::rethrow_exception(exception);
+		}
 		return exitcode;
 	}
 
@@ -621,6 +642,7 @@ protected:
 	meeting_point sync;
 	boost::thread thread;
 	int exitcode;
+	std::exception_ptr exception;
 };
 
 

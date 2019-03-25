@@ -906,6 +906,7 @@ namespace mutabor {
 		friend class MidiFileFactory;
 	protected:
 		InputMidiFile(): base(),
+				 FileType(0),
 				 Tracks(),
 				 Busy(false),
 				 timing() { }
@@ -915,6 +916,7 @@ namespace mutabor {
 			      int id): base(name,
 					    mode,
 					    id),
+				       FileType(0),
 				       Tracks(),
 				       Busy(false),
 				       timing() {}

@@ -798,22 +798,15 @@ ChordNote::ChordNote(ChordNote *first) // not the first ChordNote
 	CurrentTime = 0;
 
 	Boss->ChordPos = Boss->Cursor;
-
 	Status =0;
-
 	TieBegin = 0;
-
 	nTie = 0;
-
 	LastSep = 0;
-
 	InstrId = -1;
-
 	Taste = GMN_NO_KEY;
-
 	Key = GMN_NO_KEY;
-
 	Pitch = 0;
+	AlterBegin = 0;
 }
 
 void ChordNote::CountOnTime(frac dTime)
