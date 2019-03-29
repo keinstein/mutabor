@@ -93,7 +93,8 @@ namespace mutabor {
 					try {
 						cond.Sleep(lock, wake_time);
 					} catch (boost::thread_interrupted) {
-						exit = 1;
+						exit = true;
+						break;
 					}
 					// deal with spurious wakeups.
 				} while ((cur_time = CurrentTimer::time_point::clock::now()) < wake_time);
