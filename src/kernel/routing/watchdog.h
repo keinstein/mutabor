@@ -115,26 +115,8 @@ namespace mutabor {
 		}
 		
 		void OnExit() throw() {
-			try {
-				ScopedLock<> lock(mutex);
-				targettype tmp = const_cast<targettype&>(target);
-				if (tmp) {
-					const_cast<targettype &>(target).reset();
-					tmp->remove_watchdog(this);
-				}
-			} catch (const boost::lock_error & e) {
-				UNREACHABLEC;
-				// rethrow after joining.
-				state = thread_exception_caught;
-				exception = std::current_exception();
-
-				// Try to recover without locking.
-				targettype tmp = const_cast<targettype&>(target);
-				if (tmp) {
-					const_cast<targettype &>(target).reset();
-					tmp->remove_watchdog(this);
-				}
-			}
+			// do nothing. We must keep the connection to
+			// the watched class until the thread has been joined.
 		}
 		
 		void request_exit() {
