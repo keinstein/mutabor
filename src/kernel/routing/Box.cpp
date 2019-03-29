@@ -421,6 +421,9 @@ namespace mutabor {
 				Close();
 				return false;
 			}
+		} catch (const std::bad_alloc & e) {
+			Close();
+			return false;
 		} catch (const boost::thread_resource_error & e) {
 			DEBUGLOG(thread,
 				 "Thread %s could not aquire thread resources for loopguard",
