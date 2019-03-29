@@ -997,7 +997,9 @@ namespace mutabor {
 		proceed_bool shouldProceed(Route R,
 					   const std::vector<uint8_t > &midiCode,
 					   int data =0);
-		void Proceed(const std::vector<uint8_t > &midiCode, int data =0, int channel_offset = 0);
+		void Proceed(const std::vector<uint8_t > &midiCode,
+			     int data =0,
+			     size_t channel_offset = 0);
 
 	protected:
 		int FileType;
