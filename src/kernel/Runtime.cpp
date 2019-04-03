@@ -105,78 +105,38 @@ void  SetChannels(mutabor_box_type * box, int base, int from, int to, int thru) 
 
 // scan-Hilfsfunktionen ---------------------------------------------
 
+#if 0
 bool GetELine(const std::string& p, size_t& i, std::string &s);
 
 DevType Str2DT(const std::string& type);
 
 // aus p eine Zeile in s lesen, p wird verschoben
-bool GetLine(char **p, char *s) {
+bool GetLine(char **p, char *s, int length) {
 	if ( !p || !(*p)[0] )
 		return false;
 
 	while ( (*p)[0] == ' ' || (*p)[0] == '\n' || (*p)[0] == '\r' )
-		*p = &(*p)[1];
+		++(*p);
 
 	if ( !(*p)[0] )
 		return false;
 
 	char *p1 = *p;
-
 	*p = strchr(p1, '\n');
-
-	if ( !p )
+	if ( !(*p) )
 		*p = &p1[strlen(p1)];
 
 	int i = (*p)-p1;
-
+	if (i > length) i = length;
 	strncpy(s, p1, i);
-
 	s[i] = 0;
 
 	return true;
 }
-
 #define GETLINE					\
 	if ( !GetELine(config, i, s) )		\
 		return
-
-
-/*
-// das nr-ste Output Device
-// TODO Nr from 0 or 1?
-OutputDevice *GetOut(int nr) {
-	DEBUGLOG2(other,_T("Nr.: %d"),nr);
-
-	if ( nr < 0 )
-		return 0;
-
-	OutDevice *Out = OutDevice::GetDeviceList();
-
-	while ( Out ) {
-		if (Out->GetDevId() == nr) break;
-
-		Out = Out->GetNext();
-
-		DEBUGLOG2(other,_T("Nr.: %d, Out: %x"),nr, Out);
-	}
-
-	return Out;
-}
-
-// Timerdaten
-void  GetTimerData(UINT &min, UINT &max) {
-#if !defined(WX) || defined(__WXMSW__)
-	TIMECAPS TimeCaps;
-	timeGetDevCaps(&TimeCaps, sizeof(TIMECAPS));
-	min = TimeCaps.wPeriodMin;
-	max = TimeCaps.wPeriodMax;
-#else
-	//TODO
 #endif
-}
-
-*/
-
 
 #ifdef __cplusplus
 		}

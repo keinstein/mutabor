@@ -144,7 +144,7 @@ protected:
 
 void add_options(po::options_description & desc,
 		 po::positional_options_description & p,
-		 po::variables_map vm) {
+		 po::variables_map & vm) {
 	mutUnused(vm);
 		desc.add_options()
 			("help", _mut("produce this help message"))

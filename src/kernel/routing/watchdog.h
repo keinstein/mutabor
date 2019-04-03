@@ -66,38 +66,57 @@ namespace mutabor {
 				      timeout(to),
 				      exit(false) {}
 		virtual ~watchdog() {
-			ScopedLock<> lock(mutex);
-			targettype tmp = const_cast<targettype&>(target);
-			if (tmp) {
-				const_cast<targettype &>(target) = NULL;
-				tmp->remove_watchdog(this);
+			try {
+				ScopedLock<> lock(mutex);
+				targettype tmp = const_cast<targettype&>(target);
+				if (tmp) {
+					const_cast<targettype &>(target) = NULL;
+					tmp->remove_watchdog(this);
+				}
+			} catch (const boost::lock_error & e) {
+				UNREACHABLEC;
+				// danger! unlocked operation
+				targettype tmp = const_cast<targettype&>(target);
+				if (tmp) {
+					const_cast<targettype &>(target) = NULL;
+					tmp->remove_watchdog(this);
+				}
 			}
 		}
 		
-		int Entry() {
+		int Entry() throw() {
 			ScopedLock<> lock(mutex);
 			auto cur_time = CurrentTimer::time_point::clock::now();
 			auto wake_time = cur_time+timeout;
 			while (!exit && const_cast<targettype&>(target)) {
 				do {
-					cond.Sleep(lock, wake_time);
+					try {
+						cond.Sleep(lock, wake_time);
+					} catch (boost::thread_interrupted) {
+						exit = true;
+						break;
+					}
 					// deal with spurious wakeups.
 				} while ((cur_time = CurrentTimer::time_point::clock::now()) < wake_time);
+				if (exit) break;
 				targettype tmp = const_cast<targettype&>(target);
-				if (tmp)
-					tmp->dog_watching();
+				if (tmp && !exit) {
+					try {
+						tmp->dog_watching();
+					} catch (const boost::lock_error & e) {
+						// rethrow after joining.
+						state = thread_exception_caught;
+						exception = std::current_exception();
+					}
+				}
 				wake_time = cur_time+timeout;
 			}
 			return 0;
 		}
 		
-		void OnExit() {
-			ScopedLock<> lock(mutex);
-			targettype tmp = const_cast<targettype&>(target);
-			if (tmp) {
-				const_cast<targettype &>(target).reset();
-				tmp->remove_watchdog(this);
-			}
+		void OnExit() throw() {
+			// do nothing. We must keep the connection to
+			// the watched class until the thread has been joined.
 		}
 		
 		void request_exit() {

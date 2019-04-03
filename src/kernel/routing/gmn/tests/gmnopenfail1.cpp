@@ -4,7 +4,7 @@
 *
 * Copyright:   (c) 2012 TU Dresden
 * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
-* \date 
+* \date
 * $Date: 2011/09/27 20:13:26 $
 * \version $Revision: 1.5 $
 * \license GPL
@@ -93,7 +93,7 @@ public:
 		if (max < tl)  max = tl;
 		if (min > tl || min == 0) min = tl;
 		if (tmp.GetHi() || tmp.GetLo() > 10) {
-			std::cerr << "Too slow: (" << i << "^2 + " << i << ") / 2 = " << (i*(i+1))/2 
+			std::cerr << "Too slow: (" << i << "^2 + " << i << ") / 2 = " << (i*(i+1))/2
 				  << " Runtime: " << tmp.GetHi() << "," << tmp.GetLo() << "ms" << std::endl;
 			exit(3);
 		}
@@ -114,13 +114,13 @@ class myDevice: public mutabor::InputGis {
 		std::clog << "Stopping..." << std::endl;
 		mutabor::InputGis::Stop();
 		std::clog << "Stopped" << std::endl;
-	}	
+	}
 	virtual bool Open() {
 		std::clog << "Opening..." << std::endl;
 		bool ret = mutabor::InputGis::Open();
 		std::clog << "Opened." << std::endl;
 		return ret;
-	}	
+	}
 	virtual void Close() {
 		std::clog << "Closing..." << std::endl;
 		mutabor::InputGis::Close();
@@ -157,8 +157,19 @@ int main(/*int argc, char **argv**/)
 	}
 #endif
 
-	mutabor::InitDeviceFactories();
-	mutabor::InputDevice in(new myDevice());
+	try {
+		mutabor::InitDeviceFactories();
+	} catch (const mutabor::RouteFactory::FactoryAlreadySet & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	}
+	mutabor::InputDevice in;
+	try {
+		in = new myDevice();
+	} catch (const boost::thread_resource_error & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 2;
+	}
 //	mutabor::InputDevice in(mutabor::DeviceFactory::CreateInput(mutabor::DTMidiFile));
 	if (!in) {
 		std::clog << "Class construction failed." << std::endl;
@@ -171,13 +182,13 @@ int main(/*int argc, char **argv**/)
 		exit(0);
 	}
 	in -> Play();
-	
+
 	in -> Close();
 
 	int e = in->WaitForDeviceFinish();
 	if (e != 0) return 0x100 + ((size_t)e & 0xFF);
 	//int e = 0;
 //	std::clog << "Deviation min: " << tim->min << " max: " << tim->max << std::endl;
-	return 1; 
+	return 1;
 }
 ///\}

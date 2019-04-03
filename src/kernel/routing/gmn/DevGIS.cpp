@@ -600,11 +600,12 @@ namespace mutabor {
 
 		while ( *H ) {
 
-			GisReadArtHead *h = dynamic_cast<GisReadArtHead *> (*H);
+			mutASSERT(dynamic_cast<GisReadArtHead *>(*H));
+
+			GisReadArtHead *h = static_cast<GisReadArtHead *> (*H);
 			DEBUGLOG (gmnfile, "H = %p; h = %p" ,(void*)H,
 				  (void*)dynamic_cast<GisReadArtHead *>(*H));
 
-			mutASSERT(h);
 			DEBUGLOG (gmnfile, "h->nSub = %d" ,h->nSub);
 
 			if ( h->nSub > 0) { // header has subsGisReadHead

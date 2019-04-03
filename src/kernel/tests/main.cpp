@@ -42,7 +42,6 @@
 int 
 main()
 {
-	//	mutwxInitializer initializer;
 ////	mutabor::InitDeviceFactories();
 
 #ifdef _GLIBCXX_DEBUG

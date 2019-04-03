@@ -1,32 +1,32 @@
 // -*- C++ -*-
 /** \file
- ********************************************************************
- * Guido/Salieri file input device class.
- *
- * \author Rüdiger Krauße,
- * Tobias Schlemmer <keinstein@users.sourceforge.net>
- * \license GPL
- *
- *
- *    This program is free software; you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation; either version 2 of the License, or
- *    (at your option) any later version.
- *
- *    This program is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this program; if not, write to the Free Software
- *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- *
- ********************************************************************
- *\addtogroup GUIroute
- *\{
- ********************************************************************/
+********************************************************************
+* Guido/Salieri file input device class.
+*
+* \author Rüdiger Krauße,
+* Tobias Schlemmer <keinstein@users.sourceforge.net>
+* \license GPL
+*
+*
+*    This program is free software; you can redistribute it and/or modify
+*    it under the terms of the GNU General Public License as published by
+*    the Free Software Foundation; either version 2 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU General Public License for more details.
+*
+*    You should have received a copy of the GNU General Public License
+*    along with this program; if not, write to the Free Software
+*    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*
+*
+********************************************************************
+*\addtogroup GUIroute
+*\{
+********************************************************************/
 
 /* we guard a little bit complicated to ensure the references are set right
  */
@@ -59,65 +59,67 @@
 //#include "wx/stattext.h"
 
 
-namespace mutaborGUI {
+MUTABOR_NAMESPACE(mutaborGUI)
 
-	class MutInputGuidoFileDeviceShape:public MutInputDeviceShape
+class MutInputGuidoFileDeviceShape:public MutInputDeviceShape
+{
+	friend class GUIGisFactory;
+protected:
+	MutInputGuidoFileDeviceShape():MutInputDeviceShape() {}
+	MutInputGuidoFileDeviceShape (wxWindow * parent,
+				      wxWindowID id, 
+				      mutabor::InputDevice & d):
+		MutInputDeviceShape() {
+		TRACEC;
+		Create (parent,id,d);
+	}
+public:
+	bool Create (wxWindow * parent, 
+		     wxWindowID id, 
+		     mutabor::InputDevice & d)
 	{
-		friend class GUIGisFactory;
-	protected:
-		MutInputGuidoFileDeviceShape():MutInputDeviceShape() {}
-		MutInputGuidoFileDeviceShape (wxWindow * parent,
-					      wxWindowID id, 
-					      mutabor::InputDevice & d):
-			MutInputDeviceShape() {
-			TRACEC;
-			Create (parent,id,d);
-		}
-	public:
-		bool Create (wxWindow * parent, 
-			     wxWindowID id, 
-			     mutabor::InputDevice & d)
-			{
-				TRACEC;
-				return MutInputDeviceShape::Create(parent,id,d);
-			}
+		TRACEC;
+		return MutInputDeviceShape::Create(parent,id,d);
+	}
 
-		virtual MutIcon & GetMutIcon () 
-			{
-				TRACEC;
-				return GuidoFileBitmap;
-			}
+	virtual MutIcon & GetMutIcon () 
+	{
+		TRACEC;
+		return GuidoFileBitmap;
+	}
 
-		void SetLabel(const wxString & st ) {
-			fileName = st;
-			fileName.Normalize();
-			MutInputDeviceShape::SetLabel (fileName.GetFullName());
-		}
+	void SetLabel(const wxString & st ) {
+		fileName = st;
+		fileName.Normalize();
+		MutInputDeviceShape::SetLabel (fileName.GetFullName());
+	}
 
-		virtual wxPanel * GetFilterPanel(wxWindow * parent, 
-						      mutabor::Route & route) const;
-		virtual void ReadFilterPanel(wxWindow * panel, 
-						  mutabor::Route & route);
+	virtual wxPanel * GetFilterPanel(wxWindow * parent, 
+					 mutabor::Route & route) const;
+	virtual void ReadFilterPanel(wxWindow * panel, 
+				     mutabor::Route & route);
 	
-		/**
-		 * The device notifies the shape about a state change.
-		 *
-		 * \param event wxCommandEvent containing the request
-		 */
-		void DoDeviceNotification (wxCommandEvent & event);
-	protected: 
-		virtual void InitializeDialog(InputDevDlg * in) const;
-		virtual bool readDialog (InputDevDlg * in);
-		virtual bool CanHandleType (mutabor::DevType  type) 
-			{ return type == mutabor::DTGis; }
+	/**
+	 * The device notifies the shape about a state change.
+	 *
+	 * \param event wxCommandEvent containing the request
+	 */
+	void DoDeviceNotification (wxCommandEvent & event);
+protected: 
+	virtual void InitializeDialog(InputDevDlg * in) const;
+	virtual bool readDialog (InputDevDlg * in);
+	virtual bool CanHandleType (mutabor::DevType  type) 
+	{ return type == mutabor::DTGis; }
 
-		wxFileName fileName;
+	wxFileName fileName;
 
-	private:
-		DECLARE_DYNAMIC_CLASS(MutInputGuidoFileDeviceShape)
+private:
+	DECLARE_DYNAMIC_CLASS(MutInputGuidoFileDeviceShape)
 
-	};
-}
+};
+
+MUTABOR_NAMESPACE_END(mutaborGUI)
+
 #endif				/* INPUTGUIDOFILEDEVICESHAPE_H_PRECOMPILED */
 #endif				/* INPUTGUIDOFILEDEVICESHAPE_H */
 /*

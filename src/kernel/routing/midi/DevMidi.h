@@ -539,7 +539,9 @@ public:
 				   const std::vector<unsigned char > &midiCode,
 				   int data =0);
 
-	void Proceed(const std::vector<unsigned char > &midiCode, int data =0, int channel_offset = 0);
+	void Proceed(const std::vector<unsigned char > &midiCode,
+		     int data =0,
+		     size_t channel_offset = 0);
 
 
 	virtual int GetMaxChannel() const { return 15; }

@@ -429,17 +429,31 @@ namespace mutabor {
 #endif
 
 		bool Open() {
-			BoxLock lock(this);
-			if (!open)
-				open = DoOpen();
-			return open;
+			try {
+				BoxLock lock(this);
+				if (!open)
+					open = DoOpen();
+				return open;
+			} catch (boost::lock_error & e) {
+				UNREACHABLEC;
+				throw;
+			}
 		}
 
 		void Close() {
-			BoxLock lock(this);
-			if (open)
-				DoClose();
-			open = false;
+			try {
+				BoxLock lock(this);
+				if (open)
+					DoClose();
+				open = false;
+			} catch (boost::lock_error & e) {
+				UNREACHABLEC;
+				// try to recover without locking
+				if (open)
+					DoClose();
+				open = false;
+				throw;
+			}
 		}
 
 		virtual bool DoOpen();
@@ -815,8 +829,17 @@ namespace mutabor {
 				box->logic_timing = 0;
 			}
 			~scoped_watchdog() {
-				ScopedLock(box->logic_timing_mutex);
-				box->logic_timing = -1;
+				try {
+					ScopedLock(box->logic_timing_mutex);
+					box->logic_timing = -1;
+				} catch (const boost::lock_error & e) {
+					box->logic_timing = -1; // danger!
+					box->issue_error(::mutabor::error::runtime_error,
+							 _mut("Internal Error:\nPlease, send the following information to the developers:\n:%d:%s:~scoped_watchdog()\n%s"),
+							 __FILE__,
+							 __LINE__,
+							 boost::diagnostic_information(e).c_str());
+				}
 			}
 		};
 	        static listtype boxList;

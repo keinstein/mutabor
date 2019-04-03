@@ -451,8 +451,13 @@ OutputDeviceClass:\n\
 		CurrentTime.UseRealtime(false);
 		CurrentTime.Set(CurrentTimer::duration());
 
-
-		OpenAll(OpenAllOutDevices | OpenAllInDevices);
+		try {
+			OpenAll(OpenAllOutDevices | OpenAllInDevices);
+		} catch (const boost::lock_error & e) {
+			throw_runtime_error(error::internal_error,
+					    (boost::format(_mut("Could lock an object during opening.\nPlease, inform a developer with the following information:\n%s"))
+					     % boost::current_exception_diagnostic_information()).str().c_str());
+		}
 
 		batch_queue queue;
 

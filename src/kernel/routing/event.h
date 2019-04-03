@@ -461,7 +461,7 @@ namespace mutabor {
 		case midi::META_SEQUENCE_NUMBER: {
 			if (code.size() >= 4) {
 				return new sequence_number_event(unique_id,
-								 (code[2] << 8) & code[3]);
+								 (code[2] << 8) | code[3]);
 			}
 		}
 			break;

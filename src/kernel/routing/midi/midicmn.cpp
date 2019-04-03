@@ -582,7 +582,7 @@ namespace mutabor {
 		default:
 			output.set_controller(ctrl, value);
 			newctrl = output.get_index(ctrl);
-			if (newctrl != ctrl)
+			if (newctrl >= 0 && newctrl != ctrl)
 				value = output.get_controller(newctrl);
 
 		}
@@ -592,7 +592,7 @@ namespace mutabor {
 			return;
 		case midi::PITCH_BEND_SENSITIVITY:
 			value = bending_range << 8;
-			break;
+			return; // don't send pitch bend sensitivity
 		}
 
 		if (newctrl < midi::FIRST_RPN) {
@@ -1114,13 +1114,16 @@ namespace mutabor {
 	 */// Routen testen und jenachdem entsprechend Codeverarbeitung
 
 	template <class D>
-	void CommonMidiInput<D>::Proceed(const std::vector<unsigned char > &midiCode, int data, int channel_offset)
+	void CommonMidiInput<D>::Proceed(const std::vector<unsigned char > &midiCode,
+					 int data,
+					 size_t channel_offset)
 	{
 		bool DidOut = 0;
 		routeListType elseroutes;
 
 		unsigned char MidiStatus  = midiCode[0];
-		unsigned char MidiChannel = (midiCode[0] & 0x0F) + channel_offset;
+		size_t MidiChannel = makeChannel(midiCode,
+						 channel_offset);
 
 		switch ( MidiStatus ) {
 		case midi::SYSTEM_UNDEFINED1:

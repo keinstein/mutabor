@@ -52,7 +52,12 @@ main()
 	wxImage::AddHandler(new wxGIFHandler);
 
 	mutaborGUI::initMutIconShapes();
-	mutaborGUI::InitGUIRouteFactories();
+	try {
+		mutaborGUI::InitGUIRouteFactories();
+	} catch (const mutabor::RouteFactory::FactoryAlreadySet & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	}
 
 
 	

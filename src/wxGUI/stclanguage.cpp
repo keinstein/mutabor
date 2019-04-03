@@ -64,568 +64,569 @@ using mutabor::hidden::MUTABOR_TOKEN_COMMENT_END;
 using mutabor::hidden::MUTABOR_TOKEN_OTHER;
 #endif
 
-namespace mutaborGUI {
+MUTABOR_NAMESPACE(mutaborGUI)
 //============================================================================
 // declarations
 //============================================================================
 
 //----------------------------------------------------------------------------
 //! language types
-	const CommonInfo g_CommonPrefs = {
-		// editor functionality prefs
-		true,  // syntaxEnable
-		true,  // foldEnable
-		true,  // indentEnable
-		// display defaults prefs
-		false, // overTypeInitial
-		false, // readOnlyInitial
-		false,  // wrapModeInitial
-		false, // displayEOLEnable
-		false, // IndentGuideEnable
-		true,  // lineNumberEnable
-		false, // longLineOnEnable
-		false, // whiteSpaceEnable
-	};
+const CommonInfo g_CommonPrefs = {
+				  // editor functionality prefs
+				  true,  // syntaxEnable
+				  true,  // foldEnable
+				  true,  // indentEnable
+				  // display defaults prefs
+				  false, // overTypeInitial
+				  false, // readOnlyInitial
+				  false,  // wrapModeInitial
+				  false, // displayEOLEnable
+				  false, // IndentGuideEnable
+				  true,  // lineNumberEnable
+				  false, // longLineOnEnable
+				  false, // whiteSpaceEnable
+};
 
 //----------------------------------------------------------------------------
 // keywordlists
 // Mutabor
-	const wxChar* MutSectionKeywords =
-		_T("interval intervall logic logik midiin midiout tonsystem tonesystem ")
-		_T("tone ton retuning umstimmung pattern harmonie ");
-	const wxChar* MutOperators = 
-		_T("* - / + wurzel root :");
-	const wxChar* MutReservedWords =
-		_T("shifted form key taste");
-	const wxChar* MutDelimiters =
-		_T("{ } [ ] ( ) << >>  < >");
-	const wxChar* MutParameters =
-		_T("distance abstand @");
+const wxChar* MutSectionKeywords =
+	_T("interval intervall logic logik midiin midiout tonsystem tonesystem ")
+	_T("tone ton retuning umstimmung pattern harmonie ");
+const wxChar* MutOperators = 
+	_T("* - / + wurzel root :");
+const wxChar* MutReservedWords =
+	_T("shifted form key taste");
+const wxChar* MutDelimiters =
+	_T("{ } [ ] ( ) << >>  < >");
+const wxChar* MutParameters =
+	_T("distance abstand @");
 //----------------------------------------------------------------------------
 // keywordlists
 // C++
-	const wxChar* CppWordlist1 =
-		_T("asm auto bool break case catch char class const const_cast ")
-		_T("continue default delete do double dynamic_cast else enum explicit ")
-		_T("export extern false float for friend goto if inline int long ")
-		_T("mutable namespace new operator private protected public register ")
-		_T("reinterpret_cast return short signed sizeof static static_cast ")
-		_T("struct switch template this throw true try typedef typeid ")
-		_T("typename union unsigned using virtual void volatile wchar_t ")
-		_T("while");
-	const wxChar* CppWordlist2 =
-		_T("file");
-	const wxChar* CppWordlist3 =
-		_T("a addindex addtogroup anchor arg attention author b brief bug c ")
-		_T("class code date def defgroup deprecated dontinclude e em endcode ")
-		_T("endhtmlonly endif endlatexonly endlink endverbatim enum example ")
-		_T("exception f$ f[ f] file fn hideinitializer htmlinclude ")
-		_T("htmlonly if image include ingroup internal invariant interface ")
-		_T("latexonly li line link mainpage name namespace nosubgrouping note ")
-		_T("overload p page par param post pre ref relates remarks return ")
-		_T("retval sa section see showinitializer since skip skipline struct ")
-		_T("subsection test throw todo typedef union until var verbatim ")
-		_T("verbinclude version warning weakgroup $ @ \"\" & < > # { }");
+const wxChar* CppWordlist1 =
+	_T("asm auto bool break case catch char class const const_cast ")
+	_T("continue default delete do double dynamic_cast else enum explicit ")
+	_T("export extern false float for friend goto if inline int long ")
+	_T("mutable namespace new operator private protected public register ")
+	_T("reinterpret_cast return short signed sizeof static static_cast ")
+	_T("struct switch template this throw true try typedef typeid ")
+	_T("typename union unsigned using virtual void volatile wchar_t ")
+	_T("while");
+const wxChar* CppWordlist2 =
+	_T("file");
+const wxChar* CppWordlist3 =
+	_T("a addindex addtogroup anchor arg attention author b brief bug c ")
+	_T("class code date def defgroup deprecated dontinclude e em endcode ")
+	_T("endhtmlonly endif endlatexonly endlink endverbatim enum example ")
+	_T("exception f$ f[ f] file fn hideinitializer htmlinclude ")
+	_T("htmlonly if image include ingroup internal invariant interface ")
+	_T("latexonly li line link mainpage name namespace nosubgrouping note ")
+	_T("overload p page par param post pre ref relates remarks return ")
+	_T("retval sa section see showinitializer since skip skipline struct ")
+	_T("subsection test throw todo typedef union until var verbatim ")
+	_T("verbinclude version warning weakgroup $ @ \"\" & < > # { }");
 
 // Python
-	const wxChar* PythonWordlist1 =
-		_T("and assert break class continue def del elif else except exec ")
-		_T("finally for from global if import in is lambda None not or pass ")
-		_T("print raise return try while yield");
-	const wxChar* PythonWordlist2 =
-		_T("ACCELERATORS ALT AUTO3STATE AUTOCHECKBOX AUTORADIOBUTTON BEGIN ")
-		_T("BITMAP BLOCK BUTTON CAPTION CHARACTERISTICS CHECKBOX CLASS ")
-		_T("COMBOBOX CONTROL CTEXT CURSOR DEFPUSHBUTTON DIALOG DIALOGEX ")
-		_T("DISCARDABLE EDITTEXT END EXSTYLE FONT GROUPBOX ICON LANGUAGE ")
-		_T("LISTBOX LTEXT MENU MENUEX MENUITEM MESSAGETABLE POPUP PUSHBUTTON ")
-		_T("RADIOBUTTON RCDATA RTEXT SCROLLBAR SEPARATOR SHIFT STATE3 ")
-		_T("STRINGTABLE STYLE TEXTINCLUDE VALUE VERSION VERSIONINFO VIRTKEY");
+const wxChar* PythonWordlist1 =
+	_T("and assert break class continue def del elif else except exec ")
+	_T("finally for from global if import in is lambda None not or pass ")
+	_T("print raise return try while yield");
+const wxChar* PythonWordlist2 =
+	_T("ACCELERATORS ALT AUTO3STATE AUTOCHECKBOX AUTORADIOBUTTON BEGIN ")
+	_T("BITMAP BLOCK BUTTON CAPTION CHARACTERISTICS CHECKBOX CLASS ")
+	_T("COMBOBOX CONTROL CTEXT CURSOR DEFPUSHBUTTON DIALOG DIALOGEX ")
+	_T("DISCARDABLE EDITTEXT END EXSTYLE FONT GROUPBOX ICON LANGUAGE ")
+	_T("LISTBOX LTEXT MENU MENUEX MENUITEM MESSAGETABLE POPUP PUSHBUTTON ")
+	_T("RADIOBUTTON RCDATA RTEXT SCROLLBAR SEPARATOR SHIFT STATE3 ")
+	_T("STRINGTABLE STYLE TEXTINCLUDE VALUE VERSION VERSIONINFO VIRTKEY");
 
 
 //----------------------------------------------------------------------------
 //! languages
-	const LanguageInfo g_LanguagePrefs [] = {
-		// Mutabor
-		{_T("Mutabor"),
-		 _T("*.mut;*.mus"),
-		 _T("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789'"),
-		 wxSTC_LEX_CONTAINER,
-		 {{MutSTC_TYPE_DEFAULT, NULL},
-		  {MutSTC_TYPE_IDENTIFIER, NULL},
-		  {MutSTC_TYPE_WORD1, MutSectionKeywords},
-		  {MutSTC_TYPE_OPERATOR, MutOperators},
-		  {MutSTC_TYPE_WORD2, MutReservedWords},
-		  {MutSTC_TYPE_DELIMITER, MutDelimiters},
-		  {MutSTC_TYPE_COMMENT, NULL},
-		  {MutSTC_TYPE_NUMBER, NULL},
-		  {MutSTC_TYPE_PARAMETER, MutParameters},
-		  {MutSTC_TYPE_WORD3, NULL},
-		  {MutSTC_TYPE_ERROR, NULL},
-		  {MutSTC_TYPE_BRACE, NULL},
-		  {-1, NULL},
-		  {-1, NULL}, // VERBATIM
-		  {-1, NULL},
-		  {-1, NULL}, // DOXY
-		  {-1, NULL}, // EXTRA WORDS
-		  {-1, NULL}, // DOXY KEYWORDS
-		  {-1, NULL}, // KEYWORDS ERROR
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL}},
-		 MutSTC_FOLD_COMMENT | MutSTC_FOLD_COMPACT | MutSTC_FOLD_PREPROC},
-		// * (any)
-		{_T(DEFAULT_LANGUAGE),
-		 _T("*.*"),
-		 _T("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),
-		 wxSTC_LEX_PROPERTIES,
-		 {{MutSTC_TYPE_DEFAULT, NULL},
-		  {MutSTC_TYPE_DEFAULT, NULL},
-		  {MutSTC_TYPE_DEFAULT, NULL},
-		  {MutSTC_TYPE_DEFAULT, NULL},
-		  {MutSTC_TYPE_DEFAULT, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL},
-		  {-1, NULL}},
-		 0},
-	};
+const LanguageInfo g_LanguagePrefs [] = {
+					 // Mutabor
+					 {_T("Mutabor"),
+					  _T("*.mut;*.mus"),
+					  _T("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789'"),
+					  wxSTC_LEX_CONTAINER,
+					  {{MutSTC_TYPE_DEFAULT, NULL},
+					   {MutSTC_TYPE_IDENTIFIER, NULL},
+					   {MutSTC_TYPE_WORD1, MutSectionKeywords},
+					   {MutSTC_TYPE_OPERATOR, MutOperators},
+					   {MutSTC_TYPE_WORD2, MutReservedWords},
+					   {MutSTC_TYPE_DELIMITER, MutDelimiters},
+					   {MutSTC_TYPE_COMMENT, NULL},
+					   {MutSTC_TYPE_NUMBER, NULL},
+					   {MutSTC_TYPE_PARAMETER, MutParameters},
+					   {MutSTC_TYPE_WORD3, NULL},
+					   {MutSTC_TYPE_ERROR, NULL},
+					   {MutSTC_TYPE_BRACE, NULL},
+					   {-1, NULL},
+					   {-1, NULL}, // VERBATIM
+					   {-1, NULL},
+					   {-1, NULL}, // DOXY
+					   {-1, NULL}, // EXTRA WORDS
+					   {-1, NULL}, // DOXY KEYWORDS
+					   {-1, NULL}, // KEYWORDS ERROR
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL}},
+					  MutSTC_FOLD_COMMENT | MutSTC_FOLD_COMPACT | MutSTC_FOLD_PREPROC},
+					 // * (any)
+					 {_T(DEFAULT_LANGUAGE),
+					  _T("*.*"),
+					  _T("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),
+					  wxSTC_LEX_PROPERTIES,
+					  {{MutSTC_TYPE_DEFAULT, NULL},
+					   {MutSTC_TYPE_DEFAULT, NULL},
+					   {MutSTC_TYPE_DEFAULT, NULL},
+					   {MutSTC_TYPE_DEFAULT, NULL},
+					   {MutSTC_TYPE_DEFAULT, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL},
+					   {-1, NULL}},
+					  0},
+};
 
-	const int g_LanguagePrefsSize = WXSIZEOF(g_LanguagePrefs);
+const int g_LanguagePrefsSize = WXSIZEOF(g_LanguagePrefs);
 
 //----------------------------------------------------------------------------
 //! style types
-	const StyleInfo g_StylePrefs [] = {
-		// mySTC_TYPE_DEFAULT
-		{_T("Default"),
-		 _T("BLACK"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+const StyleInfo g_StylePrefs [] = {
+				   // mySTC_TYPE_DEFAULT
+				   {_T("Default"),
+				    _T("BLACK"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_WORD1
-		{_T("Keyword1"),
-		 _T("BLUE"), _T("WHITE"),
-		 _T(""), 10, MutSTC_STYLE_BOLD, 0},
+				   // MutSTC_TYPE_WORD1
+				   {_T("Keyword1"),
+				    _T("BLUE"), _T("WHITE"),
+				    _T(""), 10, MutSTC_STYLE_BOLD, 0},
 
-		// MutSTC_TYPE_WORD2
-		{_T("Keyword2"),
-		 _T("DARK BLUE"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_WORD2
+				   {_T("Keyword2"),
+				    _T("DARK BLUE"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_WORD3
-		{_T("Keyword3"),
-		 _T("SEA GREEN"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_WORD3
+				   {_T("Keyword3"),
+				    _T("SEA GREEN"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_WORD4
-		{_T("Keyword4"),
-		 _T("CYAN"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_WORD4
+				   {_T("Keyword4"),
+				    _T("CYAN"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_WORD5
-		{_T("Keyword5"),
-		 _T("DARK GREY"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_WORD5
+				   {_T("Keyword5"),
+				    _T("DARK GREY"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_WORD6
-		{_T("Keyword6"),
-		 _T("GREY"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_WORD6
+				   {_T("Keyword6"),
+				    _T("GREY"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_COMMENT
-		{_T("Comment"),
-		 _T("FOREST GREEN"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_COMMENT
+				   {_T("Comment"),
+				    _T("FOREST GREEN"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_COMMENT_DOC
-		{_T("Comment (Doc)"),
-		 _T("FOREST GREEN"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_COMMENT_DOC
+				   {_T("Comment (Doc)"),
+				    _T("FOREST GREEN"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_COMMENT_LINE
-		{_T("Comment line"),
-		 _T("FOREST GREEN"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_COMMENT_LINE
+				   {_T("Comment line"),
+				    _T("FOREST GREEN"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_COMMENT_SPECIAL
-		{_T("Special comment"),
-		 _T("FOREST GREEN"), _T("WHITE"),
-		 _T(""), 10, MutSTC_STYLE_ITALIC, 0},
+				   // MutSTC_TYPE_COMMENT_SPECIAL
+				   {_T("Special comment"),
+				    _T("FOREST GREEN"), _T("WHITE"),
+				    _T(""), 10, MutSTC_STYLE_ITALIC, 0},
 
-		// MutSTC_TYPE_CHARACTER
-		{_T("Character"),
-		 _T("KHAKI"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_CHARACTER
+				   {_T("Character"),
+				    _T("KHAKI"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_CHARACTER_EOL
-		{_T("Character (EOL)"),
-		 _T("KHAKI"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_CHARACTER_EOL
+				   {_T("Character (EOL)"),
+				    _T("KHAKI"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_STRING
-		{_T("String"),
-		 _T("BROWN"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_STRING
+				   {_T("String"),
+				    _T("BROWN"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_STRING_EOL
-		{_T("String (EOL)"),
-		 _T("BROWN"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_STRING_EOL
+				   {_T("String (EOL)"),
+				    _T("BROWN"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_DELIMITER
-		{_T("Delimiter"),
-		 _T("ORANGE"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_DELIMITER
+				   {_T("Delimiter"),
+				    _T("ORANGE"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_PUNCTUATION
-		{_T("Punctuation"),
-		 _T("ORANGE"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_PUNCTUATION
+				   {_T("Punctuation"),
+				    _T("ORANGE"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_OPERATOR
-		{_T("Operator"),
-		 _T("BLACK"), _T("WHITE"),
-		 _T(""), 10, MutSTC_STYLE_BOLD, 0},
+				   // MutSTC_TYPE_OPERATOR
+				   {_T("Operator"),
+				    _T("BLACK"), _T("WHITE"),
+				    _T(""), 10, MutSTC_STYLE_BOLD, 0},
 
-		// MutSTC_TYPE_BRACE
-		{_T("Label"),
-		 _T("VIOLET RED"), _T("WHITE"),
-		 _T(""), 10, MutSTC_STYLE_BOLD, 0},
+				   // MutSTC_TYPE_BRACE
+				   {_T("Label"),
+				    _T("VIOLET RED"), _T("WHITE"),
+				    _T(""), 10, MutSTC_STYLE_BOLD, 0},
 
-		// MutSTC_TYPE_COMMAND
-		{_T("Command"),
-		 _T("BLUE"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_COMMAND
+				   {_T("Command"),
+				    _T("BLUE"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_IDENTIFIER
-		{_T("Identifier"),
-		 _T("BLACK"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_IDENTIFIER
+				   {_T("Identifier"),
+				    _T("BLACK"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_LABEL
-		{_T("Label"),
-		 _T("VIOLET"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_LABEL
+				   {_T("Label"),
+				    _T("VIOLET"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_NUMBER
-		{_T("Number"),
-		 _T("SIENNA"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_NUMBER
+				   {_T("Number"),
+				    _T("SIENNA"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_PARAMETER
-		{_T("Parameter"),
-		 _T("BLUE VIOLET"), _T("WHITE"),
-		 _T(""), 10, MutSTC_STYLE_ITALIC, 0},
+				   // MutSTC_TYPE_PARAMETER
+				   {_T("Parameter"),
+				    _T("BLUE VIOLET"), _T("WHITE"),
+				    _T(""), 10, MutSTC_STYLE_ITALIC, 0},
 
-		// MutSTC_TYPE_REGEX
-		{_T("Regular expression"),
-		 _T("ORCHID"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_REGEX
+				   {_T("Regular expression"),
+				    _T("ORCHID"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_UUID
-		{_T("UUID"),
-		 _T("ORCHID"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_UUID
+				   {_T("UUID"),
+				    _T("ORCHID"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_VALUE
-		{_T("Value"),
-		 _T("ORCHID"), _T("WHITE"),
-		 _T(""), 10, MutSTC_STYLE_ITALIC, 0},
+				   // MutSTC_TYPE_VALUE
+				   {_T("Value"),
+				    _T("ORCHID"), _T("WHITE"),
+				    _T(""), 10, MutSTC_STYLE_ITALIC, 0},
 
-		// MutSTC_TYPE_PREPROCESSOR
-		{_T("Preprocessor"),
-		 _T("GREY"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_PREPROCESSOR
+				   {_T("Preprocessor"),
+				    _T("GREY"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_SCRIPT
-		{_T("Script"),
-		 _T("DARK GREY"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_SCRIPT
+				   {_T("Script"),
+				    _T("DARK GREY"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_ERROR
-		{_T("Error"),
-		 _T("RED"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+				   // MutSTC_TYPE_ERROR
+				   {_T("Error"),
+				    _T("RED"), _T("WHITE"),
+				    _T(""), 10, 0, 0},
 
-		// MutSTC_TYPE_UNDEFINED
-		{_T("Undefined"),
-		 _T("ORANGE"), _T("WHITE"),
-		 _T(""), 10, 0, 0}
+				   // MutSTC_TYPE_UNDEFINED
+				   {_T("Undefined"),
+				    _T("ORANGE"), _T("WHITE"),
+				    _T(""), 10, 0, 0}
 
-	};
+};
 
-	const int g_StylePrefsSize = WXSIZEOF(g_StylePrefs);
+const int g_StylePrefsSize = WXSIZEOF(g_StylePrefs);
 
 
 // Lexer
 #ifdef DEBUG
-	inline wxString cbGetSubstring(wxCharBuffer & b, size_t pos, size_t length) {
-		return wxString::FromUTF8(b.data()+pos, length);
-	}
+inline wxString cbGetSubstring(wxCharBuffer & b, size_t pos, size_t length) {
+	return wxString::FromUTF8(b.data()+pos, length);
+}
 #endif
 
-	void MutSTCLexer::OnStyleNeeded(wxStyledTextEvent & event) {
-		int pos = event.GetPosition();
-		int laststyled = editor->GetEndStyled();
+void MutSTCLexer::OnStyleNeeded(wxStyledTextEvent & event) {
+	int pos = event.GetPosition();
+	int laststyled = editor->GetEndStyled();
 #ifdef DEBUG
-		wxPoint editpos = editor->GetPosition();
+	wxPoint editpos = editor->GetPosition();
 #endif
-		DEBUGLOG(editlexer, 
-			 ("event.pos = %d, editor pos = (%d,%d), last syled pos = %d"),
-			 pos,editpos.x,editpos.y,laststyled);
-		int style = ERROR;
-		if (laststyled) {
-			style = editor->GetStyleAt(laststyled-1);
-		}
+	DEBUGLOG(editlexer, 
+		 ("event.pos = %d, editor pos = (%d,%d), last syled pos = %d"),
+		 pos,editpos.x,editpos.y,laststyled);
+	int style = ERROR;
+	if (laststyled) {
+		style = editor->GetStyleAt(laststyled-1);
+	}
 
-		int length = 0;
-		int lineNumber, level, oldlevel, levelstatus;
-		bool forceheader = false;
+	int length = 0;
+	int lineNumber, level, oldlevel, levelstatus;
+	bool forceheader = false;
 
-		lineNumber = editor->LineFromPosition(laststyled);
-		/* we may have an unfinished token or comment left over in the last run */
-		while (laststyled) {
-			int newstyle = editor->GetStyleAt(laststyled-1);
-			int newline = editor->LineFromPosition(laststyled-1);
-			if (newstyle != style && newline != lineNumber) break;
-			laststyled--; 
-			style = newstyle;
+	lineNumber = editor->LineFromPosition(laststyled);
+	/* we may have an unfinished token or comment left over in the last run */
+	while (laststyled) {
+		int newstyle = editor->GetStyleAt(laststyled-1);
+		int newline = editor->LineFromPosition(laststyled-1);
+		if (newstyle != style && newline != lineNumber) break;
+		laststyled--; 
+		style = newstyle;
+		lineNumber = newline;
+	}
+
+	oldlevel = editor->GetFoldLevel(lineNumber) & wxSTC_FOLDLEVELNUMBERMASK;
+	DEBUGLOG (editlexer, "laststyed style = %x" ,style);
+
+	editor->StartStyling (laststyled, 0x1f);
+	wxCharBuffer text = editor->GetTextRangeRaw(laststyled,pos);
+
+	// setting up folding data
+	if (laststyled) {
+		lineNumber = editor->LineFromPosition(laststyled-1);
+		level = editor->GetFoldLevel(lineNumber);
+		int newline = editor->LineFromPosition(laststyled);
+		levelstatus = level & ~wxSTC_FOLDLEVELNUMBERMASK;
+		level = level & wxSTC_FOLDLEVELNUMBERMASK;
+		if (newline != lineNumber) {
+			/* one character difference means '\n' */
+			levelstatus = (levelstatus & ~wxSTC_FOLDLEVELHEADERFLAG) 
+				| wxSTC_FOLDLEVELWHITEFLAG;
 			lineNumber = newline;
 		}
+	} else {
+		lineNumber = editor->LineFromPosition(laststyled);
+		level = 0;
+		oldlevel = 0;
+		editor->SetFoldLevel(lineNumber,level);
+		levelstatus = wxSTC_FOLDLEVELWHITEFLAG;
+	}
 
-		oldlevel = editor->GetFoldLevel(lineNumber) & wxSTC_FOLDLEVELNUMBERMASK;
-		DEBUGLOG (editlexer, "laststyed style = %x" ,style);
+	mutabor::mutabor_lexer lexer(text,pos-laststyled);
+	for (style = lexer.yylex(); style; style = lexer.yylex()) {
 
-		editor->StartStyling (laststyled, 0x1f);
-		wxCharBuffer text = editor->GetTextRangeRaw(laststyled,pos);
+		bool isspace = false;
 
-		// setting up folding data
-		if (laststyled) {
-			lineNumber = editor->LineFromPosition(laststyled-1);
-			level = editor->GetFoldLevel(lineNumber);
-			int newline = editor->LineFromPosition(laststyled);
-			levelstatus = level & ~wxSTC_FOLDLEVELNUMBERMASK;
-			level = level & wxSTC_FOLDLEVELNUMBERMASK;
-			if (newline != lineNumber) {
-				/* one character difference means '\n' */
-				levelstatus = (levelstatus & ~wxSTC_FOLDLEVELHEADERFLAG) 
-					| wxSTC_FOLDLEVELWHITEFLAG;
-				lineNumber = newline;
-			}
-		} else {
-			lineNumber = editor->LineFromPosition(laststyled);
-			level = 0;
+		switch (style) {
+		case MUTABOR_TOKEN_IDENTIFIER:
+			style = IDENTIFIER;
+			lexer.free_identifier();
+			break;
+
+		case MUTABOR_TOKEN_F_NUMBER:
+		case MUTABOR_TOKEN_INTEGER:
+			style = NUMBER;
+			break;
+
+		case MUTABOR_TOKEN_INTERVAL:
+		case MUTABOR_TOKEN_TONE:
+		case MUTABOR_TOKEN_TONESYSTEM:
+		case MUTABOR_TOKEN_RETUNING:
+		case MUTABOR_TOKEN_HARMONY:
+		case MUTABOR_TOKEN_LOGIC:
+		case MUTABOR_TOKEN_MIDICHANNEL:
+			levelstatus |= wxSTC_FOLDLEVELHEADERFLAG;
+			style = SECTIONKEYWORD;
+			forceheader = true;
+			level = 1;
 			oldlevel = 0;
-			editor->SetFoldLevel(lineNumber,level);
-			levelstatus = wxSTC_FOLDLEVELWHITEFLAG;
-		}
+			break;
 
-		mutabor::mutabor_lexer lexer(text,pos-laststyled);
-		for (style = lexer.yylex(); style; style = lexer.yylex()) {
+		case MUTABOR_TOKEN_ROOT:
+		case MUTABOR_TOKEN_MIDI_IN:
+		case MUTABOR_TOKEN_MIDI_OUT:
+		case '-':
+		case '+':
+		case '/':
+		case '*':
+		case '~':
+		case ':':
+			style = OPERATOR;
+			break;
 
-			bool isspace = false;
+		case MUTABOR_TOKEN_FORM:
+		case MUTABOR_TOKEN_KEY:
+		case MUTABOR_TOKEN_HARMONY_ANALYSIS:
+			style = RESERVEDWORD;
+			break;
 
-			switch (style) {
-			case MUTABOR_TOKEN_IDENTIFIER:
-				style = IDENTIFIER;
-				lexer.free_identifier();
-				break;
+		case MUTABOR_TOKEN_PARAMETER:
+			lexer.free_identifier();
+			FALLTHROUGH;
+		case MUTABOR_TOKEN_DISTANCE:
+		case MUTABOR_TOKEN_ANCHOR:
+		case MUTABOR_TOKEN_ELSE:
+		case '@':
+			style = PARAMETER;
+			break;
 
-			case MUTABOR_TOKEN_F_NUMBER:
-			case MUTABOR_TOKEN_INTEGER:
-				style = NUMBER;
-				break;
+		case MUTABOR_TOKEN_SPACES:
+			isspace = true;
+			style = DEFAULT;
+			break;
 
-			case MUTABOR_TOKEN_INTERVAL:
-			case MUTABOR_TOKEN_TONE:
-			case MUTABOR_TOKEN_TONESYSTEM:
-			case MUTABOR_TOKEN_RETUNING:
-			case MUTABOR_TOKEN_HARMONY:
-			case MUTABOR_TOKEN_LOGIC:
-			case MUTABOR_TOKEN_MIDICHANNEL:
-				levelstatus |= wxSTC_FOLDLEVELHEADERFLAG;
-				style = SECTIONKEYWORD;
-				forceheader = true;
-				level = 1;
-				oldlevel = 0;
-				break;
+		case MUTABOR_TOKEN_OTHER:
+		case MUTABOR_TOKEN_CALLS:
+		case '=':
+			style = OTHER;
+			break;
 
-			case MUTABOR_TOKEN_ROOT:
-			case MUTABOR_TOKEN_MIDI_IN:
- 			case MUTABOR_TOKEN_MIDI_OUT:
- 			case '-':
-			case '+':
-			case '/':
-			case '*':
-			case '~':
-			case ':':
-				style = OPERATOR;
-				break;
-
-			case MUTABOR_TOKEN_FORM:
-			case MUTABOR_TOKEN_KEY:
-			case MUTABOR_TOKEN_HARMONY_ANALYSIS:
-				style = RESERVEDWORD;
-				break;
-
-			case MUTABOR_TOKEN_PARAMETER:
-				lexer.free_identifier();
-				FALLTHROUGH;
-			case MUTABOR_TOKEN_DISTANCE:
-			case MUTABOR_TOKEN_ANCHOR:
-			case MUTABOR_TOKEN_ELSE:
-			case '@':
-				style = PARAMETER;
-				break;
-
-			case MUTABOR_TOKEN_SPACES:
-				isspace = true;
-				style = DEFAULT;
-				break;
-
-			case MUTABOR_TOKEN_OTHER:
-			case MUTABOR_TOKEN_CALLS:
-			case '=':
-				style = OTHER;
-				break;
-
-			case ',':
-				style = DELIMITER;
-				break;
+		case ',':
+			style = DELIMITER;
+			break;
 				
 
-			case MUTABOR_TOKEN_COMMENT:
-				style = COMMENT;
-				break;
+		case MUTABOR_TOKEN_COMMENT:
+			style = COMMENT;
+			break;
 
-			case MUTABOR_TOKEN_COMMENT_START:
-				if (level < oldlevel) forceheader = true;
-				levelstatus |= wxSTC_FOLDLEVELHEADERFLAG;
-				level++;
-				style = COMMENT;
-				break;
+		case MUTABOR_TOKEN_COMMENT_START:
+			if (level < oldlevel) forceheader = true;
+			levelstatus |= wxSTC_FOLDLEVELHEADERFLAG;
+			level++;
+			style = COMMENT;
+			break;
 
-			case MUTABOR_TOKEN_COMMENT_END:
-				level--;
-				style = COMMENT;
-				break;
+		case MUTABOR_TOKEN_COMMENT_END:
+			level--;
+			style = COMMENT;
+			break;
 
-			case '[':
-			case '(':
-			case '<':
-			case '{': 
-				if (level < oldlevel) forceheader = true;
-				levelstatus |= wxSTC_FOLDLEVELHEADERFLAG;
-				level++;
-				style = BRACE;
-				break;
-			case ']':
-			case ')':
-			case '>':
-			case '}':
-				style = BRACE;
-				level--;
-				break;
+		case '[':
+		case '(':
+		case '<':
+		case '{': 
+			if (level < oldlevel) forceheader = true;
+			levelstatus |= wxSTC_FOLDLEVELHEADERFLAG;
+			level++;
+			style = BRACE;
+			break;
+		case ']':
+		case ')':
+		case '>':
+		case '}':
+			style = BRACE;
+			level--;
+			break;
 
-			case MUTABOR_TOKEN_ERROR:
-			case MUTABOR_TOKEN_ENDOFFILE: /* should not be reached, here */
-			default:
-				style = ERROR;
-				break;
-			}
-			length = lexer.YYLeng();
-			DEBUGLOG (editlexer, "flex style %d for %d chars: %s" ,
-				 style, length, ((wxString::FromUTF8(lexer.YYText(), length)).c_str()));
-			
-			laststyled = SetStyling(style, laststyled, length);
-			// updating lines
-			int endline = editor->LineFromPosition(laststyled);
-			if (!isspace) 
-				levelstatus &= ~wxSTC_FOLDLEVELWHITEFLAG;
-			if (!forceheader && level <= oldlevel)
-				levelstatus &= ~wxSTC_FOLDLEVELHEADERFLAG;
-			editor->SetFoldLevel(lineNumber, levelstatus | oldlevel);
-			DEBUGLOG (editlexer, "line status: %x, level %d – %d" ,
-				 editor->GetFoldLevel(lineNumber),
-				 oldlevel,
-				 editor->GetFoldLevel(lineNumber) & wxSTC_FOLDLEVELNUMBERMASK);
-			       
-			int tmplevelstatus = (levelstatus & ~wxSTC_FOLDLEVELHEADERFLAG) | level;
-			if (isspace) 
-				tmplevelstatus |= wxSTC_FOLDLEVELWHITEFLAG;
-			if (lineNumber < endline) 
-				oldlevel = level;
-			while (lineNumber < endline) {
-				forceheader = false;
-				levelstatus &= ~wxSTC_FOLDLEVELHEADERFLAG;
-				editor -> SetFoldLevel(++lineNumber, tmplevelstatus);
-				DEBUGLOG (editlexer, "line status: %x, level %d – %d" ,
-					 editor->GetFoldLevel(lineNumber),
-					 oldlevel,
-					 editor->GetFoldLevel(lineNumber) & wxSTC_FOLDLEVELNUMBERMASK);
-			}
+		case MUTABOR_TOKEN_ERROR:
+		case MUTABOR_TOKEN_ENDOFFILE: /* should not be reached, here */
+		default:
+			style = ERROR;
+			break;
 		}
-		
-		event.Skip();
+		length = lexer.YYLeng();
+		DEBUGLOG (editlexer, "flex style %d for %d chars: %s" ,
+			  style, length, ((wxString::FromUTF8(lexer.YYText(), length)).c_str()));
+			
+		laststyled = SetStyling(style, laststyled, length);
+		// updating lines
+		int endline = editor->LineFromPosition(laststyled);
+		if (!isspace) 
+			levelstatus &= ~wxSTC_FOLDLEVELWHITEFLAG;
+		if (!forceheader && level <= oldlevel)
+			levelstatus &= ~wxSTC_FOLDLEVELHEADERFLAG;
+		editor->SetFoldLevel(lineNumber, levelstatus | oldlevel);
+		DEBUGLOG (editlexer, "line status: %x, level %d – %d" ,
+			  editor->GetFoldLevel(lineNumber),
+			  oldlevel,
+			  editor->GetFoldLevel(lineNumber) & wxSTC_FOLDLEVELNUMBERMASK);
+			       
+		int tmplevelstatus = (levelstatus & ~wxSTC_FOLDLEVELHEADERFLAG) | level;
+		if (isspace) 
+			tmplevelstatus |= wxSTC_FOLDLEVELWHITEFLAG;
+		if (lineNumber < endline) 
+			oldlevel = level;
+		while (lineNumber < endline) {
+			forceheader = false;
+			levelstatus &= ~wxSTC_FOLDLEVELHEADERFLAG;
+			editor -> SetFoldLevel(++lineNumber, tmplevelstatus);
+			DEBUGLOG (editlexer, "line status: %x, level %d – %d" ,
+				  editor->GetFoldLevel(lineNumber),
+				  oldlevel,
+				  editor->GetFoldLevel(lineNumber) & wxSTC_FOLDLEVELNUMBERMASK);
+		}
 	}
+		
+	event.Skip();
+}
 
-	int MutSTCLexer::SetStyling(int style, int pos, int length) {
-		if (!editor) return pos;
+int MutSTCLexer::SetStyling(int style, int pos, int length) {
+	if (!editor) return pos;
 #if wxCHECK_VERSION(2,9,0)
-		wxTextAttr styleattrs(editor->StyleGetForeground(style),
-				      editor->StyleGetBackground(style),
-				      editor->StyleGetFont(style));
+	wxTextAttr styleattrs(editor->StyleGetForeground(style),
+			      editor->StyleGetBackground(style),
+			      editor->StyleGetFont(style));
 #endif
-		int endpos = pos+length;
-		editor->SetStyling(endpos-pos,style);
+	int endpos = pos+length;
+	editor->SetStyling(endpos-pos,style);
 #if wxCHECK_VERSION(2,9,0)
-		//	editor->SetStyle(pos,pos+length,styleattrs);
+	//	editor->SetStyle(pos,pos+length,styleattrs);
 #endif
 #ifdef DEBUG
-		for (int i = pos ; i< (int) pos+length; i++) {
-			if ((editor->GetStyleAt(i) & 0x1f) != style) {
-				DEBUGLOG(editlexer,
-					 ("checking style at %d (%d – %d), %x == %x"),
-					 (int)i,(int)pos,(int)pos+length,(int)editor->GetStyleAt(i),(int)style);
-				mutASSERT((editor->GetStyleAt(i) & 0x1f) == style);
-			}
+	for (int i = pos ; i< (int) pos+length; i++) {
+		if ((editor->GetStyleAt(i) & 0x1f) != style) {
+			DEBUGLOG(editlexer,
+				 ("checking style at %d (%d – %d), %x == %x"),
+				 (int)i,(int)pos,(int)pos+length,(int)editor->GetStyleAt(i),(int)style);
+			mutASSERT((editor->GetStyleAt(i) & 0x1f) == style);
 		}
-#endif
-		return pos+length;
 	}
-
-
+#endif
+	return pos+length;
 }
+
+
+MUTABOR_NAMESPACE_END(mutaborGUI)
+
 
 ///\}

@@ -328,8 +328,8 @@ void boxTest::testFindKeyByKey()
 	size_t index = mutabor_find_key_in_box_by_key(box,77,0);
 	CPPUNIT_ASSERT(index == 0);
 	mutabor_note_type * note = mutabor_find_key_in_box(box,index);
-	CPPUNIT_ASSERT(note->number == 77);
 	CPPUNIT_ASSERT(note != NULL);
+	CPPUNIT_ASSERT(note->number == 77);
 	CPPUNIT_ASSERT(note->id == 1);
 	CPPUNIT_ASSERT(note->channel == 5);
 	index = mutabor_find_key_in_box_by_key(box,77,note->next);

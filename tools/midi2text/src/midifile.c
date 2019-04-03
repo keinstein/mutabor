@@ -1,8 +1,8 @@
 /* $Id: midifile.c,v 1.4 1991/11/17 21:57:26 piet Rel piet $ */
 /*
  * midifile 1.11
- * 
- * Read and write a MIDI file.  Externally-assigned function pointers are 
+ *
+ * Read and write a MIDI file.  Externally-assigned function pointers are
  * called upon recognizing things in the file.
  *
  * Original release by Tim Thompson, tjt@twitch.att.com
@@ -40,7 +40,7 @@
  *          An in-depth description of the spec can also be found
  *          in the article "Introducing Standard MIDI Files", published
  *          in Electronic Musician magazine, April, 1989.
- * 
+ *
  */
 #define NULLFUNC 0
 #define NULL 0
@@ -120,7 +120,7 @@ static void msginit(void);
 static int msgleng(void);
 static void msgadd(int);
 static void biggermsg();
-static int eputc(unsigned char c);			
+static int eputc(unsigned char c);
 
 static void mferror(char *);
 
@@ -130,13 +130,13 @@ static void write16bit(int);
 static void mf_w_header_chunk(int, int, int);
 static void WriteVarLen(unsigned long);
 
-void mfwrite(int, int, int, FILE *); 
+void mfwrite(int, int, int, FILE *);
 
 void
 mfread()	 	/* The only non-static function in this file. */
 {
 	if ( Mf_getc == NULLFUNC )
-		mferror("mfread() called without setting Mf_getc"); 
+		mferror("mfread() called without setting Mf_getc");
 
 	readheader();
 	while ( readtrack() )
@@ -159,9 +159,13 @@ char *s;
 
 	while ( n++<4 && (c=(*Mf_getc)()) != EOF ) {
 		if ( c != *p++ ) {
+			int i;
 			char buff[32];
 			(void) strcpy(buff,"expecting ");
-			(void) strcat(buff,s);
+			// avoid strcat which is reported as dangerous.
+			for (i = 0 ; i < 4 ; ++i)
+				buff[i+10] = s[i];
+			buff[14] = 0;
 			mferror(buff);
 		}
 	}
@@ -549,7 +553,7 @@ biggermsg()
 
 	if(newmess == NULL)
 		mferror("malloc error!");
-		
+
 	/* copy old message into larger new one */
 	if ( oldmess != NULL ) {
 		register char *p = newmess;
@@ -575,7 +579,7 @@ int fseek();
  * format      0 - Single multi-channel track
  *             1 - Multiple simultaneous tracks
  *             2 - One or more sequentially independent
- *                 single track patterns                
+ *                 single track patterns
  * ntracks     The number of tracks in the file.
  * division    This is kind of tricky, it can represent two
  *             things, depending on whether it is positive or negative
@@ -594,19 +598,19 @@ int fseek();
  *             Files 1.0 spec for more details.
  * fp          This should be the open file pointer to the file you
  *             want to write.  It will have be a global in order
- *             to work with Mf_putc.  
+ *             to work with Mf_putc.
  * Global variables:
  * Mf_RunStat  if nonzero use running status.
- */ 
- 
+ */
+
 int Mf_RunStat = 0;
 static int laststat;		/* last status code */
 static int lastmeta;		/* last meta event type */
 
-void 
-mfwrite(format,ntracks,division,fp) 
-int format,ntracks,division; 
-FILE *fp; 
+void
+mfwrite(format,ntracks,division,fp)
+int format,ntracks,division;
+FILE *fp;
 {
     int i; void mf_w_track_chunk(), mf_w_header_chunk();
 
@@ -614,7 +618,7 @@ FILE *fp;
 	    mferror("mfmf_write() called without setting Mf_putc");
 
     if ( Mf_wtrack == NULLFUNC )
-	    mferror("mfmf_write() called without setting Mf_mf_writetrack"); 
+	    mferror("mfmf_write() called without setting Mf_mf_writetrack");
 
     /* every MIDI file starts with a header */
     mf_w_header_chunk(format,ntracks,division);
@@ -631,7 +635,7 @@ FILE *fp;
         mf_w_track_chunk(i,fp,Mf_wtrack);
 }
 
-void 
+void
 mf_w_track_chunk(which_track,fp,wtrack)
 int which_track;
 FILE *fp;
@@ -640,13 +644,13 @@ int (*wtrack)();
 	unsigned long trkhdr,trklength;
 	long offset, place_marker;
 	void write16bit(),write32bit();
-	
+
 	trkhdr = MTrk;
 	trklength = 0;
 
 	/* Remember where the length was written, because we don't
 	   know how long it will be until we've finished writing */
-	offset = ftell(fp); 
+	offset = ftell(fp);
 
 #ifdef DEBUG
         printf("offset = %d\n",(int) offset);
@@ -658,7 +662,7 @@ int (*wtrack)();
 
 	Mf_numbyteswritten = 0L; /* the header's length doesn't count */
 	laststat = 0;
-	
+
 	/* Note: this calls Mf_writetempotrack with an unused parameter (-1)
 	   But this is innocent */
 
@@ -673,12 +677,12 @@ int (*wtrack)();
 	}
 
 	laststat = 0;
-	 
+
 	/* It's impossible to know how long the track chunk will be beforehand,
            so the position of the track length data is kept so that it can
            be written after the chunk has been generated */
 	place_marker = ftell(fp);
-	
+
 	/* This method turned out not to be portable because the
            parameter returned from ftell is not guaranteed to be
            in bytes on every machine */
@@ -688,31 +692,36 @@ int (*wtrack)();
 	printf("length = %d\n",(int) trklength);
 #endif
 
- 	if(fseek(fp,offset,0) < 0)
-	    mferror("error seeking during final stage of write");
+	if (offset >= 0) {
+		if(fseek(fp,offset,0) < 0)
+			mferror("error seeking during final stage of write");
 
-	trklength = Mf_numbyteswritten;
+		trklength = Mf_numbyteswritten;
 
-	/* Re-mf_write the track chunk header with right length */
-	write32bit(trkhdr);
-	write32bit(trklength);
+		/* Re-mf_write the track chunk header with right length */
+		write32bit(trkhdr);
+		write32bit(trklength);
+	}
 
-	fseek(fp,place_marker,0);
+	if (place_marker >= 0)
+		fseek(fp,place_marker,0);
+	else
+		fseek(fp,0,SEEK_END);
 } /* End gen_track_chunk() */
 
-static void 
+static void
 write16bit(int data);
 
-static void 
+static void
 write32bit(unsigned long data);
 
 
-void 
+void
 mf_w_header_chunk(format,ntracks,division)
 int format,ntracks,division;
 {
     unsigned long ident,length;
-    
+
     ident = MThd;           /* Head chunk identifier                    */
     length = 6;             /* Chunk length                             */
 
@@ -729,14 +738,14 @@ static void WriteVarLen(unsigned long value);
 
 /*
  * mf_w_midi_event()
- * 
+ *
  * Library routine to mf_write a single MIDI track event in the standard MIDI
  * file format. The format is:
  *
  *                    <delta-time><event>
  *
  * In this case, event can be any multi-byte midi message, such as
- * "note on", "note off", etc.      
+ * "note on", "note off", etc.
  *
  * delta_time - the time in ticks since the last event.
  * type - the type of event.
@@ -745,7 +754,7 @@ static void WriteVarLen(unsigned long value);
  *        data.
  * size - The length of the midi-event data.
  */
-int 
+int
 mf_w_midi_event(delta_time, type, chan, data, size)
 unsigned long delta_time;
 unsigned int chan,type;
@@ -766,14 +775,14 @@ unsigned char *data;
 
     if (!Mf_RunStat || laststat != c)
     	eputc(c);
-	
+
     laststat = c;
 
     /* write out the data bytes */
     for(i = 0; i < size; i++)
 	eputc(data[i]);
 
-    return(size); 
+    return(size);
 } /* end mf_write MIDI event */
 
 /*
@@ -798,7 +807,7 @@ int mf_w_meta_event(unsigned long delta_time,
     unsigned long i;
 
     WriteVarLen(delta_time);
-    
+
     /* This marks the fact we're writing a meta-event */
     eputc(meta_event);
     laststat = meta_event;
@@ -808,12 +817,12 @@ int mf_w_meta_event(unsigned long delta_time,
     lastmeta = type;
 
     /* The length of the data bytes to follow */
-    WriteVarLen(size); 
+    WriteVarLen(size);
 
     for(i = 0; i < size; i++)
     {
 	if(eputc(data[i]) != data[i])
-	    return(-1); 
+	    return(-1);
     }
     return(size);
 } /* end mf_w_meta_event */
@@ -840,23 +849,23 @@ unsigned long size;
     unsigned long i;
 
     WriteVarLen(delta_time);
-    
+
     /* The type of sysex event */
     eputc(*data);
     laststat = 0;
 
     /* The length of the data bytes to follow */
-    WriteVarLen(size-1); 
+    WriteVarLen(size-1);
 
     for(i = 1; i < size; i++)
     {
 	if(eputc(data[i]) != data[i])
-	    return(-1); 
+	    return(-1);
     }
     return(size);
 } /* end mf_w_sysex_event */
 
-void 
+void
 mf_w_tempo(delta_time, tempo)
 unsigned long delta_time;
 unsigned long tempo;
@@ -877,16 +886,16 @@ unsigned long tempo;
     eputc((unsigned)(0xff & tempo));
 }
 
-unsigned long 
+unsigned long
 mf_sec2ticks(float secs, int division, unsigned int tempo)
-{    
+{
      return (long)(((secs * 1000.0) / 4.0 * division) / tempo);
 }
 
 /*
  * Write multi-length bytes to MIDI format files
  */
-static void 
+static void
 WriteVarLen(unsigned long value)
 {
 	unsigned long buffer;
@@ -900,7 +909,7 @@ WriteVarLen(unsigned long value)
   	}
   	while(1) {
   		eputc((unsigned)(buffer & 0xff));
-       
+
 		if(buffer & 0x80)
 			buffer >>= 8;
 		else
@@ -908,13 +917,13 @@ WriteVarLen(unsigned long value)
 	}
 }/* end of WriteVarLen */
 
-/* 
+/*
  * This routine converts delta times in ticks into seconds. The
  * else statement is needed because the formula is different for tracks
  * based on notes and tracks based on SMPTE times.
  *
  */
-float 
+float
 mf_ticks2sec(ticks,division,tempo)
 int division;
 unsigned int tempo;
@@ -945,7 +954,7 @@ unsigned long ticks;
  * has been true at least on PCs, UNIX machines, and Macintosh's.
  *
  */
-static void 
+static void
 write32bit(unsigned long data)
 {
     eputc((unsigned)((data >> 24) & 0xff));
@@ -954,7 +963,7 @@ write32bit(unsigned long data)
     eputc((unsigned)(data & 0xff));
 }
 
-static void 
+static void
 write16bit(int data)
 {
     eputc((unsigned)((data & 0xff00) >> 8));
@@ -962,21 +971,21 @@ write16bit(int data)
 }
 
 /* write a single character and abort on error */
-static int eputc(unsigned char c)			
+static int eputc(unsigned char c)
 {
 	int return_val;
-	
+
 	if((Mf_putc) == NULLFUNC)
 	{
 		mferror("Mf_putc undefined");
 		return(-1);
 	}
-	
+
 	return_val = (*Mf_putc)(c);
 
 	if ( return_val == EOF )
 		mferror("error writing");
-		
+
 	Mf_numbyteswritten++;
 	return(return_val);
 }

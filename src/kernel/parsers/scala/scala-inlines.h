@@ -61,11 +61,12 @@ namespace mutabor {
 		template<class T>
 		inline std::ostream & scala_value<T>::print(std::ostream & o) const
 		{
+			std::ios_base::fmtflags fmt = o.flags();
 			if (!comment.empty())
 				o << "!" << comment << std::endl;
 			o << std::showpoint << value << description;
+			o.flags(fmt);
 			return o;
-
 		}
 		template<class T>
 		inline std::ostream & operator << (std::ostream & o,
@@ -76,6 +77,7 @@ namespace mutabor {
 
 
 		inline std::ostream & interval::print (std::ostream & o) const {
+			std::ios_base::fmtflags fmt = o.flags();
 			if (!comment.empty())
 				o << "!" << comment << std::endl;
 			switch (type) {
@@ -96,6 +98,7 @@ namespace mutabor {
 				o << "<unknown interval>";
 			}
 			o << description;
+			o.flags(fmt);
 			return o;
 		}
 		inline bool interval::operator == (const interval & o) const {

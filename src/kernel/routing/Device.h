@@ -270,7 +270,7 @@ namespace mutabor {
 
 			switch (message) {
 			case midi::PITCH_BEND_SENSITIVITY:
-				return -1;
+				return midi::PITCH_BEND_SENSITIVITY;
 #if 0
 				// Don't send the parameter at this
 				// moment.  the parameter should be

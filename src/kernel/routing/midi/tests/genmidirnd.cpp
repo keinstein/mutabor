@@ -96,18 +96,33 @@ int main(/* int argc, char **argv */)
 	time(&t);
 	srand((unsigned int)t);
     
-	mutabor::InitDeviceFactories();
+	try {
+		mutabor::InitDeviceFactories();
+	} catch (const mutabor::RouteFactory::FactoryAlreadySet & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	}
 	mutabor::CurrentTime.UseRealtime(false);
-	mutabor::CurrentTime.Set(boost::chrono::microseconds(0));
+	mutabor::CurrentTime.Set(mutabor::microseconds(0));
 	
 	mutabor::ChannelData cd;
-	
-	mutabor::Route route = mutabor::RouteFactory::Create();
+	mutabor::Route route;
+	try {
+		route = mutabor::RouteFactory::Create();
+	} catch (const mutabor::RouteFactory::RouteFactoryNotSet & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	}
 	mutabor::Box box = mutabor::BoxFactory::Create(mutabor::Box0,0);
 	connect(route, box);
 
 	mutabor::OutputDevice guard;
-	guard = mutabor::DeviceFactory::CreateOutput(mutabor::DTMidiFile);
+	try {
+		guard = mutabor::DeviceFactory::CreateOutput(mutabor::DTMidiFile);
+	} catch (const mutabor::DeviceFactory::FactoryNotFound & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	}
 //	mutabor::InputDevice in(mutabor::DeviceFactory::CreateInput(mutabor::DTMidiFile));
 	if (!guard) {
 		std::clog << "Class construction failed." << std::endl;
@@ -116,40 +131,49 @@ int main(/* int argc, char **argv */)
 
 	mutabor::OutputMidiFile * out = static_cast<mutabor::OutputMidiFile *>(guard.get());
 	out->SetName(("test_rnd.mid"));
-	out->SetBendingRange(2);
+	try {
+		out->SetBendingRange(2);
+	} catch (const mutabor::TrackData::delta_length_error & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	}
 
 	connect(route, guard);
 	route->SetOutputFrom (0);
 	route->SetOutputTo (0);
 	route->OutputAvoidDrumChannel (true);
 
-	if (!(out -> Open())) {
-		std::clog << "Open failed. Exiting." << std::endl;
-		exit(1);
-	}
+	try {
+		if (!(out -> Open())) {
+			std::clog << "Open failed. Exiting." << std::endl;
+			exit(1);
+		}
 	
-	std::vector<char> bytes(128);
-	for (size_t i = 0 ; i < 128 ; i++) {
-		bytes[i] = i;
-	}
-	size_t ton;
-	char tonwert;
+		std::vector<char> bytes(128);
+		for (size_t i = 0 ; i < 128 ; i++) {
+			bytes[i] = i;
+		}
+		size_t ton;
+		char tonwert;
 	
-	for (size_t i = 0x80 ; i ; i--) {
-		ton = rand() %i;
-		tonwert = bytes[ton];
-		for (size_t j = ton; j < i-1; j ++)
-			bytes[j] = bytes[j+1];
-		bytes[i-1] = tonwert;
+		for (size_t i = 0x80 ; i ; i--) {
+			ton = rand() %i;
+			tonwert = bytes[ton];
+			for (size_t j = ton; j < i-1; j ++)
+				bytes[j] = bytes[j+1];
+			bytes[i-1] = tonwert;
 			
-		out->NoteOn(box, tonwert, 0x40, route.get(), 0, cd);
-		mutabor::CurrentTime = mutabor::CurrentTime.Get()+mutabor::microseconds(125000);
-		out->NoteOff(box, tonwert, 0x40, route.get(), 0, false);
-		mutabor::CurrentTime = mutabor::CurrentTime.Get()+mutabor::microseconds(125000);
+			out->NoteOn(box, tonwert, 0x40, route.get(), 0, cd);
+			mutabor::CurrentTime = mutabor::CurrentTime.Get()+mutabor::microseconds(125000);
+			out->NoteOff(box, tonwert, 0x40, route.get(), 0, false);
+			mutabor::CurrentTime = mutabor::CurrentTime.Get()+mutabor::microseconds(125000);
+		}
+	} catch (const boost::lock_error & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
 	}
 	
-	if (out) 
-		out->Destroy();
+	out->Destroy();
 	out = NULL;
 	guard.reset();
 		

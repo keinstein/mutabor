@@ -39,7 +39,7 @@
 
 using namespace mutabor;
 
-namespace mutaborGUI {
+MUTABOR_NAMESPACE(mutaborGUI)
 
 	void MutNewInputDeviceShape::InitializeDialog(InputDevDlg * in) const
 	{
@@ -49,8 +49,18 @@ namespace mutaborGUI {
 
 	bool MutNewInputDeviceShape::replaceSelfBy (MutInputDeviceShape  * newshape)
 	{
+		auto parent = m_parent;
 		MutRouteWnd * p = dynamic_cast<MutRouteWnd *> (m_parent);
+		while (parent && !p) {
+			parent = parent->GetParent();
+			p = dynamic_cast<MutRouteWnd *> (m_parent);
+		}
+
 		mutASSERT(p);
+		if (!p) {
+			UNREACHABLEC;
+			return false;
+		}
 		// the "New device" icon won't be replaced, so we just append the device
 		p->AddInputDevice(newshape,sizerFlags);
 		return false;
@@ -60,7 +70,8 @@ namespace mutaborGUI {
 
 	IMPLEMENT_DYNAMIC_CLASS(MutNewInputDeviceShape, MutInputDeviceShape)
 
-}
+MUTABOR_NAMESPACE_END(mutaborGUI)
+
 /*
  * \}
  */

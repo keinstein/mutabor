@@ -494,9 +494,12 @@ InputMidiPort::proceed_bool InputMidiPort::shouldProceed(Route R,
 }
 
 
-void InputMidiPort::Proceed(const std::vector<unsigned char > &midiCode, int data, int channel_offset) {
+void InputMidiPort::Proceed(const std::vector<unsigned char > &midiCode,
+			    int data,
+			    size_t channel_offset) {
 	/** \todo implement system messages */
-	uint8_t MidiChannel = (midiCode[0] & 0x0F) + channel_offset;
+	size_t MidiChannel = makeChannel(midiCode,
+					 channel_offset);
 	uint8_t MidiStatus  = midiCode[0];
 	DEBUGLOG (midifile, "Status: %x" , MidiStatus);
 

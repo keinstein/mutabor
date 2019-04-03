@@ -1,31 +1,31 @@
 // -*- C++ -*-
 /** \file
- ********************************************************************
- * Devices Basisklassen.
- *
- * \author Rüdiger Krauße,
- * Tobias Schlemmer <keinstein@users.sourceforge.net>
- * \license GPL
- *
- *    This program is free software; you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation; either version 2 of the License, or
- *    (at your option) any later version.
- *
- *    This program is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this program; if not, write to the Free Software
- *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- *
- ********************************************************************
- *\addtogroup GUIroute
- *\{
- ********************************************************************/
+********************************************************************
+* Devices Basisklassen.
+*
+* \author Rüdiger Krauße,
+* Tobias Schlemmer <keinstein@users.sourceforge.net>
+* \license GPL
+*
+*    This program is free software; you can redistribute it and/or modify
+*    it under the terms of the GNU General Public License as published by
+*    the Free Software Foundation; either version 2 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU General Public License for more details.
+*
+*    You should have received a copy of the GNU General Public License
+*    along with this program; if not, write to the Free Software
+*    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*
+*
+********************************************************************
+*\addtogroup GUIroute
+*\{
+********************************************************************/
 
 /* we guard a little bit complicated to ensure the references are set right
  */
@@ -58,59 +58,60 @@
 //#include "wx/defs.h"
 //#include "wx/icon.h"
 //#include "wx/stattext.h"
-namespace mutaborGUI {
+MUTABOR_NAMESPACE(mutaborGUI)
 
-	typedef GisOutputFilterPanelBase GisOutputFilterPanel;
+typedef GisOutputFilterPanelBase GisOutputFilterPanel;
 
-	class MutOutputGuidoFileDeviceShape:public MutOutputDeviceShape
+class MutOutputGuidoFileDeviceShape:public MutOutputDeviceShape
+{
+	friend class GUIGisFactory;
+protected:
+	MutOutputGuidoFileDeviceShape():MutOutputDeviceShape() {}
+	MutOutputGuidoFileDeviceShape (wxWindow * parent,
+				       wxWindowID id, 
+				       mutabor::OutputDevice d):
+		MutOutputDeviceShape() {
+		Create (parent,id,d);
+	}
+public:
+	bool Create (wxWindow * parent, wxWindowID id, mutabor::OutputDevice d)
 	{
-		friend class GUIGisFactory;
-	protected:
-		MutOutputGuidoFileDeviceShape():MutOutputDeviceShape() {}
-		MutOutputGuidoFileDeviceShape (wxWindow * parent,
-					       wxWindowID id, 
-					       mutabor::OutputDevice d):
-			MutOutputDeviceShape() {
-			Create (parent,id,d);
-		}
-	public:
-		bool Create (wxWindow * parent, wxWindowID id, mutabor::OutputDevice d)
-			{
-				return MutOutputDeviceShape::Create(parent,id,d);
-			}
+		return MutOutputDeviceShape::Create(parent,id,d);
+	}
 
-		virtual MutIcon & GetMutIcon () 
-			{
-				TRACEC;
-				return GuidoFileBitmap;
-			}
+	virtual MutIcon & GetMutIcon () 
+	{
+		TRACEC;
+		return GuidoFileBitmap;
+	}
 
-		void SetLabel(const wxString & st ) {
-			fileName = st;
-			fileName.Normalize();
-			MutOutputDeviceShape::SetLabel (fileName.GetFullName());
-		}
+	void SetLabel(const wxString & st ) {
+		fileName = st;
+		fileName.Normalize();
+		MutOutputDeviceShape::SetLabel (fileName.GetFullName());
+	}
 	
-		virtual wxPanel * GetFilterPanel(wxWindow * parent, 
-						 mutabor::Route & route) const;
-		virtual void ReadFilterPanel(wxWindow * panel, 
-					     mutabor::Route & route);
+	virtual wxPanel * GetFilterPanel(wxWindow * parent, 
+					 mutabor::Route & route) const;
+	virtual void ReadFilterPanel(wxWindow * panel, 
+				     mutabor::Route & route);
 
 
-	protected: 
-		virtual void InitializeDialog(OutputDevDlg * out) const;
-		virtual bool readDialog (OutputDevDlg * out);
-		virtual bool CanHandleType (mutabor::DevType  type) { 
-			return type == mutabor::DTGis; 
-		}
+protected: 
+	virtual void InitializeDialog(OutputDevDlg * out) const;
+	virtual bool readDialog (OutputDevDlg * out);
+	virtual bool CanHandleType (mutabor::DevType  type) { 
+		return type == mutabor::DTGis; 
+	}
 
-		wxFileName fileName;
+	wxFileName fileName;
 
-	private:
-		DECLARE_DYNAMIC_CLASS(MutOutputGuidoFileDeviceShape)
+private:
+	DECLARE_DYNAMIC_CLASS(MutOutputGuidoFileDeviceShape)
 
-	};
-}
+};
+MUTABOR_NAMESPACE_END(mutaborGUI)
+
 #endif				/* OUTPUTGUIDOFILEDEVICESHAPE_H_PRECOMPILED */
 #endif				/* OUTPUTGUIDOFILEDEVICESHAPE_H */
 /*

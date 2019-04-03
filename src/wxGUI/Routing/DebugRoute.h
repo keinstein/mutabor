@@ -47,15 +47,13 @@
 // system headers which do seldom change
 // if necessary ;-)
 
-#ifdef DEBUG
 namespace mutaborGUI{
+#ifdef DEBUG
 	void DebugCheckRoutes();
-}
 #else
-namespace mutaborGUI {
 	inline void DebugCheckRoutes() {}
-}
 #endif
+}
 
  
 #endif // precompiled

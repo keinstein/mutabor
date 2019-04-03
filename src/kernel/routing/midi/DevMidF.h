@@ -906,6 +906,7 @@ namespace mutabor {
 		friend class MidiFileFactory;
 	protected:
 		InputMidiFile(): base(),
+				 FileType(0),
 				 Tracks(),
 				 Busy(false),
 				 timing() { }
@@ -915,6 +916,7 @@ namespace mutabor {
 			      int id): base(name,
 					    mode,
 					    id),
+				       FileType(0),
 				       Tracks(),
 				       Busy(false),
 				       timing() {}
@@ -995,7 +997,9 @@ namespace mutabor {
 		proceed_bool shouldProceed(Route R,
 					   const std::vector<uint8_t > &midiCode,
 					   int data =0);
-		void Proceed(const std::vector<uint8_t > &midiCode, int data =0, int channel_offset = 0);
+		void Proceed(const std::vector<uint8_t > &midiCode,
+			     int data =0,
+			     size_t channel_offset = 0);
 
 	protected:
 		int FileType;

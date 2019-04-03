@@ -149,8 +149,19 @@ int main(/* int argc, char **argv */)
 	}
 #endif
 
-	mutabor::InitDeviceFactories();
-	mutabor::InputDevice in(new myDevice());
+	try {
+		mutabor::InitDeviceFactories();
+	} catch (const mutabor::RouteFactory::FactoryAlreadySet & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	}
+	mutabor::InputDevice in;
+	try {
+		in = new myDevice();
+	} catch (const boost::thread_resource_error & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	}
 //	mutabor::InputDevice in(mutabor::DeviceFactory::CreateInput(mutabor::DTMidiFile));
 	if (!in) {
 		std::clog << "Class construction failed." << std::endl;

@@ -135,11 +135,20 @@ int main(/*int argc, char **argv*/)
 //	debugFlags::flags.midifile = true;
 #endif
 	//	mutwxInitializer initializer;
-	mutabor::InitDeviceFactories();
+	try {
+		mutabor::InitDeviceFactories();
+	} catch (const mutabor::RouteFactory::FactoryAlreadySet & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	}
 	mutabor::ScopedInputDevice in;
 	mutabor::CurrentTime.UseRealtime(true);
-	in = (new myDevice());
-//	mutabor::InputDevice in(mutabor::DeviceFactory::CreateInput(mutabor::DTMidiFile));
+	try {
+		in = new myDevice();
+	} catch (const boost::thread_resource_error & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	}
 	if (!in) {
 		std::clog << "Class construction failed." << std::endl;
 		exit(-1);

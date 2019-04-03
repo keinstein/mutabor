@@ -404,3 +404,8 @@ printvariables:
 	@echo 'RTMIDI_LIBS=$(RTMIDI_LIBS)'
 	@echo 'WX_LIBS=$(WX_LIBS)'
 	@echo 'WX_LIBS_STATIC=$(WX_LIBS_STATIC)'
+
+MULTITARGETS = all check
+
+multitarget:
+	for t in $(MULTITARGETS) ; do $(MAKE) $$t ; done

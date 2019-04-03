@@ -48,7 +48,7 @@
 #include "wx/docview.h"
 #include "wx/cmdproc.h"
 
-namespace mutaborGUI {
+MUTABOR_NAMESPACE(mutaborGUI)
 
 	class MutDocument;
 	/// Command processor for wxStyledTextControl
@@ -155,7 +155,7 @@ namespace mutaborGUI {
 			
         };
 
-}
+MUTABOR_NAMESPACE_END(mutaborGUI)
 
 #endif
 #endif

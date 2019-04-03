@@ -56,7 +56,7 @@
 //#include "wx/icon.h"
 //#include "wx/stattext.h"
 
-namespace mutaborGUI {
+MUTABOR_NAMESPACE(mutaborGUI)
 
 	class MutOutputMidiDeviceShape:public MutOutputDeviceShape
 	{
@@ -101,7 +101,7 @@ namespace mutaborGUI {
 
 	};
 
-}
+MUTABOR_NAMESPACE_END(mutaborGUI)
 #endif				/* OUTPUTMIDIDEVICESHAPE_H_PRECOMPILED */
 #endif				/* OUTPUTMIDIDEVICESHAPE_H */
 /*

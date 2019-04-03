@@ -619,11 +619,22 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 			goto error_cleanup;
 		}
 
-		uint8_t a, b;
+		int a, b;
 
 		// file type
-		a = is.get(); //mutGetC(is,a);
-		FileType = ((int)a << 8) + is.get(); //mutGetC(is,FileType);
+		if ((a = is.get()) == EOF) {
+			runtime_error(generic_error,
+				      boost::str(boost::format(_mut("Unexpected end of MIDI file '%s'."))
+						 % Name.c_str()));
+			goto error_cleanup;
+		}
+		if ((b = is.get()) == EOF) {
+			runtime_error(generic_error,
+				      boost::str(boost::format(_mut("Unexpected end of MIDI file '%s'."))
+						 % Name.c_str()));
+			goto error_cleanup;
+		}
+		FileType = (a << 8) | b; //mutGetC(is,FileType);
 		if (FileType > 3) {
 			runtime_error(generic_error,
 				      boost::str(boost::format(_mut("Unknown file type %d in file '%s'."))
@@ -632,13 +643,34 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 		}
 
 		// number of tracks
-		a = is.get(); //mutGetC(is,a);
-		b = is.get(); // mutGetC(is,b);
-		nTrack = (((int)a) << 8) + b;
+		if ((a = is.get()) == EOF) {
+			runtime_error(generic_error,
+				      boost::str(boost::format(_mut("Unexpected end of MIDI file '%s'."))
+						 % Name.c_str()));
+			goto error_cleanup;
+		}
+		if ((b = is.get()) == EOF) {
+			runtime_error(generic_error,
+				      boost::str(boost::format(_mut("Unexpected end of MIDI file '%s'."))
+						 % Name.c_str()));
+			goto error_cleanup;
+		}
+
+		nTrack = (a << 8) | b;
 
 		// speed info
-		a = is.get(); //mutGetC(is,a);
-		b = is.get(); //mutGetC(is,b);
+		if ((a = is.get()) == EOF) {
+			runtime_error(generic_error,
+				      boost::str(boost::format(_mut("Unexpected end of MIDI file '%s'."))
+						 % Name.c_str()));
+			goto error_cleanup;
+		}
+		if ((b = is.get()) == EOF) {
+			runtime_error(generic_error,
+				      boost::str(boost::format(_mut("Unexpected end of MIDI file '%s'."))
+						 % Name.c_str()));
+			goto error_cleanup;
+		}
 		try {
 			timing.set_MIDI_tick_signature(a,b);
 		} catch (const std::range_error & e) {
@@ -652,10 +684,8 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 			 (int)nTrack,
 			 (int)timing.get_ticks());
 
-		// rest of header
-		uint32_t i;
-
-		for (i = 6; i < l && !is.eof() && is.good(); i++ )
+		// remaining (unknown) part of the header
+		for (uint32_t i = 6; i < l && !is.eof() && is.good(); i++ )
 			a = is.get();// mutGetC(is,a);
 
 		// Tracks lesen
@@ -686,7 +716,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 			goto error_cleanup;
 		}
 #if 0
-		for (i = 0; i < nTrack; i++ ) {
+		for (size_t i = 0; i < nTrack; i++ ) {
 
 			is.read(Header, 4);
 			if (strcmp(Header,"MTrk")) {
@@ -876,9 +906,12 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)")
 	}
 
 
-	void InputMidiFile::Proceed(const std::vector<unsigned char > &midiCode, int data, int channel_offset) {
+	void InputMidiFile::Proceed(const std::vector<unsigned char > &midiCode,
+				    int data,
+				    size_t channel_offset) {
 		/** \todo implement system messages */
-		uint8_t MidiChannel = (midiCode[0] & 0x0F) + channel_offset;
+		size_t MidiChannel = makeChannel(midiCode,
+						 channel_offset);
 		uint8_t MidiStatus  = midiCode[0];
 		DEBUGLOG (midifile, "Status: %x" , MidiStatus);
 
