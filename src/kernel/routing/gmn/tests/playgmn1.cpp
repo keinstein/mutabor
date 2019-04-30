@@ -175,7 +175,21 @@ int main(/* int argc, char **argv */)
 		exit(1);
 	}
 #endif
-	in -> BatchPlay();
+	try {
+		in -> BatchPlay();
+	} catch (const boost::io::too_few_args & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 3;
+	} catch (const boost::io::too_many_args & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 3;
+	} catch (const boost::io::bad_format_string & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 3;
+	} catch (const mutabor::error::runtime_exception & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 4;
+	}
 	in -> Close();
 
 	//e = in->WaitForDeviceFinish();

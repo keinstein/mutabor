@@ -559,6 +559,7 @@ namespace mutabor {
 
 
 		int newctrl = output.get_index(ctrl);
+		if (newctrl < 0 ) return;
 		int old_value = output.get_controller(newctrl);
 
 		if (output.get_controller(ctrl) == value ||

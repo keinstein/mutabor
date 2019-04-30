@@ -365,7 +365,10 @@ void BoxDlg::AddButtonPressed( wxCommandEvent& event )
 {
 	mutUnused(event);
 	MutRouteWnd * parentwin = dynamic_cast<MutRouteWnd *> (m_parent);
-	if (!parentwin || !routeWindow) UNREACHABLEC;
+	if (!parentwin || !routeWindow) {
+		UNREACHABLEC;
+		return;
+	}
 	mutabor::Box box = mutabor::BoxClass::GetBox(GetBoxType()==Box0?GetBoxNumber():GetBoxType(),
 						     mutabor::BoxClass::IDTypeFile);
 	MutBoxChannelShape::CreateRoutePanel(NULL, 

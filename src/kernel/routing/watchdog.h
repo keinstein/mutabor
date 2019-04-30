@@ -95,6 +95,11 @@ namespace mutabor {
 					} catch (boost::thread_interrupted) {
 						exit = true;
 						break;
+					} catch (const boost::lock_error & e) {
+						// rethrow after joining.
+						state = thread_exception_caught;
+						exception = std::current_exception();
+						break;
 					}
 					// deal with spurious wakeups.
 				} while ((cur_time = CurrentTimer::time_point::clock::now()) < wake_time);
