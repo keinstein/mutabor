@@ -29,7 +29,7 @@ void print_status (const char * s) {
 	try {
 		boost::unique_lock<boost::mutex> lock(printmutex);
 		std::cerr << s << std::endl;
-	} catch (const boost::lock_error) {
+	} catch (const boost::lock_error & ) {
 		std::cerr << "Locking error while printing: " << std::endl;
 		std::cerr << s << std::endl;
 		std::cerr << boost::current_exception_diagnostic_information();
@@ -86,7 +86,7 @@ int main() {
 	} catch (const boost::condition_error & e) {
 		std::cerr << boost::current_exception_diagnostic_information();
 		return 1;
-	} catch (const boost::thread_resource_error) {
+	} catch (const boost::thread_resource_error &) {
 		std::cerr << boost::current_exception_diagnostic_information();
 		return 1;
 	}

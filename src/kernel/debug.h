@@ -299,7 +299,7 @@ void mutabor_debug_unlock();
 				__FUNCTION__,				\
 				stubtype);				\
 			fflush(stderr);					\
-			BOOST_THROW_EXCEPTION(::mutbor::error::unreachable_exception(stubtype)); \
+			BOOST_THROW_EXCEPTION(::mutabor::error::unreachable_exception(stubtype)); \
 	} while (false)
 
 #define isDebugFlag(level) false
