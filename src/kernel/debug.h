@@ -226,7 +226,6 @@ void mutabor_debug_unlock();
 #define isDebugFlag(level) (mutabor_debug_flags.level)
 # define DEBUGLOGBASEINT(...) DEBUGLOGBASEINT2(__VA_ARGS__)
 #endif
-
 # define DEBUGLOGBASEINT2(level,strlevel, type, ...)			\
 	do {								\
 		if (level) {						\
@@ -256,8 +255,22 @@ void mutabor_debug_unlock();
 				stubtype);				\
 			fflush(stderr);					\
 			mutabor_debug_unlock();				\
+			BOOST_THROW_EXCEPTION(::mutabor::error::stub_exception(stubtype)); \
 	} while (false)
 
+#define UNREACHABLEBASE(stubtype,classtype)					\
+	do {								\
+			mutabor_debug_lock();				\
+			fprintf(stderr, "%s:%d:%s::%s: %s",		\
+				__FILE__,				\
+				__LINE__,				\
+				classtype,				\
+				__FUNCTION__,				\
+				stubtype);				\
+			fflush(stderr);					\
+			BOOST_THROW_EXCEPTION(::mutabor::error::unreachable_exception(stubtype)); \
+			mutabor_debug_unlock();				\
+	} while (false)
 
 #define mutRefCast(type,value) dynamic_cast<type &>(value)
 #define mutPtrCast(type,value) (mutASSERT(dynamic_cast<type *>(value)), dynamic_cast<type *>(value))
@@ -274,6 +287,19 @@ void mutabor_debug_unlock();
 				__FUNCTION__,				\
 				stubtype);				\
 			fflush(stderr);					\
+			BOOST_THROW_EXCEPTION(::mutabor::error::stub_exception(stubtype)); \
+	} while (false)
+
+#define UNREACHABLEBASE(stubtype,classtype)					\
+	do {								\
+			fprintf(stderr, "%s:%d:%s::%s: %s",		\
+				__FILE__,				\
+				__LINE__,				\
+				classtype,				\
+				__FUNCTION__,				\
+				stubtype);				\
+			fflush(stderr);					\
+			BOOST_THROW_EXCEPTION(::mutbor::error::unreachable_exception(stubtype)); \
 	} while (false)
 
 #define isDebugFlag(level) false
@@ -305,8 +331,8 @@ void mutabor_debug_unlock();
 #define STUBCT(type) STUBBASE("stub.",((const char *) (typeid(type).name())))
 #define STUBC STUBCT(*this)
 
-#define UNREACHABLE STUBBASE("unreachable code","")
-#define UNREACHABLECT(type) STUBBASE("unreachable code",((const char *) (typeid(type).name())))
+#define UNREACHABLE UNREACHABLEBASE("unreachable code","")
+#define UNREACHABLECT(type) UNREACHABLEBASE("unreachable code",((const char *) (typeid(type).name())))
 #define UNREACHABLEC UNREACHABLECT(*this)
 
 #define ABSTRACT_FUNCTION STUBBASE("unreachable function","")
@@ -440,6 +466,8 @@ extern const char * top_builddir;
 std::string StreamToHex(std::istream & buf);
 std::string MakePrintableC(const std::string & s);
 #endif
+
+
 
 #endif /* precompiled */
 #endif /* header loaded */
