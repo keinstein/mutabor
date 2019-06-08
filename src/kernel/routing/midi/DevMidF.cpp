@@ -122,8 +122,12 @@ namespace mutabor {
 	timing_params::ticktype Track::WriteDelta()
 	{
 		CurrentTimer::time_point newtime = CurrentTime.Get();
-		microseconds newdelta = boost::chrono::duration_cast<microseconds>(newtime - Time);
-		microseconds Deltatime = std::max(newdelta,microseconds::zero());
+		microseconds newdelta =
+			newtime >= Time ?
+			boost::chrono::duration_cast<microseconds>(newtime - Time):microseconds::zero();
+			;
+		microseconds Deltatime = std::max(newdelta,
+						  microseconds::zero());
 		// note: Deltatime may be a little bit ahead if get_delta rounds up
 		timing_params::miditicks Delta (Deltatime,timing,true);
 		DEBUGLOG(midifile,
