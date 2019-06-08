@@ -5,6 +5,6 @@ check_MIDISOURCES =
 check_SCRIPTS =
 TEST_EXTENSIONS =
 
-SUBDIRS = missfunc
+SUBDIRS = missfunc gnulib
 
 include $(top_srcdir)/common-rules.mk

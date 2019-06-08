@@ -123,6 +123,8 @@ AM_MAINTAINER_MODE([enable])
 
 # Checks for programs.
 AC_PROG_CC
+dnl early GNUlib checks
+gl_EARLY
 AC_PROG_CXX
 AM_PROG_CC_C_O
 PKG_PROG_PKG_CONFIG([0.14.0])
@@ -804,6 +806,9 @@ abspath () {
 	fi
 }
 
+dnl initialize GNUlib
+gl_INIT
+
 # propagate Host triplets to DISTCHECK_CONFIGURE_FLAGS
 for v in host build target; do
     tmp="${v}_alias"
@@ -835,6 +840,7 @@ lib/Makefile
 lib/rtmidi/rtmidi-config
 lib/rtmidi/rtmidi.pc
 lib/missfunc/Makefile
+lib/gnulib/Makefile
 Images/Icons/png/16x16/Makefile
 Images/Icons/png/20x20/Makefile
 osdep/macosx/Info.plist
