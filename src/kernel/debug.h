@@ -265,7 +265,7 @@ void mutabor_debug_unlock();
 				__FILE__,				\
 				__LINE__,				\
 				classtype,				\
-				__FUNCTION__,				\
+				__func__,				\
 				stubtype);				\
 			fflush(stderr);					\
 			BOOST_THROW_EXCEPTION(::mutabor::error::unreachable_exception(stubtype)); \
@@ -284,7 +284,7 @@ void mutabor_debug_unlock();
 				__FILE__,				\
 				__LINE__,				\
 				classtype,				\
-				__FUNCTION__,				\
+				__func__,				\
 				stubtype);				\
 			fflush(stderr);					\
 			BOOST_THROW_EXCEPTION(::mutabor::error::stub_exception(stubtype)); \
@@ -296,7 +296,7 @@ void mutabor_debug_unlock();
 				__FILE__,				\
 				__LINE__,				\
 				classtype,				\
-				__FUNCTION__,				\
+				__func__,				\
 				stubtype);				\
 			fflush(stderr);					\
 			BOOST_THROW_EXCEPTION(::mutabor::error::unreachable_exception(stubtype)); \
