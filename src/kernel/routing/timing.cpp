@@ -30,7 +30,15 @@
  ********************************************************************/
 // availlable groups: GUI, route, kernel, muwx, debug, docview
 
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
+#define _GNU_SOURCE
+#include <cstdio>
 #include <stdexcept>
+
 #include "src/kernel/routing/timing.h"
 
 /// not for headers

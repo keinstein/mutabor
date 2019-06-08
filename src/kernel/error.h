@@ -51,6 +51,11 @@
 #define SRC_KERNEL_ERROR_H_INCLUDED_PRECOMPILED
 
 /* system headers which do seldom change */
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE 1
+#endif
+
+
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
