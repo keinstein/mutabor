@@ -27,12 +27,11 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --lib=libgnu --source-base=lib/gnulib --m4-base=m4 --doc-base=doc --tests-base=tests --aux-dir=config --lgpl=2 --no-conditional-dependencies --no-libtool --macro-prefix=gl asprintf vasprintf
+#   gnulib-tool --import --dir=. --lib=libgnu --source-base=lib/gnulib --m4-base=m4 --doc-base=doc --tests-base=tests --aux-dir=config --lgpl=2 --no-conditional-dependencies --no-libtool --macro-prefix=gl --no-vc-files vasprintf
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([])
 gl_MODULES([
-  asprintf
   vasprintf
 ])
 gl_AVOID([])
@@ -47,3 +46,4 @@ gl_MAKEFILE_NAME([])
 gl_MACRO_PREFIX([gl])
 gl_PO_DOMAIN([])
 gl_WITNESS_C_MACRO([])
+gl_VC_FILES([false])
