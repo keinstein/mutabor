@@ -80,7 +80,8 @@ MutTextBox::MutTextBox(WinKind k,
                        const wxSize& size):wxTextCtrl(),
 	ChangedCallback(b),
 	winKind(k),
-	box(b)
+	box(b),
+	Ok(false)
 {
 	Create(parent, id, wxEmptyString, pos, size,
 	       wxTE_MULTILINE | wxTE_READONLY | wxHSCROLL | wxTE_LEFT | wxTE_DONTWRAP/*, 1, ini tlist*/);

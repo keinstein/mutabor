@@ -99,6 +99,7 @@ install:
 # can not starts with %
 #  - git submodule update --init
   - if /i %_CC%==MinGW (
+      C:\msys64\usr\bin\pacman -Rc --noconfirm mingw-w64-i686-gcc-ada mingw-w64-i686-gcc-objc mingw-w64-x86_64-gcc-ada mingw-w64-x86_64-gcc-objc &&  
       C:\msys64\usr\bin\pacman -Syyuu --noconfirm &&
       C:\msys64\usr\bin\pacman -Suu --noconfirm   &&
       C:\msys64\usr\bin\pacman -S --noconfirm --needed mingw-w64-%MINGW_ARCH%-gcc &&

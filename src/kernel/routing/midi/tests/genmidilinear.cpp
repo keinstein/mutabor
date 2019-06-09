@@ -103,7 +103,14 @@ int main(/* int argc, char **argv */)
 		std::cerr << boost::current_exception_diagnostic_information();
 		return 1;
 	}
-	mutabor::Box box = mutabor::BoxFactory::Create(mutabor::Box0,0);
+
+	mutabor::Box box;
+	try {
+		box = mutabor::BoxFactory::Create(mutabor::Box0,0);
+	} catch (const mutabor::BoxFactory::FactoryNotFound & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	}
 	connect(route, box);
 
 	mutabor::OutputDevice guard;
@@ -124,6 +131,9 @@ int main(/* int argc, char **argv */)
 	try {
 		out->SetBendingRange(2);
 	} catch (const mutabor::TrackData::delta_length_error & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	} catch (const boost::lock_error & e) {
 		std::cerr << boost::current_exception_diagnostic_information();
 		return 1;
 	}

@@ -41,12 +41,24 @@
  * --------------------------------------------------------------------------- */
 
 #include "src/kernel/Defs.h"
+#ifdef __cplusplus
+#include <boost/throw_exception.hpp>
+#else
+#define BOOST_THROW_EXCEPTION(x)
+#endif
 
 #ifndef SRC_KERNEL_ERROR_H_INCLUDED_PRECOMPILED
 #define SRC_KERNEL_ERROR_H_INCLUDED_PRECOMPILED
 
 /* system headers which do seldom change */
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE 1
+#endif
+
+
 #include <stdio.h>
+#include <stdarg.h>
+#include <stdlib.h>
 
 /** not for headers */
 #ifdef __BORLANDC__
@@ -73,7 +85,7 @@ enum mutabor_error_type {
 };
 
 struct mutabor_logic_parsed;
-
+struct midiliste;
 
 typedef void (* mutabor_callback_update_type) (mutabor_box_type * box,
 					       unsigned int flags);
@@ -185,6 +197,19 @@ namespace error {
 		}
 
 	};
+
+	class stub_exception: public std::runtime_error {
+	public:
+		typedef std::runtime_error base;
+		stub_exception(const std::string & message): base(message) {}
+	};
+
+	class unreachable_exception: public std::runtime_error {
+	public:
+		typedef std::runtime_error base;
+		unreachable_exception(const std::string & message): base(message) {}
+	};
+
 }
 
 static inline void  __attribute__((__noreturn__)) throw_runtime_error(enum error::mutabor_error_type type,

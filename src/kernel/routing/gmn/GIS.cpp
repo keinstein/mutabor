@@ -26,8 +26,14 @@
  * \{
  ********************************************************************/
 
+#define _GNU_SOURCE
+
 #ifndef FOR_MUTWIN
 #include <iostream>
+#endif
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
 #endif
 
 #include "src/kernel/Frac.h"

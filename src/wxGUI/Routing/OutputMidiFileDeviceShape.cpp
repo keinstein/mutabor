@@ -96,8 +96,10 @@ bool MutOutputMidiFileDeviceShape::readDialog (OutputDevDlg * out)
 	mutASSERT(device->GetType() == DTMidiFile);
 	mutASSERT(out);
 	mutASSERT (out -> GetType() == DTMidiFile);
-	OutputMidiFile * d = dynamic_cast<OutputMidiFile *>(device.get());
-	mutASSERT(d);
+	mutASSERT(dynamic_cast<OutputMidiFile *>(device.get()));
+
+	OutputMidiFile * d = static_cast<OutputMidiFile *>(device.get());
+	if (!d) UNREACHABLEC;
 	d->SetName ((const char * )(out -> GetMidiFile().ToUTF8()));
 	d->SetBendingRange (out -> GetMidiFileBendingRange());
 	SetLabel (wxString::FromUTF8(device->GetName().c_str()));

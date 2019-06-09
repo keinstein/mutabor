@@ -26,8 +26,15 @@ void print_stack_size() {
 }
 
 void print_status (const char * s) {
-	boost::unique_lock<boost::mutex> lock(printmutex);
-	std::cerr << s << std::endl;
+	try {
+		boost::unique_lock<boost::mutex> lock(printmutex);
+		std::cerr << s << std::endl;
+	} catch (const boost::lock_error & ) {
+		std::cerr << "Locking error while printing: " << std::endl;
+		std::cerr << s << std::endl;
+		std::cerr << boost::current_exception_diagnostic_information();
+		exit(1);
+	}
 }
 
 class test_thread: public Thread {
@@ -77,6 +84,9 @@ int main() {
 	try {
 		retval = test.Wait();
 	} catch (const boost::condition_error & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
+	} catch (const boost::thread_resource_error &) {
 		std::cerr << boost::current_exception_diagnostic_information();
 		return 1;
 	}

@@ -63,9 +63,6 @@
 #include "boost/throw_exception.hpp"
 //#include "boost/intrusive_ptr.hpp"
 
-#if 0
-#include "wx/config.h"
-#endif
 // Route ------------------------------------------------------------
 namespace mutaborGUI {
 	class GUIRouteBase;
