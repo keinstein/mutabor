@@ -32,6 +32,7 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
+#include "src/kernel/error.h"
 #include "wx/image.h"
 #include "wx/stdpaths.h"
 #include "wx/filename.h"
@@ -81,6 +82,7 @@
 using namespace mutabor;
 using namespace mutaborGUI;
 
+mutwxUnhandldExeceptionHandler guiUnhandledExceptionHandler;
 
 #ifdef MUTABOR_TEST
 IMPLEMENT_APP_NO_MAIN(MutApp)
@@ -194,6 +196,7 @@ MUTABOR_NAMESPACE(mutaborGUI)
 		// Initialize the catalogs we'll be using
 		m_locale.AddCatalog(wxT("mutabor"));
 		m_locale.AddCatalog(wxT("wxstd"));
+		m_locale.AddCatalog(wxT("rtmidi"));
 #ifdef __LINUX__
 		{
 //			wxLogNull noLog;
@@ -276,6 +279,8 @@ MUTABOR_NAMESPACE(mutaborGUI)
 		// init global wx objects
 		// -------------------
 
+
+		guiUnhandledExceptionHandler.do_register();
 
 		// We are using .png files for some extra bitmaps.
 		wxImageHandler * pnghandler = new wxPNGHandler;
@@ -1451,6 +1456,7 @@ MUTABOR_NAMESPACE(mutaborGUI)
 		debug_print_pointers();
 		wxASSERT(debug_is_all_deleted());
 
+		guiUnhandledExceptionHandler.do_register(nullptr);
 
 		return wxApp::OnExit();
 	}

@@ -209,6 +209,8 @@ static int mywritetrack(void)
         switch (yylex()) {
         case MTRK:
             prs_error("Unexpected MTrk");
+	    err_cont = 0;
+	    return -1;
 	case EOF:
 	    err_cont = 0;
 	    error ("Unexpected EOF");
@@ -484,7 +486,7 @@ static void checkeol()
     if (eol_seen) return;
     if (yylex() != EOL) {
     	prs_error ("Garbage deleted");
-	while (!eol_seen) yylex();	 /* skip rest of line */
+	while (!eol_seen) (void)yylex();	 /* skip rest of line */
     }
 }
 

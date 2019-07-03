@@ -29,6 +29,7 @@
  ********************************************************************/
 #include "src/kernel/Defs.h"
 #include "src/wxGUI/generic/mhDefs.h"
+#include "src/wxGUI/MutApp.h"
 #include "src/kernel/debug.h"
 
 #include "wx/filedlg.h"
@@ -211,5 +212,7 @@ void PRINTSIZER (wxSizer * sizer, const wxString & offset)
 }
 #endif
 
-
+void mutwxUnhandldExeceptionHandler::handle() {
+	wxGetApp().OnUnhandledException();
+}
 ///\}

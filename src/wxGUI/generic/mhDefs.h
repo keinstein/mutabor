@@ -29,6 +29,7 @@
 #define mhDEFS_H
 
 #include "src/kernel/Defs.h"
+#include "src/kernel/error.h"
 
 #include "wx/window.h"
 #include "wx/stdpaths.h"
@@ -188,6 +189,13 @@ void PRINTSIZER (wxSizer * sizer, const wxString & offset = _T (""));
 //#endif
 
 typedef std::list<wxPoint> mutpointlist;
+
+class mutwxUnhandldExeceptionHandler: public mutabor::unhandled_exception_handler_t {
+public:
+	mutwxUnhandldExeceptionHandler() {}
+	~mutwxUnhandldExeceptionHandler() {}
+	void handle();
+};
 
 #endif
 

@@ -33,6 +33,7 @@
 //#include "InputDevDlg.h"
 //#include "Device.h"
 #include "src/kernel/routing/Route-inlines.h"
+#include "src/kernel/error.h"
 #include "src/wxGUI/Routing/DeviceShape.h"
 #include "src/wxGUI/Routing/BoxDlg.h"
 #include "src/wxGUI/Routing/RouteIcons.h"
@@ -69,21 +70,11 @@ void MutBoxChannelShape::LostFocus()
 
 MutBoxChannelShape::~MutBoxChannelShape()
 {
-	DetachChannel();
-	/*
-	  DEBUGLOG (routing, "Parent is %p" ,m_parent);
-	  if (m_parent) {
-	  wxSizer * sizer = GetContainingSizer();
-	  if (sizer)
-	  sizer -> Detach (this);
-	  wxWindow * parent = m_parent;
-	  parent->RemoveChild(this);
-	  SetParent(NULL);
-	  parent->InvalidateBestSize();
-	  parent->SetInitialSize(wxDefaultSize);
-	  parent->Layout();
-	  }
-	*/
+	try {
+		DetachChannel();
+	} catch (const mutabor::error::unreachable_exception & e) {
+		mutabor::unhandled_exception_handler();
+	}
 }
 
 

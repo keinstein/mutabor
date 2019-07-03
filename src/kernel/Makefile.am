@@ -65,6 +65,7 @@ noinst_LIBRARIES += \
 
 %C%_libmutaborkernel_a_INDENTS = \
 		%D%/box.cpp \
+		%D%/error.cpp \
 		%D%/Errors.cpp \
 		%D%/Execute.cpp \
 		%D%/Frac.cpp \

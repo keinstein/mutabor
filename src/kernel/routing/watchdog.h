@@ -39,6 +39,7 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
+#include "src/kernel/error.h"
 //#include "thread.h"
 #include "timing.h"
 
@@ -74,7 +75,7 @@ namespace mutabor {
 					tmp->remove_watchdog(this);
 				}
 			} catch (const boost::lock_error & e) {
-				UNREACHABLEC;
+				mutabor::unhandled_exception_handler();
 				// danger! unlocked operation
 				targettype tmp = const_cast<targettype&>(target);
 				if (tmp) {

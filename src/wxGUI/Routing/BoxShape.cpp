@@ -30,6 +30,7 @@
 #include "src/kernel/Defs.h"
 //#include "src/kernel/Global.h"
 #include "src/kernel/routing/Route-inlines.h"
+#include "src/kernel/error.h"
 #include "src/wxGUI/GUIBoxData.h"
 #include "src/wxGUI/Routing/BoxShape.h"
 #include "src/wxGUI/Routing/DebugRoute.h"
@@ -70,29 +71,13 @@ END_EVENT_TABLE()
 wxSizerFlags MutBoxShape::sizerFlags;
 
 MutBoxShape::~MutBoxShape() {
-#if 0
-	if (channels) {
-		wxSizerItemList list = channels->GetChildren();
-		Route r;
-
-
-		for (wxSizerItemList::iterator i = list.begin();
-		     i != (list.end()); i++)
-			{
-
-				MutBoxChannelShape * channel =
-					static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
-				mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
-				mutASSERT(dynamic_cast<
-					  MutBoxChannelShape *
-					  >((*i)->GetWindow()));
-				r = channel->GetRoute();
-				disconnect(r,channel);
-			}
+	if (box) {
+		try {
+			disconnect(box,this);
+		} catch (const mutabor::error::unreachable_exception & e) {
+			mutabor::unhandled_exception_handler();
+		}
 	}
-#endif
-	if (box)
-		disconnect(box,this);
 }
 
 //* \todo  fix tab order

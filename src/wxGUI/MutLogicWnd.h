@@ -71,9 +71,7 @@ public:
 	{
 		BoxData * guibox = ToGUIBase(box);
 		mutASSERT(guibox);
-		if (!guibox)
-			UNREACHABLEC;
-		else
+		if (guibox)
 			guibox->SetLogicWindow(NULL);
 	}
 
