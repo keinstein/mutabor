@@ -189,6 +189,9 @@ int main(/* int argc, char **argv */)
 	} catch (const mutabor::error::runtime_exception & e) {
 		std::cerr << boost::current_exception_diagnostic_information();
 		return 4;
+	} catch (const mutabor::error::unreachable_exception & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
 	}
 	in -> Close();
 

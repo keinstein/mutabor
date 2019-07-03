@@ -83,8 +83,7 @@ namespace mutabor {
 			try {
 				Close();
 			} catch (const boost::lock_error & e) {
-				UNREACHABLEC;
-				std::cerr << boost::diagnostic_information(e);
+				mutabor::unhandled_exception_handler();
 			}
 		mutASSERT(!loopguard);
 #ifdef DEBUG

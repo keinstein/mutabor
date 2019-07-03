@@ -1,6 +1,6 @@
 /** \file               -*- C++ -*-
  ********************************************************************
- * Description
+ * Error handling for C++ parts
  *
  * Copyright:   (c) 2016 Tobias Schlemmer
  * \author  Tobias Schlemmer <keinstein@users.sourceforge.net>
@@ -22,7 +22,7 @@
  *
  *
  ********************************************************************
- * \addtogroup templates
+ * \addtogroup kernel
  * \{
  ********************************************************************/
 /* available groups: GUI, Parser, route, kernel, debug, docview, config, GUIroute */
@@ -42,7 +42,9 @@
 
 #include "src/kernel/Defs.h"
 #ifdef __cplusplus
+#include <iostream>
 #include <boost/throw_exception.hpp>
+#include <boost/exception/diagnostic_information.hpp>
 #else
 #define BOOST_THROW_EXCEPTION(x)
 #endif
@@ -216,6 +218,33 @@ static inline void  __attribute__((__noreturn__)) throw_runtime_error(enum error
 								      const std::string & message) {
 	BOOST_THROW_EXCEPTION(error::runtime_exception(type,message));
 }
+
+
+class unhandled_exception_handler_t {
+public:
+	virtual ~unhandled_exception_handler_t(){}
+
+	unhandled_exception_handler_t * do_register(unhandled_exception_handler_t * newhandler = nullptr) {
+		unhandled_exception_handler_t * retval = handler;
+		handler = newhandler?newhandler:this;
+		return retval;
+	}
+
+
+	void operator() () {
+		if (handler) {
+			handler->handle();
+			return;
+		}
+		std::cerr << boost::current_exception_diagnostic_information() << std::endl;
+	}
+protected:
+	virtual void handle() {}
+private:
+	static unhandled_exception_handler_t * handler;
+};
+
+extern unhandled_exception_handler_t  unhandled_exception_handler;
 
 #endif
 

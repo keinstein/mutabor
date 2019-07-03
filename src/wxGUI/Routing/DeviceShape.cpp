@@ -27,6 +27,7 @@
 *\{
 ********************************************************************/
 #include "src/kernel/Defs.h"
+#include "src/kernel/error.h"
 #include "src/wxGUI/MutFrame.h"
 #include "src/wxGUI/Routing/GUIRoute.h"
 #include "src/wxGUI/Routing/DeviceShape.h"
@@ -104,8 +105,12 @@ template<class T>
 MutDeviceShape<T>::~MutDeviceShape() {
 	TRACEC;
 	if (device) {
-		disconnect(device,this);
-		TRACEC;
+		try {
+			disconnect(device,this);
+			TRACEC;
+		} catch (const mutabor::error::unreachable_exception & e) {
+			mutabor::unhandled_exception_handler();
+		}
 	}
 	if (playbuttons) delete playbuttons;
 	TRACEC;

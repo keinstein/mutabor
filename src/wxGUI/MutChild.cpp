@@ -55,6 +55,7 @@
 //#include "Mutabor.rh"
 #include "src/wxGUI/MutChild.h"
 #include "src/kernel/routing/Route-inlines.h"
+#include "src/kernel/error.h"
 #include "src/wxGUI/MutEditFile.h"
 #include "src/wxGUI/MutFrame.h"
 #include "src/wxGUI/MutLogicWnd.h"
@@ -155,7 +156,11 @@ MutChild::~MutChild()
 {
 	mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 	TRACEC;
-	deleteFromWinAttrs(false);
+	try {
+		deleteFromWinAttrs(false);
+	} catch (const mutabor::error::unreachable_exception & e) {
+		mutabor::unhandled_exception_handler();
+	}
 }
 
 void MutChild::BoxChanged() {
