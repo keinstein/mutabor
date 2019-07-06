@@ -67,39 +67,44 @@ private:
 };
 
 int main() {
-	test_thread test;
-	print_status("Before Run");
-	assert(test.get_command() == Thread::thread_initialized);
-	assert(test.get_state() == Thread::thread_initialized);
 	try {
-		test.Run();
-	} catch (const boost::condition_error & e) {
-		std::cerr << boost::current_exception_diagnostic_information();
-		return 1;
-	}
+		test_thread test;
+		print_status("Before Run");
+		assert(test.get_command() == Thread::thread_initialized);
+		assert(test.get_state() == Thread::thread_initialized);
+		try {
+			test.Run();
+		} catch (const boost::condition_error & e) {
+			std::cerr << boost::current_exception_diagnostic_information();
+			return 1;
+		}
 
-	assert(test.get_command() == Thread::thread_running);
-	print_status("After Run");
-	int retval;
-	try {
-		retval = test.Wait();
-	} catch (const boost::condition_error & e) {
-		std::cerr << boost::current_exception_diagnostic_information();
-		return 1;
-	} catch (const boost::thread_resource_error &) {
-		std::cerr << boost::current_exception_diagnostic_information();
-		return 1;
-	}
+		assert(test.get_command() == Thread::thread_running);
+		print_status("After Run");
+		int retval;
+		try {
+			retval = test.Wait();
+		} catch (const boost::condition_error & e) {
+			std::cerr << boost::current_exception_diagnostic_information();
+			return 1;
+		} catch (const boost::thread_resource_error &) {
+			std::cerr << boost::current_exception_diagnostic_information();
+			return 1;
+		}
 
-	try {
-		boost::unique_lock<boost::mutex> lock(printmutex);
-		std::cerr << "Wait returns: " << retval << std::endl;
+		try {
+			boost::unique_lock<boost::mutex> lock(printmutex);
+			std::cerr << "Wait returns: " << retval << std::endl;
+		} catch (const boost::lock_error & e) {
+			std::cerr << boost::current_exception_diagnostic_information();
+			return 1;
+		}
+		assert(test.get_state() == Thread::thread_finished);
+		return 0;
 	} catch (const boost::lock_error & e) {
 		std::cerr << boost::current_exception_diagnostic_information();
-		return 1;
+		return 2;
 	}
-	assert(test.get_state() == Thread::thread_finished);
-	return 0;
 }
 
 

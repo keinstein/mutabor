@@ -86,38 +86,47 @@ namespace mutabor {
 		}
 		
 		int Entry() throw() {
-			ScopedLock<> lock(mutex);
-			auto cur_time = CurrentTimer::time_point::clock::now();
-			auto wake_time = cur_time+timeout;
-			while (!exit && const_cast<targettype&>(target)) {
-				do {
-					try {
-						cond.Sleep(lock, wake_time);
-					} catch (boost::thread_interrupted) {
-						exit = true;
-						break;
-					} catch (const boost::lock_error & e) {
-						// rethrow after joining.
-						state = thread_exception_caught;
-						exception = std::current_exception();
-						break;
+			try {
+				ScopedLock<> lock(mutex);
+				auto cur_time = CurrentTimer::time_point::clock::now();
+				auto wake_time = cur_time+timeout;
+				while (!exit && const_cast<targettype&>(target)) {
+					do {
+						try {
+							cond.Sleep(lock, wake_time);
+						} catch (boost::thread_interrupted) {
+							exit = true;
+							break;
+						} catch (const boost::lock_error & e) {
+							// rethrow after joining.
+							state = thread_exception_caught;
+							exception = std::current_exception();
+							// exit is untouched
+							break;
+						}
+						// deal with spurious wakeups.
+					} while ((cur_time = CurrentTimer::time_point::clock::now()) < wake_time);
+					if (exit) break;
+					targettype tmp = const_cast<targettype&>(target);
+					if (tmp && !exit) {
+						try {
+							tmp->dog_watching();
+						} catch (const boost::lock_error & e) {
+							// rethrow after joining.
+							state = thread_exception_caught;
+							exception = std::current_exception();
+							// exit is untouched
+						}
 					}
-					// deal with spurious wakeups.
-				} while ((cur_time = CurrentTimer::time_point::clock::now()) < wake_time);
-				if (exit) break;
-				targettype tmp = const_cast<targettype&>(target);
-				if (tmp && !exit) {
-					try {
-						tmp->dog_watching();
-					} catch (const boost::lock_error & e) {
-						// rethrow after joining.
-						state = thread_exception_caught;
-						exception = std::current_exception();
-					}
+					wake_time = cur_time+timeout;
 				}
-				wake_time = cur_time+timeout;
+				return 0;
+			} catch (const boost::lock_error & e) {
+				// rethrow after joining.
+				state = thread_exception_caught;
+				exception = std::current_exception();
+				return 1;
 			}
-			return 0;
 		}
 		
 		void OnExit() throw() {

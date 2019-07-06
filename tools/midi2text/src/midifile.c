@@ -704,9 +704,9 @@ int (*wtrack)();
 	}
 
 	if (place_marker >= 0)
-		fseek(fp,place_marker,0);
+		(void)fseek(fp,place_marker,0);
 	else
-		fseek(fp,0,SEEK_END);
+		(void)fseek(fp,0,SEEK_END);
 } /* End gen_track_chunk() */
 
 static void
