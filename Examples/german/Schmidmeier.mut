@@ -1,0 +1,84 @@
+Ton a' = 440 "Hz"
+Intervall
+    Oktave = 2:1
+    Duodezime = 3:1
+
+" Hilfsintervalle" 
+    Quinte = Duodezime - Oktave
+    Quarte = 2 Oktave - Duodezime
+    
+"Oktavzirkel Rechnung modulo 19:
+    gis =  1 + 12 =  13 = -6
+    dis'=  8 + 12 =  20 =  1
+    ais'= -4 + 12       =  8
+    ais =  3 + 12 =  15 = -4
+    f'  = -9 + 12       =  3
+    f   = -2 + 12 =  10 = -9
+    c   =  5 + 12 =  17 = -2
+    g'  = -7 + 12       =  5
+    g   =  0 + 12 =  12 = -7
+    d'  =                  0 
+    a'  =  0 - 12 = -12 =  7
+    a   =  7 - 12       = -5
+    e'  = -5 - 12 = -17 =  2
+    h'  =  2 - 12 = -10 =  9
+    h   =  9 - 12       = -3
+    ges'= -3 - 12 = -15 =  4
+    ges =  4 - 12       = -8
+    des = -8 - 12 = -20 = -1
+    as' = -1 - 12 = -13 =  6
+"
+
+Ton 
+    d'   = a'   - Quinte
+    a    = a'   - Oktave
+    e'   = a    + Quinte
+    h'   = e'   + Quinte
+    h    = h'   - Oktave
+    ges' = h    + Quinte
+    ges  = ges' - Oktave
+    des  = ges  + Quinte
+    as'  = des  + Quinte
+    
+    g    = d'   - Quinte
+    g'   = g    + Oktave
+    c    = g'   - Quinte
+    f    = c    - Quinte
+    f'   = f    + Oktave
+    ais  = f'   - Quinte
+    ais' = ais  + Oktave
+    dis' = ais' - Quinte
+    gis  = dis' - Quinte
+    
+"Wir mappen die untere Hälfte der Fundamentaltonleiter nach oben, damit der erste Ton d' sein kann."
+    a2 = a + Duodezime
+    h2 = h + Duodezime
+    ges2 = ges + Duodezime
+    des2 = des + Duodezime
+    g2   = g   + Duodezime
+    c2   = c   + Duodezime
+    f2   = f   + Duodezime
+    ais2 = ais + Duodezime
+    gis2 = gis + Duodezime
+    
+Tonsystem
+
+    Pyth3 = 62 [ d', dis', e', f', ges', g', as', a', ais', h',
+                f2, ges2, g2, gis2, a2, ais2, h2, c2, des2 ] Duodezime
+Logik
+    Pyth Taste P = Pyth3 []
+    
+    TonNetz Taste N =Pyth3
+    [
+        FORM nQuinte -> Transpo ( Abstand )
+        FORM nDur    -> Transpo ( Abstand ) 
+        FORM nMoll   -> Transpo ( Abstand ) 
+    ]
+
+UMSTIMMUNG
+    Transpo(x)=@+x[]
+
+HARMONIE
+    nQuinnte={0,5,*17}
+    nDur ={0,*5,17}
+    nMoll={0,7,15}

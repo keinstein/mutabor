@@ -1,0 +1,37 @@
+LOGIK
+    Quinten Taste Q = Quintstimmung []
+TONSYSTEM
+    Quintstimmung = 69 [ a ] Quinte
+ton
+    a = 440 "Hz"
+intervall
+    Quinte = 3 : 2
+tonsystem 
+    pythagoras = 60 [ c, , d, , e , f ,, g ,, a ,, h ] Oktave
+Logik Pythagoraeisch Taste P = pythagoras []
+
+ton
+d = a - quinte
+g = d - quinte + oktave
+c = g - quinte
+f = c - quinte + oktave
+e = a + quinte - oktave
+h = e + quinte
+
+intervall
+    oktave = 2 : 1
+HARMONIE
+    nTerz={0,4,*7,*10}
+    nDur ={0,*4,7}
+    nMoll={0,3,7}
+UMSTIMMUNG
+    Transpo(a)= @+a []
+    
+LOGIK
+     Mutierend Taste M = pythagoras
+    [
+        FORM nTerz -> Transpo ( Abstand )
+        FORM nDur  -> Transpo ( Abstand ) 
+        FORM nMoll -> Transpo ( Abstand ) 
+    ]
+   

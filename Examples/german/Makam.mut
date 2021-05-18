@@ -1,0 +1,56 @@
+Ton a' = 440 "Hz"
+Intervall
+    Oktave = 2:1
+    Quinte = 3:2
+    cent   = 1200 Wurzel 2
+    delta  = 30 cent
+    
+
+Ton 
+    kammerton = 440 "Hz"
+    ais   = dis  + Quinte
+    dis   = gis  + Quinte - Oktave
+    gis   = cis  + Quinte
+    cis   = fis  + Quinte - Oktave
+    fis   = h    + Quinte - Oktave
+    h     = e    + Quinte
+    "start"
+    e     = a    + Quinte - Oktave
+    a     = kammerton "+ delta - 5 Oktave"
+    d     = a    - Quinte
+    g     = d    - Quinte + Oktave
+    c     = g    - Quinte
+    f     = c    - Quinte + Oktave
+    b     = f    - Quinte + Oktave
+    es    = b    - Quinte
+    as    = es   - Quinte + Oktave
+    des   = as   - Quinte
+    ges   = des  - Quinte + Oktave
+    ces   = ges  - Quinte + Oktave
+    fes   = ces  - Quinte
+    heses = fes  - Quinte + Oktave
+    eses  = heses  - Quinte
+    asas  = eses - Quinte + Oktave
+    deses = asas - Quinte
+    "ende"
+    geses = deses - Quinte + Oktave
+    
+Tonsystem
+    Testtonleiter      = 60 [ c, des, cis, d, es, dis, e, f, ges, fis, g, as, gis, a, b, ais, h] Oktave 
+    Rast               = 60 [ c     ,      ,     d,      ,   fes,     f,      ,     g,      ,     a,      ,   ces] Oktave
+    Nihavend           = 57 [ c     ,      ,     d,    es,      ,     f,      ,     g,    as,      ,     b,      ] Oktave
+    Ussak   "Uşşak"    = 57 [ c     ,      ,  eses,    es,      ,     f,      ,     g,    as,      ,     b,      ] Oktave
+    Huseyni "Hüseynî"  = 62 [ c     ,      ,  eses,    es,      ,     f,      ,     g,      , heses,     b,      ] Oktave
+    Hicaz              = 55 [ c     ,   des,      ,      ,   fes,     f,      ,     g,      , heses,     b,      ] Oktave
+    Huzzam  "Hüzzam"   = 64 [ deses ,   des,      ,    es,     e,      ,      ,  asas,    as,      ,     b,      ] Oktave
+    
+Logik 
+    Test Taste T = Testtonleiter []
+    Makalam Taste L = [
+        Taste R -> Rast
+        Taste N -> Nihavend
+        Taste K -> Ussak "Uşşak"
+        Taste Y -> Huseyni "Hüseynî"
+        Taste H -> Hicaz
+        Taste Z -> Huzzam "Hüzzam"
+    ]
