@@ -120,6 +120,9 @@ int main(/* int argc, char **argv */)
 	} catch (const mutabor::BoxFactory::FactoryNotFound & e) {
 		std::cerr << boost::current_exception_diagnostic_information();
 		return 1;
+	} catch (const mutabor::error::unreachable_exception & e) {
+		std::cerr << boost::current_exception_diagnostic_information();
+		return 1;
 	}
 	connect(route, box);
 

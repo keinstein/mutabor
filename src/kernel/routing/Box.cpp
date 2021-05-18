@@ -84,6 +84,8 @@ namespace mutabor {
 				Close();
 			} catch (const boost::lock_error & e) {
 				mutabor::unhandled_exception_handler();
+			} catch (const mutabor::error::unreachable_exception & e) {
+				mutabor::unhandled_exception_handler();
 			}
 		mutASSERT(!loopguard);
 #ifdef DEBUG
