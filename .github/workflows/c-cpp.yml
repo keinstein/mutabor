@@ -16,7 +16,7 @@ jobs:
       with:
         submodules: recursive
     - name: autoreconf
-      run: autoreconf
+      run: autoreconf -i -f
     - name: configure
       run: ./configure
     - name: make
