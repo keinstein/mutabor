@@ -12,13 +12,13 @@ compiler:
 matrix:
   include:
   - os: osx
-    osx_image: xcode9.4
+    osx_image: xcode11.3
     env:
     - MATRIX_EVAL="CC=clang && CXX=clang++ && EXTRA_BREW= && DYLD_LIBRARY_PATH=\":/usr/local/opt/wxmac/lib/:/usr/local/Cellar/jack/0.125.0_2/lib:-L/usr/local/lib\" && PATH=\"/usr/local/opt/bison/bin:/usr/local/opt/flex/bin:$PATH\"
        && MUTABOR_DEPLOY=true"
     - CPPFLAGS=-I/usr/local/opt/flex/include
   - os: osx
-    osx_image: xcode9.4
+    osx_image: xcode11.3
     env:
     - MATRIX_EVAL="CC=gcc && CXX=g++ && EXTRA_BREW=gcc && DYLD_LIBRARY_PATH=\":/usr/local/opt/wxmac/lib/:/usr/local/Cellar/jack/0.125.0_2/lib:-L/usr/local/lib\" && PATH=\"/usr/local/opt/bison/bin:/usr/local/opt/flex/bin:$PATH\"
       && MUTABOR_DEPLOY=false"
@@ -59,7 +59,7 @@ before_install:
 - pwd
 - ls
 - if test "$TRAVIS_OS_NAME" = osx ; then  brew update ; fi
-- if test "$TRAVIS_OS_NAME" = osx ; then brew pin postgis ; fi
+- if test "$TRAVIS_OS_NAME" = osx ; then brew pin postgis java ; fi
 - if test "$TRAVIS_OS_NAME" = osx ; then brew uninstall --cask --force java ; fi
 - #if test "$TRAVIS_OS_NAME" = osx ; then brew upgrade boost automake ; fi
 - if test "$TRAVIS_OS_NAME" = osx ; then rm -rf /usr/local/include/c++ ; fi
@@ -110,3 +110,10 @@ deploy:
     condition: $MUTABOR_DEPLOY = true
     repo: keinstein/mutabor
     branch: travis-github-provider
+
+before_cache:
+  - brew cleanup
+
+cache:
+  directories:
+    - $HOME/Library/Caches/Homebrew
