@@ -16,7 +16,7 @@ jobs:
       with:
         submodules: recursive
     - name: Install packages
-      run: sudo apt-get install autopoint devscripts pbuilder fakeroot debhelper autoconf libtool gettext automake fleix bison libwxgtk3.0-dev libbooost-dev libboost-thread-dev libboost-locale-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libasound-dev libcppunit-dev doxygen tex4ht xvfb libjack-dev jackd
+      run: sudo apt-get install autopoint devscripts pbuilder fakeroot debhelper autoconf libtool gettext automake fleix bison libwxgtk3.0-dev libboost-dev libboost-thread-dev libboost-locale-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libasound-dev libcppunit-dev doxygen tex4ht xvfb libjack-dev jackd
     - name: Start JACKd
       run: jackd -d dummy &
     - name: autoreconf
